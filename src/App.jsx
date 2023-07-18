@@ -2,7 +2,7 @@ import '@fontsource/poppins';
 import NavBar from './components/navbar';
 import Landing from './components/landingPage';
 import CardList from './components/cards';
-//import SideBar from './components/sidebar';
+//import SideBar fsdfsrom './components/sidebar';
 
 export default function App() {
   return (
