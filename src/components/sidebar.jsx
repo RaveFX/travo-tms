@@ -1,207 +1,71 @@
-import React from "react";
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-  Alert,
-  Input,
-} from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
-import {
-  ChevronRightIcon,
-  ChevronDownIcon,
-  CubeTransparentIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+import { useState } from 'react'
+import { logoW, logoB, close, leftarrow, menu, dashboard, request, invitation, star, rating, message, user, settings } from '../assets'
 
-export default function SideBar() {
-  const [open, setOpen] = React.useState(0);
-  const [openAlert, setOpenAlert] = React.useState(true);
-
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
-
+const Sidebar = () => {
+  const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(true);
+  const menus = [
+    { title: "Dashboard", src: dashboard },
+    { title: "Requests", src: request },
+    { title: "Invitations", src: invitation },
+    { title: "Ratings", src: star },
+    { title: "Message", src: message },
+    { title: "Profile", src: user, gap: true },
+    { title: "Setting", src: settings },
+  ]
   return (
-    <Card className="fixed top-[h-(full-(h-16))] left-0 h-full w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 font-poppins">
-      <div className="mb-2 flex items-center gap-4 p-4">
-        <img src="/img/logo-ct-dark.png" alt="brand" className="h-8 w-8" />
-        <Typography variant="h5" color="blue-gray">
-          Sidebar
-        </Typography>
-      </div>
-      <div className="p-2">
-        <Input
-          icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-          label="Search"
-        />
-      </div>
-      <List>
-        <Accordion
-          open={open === 1}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 1 ? "rotate-180" : ""
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader
-              onClick={() => handleOpen(1)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                Dashboard
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Analytics
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Reporting
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Projects
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-        <Accordion
-          open={open === 2}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 2 ? "rotate-180" : ""
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 2}>
-            <AccordionHeader
-              onClick={() => handleOpen(2)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <ShoppingBagIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                E-Commerce
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Orders
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Products
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-        <hr className="my-2 border-blue-gray-50" />
-        <ListItem>
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="blue-gray"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Profile
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Log Out
-        </ListItem>
-      </List>
-      <Alert
-        open={openAlert}
-        className="mt-auto"
-        onClose={() => setOpenAlert(false)}
-      >
-        <CubeTransparentIcon className="mb-4 h-12 w-12" />
-        <Typography variant="h6" className="mb-1">
-          Upgrade to PRO
-        </Typography>
-        <Typography variant="small" className="font-normal opacity-80">
-          Upgrade to Material Tailwind PRO and get even more components,
-          plugins, advanced features and premium.
-        </Typography>
-        <div className="mt-4 flex gap-3">
-          <Typography
-            as="a"
-            href="#"
-            variant="small"
-            className="font-medium opacity-80"
-            onClick={() => setOpenAlert(false)}
-          >
-            Dismiss
-          </Typography>
-          <Typography as="a" href="#" variant="small" className="font-medium">
-            Upgrade Now
-          </Typography>
+    <div className='flex'>
+      <div className='sm:hidden flex bg-gradient-to-b from-[#377A85] to-[#72C075] items-center p-6'>
+        <img src={`${toggle ? close : menu}`} alt='menu' className=' w-[28px] h-[28px] object-contain ' onClick={() => setToggle((prev) => !prev)} />
+        <div className={`${toggle ? 'flex' : 'hidden'}  bg-gradient-to-b from-[#377A85] to-[#72C075] absolute top-24 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
+          <ul className='w-[35px]  py-5 '>
+            {menus.map((menu, index) => (
+              <li
+                key={index}
+                className={`text-white text-l flex items-center gap-x-4 ml-2
+            cursor-pointer p-2 hover:bg-green w-full rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-green"}`}>
+                <img src={`${menu.src} `} />
+                <span className={`${!open && 'hidden'} origin-left duration-300`}> {menu.title}</span>
+              </li>
+            ))}
+
+          </ul>
         </div>
-      </Alert>
-    </Card>
-  );
+      </div>
+      <div className={`${open ? "w-72" : "w-20"} sm:inline hidden duration-300 h-screen pl-5 pt-8 bg-gradient-to-b from-[#377A85] to-[#72C075] relative `} >
+
+        <img src={leftarrow} alt='leftarrow' className={`absolute cursor-pointer -right-3
+       top-9 w-7 border-2 rounded-full bg-green border-green ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
+        <div className='flex gap-x-4 items-center'>
+
+          <img src={`${open ? logoW : logoB}`} alt='logo' className={` cursor-pointer duration-300 item-center`} />
+
+
+        </div>
+        <div>
+          <img src={`${toggle ? close : menu}`} alt='menu' className='sm:hidden flex w-[28px] h-[28px] object-contain' onClick={() => setToggle((prev) => !prev)} />
+        </div>
+        <ul className='w-[35px]  pt-6 '>
+          {menus.map((menu, index) => (
+            <li
+              key={index}
+              className={`text-white text-l flex items-center gap-x-4 
+            cursor-pointer p-2 hover:bg-green w-full rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-green"}`}>
+              <img src={`${menu.src} `} />
+              <span className={`${!open && 'hidden'} origin-left duration-300`}> {menu.title}</span>
+            </li>
+          ))}
+
+        </ul>
+
+
+      </div>
+
+      <div className='p-7 text-2xl w-full font-semibold flex bg-white'>
+        <h1>Home Page</h1>
+      </div>
+    </div>
+  )
 }
+
+export default Sidebar
