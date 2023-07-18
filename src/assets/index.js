@@ -24,6 +24,10 @@ import dashboard from "./dashboard.png";
 import settings from "./settings.png";
 import logoW from "./logoW.svg";
 import logoB from "./logoB.svg";
+import kandy from "./kandy.png";
+import complete from "./complete.png";
+import client from "./clients.png";
+import bookmark from "./bookmark.png";
 
 export {
   send,
@@ -51,5 +55,9 @@ export {
   invitation,
   request,
   logoW,
-  logoB
+  logoB,
+  kandy,
+  complete,
+  client,
+  bookmark
 };
