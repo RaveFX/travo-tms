@@ -7,11 +7,15 @@ import CardList from './components/cards';
 export default function App() {
   return (
     <>
-    <NavBar/>
-    <Landing/>
-    <CardList/>
-    {/* <SideBar/> */}
-    <div className="bg-indigo-500 w-full h-screen"></div>
+      <div >
+        <NavBar />
+        {/* <Landing /> */}
+        <h1>Traveling bags</h1>
+        <CardList />
+        <h1>Cameras</h1>
+        <CardList />
+        {/* <SideBar/> */}
+      </div>
     </>
   )
 }
