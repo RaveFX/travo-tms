@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { logoW, logoB, close, leftarrow, menu, dashboard, request, invitation, star, rating, message, user, settings } from '../assets'
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(true);
   const menus = [
-    { title: "Dashboard", src: dashboard },
-    { title: "Requests", src: request },
+    { title: "Dashboard", src: dashboard,route:"/",current:true },
+    { title: "Requests", src: request ,route:"/request",current:false },
     { title: "Invitations", src: invitation },
     { title: "Ratings", src: star },
     { title: "Message", src: message },
