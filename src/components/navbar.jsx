@@ -1,170 +1,74 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+// src/TopNavbar.js
+import React, { useState } from 'react';
+// import SearchBar from './Searchbar';
 
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
+// const TopNavbar = () => {
+//   return (
+//     <div className="p-4 w-[100%] h-[72px]">
+//         <div className="flex items-center justify-between">
+//             <div>
+//                 <SearchBar/>
+//             </div>
+//             <div>
+//                 <div className="flex space-x-4">
+//                     <div className='flex flex-row justify-center gap-[10px]'>
+//                         <img src="/images/notification-bing.svg" alt="Logo" className="h-[24px] w-[24px]" />
+//                         <img src="/images/Profile Picture.svg" alt="Logo" className="h-[24px] w-[24px]" />
+//                         <div className='font-poppins font-medium text-base justify-center'>Natashia Bunny</div>
+//                     </div>
+//                 </div>
+//             </div>
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
-export default function NavBar() {
+//         </div>
+//     </div>
+//   );
+// };
+
+
+// export default TopNavbar;
+
+import {
+  Navbar,
+  Badge,
+  IconButton,
+  Button,
+  Input,
+} from "@material-tailwind/react";
+import { BellIcon, UserCircleIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+
+export default function Example() {
+  const [hasNewNotification, setHasNewNotification] = useState(true);
   return (
-    <Disclosure as="nav" className="bg-white">
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 font-poppins">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="./public/travo-black.png"
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-black hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+    <Navbar className="mx-auto max-w-screen-full px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900">
+        <div className="relative flex w-full gap-2 md:w-max rounded-full">
+          <Input
+            type="search"
+            label="Type here..."
+            className="pr-20 rounded-full style-none"
+            containerProps={{
+              className: "min-w-[288px]",
+            }}
+          />
+          <Button size="sm" className="!absolute right-1 top-1 rounded-full bg-[#57CC99]">
+            <MagnifyingGlassIcon className="h-4 w-4" />
+          </Button>
+        </div>
 
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+        <div className="ml-auto flex gap-2 md:mr-4">
+          <IconButton variant="text" color="blue-gray">
+            <BellIcon className="h-[30px] w-[30px]" />
+          </IconButton>
+          {hasNewNotification && (
+            <Badge className="absolute -top-2 -right-1 bg-[#57CC99]" style={{ top: "9px", right: "20px" }} />
+          )}
+          <IconButton variant="text" color="blue-gray" className="h-[35px] w-[35px]">
+            <UserCircleIcon className="h-[30px] w-[30px]" />
+          </IconButton>
+        </div>
 
-                <div className="ml-3 text-sm relative">
-                     <a 
-                       href="#"
-                       > Ravindu Balasooriya 
-                       </a>    
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
+      </div>
+    </Navbar>
   );
 }
