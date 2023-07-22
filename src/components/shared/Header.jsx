@@ -8,9 +8,9 @@ export default function Header() {
             <div className='relative'>
                 {/* <HiOutlineSearch fontsize={20} className='text-gray-400 absolute top-1/2 -translate-y-1/2 left-3' /> */}
 
-//                         <MagnifyingGlassIcon className="h-4 w-4" />
-//
-                <input type="text" placeholder='Search...' className='text-sm focus:outline-none active: outline-none h-10 w-[24rem] border-gray-300 rounded-sm pl-11 pr-4' />
+                <MagnifyingGlassIcon className="h-4 w-4 " />
+
+                <input type="text" placeholder='Search...' className='text-sm focus:outline-none active: outline h-10 w-[24rem] border-gray-300 rounded-sm pl-11 pr-4' />
             </div>
 
             <div>side button</div>
