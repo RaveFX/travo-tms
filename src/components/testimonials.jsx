@@ -9,17 +9,17 @@ const testo = [
   },
 
   {
-    name: "Ravindu Viranga",
+    name: "Nishan Madushanka",
     position: "Pahasara UCSC",
     description:
       "The experience I got from Travo is Wonderful! I would love to use this service once again and forever! Highly recommended",
   },
 
   {
-    name: "Ravindu Viranga",
+    name: "Anushka Rajapaksha",
     position: "Pahasara UCSC",
     description:
-      "Free and Premium themes anidvoiadv aodvndvav, UI Kit's, templates and landing pages built with Tailwind CSS, HTML &amp; Next.js.",
+      "Using this travel app has been a game-changer! Seamless bookings, breathtaking destinations, and excellent support.",
     image: "/hichcha.jpg",
   },
 ];

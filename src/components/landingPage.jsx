@@ -44,7 +44,7 @@ function Landing() {
 
       <Newcards />
       <Button className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
-        <h1>Customer Testomonials</h1>
+        <h1>Customer Testimonials</h1>
       </Button>
       <Testimonials />
       <Footers />
