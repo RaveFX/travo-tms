@@ -134,10 +134,7 @@ export default function NavBar() {
                 </Menu>
 
                 <div className="ml-3 text-sm relative">
-                     <a 
-                       href="#"
-                       > Ravindu Balasooriya 
-                       </a>    
+                  <a href="#"> Ravindu Balasooriya</a>
                 </div>
               </div>
             </div>

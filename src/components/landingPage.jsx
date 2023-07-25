@@ -1,4 +1,9 @@
 import React from "react";
+import Newcards from "./cardsnew";
+import Testimonials from "./testimonials";
+import { Button } from "@material-tailwind/react";
+import Footers from "./footer";
+
 //import hero from "public/hero.png"
 
 function Landing() {
@@ -13,14 +18,14 @@ function Landing() {
       <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
         {/* <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center" alt="hero" src="/hero.png" /> */}
         <div class="text-center lg:w-5/12 w-full">
-          <h1 className="mt-3 mb-0 text-4xl font-bold leading-tight">
-            Your Journey
+          <h1 className="mt-3 mb-0 text-7xl font-bold leading-tight">
+            Your Journey, Starts Here
           </h1>
-          <h1 className="my-3 text-5xl font-bold leading-tight">Starts Here</h1>
+          {/* <h1 className="my-3 text-5xl font-bold leading-tight">Starts Here</h1> */}
 
           <p className="text-2xl mb-8 text-white drop-shadow-md ">
-          Travo makes your travelling life easier by streamlining
-all your travel needs under a single roof!
+            Travo makes your travelling life easier by streamlining all your
+            travel needs under a single roof!
           </p>
           <div className="flex justify-center mx-auto">
             <button className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8">
@@ -32,6 +37,17 @@ all your travel needs under a single roof!
           </div>
         </div>
       </div>
+
+      <Button className="drop-shadow-lg p-2 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
+        <h1>Trending Destinations</h1>
+      </Button>
+
+      <Newcards />
+      <Button className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
+        <h1>Customer Testomonials</h1>
+      </Button>
+      <Testimonials />
+      <Footers />
     </div>
   );
 }
