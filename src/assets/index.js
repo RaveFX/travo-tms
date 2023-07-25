@@ -25,6 +25,8 @@ import settings from "./settings.png";
 import logoW from "./logoW.svg";
 import logoB from "./logoB.svg";
 import kandy from "./kandy.png";
+import galle from "./galle.png";
+import jaffna from "./jaffna.png";
 import complete from "./complete.png";
 import client from "./clients.png";
 import bookmark from "./bookmark.png";
@@ -57,6 +59,8 @@ export {
   logoW,
   logoB,
   kandy,
+  galle,
+  jaffna,
   complete,
   client,
   bookmark

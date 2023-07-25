@@ -8,17 +8,19 @@ const Sidebar = () => {
   const menus = [
     { title: "Dashboard", src: dashboard,route:"/",current:true },
     { title: "Requests", src: request ,route:"/request",current:false },
-    { title: "Invitations", src: invitation },
-    { title: "Ratings", src: star },
-    { title: "Message", src: message },
-    { title: "Profile", src: user, gap: true },
-    { title: "Setting", src: settings },
+    { title: "Invitations", src: invitation , route:"/invitation",current:false },
+    { title: "Ratings", src: star,route:"/rating",current:false  },
+    { title: "Message", src: message ,route:"/request",current:false },
+    { title: "Profile", src: user, gap: true,route:"/request",current:false  },
+    { title: "Setting", src: settings ,route:"/request",current:false },
   ]
   return (
     <div className='flex'>
       <div className='sm:hidden flex bg-gradient-to-b from-[#377A85] to-[#72C075] items-center '>
         <div className='flex-col w-[25px]  m-[22px]'>
+          <Link to={menu.route}>
         <img src={`${toggle ? close : menu}`} alt='menu' className=' w-[28px] h-[28px] object-contain' onClick={() => setToggle((prev) => !prev)} />
+        </Link>
         </div>
         <div className={`${toggle ? 'flex' : 'hidden'}  bg-gradient-to-b from-[#377A85] to-[#72C075] absolute top-24 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
           <ul className='w-[35px]  py-5 '>
@@ -27,8 +29,11 @@ const Sidebar = () => {
                 key={index}
                 className={`text-white text-l flex items-center gap-x-4 ml-2
             cursor-pointer p-2 hover:bg-green w-full rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-green"}`}>
-                <img src={`${menu.src} `} />
-                <span className={`${!open && 'hidden'} origin-left duration-300`}> {menu.title}</span>
+                
+                <Link to={menu.route} >{menu.src}</Link>
+
+                <Link to={menu.route} className={`${!open && 'hidden'} origin-left duration-300`} > {menu.title}</Link>
+
               </li>
             ))}
 
@@ -55,7 +60,7 @@ const Sidebar = () => {
               className={`text-white text-l flex items-center gap-x-4 
             cursor-pointer p-2 hover:bg-green w-full rounded-md ${menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-green"}`}>
               <img src={`${menu.src} `} />
-              <span className={`${!open && 'hidden'} origin-left duration-300`}> {menu.title}</span>
+              <Link to={menu.route} className={`${!open && 'hidden'} origin-left duration-300`}> {menu.title}</Link>
             </li>
           ))}
 

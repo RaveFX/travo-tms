@@ -1,4 +1,8 @@
 import React from 'react'
+import Sidebar from './sidebar';
+import TopNavbar from './topNavbar';
+
+
 
 const invitation = () => {
     const people = [
@@ -46,105 +50,120 @@ const invitation = () => {
                 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
         },
     ]
+    const tours = [
+        {
+            name: 'Kandy',
+            description: "Discover Kandy's rich history, sacred Temple of the Tooth, scenic hills, lush gardens, cultural shows, and serene lakes. Join us!",
+            img: "https://cdn.getyourguide.com/img/location/5c83eaac2b43a.jpeg/88.jpg"
+        },
+        {
+            name: 'Jaffna',
+            description: "Embark on a captivating Jaffna tour, exploring ancient temples, unique Tamil culture, pristine islands, and delectable cuisine. Don't miss out!",
+            img: "https://tse4.mm.bing.net/th?id=OIP.3D9r3haE82xdMdWUYOQMhQHaFS&pid=Api&P=0&w=300&h=300"
+
+        },
+        {
+            name: 'Galle',
+            description: "Experience Galle's colonial charm, ancient fort, stunning beaches, vibrant markets, and local art scene. Unforgettable adventure awaits!",
+            img: "https://tse4.mm.bing.net/th?id=OIP.gfLSC5wo79vT59V1QEN37AHaE7&pid=Api&P=0&h=220"
+
+        },
+        {
+            name: 'Matara',
+            description: "Embrace the beauty of Matara with its golden beaches, historic temples, and laid-back coastal vibes etc. Unforgettable experiences await!",
+            img: "https://tse3.mm.bing.net/th?id=OIP.LjSxSSdI4shNTdo07pG1TQHaE8&pid=Api&P=0&h=220"
+
+        },
+        {
+            name: 'Trinco',
+            description: "Indulge in the wonders of Trincomalee - pristine beaches, azure waters, vibrant coral reefs and the renowned Koneswaram Temple etc. Join us now!",
+            img: "https://tse1.mm.bing.net/th?id=OIP.vG7czIfZzH6SgyvFxrq_0gHaE8&pid=Api&P=0&h=220"
+
+        },
+
+
+    ]
 
 
 
     return (
-        <div className='flex sm:flex-row flex-col'>
-            <div className='flex flex-wrap mx-auto  '>
+        <div className='flex'>
+            <div><Sidebar /></div>
+            <div className='flex flex-grow flex-col'>
+                <div><TopNavbar /></div>
+                
+                    <div className='flex sm:flex-row flex-col'>
 
-                <div class="m-2 p-2 mx-auto container max-w-md overflow-hidden rounded-lg bg-white shadow">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="aspect-video w-full object-cover" alt="" />
-                    <div class="p-4">
-                        <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                        <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                        <p class="mt-1 text-gray-500">Sailboat UI is a modern UI component library for Tailwind CSS. Get started with 150+ open source components.</p>
-                        <div class="mt-4 flex gap-2">
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
+                        <div className='flex flex-wrap mx-auto '>
+                            <div class="mt-4 flex gap-2 ml-1/2">
+                                <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Create new Tour</button>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto container max-w-md overflow-hidden rounded-lg bg-white shadow">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="aspect-video w-full object-cover" alt="" />
-                    <div class="p-4">
-                        <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                        <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                        <p class="mt-1 text-gray-500">Sailboat UI is a modern UI component library for Tailwind CSS. Get started with 150+ open source components.</p>
-                        <div class="mt-4 flex gap-2">
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
+                            </div>
+                            <ul role="" className='flex flex-wrap mx-auto '>
+                                {tours.map((tour) => (
+                                    <li key={tour.name} className=''>
+                                        <div class="m-4 p-2  max-w-xs overflow-hidden rounded-lg bg-white shadow">
+                                            <img src={tour.img} class="aspect-video w-full object-cover" alt="" />
+                                            <div class="p-4">
+                                                <h3 class="text-xl font-medium text-gray-900">{tour.name}</h3>
+                                                <p class="mt-1 text-gray-500">{tour.description}</p>
+                                                <div class="mt-4 flex gap-2">
+                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Send</button>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto container max-w-md overflow-hidden rounded-lg bg-white shadow">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="aspect-video w-full object-cover" alt="" />
-                    <div class="p-4">
-                        <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                        <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                        <p class="mt-1 text-gray-500">Sailboat UI is a modern UI component library for Tailwind CSS. Get started with 150+ open source components.</p>
-                        <div class="mt-4 flex gap-2">
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
 
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto container max-w-md overflow-hidden rounded-lg bg-white shadow">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="aspect-video w-full object-cover" alt="" />
-                    <div class="p-4">
-                        <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                        <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                        <p class="mt-1 text-gray-500">Sailboat UI is a modern UI component library for Tailwind CSS. Get started with 150+ open source components.</p>
-                        <div class="mt-4 flex gap-2">
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
+                                <div class="m-4 p-2 container max-w-xs overflow-hidden rounded-lg bg-white shadow">
+                                    <div class="p-[10vh] my-20">
+                                        <h3 class="text-3xl font-medium text-gray-900 px-11" >+</h3>
+                                        <p class="mt-1 text-gray-500 justify-center items-center">Create new tour</p>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto container max-w-md overflow-hidden rounded-lg bg-white shadow">
-                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="aspect-video w-full object-cover" alt="" />
-                    <div class="p-4">
-                        <p class="mb-1 text-sm text-primary-500">Andrea Felsted • <time>18 Nov 2022</time></p>
-                        <h3 class="text-xl font-medium text-gray-900">Migrating to Sailboat UI</h3>
-                        <p class="mt-1 text-gray-500">Sailboat UI is a modern UI component library for Tailwind CSS. Get started with 150+ open source components.</p>
-                        <div class="mt-4 flex gap-2">
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class='ml-[15vh] w-1/3   '>
-                    <div className=' text-2xl w-1/6   text-dimBlack'>
-                        <p>Invitation Sent to</p>
-                    </div>
-
-                    {/* Conversation Component Code */}
-                    <ul role="list" className="divide-y divide-gray-100">
-                        {people.map((person) => (
-                            <li key={person.email} className="flex justify-between gap-x-4 py-2">
-                                <div className="flex gap-x-4">
-                                    <img className="h-10 w-10 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
-                                    <div className="min-w-0 flex-auto">
-                                        <p className="text-sm font-semibold leading-4 text-gray-900">{person.name}</p>
-                                        <p className="mt-1 truncate text-xs leading-4 text-gray-500">{person.email}</p>
-                                        <p className="mt-1 truncate leading-5 text-gray">{person.msg}</p>
                                     </div>
                                 </div>
-                                <div className="hidden sm:flex sm:flex-col sm:items-end">
+                            </ul>
 
 
-                                    <div className="mt-1 flex items-center gap-x-1.5">
 
-                                        <p className="text-xs leading-4 text-green">Reply</p>
-                                    </div>
 
+
+                        </div>
+                        <div>
+                            <div class='m-[5vh] '>
+                                <div className=' text-2xl mb-5   text-dimBlack'>
+                                    <p>Invitation Sent to</p>
                                 </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+
+                                {/* Conversation Component Code */}
+                                <ul role="list" className="divide-y divide-gray-100">
+                                    {people.map((person) => (
+                                        <li key={person.email} className="flex justify-between gap-x-4 py-2">
+                                            <div className="flex gap-x-4">
+                                                <img className="h-10 w-10 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
+                                                <div className="min-w-0 flex-auto">
+                                                    <p className="text-sm font-semibold leading-4 text-gray-900">{person.name}</p>
+                                                    <p className="mt-1 truncate text-xs leading-4 text-gray-500">{person.email}</p>
+                                                    <p className="mt-1 truncate leading-5 text-gray">{person.msg}</p>
+                                                </div>
+                                            </div>
+                                            <div className="hidden sm:flex sm:flex-col sm:items-end">
+
+
+                                                <div className="mt-1 flex items-center gap-x-1.5">
+
+                                                    <p className="text-xs leading-4 text-green">Reply</p>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
             </div>
         </div>
 
