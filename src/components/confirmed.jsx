@@ -18,10 +18,7 @@ const Confirmed = () => {
                             <div className='w-3/4'>
                                 <p className='text-2xl text-dimBlack'>Confirmed Requests</p>
                             </div>
-                            
-
                         </div>
-
                         <div className='py-5'>
                             <div className="mx-auto container bg-black dark:bg-white shadow rounded">
                                 <div className="flex flex-col lg:flex-row p-4 lg:p-8 justify-between items-start lg:items-stretch w-full">
@@ -197,9 +194,7 @@ const Confirmed = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Kandy</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>
-
-                                                
+                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>  
                                             </tr>
                                         </tbody>
                                     </table>
