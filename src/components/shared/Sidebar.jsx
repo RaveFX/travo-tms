@@ -31,7 +31,7 @@ export default function Sidebar() {
                 <Link to="/">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <RectangleGroupIcon className="h-5 w-5 " />
+                            <RectangleGroupIcon className="h-3 w-5 " />
                         </ListItemPrefix>
                         Dashboard
                     </ListItem>
@@ -39,7 +39,7 @@ export default function Sidebar() {
                 <Link to="/products">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <MapIcon className="h-3 w-5" />
                         </ListItemPrefix>
                         My Shop
                     </ListItem>
