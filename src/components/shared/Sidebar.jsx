@@ -49,7 +49,7 @@ export default function Sidebar() {
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        My Trips
+                        Orders
                     </ListItem>
                 </Link>
                 <Link to="/products">
@@ -57,7 +57,7 @@ export default function Sidebar() {
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        My Trips
+                        Message
                     </ListItem>
                 </Link>
                 <Link to="/products">
@@ -65,12 +65,38 @@ export default function Sidebar() {
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
-                        My Trips
+                        Renting
+                    </ListItem>
+                </Link>
+                <Link to="/products">
+                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
+                        <ListItemPrefix>
+                            <MapIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Rating
+                    </ListItem>
+                </Link>
+                <Link to="/products">
+                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
+                        <ListItemPrefix>
+                            <MapIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Profile
+                    </ListItem>
+                </Link>
+                <Link to="/products">
+                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
+                        <ListItemPrefix>
+                            <MapIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Setting
                     </ListItem>
                 </Link>
 
+
+
             </List>
-            <List className="Flex flex-col mt-[200px] text-white">
+            <List className="Flex flex-col mt-[150px] text-white">
                 <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
