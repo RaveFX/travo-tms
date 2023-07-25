@@ -6,9 +6,11 @@ import SideBar from './components/sidebar';
 import TopNavbar from './components/topNavbar';
 import DashboardTG from './components/dashboardTG';
 import Request from './components/request';
+import RequestMore from './components/requestMore';
 import Tables from './components/tabels';
 import Invitation from './components/invitation';
 import Rating from './components/rating';
+import Confirmed from './components/confirmed';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
@@ -30,23 +32,13 @@ export default function App() {
   <Route path='/invitation' element={<Invitation/>}></Route>
   <Route path='/rating' element={<Rating/>}></Route>
   <Route path='/request' element={<Request/>}></Route>
+  <Route path='/requestMore' element={<RequestMore/>}></Route>
+  <Route path='/confirmed' element={<Confirmed/>}></Route>
 
 </Routes>
 </BrowserRouter>
 
-      {/* <div class="flex">
-<div className=" ">
-    <SideBar />
-  </div>
-  <div className=" flex flex-grow flex-col">
-    <div>
-      <TopNavbar />
-    </div>
-    <div >
-      <Invitation />
-    </div>
-  </div>
-</div> */}
+   
 
     </>
   )

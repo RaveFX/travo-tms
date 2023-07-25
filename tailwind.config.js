@@ -17,7 +17,8 @@ export default {
         lightBlue:"#38A3A5",
         textGray:"#6B6B6B",
         button1:"#22577A",
-        button2:"#57CC99"
+        button2:"#57CC99",
+        back:"#FAFAFA"
 
 
       },

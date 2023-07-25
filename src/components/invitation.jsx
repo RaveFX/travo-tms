@@ -102,7 +102,7 @@ const invitation = () => {
                             <ul role="" className='flex flex-wrap mx-auto '>
                                 {tours.map((tour) => (
                                     <li key={tour.name} className=''>
-                                        <div class="m-4 p-2  max-w-xs overflow-hidden rounded-lg bg-white shadow">
+                                        <div class="m-4 p-2  sm:max-w-xs w-3/4 overflow-hidden rounded-lg bg-white shadow">
                                             <img src={tour.img} class="aspect-video w-full object-cover" alt="" />
                                             <div class="p-4">
                                                 <h3 class="text-xl font-medium text-gray-900">{tour.name}</h3>
@@ -116,13 +116,7 @@ const invitation = () => {
                                     </li>
                                 ))}
 
-                                <div class="m-4 p-2 container max-w-xs overflow-hidden rounded-lg bg-white shadow">
-                                    <div class="p-[10vh] my-20">
-                                        <h3 class="text-3xl font-medium text-gray-900 px-11" >+</h3>
-                                        <p class="mt-1 text-gray-500 justify-center items-center">Create new tour</p>
-
-                                    </div>
-                                </div>
+                    
                             </ul>
 
 
