@@ -22,16 +22,16 @@ import {
 export default function Sidebar() {
     return (
         <Card className="bg-gradient-to-b from-[#377A85] to-[#72C075] w-[260px] h-screen rounded-none">
-            <div className="mb-2 pb-4">
+            <div className="mb-2 pb-2">
                 <Typography variant="h5" color="white">
                     <img src="/images/logo.png" alt="Logo" className="" />
                 </Typography>
             </div>
-            <List className="text-white gap-10">
+            <List className="text-white gap-3">
                 <Link to="/">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <RectangleGroupIcon className="h-3 w-5 " />
+                            <RectangleGroupIcon className="h-5 w-5 " />
                         </ListItemPrefix>
                         Dashboard
                     </ListItem>
@@ -39,12 +39,12 @@ export default function Sidebar() {
                 <Link to="/products">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-3 w-5" />
+                            <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         My Shop
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/orders">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -52,7 +52,7 @@ export default function Sidebar() {
                         Orders
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/message">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -60,7 +60,7 @@ export default function Sidebar() {
                         Message
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/renting">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function Sidebar() {
                         Renting
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/rating">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -76,7 +76,7 @@ export default function Sidebar() {
                         Rating
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/profile">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -84,7 +84,7 @@ export default function Sidebar() {
                         Profile
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/setting">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -96,7 +96,7 @@ export default function Sidebar() {
 
 
             </List>
-            <List className="Flex flex-col mt-[150px] text-white">
+            <List className="Flex flex-col mt-[90px] text-white">
                 <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
