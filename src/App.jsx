@@ -40,7 +40,7 @@ import Layout from "./components/shared/layout"
 import Dashboard from "./components/Dashboard"
 import Products from "./components/Products"
 import Orders from "./components/Orders"
-import Message from "./components/Message"
+import Transaction from "./components/Transaction"
 import Renting from "./components/Renting"
 import Rating from "./components/Rating"
 
@@ -52,7 +52,7 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="message" element={<Message />} />
+          <Route path="transaction" element={<Transaction />} />
           <Route path="renting" element={<Renting />} />
           <Route path="rating" element={<Rating />} />
         </Route>
