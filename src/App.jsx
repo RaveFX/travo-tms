@@ -11,6 +11,7 @@ import Tables from './components/tabels';
 import Invitation from './components/invitation';
 import Rating from './components/rating';
 import Confirmed from './components/confirmed';
+import Profile from './components/profile';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
   <Route path='/request' element={<Request/>}></Route>
   <Route path='/requestMore' element={<RequestMore/>}></Route>
   <Route path='/confirmed' element={<Confirmed/>}></Route>
+  <Route path='/profile' element={<Profile/>}></Route>
 
 </Routes>
 </BrowserRouter>
