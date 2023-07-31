@@ -7,10 +7,10 @@ const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const menus = [
     { title: "Dashboard", src: dashboard,route:"/",current:true },
+    { title: "Vehicle", src: invitation , route:"/travel_guide_invitation",current:false },
     { title: "Requests", src: request ,route:"/travel_guide_request",current:false },
-    { title: "Invitations", src: invitation , route:"/travel_guide_invitation",current:false },
     { title: "Ratings", src: star,route:"/travel_guide_rating",current:false  },
-    { title: "Message", src: message ,route:"/travel_guide_request",current:false },
+    // { title: "Message", src: message ,route:"/travel_guide_request",current:false },
     { title: "Profile", src: user, gap: true,route:"/travel_guide_request",current:false  },
     { title: "Setting", src: settings ,route:"/travel_guide_request",current:false },
   ]
