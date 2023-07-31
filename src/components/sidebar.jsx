@@ -15,13 +15,8 @@ const Sidebar = () => {
     { title: "Setting", src: settings ,route:"/travel_guide_request",current:false },
   ]
   return (
-<<<<<<< Updated upstream
     <div className='flex bg-gradient-to-b sm:h-full from-[#377A85] to-[#72C075]'>
       <div className='sm:hidden flex  items-center  '>
-=======
-    <div className='flex h-full bg-gradient-to-b from-[#377A85] to-[#72C075]'>
-      <div className='sm:hidden flex  items-center '>
->>>>>>> Stashed changes
         <div className='flex-col w-[25px]  m-[22px]'>
           <Link to={menu.route}>
         <img src={`${toggle ? close : menu}`} alt='menu' className=' w-[28px] h-[28px] object-contain' onClick={() => setToggle((prev) => !prev)} />
@@ -45,11 +40,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </div>
-<<<<<<< Updated upstream
       <div className={`${open ? "w-72" : "w-20"} sm:inline hidden duration-300 h-screen pl-5 pt-8  relative `} >
-=======
-      <div className={`${open ? "w-72" : "w-20"} sm:inline hidden duration-300 h-screen pl-5 pt-8 relative `} >
->>>>>>> Stashed changes
 
         <img src={leftarrow} alt='leftarrow' className={`absolute cursor-pointer -right-3
        top-9 w-7  rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />

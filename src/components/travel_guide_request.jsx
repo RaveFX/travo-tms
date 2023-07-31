@@ -1,12 +1,8 @@
 import React from 'react'
 import Sidebar from './sidebar';
 import TopNavbar from './topNavbar';
-<<<<<<< Updated upstream:src/components/travel_guide_request.jsx
 import { Link } from 'react-router-dom';
 
-=======
-import RequestMore from './topNavbar';
->>>>>>> Stashed changes:src/components/request.jsx
 
 
 const request = () => {
