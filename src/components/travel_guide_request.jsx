@@ -1,8 +1,12 @@
 import React from 'react'
 import Sidebar from './sidebar';
 import TopNavbar from './topNavbar';
+<<<<<<< Updated upstream:src/components/travel_guide_request.jsx
 import { Link } from 'react-router-dom';
 
+=======
+import RequestMore from './topNavbar';
+>>>>>>> Stashed changes:src/components/request.jsx
 
 
 const request = () => {
@@ -80,6 +84,7 @@ const request = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <Link to="/requestMore">
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
                                                 </td>
@@ -107,7 +112,7 @@ const request = () => {
                                                     <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
                                                 </td>
                                             </tr>
-
+                                            </Link>
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
                                                 </td>
