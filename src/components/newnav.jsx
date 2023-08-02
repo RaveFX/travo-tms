@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Newnav() {
   return (
@@ -13,12 +14,11 @@ function Newnav() {
             ></img>
           </a>
           <div class="flex md:order-2">
-            <button
-              type="button"
+            <Link
               class="text-white  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-indigo-800 dark:hover:bg-indigo-950 dark:focus:ring-blue-800"
-            >
+            to="/signin">
               Get started
-            </button>
+            </Link>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
