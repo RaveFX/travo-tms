@@ -43,6 +43,8 @@ import Orders from "./components/Orders"
 import Transaction from "./components/Transaction"
 import Renting from "./components/Renting"
 import Rating from "./components/Rating"
+import Productadd from './components/Productaddform'
+
 
 export default function App() {
   return (
@@ -55,6 +57,7 @@ export default function App() {
           <Route path="transaction" element={<Transaction />} />
           <Route path="renting" element={<Renting />} />
           <Route path="rating" element={<Rating />} />
+          <Route path="profile" element={<Productadd />} />
         </Route>
       </Routes>
     </Router>

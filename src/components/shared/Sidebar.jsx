@@ -52,20 +52,20 @@ export default function Sidebar() {
                         Orders
                     </ListItem>
                 </Link>
-                <Link to="/transaction">
-                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
-                        <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
-                        </ListItemPrefix>
-                        Transaction
-                    </ListItem>
-                </Link>
                 <Link to="/renting">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Renting
+                    </ListItem>
+                </Link>
+                <Link to="/transaction">
+                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
+                        <ListItemPrefix>
+                            <MapIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Transaction
                     </ListItem>
                 </Link>
                 <Link to="/rating">

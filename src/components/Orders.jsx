@@ -16,8 +16,8 @@ const ProductOrderTable = () => {
                         <input className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search..." />
                     </div>
                     <div className="lg:ml-40 ml-10 space-x-8">
-                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Report</button>
-                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">Create</button>
+                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"></button>
+                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"></button>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ const ProductOrderTable = () => {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Travel bags</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
@@ -70,7 +70,7 @@ const ProductOrderTable = () => {
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            43
+                                            2
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -78,7 +78,7 @@ const ProductOrderTable = () => {
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Activo</span>
+                                            <span class="relative">On delivery</span>
                                         </span>
                                     </td>
                                 </tr>
@@ -98,7 +98,7 @@ const ProductOrderTable = () => {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Editor</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Shoes</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
@@ -107,7 +107,7 @@ const ProductOrderTable = () => {
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            77
+                                            1
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -115,7 +115,7 @@ const ProductOrderTable = () => {
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Activo</span>
+                                            <span class="relative">Pendding</span>
                                         </span>
                                     </td>
                                 </tr>
@@ -135,7 +135,7 @@ const ProductOrderTable = () => {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Editor</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Tent</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
@@ -144,7 +144,7 @@ const ProductOrderTable = () => {
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            64
+                                            1
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -152,7 +152,7 @@ const ProductOrderTable = () => {
                                             class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Suspended</span>
+                                            <span class="relative">Pendding</span>
                                         </span>
                                     </td>
                                 </tr>
@@ -172,20 +172,20 @@ const ProductOrderTable = () => {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Admin</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Travel bag</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">70</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">1</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
                                         <span
                                             class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Inactive</span>
+                                            <span class="relative">Cancel</span>
                                         </span>
                                     </td>
                                 </tr>

@@ -53,9 +53,11 @@ const cardsData = [
 
 export default function Productcards() {
     return (
-
-
         <div >
+            <div class="lg:ml-auto mr-10 mt-10 flex space-x-8 justify-end">
+                <button class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Product</button>
+            </div>
+
             <div className="relative inline-flex">
                 <svg
                     className="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"
