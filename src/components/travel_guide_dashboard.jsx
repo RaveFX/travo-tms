@@ -401,6 +401,8 @@ const DashboardTG = () => {
             <div className='flex flex-grow flex-col'>
                 <div><TopNavbar/></div>
                 <div className=''>
+                <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button>
+
                     <div className=" flex sm:flex-row flex-col items-start justify-start">
                         {/* Top Section (Upper Left Corner) */}
                         <div className='ml-10 mt-2'>

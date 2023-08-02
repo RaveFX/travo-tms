@@ -63,6 +63,46 @@ const requestMore = () => {
                                     <p className='text-gray-400 mx-3' >10</p>
                                 </div>
                             </div>
+                            <div className='flex my-2'>
+                                <div>
+                                    <p className='text-black'>Interests and Preferences : </p>
+                                </div>
+                                <div>
+                                    <p className='text-gray-400 mx-3' >We need to do adventure things</p>
+                                </div>
+                            </div>
+                            <div className='flex my-2'>
+                                <div>
+                                    <p className='text-black'>Budget : </p>
+                                </div>
+                                <div>
+                                    <p className='text-gray-400 mx-3' ></p>
+                                </div>
+                            </div>
+                            <div className='flex my-2'>
+                                <div>
+                                    <p className='text-black'>Special Needs : </p>
+                                </div>
+                                <div>
+                                    <p className='text-gray-400 mx-3' ></p>
+                                </div>
+                            </div>
+                            <div className='flex my-2'>
+                                <div>
+                                    <p className='text-black'>Must-See Attractions : </p>
+                                </div>
+                                <div>
+                                    <p className='text-gray-400 mx-3' ></p>
+                                </div>
+                            </div>
+                            <div className='flex my-2'>
+                                <div>
+                                    <p className='text-black'>Language : </p>
+                                </div>
+                                <div>
+                                    <p className='text-gray-400 mx-3' >Sinhala,English</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='sm:w-1/2 justify-center'>

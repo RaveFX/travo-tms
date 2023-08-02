@@ -15,14 +15,14 @@ const Sidebar = () => {
     { title: "Setting", src: settings ,route:"/travel_guide_request",current:false },
   ]
   return (
-    <div className='flex bg-gradient-to-b sm:h-full from-[#377A85] to-[#72C075]'>
+    <div className='flex bg-gradient-to-b  from-[#377A85] to-[#72C075]'>
       <div className='sm:hidden flex  items-center  '>
         <div className='flex-col w-[25px]  m-[22px]'>
           <Link to={menu.route}>
         <img src={`${toggle ? close : menu}`} alt='menu' className=' w-[28px] h-[28px] object-contain' onClick={() => setToggle((prev) => !prev)} />
         </Link>
         </div>
-        <div className={`${toggle ? 'flex' : 'hidden'}   absolute top-24 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
+        <div className={`${toggle ? 'flex' : 'hidden'} bg-gradient-to-b  from-[#377A85] to-[#72C075]  absolute top-24 left-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
           <ul className='w-[35px]  py-5 '>
             {menus.map((menu, index) => (
               <li

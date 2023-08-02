@@ -30,6 +30,11 @@ import jaffna from "./jaffna.png";
 import complete from "./complete.png";
 import client from "./clients.png";
 import bookmark from "./bookmark.png";
+import car from "./car.png";
+import van from "./van.png";
+import scooter from "./scooter.png";
+import bike from "./motorbike.png";
+import bus from "./bus.png";
 
 export {
   send,
@@ -63,5 +68,10 @@ export {
   jaffna,
   complete,
   client,
-  bookmark
+  bookmark,
+  car,
+  van,
+  bike,
+  scooter,
+  bus
 };

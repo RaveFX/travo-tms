@@ -5,13 +5,13 @@ import TopNavbar from './topNavbar';
 export function rating() {
 
     return (
-        <div className='flex'>
+        <div className='flex '>
             <div><Sidebar /></div>
 
             <div className='flex  flex-grow flex-col'>
                 <div><TopNavbar /></div>
-                <div className=' flex sm:flex-row flex-wrap w-full my-5 xs:justify-center'>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                <div className=' flex sm:flex-row flex-wrap  w-full h-full overflow-auto my-5 xs:justify-center'>
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">
@@ -33,7 +33,7 @@ export function rating() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">
@@ -55,7 +55,7 @@ export function rating() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">
@@ -77,7 +77,7 @@ export function rating() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">
@@ -99,7 +99,7 @@ export function rating() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">
@@ -121,7 +121,7 @@ export function rating() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[400px] bg-back m-3 p-5">
+                    <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
                             <div className="w-1/2 justify-end">

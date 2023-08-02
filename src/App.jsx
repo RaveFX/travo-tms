@@ -5,7 +5,6 @@ import CardList from './components/cards';
 import SideBar from './components/sidebar';
 import TopNavbar from './components/topNavbar';
 import Travel_Guide_Dashboard from './components/travel_guide_dashboard';
-
 import Travel_Guide_Request from './components/travel_guide_request';
 import Travel_Guide_RequestMore from './components/travel_guide_requestMore';
 import Tables from './components/tabels';
@@ -15,6 +14,7 @@ import Travel_Guide_Confirmed from './components/travel_guide_confirmed';
 import Profile from './components/profile';
 
 import Vehicle_Owner_Dashboard from './components/vehicle_owner_dashboard';
+import Vehicle_Owner_Vehicles from './components/vehicle_owner_vehicles';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -32,6 +32,7 @@ export default function App() {
 
       <BrowserRouter>
 <Routes>
+  
   <Route path='/' element={<Travel_Guide_Dashboard/>}> </Route>
   <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
   <Route path='/travel_guide_invitation' element={<Travel_Guide_Invitation/>}></Route>
@@ -39,8 +40,9 @@ export default function App() {
   <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
   <Route path='/travel_guide_requestMore' element={<Travel_Guide_RequestMore/>}></Route>
   <Route path='/travel_guide_confirmed' element={<Travel_Guide_Confirmed/>}></Route>
-  <Route path='/rofile' element={<Profile/>}></Route>
+  <Route path='/profile' element={<Profile/>}></Route>
   <Route path='/vehicle_owner_dashboard' element={<Vehicle_Owner_Dashboard/>}> </Route>
+  <Route path='/vehicle_owner_vehicles' element={<Vehicle_Owner_Vehicles/>}> </Route>
 
 </Routes>
 </BrowserRouter>

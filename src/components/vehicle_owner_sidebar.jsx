@@ -6,13 +6,13 @@ const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(true);
   const menus = [
-    { title: "Dashboard", src: dashboard,route:"/",current:true },
-    { title: "Vehicle", src: invitation , route:"/travel_guide_invitation",current:false },
-    { title: "Requests", src: request ,route:"/travel_guide_request",current:false },
-    { title: "Ratings", src: star,route:"/travel_guide_rating",current:false  },
+    { title: "Dashboard", src: dashboard,route:"/vehicle_owner_dashboard",current:true },
+    { title: "Vehicle", src: invitation , route:"/vehicle_owner_vehicles",current:false },
+    { title: "Requests", src: request ,route:"/request",current:false },
+    { title: "Ratings", src: star,route:"/rating",current:false  },
     // { title: "Message", src: message ,route:"/travel_guide_request",current:false },
-    { title: "Profile", src: user, gap: true,route:"/travel_guide_request",current:false  },
-    { title: "Setting", src: settings ,route:"/travel_guide_request",current:false },
+    { title: "Profile", src: user, gap: true,route:"/request",current:false  },
+    { title: "Setting", src: settings ,route:"/rew",current:false },
   ]
   return (
     <div className='flex bg-gradient-to-b sm:h-full from-[#377A85] to-[#72C075]'>
