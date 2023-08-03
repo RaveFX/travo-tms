@@ -3,6 +3,7 @@ import Newcards from "./cardsnew";
 import Testimonials from "./testimonials";
 import { Button } from "@material-tailwind/react";
 import Footers from "./footer";
+import { Link } from "react-router-dom";
 
 //import hero from "public/hero.png"
 
@@ -28,9 +29,9 @@ function Landing() {
             travel needs under a single roof!
           </p>
           <div className="flex justify-center mx-auto">
-            <button className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8">
+            <Link className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8" to="/signupChoice">
               Begin Now!
-            </button>
+            </Link>
             <button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
               User Stories
             </button>
