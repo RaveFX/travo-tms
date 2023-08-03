@@ -1,50 +1,58 @@
 import React from 'react'
 import {
     Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
+    CardBody
   } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
 
-function signupChoice() {
+function SignupChoice() {
   return (
-    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{
-        backgroundImage: "url('/signup.png')"}}>
-        
-        <h1>Sign-Up as</h1>
-        <Card className="mt-6 w-96">
-        <CardHeader color="blue-gray" className="relative h-56">
-            <img
-            src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
-            alt="card-image"
-            />
-        </CardHeader>
-        <CardBody>
-            <Typography variant="h5" color="blue-gray" className="mb-2">
-            UI/UX Review Check
-            </Typography>
-            <Typography>
-            The place is close to Barceloneta Beach and bus stop just 2 min by
-            walk and near to &quot;Naviglio&quot; where you can enjoy the main
-            night life in Barcelona.
-            </Typography>
-        </CardBody>
-        <CardFooter className="pt-0">
-            <Button>Read More</Button>
-        </CardFooter>
-        </Card>
+    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/signupas.jpg')"}}>
+    <div className="py-24 sm:py-32">
+    <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+      <div className="max-w-2xl">
+        <img
+          src="/travo-white.png"
+          alt="Sample image" />
+        <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl ml-20">Sign-up As,</h2>
 
+        <ul role="list" className="grid sm:grid-cols-2 sm:gap-y-16 xl:col-span-2 pt-20">
+        <Link to="/Signup">
+      <li>
+      <card>
+      <img className="h-40 w-40 rounded-md" src="/store_manager.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Traveller</h3>
+      </card>
+      
+      </li>
+      </Link>
+      <Link to="/service_providers">
+      <li>
+      <card>
+      <img className="h-40 w-40 rounded-md" src="/hotel_agent.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Service Provider</h3>
+      </card>
+      
+      </li>
+      </Link>
         
+      </ul>
+      </div>
+     
+    </div>
+  </div>
         
-        
-        
-        
-        
-        
+
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
   )
 }
 
-export default signupChoice
+export default SignupChoice

@@ -4,8 +4,9 @@ import Newnav from "./components/newnav";
 import Landing from "./components/landingPage";
 import Signin from "./components/signin";
 import Signup from "./components/signup";
-import signupChoice from "./components/signupChoice";
-import serviceProviders from "./components/serviceProviders";
+import SignupChoice from "./components/signupChoice";
+import ServiceProviders from "./components/serviceProviders";
+import HotelRegister from "./components/hotelRegister";
 //import traveller_dashboard from "./components/traveller_dashboard";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -18,8 +19,9 @@ export default function App() {
     <Route exact path="/" element={<Landing/>}/>
     <Route exact path="/signin" element={<Signin/>}/>
     <Route exact path="/signup" element={<Signup/>}/>
-    <Route exact path="/signupAs" element={<signupChoice/>}/>
-    <Route exact path="/serviceProviders" element={<serviceProviders/>}/>
+    <Route exact path="/signup_as" element={<SignupChoice/>}/>
+    <Route exact path="/service_providers" element={<ServiceProviders/>}/>
+    <Route exact path="/hotel_register" element={<HotelRegister/>}/>
  </Routes>
     </Router>
 

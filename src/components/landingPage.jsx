@@ -29,7 +29,7 @@ function Landing() {
             travel needs under a single roof!
           </p>
           <div className="flex justify-center mx-auto">
-            <Link className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8" to="/signupChoice">
+            <Link className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8" to="/signup_as">
               Begin Now!
             </Link>
             <button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
