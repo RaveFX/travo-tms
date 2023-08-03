@@ -1,17 +1,23 @@
 import "@fontsource/poppins";
-// import NavBar from "./components/navbar";
-import Newnav from "./components/newnav";
-import Landing from "./components/landingPage";
-// import Footer from "./components/footer";
-// import CardList from "./components/cards";
-//import SideBar fsdfsrom './components/sidebar';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Travdash from "./pages/travdash";
+import AboutUs from "./pages/about";
+import Services from "./pages/services";
+import Contact from "./pages/contact";
 
 export default function App() {
   return (
     <>
-      {/* <NavBar /> */}
-      <Newnav />
-      <Landing />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Travdash" element={<Travdash />} />
+          <Route exact path="/AboutUs" element={<AboutUs />} />
+          <Route exact path="/Services" element={<Services />} />
+          <Route exact path="/Contact" element={<Contact />} />
+        </Routes>
+      </Router>
 
       <div className="bg-[#F6F8FA] w-full h-screen"></div>
     </>

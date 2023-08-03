@@ -1,0 +1,13 @@
+ {/* <NavBar /> */}
+      {/* <Newnav />
+      <Landing /> */}
+
+      {/* <Router>
+        <Newnav />
+        <Routes>
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/signin" element={<Signin/>}/>
+      <Route exact path="/signup" element={<Signup/>}/>
+          <Route exact path="/" element={<Travdash />} />
+        </Routes>
+      </Router> */}
