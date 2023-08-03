@@ -18,7 +18,9 @@ export default {
         textGray:"#6B6B6B",
         button1:"#22577A",
         button2:"#57CC99",
-        back:"#FAFAFA"
+        back:"#FAFAFA",
+        dimGray:"#DADADA"
+
 
 
       },

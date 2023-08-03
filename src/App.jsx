@@ -15,6 +15,10 @@ import Profile from './components/profile';
 
 import Vehicle_Owner_Dashboard from './components/vehicle_owner_dashboard';
 import Vehicle_Owner_Vehicles from './components/vehicle_owner_vehicles';
+import Vehicle_Owner_Rates from './components/vehicle_owner_rates';
+import Vehicle_Owner_Add_Vehicle from './components/vehicle_owner_add_vehicle';
+import Vehicle_Owner_Add_Preview from './components/vehicle_owner_add_preview';
+import 'boxicons';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -43,6 +47,10 @@ export default function App() {
   <Route path='/profile' element={<Profile/>}></Route>
   <Route path='/vehicle_owner_dashboard' element={<Vehicle_Owner_Dashboard/>}> </Route>
   <Route path='/vehicle_owner_vehicles' element={<Vehicle_Owner_Vehicles/>}> </Route>
+  <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates/>}> </Route>
+  <Route path='/vehicle_owner_add_vehicle' element={<Vehicle_Owner_Add_Vehicle/>}> </Route>
+  <Route path='/vehicle_owner_add_preview' element={<Vehicle_Owner_Add_Preview/>}> </Route>
+  <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates/>}> </Route>
 
 </Routes>
 </BrowserRouter>
