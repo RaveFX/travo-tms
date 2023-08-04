@@ -55,7 +55,7 @@ const VehicleCard = ({names,seat,large_bag,milage,small_bag,type,price,img}) => 
                     alt="ui/ux review check"
                 />
             </CardHeader>
-            <CardBody className="">
+            <CardBody className="mx-5">
                 <Typography variant="h5" color="blue-gray">{names}</Typography>
                 <Typography className="flex ">
                     <Typography className="w-3/4 flex">

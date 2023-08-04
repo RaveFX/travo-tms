@@ -8,8 +8,8 @@ const Sidebar = () => {
   const menus = [
     { title: "Dashboard", src: dashboard,route:"/vehicle_owner_dashboard",current:true },
     { title: "Vehicle", src: invitation , route:"/vehicle_owner_vehicles",current:false },
-    { title: "Requests", src: request ,route:"/request",current:false },
-    { title: "Ratings", src: star,route:"/rating",current:false  },
+    { title: "Requests", src: request ,route:"/vehicle_owner_request",current:false },
+    { title: "Ratings", src: star,route:"/vehicle_owner_rating",current:false  },
     // { title: "Message", src: message ,route:"/travel_guide_request",current:false },
     { title: "Profile", src: user, gap: true,route:"/request",current:false  },
     { title: "Setting", src: settings ,route:"/rew",current:false },

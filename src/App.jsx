@@ -18,6 +18,8 @@ import Vehicle_Owner_Vehicles from './components/vehicle_owner_vehicles';
 import Vehicle_Owner_Rates from './components/vehicle_owner_rates';
 import Vehicle_Owner_Add_Vehicle from './components/vehicle_owner_add_vehicle';
 import Vehicle_Owner_Add_Preview from './components/vehicle_owner_add_preview';
+import Vehicle_Owner_Request from './components/vehicle_owner_request';
+import Vehicle_Owner_Rating from './components/vehicle_owner_rating';
 import 'boxicons';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -50,7 +52,8 @@ export default function App() {
   <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates/>}> </Route>
   <Route path='/vehicle_owner_add_vehicle' element={<Vehicle_Owner_Add_Vehicle/>}> </Route>
   <Route path='/vehicle_owner_add_preview' element={<Vehicle_Owner_Add_Preview/>}> </Route>
-  <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates/>}> </Route>
+  <Route path='/vehicle_owner_request' element={<Vehicle_Owner_Request/>}> </Route>
+  <Route path='/vehicle_owner_rating' element={<Vehicle_Owner_Rating/>}> </Route>
 
 </Routes>
 </BrowserRouter>

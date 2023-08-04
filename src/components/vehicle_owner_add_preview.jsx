@@ -1,4 +1,11 @@
-import { Carousel, IconButton } from '@material-tailwind/react'
+import {
+    Carousel, IconButton, Tabs,
+    TabsHeader,
+    TabsBody,
+    Tab,
+    TabPanel,
+    Button
+} from '@material-tailwind/react'
 import React from 'react'
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import TopNavbar from './topNavbar';
@@ -10,7 +17,25 @@ const requestMore = () => {
         "../public/16.png",
         "../public/16.png",
         "../public/16.png",
-        
+
+
+    ]
+    const data = [
+        {
+            label: "Without Driver(1 Day)",
+            value: "html",
+            desc1:'1-6 days - Rs.1645/-',
+            desc2:'7-20 days - Rs.1435/-',
+            desc3:'20-29 days - Rs.1122/-',
+            desc4:'30 days - Rs.845/-',
+            info:''
+        },
+        {
+            label: "With Driver",
+            value: "react",
+            desc1: `1 day with driver - Rs.2394/-`,
+            desc2:'w/driver per hr - Rs.476'
+        },
 
     ]
     return (
@@ -33,117 +58,99 @@ const requestMore = () => {
                             <p className='text-2xl underline'>Vehicle Infomation</p>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>Start : </p>
+                                    <p className='text-black'>Modal : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' >Colombo</p>
+                                    <p className='text-gray-400 mx-3' >Car</p>
                                 </div>
                             </div>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>Destination : </p>
+                                    <p className='text-black'>Color : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' >Kandy</p>
+                                    <p className='text-gray-400 mx-3' >White</p>
                                 </div>
                             </div>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>No of Days : </p>
+                                    <p className='text-black'>Type : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' >2 Days and 3 Nights</p>
+                                    <p className='text-gray-400 mx-3' >Automatic</p>
                                 </div>
                             </div>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>No of travelers : </p>
+                                    <p className='text-black'>No of Pasengers : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' >10</p>
+                                    <p className='text-gray-400 mx-3' >4</p>
                                 </div>
                             </div>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>Interests and Preferences : </p>
+                                    <p className='text-black'>Milage : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' >We need to do adventure things</p>
+                                    <p className='text-gray-400 mx-3' >Unlimited</p>
                                 </div>
                             </div>
                             <div className='flex my-2'>
                                 <div>
-                                    <p className='text-black'>Budget : </p>
+                                    <p className='text-black'>Space : </p>
                                 </div>
                                 <div>
-                                    <p className='text-gray-400 mx-3' ></p>
+                                    <p className='text-gray-400 mx-3' >1 large bag, 2 small Bag</p>
                                 </div>
                             </div>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>Special Needs : </p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' ></p>
-                                </div>
-                            </div>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>Must-See Attractions : </p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' ></p>
-                                </div>
-                            </div>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>Language : </p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' >Sinhala,English</p>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <div className='sm:w-1/2 justify-center'>
-                        <div className='bg-back mx-[5vh] p-5 h-3/4 '>
+                    <div className='sm:w-1/2 justify-center '>
+                        <div className='bg-back mx-[5vh] p-5 sm:h-3/4 h-full'>
                             <p className='py-8 text-center text-2xl'>Rental</p>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>Full Name : </p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' >Anne Mario</p>
-                                </div>
-
-                            </div>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>NIC : </p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' >996991768v</p>
-                                </div>
-
-                            </div>
-                            <div className='flex my-2'>
-                                <div>
-                                    <p className='text-black'>Address</p>
-                                </div>
-                                <div>
-                                    <p className='text-gray-400 mx-3' >Colombo</p>
-                                </div>
-
-                            </div>
-                            
-
-
+                            <Tabs id="custom-animation" value="html">
+                                <TabsHeader className="bg-transparent"
+                                    indicatorProps={{
+                                        className: "bg-blue-500/10 shadow-none text-blue-500",
+                                    }}>
+                                    {data.map(({ label, value }) => (
+                                        <Tab key={value} value={value}>
+                                            {label}
+                                        </Tab>
+                                    ))}
+                                </TabsHeader>
+                                <TabsBody
+                                animate={{
+                                    initial: { y: 150 },
+                                    mount: { y: 0 },
+                                    unmount: { y: 150 },
+                                }}
+                                >
+                                    {data.map(({ value, desc1,desc2,desc3,desc4 }) => (
+                                        <TabPanel key={value} value={value}>
+                                            
+                                            <div>
+                                            {desc1}</div>
+                                            <div>
+                                            {desc2}</div>
+                                            <div>
+                                            {desc3}</div>
+                                            <div className=''>
+                                            {desc4}</div>
+                                        </TabPanel>
+                                    ))}
+                                </TabsBody>
+                            </Tabs>
                         </div>
-                        <div className='flex  mt-24 justify-center '>
-                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="">Send to Admin</Link></button>
+                        <div className='m-9'>
 
+                    <Button variant="gradient" className="rounded-full bg-green" color="green">send to Admin</Button>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div >
