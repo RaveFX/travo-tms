@@ -4,7 +4,7 @@ import TopNavbar from "../components/navbar2";
 import Sidebar from "../components/sidebar";
 import { Button } from "@material-tailwind/react";
 
-import Cardss from "../components/card";
+// import Cardss from "../components/card";
 
 function Travdash() {
   return (

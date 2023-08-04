@@ -8,7 +8,7 @@ import Navingation_home from "../components/newnav";
 
 //import hero from "public/hero.png"
 
-export default function Landing() {
+export default function HomePage() {
   return (
     <div
       className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"

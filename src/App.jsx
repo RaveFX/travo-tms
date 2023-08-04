@@ -1,6 +1,6 @@
 import "@fontsource/poppins";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./pages/landingPage";
+import HomePage from "./pages/home";
 import Travdash from "./pages/travdash";
 import AboutUs from "./pages/about";
 import Services from "./pages/services";
@@ -11,7 +11,7 @@ export default function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/" element={<HomePage />} />
           <Route exact path="/Travdash" element={<Travdash />} />
           <Route exact path="/AboutUs" element={<AboutUs />} />
           <Route exact path="/Services" element={<Services />} />
