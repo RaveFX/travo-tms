@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "../components/navbar2";
 import Sidebar from "../components/sidebar";
-import { Button } from "@material-tailwind/react";
+import { Button, CardBody } from "@material-tailwind/react";
 
-// import Cardss from "../components/card";
+import Cardss from "../components/card";
 
 function Travdash() {
   return (
@@ -16,8 +16,8 @@ function Travdash() {
         <div className="w-screen">
           <TopNavbar />
 
-          <section class="py-8">
-            <div class=" w-[45%] px-4 mr-auto">
+          <section class="py-8 w-[55%]">
+            <div class=" px-4 mr-auto">
               <div class="px-7 py-6 bg-white rounded-xl drop-shadow-sm  ">
                 <div class="flex flex-wrap">
                   <div class="w-full md:w-1/2 pt-6 mb-10 md:mb-0">
@@ -40,7 +40,7 @@ function Travdash() {
                   </div>
                   <div class="w-full md:w-1/2 flex items-center">
                     <img
-                      class="rounded-xl mx-auto h-48"
+                      class="rounded-xl w-96 h-48"
                       src="/ella.jpg"
                       alt=""
                     ></img>
@@ -49,6 +49,14 @@ function Travdash() {
               </div>
             </div>
           </section>
+          <div className="ml-5 font-bold  mb-3">Other Options</div>
+          <div className="text-s ml-5 w-[53%] flex gap-5">
+            <Cardss CardBody={<p>Lorem ipsum dolor sit amet</p>} />
+
+            <Cardss />
+            <Cardss />
+            <Cardss />
+          </div>
         </div>
       </div>
     </>

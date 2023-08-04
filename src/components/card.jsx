@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Card,
   CardHeader,
@@ -9,27 +7,32 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function Cardss() {
+export default function Cardss() {
   return (
-    <Card className="mt-6 w-96">
-      <CardHeader color="blue-gray" className="relative h-56">
+    <Card className="w-48">
+      <CardHeader shadow={false} floated={false} className="h-48">
         <img
-          src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+          src="https://images.unsplash.com/photo-1642095012245-bda8033e8ee3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80"
           alt="card-image"
+          className="  h-48 w-48 mr-3 object-cover rounded-xl"
         />
       </CardHeader>
       <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          UI/UX Review Check
-        </Typography>
-        <Typography>
-          The place is close to Barceloneta Beach and bus stop just 2 min by
-          walk and near to &quot;Naviglio&quot; where you can enjoy the main
-          night life in Barcelona.
+        <div className="m-2 pl-9 flex items-center justify-between">
+          <Typography color="blue-gray" className=" text-center font-bold">
+            Book Hotel
+          </Typography>
+        </div>
+        <Typography
+          variant="small"
+          color="gray"
+          className="font-normal m-5 text-center opacity-75"
+        >
+          Hey there! You deserve this
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0">
-        <Button>Read More</Button>
+      <CardFooter className="m-1 mb-4 pl-12 w-max pt-0">
+        <Button children="Book Now" color="indigo" />
       </CardFooter>
     </Card>
   );
