@@ -4,11 +4,11 @@ import Testimonials from "../components/testimonials";
 import { Button } from "@material-tailwind/react";
 import Footers from "../components/footer";
 import { Link } from "react-router-dom";
-import Newnav from "../components/newnav";
+import Navingation_home from "../components/newnav";
 
 //import hero from "public/hero.png"
 
-function Landing() {
+export default function Landing() {
   return (
     <div
       className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
@@ -17,7 +17,7 @@ function Landing() {
         //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
       }}
     >
-      <Newnav />
+      <Navingation_home />
 
       <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
         {/* <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center" alt="hero" src="/hero.png" /> */}
@@ -57,5 +57,3 @@ function Landing() {
     </div>
   );
 }
-
-export default Landing;

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar2 from "../components/navbar2";
+import TopNavbar from "../components/navbar2";
 import Sidebar from "../components/sidebar";
 import { Button } from "@material-tailwind/react";
-import Calendar from "../components/calendar";
+
+import Cardss from "../components/card";
 
 function Travdash() {
   return (
@@ -13,7 +14,7 @@ function Travdash() {
           <Sidebar />
         </div>
         <div className="w-screen">
-          <Navbar2 />
+          <TopNavbar />
 
           <section class="py-8">
             <div class=" w-[45%] px-4 mr-auto">

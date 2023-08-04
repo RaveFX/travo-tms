@@ -1,3 +1,5 @@
+import React from "react";
+
 import {
   Card,
   CardHeader,
@@ -7,7 +9,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 
-export function CardDefault() {
+export function Cardss() {
   return (
     <Card className="mt-6 w-96">
       <CardHeader color="blue-gray" className="relative h-56">

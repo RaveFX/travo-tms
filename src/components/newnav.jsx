@@ -1,7 +1,8 @@
+// import { Navbar } from "@material-tailwind/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Newnav() {
+export default function Navingation_home() {
   return (
     <div class="font-poppins ">
       <nav class="  bg-transparent fixed z-20 top-0 w-screen h-15 left-0 ">
@@ -93,5 +94,3 @@ function Newnav() {
     </div>
   );
 }
-
-export default Newnav;

@@ -12,8 +12,6 @@ import {
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
 } from "@material-tailwind/react";
 import {
   RectangleGroupIcon,
@@ -23,8 +21,6 @@ import {
   Cog6ToothIcon,
   BanknotesIcon,
   PowerIcon,
-  ArrowSmallRightIcon,
-  ChevronRightIcon,
   ChevronLeftIcon,
 } from "@heroicons/react/24/outline";
 
