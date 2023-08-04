@@ -37,8 +37,8 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./components/shared/layout"
-import Dashboard from "./components/Dashboard"
-import Products from "./components/Products"
+import Dashboard from "./pages/Store_manager/Dashboard"
+import Products from "./pages/Store_manager/Products"
 import Orders from "./components/Orders"
 import Transaction from "./components/Transaction"
 import Renting from "./components/Renting"
