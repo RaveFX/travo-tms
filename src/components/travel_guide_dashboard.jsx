@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { complete, menu, close, kandy, people01, client, bookmark } from '../assets';
+import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../assets';
 import Sidebar from './sidebar';
 import TopNavbar from './topNavbar';
 import { Link } from 'react-router-dom';
+// import { rating } from '@material-tailwind/react';
 
 const people = [
     {
@@ -50,15 +51,15 @@ const TopSection = () => {
 };
 
 // Dashboard Card Component
-const DashboardCard = ({ title, src }) => {
+const DashboardCard = ({ title, src,amount }) => {
     return (
-        <div className="card bg-base-100 shadow-xl w-32 h-32 bg-green ml-5 rounded-lg my-2">
+        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green mr-1.5 rounded-lg my-1">
             <figure>
-                <img src={src} alt={title} className='mx-[5.5vh] mt-3' />
+                <img src={src} alt={title} className='mx-[3.5vh] mt-2 sm:w-8 w-5' />
             </figure>
-            <div className="card-body mt-4 mx-9">
-                <p>{title}</p>
-                <p>128</p>
+            <div className="card-body mt-1 text-xs items-center justify-center w-full">
+                <p className='text-center'>{title}</p>
+                <p className='text-center'>{amount}</p>
             </div>
         </div>
     );
@@ -67,10 +68,10 @@ const DashboardCard = ({ title, src }) => {
 // Calendar Component (Placeholder)
 const Calendar = () => {
     return (
-        <div className="w-[50vh] bg-primary">
+        <div className="w-[47vh] bg-primary">
             {/* Calendar Component Code */}
             <div className="  shadow-lg ">
-                <div className="md:p-2 md:pb-8 w-[46vh] h-[45vh] dark:bg-primary bg-white rounded-md">
+                <div className="md:p-2 md:pb-8 w-[46vh] h-[40vh] dark:bg-primary bg-white rounded-md">
                     <div className=" flex items-center justify-between">
                         <h1 className="text-xl font-bold dark:text-textGray text-gray-800">October 2020</h1>
                         <div className="flex items-center text-gray-800 dark:text-gray-100">
@@ -84,43 +85,43 @@ const Calendar = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className="flex items-center justify-between pt-4 overflow-x-auto">
+                    <div className="flex items-center justify-between pt-1">
                         <table className="w-full">
                             <thead>
                                 <tr>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-textGray-800 dark:text-textGray">Mo</p>
+                                            <p className="text-sm font-medium text-center text-textGray-800 dark:text-textGray">Mo</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">Tu</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Tu</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">We</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">We</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">Th</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Th</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">Fr</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Fr</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">Sa</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Sa</p>
                                         </div>
                                     </th>
                                     <th>
                                         <div className="w-full flex justify-center">
-                                            <p className="text-xl font-medium text-center text-gray-800 dark:text-textGray">Su</p>
+                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Su</p>
                                         </div>
                                     </th>
                                 </tr>
@@ -136,164 +137,164 @@ const Calendar = () => {
                                     <td>
                                         <div className="px-4 py-4 cursor-pointer flex w-full justify-center" />
                                     </td>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">1</p>
+                                    <td className="">
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-sm text-gray-500 dark:text-textGray font-medium">1</p>
                                         </div>
                                     </td>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">2</p>
+                                    <td className="">
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">2</p>
                                         </div>
                                     </td>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">3</p>
+                                    <td className="">
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">3</p>
                                         </div>
                                     </td>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">4</p>
+                                    <td className="">
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">4</p>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">5</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">5</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">6</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">6</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">7</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">7</p>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="w-full h-full">
-                                            <div className="flex items-center justify-center w-full rounded-full cursor-pointer">
-                                                <p className="text-xl w-14 h-14 flex items-center justify-center font-medium text-white bg-green rounded-full">8</p>
+                                            <div className="fle2 ite2s-center justify-center w-full rounded-full cursor-pointer">
+                                                <p className="text-xs w-8 h-8 flex items-center justify-center font-medium text-white bg-green rounded-full">8</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">9</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">9</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">10</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">10</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">11</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">12</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">13</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">14</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">15</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">16</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">17</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">18</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">11</p>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">19</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">12</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">20</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">13</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">21</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">14</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">22</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">15</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">23</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">16</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">24</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">17</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray">25</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">18</p>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">26</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">19</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">27</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">20</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">28</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">21</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">29</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">22</p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xl text-gray-500 dark:text-textGray font-medium">30</p>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">23</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">24</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray">25</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">26</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">27</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">28</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">29</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">30</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -318,11 +319,11 @@ const MyToursSection = () => {
 // Tour Card Component (Placeholder)
 const TourCard = () => {
     return (
-        <div className="card card-compact rounded-xl bg-lightBlue w-60 h-72 mr-5 my-2 relative shadow-xl">
+        <div className="card card-compact rounded-xl bg-lightBlue sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl">
             <figure>
-                <img src={kandy} alt="kandy" className='rounded-xl w-56 h-36 m-2 cursor-pointer' />
+                <img src={kandy} alt="kandy" className='rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
             </figure>
-            <div className="card-body m-6">
+            <div className="card-body mx-5">
                 <h2 className="card-title">Kandy</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
 
@@ -333,9 +334,9 @@ const TourCard = () => {
 
 const RateCard = () => {
     return (
-        <div className="card rounded-xl bg-lightBlue w-1/2  mr-5 my-2 relative shadow-xl">
-            <figure className='flex flex-row'><img src={kandy} alt="kandy" className='w-48 m-2' />
-                <div className="card-body">
+        <div className="card rounded-xl flex flex-row bg-lightBlue sm:w-1/2  mr-5 my-2 relative shadow-xl">
+            <figure className='flex sm:flex-row'><img src={kandy} alt="kandy" className='w-36 m-2' />
+                <div className="card-body w-full">
                     <h2 className="card-title">Mahanuwara</h2>
                     <p>Kandy</p>
                     <p>LKR 1000 per day</p>
@@ -350,7 +351,7 @@ const RateCard = () => {
 // Conversation Section Component (Placeholder)
 const ConversationSection = () => {
     return (
-        <div class='ml-[15vh] w-1/3  relative bottom-[6vh] '>
+        <div class='ml-[15vh] w-1/3  relative bottom-[12vh] '>
             <div className='flex-col text-2xl w-1/6   text-dimBlack'>
                 <p>Conversation</p>
             </div>
@@ -387,11 +388,11 @@ const ConversationSection = () => {
 
 const DashboardTG = () => {
     const dashs = [
-        { title: "Client", src: client },
-        { title: "Complete", src: complete },
-        { title: "Invitations", src: bookmark },
-        { title: "Invitations", src: menu },
-        { title: "Invitations", src: close },
+        { title: "Client", src: customer ,amount:"128"},
+        { title: "Complete", src: star,amount:"128" },
+        { title: "Invitations", src: invitation ,amount:"128"},
+        { title: "Ratings", src: star,amount:"128" },
+        { title: "Request", src: request,amount:"128" },
     ];
 
     return (
@@ -401,7 +402,7 @@ const DashboardTG = () => {
             <div className='flex flex-grow flex-col'>
                 <div><TopNavbar/></div>
                 <div className=''>
-                <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button>
+                {/* <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button> */}
 
                     <div className=" flex sm:flex-row flex-col items-start justify-start">
                         {/* Top Section (Upper Left Corner) */}
@@ -413,7 +414,7 @@ const DashboardTG = () => {
                         <div className='flex  sm:flex-shrink flex-wrap mr-12'>
 
                             {dashs.map((dash, index) => (
-                                <DashboardCard key={index} title={dash.title} src={dash.src} />
+                                <DashboardCard key={index} title={dash.title} src={dash.src} amount={dash.amount} />
                             ))}
                         </div>
 
@@ -422,15 +423,15 @@ const DashboardTG = () => {
                             <Calendar />
                         </div>
                     </div>
-                    <div className='m-8  '>
+                    <div className='my-16 mx-8 '>
                         {/* My Tours Section (Bottom Left Corner) */}
-                        <div className='text-4xl  flex-row text-dimBlack relative  sm:bottom-[250px] '>
+                        <div className='text-4xl  flex-row text-dimBlack relative my-2  sm:bottom-[250px] '>
                             <p >My Tours</p>
                         </div>
 
                         {/* My Tours Cards */}
                         <div className='flex flex-row'>
-                            <div className='flex flex-wrap w-1/2 relative sm:bottom-[250px]  '>
+                            <div className='flex flex-wrap relative sm:bottom-[250px]  '>
                                 {/* Tour Cards */}
                                 <TourCard />
                                 <TourCard />
@@ -443,11 +444,11 @@ const DashboardTG = () => {
                         </div>
 
                     </div>
-                    <div className='m-8 w-1/2 '>
-                        <div className='text-4xl mb-2 flex-row text-dimBlack relative  sm:bottom-[250px] '>
+                    <div className=' mx-8 w-1/2 '>
+                        <div className='text-4xl mb-1 flex-row text-dimBlack relative  sm:bottom-[400px] '>
                             <p >My Rates</p>
                         </div>
-                        <div className='felx relative sm:bottom-[250px]' >
+                        <div className='sm:flex flex-row relative sm:bottom-[400px]' >
                             <RateCard />
                             <RateCard />
                         </div>

@@ -16,7 +16,7 @@ import people03 from "./people03.png";
 import leftarrow from "./left_arrow.png";
 import user from "./user.png";
 import message from "./message.png";
-import rating from "./rating.png";
+// import rating from "./rating.png";
 import star from "./star.png";
 import invitation from "./invitation.png";
 import request from "./request.png";
@@ -29,6 +29,7 @@ import galle from "./galle.png";
 import jaffna from "./jaffna.png";
 import complete from "./complete.png";
 import client from "./clients.png";
+import customer from "./customer.png";
 import bookmark from "./bookmark.png";
 import car from "./car.png";
 import van from "./van.png";
@@ -56,7 +57,7 @@ export {
   dashboard,
   star,
   user,
-  rating,
+  // rating,
   settings,
   message,
   invitation,
@@ -73,5 +74,7 @@ export {
   van,
   bike,
   scooter,
-  bus
+  bus,
+  customer
+  
 };
