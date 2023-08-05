@@ -33,7 +33,7 @@ function ServiceProviders() {
       
       </li>
       </Link>
-      <Link to="/service_providers">
+      <Link to="/activity_agent_register">
       <li>
       <card>
       <img className="h-40 w-40 rounded-md" src="/activity_register.png" alt="" />
@@ -43,7 +43,7 @@ function ServiceProviders() {
       </li>
       </Link>
 
-      <Link to="/service_providers">
+      <Link to="/guide_register">
       <li>
       <card>
       <img className="h-40 w-40 rounded-md" src="/Guide_register.png" alt="" />
@@ -53,7 +53,7 @@ function ServiceProviders() {
       </li>
       </Link>
 
-      <Link to="/service_providers">
+      <Link to="/vehicle_renter_register">
       <li>
       <card>
       <img className="h-40 w-40 rounded-md" src="/vehicle_renter.png" alt="" />
@@ -63,7 +63,7 @@ function ServiceProviders() {
       </li>
       </Link>
 
-      <Link to="/service_providers">
+      <Link to="/store_manager_register">
       <li>
       <card>
       <img className="h-40 w-40 rounded-md" src="/store_manager.png" alt="" />

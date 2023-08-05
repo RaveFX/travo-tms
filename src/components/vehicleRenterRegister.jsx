@@ -1,15 +1,14 @@
 import React from 'react'
 
-
-function HotelRegister() {
+function VehicleRenterRegister() {
   return (
     <div className="py-1 sm:py-20">
-    <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20  xl:grid-cols-2">
+    <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">
     <div className="grid xl:grid-cols-2">
     <div>
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hotel Agent </h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Vehicle Renter </h2>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Input your information</h2>
         </div>
         <div>
@@ -104,7 +103,7 @@ function HotelRegister() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
           <div>
             <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Hotel name
+              Company name
             </label>
             <div className="mt-2.5">
               <input
@@ -135,7 +134,7 @@ function HotelRegister() {
            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
            <div>
             <label htmlFor="hotel_contact" className="block text-sm font-semibold leading-6 text-gray-900">
-              Contact number - hotel
+              Contact number - company
             </label>
             <div className="mt-2.5">
               <input
@@ -324,12 +323,12 @@ function HotelRegister() {
         </div>
       </form>
     </div>
-    <div className="lg:fixed top-0 right-0 max-w-3xl mt-20">
-    <img className="" src="/hotel_agent.png" alt="" />
+    <div className=" lg:fixed top-0 right-0 mt-20 max-w-3xl ">
+    <img className="" src="/vehicle_renter.png" alt="" />
     </div>
     </div>
     </div>
   )
 }
 
-export default HotelRegister
+export default VehicleRenterRegister

@@ -130,9 +130,7 @@ function Signup () {
         </div>
 
         </form>
-        <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          Are you a Service Provider? <Link className="text-red-600 hover:underline hover:underline-offset-4" to="/service_providers">Register</Link>
-        </div>
+        
       </div>
     </section>
     </div>

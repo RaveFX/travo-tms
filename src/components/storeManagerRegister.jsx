@@ -1,15 +1,14 @@
 import React from 'react'
 
-
-function HotelRegister() {
+function StoreManagerRegister() {
   return (
     <div className="py-1 sm:py-20">
-    <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20  xl:grid-cols-2">
+    <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">
     <div className="grid xl:grid-cols-2">
     <div>
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hotel Agent </h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Store Manager </h2>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Input your information</h2>
         </div>
         <div>
@@ -99,12 +98,27 @@ function HotelRegister() {
               />
             </div>
             </div>
+            <div>
+            <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
+              Contact number - shop
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                name="mobile_num"
+                id="mobile_num"
+                autoComplete="family-name"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            
+           </div>
             </div>
             <div className="border-b border-gray-900/10 pb-12"></div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
           <div>
             <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Hotel name
+              Shop name
             </label>
             <div className="mt-2.5">
               <input
@@ -132,22 +146,21 @@ function HotelRegister() {
             
            </div>
            </div>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-           <div>
-            <label htmlFor="hotel_contact" className="block text-sm font-semibold leading-6 text-gray-900">
-              Contact number - hotel
+           <div className="sm:col-span-2 mt-5">
+            <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+              Details
             </label>
             <div className="mt-2.5">
-              <input
-                type="text"
-                name="hotel_contact"
-                id="hotel_contact"
-                autoComplete="family-name"
+              <textarea
+                name="message"
+                id="message"
+                rows={4}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                defaultValue={''}
               />
             </div>
-            </div>
-            </div>
+          </div>
+        
             <div className="border-b border-gray-900/10 pb-12"></div>
             <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
@@ -324,12 +337,12 @@ function HotelRegister() {
         </div>
       </form>
     </div>
-    <div className="lg:fixed top-0 right-0 max-w-3xl mt-20">
-    <img className="" src="/hotel_agent.png" alt="" />
+    <div className="lg:fixed top-0 right-0 mt-20 max-w-3xl ">
+    <img className="" src="/store_manager.png" alt="" />
     </div>
     </div>
     </div>
   )
 }
 
-export default HotelRegister
+export default StoreManagerRegister
