@@ -14,6 +14,7 @@ import "swiper/css/free-mode";
 import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import SwiperCard from "./pages/web-component/SwiperCard";
+import Itinerary from "./pages/Traveller/Itinerary";
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/mytrips" element={<Mytrips />} />
             <Route path="/trip-planner" element={<TripPlanner />} />
+            <Route path="/itinerary" element={<Itinerary />} />
             {/* <Route path="/mytrips" element={<Mytrips />} /> */}
             {/* Add other routes here */}
           </Routes>

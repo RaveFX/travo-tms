@@ -42,14 +42,14 @@ const Calendar = () => {
   return (
     <div className="flex flex-col items-center justify-center ">
       <h1 className="text-4xl font-bold m-4">When do you want to go?</h1>
-      <div className='flex '>
+      <div className='flex'>
         {from && (
-                <div className="mt-4 gap-4">
+                <div className="m-4 pr-6">
                 From: {from.toLocaleDateString()}
                 </div>
             )}
         {to && (
-                <div className="mt-4 gap-4">
+                <div className="m-4 pl-6">
                 To: {to.toLocaleDateString()}
                 </div>
             )}

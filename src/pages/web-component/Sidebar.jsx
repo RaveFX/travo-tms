@@ -27,17 +27,20 @@ import {
     Cog6ToothIcon,
     BanknotesIcon,
     PowerIcon,
-    ArrowSmallRightIcon,
-    ChevronRightIcon,
     ChevronLeftIcon,
+    CheckIcon,
+    ClipboardDocumentIcon,
+    BookmarkIcon,
   } from "@heroicons/react/24/outline";
 
 
   export default function Sidebar(props) {
 
-    const {active} = props;
+    const {active,isSubSidebarOpen,setIsSubSidebarOpen} = props;
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+    // const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
 
     const [isIconRotated, setIsIconRotated] = useState(false);
 
@@ -46,9 +49,17 @@ import {
       setIsIconRotated((prevIsIconRotated) => !prevIsIconRotated)
     };
 
+    const handleSubSidebarToggle = () => {
+      setIsSubSidebarOpen((prevIsSubSidebarOpen) => !prevIsSubSidebarOpen);
+    };
+
     const navList = [
       {icon : <RectangleGroupIcon className="h-5 w-5" />, name : "Dashboard", link : "/dashboard"},
-      {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/mytrips"},
+      {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/mytrips",subItems: [
+        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/mytrips/itinerary" },
+        { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "/mytrips/selections" },
+        { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "/mytrips/saves" },
+      ],},
       {icon : <HeartIcon className="h-5 w-5" />, name : "Favourite", link : "/favourite"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/community"},
       {icon : <BanknotesIcon className="h-5 w-5" />, name : "Transactions", link : "/transactions"},
@@ -75,7 +86,7 @@ import {
           
           <button onClick={handleSidebarToggle} className='z-10 '>
           <ChevronLeftIcon
-                className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3 p-1 absolute -right-[0.7rem] ${
+                className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3p-1 absolute -right-[0.7rem] ${
                   isIconRotated ? 'rotate-180 transition-all duration-300 ease-in-out' : 'transition-all duration-300 ease-in-out'
                 }`}
               />
@@ -85,16 +96,32 @@ import {
           <List className={`!min-w-full text-white gap-1.5 flex justify-items-center`}>
             {
             navList.map((item, key) => (
-              <>
+              <React.Fragment key={key}>
                 <Link to={item.link} className='w-[100%] !style:none' key={key}>
-                  <ListItem className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${active === item.name ? "active" : ""}`}>
+                  <ListItem className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${active === item.name ? "active" : ""}`} onClick={item.name === 'My Trips' ? handleSubSidebarToggle : undefined}>
                     {item.icon}
                     <span className={`${isSidebarOpen? "": "hidden"}`}>
                       {item.name}
                     </span>
                   </ListItem>
                 </Link>
-              </>
+                {item.name === 'My Trips' && isSubSidebarOpen &&(
+                  <div className="ml-[2.5rem] mt-1 space-y-1">
+                  {item.subItems.map((subItem, subKey) => (
+                    <Link to={subItem.link} className="w-[100%] !style:none" key={subKey}>
+                      <ListItem
+                        className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
+                          active === subItem.name ? 'active' : ''
+                        }`}
+                      >
+                        {subItem.icon}
+                        <span className={`${isSidebarOpen ? '' : 'hidden'}`}>{subItem.name}</span>
+                      </ListItem>
+                    </Link>
+                  ))}
+                </div>
+                )}
+              </React.Fragment>
             ))
             }
           </List>

@@ -45,6 +45,9 @@ const handleCreateTripClick = () => {
   setIsOpen(true);
 };
 
+const handleOpenCalander = () => {
+  setIsOpen(true);
+};
   return (
     <div className="flex h-screen overflow-hidden">
         <Sidebar active="My Trips"/>
