@@ -56,7 +56,7 @@ import {
     const navList = [
       {icon : <RectangleGroupIcon className="h-5 w-5" />, name : "Dashboard", link : "/dashboard"},
       {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/mytrips",subItems: [
-        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/mytrips/itinerary" },
+        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/itinerary" },
         { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "/mytrips/selections" },
         { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "/mytrips/saves" },
       ],},
