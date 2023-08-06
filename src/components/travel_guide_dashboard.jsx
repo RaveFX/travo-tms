@@ -3,6 +3,8 @@ import { complete, menu, close, kandy, people01, customer, bookmark, invitation,
 import Sidebar from './sidebar';
 import TopNavbar from './topNavbar';
 import { Link } from 'react-router-dom';
+import { Rating, Button } from "@material-tailwind/react";
+
 // import { rating } from '@material-tailwind/react';
 
 const people = [
@@ -51,9 +53,9 @@ const TopSection = () => {
 };
 
 // Dashboard Card Component
-const DashboardCard = ({ title, src,amount }) => {
+const DashboardCard = ({ title, src, amount }) => {
     return (
-        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green mr-1.5 rounded-lg my-1">
+        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green mr-1.5 rounded-lg my-1 sm:ml-5">
             <figure>
                 <img src={src} alt={title} className='mx-[3.5vh] mt-2 sm:w-8 w-5' />
             </figure>
@@ -317,30 +319,34 @@ const MyToursSection = () => {
 };
 
 // Tour Card Component (Placeholder)
-const TourCard = () => {
+const TourCard = ({ image, name, des }) => {
     return (
-        <div className="card card-compact rounded-xl bg-lightBlue sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl">
+        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl">
             <figure>
-                <img src={kandy} alt="kandy" className='rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
+                <img src={image} alt="kandy" className=' rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
             </figure>
             <div className="card-body mx-5">
-                <h2 className="card-title">Kandy</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-
+                <p className='text-dimBlack text-sm'>{des}</p>
+                <h2 className="card-title text-xs">{name}</h2>
+                <div className="">
+                    <Rating ratedColor="yellow" value={3} readonly />
+                </div>
             </div>
         </div>
     );
 };
 
-const RateCard = () => {
+const RateCard = ({ image, name, rate }) => {
     return (
-        <div className="card rounded-xl flex flex-row bg-lightBlue sm:w-1/2  mr-5 my-2 relative shadow-xl">
-            <figure className='flex sm:flex-row'><img src={kandy} alt="kandy" className='w-36 m-2' />
+        <div className="card rounded-xl flex flex-row bg-white sm:w-1/2  mr-5 my-2 relative shadow-xl">
+            <figure className='flex sm:flex-row'><img src={image} alt="kandy" className='w-36 mr-2 rounded-lg' />
                 <div className="card-body w-full">
-                    <h2 className="card-title">Mahanuwara</h2>
-                    <p>Kandy</p>
-                    <p>LKR 1000 per day</p>
-
+                    <h2 className="card-title">{name}</h2>
+                    <p className='text-sm text-dimBlack'>{rate}</p>
+                    <Button variant="text" className="flex-col items-center gap-2 text-black text-xs">
+                        Learn More
+                        
+                    </Button>
                 </div>
             </figure>
 
@@ -351,7 +357,7 @@ const RateCard = () => {
 // Conversation Section Component (Placeholder)
 const ConversationSection = () => {
     return (
-        <div class='ml-[15vh] w-1/3  relative bottom-[12vh] '>
+        <div class='ml-[15vh] w-1/3  relative bottom-[12vh] left-[100px] '>
             <div className='flex-col text-2xl w-1/6   text-dimBlack'>
                 <p>Conversation</p>
             </div>
@@ -388,30 +394,41 @@ const ConversationSection = () => {
 
 const DashboardTG = () => {
     const dashs = [
-        { title: "Client", src: customer ,amount:"128"},
-        { title: "Complete", src: star,amount:"128" },
-        { title: "Invitations", src: invitation ,amount:"128"},
-        { title: "Ratings", src: star,amount:"128" },
-        { title: "Request", src: request,amount:"128" },
+        { title: "Client", src: customer, amount: "128" },
+        { title: "Complete", src: star, amount: "40" },
+        { title: "Invitations", src: invitation, amount: "55" },
+        { title: "Ratings", src: star, amount: "25" },
+        { title: "Request", src: request, amount: "95" },
     ];
+    const tours = [
+        { image: "https://cdn.getyourguide.com/img/location/5c83eaac2b43a.jpeg/88.jpg", name: "Kandy: Temples, Gardens & Cultural Show City", des: "DAY TRIP" },
+        { image: "https://tse3.mm.bing.net/th?id=OIP.JJ_h16-xl50fgUHR9LkZIAHaE8&pid=Api&P=0&h=220", name: "Matara /Mirissa /Thalpe /Temple", des: "DAY TRIP" },
+        { image: "https://tse1.mm.bing.net/th?id=OIP.MOUnGlhdLu1Betuwu1OaxQHaHa&pid=Api&P=0&h=220", name: "Galle /Fort /Weligama /Unawatuna ", des: "2 DAYS TRIP" },
+
+    ];
+    const rates = [
+        { image: "https://tse3.mm.bing.net/th?id=OIP.sIAE0l361OTU8yKgV8IE-gHaEK&pid=Api&P=0&h=220", name: "Kandy", rate: "Rs.1500/Per Day" },
+        { image: "https://tse1.mm.bing.net/th?id=OIP.CfQds65sJmXZq9mM5kvn8wHaEg&pid=Api&P=0&h=220", name: "Matara", rate: "Rs.800/Per Day" },
+    ]
+
 
     return (
         <div className='flex'>
             <div><Sidebar /></div>
-            
-            <div className='flex flex-grow flex-col'>
-                <div><TopNavbar/></div>
-                <div className=''>
-                {/* <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button> */}
 
-                    <div className=" flex sm:flex-row flex-col items-start justify-start">
+            <div className='flex flex-grow flex-col'>
+                <div><TopNavbar /></div>
+                <div className=''>
+                    {/* <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button> */}
+
+                    <div className=" flex sm:flex-row  xl:flex-row  flex-col  items-start justify-start">
                         {/* Top Section (Upper Left Corner) */}
                         <div className='ml-10 mt-2'>
                             <TopSection />
                         </div>
 
                         {/* Dashboard Cards (Upper Middle Section) */}
-                        <div className='flex  sm:flex-shrink flex-wrap mr-12'>
+                        <div className='flex  mr-12'>
 
                             {dashs.map((dash, index) => (
                                 <DashboardCard key={index} title={dash.title} src={dash.src} amount={dash.amount} />
@@ -419,7 +436,7 @@ const DashboardTG = () => {
                         </div>
 
                         {/* Calendar (Upper Right Corner) */}
-                        <div className='flex sm:flex-row  justify-end mt-2'>
+                        <div className='flex sm:flex-row   justify-end mt-2'>
                             <Calendar />
                         </div>
                     </div>
@@ -433,9 +450,12 @@ const DashboardTG = () => {
                         <div className='flex flex-row'>
                             <div className='flex flex-wrap relative sm:bottom-[250px]  '>
                                 {/* Tour Cards */}
+                                {tours.map((tour, index) => (
+                                    <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
+                                ))}
+                                {/* <TourCard />
                                 <TourCard />
-                                <TourCard />
-                                <TourCard />
+                                <TourCard /> */}
 
                             </div>
 
@@ -449,8 +469,9 @@ const DashboardTG = () => {
                             <p >My Rates</p>
                         </div>
                         <div className='sm:flex flex-row relative sm:bottom-[400px]' >
-                            <RateCard />
-                            <RateCard />
+                            {rates.map((rate, index) => (
+                                <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
+                            ))}
                         </div>
                     </div>
                 </div>
