@@ -321,7 +321,7 @@ const MyToursSection = () => {
 // Tour Card Component (Placeholder)
 const TourCard = ({ image, name, des }) => {
     return (
-        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl">
+        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl hover:bg-slate-100">
             <figure>
                 <img src={image} alt="kandy" className=' rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
             </figure>
@@ -343,7 +343,7 @@ const RateCard = ({ image, name, rate }) => {
                 <div className="card-body w-full">
                     <h2 className="card-title">{name}</h2>
                     <p className='text-sm text-dimBlack'>{rate}</p>
-                    <Button variant="text" className="flex-col items-center gap-2 text-black text-xs">
+                    <Button variant="text" className="flex-col gap-2 text-green text-xs">
                         Learn More
                         
                     </Button>
@@ -442,8 +442,9 @@ const DashboardTG = () => {
                     </div>
                     <div className='my-16 mx-8 '>
                         {/* My Tours Section (Bottom Left Corner) */}
-                        <div className='text-4xl  flex-row text-dimBlack relative my-2  sm:bottom-[250px] '>
-                            <p >My Tours</p>
+                        <div className='w-1/2 flex   flex-row text-dimBlack relative my-2  sm:bottom-[250px] '>
+                        <p className='w-3/4 text-4xl ' >My Tours</p>
+                        <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/travel_guide_mytours'>see more </Link></Button>
                         </div>
 
                         {/* My Tours Cards */}
@@ -453,10 +454,7 @@ const DashboardTG = () => {
                                 {tours.map((tour, index) => (
                                     <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
                                 ))}
-                                {/* <TourCard />
-                                <TourCard />
-                                <TourCard /> */}
-
+                                
                             </div>
 
                             {/* Conversation Section (Bottom Right Corner) */}
@@ -465,8 +463,10 @@ const DashboardTG = () => {
 
                     </div>
                     <div className=' mx-8 w-1/2 '>
-                        <div className='text-4xl mb-1 flex-row text-dimBlack relative  sm:bottom-[400px] '>
-                            <p >My Rates</p>
+                        <div className='mb-1 flex flex-row text-dimBlack relative  sm:bottom-[400px] '>
+                            <p className='w-3/4 text-4xl ' >My Rates</p>
+                            <Button variant="text" className=" text-xs pt-5 text-button1 text-center">see more </Button>
+
                         </div>
                         <div className='sm:flex flex-row relative sm:bottom-[400px]' >
                             {rates.map((rate, index) => (
