@@ -6,17 +6,17 @@ import SideBar from './components/sidebar';
 import Tables from './components/table';
 import Schedule from './components/schedule';
 import TopNavbar from './components/topNavbar';
-//import SideBar from './components/sidebar';
+import Rating from './components/rating';
 
 export default function App() {
   return (
     <>
     <NavBar/>
-    
+    <Rating/>
     <Tables/>
     <Schedule/>
     <TopNavbar/>
-    {/* <SideBar/> */}
+    <SideBar/>
     <div className="bg-indigo-500 w-full h-screen"></div>
     </>
   )
