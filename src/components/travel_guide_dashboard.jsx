@@ -55,7 +55,7 @@ const TopSection = () => {
 // Dashboard Card Component
 const DashboardCard = ({ title, src, amount }) => {
     return (
-        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green mr-1.5 rounded-lg my-1 sm:ml-5">
+        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green1  mr-1.5 rounded-lg my-1 sm:ml-5">
             <figure>
                 <img src={src} alt={title} className='mx-[3.5vh] mt-2 sm:w-8 w-5' />
             </figure>
@@ -321,11 +321,14 @@ const MyToursSection = () => {
 // Tour Card Component (Placeholder)
 const TourCard = ({ image, name, des }) => {
     return (
-        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl hover:bg-slate-100">
+        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl hover:bg-slate-100 cursor-pointer" >
             <figure>
+            <Link to="/travel_guide_mytours_more">
                 <img src={image} alt="kandy" className=' rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
+                </Link>
             </figure>
             <div className="card-body mx-5">
+                {/* <p><Link to="/travel_guide_mytours_more">ggg</Link></p> */}
                 <p className='text-dimBlack text-sm'>{des}</p>
                 <h2 className="card-title text-xs">{name}</h2>
                 <div className="">

@@ -19,7 +19,10 @@ export default {
         button1:"#22577A",
         button2:"#57CC99",
         back:"#FAFAFA",
-        dimGray:"#DADADA"
+        dimGray:"#DADADA",
+        green1:"#57CC99",
+        green2:"#38A3A5",
+
 
 
 
