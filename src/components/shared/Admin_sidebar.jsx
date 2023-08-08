@@ -36,6 +36,14 @@ export default function Admin_sidebar() {
                         Dashboard
                     </ListItem>
                 </Link>
+                <Link to="/requests">
+                    <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
+                        <ListItemPrefix>
+                            <MapIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Requests
+                    </ListItem>
+                </Link>
                 <Link to="/users">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
@@ -52,7 +60,7 @@ export default function Admin_sidebar() {
                         Transactions
                     </ListItem>
                 </Link>
-                <Link to="/renting">
+                <Link to="/advertisments">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />

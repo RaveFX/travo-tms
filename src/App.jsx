@@ -68,6 +68,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "./components/shared/Admin_layout"
 import Admin_Dashboard from "./pages/Admin/Dashboard"
 import Users from "./pages/Admin/Users"
+import Requests from "./pages/Admin/Requests"
+import Userprofile from "./pages/Admin/Userprofile"
+import Advertisments from "./pages/Admin/Advertisments"
 
 export default function App() {
   return (
@@ -76,6 +79,9 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Admin_Dashboard />} />
           <Route path="users" element={<Users />} />
+          <Route path="requests" element={<Requests />} />
+          <Route path="userprofile" element={<Userprofile />} />
+          <Route path="advertisments" element={<Advertisments />} />
         </Route>
       </Routes>
     </Router>
