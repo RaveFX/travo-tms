@@ -6,6 +6,7 @@ import SideBar from './components/sidebar';
 import TopNavbar from './components/topNavbar';
 import Travel_Guide_Dashboard from './components/travel_guide_dashboard';
 import Travel_Guide_Mytours from './components/travel_guide_mytours';
+import Travel_Guide_Myrates from './components/travel_guide_myrates';
 import Travel_Guide_Mytours_More from './components/travel_guide_mytours_more';
 import Travel_Guide_Request from './components/travel_guide_request';
 import Travel_Guide_RequestMore from './components/travel_guide_requestMore';
@@ -44,6 +45,7 @@ export default function App() {
   <Route path='/' element={<Travel_Guide_Dashboard/>}> </Route>
   <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
   <Route path='/travel_guide_mytours' element={<Travel_Guide_Mytours/>}></Route>
+  <Route path='/travel_guide_myrates' element={<Travel_Guide_Myrates/>}></Route>
   <Route path='/travel_guide_mytours_more' element={<Travel_Guide_Mytours_More/>}></Route>
   <Route path='/travel_guide_invitation' element={<Travel_Guide_Invitation/>}></Route>
   <Route path='/travel_guide_rating' element={<Travel_Guide_Rating/>}></Route>

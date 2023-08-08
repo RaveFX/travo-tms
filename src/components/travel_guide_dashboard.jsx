@@ -346,10 +346,10 @@ const RateCard = ({ image, name, rate }) => {
                 <div className="card-body w-full">
                     <h2 className="card-title">{name}</h2>
                     <p className='text-sm text-dimBlack'>{rate}</p>
-                    <Button variant="text" className="flex-col gap-2 text-green text-xs">
-                        Learn More
+                    {/* <Button variant="text" className="flex-col gap-2 text-green text-xs">
+                     More
                         
-                    </Button>
+                    </Button> */}
                 </div>
             </figure>
 
@@ -468,7 +468,7 @@ const DashboardTG = () => {
                     <div className=' mx-8 w-1/2 '>
                         <div className='mb-1 flex flex-row text-dimBlack relative  sm:bottom-[400px] '>
                             <p className='w-3/4 text-4xl ' >My Rates</p>
-                            <Button variant="text" className=" text-xs pt-5 text-button1 text-center">see more </Button>
+                            <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
 
                         </div>
                         <div className='sm:flex flex-row relative sm:bottom-[400px]' >

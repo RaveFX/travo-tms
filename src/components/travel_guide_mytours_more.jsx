@@ -21,7 +21,7 @@ const GridImage = () => {
             <div>
 
                 <p className='text-3xl my-5'>Experience</p>
-                <div className='flex'>
+                <div className='flex my-5'>
 
                     <p className='text-lg w-1/6'>Highlight</p>
                     <ul class="list-disc ml-10">
