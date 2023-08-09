@@ -75,43 +75,6 @@ const DashboardCard = ({ title, src, amount }) => {
 };
 
 
-// Conversation Section Component (Placeholder)
-const ConversationSection = () => {
-    return (
-        <div class='ml-[15vh] w-1/3  relative bottom-[12vh] left-[100px] '>
-            <div className='flex-col text-2xl w-1/6   text-dimBlack'>
-                <p>Conversation</p>
-            </div>
-
-            {/* Conversation Component Code */}
-            <ul role="list" className="divide-y divide-gray-100">
-                {people.map((person) => (
-                    <li key={person.email} className="flex justify-between gap-x-4 py-2">
-                        <div className="flex gap-x-4">
-                            <img className="h-10 w-10 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
-                            <div className="min-w-0 flex-auto">
-                                <p className="text-sm font-semibold leading-4 text-gray-900">{person.name}</p>
-                                <p className="mt-1 truncate text-xs leading-4 text-gray-500">{person.email}</p>
-                                <p className="mt-1 truncate leading-5 text-gray">{person.msg}</p>
-                            </div>
-                        </div>
-                        <div className="hidden sm:flex sm:flex-col sm:items-end">
-
-
-                            <div className="mt-1 flex items-center gap-x-1.5">
-
-                                <p className="text-xs leading-4 text-green">Reply</p>
-                            </div>
-
-                        </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-};
-
-
 
 const DashboardTG = () => {
     const dashs = [
