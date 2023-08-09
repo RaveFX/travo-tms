@@ -23,11 +23,11 @@ const CardDefault = ({ type, src }) => {
 
     return (
 
-        <Card className="m-5 w-40 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
+        <Card className="sm:m-5 m-2 sm:w-40 w-15 h-15  justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
 
 
             <CardBody>
-                <Typography variant="h5"  className="text-center">
+                <Typography variant="h5"  className="text-center text-xs ">
 
                     {type}
 
@@ -53,6 +53,7 @@ const VehicleCard = ({names,seat,large_bag,milage,small_bag,type,price,img}) => 
                 <img
                     src={img}
                     alt="ui/ux review check"
+                    className=" p-16"
                 />
             </CardHeader>
             <CardBody className="mx-5">
@@ -131,9 +132,9 @@ const Vehicles = () => {
                   
                 </div>
                 <div className="my-3">
-                <Button className="w-48 mx-2 rounded-full justify-end bg-button1 " variant="gradient">Change Availability</Button>
-                <Button className="w-48 mx-2 rounded-full justify-end bg-button1" variant="gradient"><Link to="/vehicle_owner_add_vehicle">Add New Vehicle</Link></Button>
-                <Button className="w-48 mx-2 rounded-full justify-end bg-button1" variant="gradient"><Link to="/vehicle_owner_rates">Vehicle Rates</Link></Button>
+                <Button className="sm:w-48 w-28 mx-2 text-xs rounded-full justify-end bg-button1 " variant="gradient">Change Availability</Button>
+                <Button className="sm:w-48 w-28 mx-2 text-xs rounded-full justify-end bg-button1" variant="gradient"><Link to="/vehicle_owner_add_vehicle">Add New Vehicle</Link></Button>
+                <Button className="sm:w-48 w-28 mx-2 text-xs rounded-full justify-end bg-button1" variant="gradient"><Link to="/vehicle_owner_rates">Vehicle Rates</Link></Button>
 
                 </div>
                 <div className="sm:flex flex-wrap ">

@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
 import Sidebar from '../../components/sidebar';
 import TopNavbar from '../../components/topNavbar';
+import Calendar from '../../components/calender';
+import TourCard from '../../components/tour_card';
+import RateCard from '../../components/rate_card';
+import ConversationSection from '../../components/conversation';
+
+
 import RequestMore from '../../components/requestMore';
 import { Link } from 'react-router-dom';
 import { Rating, Button } from "@material-tailwind/react";
@@ -56,7 +62,7 @@ const TopSection = () => {
 // Dashboard Card Component
 const DashboardCard = ({ title, src, amount }) => {
     return (
-        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green1  mr-1.5 rounded-lg my-1 sm:ml-5">
+        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green1 hover:bg-white mt-4  mr-1.5 rounded-lg my-1 sm:ml-5">
             <figure>
                 <img src={src} alt={title} className='mx-[3.5vh] mt-2 sm:w-8 w-5' />
             </figure>
@@ -68,295 +74,6 @@ const DashboardCard = ({ title, src, amount }) => {
     );
 };
 
-// Calendar Component (Placeholder)
-const Calendar = () => {
-    return (
-        <div className="w-[47vh] bg-primary">
-            {/* Calendar Component Code */}
-            <div className="  shadow-lg ">
-                <div className="md:p-2 md:pb-8 w-[46vh] h-[40vh] dark:bg-primary bg-white rounded-md">
-                    <div className=" flex items-center justify-between">
-                        <h1 className="text-xl font-bold dark:text-textGray text-gray-800">October 2020</h1>
-                        <div className="flex items-center text-gray-800 dark:text-gray-100">
-                            <svg xmlns="http:www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-left" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <polyline points="15 6 9 12 15 18" />
-                            </svg>
-                            <svg xmlns="http:www.w3.org/2000/svg" className="icon icon-tabler ml-3 icon-tabler-chevron-right" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <polyline points="9 6 15 12 9 18" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between pt-1">
-                        <table className="w-full">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-textGray-800 dark:text-textGray">Mo</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Tu</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">We</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Th</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Fr</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Sa</p>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div className="w-full flex justify-center">
-                                            <p className="text-sm font-medium text-center text-gray-800 dark:text-textGray">Su</p>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center" />
-                                    </td>
-                                    <td className="pt-6">
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center" />
-                                    </td>
-                                    <td>
-                                        <div className="px-4 py-4 cursor-pointer flex w-full justify-center" />
-                                    </td>
-                                    <td className="">
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-sm text-gray-500 dark:text-textGray font-medium">1</p>
-                                        </div>
-                                    </td>
-                                    <td className="">
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">2</p>
-                                        </div>
-                                    </td>
-                                    <td className="">
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">3</p>
-                                        </div>
-                                    </td>
-                                    <td className="">
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">4</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">5</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">6</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">7</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="w-full h-full">
-                                            <div className="fle2 ite2s-center justify-center w-full rounded-full cursor-pointer">
-                                                <p className="text-xs w-8 h-8 flex items-center justify-center font-medium text-white bg-green rounded-full">8</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">9</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">10</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">11</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">12</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">13</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">14</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">15</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">16</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">17</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">18</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">19</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">20</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">21</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">22</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">23</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">24</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray">25</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">26</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">27</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">28</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">29</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">30</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-// My Tours Section Component
-const MyToursSection = () => {
-    return (
-        <div className='flex-col text-4xl w-1/6 mb-5 text-dimBlack'>
-            <p>My Tours</p>
-        </div>
-    );
-};
-
-// Tour Card Component (Placeholder)
-const TourCard = ({ image, name, des }) => {
-    return (
-        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl hover:bg-slate-100 cursor-pointer" >
-            <figure>
-            <Link to="/travel_guide_mytours_more">
-                <img src={image} alt="kandy" className=' rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />
-                </Link>
-            </figure>
-            <div className="card-body mx-5">
-                {/* <p><Link to="/travel_guide_mytours_more">ggg</Link></p> */}
-                <p className='text-dimBlack text-sm'>{des}</p>
-                <h2 className="card-title text-xs">{name}</h2>
-                <div className="">
-                    <Rating ratedColor="yellow" value={3} readonly />
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const RateCard = ({ image, name, rate }) => {
-    return (
-        <div className="card rounded-xl flex flex-row bg-white sm:w-1/2  mr-5 my-2 relative shadow-xl">
-            <figure className='flex sm:flex-row'><img src={image} alt="kandy" className='w-36 mr-2 rounded-lg' />
-                <div className="card-body w-full">
-                    <h2 className="card-title">{name}</h2>
-                    <p className='text-sm text-dimBlack'>{rate}</p>
-                    {/* <Button variant="text" className="flex-col gap-2 text-green text-xs">
-                     More
-                        
-                    </Button> */}
-                </div>
-            </figure>
-
-        </div>
-    )
-}
 
 // Conversation Section Component (Placeholder)
 const ConversationSection = () => {
@@ -424,7 +141,7 @@ const DashboardTG = () => {
                 <div><TopNavbar /></div>
                 <div className='overflow-y-auto flex-1'>
                     {/* <RequestMore/> */}
-                    {/* <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button> */}
+                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button>
 
                     <div className=" flex sm:flex-row  xl:flex-row  flex-col  items-start justify-start">
                         {/* Top Section (Upper Left Corner) */}
