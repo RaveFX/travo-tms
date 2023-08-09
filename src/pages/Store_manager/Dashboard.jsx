@@ -8,6 +8,7 @@ import client from '../../assets/clients.png';
 import complete from '../../assets/clients.png';
 import bookmark from '../../assets/clients.png';
 import menu from '../../assets/clients.png';
+import Storemanager_barchart from '../../components/Storemanager_barchart';
 
 const DashboardCard = ({ title, src, amount }) => {
     return (
@@ -301,9 +302,10 @@ export default function Dashboard() {
     return (
         <div className='flex flex-col gap-4'>
             <DashboardTG />
-            <Link to="/admin_dashboard" className="text-green-500 underline">
+            {/* <Link to="/admin_dashboard" className="text-green-500 underline">
                 Admin Dashboard
-            </Link>
+            </Link> */}
+            <Storemanager_barchart />
 
         </div>
     );

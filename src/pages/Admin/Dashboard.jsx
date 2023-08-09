@@ -1,9 +1,11 @@
-import React from 'react'
-
-export default function Dashboard() {
+import React from 'react';
+import BarChart from '../../components/Barchart';
+function Dashboard() {
     return (
-        <div>
-            hhh
+        <div className="mx-auto w-3/5 overflow-hidden">
+            <BarChart />
         </div>
-    )
+    );
 }
+
+export default Dashboard;
