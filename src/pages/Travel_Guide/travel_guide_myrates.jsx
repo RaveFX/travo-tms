@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from './sidebar';
-import TopNavbar from './topNavbar';
+import Sidebar from '../../components/sidebar';
+import TopNavbar from '../../components/topNavbar';
 import { Rating, Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import {

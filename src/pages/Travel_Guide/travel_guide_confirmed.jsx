@@ -1,11 +1,12 @@
 import React from 'react'
-import Sidebar from './sidebar';
-import TopNavbar from './topNavbar';
+import Sidebar from '../../components/sidebar';
+import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
+import { TicketIcon } from '@heroicons/react/24/outline';
 
 
 
-const request = () => {
+const Confirmed = () => {
     return (
         <div className='flex'>
             <div><Sidebar /></div>
@@ -15,14 +16,9 @@ const request = () => {
                     <div className='py-8 bg-primary'>
                         <div className='flex mx-auto container'>
                             <div className='w-3/4'>
-                                <p className='text-2xl text-dimBlack'>Requests</p>
+                                <p className='text-2xl text-dimBlack'>Confirmed Requests</p>
                             </div>
-                            <div className=''>
-                                <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Requests</Link></button>
-                            </div>
-
                         </div>
-
                         <div className='py-5'>
                             <div className="mx-auto container bg-black dark:bg-white shadow rounded">
                                 <div className="flex flex-col lg:flex-row p-4 lg:p-8 justify-between items-start lg:items-stretch w-full">
@@ -97,16 +93,12 @@ const request = () => {
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">Kandy</td>
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">02.03.20</td>
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
+                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>
                                             
 
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                                
                                             </tr>
+
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
                                                 </td>
@@ -123,15 +115,10 @@ const request = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Jaffna</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
+                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>
 
 
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                                
                                             </tr>
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
@@ -149,15 +136,9 @@ const request = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Trincomalee</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
 
 
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                               
                                             </tr>
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
@@ -174,15 +155,10 @@ const request = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Matara</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
+                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>
 
 
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                                
                                             </tr>
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
@@ -199,15 +175,9 @@ const request = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Galle</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
 
 
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                                
                                             </tr>
                                             <tr className="h-20 border-gray-300 dark:border-gray-200 border-b hover:bg-gray-200 cursor-pointer">
                                                 <td className="pl-8 pr-6 text-center whitespace-no-wrap text-sm text-gray-600 dark:text-gray-400 tracking-normal ">
@@ -224,14 +194,7 @@ const request = () => {
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">Kandy</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">02.03.20</td>
                                                 <td className="text-sm text-center whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">20</td>
-                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/travel_guide_requestMore">More</Link></td>
-
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
+                                                <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-green tracking-normal ">Done</td>  
                                             </tr>
                                         </tbody>
                                     </table>
@@ -245,4 +208,4 @@ const request = () => {
     );
 };
 
-export default request
+export default Confirmed

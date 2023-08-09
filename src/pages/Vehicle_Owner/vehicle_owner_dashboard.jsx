@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { complete, menu, close, kandy, people01, client, bookmark } from '../assets';
+import { complete, menu, close, kandy, people01, client, bookmark } from '../../assets';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import TopNavbar from './topNavbar';
+import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
 
 const people = [

@@ -1,6 +1,6 @@
 import React from 'react'
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import TopNavbar from './topNavbar';
+import Sidebar from '../../components/sidebar';
+import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const request = () => {
     return (
         <div className='flex'>
-            <div><Vehicle_Owner_Sidebar /></div>
+            <div><Sidebar /></div>
             <div className='flex flex-grow flex-col'>
                 <div><TopNavbar /></div>
                 <div>

@@ -8,7 +8,7 @@ import {
 } from '@material-tailwind/react'
 import React from 'react'
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import TopNavbar from './topNavbar';
+import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 

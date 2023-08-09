@@ -1,7 +1,7 @@
 import { Carousel, IconButton } from '@material-tailwind/react'
 import React from 'react'
-import Sidebar from './sidebar';
-import TopNavbar from './topNavbar';
+import Sidebar from '../../components/sidebar';
+import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 

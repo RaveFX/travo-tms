@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { logoW, logoB, close, leftarrow, menu, dashboard, request, invitation, star, message, user, settings } from '../assets'
+import { logoW, logoB, close, leftarrow, menu, dashboard, request, invitation, star, message, user, settings } from '../../assets'
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false);

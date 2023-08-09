@@ -1,6 +1,6 @@
 import React from "react";
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import TopNavbar from './topNavbar';
+import TopNavbar from '../../components/topNavbar';
 import { Select, Option } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
