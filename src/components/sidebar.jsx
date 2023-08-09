@@ -40,7 +40,7 @@ export default function Sidebar(props) {
     {
       icon: <RectangleGroupIcon className="h-5 w-5" />,
       name: "Dashboard",
-      link: "/dashboard",
+      link: "/Travdash",
     },
     {
       icon: <MapIcon className="h-5 w-5" />,
@@ -59,8 +59,8 @@ export default function Sidebar(props) {
     },
     {
       icon: <BanknotesIcon className="h-5 w-5" />,
-      name: "Transactions",
-      link: "/transactions",
+      name: "Budget",
+      link: "/Budget",
     },
     {
       icon: <Cog6ToothIcon className="h-5 w-5" />,
@@ -72,78 +72,91 @@ export default function Sidebar(props) {
   // const wValue = isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]";
 
   return (
-    <Card
-      className={`${
-        isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]"
-      } font-poppins bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen rounded-none transition-all duration-300 ease-in-out`}
-    >
-      <div className="">
-        <Typography variant="h5" color="white">
-          <img
-            src={isSidebarOpen ? "/travwhite.png" : "/travballoonlight.png"}
-            alt="Logo"
-            className={
-              isSidebarOpen
-                ? "max-w-[60%] h-15 ml-10 "
-                : "mb-2 mt-4 ml-2 pb-4 w-12"
-            }
-          />
-          {/* <img src="/images/logo.png" alt="Logo" className="" /> */}
-        </Typography>
-      </div>
-
-      <button onClick={handleSidebarToggle} className="z-10 ">
-        <ChevronLeftIcon
-          className={`h-[24\px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3 p-1 absolute -right-[0.7rem] ${
-            isIconRotated
-              ? "rotate-180 transition-all duration-300 ease-in-out"
-              : "transition-all duration-300 ease-in-out"
-          }`}
-        />
-      </button>
-      {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
-
-      <List
+    <div className="flex font-poppins">
+      <Card
         className={`${
-          isSidebarOpen ? "ml" : "ml-0"
-        } text-white gap-1.5 self-center  flex `}
+          isSidebarOpen ? "w-[16.25rem] sticky" : "sticky w-[4rem]"
+        } sticky font-poppins bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen top-0 rounded-none transition-all duration-300 ease-in-out`}
       >
-        {navList.map((item, key) => (
-          <>
-            <Link
-              to={item.link}
-              className="h-16 w-[100%] !style:none"
-              key={key}
-            >
-              <ListItem
-                className={`gap-[2rem]   hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
-                  active === item.name ? "active" : ""
-                }`}
-              >
-                {item.icon}
-                <span className={`${isSidebarOpen ? "" : "hidden"}`}>
-                  {item.name}
-                </span>
-              </ListItem>
+        <div className="">
+          <Typography variant="h5" color="white">
+            <Link to="/">
+              <img
+                src={isSidebarOpen ? "/travwhite.png" : "/travballoonlight.png"}
+                alt="Logo"
+                className={
+                  isSidebarOpen
+                    ? "max-w-[60%] h-15 ml-10 "
+                    : "mb-2 mt-4 ml-2 pb-4 w-12"
+                }
+              />
             </Link>
-          </>
-        ))}
-      </List>
+            {/* <img src="/images/logo.png" alt="Logo" className="" /> */}
+          </Typography>
+        </div>
 
-      <List
+        <button onClick={handleSidebarToggle} className="z-10 ">
+          <ChevronLeftIcon
+            className={`h-[24\px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3 p-1 absolute -right-[0.7rem] ${
+              isIconRotated
+                ? "rotate-180 transition-all duration-300 ease-in-out"
+                : "transition-all duration-300 ease-in-out"
+            }`}
+          />
+        </button>
+        {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
+
+        <List
+          className={`font-poppins text-sm ${
+            isSidebarOpen ? "ml" : "ml-0"
+          } text-white gap-1.5 self-center  flex `}
+        >
+          {navList.map((item, key) => (
+            <>
+              <Link
+                to={item.link}
+                className="h-10 w-[100%] !style:none"
+                key={key}
+              >
+                <ListItem
+                  className={`gap-[2rem]   hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
+                    active === item.name ? "active" : ""
+                  }`}
+                >
+                  {item.icon}
+                  <span className={`${isSidebarOpen ? "" : "hidden"}`}>
+                    {item.name}
+                  </span>
+                </ListItem>
+              </Link>
+            </>
+          ))}
+        </List>
+
+        {/* <List
         className={`!min-w-full Flex flex-col mt-40 text-white items-center`}
-      >
+      > */}
         <ListItem
-          className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}
+          className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white mt-[40%]`}
         >
           <ListItemPrefix>
-            <PowerIcon className={`${isSidebarOpen ? "ml-10" : ""} h-5 w-5 `} />
+            <PowerIcon
+              color="white"
+              className={`${
+                isSidebarOpen ? "ml-[3.8rem]" : "mt-[400%] ml-5"
+              } h-5 w-5 `}
+            />
           </ListItemPrefix>
-          <span className={`${isSidebarOpen ? "ml-10" : "hidden"}`}>
+          <span
+            className={`text-sm  ${
+              isSidebarOpen ? "ml-7 text-white " : "hidden"
+            }`}
+          >
             Log Out
           </span>
         </ListItem>
-      </List>
-    </Card>
+        {/* </List> */}
+      </Card>
+    </div>
   );
 }
