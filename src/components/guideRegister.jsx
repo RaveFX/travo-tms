@@ -1,8 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import Newnav from "./newnav";
 
 function GuideRegister() {
+  let navigate=useNavigate()
+
+  const [user,setUser]=useState({
+    fname:"",
+    lname:"",
+    email:"",
+    password:"",
+    dob:"",
+    acc_status:"",
+    gender:"",
+    mobile_num:"",
+    number:"",
+    street:"",
+    city:"",
+    postal_code:"",
+    registration_date:"",
+    role:"",
+    nic:"",
+    qualifications:"",
+    acc_name:"",
+    acc_num:"",
+    bank:"",
+    branch:""
+
+  })
+
+  const{fname,lname,email,password,dob,mobile_num,number,street,city,postal_code,nic,qualifications,acc_name,acc_num,bank,branch}=user
+
+  const onInputChange=(e)=>{
+    setUser({...user, [e.target.name]:e.target.value});
+
+};
+
+const onSubmit=async(e)=>{
+  e.preventDefault();
+  await axios.post("http://localhost:8080/api/v1/auth/registerguide",user)
+  navigate("/")
+};
   return (
     <div className="py-1 sm:py-20">
+    <Newnav />
     <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">
@@ -19,32 +61,32 @@ function GuideRegister() {
 
         </div>
       </div>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={(e)=>onSubmit(e)}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="fname" className="block text-sm font-semibold leading-6 text-gray-900">
               First name
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
+                name="fname"
+                value={fname}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="lname" className="block text-sm font-semibold leading-6 text-gray-900">
               Last name
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
+                name="lname"
+                value={lname}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -61,8 +103,8 @@ function GuideRegister() {
               <input
                 type="text"
                 name="email"
-                id="email"
-                autoComplete="given-name"
+                value={email}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -75,8 +117,8 @@ function GuideRegister() {
               <input
                 type="text"
                 name="mobile_num"
-                id="mobile_num"
-                autoComplete="family-name"
+                value={mobile_num}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -92,41 +134,55 @@ function GuideRegister() {
               <input
                 type="date"
                 name="dob"
-                id="dob"
-                autoComplete="family-name"
+                value={dob}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
             </div>
+            <div>
+            <label htmlFor="nic" className="block text-sm font-semibold leading-6 text-gray-900">
+              NIC
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                name="nic"
+                value={nic}
+                onChange={(e)=>onInputChange(e)}
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            
+           </div>
             </div>
 
             <div className="border-b border-gray-900/10 pb-12"></div>
 
             <div className="sm:col-span-2">
-            <label htmlFor="company" className="block text-sm font-semibold leading-6 text-gray-900 mt-10">
+            <label htmlFor="qualifications" className="block text-sm font-semibold leading-6 text-gray-900 mt-10">
               Qualitications
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="company"
-                id="company"
-                autoComplete="organization"
+                name="qualifications"
+                value={qualifications}
+                onChange={(e)=>onInputChange(e)}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
            <div>
-            <label htmlFor="hotel_contact" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="gender" className="block text-sm font-semibold leading-6 text-gray-900">
               Tour Locations
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="hotel_contact"
-                id="hotel_contact"
-                autoComplete="family-name"
+                name="gender"
+                
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -137,62 +193,61 @@ function GuideRegister() {
             <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
             <div>
-              <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                No
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="text"
-                  name="hotel_name"
-                  id="hotel_name"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            <label htmlFor="number" className="block text-sm font-semibold leading-6 text-gray-900">
+            No
+          </label>
+          <div className="mt-2.5">
+            <input
+              type="text"
+              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              name="number"
+              value={number} 
+              onChange={(e)=>onInputChange(e)}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                Street
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="text"
-                  name="brn"
-                  id="brn"
-                  autoComplete="family-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+            <label htmlFor="street" className="block text-sm font-semibold leading-6 text-gray-900">
+            Street
+          </label>
+          <div className="mt-2.5">
+            <input
+              type="text"
+              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              name="street"
+              value={street} 
+              onChange={(e)=>onInputChange(e)}/>
               </div>
               
              </div>
              </div>
              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
              <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 City
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
+             <label htmlFor="city" className="block text-sm font-semibold leading-6 text-gray-900">
+             City
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+               name="city"
+               value={city} 
+               onChange={(e)=>onInputChange(e)}
+             />
                </div>
              </div>
              <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Postal code
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
+             <label htmlFor="postal_code" className="block text-sm font-semibold leading-6 text-gray-900">
+             Postal code
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+               name="postal_code"
+               value={postal_code} 
+               onChange={(e)=>onInputChange(e)}
+             />
                </div>
                
               </div>
@@ -201,100 +256,94 @@ function GuideRegister() {
               <div className="border-b border-gray-900/10 pb-12"></div>
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
              <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account number
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account holder
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-               
-              </div>
-              </div>
+             <label htmlFor="acc_num" className="block text-sm font-semibold leading-6 text-gray-900">
+             Account number
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+               name="acc_num"
+               value={acc_num} 
+               onChange={(e)=>onInputChange(e)}
+             />
+           </div>
+         </div>
+         <div>
+           <label htmlFor="acc_name" className="block text-sm font-semibold leading-6 text-gray-900">
+             Account holder
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+               name="acc_name"
+               value={acc_name} 
+               onChange={(e)=>onInputChange(e)}
+             />
+           </div>
+           
+          </div>
+          </div>
 
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-             <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Bank
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Branch name
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-               
-              </div>
-              </div>
-            
-            
-  
-             </div>
-             <div className="border-b border-gray-900/10 pb-12"></div>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
+         <div>
+           <label htmlFor="bank" className="block text-sm font-semibold leading-6 text-gray-900">
+             Bank
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               name="bank"
+               value={bank} onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             />
+           </div>
+         </div>
+         <div>
+           <label htmlFor="branch" className="block text-sm font-semibold leading-6 text-gray-900">
+             Branch name
+           </label>
+           <div className="mt-2.5">
+             <input
+               type="text"
+               name="branch"
+               value={branch} onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             />
+           </div>
+           
+          </div>
+          </div>
+          </div>
 
-             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-             <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Password
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Confirm password
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
+          <div className="border-b border-gray-900/10 pb-12"></div>
+
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
+          <div>
+            <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
+              Password
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="password"
+                name="password"
+                value={password} onChange={(e)=>onInputChange(e)}
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="cpassword" className="block text-sm font-semibold leading-6 text-gray-900">
+              Confirm password
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="password"
+                name="cpassword"
+            
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
                </div>
                
               </div>

@@ -1,8 +1,10 @@
 import React from 'react'
+import Newnav from "./newnav";
 
 function VehicleRenterRegister() {
   return (
     <div className="py-1 sm:py-20">
+    <Newnav />
     <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">

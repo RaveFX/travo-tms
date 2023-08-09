@@ -1,4 +1,5 @@
 import React from 'react'
+import Newnav from "./newnav";
 import {
   Card,
   CardBody
@@ -11,7 +12,7 @@ function ServiceProviders() {
       backgroundImage: "url('/service_providers.jpg')",
       //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
     }}>
-
+    <Newnav />
     <div className="py-24 sm:py-32">
     <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
       <div className="max-w-2xl">

@@ -1,6 +1,4 @@
 import "@fontsource/poppins";
-// import NavBar from "./components/navbar";
-import Newnav from "./components/newnav";
 import Landing from "./components/landingPage";
 import Signin from "./components/signin";
 import Signup from "./components/signup";
@@ -11,6 +9,10 @@ import ActivityAgentRegister from "./components/activityAgentRegister";
 import GuideRegister from "./components/guideRegister";
 import StoreManagerRegister from "./components/storeManagerRegister";
 import VehicleRenterRegister from "./components/vehicleRenterRegister";
+import Hotel_dashboard from "./components/hotel_dashboard";
+import Hotel_reviews from "./components/hotel_reviews";
+import Hotel_reservations from "./components/hotel_reservations";
+import Hotel_rooms from "./components/hotel_rooms";
 //import traveller_dashboard from "./components/traveller_dashboard";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -18,7 +20,7 @@ export default function App() {
   return (
     <>
     <Router>
-    <Newnav />
+    
     <Routes>
     <Route exact path="/" element={<Landing/>}/>
     <Route exact path="/signin" element={<Signin/>}/>
@@ -30,6 +32,10 @@ export default function App() {
     <Route exact path="/guide_register" element={<GuideRegister/>}/>
     <Route exact path="/vehicle_renter_register" element={<VehicleRenterRegister/>}/>
     <Route exact path="/store_manager_register" element={<StoreManagerRegister/>}/>
+    <Route exact path="/hotelagent_dashboard" element={<Hotel_dashboard/>}/>
+    <Route exact path="/hotelagent_reviews" element={<Hotel_reviews/>}/>
+    <Route exact path="/hotelagent_reservations" element={<Hotel_reservations/>}/>
+    <Route exact path="/hotelagent_rooms" element={<Hotel_rooms/>}/>
     
  </Routes>
     </Router>

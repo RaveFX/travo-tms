@@ -1,4 +1,5 @@
 import React from 'react'
+import Newnav from "./newnav";
 import {
     Card,
     CardBody
@@ -8,6 +9,7 @@ import { Link } from 'react-router-dom';
 function SignupChoice() {
   return (
     <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/signupas.jpg')"}}>
+    <Newnav />
     <div className="py-24 sm:py-32">
     <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
       <div className="max-w-2xl">
