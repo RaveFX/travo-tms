@@ -18,6 +18,7 @@ function TripPlanner() {
   };
 
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
+  const [isMemberOpen, setIsMemberOpen] = useState(false);
 
   const handleNextClick = () => {
     // Navigate to the next page or route when the "Next" button is clicked
@@ -35,12 +36,13 @@ function TripPlanner() {
           <TopNavbar />
           <div className='flex justify-between'>
             <TripNameBar />
+            {isMemberOpen && <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />}
           </div>
           <div>
             <Calendar />
           </div>
           <div>
-           <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} /> 
+            <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} /> 
           </div>
 
         </div>

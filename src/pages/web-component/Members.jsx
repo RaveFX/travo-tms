@@ -1,3 +1,4 @@
+import React from "react";
 import {
     List,
     ListItem,
@@ -7,13 +8,13 @@ import {
     Typography,
   } from "@material-tailwind/react";
    
-  export function Members() {
+  function Members({ selectedMember }) {
     return (
       <Card className="w-96">
         <List>
           <ListItem>
             <ListItemPrefix>
-              <Avatar variant="circular" alt="candice" src="/img/face-1.jpg" />
+              <Avatar variant="circular" alt="candice" src="./public/images/Female(1).svg" />
             </ListItemPrefix>
             <div>
               <Typography variant="h6" color="blue-gray">
@@ -26,7 +27,7 @@ import {
           </ListItem>
           <ListItem>
             <ListItemPrefix>
-              <Avatar variant="circular" alt="alexander" src="/img/face-2.jpg" />
+              <Avatar variant="circular" alt="alexander" src="./public/images/Female(1).svg" />
             </ListItemPrefix>
             <div>
               <Typography variant="h6" color="blue-gray">
@@ -39,7 +40,7 @@ import {
           </ListItem>
           <ListItem>
             <ListItemPrefix>
-              <Avatar variant="circular" alt="emma" src="/img/face-3.jpg" />
+              <Avatar variant="circular" alt="emma" src="./public/images/Female(1).svg" />
             </ListItemPrefix>
             <div>
               <Typography variant="h6" color="blue-gray">
@@ -54,3 +55,5 @@ import {
       </Card>
     );
   }
+
+  export default Members;

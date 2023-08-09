@@ -1,19 +1,11 @@
 import React, { useState }  from 'react';
 import Sidebar from '../web-component/Sidebar';
 import TopNavbar from '../web-component/Navbar';
+import  Members  from '../web-component/Members';
 import { TripNameBar } from '../web-component/TripName';
 import Calendar from '../web-component/calander';
 import BacknNext from '../web-component/BackNext';
 import { useNavigate } from 'react-router-dom';
-
-import {
-  Navbar,
-  Badge,
-  IconButton,
-  Button,
-  Input,
-} from "@material-tailwind/react";
-import { PencilSquareIcon, UserCircleIcon, UserPlusIcon, CalendarDaysIcon} from "@heroicons/react/24/outline";
 
 function Itinerary() {
   const navigate = useNavigate();
@@ -24,6 +16,8 @@ function Itinerary() {
   };
 
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(true);
+  const [isMemberOpen, setIsMemberOpen] = useState(false);
+
 
   const handleNextClick = () => {
     // Navigate to the next page or route when the "Next" button is clicked
@@ -41,8 +35,7 @@ function Itinerary() {
           <div className='flex justify-between'>
             <TripNameBar isSubSidebarOpen={isSubSidebarOpen} />
           </div>
-         
-
+          {isMemberOpen && <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />}
         </div>
     </div>
   );
