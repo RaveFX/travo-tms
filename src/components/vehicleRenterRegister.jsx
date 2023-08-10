@@ -1,10 +1,41 @@
-import React from 'react'
-import Newnav from "./newnav";
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import NavWhite from './navWhite'
 
 function VehicleRenterRegister() {
+  let navigate=useNavigate()
+
+  const [user,setUser]=useState({
+    email:"",
+    password:"",
+    dob:"",
+    addressLine1:"",
+    addressLine2:"",
+    city:"",
+    distrct:"",
+    company_name:"",
+    brn:"",
+    contact_num:"",
+
+  })
+
+  const{email,password,addressLine1,addressLine2,city,company_name,brn,contact_num,district}=user
+
+  const onInputChange=(e)=>{
+    setUser({...user, [e.target.name]:e.target.value});
+
+};
+
+const onSubmit=async(e)=>{
+  e.preventDefault();
+  await axios.post("http://localhost:8080/api/v1/auth/register/vehicle_renter",user)
+  navigate("/")
+};
+
   return (
     <div className="py-1 sm:py-20">
-    <Newnav />
+    <NavWhite />
     <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">
@@ -21,99 +52,21 @@ function VehicleRenterRegister() {
 
         </div>
       </div>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              First name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            
-          </div>
-        </div>
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-          <div>
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Email
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="email"
-                id="email"
-                autoComplete="given-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mobile number
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="mobile_num"
-                id="mobile_num"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            
-           </div>
-           </div>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-           <div>
-            <label htmlFor="dob" className="block text-sm font-semibold leading-6 text-gray-900">
-              DOB
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="date"
-                name="dob"
-                id="dob"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            </div>
-            </div>
-            <div className="border-b border-gray-900/10 pb-12"></div>
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={(e)=>onSubmit(e)}>
+      
+          
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
           <div>
-            <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="company_name" className="block text-sm font-semibold leading-6 text-gray-900">
               Company name
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="hotel_name"
-                id="hotel_name"
-                autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="company_name"
+                value={company_name} 
+                onChange={(e)=>onInputChange(e)}
               />
             </div>
           </div>
@@ -124,10 +77,10 @@ function VehicleRenterRegister() {
             <div className="mt-2.5">
               <input
                 type="text"
-                name="brn"
-                id="brn"
-                autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="brn"
+                value={brn} 
+                onChange={(e)=>onInputChange(e)}
               />
             </div>
             
@@ -135,16 +88,16 @@ function VehicleRenterRegister() {
            </div>
            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
            <div>
-            <label htmlFor="hotel_contact" className="block text-sm font-semibold leading-6 text-gray-900">
-              Contact number - company
+            <label htmlFor="contact_num" className="block text-sm font-semibold leading-6 text-gray-900">
+              Contact number 
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
-                name="hotel_contact"
-                id="hotel_contact"
-                autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="contact_num"
+                value={contact_num} 
+                onChange={(e)=>onInputChange(e)}
               />
             </div>
             </div>
@@ -153,30 +106,30 @@ function VehicleRenterRegister() {
             <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
             <div>
-              <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                No
+              <label htmlFor="addressLine1" className="block text-sm font-semibold leading-6 text-gray-900">
+                Address Line 1
               </label>
               <div className="mt-2.5">
                 <input
                   type="text"
-                  name="hotel_name"
-                  id="hotel_name"
-                  autoComplete="given-name"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  name="addressLine1"
+                  value={addressLine1} 
+                  onChange={(e)=>onInputChange(e)}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                Street
+              <label htmlFor="addressLine2" className="block text-sm font-semibold leading-6 text-gray-900">
+              Address Line 2
               </label>
               <div className="mt-2.5">
                 <input
                   type="text"
-                  name="brn"
-                  id="brn"
-                  autoComplete="family-name"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  name="addressLine2"
+                  value={addressLine2} 
+                  onChange={(e)=>onInputChange(e)}
                 />
               </div>
               
@@ -184,135 +137,99 @@ function VehicleRenterRegister() {
              </div>
              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
              <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
+               <label htmlFor="city" className="block text-sm font-semibold leading-6 text-gray-900">
                  City
                </label>
                <div className="mt-2.5">
                  <input
                    type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                   name="city"
+                   value={city} 
+                   onChange={(e)=>onInputChange(e)}
                  />
                </div>
              </div>
              <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Postal code
+               <label htmlFor="district" className="block text-sm font-semibold leading-6 text-gray-900">
+                 District
                </label>
                <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
+               <select
+               name="district"
+               value={district} 
+               onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             >
+             <option>{district}</option>
+               <option value="Ampara">Ampara</option>
+               <option value="Anuradhapura">Anuradhapura</option>
+               <option value="Badulla">Badulla</option>
+               <option value="Batticaloa">Batticaloa</option>
+               <option value="Colombo">Colombo</option>
+               <option value="Galle">Galle</option>
+               <option value="Gampaha">Gampaha</option>
+               <option value="Hambantota">Hambantota</option>
+               <option value="Jaffna">Jaffna</option>
+               <option value="Kalutara">Kalutara</option>
+               <option value="Kandy">Kandy</option>
+               <option value="Kegalle">Kegalle</option>
+               <option value="Kilinochchi">kilinochchi</option>
+               <option value="Kurunegala">Kurunegala</option>
+               <option value="Mannar">Mannar</option>
+               <option value="Matale">Matale</option>
+               <option value="Matara">Matara</option>
+               <option value="Monaragala">Monaragala</option>
+               <option value="Mullaitivu">Mullaitivu</option>
+               <option value="Nuwara Eliya">Nuwara Eliya</option>
+               <option value="Polonnaruwa">Polonnaruwa</option>
+               <option value="Puttalam">Puttalam</option>
+               <option value="Ratnapura">Ratnapura</option>
+               <option value="Trincomalee">Trincomalee</option>
+               <option value="Vavuniya">Vavuniya</option>
+             </select>
                </div>
                
               </div>
               </div>
+             
 
-              <div className="border-b border-gray-900/10 pb-12"></div>
-
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-             <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account number
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account holder
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-               
-              </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-             <div>
-               <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Bank
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="hotel_name"
-                   id="hotel_name"
-                   autoComplete="given-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Branch name
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="brn"
-                   id="brn"
-                   autoComplete="family-name"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-               
-              </div>
-              </div>
+              
               </div>
 
               <div className="border-b border-gray-900/10 pb-12"></div>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
               <div>
-                <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+              Email
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="email"
+                value={email} 
+                onChange={(e)=>onInputChange(e)}
+              />
+            </div>
+          </div>
+              <div>
+                <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
                   Password
                 </label>
                 <div className="mt-2.5">
                   <input
-                    type="text"
-                    name="hotel_name"
-                    id="hotel_name"
-                    autoComplete="given-name"
+                    type="password"
+                    name="password"
+                    value={password} onChange={(e)=>onInputChange(e)}
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              <div>
-                <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Confirm password
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    name="brn"
-                    id="brn"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-                
-               </div>
+
+              
+             
                </div>
          
         <div className="mt-10">

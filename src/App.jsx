@@ -13,6 +13,7 @@ import Hotel_dashboard from "./components/hotel_dashboard";
 import Hotel_reviews from "./components/hotel_reviews";
 import Hotel_reservations from "./components/hotel_reservations";
 import Hotel_rooms from "./components/hotel_rooms";
+import Hotel_reseravationDetails from "./components/hotel_reseravationDetails";
 //import traveller_dashboard from "./components/traveller_dashboard";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -36,11 +37,12 @@ export default function App() {
     <Route exact path="/hotelagent_reviews" element={<Hotel_reviews/>}/>
     <Route exact path="/hotelagent_reservations" element={<Hotel_reservations/>}/>
     <Route exact path="/hotelagent_rooms" element={<Hotel_rooms/>}/>
+    <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails/>}/>
     
  </Routes>
     </Router>
 
-      <div className="bg-[#F6F8FA] w-full h-full"></div>
+    <div className="bg-[#F6F8FA] w-full h-full"></div>
     </>
   );
 }

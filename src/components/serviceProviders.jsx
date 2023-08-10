@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 function ServiceProviders() {
   return (
     <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{
-      backgroundImage: "url('/service_providers.jpg')",
+      backgroundImage: "url('/photo2.jpg')",
       //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
     }}>
     <Newnav />
@@ -28,8 +28,8 @@ function ServiceProviders() {
         <Link to="/hotel_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/hotel_agent.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Hotel Agent</h3>
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/hotel_agent.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Hotel</h3>
       </card>
       
       </li>
@@ -37,8 +37,8 @@ function ServiceProviders() {
       <Link to="/activity_agent_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/activity_register.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Activity Agent</h3>
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/activity_register.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Activities</h3>
       </card>
       
       </li>
@@ -47,8 +47,8 @@ function ServiceProviders() {
       <Link to="/guide_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/Guide_register.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Guide</h3>
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/Guide_register.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Travel Guide</h3>
       </card>
       
       </li>
@@ -57,7 +57,7 @@ function ServiceProviders() {
       <Link to="/vehicle_renter_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/vehicle_renter.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/vehicle_renter.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Vehicle Renter</h3>
       </card>
       
@@ -67,8 +67,8 @@ function ServiceProviders() {
       <Link to="/store_manager_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/store_manager.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Store Manager</h3>
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/store_manager.png" alt="" />
+      <h3 className="text-base font-semibold leading-7 tracking-tight">Store</h3>
       </card>
       
       </li>

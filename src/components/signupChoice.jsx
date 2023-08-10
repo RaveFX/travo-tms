@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function SignupChoice() {
   return (
-    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/signupas.jpg')"}}>
+    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/photo3.jpg')"}}>
     <Newnav />
     <div className="py-24 sm:py-32">
     <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
@@ -22,7 +22,7 @@ function SignupChoice() {
         <Link to="/Signup">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/store_manager.png" alt="" />
+      <img className="h-30 w-30 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/store_manager.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Traveller</h3>
       </card>
       
@@ -31,7 +31,7 @@ function SignupChoice() {
       <Link to="/service_providers">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md" src="/hotel_agent.png" alt="" />
+      <img className="ml-6 h-30 w-30 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/hotel_agent.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Service Provider</h3>
       </card>
       

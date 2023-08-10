@@ -10,18 +10,7 @@ function Signup () {
     fname:"",
     lname:"",
     email:"",
-    password:"",
-    dob:"",
-    acc_status:"",
-    gender:"",
-    mobile_num:"",
-    number:"",
-    street:"",
-    city:"",
-    postal_code:"",
-    registration_date:"",
-    role:""
-
+    password:""
   })
 
   const{fname,lname,email,password}=user

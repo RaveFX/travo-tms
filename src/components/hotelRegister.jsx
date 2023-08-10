@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Newnav from "./newnav";
+import NavWhite from './navWhite'
 
 
 function HotelRegister() {
@@ -9,31 +9,20 @@ function HotelRegister() {
   let navigate=useNavigate()
 
   const [user,setUser]=useState({
-    fname:"",
-    lname:"",
     email:"",
     password:"",
     dob:"",
-    acc_status:"",
-    gender:"",
-    mobile_num:"",
-    number:"",
-    street:"",
+    addressLine1:"",
+    addressLine2:"",
     city:"",
-    postal_code:"",
-    registration_date:"",
-    role:"",
+    distrct:"",
     hotel_name:"",
     brn:"",
     contact_num:"",
-    acc_name:"",
-    acc_num:"",
-    bank:"",
-    branch:"",
 
   })
 
-  const{fname,lname,email,password,dob,mobile_num,number,street,city,postal_code,hotel_name,brn,contact_num,acc_name,acc_num,bank,branch}=user
+  const{email,password,addressLine1,addressLine2,city,hotel_name,brn,contact_num,district}=user
 
   const onInputChange=(e)=>{
     setUser({...user, [e.target.name]:e.target.value});
@@ -42,19 +31,19 @@ function HotelRegister() {
 
 const onSubmit=async(e)=>{
   e.preventDefault();
-  await axios.post("http://localhost:8080/api/v1/auth/registerhotelagent",user)
+  await axios.post("http://localhost:8080/api/v1/auth/register/hotel",user)
   navigate("/")
 };
 
   return (
     <div className="py-1 sm:py-20">
-    <Newnav />
+    <NavWhite />
     <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20  xl:grid-cols-2">
     <div className="max-w-3xl">
     <div className="mx-auto max-w-2xl text-center">
     <div className="grid xl:grid-cols-2">
     <div>
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hotel Agent </h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hotel </h2>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Input your information</h2>
         </div>
         <div>
@@ -66,85 +55,8 @@ const onSubmit=async(e)=>{
         </div>
       </div>
       <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={(e)=>onSubmit(e)}>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="fname" className="block text-sm font-semibold leading-6 text-gray-900">
-              First name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="fname"
-                value={fname}
-                onChange={(e)=>onInputChange(e)}
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="lname" className="block text-sm font-semibold leading-6 text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="lname"
-                value={lname} 
-                onChange={(e)=>onInputChange(e)}
-              />
-            </div>
-            
-          </div>
-        </div>
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-          <div>
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Email
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="email"
-                value={email} 
-                onChange={(e)=>onInputChange(e)}
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mobile number
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="mobile_num"
-                value={mobile_num} 
-                onChange={(e)=>onInputChange(e)}
-              />
-            </div>
-            
-           </div>
-           </div>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-           <div>
-            <label htmlFor="dob" className="block text-sm font-semibold leading-6 text-gray-900">
-              DOB
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="date"
-                name="dob"
-                value={dob} onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            </div>
-            </div>
-            <div className="border-b border-gray-900/10 pb-12"></div>
+      
+          
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
           <div>
             <label htmlFor="hotel_name" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -196,29 +108,29 @@ const onSubmit=async(e)=>{
             <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
             <div>
-              <label htmlFor="number" className="block text-sm font-semibold leading-6 text-gray-900">
-                No
+              <label htmlFor="addressLine1" className="block text-sm font-semibold leading-6 text-gray-900">
+                Address Line 1
               </label>
               <div className="mt-2.5">
                 <input
                   type="text"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  name="number"
-                  value={number} 
+                  name="addressLine1"
+                  value={addressLine1} 
                   onChange={(e)=>onInputChange(e)}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="street" className="block text-sm font-semibold leading-6 text-gray-900">
-                Street
+              <label htmlFor="addressLine2" className="block text-sm font-semibold leading-6 text-gray-900">
+              Address Line 2
               </label>
               <div className="mt-2.5">
                 <input
                   type="text"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  name="street"
-                  value={street} 
+                  name="addressLine2"
+                  value={addressLine2} 
                   onChange={(e)=>onInputChange(e)}
                 />
               </div>
@@ -241,90 +153,69 @@ const onSubmit=async(e)=>{
                </div>
              </div>
              <div>
-               <label htmlFor="postal_code" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Postal code
+               <label htmlFor="district" className="block text-sm font-semibold leading-6 text-gray-900">
+                 District
                </label>
                <div className="mt-2.5">
-                 <input
-                   type="text"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                   name="postal_code"
-                   value={postal_code} 
-                   onChange={(e)=>onInputChange(e)}
-                 />
+               <select
+               name="district"
+               value={district} 
+               onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             >
+             <option>{district}</option>
+               <option value="Ampara">Ampara</option>
+               <option value="Anuradhapura">Anuradhapura</option>
+               <option value="Badulla">Badulla</option>
+               <option value="Batticaloa">Batticaloa</option>
+               <option value="Colombo">Colombo</option>
+               <option value="Galle">Galle</option>
+               <option value="Gampaha">Gampaha</option>
+               <option value="Hambantota">Hambantota</option>
+               <option value="Jaffna">Jaffna</option>
+               <option value="Kalutara">Kalutara</option>
+               <option value="Kandy">Kandy</option>
+               <option value="Kegalle">Kegalle</option>
+               <option value="Kilinochchi">kilinochchi</option>
+               <option value="Kurunegala">Kurunegala</option>
+               <option value="Mannar">Mannar</option>
+               <option value="Matale">Matale</option>
+               <option value="Matara">Matara</option>
+               <option value="Monaragala">Monaragala</option>
+               <option value="Mullaitivu">Mullaitivu</option>
+               <option value="Nuwara Eliya">Nuwara Eliya</option>
+               <option value="Polonnaruwa">Polonnaruwa</option>
+               <option value="Puttalam">Puttalam</option>
+               <option value="Ratnapura">Ratnapura</option>
+               <option value="Trincomalee">Trincomalee</option>
+               <option value="Vavuniya">Vavuniya</option>
+             </select>
                </div>
                
               </div>
+              </div>
+             
+
+              
               </div>
 
               <div className="border-b border-gray-900/10 pb-12"></div>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-             <div>
-               <label htmlFor="acc_num" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account number
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                   name="acc_num"
-                   value={acc_num} 
-                   onChange={(e)=>onInputChange(e)}
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="acc_name" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Account holder
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                   name="acc_name"
-                   value={acc_name} 
-                   onChange={(e)=>onInputChange(e)}
-                 />
-               </div>
-               
-              </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-             <div>
-               <label htmlFor="bank" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Bank
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="bank"
-                   value={bank} onChange={(e)=>onInputChange(e)}
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-             </div>
-             <div>
-               <label htmlFor="branch" className="block text-sm font-semibold leading-6 text-gray-900">
-                 Branch name
-               </label>
-               <div className="mt-2.5">
-                 <input
-                   type="text"
-                   name="branch"
-                   value={branch} onChange={(e)=>onInputChange(e)}
-                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                 />
-               </div>
-               
-              </div>
-              </div>
-              </div>
-
-              <div className="border-b border-gray-900/10 pb-12"></div>
-
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
+              <div>
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+              Email
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="email"
+                value={email} 
+                onChange={(e)=>onInputChange(e)}
+              />
+            </div>
+          </div>
               <div>
                 <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
                   Password
@@ -338,20 +229,9 @@ const onSubmit=async(e)=>{
                   />
                 </div>
               </div>
-              <div>
-                <label htmlFor="cpassword" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Confirm password
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="password"
-                    name="cpassword"
-                
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-                
-               </div>
+
+              
+             
                </div>
          
         <div className="mt-10">
