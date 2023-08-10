@@ -1,7 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import Newnav from "./newnav";
 
 function StoreManagerRegister() {
+    let navigate=useNavigate()
+  
+    const [user,setUser]=useState({
+      fname:"",
+      lname:"",
+      email:"",
+      password:"",
+      dob:"",
+      acc_status:"",
+      gender:"",
+      mobile_num:"",
+      number:"",
+      street:"",
+      city:"",
+      postal_code:"",
+      registration_date:"",
+      role:"",
+      nic:"",
+      shop_name:"",
+      brn:"",
+      description:"",
+      contact_num:"",
+      acc_name:"",
+      acc_num:"",
+      bank:"",
+      branch:""
+  
+    })
+  
+    const{fname,lname,email,password,dob,mobile_num,number,street,city,postal_code,nic,shop_name,brn,description,acc_name,acc_num,bank,branch}=user
+  
+    const onInputChange=(e)=>{
+      setUser({...user, [e.target.name]:e.target.value});
+  
+  };
+  
+  const onSubmit=async(e)=>{
+    e.preventDefault();
+    await axios.post("http://localhost:8080/api/v1/auth/registerguide",user)
+    navigate("/")
+  };
   return (
     <div className="py-1 sm:py-20">
     <Newnav />
@@ -21,34 +64,34 @@ function StoreManagerRegister() {
 
         </div>
       </div>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={(e)=>onSubmit(e)}>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              First name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+          <label htmlFor="fname" className="block text-sm font-semibold leading-6 text-gray-900">
+          First name
+        </label>
+        <div className="mt-2.5">
+          <input
+            type="text"
+            name="fname"
+            value={fname}
+            onChange={(e)=>onInputChange(e)}
+            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="lname" className="block text-sm font-semibold leading-6 text-gray-900">
+          Last name
+        </label>
+        <div className="mt-2.5">
+          <input
+            type="text"
+            name="lname"
+            value={lname}
+            onChange={(e)=>onInputChange(e)}
+            className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
             </div>
             
           </div>
@@ -57,21 +100,21 @@ function StoreManagerRegister() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
           <div>
             <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Email
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="email"
-                id="email"
-                autoComplete="given-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+            Email
+          </label>
+          <div className="mt-2.5">
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={(e)=>onInputChange(e)}
+              className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
             </div>
           </div>
           <div>
             <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mobile number
+              NIC
             </label>
             <div className="mt-2.5">
               <input
@@ -102,7 +145,7 @@ function StoreManagerRegister() {
             </div>
             <div>
             <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Contact number - shop
+              Mobile number
             </label>
             <div className="mt-2.5">
               <input

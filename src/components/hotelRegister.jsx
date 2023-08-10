@@ -29,7 +29,7 @@ function HotelRegister() {
     acc_name:"",
     acc_num:"",
     bank:"",
-    branch:""
+    branch:"",
 
   })
 
