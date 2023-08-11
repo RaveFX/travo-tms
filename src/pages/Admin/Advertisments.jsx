@@ -88,7 +88,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/userprofile">
+                                        <a href="/add_advertisments">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -131,7 +131,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/userprofile">
+                                        <a href="/add_advertisments">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -165,16 +165,8 @@ export default function Advertisments() {
                                             sandu@gmail.com
                                         </p>
                                     </td>
-                                    {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Pendding</span>
-                                        </span>
-                                    </td> */}
                                     <td class="justify-center">
-                                        <a href="/userprofile">
+                                        <a href="/add_advertisments">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -213,7 +205,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/userprofile">
+                                        <a href="/add_advertisments">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>

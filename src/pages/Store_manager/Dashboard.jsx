@@ -9,6 +9,27 @@ import complete from '../../assets/clients.png';
 import bookmark from '../../assets/clients.png';
 import menu from '../../assets/clients.png';
 import Storemanager_barchart from '../../components/Storemanager_barchart';
+import ConversationSection from '../../components/conversation';
+import Storemanager_piechart from '../../components/Storemanager_piechart'
+import Storemanager_delivery from '../../components/Storemanager_delivery'
+
+
+
+// Top Section Component
+const TopSection = () => {
+    return (
+        <div className=' flex flex-row '>
+            <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' />
+            <div className=' mx-2 mr-[8vh]'>
+                <p className='text-3xl '>Hi,Stela!</p>
+                <p className=''>Travel Guide</p>
+            </div>
+        </div>
+    );
+};
+
+
+
 
 const DashboardCard = ({ title, src, amount }) => {
     return (
@@ -298,6 +319,143 @@ const DashboardTG = () => {
     );
 }
 
+
+const Order = () => {
+    return (
+        <div>
+            <div className="bg-white p-8 rounded-md w-40%">
+                <div className="flex items-center justify-between pb-6">
+                    <div>
+                        <h2 className="text-gray-600 font-semibold">New Order</h2>
+                    </div>
+
+                </div>
+                <div>
+                    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                        <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                            <table className="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Name
+                                        </th>
+                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Products
+                                        </th>
+                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Order at
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 w-10 h-10">
+                                                    <img class="w-full h-full rounded-full"
+                                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                        alt="" />
+                                                </div>
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        Vera Carpenter
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">Travel bags</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                Jan 21, 2020
+                                            </p>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 w-10 h-10">
+                                                    <img class="w-full h-full rounded-full"
+                                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                        alt="" />
+                                                </div>
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        Blake Bowman
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">Shoes</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                Jan 01, 2020
+                                            </p>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 w-10 h-10">
+                                                    <img class="w-full h-full rounded-full"
+                                                        src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                        alt="" />
+                                                </div>
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        Dana Moore
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">Tent</p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                Jan 10, 2020
+                                            </p>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="px-5 py-5 bg-white text-sm">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 w-10 h-10">
+                                                    <img class="w-full h-full rounded-full"
+                                                        src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
+                                                        alt="" />
+                                                </div>
+                                                <div class="ml-3">
+                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                        Alonzo Cox
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-5 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">Travel bag</p>
+                                        </td>
+                                        <td class="px-5 py-5 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function Dashboard() {
     return (
         <div className='flex flex-col gap-4'>
@@ -305,7 +463,18 @@ export default function Dashboard() {
             {/* <Link to="/admin_dashboard" className="text-green-500 underline">
                 Admin Dashboard
             </Link> */}
+            <div style={{ display: 'inline-block' }}>
+                <Order />
+                <Storemanager_piechart />
+            </div>
+
             <Storemanager_barchart />
+            {/* <ConversationSection /> */}
+            <Storemanager_delivery />
+
+
+
+
 
         </div>
     );

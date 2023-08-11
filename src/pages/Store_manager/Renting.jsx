@@ -73,8 +73,8 @@ const ProductOrderTable = () => {
         <div className="bg-white p-8 rounded-md w-full">
             <div className="flex items-center justify-between pb-6">
                 <div>
-                    <h2 className="text-gray-600 font-semibold">Products Order</h2>
-                    <span className="text-xs">All products item</span>
+                    <h2 className="text-gray-600 font-semibold">Renting Orders</h2>
+                    <span className="text-xs">All Renting item</span>
                 </div>
                 <div className="flex items-center justify-between">
                     <div className="flex bg-gray-50 items-center p-2 rounded-md">
