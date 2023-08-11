@@ -287,13 +287,13 @@ export default class Example extends PureComponent {
 
     render() {
         return (
-            <ResponsiveContainer width="75%" height={350}>
+            <ResponsiveContainer width="100%" height={450}>
                 <AreaChart
                     width={500}
                     height={400}
                     data={data}
                     margin={{
-                        top: 10,
+                        top: 30,
                         right: 30,
                         left: 0,
                         bottom: 0,

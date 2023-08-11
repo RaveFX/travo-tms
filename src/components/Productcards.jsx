@@ -2,6 +2,8 @@
 
 
 import React from 'react';
+import Nav from '../components/product_navbar';
+import Shop from '../assets/shop.jpg'
 
 const cardsData = [
     {
@@ -54,9 +56,17 @@ const cardsData = [
 export default function Productcards() {
     return (
         <div >
-            <div class="lg:ml-auto mr-10 mt-10 flex space-x-8 justify-end">
-                <button class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Product</button>
+            <Nav />
+            <div class="relative m-4">
+                <img class="hidden sm:block w-full" src={Shop} alt="sofa" />
+                <img class="sm:hidden w-full" src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png" alt="sofa" />
+                <div class="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
+                    <p class="text-3xl sm:text-4xl font-semibold leading-9 text-white">Sam Store</p>
+                </div>
             </div>
+            {/* <div class="lg:ml-auto mr-10 mt-10 flex space-x-8 justify-end">
+                <button class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">New Product</button>
+            </div> */}
 
             <div className="relative inline-flex">
                 <svg
@@ -70,7 +80,7 @@ export default function Productcards() {
                         fillRule="nonzero"
                     />
                 </svg>
-                <select
+                {/* <select
                     className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
                 >
                     <option>Shoes</option>
@@ -82,7 +92,7 @@ export default function Productcards() {
                     <option>Purple</option>
                     <option>Gray</option>
                     <option>White</option>
-                </select>
+                </select> */}
             </div>
             <style>
                 {`

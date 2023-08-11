@@ -84,7 +84,7 @@ export default function Sidebar() {
                         Profile
                     </ListItem>
                 </Link>
-                <Link to="/setting">
+                <Link to="/product_card">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />

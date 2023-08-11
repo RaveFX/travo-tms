@@ -9,7 +9,6 @@ import complete from '../../assets/clients.png';
 import bookmark from '../../assets/clients.png';
 import menu from '../../assets/clients.png';
 import Storemanager_barchart from '../../components/Storemanager_barchart';
-import ConversationSection from '../../components/conversation';
 import Storemanager_piechart from '../../components/Storemanager_piechart'
 import Storemanager_delivery from '../../components/Storemanager_delivery'
 
@@ -50,7 +49,7 @@ const Calendar = () => {
         <div className="w-[35vh] bg-primary">
             {/* Calendar Component Code */}
             <div className="  shadow-lg ">
-                <div className="md:p-2 md:pb-8 w-[35vh] h-[35vh] dark:bg-primary bg-white rounded-md">
+                <div className="md:p-1 md:pb-4 w-[35vh] h-[35vh] dark:bg-primary bg-white rounded-md">
                     <div className=" flex items-center justify-between">
                         <h1 className=" font-bold dark:text-textGray text-gray-800">October 2020</h1>
                         <div className="flex items-center text-gray-800 dark:text-gray-100">
@@ -284,47 +283,13 @@ const Calendar = () => {
     );
 };
 
-const DashboardTG = () => {
-    const dashs = [
-        { title: "Total Sale", src: client, amount: "124" },
-        { title: "Total Expenses", src: complete, amount: "45" },
-        { title: "Total customer", src: bookmark, amount: "40" },
-        { title: "Total Orders", src: menu, amount: "20" },
-    ];
-
-    return (
-        <div className='flex flex-row gap-4'>
-
-            <div className=' flex flex-row '>
-                <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' />
-                <div className=' mx-2 mr-[8vh]'>
-                    <p className='text-3xl'>Hi, Sam store</p>
-                    <p className=''>Store manager</p>
-                </div>
-            </div>
-            <div className='flex  sm:flex-shrink flex-wrap mr-12'>
-                {dashs.map((dash, index) => (
-                    <DashboardCard key={index} title={dash.title} src={dash.src} />
-                ))}
-            </div>
-            {/* Add the Calendar component here */}
-            <div>
-                {/* Replace this with your calendar component */}
-                <p>Calendar</p>
-                <Calendar />
-            </div>
-            {/* <DashboardStatsGrid />
-            <TransactionChart /> */}
-        </div>
-    );
-}
 
 
 const Order = () => {
     return (
         <div>
-            <div className="bg-white p-8 rounded-md w-40%">
-                <div className="flex items-center justify-between pb-6">
+            <div className="bg-white p-3 rounded-md w-40% m-4">
+                <div className="flex items-center justify-between pb-2">
                     <div>
                         <h2 className="text-gray-600 font-semibold">New Order</h2>
                     </div>
@@ -339,9 +304,9 @@ const Order = () => {
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Name
                                         </th>
-                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Products
-                                        </th>
+                                        </th> */}
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Order at
                                         </th>
@@ -363,9 +328,9 @@ const Order = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">Travel bags</p>
-                                        </td>
+                                        </td> */}
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 Jan 21, 2020
@@ -388,9 +353,9 @@ const Order = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">Shoes</p>
-                                        </td>
+                                        </td> */}
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 Jan 01, 2020
@@ -413,9 +378,9 @@ const Order = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">Tent</p>
-                                        </td>
+                                        </td> */}
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
                                                 Jan 10, 2020
@@ -438,9 +403,9 @@ const Order = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-5 py-5 bg-white text-sm">
+                                        {/* <td class="px-5 py-5 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">Travel bag</p>
-                                        </td>
+                                        </td> */}
                                         <td class="px-5 py-5 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
                                         </td>
@@ -457,25 +422,53 @@ const Order = () => {
 }
 
 export default function Dashboard() {
+    const dashs = [
+        { title: "Total Sale", src: client, amount: "124" },
+        { title: "Total Expenses", src: complete, amount: "45" },
+        { title: "Total customer", src: bookmark, amount: "40" },
+        { title: "Total Orders", src: menu, amount: "20" },
+    ];
     return (
-        <div className='flex flex-col gap-4'>
-            <DashboardTG />
-            {/* <Link to="/admin_dashboard" className="text-green-500 underline">
-                Admin Dashboard
-            </Link> */}
-            <div style={{ display: 'inline-block' }}>
-                <Order />
+        <div className='flex m-2'>
+            <div className='w-7/8'>
+                <div className=' flex flex-row '>
+                    {/* <div className='m-5'> */}
+                    {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
+                    <div className=' mx-2 mr-[8vh] m-3'>
+                        <p className='text-3xl'>Hi, Sam store</p>
+                        <p className=''>Store manager</p>
+                    </div>
+                    {/* </div> */}
+                    <div className='flex  sm:flex-shrink flex-wrap mr-6'>
+                        {dashs.map((dash, index) => (
+                            <DashboardCard key={index} title={dash.title} src={dash.src} />
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <div className='grid gap-3 md:grid-cols-2'>
+                        <Order width="50%" height={350} />
+                        <Storemanager_barchart />
+                    </div>
+                </div>
+
+            </div>
+            <div className='w-1/8 absolute right-6'>
+                <Calendar />
                 <Storemanager_piechart />
             </div>
 
-            <Storemanager_barchart />
-            {/* <ConversationSection /> */}
-            <Storemanager_delivery />
-
-
-
-
-
         </div>
+
+
+
+
+
+
+
+
+
+
     );
+
 }
