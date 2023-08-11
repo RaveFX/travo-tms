@@ -9,9 +9,9 @@ const request = () => {
     return (
         <div className='flex'>
             <div><Vehicle_Owner_Sidebar /></div>
-            <div className='flex flex-grow flex-col'>
+            <div className='h-screen flex flex-grow flex-col'>
                 <div><TopNavbar /></div>
-                <div>
+                <div className='overflow-y-auto'>
                     <div className='py-8 bg-primary'>
                         <div className='flex mx-auto container'>
                             <div className='w-3/4'>

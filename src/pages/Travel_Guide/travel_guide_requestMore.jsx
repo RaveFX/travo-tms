@@ -13,11 +13,21 @@ const requestMore = () => {
         "https://cdn.getyourguide.com/img/location/5c83eaac2b43a.jpeg/88.jpg",
 
     ]
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
     return (
         <div className='flex'>
             <div className=''><Sidebar /></div>
             <div className='flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+                <div>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
                 <div><p className='text-3xl m-5'>Kandy</p></div>
                 <div className='flex m-5 sm:flex-row flex-col '>
                     <div className='overflow-hidden relative sm:w-1/2 w-full justify-center'>

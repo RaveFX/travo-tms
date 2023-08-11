@@ -8,7 +8,7 @@ const Sidebar = () => {
   const menus = [
     { title: "Dashboard", src: dashboard,route:"/",current:true },
     { title: "Requests", src: request ,route:"/travel_guide_request",current:false },
-    { title: "Invitations", src: invitation , route:"/travel_guide_invitation",current:false },
+    { title: "Tours", src: invitation , route:"/travel_guide_mytours",current:false },
     { title: "Ratings", src: star,route:"/travel_guide_rating",current:false  },
     { title: "Message", src: message ,route:"/travel_guide_request",current:false },
     { title: "Profile", src: user, gap: true,route:"/travel_guide_request",current:false  },

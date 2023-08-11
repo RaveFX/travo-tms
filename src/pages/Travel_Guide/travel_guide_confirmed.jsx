@@ -4,14 +4,23 @@ import TopNavbar from '../../components/topNavbar';
 import { Link } from 'react-router-dom';
 import { TicketIcon } from '@heroicons/react/24/outline';
 
-
+const topnav=[
+    {path:"/travel_guide_profile"}
+]
 
 const Confirmed = () => {
     return (
         <div className='flex'>
             <div><Sidebar /></div>
             <div className='flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+                <div>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
                 <div>
                     <div className='py-8 bg-primary'>
                         <div className='flex mx-auto container'>

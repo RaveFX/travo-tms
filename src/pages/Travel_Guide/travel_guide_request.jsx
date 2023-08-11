@@ -6,12 +6,22 @@ import { Link } from 'react-router-dom';
 
 
 const request = () => {
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
     return (
         <div className='flex'>
-            <div><Sidebar /></div>
-            <div className='flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+            <div className=''><Sidebar /></div>
+            <div className='h-screen flex flex-grow flex-col '>
+                <div className=''>
                 <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
+                <div className='overflow-y-auto  flex-grow ml-1/3 '>
                     <div className='py-8 bg-primary'>
                         <div className='flex mx-auto container'>
                             <div className='w-3/4'>
@@ -23,8 +33,8 @@ const request = () => {
 
                         </div>
 
-                        <div className='py-5'>
-                            <div className="mx-auto container bg-black dark:bg-white shadow rounded">
+                        <div className='py-5 '>
+                            <div className="w-full overflow-y-auto mx-auto container bg-black dark:bg-white shadow rounded">
                                 <div className="flex flex-col lg:flex-row p-4 lg:p-8 justify-between items-start lg:items-stretch w-full">
                                     <div className="w-full lg:w-2/3 flex flex-col lg:flex-row items-start lg:items-center justify-end">
                                         <div className="flex items-center lg:border-l lg:border-r border-gray-300 dark:border-gray-200 py-3 lg:py-0 lg:px-6">
@@ -114,7 +124,7 @@ const request = () => {
                                                 <td className="pr-6 whitespace-no-wrap">
                                                     <div className="flex items-center">
                                                         <div className="h-8 w-8">
-                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full shadow" />
                                                         </div>
                                                         <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
                                                     </div>
@@ -140,7 +150,7 @@ const request = () => {
                                                 <td className="pr-6 whitespace-no-wrap">
                                                     <div className="flex items-center">
                                                         <div className="h-8 w-8">
-                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full shadow" />
                                                         </div>
                                                         <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
                                                     </div>
@@ -165,7 +175,7 @@ const request = () => {
                                                 <td className="pr-6 whitespace-no-wrap">
                                                     <div className="flex items-center">
                                                         <div className="h-8 w-8">
-                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                                                            <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full  shadow" />
                                                         </div>
                                                         <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
                                                     </div>

@@ -6,7 +6,7 @@ import { Rating, Button } from "@material-tailwind/react";
 
 const TourCard = ({ image, name, des }) => {
     return (
-        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4 my-2 relative shadow-xl hover:bg-slate-100 cursor-pointer" >
+        <div className="card card-compact rounded-xl bg-white sm:w-44 w-52 h-52 sm:mr-4  relative shadow-xl hover:bg-slate-100 cursor-pointer" >
             <figure>
             <Link to="/travel_guide_mytours_more">
                 <img src={image} alt="kandy" className=' rounded-xl sm:w-40 w-48 h-24 m-2 cursor-pointer' />

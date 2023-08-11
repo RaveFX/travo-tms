@@ -5,7 +5,7 @@ const Calendar = () => {
         <div className="w-[47vh] bg-primary">
             {/* Calendar Component Code */}
             <div className="  shadow-lg ">
-                <div className="md:p-2 md:pb-8 w-[46vh] h-[40vh] dark:bg-primary bg-white rounded-md">
+                <div className="md:p-2 md:pb-8 w-[44vh] h-[36vh] dark:bg-primary bg-white rounded-md">
                     <div className=" flex items-center justify-between">
                         <h1 className="text-xl font-bold dark:text-textGray text-gray-800">October 2020</h1>
                         <div className="flex items-center text-gray-800 dark:text-gray-100">

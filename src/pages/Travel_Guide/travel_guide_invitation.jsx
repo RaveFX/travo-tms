@@ -83,16 +83,26 @@ const invitation = () => {
 
 
     ]
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
 
 
 
     return (
         <div className='flex'>
-            <div><Sidebar /></div>
-            <div className='flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+            <div ><Sidebar /></div>
+            <div className='h-screen flex flex-grow flex-col'>
+                <div>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
                 
-                    <div className='flex sm:flex-row flex-col'>
+                    <div className='overflow-y-auto flex sm:flex-row flex-col'>
 
                         <div className='flex flex-wrap mx-auto '>
                             <div class="mt-4 flex gap-2 ml-1/2">

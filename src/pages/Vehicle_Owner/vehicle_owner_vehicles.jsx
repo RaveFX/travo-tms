@@ -107,11 +107,11 @@ const Vehicles = () => {
         { title: "Add New", variant: "outlined" }
     ]
     const lists=[
-        {names:"Nissan Wingroad Estate",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"US$250",img:"../public/15.png"},
-        {names:"Toyota Prius",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"US$250",img:"../public/16.png"},
-        {names:"Suzuki Alto",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"US$250",img:"../public/17.png"},
-        {names:"Perodua Axia",seat:4,large_bag:1,milage:"450km per rental",small_bag:1,type:"Automatic",price:"US$250",img:"../public/18.png"},
-        {names:"Suzuki Wagon R",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"US$250",img:"../public/19.png"}
+        {names:"Nissan Wingroad Estate",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"LKR2500",img:"../public/15.png"},
+        {names:"Toyota Prius",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"LKR2500",img:"../public/16.png"},
+        {names:"Suzuki Alto",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"LKR2500",img:"../public/17.png"},
+        {names:"Perodua Axia",seat:4,large_bag:1,milage:"450km per rental",small_bag:1,type:"Automatic",price:"LKR2500",img:"../public/18.png"},
+        {names:"Suzuki Wagon R",seat:4,large_bag:1,milage:"Unlimited Milage",small_bag:1,type:"Automatic",price:"LKR2500",img:"../public/19.png"}
     ]
 
 
@@ -121,8 +121,10 @@ const Vehicles = () => {
         <div className='flex'>
             <div><Vehicle_Owner_Sidebar /></div>
 
-            <div className='flex flex-grow flex-col'>
+            <div className='h-screen flex flex-grow flex-col'>
                 <div><TopNavbar /></div>
+                <div className="overflow-y-auto">
+
                 <Button className="w-48 rounded-full justify-end" variant="outlined">Add New Category</Button>
                 <div className=" flex flex-row overflow-auto my-5 xs:justify-center">
 
@@ -141,6 +143,7 @@ const Vehicles = () => {
                 {lists.map((list, index) => (
                         <VehicleCard key={index} names={list.names} type={list.type} seat={list.seat} img={list.img} large_bag={list.large_bag} small_bag={list.small_bag} price={list.price} milage={list.milage}/>
                     ))}
+                </div>
                 </div>
             </div>
         </div>

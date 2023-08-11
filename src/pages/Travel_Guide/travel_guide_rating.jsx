@@ -3,14 +3,24 @@ import Sidebar from '../../components/sidebar';
 import TopNavbar from '../../components/topNavbar';
 
 export function rating() {
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
 
     return (
         <div className='flex overflow-hidden'>
             <div><Sidebar /></div>
 
-            <div className='flex  flex-grow flex-col overflow-y-auto flex-1'>
-                <div><TopNavbar /></div>
-                <div className=' flex sm:flex-row flex-wrap  w-full h-full overflow-y-auto flex-1 my-5 xs:justify-center'>
+            <div className='h-screen flex  flex-grow flex-col overflow-y-auto flex-1'>
+                <div>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
+                <div className=' flex sm:flex-row flex-wrap  w-full h-screen overflow-y-auto flex-1 my-5 xs:justify-center'>
                     <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>

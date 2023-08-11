@@ -58,11 +58,21 @@ const travel_guide_mytours = () => {
         { image: "https://tse1.mm.bing.net/th?id=OIP.MOUnGlhdLu1Betuwu1OaxQHaHa&pid=Api&P=0&h=220", name: "Galle /Fort /Weligama /Unawatuna ", des: "2 DAYS TRIP" },
 
     ];
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
     return (
         <div className='flex'>
             <div><Sidebar /></div>
             <div className='flex flex-grow flex-col w-full'>
-                <div><TopNavbar /></div>
+                <div>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
+                </div>
                 {/* <div><GridImage /></div> */}
                 <div className='justify-right px-5 flex xs:flex-col sm:flex-row md:flex-wrap lg:flex-wrap relative  '>
                                

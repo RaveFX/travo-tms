@@ -3,6 +3,7 @@ import NavBar from './components/navbar';
 import Landing from './components/landingPage';
 import CardList from './components/cards';
 import SideBar from './components/sidebar';
+import SideBar1 from './components/sidebar1';
 import TopNavbar from './components/topNavbar';
 import Travel_Guide_Dashboard from './pages/Travel_Guide/travel_guide_dashboard';
 import Travel_Guide_Mytours from './pages/Travel_Guide/travel_guide_mytours';
@@ -14,6 +15,8 @@ import Travel_Guide_RequestMore from './pages/Travel_Guide/travel_guide_requestM
 import Travel_Guide_Invitation from './pages/Travel_Guide/travel_guide_invitation';
 import Travel_Guide_Rating from './pages/Travel_Guide/travel_guide_rating';
 import Travel_Guide_Confirmed from './pages/Travel_Guide/travel_guide_confirmed';
+import Travel_Guide_Profile from './pages/Travel_Guide/travel_guide_profile';
+import Travel_Guide_Edit_Profile from './pages/Travel_Guide/travel_guide_edit_profile';
 import Profile from './components/profile';
 
 import Vehicle_Owner_Dashboard from './pages/Vehicle_Owner/vehicle_owner_dashboard';
@@ -52,6 +55,8 @@ export default function App() {
   <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
   <Route path='/travel_guide_requestMore' element={<Travel_Guide_RequestMore/>}></Route>
   <Route path='/travel_guide_confirmed' element={<Travel_Guide_Confirmed/>}></Route>
+  <Route path='/travel_guide_profile' element={<Travel_Guide_Profile/>}></Route>
+  <Route path='/travel_guide_edit_profile' element={<Travel_Guide_Edit_Profile/>}></Route>
   <Route path='/profile' element={<Profile/>}></Route>
   <Route path='/vehicle_owner_dashboard' element={<Vehicle_Owner_Dashboard/>}> </Route>
   <Route path='/vehicle_owner_vehicles' element={<Vehicle_Owner_Vehicles/>}> </Route>

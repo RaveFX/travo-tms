@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
 import Sidebar from '../../components/sidebar';
+import ListWithAvatar from '../../components/list';
 import TopNavbar from '../../components/topNavbar';
 import Calendar from '../../components/calender';
 import TourCard from '../../components/tour_card';
 import RateCard from '../../components/rate_card';
 import ConversationSection from '../../components/conversation';
-
-
 import RequestMore from '../../components/requestMore';
 import { Link } from 'react-router-dom';
 import { Rating, Button } from "@material-tailwind/react";
@@ -50,7 +49,7 @@ const people = [
 const TopSection = () => {
     return (
         <div className=' flex flex-row '>
-            <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' />
+            {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
             <div className=' mx-2 mr-[8vh]'>
                 <p className='text-3xl '>Hi,Stela!</p>
                 <p className=''>Travel Guide</p>
@@ -62,13 +61,13 @@ const TopSection = () => {
 // Dashboard Card Component
 const DashboardCard = ({ title, src, amount }) => {
     return (
-        <div className="card bg-base-100 shadow-xl sm:w-20 w-16 sm:h-20 h-16 bg-green1 hover:bg-white mt-4  mr-1.5 rounded-lg my-1 sm:ml-5">
+        <div className="card bg-base-100 shadow-xl sm:w-36 w-16 sm:h-24 h-16 bg-green1 hover:bg-white mt-4  mr-1.5 rounded-lg my-1 sm:ml-5">
             <figure>
-                <img src={src} alt={title} className='mx-[3.5vh] mt-2 sm:w-8 w-5' />
+                <img src={src} alt={title} className='mx-[8vh] mt-2 sm:w-8 w-5' />
             </figure>
-            <div className="card-body mt-1 text-xs items-center justify-center w-full">
+            <div className="card-body mt-1 text-sm items-center justify-center w-full">
                 <p className='text-center'>{title}</p>
-                <p className='text-center'>{amount}</p>
+                <p className='text-center font-bold'>{amount}</p>
             </div>
         </div>
     );
@@ -80,9 +79,9 @@ const DashboardTG = () => {
     const dashs = [
         { title: "Client", src: customer, amount: "128" },
         { title: "Complete", src: star, amount: "40" },
-        { title: "Invitations", src: invitation, amount: "55" },
         { title: "Ratings", src: star, amount: "25" },
         { title: "Request", src: request, amount: "95" },
+        { title: "Income", src: invitation, amount: "LKR.55" },
     ];
     const tours = [
         { image: "https://cdn.getyourguide.com/img/location/5c83eaac2b43a.jpeg/88.jpg", name: "Kandy: Temples, Gardens & Cultural Show City", des: "DAY TRIP" },
@@ -94,14 +93,22 @@ const DashboardTG = () => {
         { image: "https://tse3.mm.bing.net/th?id=OIP.sIAE0l361OTU8yKgV8IE-gHaEK&pid=Api&P=0&h=220", name: "Kandy", rate: "Rs.1500/Per Day" },
         { image: "https://tse1.mm.bing.net/th?id=OIP.CfQds65sJmXZq9mM5kvn8wHaEg&pid=Api&P=0&h=220", name: "Matara", rate: "Rs.800/Per Day" },
     ]
+    const topnav=[
+        {path:"/travel_guide_profile"}
+    ]
 
 
     return (
         <div className='flex'>
             <div><Sidebar /></div>
 
-            <div className='flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+            <div className='h-screen flex flex-grow flex-col'>
+                <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
                 <div className='overflow-y-auto flex-1'>
                     {/* <RequestMore/> */}
                     <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button>
@@ -120,43 +127,55 @@ const DashboardTG = () => {
                             ))}
                         </div>
 
-                        {/* Calendar (Upper Right Corner) */}
-                        <div className='flex sm:flex-row   justify-end mt-2'>
-                            <Calendar />
-                        </div>
-                    </div>
-                    <div className='my-16 mx-8 '>
-                        {/* My Tours Section (Bottom Left Corner) */}
-                        <div className='w-1/2 flex   flex-row text-dimBlack relative my-2  sm:bottom-[250px] '>
-                        <p className='w-3/4 text-4xl ' >My Tours</p>
-                        <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/travel_guide_mytours'>see more </Link></Button>
-                        </div>
 
-                        {/* My Tours Cards */}
-                        <div className='flex flex-row'>
-                            <div className='flex flex-wrap relative sm:bottom-[250px]  '>
+                    </div>
+                    <div className='flex'>
+                        <div className='my-6 mx-4 w-1/2'>
+
+                        <div className='flex   flex-row text-dimBlack relative '>
+                                <p className='w-3/4 text-3xl ' >Request</p>
+                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/travel_guide_request'>see more </Link></Button>
+                            </div>
+                            <div className='flex flex-wrap relative  '>
+                                {/* List */}
+                               <ListWithAvatar/>
+                               
+
+                            </div>
+                            
+
+                           
+                                <div className='mt-4 mb-1 flex flex-row text-dimBlack relative   '>
+                                    <p className='w-3/4 text-3xl ' >My Rates</p>
+                                    <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
+
+                                </div>
+                                <div className='sm:flex flex-row relative ' >
+                                    {rates.map((rate, index) => (
+                                        <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
+                                    ))}
+                                </div>
+                           
+                        </div>
+                        <div className='my-2 '>
+                            {/* Calendar (Upper Right Corner) */}
+                            <div className='flex sm:flex-row   justify-center '>
+                                <Calendar />
+                            </div>
+                            {/* My Tours Cards */}
+
+                            <div className='flex   flex-row text-dimBlack relative '>
+                                <p className='w-3/4 text-2xl ' >My Tours</p>
+                                <Button variant="text" className=" text-xs pt-3 text-button1 text-center"><Link to='/travel_guide_mytours'>see more </Link></Button>
+                            </div>
+                            <div className='flex flex-wrap relative  '>
                                 {/* Tour Cards */}
                                 {tours.map((tour, index) => (
                                     <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
                                 ))}
-                                
+
                             </div>
 
-                            {/* Conversation Section (Bottom Right Corner) */}
-                            <ConversationSection />
-                        </div>
-
-                    </div>
-                    <div className=' mx-8 w-1/2 '>
-                        <div className='mb-1 flex flex-row text-dimBlack relative  sm:bottom-[400px] '>
-                            <p className='w-3/4 text-4xl ' >My Rates</p>
-                            <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
-
-                        </div>
-                        <div className='sm:flex flex-row relative sm:bottom-[400px]' >
-                            {rates.map((rate, index) => (
-                                <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
-                            ))}
                         </div>
                     </div>
                 </div>

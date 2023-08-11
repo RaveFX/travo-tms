@@ -8,9 +8,9 @@ export function rating() {
         <div className='flex '>
             <div><Vehicle_Owner_Sidebar /></div>
 
-            <div className='flex  flex-grow flex-col'>
+            <div className='h-screen flex  flex-grow flex-col'>
                 <div><TopNavbar /></div>
-                <div className=' flex sm:flex-row flex-wrap  w-full h-full overflow-auto my-5 xs:justify-center'>
+                <div className='overflow-y-auto flex sm:flex-row flex-wrap  w-full h-full overflow-auto my-5 xs:justify-center'>
                     <div className="w-[300px] bg-back m-3 p-5">
                         <div className="flex my-10 ">
                             <div className="w-1/2"><p>2023 Mar 10</p></div>
