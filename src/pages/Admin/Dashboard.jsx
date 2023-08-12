@@ -12,6 +12,8 @@ import Storemanager_barchart from '../../components/Storemanager_barchart';
 import ConversationSection from '../../components/conversation';
 import Storemanager_piechart from '../../components/Storemanager_piechart'
 import Storemanager_delivery from '../../components/Storemanager_delivery'
+import Barchart from '../../components/Adminbarchart'
+import Piechart from '../../components/Adminpiechart'
 
 
 
@@ -431,19 +433,54 @@ const Order = () => {
 }
 
 export default function Dashboard() {
+
+    const dashs = [
+        { title: "Total Travelers", src: client, amount: "124" },
+        { title: "Total Hotels", src: complete, amount: "45" },
+        { title: "Total Activities", src: bookmark, amount: "40" },
+        { title: "Total Vehicles", src: menu, amount: "20" },
+        { title: "Total Orders", src: menu, amount: "20" },
+        { title: "Registrtion Requests", src: menu, amount: "20" },
+    ];
     return (
-        <div className='flex flex-col gap-4'>
-            <DashboardTG />
+        // <div className='flex flex-col gap-4'>
+        //     <DashboardTG />
 
-            <Order />
-            {/* <ConversationSection /> */}
-            <Storemanager_piechart />
-            <Storemanager_delivery />
-            <Order />
-
-
+        //     <Order />
+        //     {/* <ConversationSection /> */}
+        //     <Storemanager_piechart />
+        //     <Storemanager_delivery />
+        //     <Order />
 
 
+
+
+
+        // </div>
+        <div className='flex m-2'>
+            <div className='w-7/8'>
+                <div className=' flex flex-row '>
+                    {/* <div className='m-5'> */}
+                    {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
+                    {/* </div> */}
+                    <div className='flex  sm:flex-shrink flex-wrap mr-6'>
+                        {dashs.map((dash, index) => (
+                            <DashboardCard key={index} title={dash.title} src={dash.src} />
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <div className='grid gap-3 md:grid-cols-2'>
+                        <Order width="50%" height={350} />
+                        <Barchart />
+                    </div>
+                </div>
+
+            </div>
+            <div className='w-1/8 absolute right-6'>
+                <Calendar />
+                <Piechart />
+            </div>
 
         </div>
     );
