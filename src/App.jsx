@@ -1,23 +1,23 @@
-import '@fontsource/poppins';
-import NavBar from './components/navbar';
-import Landing from './components/landingPage';
-import CardList from './components/cards';
-import SideBar from './components/sidebar';
-import Tables from './components/table';
-import Schedule from './components/schedule';
-import TopNavbar from './components/topNavbar';
-import Rating from './components/rating';
+import "@fontsource/poppins";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Schedule from "./pages/Activity_Agent_Schedule";
+import ScheduleDetails from "./pages/Activity_Agent_Schedule_Details";
+import ReviewsDetails from "./pages/Reviews_Details";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
     <>
-    <NavBar/>
-    <Rating/>
-    <Tables/>
-    <Schedule/>
-    <TopNavbar/>
-    <SideBar/>
-    <div className="bg-indigo-500 w-full h-screen"></div>
+      <Router>
+        <Routes>
+          <Route exact path="/schedule" element={<Schedule />} />
+          <Route exact path="/schedule/details" element={<ScheduleDetails />} />
+          <Route exact path="/reviews" element={<ReviewsDetails />} />
+          <Route exact path="/profile" element={<Profile />} />
+        </Routes>
+      </Router>
+
+      
     </>
-  )
+  );
 }

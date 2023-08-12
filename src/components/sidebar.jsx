@@ -44,29 +44,24 @@ export default function Sidebar(props) {
     },
     {
       icon: <MapIcon className="h-5 w-5" />,
-      name: "My Trips",
-      link: "/mytrips",
+      name: "Activities",
+      link: "/activities",
     },
     {
       icon: <HeartIcon className="h-5 w-5" />,
-      name: "Favourite",
-      link: "/favourite",
+      name: "Schedule",
+      link: "/schedule",
     },
     {
       icon: <UserGroupIcon className="h-5 w-5" />,
-      name: "Community",
-      link: "/community",
-    },
-    {
-      icon: <BanknotesIcon className="h-5 w-5" />,
-      name: "Transactions",
-      link: "/transactions",
+      name: "Reviews",
+      link: "/reviews",
     },
     {
       icon: <Cog6ToothIcon className="h-5 w-5" />,
-      name: "Settings",
-      link: "/settings",
-    },
+      name: "Profile",
+      link: "/profile",
+    }
   ];
 
   // const wValue = isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]";

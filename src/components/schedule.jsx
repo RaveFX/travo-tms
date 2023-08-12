@@ -16,7 +16,7 @@ export default function Schedule() {
         {/* Swap the positions of the two divs */}
         <div className="grid grid-cols-2 grid-rows-1 gap-2 sm:gap-60 lg:gap-8">
           <img
-            src="safari.jpg"
+            src="/safari.jpg"
             // alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
             className="rounded-lg bg-gray-100 w-full h-full object-center object-cover lg:col-span-2"
           />
