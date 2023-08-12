@@ -26,7 +26,9 @@ function App() {
       
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/mytrips" element={<Mytrips />} />
+            <Route path="/mytrips" element={<Mytrips />} >
+              
+            </Route>
             <Route path="/trip-planner" element={<TripPlanner />} />
             <Route path="/itinerary" element={<Itinerary />} />
             {/* <Route path="/mytrips" element={<Mytrips />} /> */}

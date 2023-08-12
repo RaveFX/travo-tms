@@ -22,7 +22,7 @@ import {
   import {
     RectangleGroupIcon,
     MapIcon,
-    HeartIcon,
+    ShoppingCartIcon,
     UserGroupIcon,
     Cog6ToothIcon,
     BanknotesIcon,
@@ -56,11 +56,11 @@ import {
     const navList = [
       {icon : <RectangleGroupIcon className="h-5 w-5" />, name : "Dashboard", link : "/dashboard"},
       {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/mytrips",subItems: [
-        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/itinerary" },
+        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/mytrips/itinerary" },
         { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "/mytrips/selections" },
         { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "/mytrips/saves" },
       ],},
-      {icon : <HeartIcon className="h-5 w-5" />, name : "Favourite", link : "/favourite"},
+      {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/community"},
       {icon : <BanknotesIcon className="h-5 w-5" />, name : "Transactions", link : "/transactions"},
       {icon : <Cog6ToothIcon className="h-5 w-5" />, name : "Settings", link : "/settings"},
@@ -125,7 +125,7 @@ import {
             ))
             }
           </List>
-          <List className={`!min-w-full Flex flex-col mt-[150px] text-white items-center`}>
+          <List className={`!min-w-full Flex flex-col ${isSubSidebarOpen ? 'mt-[80px]' : 'mt-[225px]'} text-white items-center`}>
             <ListItem className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}>
               <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />

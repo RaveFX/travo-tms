@@ -1,11 +1,13 @@
 import React, { useState }  from 'react';
 import Sidebar from '../web-component/Sidebar';
 import TopNavbar from '../web-component/Navbar';
-import  Members  from '../web-component/Members';
+
+import { DayTabs } from '../web-component/DayTabs';
 import { TripNameBar } from '../web-component/TripName';
 import Calendar from '../web-component/calander';
 import BacknNext from '../web-component/BackNext';
 import { useNavigate } from 'react-router-dom';
+import Members from '../web-component/Members';
 
 function Itinerary() {
   const navigate = useNavigate();
@@ -26,18 +28,35 @@ function Itinerary() {
     setIsSubSidebarOpen(true);
   };
 
+
+  
+
   
   return (
-    <div className="flex h-screen overflow-hidden ">
+    <>
+    <div className="flex overflow-hidden ">
         <Sidebar active="Itinerary" isSubSidebarOpen={isSubSidebarOpen} setIsSubSidebarOpen={setIsSubSidebarOpen}/>
-        <div className="flex flex-col w-screen bg-[#D9D9D9] bg-opacity-20 overflow-hidden ">
+        <div className="flex flex-col w-screen h-screen bg-[#D9D9D9] bg-opacity-20 overflow-y-scroll ">
           <TopNavbar />
           <div className='flex justify-between'>
-            <TripNameBar isSubSidebarOpen={isSubSidebarOpen} />
+            <TripNameBar isSubSidebarOpen={isSubSidebarOpen}  isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/>
           </div>
-          {isMemberOpen && <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />}
+          <div>
+            {/* <Chat /> */}
+            <DayTabs/>
+            
+
+            {/* <MemberPopup isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/> */}
+            {isMemberOpen && <Members isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/>}
+          </div>
+          <div>
+            <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} /> 
+          </div>
+
+          
         </div>
     </div>
+    </>
   );
 }
 

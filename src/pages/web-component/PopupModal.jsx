@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BoxForm from './BoxForm';
 
-const PopupModal = (props) => {
+const MemberPopup = (props) => {
 
   const {isOpen, setIsOpen} = props;
 
@@ -12,4 +12,4 @@ const PopupModal = (props) => {
   );
 };
 
-export default PopupModal;
+export default MemberPopup;
