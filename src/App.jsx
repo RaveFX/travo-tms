@@ -6,6 +6,7 @@ import AboutUs from "./pages/about";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
 import Budget from "./pages/budget";
+import Store from "./pages/store";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route exact path="/Services" element={<Services />} />
           <Route exact path="/Contact" element={<Contact />} />
           <Route exact path="/Budget" element={<Budget />} />
+          <Route exact path="/Store" element={<Store />} />
         </Routes>
       </Router>
 

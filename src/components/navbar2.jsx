@@ -28,7 +28,7 @@ import { Link } from "react-router-dom";
 export default function TopNavbar() {
   const [hasNewNotification, setHasNewNotification] = useState(true);
   return (
-    <Navbar className="font-poppins shadow-sm rounded-none">
+    <Navbar className=" font-poppins shadow-sm rounded-none">
       <div className="flex items-start flex-wrap justify-between gap-y-4 ">
         <div className="relative flex w-full gap-2 md:w-max rounded-full">
           <Input

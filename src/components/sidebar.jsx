@@ -22,6 +22,7 @@ import {
   BanknotesIcon,
   PowerIcon,
   ChevronLeftIcon,
+  BuildingStorefrontIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Sidebar(props) {
@@ -48,9 +49,9 @@ export default function Sidebar(props) {
       link: "/mytrips",
     },
     {
-      icon: <HeartIcon className="h-5 w-5" />,
-      name: "Favourite",
-      link: "/favourite",
+      icon: <BuildingStorefrontIcon className="h-5 w-5" />,
+      name: "Store",
+      link: "/Store",
     },
     {
       icon: <UserGroupIcon className="h-5 w-5" />,
@@ -72,11 +73,11 @@ export default function Sidebar(props) {
   // const wValue = isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]";
 
   return (
-    <div className="flex font-poppins">
+    <div className=" flex font-poppins">
       <Card
         className={`${
-          isSidebarOpen ? "w-[16.25rem] sticky" : "sticky w-[4rem]"
-        } sticky font-poppins bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen top-0 rounded-none transition-all duration-300 ease-in-out`}
+          isSidebarOpen ? " w-[16.25rem]" : " w-[4rem]"
+        } font-poppins bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen top-0 rounded-none transition-all duration-300 ease-in-out`}
       >
         <div className="">
           <Typography variant="h5" color="white">
