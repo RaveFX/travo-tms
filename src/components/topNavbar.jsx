@@ -2,6 +2,8 @@
 import React from 'react';
 import SearchBar from '../components/searchbar';
 import { Link } from 'react-router-dom';
+import { people01 } from '../assets'
+
 
 
 const TopNavbar = ({path}) => {
@@ -16,7 +18,7 @@ const TopNavbar = ({path}) => {
                     <div className='flex flex-row justify-items-center gap-[10px]'>
                         <img src="../public/notification.svg" alt="Logo" className="" />
                         <Link to={path}>
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
+                        <img src={people01} 
                         alt="Logo" className="w-8 rounded-full cursor-pointer"  />
                         </Link>
                         <div className='font-poppins font-medium text-base justify-center'>Natashia Bunny</div>

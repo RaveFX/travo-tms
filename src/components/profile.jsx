@@ -10,7 +10,7 @@ import {
 import { Link } from 'react-router-dom';
 
 
-const profile = () => {
+const profile = ({path}) => {
     return (
 
 
@@ -36,9 +36,9 @@ const profile = () => {
                             {/* <p><span className="font-semibold"></span> Edit Profile</p> */}
                             <Popover placement="bottom">
                                 <PopoverHandler>
-                                    <Link to="/travel_guide_edit_profile">
+                                    <Link to={path}>
 
-                                        <Button>Edit Profile</Button>
+                                        <Button className='rounded-full bg-button1'>Edit Profile</Button>
                                     </Link>
                                 </PopoverHandler>
 
@@ -51,7 +51,7 @@ const profile = () => {
                                 <PopoverHandler>
                                     <Link to="#">
 
-                                        <Button>Upgrade Profile</Button>
+                                        <Button className='rounded-full bg-button1'>Upgrade Profile</Button>
                                     </Link>
                                 </PopoverHandler>
 
@@ -64,7 +64,7 @@ const profile = () => {
                                 <PopoverHandler>
                                     <Link to="#">
 
-                                        <Button>Settings</Button>
+                                        <Button className='rounded-full bg-button1'>Settings</Button>
                                     </Link>
                                 </PopoverHandler>
 

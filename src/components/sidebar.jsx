@@ -11,8 +11,10 @@ const Sidebar = () => {
     { title: "Tours", src: invitation , route:"/travel_guide_mytours",current:false },
     { title: "Ratings", src: star,route:"/travel_guide_rating",current:false  },
     { title: "Message", src: message ,route:"/travel_guide_request",current:false },
-    { title: "Profile", src: user, gap: true,route:"/travel_guide_request",current:false  },
-    { title: "Setting", src: settings ,route:"/travel_guide_request",current:false },
+    { title: "Profile", src: user, gap: true,route:"/travel_guide_profile",current:false  },
+    { title: "Setting", src: settings ,route:"#",current:false },
+    { title: "LogOut", src: dashboard, gap: true,route:"#",current:false  },
+
   ]
   return (
     <div className='flex bg-gradient-to-b  from-[#377A85] to-[#72C075]'>

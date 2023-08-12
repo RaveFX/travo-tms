@@ -63,9 +63,9 @@ const DashboardCard = ({ title, src, amount }) => {
     return (
         <div className="card bg-base-100 shadow-xl sm:w-36 w-16 sm:h-24 h-16 bg-green1 hover:bg-white mt-4  mr-1.5 rounded-lg my-1 sm:ml-5">
             <figure>
-                <img src={src} alt={title} className='mx-[8vh] mt-2 sm:w-8 w-5' />
+                <img src={src} alt={title} className='sm:mx-[8vh] mx-[3vh] mt-2 sm:w-8 w-5' />
             </figure>
-            <div className="card-body mt-1 text-sm items-center justify-center w-full">
+            <div className="card-body sm:mt-1 sm:text-sm  text-xs items-center justify-center w-full">
                 <p className='text-center'>{title}</p>
                 <p className='text-center font-bold'>{amount}</p>
             </div>
@@ -84,7 +84,7 @@ const DashboardTG = () => {
         { title: "Income", src: invitation, amount: "LKR.55" },
     ];
     const tours = [
-        { image: "../public/19.png", name: "Suzuki Wagon R", des: "LKR2500" },
+        { image: "../public/19.png", name: "Suzuki Wagon R", des: "LKR2500",path:"/vehicle_owner_vehicles" },
         { image: "../public/16.png", name: "Toyota Priu", des: "LKR2500" },
         { image: "../public/17.png", name: "Suzuki Alto ", des: "LKR2500" },
 
@@ -93,6 +93,10 @@ const DashboardTG = () => {
         { image: "../public/15.png", name: "Nissan", rate: "Rs.1500/Per Km" },
         { image: "../public/16.png", name: "Toyota Prius", rate: "Rs.800/Per Km" },
     ]
+    const topnav=[
+        {path:"/vehicle_owner_profile"}
+    ]
+   
 
 
     return (
@@ -100,7 +104,12 @@ const DashboardTG = () => {
             <div><Vehicle_Owner_Sidebar /></div>
 
             <div className='h-screen flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
+            <div>
+                    
+                    {topnav.map((nav, index) => (
+                                <TopNavbar key={index} path={nav.path}  />
+                            ))}
+                </div>
                 <div className='overflow-y-auto flex-1'>
                     {/* <RequestMore/> */}
 
@@ -120,51 +129,53 @@ const DashboardTG = () => {
 
 
                     </div>
-                    <div className='flex'>
-                        <div className='my-6 mx-4 w-1/2'>
-
-                        <div className='flex   flex-row text-dimBlack relative '>
-                                <p className='w-3/4 text-3xl ' >Request</p>
-                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/travel_guide_request'>see more </Link></Button>
-                            </div>
-                            <div className='flex flex-wrap relative  '>
-                                {/* List */}
-                               <ListWithAvatar/>
-                               
-
-                            </div>
-                            
-
-                           
-                                <div className='mt-4 mb-1 flex flex-row text-dimBlack relative   '>
-                                    <p className='w-3/4 text-2xl ' >My Rates</p>
-                                    <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
-
-                                </div>
-                                <div className='sm:flex flex-row relative ' >
-                                    {rates.map((rate, index) => (
-                                        <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
-                                    ))}
-                                </div>
-                           
-                        </div>
-                        <div className='my-2 '>
+                    <div className='sm:flex '>
+                        <div className='my-3 mx-4 w-1/2'>
                             {/* Calendar (Upper Right Corner) */}
                             <div className='flex sm:flex-row   justify-center '>
                                 <Calendar />
                             </div>
+
+                            <div className='flex   flex-row text-dimBlack relative '>
+                                <p className='w-3/4 text-3xl ' >Request</p>
+                                <Button variant="text" className=" text-xs pt-3 text-button1 text-center"><Link to='/travel_guide_request'>see more </Link></Button>
+                            </div>
+                            <div className='flex flex-wrap relative  '>
+                                {/* List */}
+                                <ListWithAvatar />
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div className='my-2 '>
+
                             {/* My Tours Cards */}
 
                             <div className='flex   flex-row text-dimBlack relative '>
                                 <p className='w-3/4 text-2xl ' >My Vehicles</p>
-                                <Button variant="text" className=" text-xs pt-3 text-button1 text-center"><Link to='/vehicle_owner_vehicles'>see more </Link></Button>
+                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/vehicle_owner_vehicles'>see more </Link></Button>
                             </div>
                             <div className='flex flex-wrap relative  '>
                                 {/* Tour Cards */}
                                 {tours.map((tour, index) => (
-                                    <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
+                                    <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} path={tour.path} />
                                 ))}
 
+                            </div>
+                            <div className='mt-10 mb-1 flex flex-row text-dimBlack relative   '>
+                                <p className='w-3/4 text-2xl ' >My Rates</p>
+                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/vehicle_owner_rates">see more </Link></Button>
+
+                            </div>
+                            <div className='sm:flex flex-row relative ' >
+                                {rates.map((rate, index) => (
+                                    <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
+                                ))}
                             </div>
 
                         </div>

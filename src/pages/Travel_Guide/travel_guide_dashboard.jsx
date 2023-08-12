@@ -93,8 +93,8 @@ const DashboardTG = () => {
         { image: "https://tse3.mm.bing.net/th?id=OIP.sIAE0l361OTU8yKgV8IE-gHaEK&pid=Api&P=0&h=220", name: "Kandy", rate: "Rs.1500/Per Day" },
         { image: "https://tse1.mm.bing.net/th?id=OIP.CfQds65sJmXZq9mM5kvn8wHaEg&pid=Api&P=0&h=220", name: "Matara", rate: "Rs.800/Per Day" },
     ]
-    const topnav=[
-        {path:"/travel_guide_profile"}
+    const topnav = [
+        { path: "/travel_guide_profile" }
     ]
 
 
@@ -104,10 +104,10 @@ const DashboardTG = () => {
 
             <div className='h-screen flex flex-grow flex-col'>
                 <div>
-                    
+
                     {topnav.map((nav, index) => (
-                                <TopNavbar key={index} path={nav.path}  />
-                            ))}
+                        <TopNavbar key={index} path={nav.path} />
+                    ))}
                 </div>
                 <div className='overflow-y-auto flex-1'>
                     {/* <RequestMore/> */}
@@ -126,42 +126,26 @@ const DashboardTG = () => {
                                 <DashboardCard key={index} title={dash.title} src={dash.src} amount={dash.amount} />
                             ))}
                         </div>
-
-
                     </div>
                     <div className='flex'>
-                        <div className='my-6 mx-4 w-1/2'>
-
-                        <div className='flex   flex-row text-dimBlack relative '>
-                                <p className='w-3/4 text-3xl ' >Request</p>
-                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to='/travel_guide_request'>see more </Link></Button>
-                            </div>
-                            <div className='flex flex-wrap relative  '>
-                                {/* List */}
-                               <ListWithAvatar/>
-                               
-
-                            </div>
-                            
-
-                           
-                                <div className='mt-4 mb-1 flex flex-row text-dimBlack relative   '>
-                                    <p className='w-3/4 text-3xl ' >My Rates</p>
-                                    <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
-
-                                </div>
-                                <div className='sm:flex flex-row relative ' >
-                                    {rates.map((rate, index) => (
-                                        <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
-                                    ))}
-                                </div>
-                           
-                        </div>
-                        <div className='my-2 '>
+                        <div className='my-3 mx-4 w-1/2'>
                             {/* Calendar (Upper Right Corner) */}
                             <div className='flex sm:flex-row   justify-center '>
                                 <Calendar />
                             </div>
+
+                            <div className='flex   flex-row text-dimBlack relative '>
+                                <p className='w-3/4 text-3xl ' >Request</p>
+                                <Button variant="text" className=" text-xs pt-3 text-button1 text-center"><Link to='/travel_guide_request'>see more </Link></Button>
+                            </div>
+                            <div className='flex flex-wrap relative  '>
+                                {/* List */}
+                                <ListWithAvatar />
+                            </div>
+                            
+                        </div>
+                        <div className='my-2 '>
+                            
                             {/* My Tours Cards */}
 
                             <div className='flex   flex-row text-dimBlack relative '>
@@ -174,6 +158,15 @@ const DashboardTG = () => {
                                     <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
                                 ))}
 
+                            </div>
+                            <div className='mt-10 mb-1 flex flex-row text-dimBlack relative   '>
+                                <p className='w-3/4 text-3xl ' >My Rates</p>
+                                <Button variant="text" className=" text-xs pt-5 text-button1 text-center"><Link to="/travel_guide_myrates">see more </Link></Button>
+                            </div>
+                            <div className='sm:flex flex-row relative ' >
+                                {rates.map((rate, index) => (
+                                    <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
+                                ))}
                             </div>
 
                         </div>

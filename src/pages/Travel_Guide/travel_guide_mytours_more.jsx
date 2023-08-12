@@ -38,7 +38,7 @@ const GridImage = () => {
                     <ul class="list-disc ml-10">
                         <li>Pick up and drop-off is available from centrally located accommodation in Kandy</li>
                         <li>You must wear clothing that covers your shoulders and knees when visiting sacred or holy places</li>
-                        
+
 
                     </ul>
                 </div>
@@ -60,22 +60,22 @@ const travel_guide_mytours_more = () => {
         { image: "https://tse1.mm.bing.net/th?id=OIP.MOUnGlhdLu1Betuwu1OaxQHaHa&pid=Api&P=0&h=220", name: "Galle /Fort /Weligama /Unawatuna ", des: "2 DAYS TRIP" },
 
     ];
-    const topnav=[
-        {path:"/travel_guide_profile"}
+    const topnav = [
+        { path: "/travel_guide_profile" }
     ]
     return (
         <div className='flex'>
             <div><Sidebar /></div>
-            <div className='flex flex-grow flex-col w-full'>
-                <div>
-                <div>
-                    
-                    {topnav.map((nav, index) => (
-                                <TopNavbar key={index} path={nav.path}  />
-                            ))}
-                </div>
-                </div>
+            <div className='h-screen flex flex-grow flex-col w-full'>
+                <div className='overflow-y-auto'>
+                    <div>
+
+                        {topnav.map((nav, index) => (
+                            <TopNavbar key={index} path={nav.path} />
+                        ))}
+                    </div>
                 <div><GridImage /></div>
+                </div>
 
             </div>
         </div>

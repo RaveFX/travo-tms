@@ -25,7 +25,10 @@ import Vehicle_Owner_Rates from './pages/Vehicle_Owner/vehicle_owner_rates';
 import Vehicle_Owner_Add_Vehicle from './pages/Vehicle_Owner/vehicle_owner_add_vehicle';
 import Vehicle_Owner_Add_Preview from './pages/Vehicle_Owner/vehicle_owner_add_preview';
 import Vehicle_Owner_Request from './pages/Vehicle_Owner/vehicle_owner_request';
+import Vehicle_Owner_RequestMore from './pages/Vehicle_Owner/vehicle_owner_requestMore';
 import Vehicle_Owner_Rating from './pages/Vehicle_Owner/vehicle_owner_rating';
+import Vehicle_Owner_Profile from './pages/Vehicle_Owner/vehicle_owner_profile';
+import Vehicle_Owner_Edit_Profile from './pages/Vehicle_Owner/vehicle_owner_edit_profile';
 import 'boxicons';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -64,7 +67,10 @@ export default function App() {
   <Route path='/vehicle_owner_add_vehicle' element={<Vehicle_Owner_Add_Vehicle/>}> </Route>
   <Route path='/vehicle_owner_add_preview' element={<Vehicle_Owner_Add_Preview/>}> </Route>
   <Route path='/vehicle_owner_request' element={<Vehicle_Owner_Request/>}> </Route>
+  <Route path='/vehicle_owner_requestMore' element={<Vehicle_Owner_RequestMore/>}></Route>
   <Route path='/vehicle_owner_rating' element={<Vehicle_Owner_Rating/>}> </Route>
+  <Route path='/vehicle_owner_profile' element={<Vehicle_Owner_Profile/>}></Route>
+  <Route path='/vehicle_owner_edit_profile' element={<Vehicle_Owner_Edit_Profile/>}></Route>
   
 </Routes>
 </BrowserRouter>

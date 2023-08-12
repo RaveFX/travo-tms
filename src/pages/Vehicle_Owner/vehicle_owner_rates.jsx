@@ -28,13 +28,13 @@ const CardDefault = ({ type, src }) => {
 
 
             <CardBody>
-                <Typography variant="h5"  className="text-center">
+                <Typography variant="h5" className="text-center">
 
                     {type}
 
                 </Typography>
 
-            <img src={src} alt="card-image" className="" />
+                <img src={src} alt="card-image" className="" />
             </CardBody>
 
         </Card>
@@ -46,7 +46,7 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
 
     return (
         <Card className="sm:w-[48rem] xs:w-[20rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
-            
+
             <CardBody className="p-5 bg-white">
                 <Typography variant="h5" color="blue-gray">{names}</Typography>
                 <div className="sm:flex lg:flex flex-row  ">
@@ -69,13 +69,13 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
 
                     </Typography>
                     <Typography className=" rounded-none " >
-               
-            
-                    <img
-                    src={src}
-                    alt="ui/ux review check"
-                    className="w-40"
-                />
+
+
+                        <img
+                            src={src}
+                            alt="ui/ux review check"
+                            className="w-40"
+                        />
                     </Typography>
                 </div>
                 <Typography variant="lead" className="mt-3 font-normal ">
@@ -121,30 +121,32 @@ const Rates = () => {
         <div className='flex'>
             <div><Vehicle_Owner_Sidebar /></div>
 
-            <div className='flex flex-grow flex-col'>
+            <div className='h-screen flex flex-grow flex-col'>
                 <div><TopNavbar /></div>
-                <p className="text-2xl p-3">Vehicle rates</p>
-                <div className=" flex flex-row overflow-auto  xs:justify-center">
+                <div className="overflow-y-auto">
+                    {/* <p className="text-2xl p-3">Vehicle rates</p> */}
+                    <div className=" flex flex-row overflow-auto  xs:justify-center">
 
-                    {vehicle_type.map((vehicle, index) => (
-                        <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
-                    ))}
-                    {/* <ButtonVariants  */}
-                </div>
-                <div className=" sm:flex flex-wrap justify-center ">
-                    {lists.map((list, index) => (
-                        <VegicleCard key={index} names={list.names} large_bag={list.large_bag} seat={list.seat} small_bag={list.small_bag} price={list.price} milage={list.milage} type={list.type} src={list.src} />
-                    ))}
-                    {/* <VegicleCard />
+                        {vehicle_type.map((vehicle, index) => (
+                            <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
+                        ))}
+                        {/* <ButtonVariants  */}
+                    </div>
+                    <div className=" sm:flex flex-wrap justify-center ">
+                        {lists.map((list, index) => (
+                            <VegicleCard key={index} names={list.names} large_bag={list.large_bag} seat={list.seat} small_bag={list.small_bag} price={list.price} milage={list.milage} type={list.type} src={list.src} />
+                        ))}
+                        {/* <VegicleCard />
                 <VegicleCard />
                 <VegicleCard />
                 <VegicleCard />
                 <VegicleCard /> */}
 
+                    </div>
                 </div>
-                
 
-               
+
+
             </div>
         </div>
     )

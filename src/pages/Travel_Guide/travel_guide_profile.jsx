@@ -16,6 +16,9 @@ const travel_guide_profile = () => {
     const basics = [
         { name: "Natashia Bunny", location: "Nugegoda,Colomco 5", email: "nata123@gamil.com" }
     ]
+    const edits=[
+        {path:"/travel_guide_edit_profile"}
+    ]
     return (
         <div className='flex'>
             <div><Sidebar /></div>
@@ -33,7 +36,12 @@ const travel_guide_profile = () => {
                     ))}
 
                 </div> */}
-                <Profile/>
+                <div>
+                {edits.map((edit, index) => (
+                        <Profile key={index} path={edit.path} />
+                    ))}
+                </div>
+                
             </div>
         </div>
     )
