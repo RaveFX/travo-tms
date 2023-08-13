@@ -1,6 +1,6 @@
 import React from 'react'
-import UserNav from './userNav'
-import SideBar from './sidebar'
+import UserNav from '../../components/userNav'
+import SideBar from '../../components/sidebar'
 import { Typography, Avatar, Rating } from "@material-tailwind/react";
 
 function Hotel_reviews() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Newnav from "./newnav";
+import Newnav from "../../components/newnav";
 import {
   Card,
   CardBody

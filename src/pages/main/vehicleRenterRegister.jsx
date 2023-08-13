@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import NavWhite from './navWhite'
+import NavWhite from '../../components/navWhite'
 
-function StoreManagerRegister() {
-    let navigate=useNavigate()
-  
-    const [user,setUser]=useState({
+function VehicleRenterRegister() {
+  let navigate=useNavigate()
+
+  const [user,setUser]=useState({
     email:"",
     password:"",
     dob:"",
@@ -14,24 +14,25 @@ function StoreManagerRegister() {
     addressLine2:"",
     city:"",
     distrct:"",
-    shop_name:"",
+    company_name:"",
     brn:"",
     contact_num:"",
-  
-    })
-  
-    const{email,password,addressLine1,addressLine2,city,shop_name,brn,contact_num,district}=user
-  
-    const onInputChange=(e)=>{
-      setUser({...user, [e.target.name]:e.target.value});
-  
-  };
-  
-  const onSubmit=async(e)=>{
-    e.preventDefault();
-    await axios.post("http://localhost:8080/api/v1/auth/register/store",user)
-    navigate("/")
-  };
+
+  })
+
+  const{email,password,addressLine1,addressLine2,city,company_name,brn,contact_num,district}=user
+
+  const onInputChange=(e)=>{
+    setUser({...user, [e.target.name]:e.target.value});
+
+};
+
+const onSubmit=async(e)=>{
+  e.preventDefault();
+  await axios.post("http://localhost:8080/api/v1/auth/register/vehicle_renter",user)
+  navigate("/")
+};
+
   return (
     <div className="py-1 sm:py-20">
     <NavWhite />
@@ -40,7 +41,7 @@ function StoreManagerRegister() {
     <div className="mx-auto max-w-2xl text-center">
     <div className="grid xl:grid-cols-2">
     <div>
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Store </h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Vehicle Renter </h2>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Input your information</h2>
         </div>
         <div>
@@ -56,15 +57,15 @@ function StoreManagerRegister() {
           
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
           <div>
-            <label htmlFor="shop_name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Store name
+            <label htmlFor="company_name" className="block text-sm font-semibold leading-6 text-gray-900">
+              Company name
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="shop_name"
-                value={shop_name} 
+                name="company_name"
+                value={company_name} 
                 onChange={(e)=>onInputChange(e)}
               />
             </div>
@@ -88,7 +89,7 @@ function StoreManagerRegister() {
            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
            <div>
             <label htmlFor="contact_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Contact number - store
+              Contact number 
             </label>
             <div className="mt-2.5">
               <input
@@ -241,12 +242,12 @@ function StoreManagerRegister() {
         </div>
       </form>
     </div>
-    <div className="lg:fixed top-0 right-0 mt-20 max-w-3xl ">
-    <img className="" src="/store_manager.png" alt="" />
+    <div className=" lg:fixed top-0 right-0 mt-20 max-w-3xl ">
+    <img className="" src="/vehicle_renter.png" alt="" />
     </div>
     </div>
     </div>
   )
 }
 
-export default StoreManagerRegister
+export default VehicleRenterRegister

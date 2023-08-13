@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
-import Newnav from "./newnav";
+import Newnav from "../../components/newnav";
 
 function Signup () {
   let navigate=useNavigate()

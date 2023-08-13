@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import NavWhite from './navWhite'
+import NavWhite from '../../components/navWhite'
 
 function ActivityAgentRegister() {
   let navigate=useNavigate()
@@ -17,10 +17,10 @@ function ActivityAgentRegister() {
     company_name:"",
     brn:"",
     contact_num:"",
-
+    category:""
   })
 
-  const{email,password,addressLine1,addressLine2,city,company_name,brn,contact_num,district}=user
+  const{email,password,addressLine1,addressLine2,city,company_name,brn,contact_num,district,category}=user
 
   const onInputChange=(e)=>{
     setUser({...user, [e.target.name]:e.target.value});
@@ -101,7 +101,33 @@ const onSubmit=async(e)=>{
               />
             </div>
             </div>
-            </div>
+            <div>
+               <label htmlFor="category" className="block text-sm font-semibold leading-6 text-gray-900">
+                 Category
+               </label>
+               <div className="mt-2.5">
+               <select
+               name="category"
+               value={category} 
+               onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             >
+             <option>{category}</option>
+               <option value="Safari">Safari</option>
+               <option value="Elephant Orphanage">Elephant Orphanage</option>
+               <option value="Whales and Dolphins watching">Whales and Dolphins watching</option>
+               <option value="Tours">Tours</option>
+               <option value="Boat Tours">Boat Tours</option>
+               <option value="Surfing">Surfing</option>
+               <option value="Arts and Crafts">Arts and Crafts</option>
+               <option value="Yoga">Yoga</option>
+               <option value="Other">Other</option>
+             </select>
+               </div>
+               
+              </div>
+              </div>
+            
             <div className="border-b border-gray-900/10 pb-12"></div>
             <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">

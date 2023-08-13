@@ -1,20 +1,23 @@
 import "@fontsource/poppins";
-import Landing from "./components/landingPage";
-import Signin from "./components/signin";
-import Signup from "./components/signup";
-import SignupChoice from "./components/signupChoice";
-import ServiceProviders from "./components/serviceProviders";
-import HotelRegister from "./components/hotelRegister";
-import ActivityAgentRegister from "./components/activityAgentRegister";
-import GuideRegister from "./components/guideRegister";
-import StoreManagerRegister from "./components/storeManagerRegister";
-import VehicleRenterRegister from "./components/vehicleRenterRegister";
-import Hotel_dashboard from "./components/hotel_dashboard";
-import Hotel_reviews from "./components/hotel_reviews";
-import Hotel_reservations from "./components/hotel_reservations";
-import Hotel_rooms from "./components/hotel_rooms";
-import Hotel_reseravationDetails from "./components/hotel_reseravationDetails";
-//import traveller_dashboard from "./components/traveller_dashboard";
+import PersistLogin from "./components/PersistLogin";
+import RequireAuth from "./components/RequireAuth";
+import Landing from "./pages/main/landingPage";
+import Signin from "./pages/main/signin";
+import Signup from "./pages/main/signup";
+import SignupChoice from "./pages/main/signupChoice";
+import ServiceProviders from "./pages/main/serviceProviders";
+import HotelRegister from "./pages/main/hotelRegister";
+import ActivityAgentRegister from "./pages/main/activityAgentRegister";
+import GuideRegister from "./pages/main/guideRegister";
+import StoreManagerRegister from "./pages/main/storeManagerRegister";
+import VehicleRenterRegister from "./pages/main/vehicleRenterRegister";
+import Hotel_dashboard from "./pages/hotel/hotel_dashboard";
+import Hotel_reviews from "./pages/hotel/hotel_reviews";
+import Hotel_reservations from "./pages/hotel/hotel_reservations";
+import Hotel_rooms from "./pages/hotel/hotel_rooms";
+import Hotel_reseravationDetails from "./pages/hotel/hotel_reseravationDetails";
+import Store_dashboard from "./pages/store/store_dashboard";
+import Traveller_dashboard from "./pages/traveler/traveller_dashboard";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 export default function App() {
@@ -38,7 +41,24 @@ export default function App() {
     <Route exact path="/hotelagent_reservations" element={<Hotel_reservations/>}/>
     <Route exact path="/hotelagent_rooms" element={<Hotel_rooms/>}/>
     <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails/>}/>
+    <Route exact path="/traveler_dashboard" element={<Traveller_dashboard/>}/>
     
+    
+    
+
+    <Route element={<PersistLogin/>}>
+                   <Route element={<RequireAuth allowedRoles={["TRAVELLER"]}/>}>
+                        {/* Routes Authorized to Admins */}
+                        <Route exact path="/traveler_dashboard" element={<Traveller_dashboard/>}/>
+                    </Route>
+                    <Route element={<RequireAuth allowedRoles={["STORE_MANAGER"]}/>}>
+                    {/* Routes Authorized to Admins */}
+                    <Route exact path="/store_dashboard" element={<Store_dashboard/>}/>
+                    </Route>
+    
+    
+    
+    </Route>
  </Routes>
     </Router>
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Newcards from "./cardsnew";
-import Testimonials from "./testimonials";
+import Newcards from "../../components/cardsnew";
+import Testimonials from "../../components/testimonials";
 import { Button } from "@material-tailwind/react";
-import Footers from "./footer";
+import Footers from "../../components/footer";
 import { Link } from "react-router-dom";
-import Newnav from "./newnav";
+import Newnav from "../../components/newnav";
 
 //import hero from "public/hero.png"
 

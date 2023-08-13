@@ -1,6 +1,6 @@
 import React from 'react'
-import UserNav from './userNav'
-import SideBar from './sidebar'
+import UserNav from '../../components/userNav'
+import SideBar from '../../components/sidebar'
 import { Link } from 'react-router-dom';
 
 function Hotel_reservations() {

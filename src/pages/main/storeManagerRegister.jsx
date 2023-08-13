@@ -1,44 +1,37 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import NavWhite from './navWhite'
+import NavWhite from '../../components/navWhite'
 
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-
-function GuideRegister() {
-  let navigate=useNavigate()
-
-  const [user,setUser]=useState({
-    fname:"",
-    lname:"",
+function StoreManagerRegister() {
+    let navigate=useNavigate()
+  
+    const [user,setUser]=useState({
     email:"",
     password:"",
     dob:"",
-    acc_status:"",
-    gender:"",
-    mobile_num:"",
     addressLine1:"",
     addressLine2:"",
     city:"",
     distrct:"",
-    nic:"",
-    qualifications:"",
-    
-
-  })
-
-  const{fname,lname,email,password,dob,mobile_num,addressLine1,addressLine2,city,gender,nic,qualifications,district}=user
-
-  const onInputChange=(e)=>{
-    setUser({...user, [e.target.name]:e.target.value});
-
-};
-
-const onSubmit=async(e)=>{
-  e.preventDefault();
-  await axios.post("http://localhost:8080/api/v1/auth/registerguide",user)
-  navigate("/")
-};
+    shop_name:"",
+    brn:"",
+    contact_num:"",
+  
+    })
+  
+    const{email,password,addressLine1,addressLine2,city,shop_name,brn,contact_num,district}=user
+  
+    const onInputChange=(e)=>{
+      setUser({...user, [e.target.name]:e.target.value});
+  
+  };
+  
+  const onSubmit=async(e)=>{
+    e.preventDefault();
+    await axios.post("http://localhost:8080/api/v1/auth/register/store",user)
+    navigate("/")
+  };
   return (
     <div className="py-1 sm:py-20">
     <NavWhite />
@@ -47,7 +40,7 @@ const onSubmit=async(e)=>{
     <div className="mx-auto max-w-2xl text-center">
     <div className="grid xl:grid-cols-2">
     <div>
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Travel Guide </h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Store </h2>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Input your information</h2>
         </div>
         <div>
@@ -59,131 +52,57 @@ const onSubmit=async(e)=>{
         </div>
       </div>
       <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={(e)=>onSubmit(e)}>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="fname" className="block text-sm font-semibold leading-6 text-gray-900">
-              First name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="fname"
-                value={fname}
-                onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="lname" className="block text-sm font-semibold leading-6 text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="lname"
-                value={lname}
-                onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            
-          </div>
-        </div>
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-          <div>
-            <label htmlFor="nic" className="block text-sm font-semibold leading-6 text-gray-900">
-              NIC
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="nic"
-                value={nic}
-                onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            
-           </div>
-          
-          <div>
-            <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mobile number
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                name="mobile_num"
-                value={mobile_num}
-                onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-            
-           </div>
-           </div>
-           <label htmlFor="mobile_num" className="block text-sm mt-5 font-semibold leading-6 text-gray-900">
-              Gender
-            </label>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-3">
-           
-           
       
-           <div className="flex items-center gap-x-3">
-           <input
-             id="male"
-             name="male"
-             type="radio"
-             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-           />
-           <label htmlFor="male" className="block text-sm f leading-6 text-gray-900">
-             Male
-           </label>
-         </div>
-         <div className="flex items-center gap-x-3">
-           <input
-             id="female"
-             name="female"
-             type="radio"
-             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-           />
-           <label htmlFor="female" className="block text-sm  leading-6 text-gray-900">
-             Female
-           </label>
-           
-         </div>
-       </div>  
-       <div className="border-b border-gray-900/10 pb-12"></div>    
-
-       <div className="col-span-full pt-12">
-       <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-         Resume
-       </label>
-       <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-         <div className="text-center">
-           <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-           <div className="mt-4 flex text-sm leading-6 text-gray-600">
-             <label
-               htmlFor="file-upload"
-               className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-             >
-               <span>Upload a file</span>
-               <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-             </label>
-             <p className="pl-1">or drag and drop</p>
+          
+            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
+          <div>
+            <label htmlFor="shop_name" className="block text-sm font-semibold leading-6 text-gray-900">
+              Store name
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="shop_name"
+                value={shop_name} 
+                onChange={(e)=>onInputChange(e)}
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
+              BRN
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="brn"
+                value={brn} 
+                onChange={(e)=>onInputChange(e)}
+              />
+            </div>
+            
            </div>
-           <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-         </div>
-       </div>
-     </div>
-     
-   
-
-          
-          <div className="border-b border-gray-900/10 pb-12"></div>
-          
+           </div>
+           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
+           <div>
+            <label htmlFor="contact_num" className="block text-sm font-semibold leading-6 text-gray-900">
+              Contact number - store
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="contact_num"
+                value={contact_num} 
+                onChange={(e)=>onInputChange(e)}
+              />
+            </div>
+            </div>
+            </div>
+            <div className="border-b border-gray-900/10 pb-12"></div>
+            <div>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
             <div>
               <label htmlFor="addressLine1" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -275,61 +194,59 @@ const onSubmit=async(e)=>{
              
 
               
-              
-             
-          
+              </div>
 
-            
+              <div className="border-b border-gray-900/10 pb-12"></div>
 
-          <div className="border-b border-gray-900/10 pb-12"></div>
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-          <div>
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
+              <div>
             <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
               Email
             </label>
             <div className="mt-2.5">
               <input
                 type="text"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 name="email"
-                value={email}
+                value={email} 
                 onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="password"
-                name="password"
-                value={password} onChange={(e)=>onInputChange(e)}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          
+              <div>
+                <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
+                  Password
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="password"
+                    name="password"
+                    value={password} onChange={(e)=>onInputChange(e)}
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
               </div>
-        
-       <div className="mt-10">
-         <button
-           type="submit"
-           className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-         >
-           Register
-         </button>
-       </div>
+
+              
+             
+               </div>
+         
+        <div className="mt-10">
+          <button
+            type="submit"
+            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Register
+          </button>
+        </div>
       </form>
     </div>
-    <div className="lg:fixed top-0 right-0 mt-20 max-w-3xl">
-    <img className="" src="/Guide_register.png" alt="" />
+    <div className="lg:fixed top-0 right-0 mt-20 max-w-3xl ">
+    <img className="" src="/store_manager.png" alt="" />
     </div>
     </div>
     </div>
   )
 }
 
-export default GuideRegister
+export default StoreManagerRegister
