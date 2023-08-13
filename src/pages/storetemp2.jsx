@@ -1,8 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Sidebar from "../components/sidebarv2";
 import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
-import { Carousel } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Card,
@@ -90,7 +89,7 @@ const shopItems = [
 
 function Shopitem() {
   return (
-    <div className=" flex flex-wrap gap-5">
+    <div className=" flex flex-wrap gap-10">
       {shopItems.map((item) => (
         <Card key={item.id} className="w-48">
           <CardHeader className="rounded-lg m-2" shadow={false} floated={false}>
@@ -122,15 +121,13 @@ function Shopitem() {
             </Typography>
           </CardBody>
           <CardFooter className="pt-0 bg-indigo-500 rounded-b-lg">
-            <Link to="/StoreProduct">
-              <Button
-                ripple={false}
-                fullWidth={true}
-                className="w-full font-poppins h-12 bg-[#22577A] text-white shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-              >
-                Add to Cart
-              </Button>
-            </Link>
+            <Button
+              ripple={false}
+              fullWidth={true}
+              className="w-full font-poppins h-12 bg-indigo text-white shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+            >
+              Add to Cart
+            </Button>
           </CardFooter>
         </Card>
       ))}
@@ -139,31 +136,62 @@ function Shopitem() {
 }
 
 function Store() {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true);
+  //   const handleBackClick = () => {
+  //     // Navigate to the previous page or route when the "Back" button is clicked
+  //     navigate("/Budget");
+
+  const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
+  const [isMemberOpen, setIsMemberOpen] = useState(false);
+
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [isLastStep, setIsLastStep] = React.useState(false);
+  const [isFirstStep, setIsFirstStep] = React.useState(false);
+
+  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
+
+  //   const handleNextClick = () => {
+  //     // Navigate to the next page or route when the "Next" button is clicked
+  //     //navigate('/next-page');
+  //     setIsOpen(false);
+
+  //     navigate("/Travdash");
+  //   };
+
+  // let activeTitle;
+  // switch (activeStep) {
+  //   case 0:
+  //     activeTitle = "My trips";
+  //     break;
+  //   case 1:
+  //     activeTitle = "Itinerary";
+  //     break;
+  //   default:
+  //     activeTitle = "";
+  // }
   return (
-    <>
-      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className=" fixed">
-          <Sidebar />
-        </div>
-        <div className="flex flex-col w-full ml-[18.5%]">
-          <TopNavbar />
-
+    <div className="flex h-screen overflow-hidden ">
+      <Sidebar
+        active={
+          activeStep === 0 ? "My Trips" : activeStep === 1 ? "Itinerary" : ""
+        }
+        isSubSidebarOpen={isSubSidebarOpen}
+        setIsSubSidebarOpen={setIsSubSidebarOpen}
+      />
+      <div className="flex flex-col w-screen bg-[#D9D9D9] bg-opacity-20  ">
+        <TopNavbar />
+        <div className="overflow-y-scroll">
+          <div className="flex justify-between"></div>
+          <div>{/* <Calendar /> */}</div>
           <div>
-            <div className="ml-10 mt-[2%] bg-white p-5 rounded-lg w-[93%]  flex">
-              <h1 className="font-bold text-lg">Travo</h1>
-              <h1 className="font-bold text-red-700 text-lg">Store</h1>
-            </div>
-
-            <div className="mt-5 ml-10 mb-5 flex"></div>
-          </div>
-          <div className="flex z-10">
-            <div className="ml-10 flex">
-              <Shopitem />
-            </div>
+            <Shopitem />
+            {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

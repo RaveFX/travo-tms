@@ -117,8 +117,7 @@ function Budgetform() {
         <form className=" m-5 text-sm mt-8 mb-2 w-100 max-w-screen-lg border-solid sm:w-55">
           <div className="mb-4 font-poppins flex gap-6">
             <Input size="lg" placeholder="Cause/Event" required />
-            <Input size="lg" placeholder="No. of Units" required />
-            <Input size="lg" placeholder="Unit Price" required />
+            <Input size="lg" placeholder="Cost" required />
           </div>
           <div className="flex mb-4 gap-6">
             <select
@@ -135,14 +134,16 @@ function Budgetform() {
             <Input size="lg" placeholder="Date" />
             <Input size="lg" placeholder="Time" />
           </div>
-
-          <div className="flex mb-4 gap-6">
-            <FileUpload />
+          <div className="flex flex-row gap-6">
+            <div className="flex mb-4 gap-6">
+              <FileUpload />
+            </div>
+            <div className="flex mb-4 gap-6">
+              <Button className="bg-[#22577A] mt-6 mb-5 ">
+                Submit Expenses
+              </Button>
+            </div>
           </div>
-
-          <Button color="indigo" className="mt-6 mb-5 ">
-            Submit
-          </Button>
         </form>
       </Card>
     </>
@@ -153,10 +154,10 @@ function Budget() {
   return (
     <>
       <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className="">
+        <div className="fixed">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full">
+        <div className="ml-[18.25%] flex flex-col w-full">
           <div>
             <TopNavbar />
           </div>
@@ -167,8 +168,20 @@ function Budget() {
             <div className="ml-10  flex">
               <p className="font-bold">Add Expenses</p>
             </div>
-            <div className="mt-5 ml-10 mb-5 flex">
-              <Budgetform />
+            <div className="flex flex-row">
+              <div className="mt-5 ml-10 mb-5 flex">
+                <Budgetform />
+              </div>
+              <div
+                className="
+            mt-5 ml-10 mb-5 flex"
+              >
+                <Link to="/Expenses">
+                  <Button className="bg-[#22577A] mb-5 text-white font-poppins h-12">
+                    View All Expenses
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

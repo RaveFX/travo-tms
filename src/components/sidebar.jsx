@@ -63,6 +63,7 @@ export default function Sidebar(props) {
       name: "Budget",
       link: "/Budget",
     },
+
     {
       icon: <Cog6ToothIcon className="h-5 w-5" />,
       name: "Settings",

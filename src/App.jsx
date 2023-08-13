@@ -7,6 +7,9 @@ import Services from "./pages/services";
 import Contact from "./pages/contact";
 import Budget from "./pages/budget";
 import Store from "./pages/store";
+import StoreProduct from "./pages/storeviewpd";
+import Expenses from "./pages/expenses";
+import GuideProfile from "./pages/guideprofile";
 
 export default function App() {
   return (
@@ -20,6 +23,9 @@ export default function App() {
           <Route exact path="/Contact" element={<Contact />} />
           <Route exact path="/Budget" element={<Budget />} />
           <Route exact path="/Store" element={<Store />} />
+          <Route exact path="/StoreProduct" element={<StoreProduct />} />
+          <Route exact path="/Expenses" element={<Expenses />} />
+          <Route exact path="/GuideProfile" element={<GuideProfile />} />
         </Routes>
       </Router>
 
