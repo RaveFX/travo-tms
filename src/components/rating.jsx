@@ -2,11 +2,11 @@ import { Typography, Avatar, Rating } from "@material-tailwind/react";
 
 export function rating() {
   return (
-    <div className="flex">
-      <div className="flex  flex-grow flex-col">
+
+      <div className="flex flex-grow flex-col">
         <h1 class="text-3xl py-1">Customer Ratings</h1>
         <div className=" flex sm:flex-row flex-wrap w-full my-1 xs:justify-center">
-          <div className="w-[400px] bg-back m-1 p-5">
+          <div className="w-[400px] m-1 p-5 border-2 border-gray-200 rounded-lg drop-shadow-lg">
             <div className="flex my-10 ">
               <div className="w-1/2">
                 <p>2023 Mar 10</p>
@@ -15,7 +15,7 @@ export function rating() {
                 <Rating value={2} readonly className="flex" />
               </div>
             </div>
-            <div className="h-[300px]">
+            <div className="h-[275px]">
               <p className="mb-6 font-medium">
                 "Excellent travel guide! Knowledgeable and friendly, they made
                 the trip enjoyable. Only a few rushed moments, but overall, a
@@ -35,7 +35,7 @@ export function rating() {
               </div>
             </div>
           </div>
-          <div className="w-[400px] bg-back m-3 p-5">
+          <div className="w-[400px] m-1 p-5 border-2 border-gray-200 rounded-lg drop-shadow-lg">
             <div className="flex my-10 ">
               <div className="w-1/2">
                 <p>2023 Mar 10</p>
@@ -44,7 +44,7 @@ export function rating() {
                 <Rating value={5} readonly className="flex" />
               </div>
             </div>
-            <div className="h-[300px]">
+            <div className="h-[275px]">
               <p className="mb-6 font-medium">
                 "Highly recommend this travel guide! Their expertise and
                 enthusiasm added so much value to the trip. A well-organized
@@ -67,7 +67,7 @@ export function rating() {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
 

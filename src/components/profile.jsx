@@ -24,13 +24,13 @@ export function Profile() {
         <div className="flex justify-center px-5  -mt-12">
           <img
             className="h-32 w-32 bg-white p-2 rounded-full   "
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            src="/ravindu.png"
             alt=""
           />
         </div>
         <div className=" ">
           <div className="text-center px-14">
-            <h2 className="text-gray-800 text-3xl font-bold">Natashi Bunny</h2>
+            <h2 className="text-gray-800 text-3xl font-bold">Ravindu Viranga</h2>
             <a
               className="text-gray-400 mt-2 hover:text-blue-500"
               href="#"
@@ -46,7 +46,7 @@ export function Profile() {
               {/* <p><span className="font-semibold"></span> Edit Profile</p> */}
               <Popover placement="bottom">
                 <PopoverHandler>
-                  <Link to="/travel_guide_edit_profile">
+                  <Link to="./edit_profile">
                     <Button>Edit Profile</Button>
                   </Link>
                 </PopoverHandler>
