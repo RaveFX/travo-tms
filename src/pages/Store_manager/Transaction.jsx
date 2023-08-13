@@ -1,205 +1,586 @@
+// import React from 'react';
+// import CreditCardForm from '../../components/CreditCardForm'; // Replace with the correct path to your CreditCardForm component
+
+// const TransactionHistory = () => {
+//   return (
+
+//     <div className="flex">
+//       {/* Left Side: Transaction History Table */}
+//       <div className="w-4/6 p-4">
+//         <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+//           <div className="overflow-hidden">
+//             <h1 className=' font-poppins font-extrabold mx-5 text-[#2C2738] text-sm'>Today</h1>
+//             <table className="min-w-full text-left text-sm font-light">
+//               <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
+//                 <tr>
+//                   <th scope="col" className="px-6 py-4">Customer</th>
+//                   <th scope="col" className="px-6 py-4">Order ID</th>
+//                   <th scope="col" className="px-6 py-4">Time</th>
+//                   <th scope="col" className="px-6 py-4">Payment</th>
+//                   <th scope="col" className="px-6 py-4">Status</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500">
+//                   <td className=" text-center  items-center  whitespace-no-wrap">
+//                     <div className="flex">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+//                   <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+//                   <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+//                 </tr>
+
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+//                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+//                 </tr>
+//               </tbody>
+//             </table>
+//             <h1 className=' font-poppins font-extrabold mx-5 mt-6 text-[#2C2738] text-sm'>07/08/2023</h1>
+//             <table className="min-w-full text-left text-sm font-light">
+//               <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
+//                 <tr>
+//                   <th scope="col" className="px-6 py-4">Customer</th>
+//                   <th scope="col" className="px-6 py-4">Order ID</th>
+//                   <th scope="col" className="px-6 py-4">Time</th>
+//                   <th scope="col" className="px-6 py-4">Payment</th>
+//                   <th scope="col" className="px-6 py-4">Status</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className=" text-center  items-center  whitespace-no-wrap">
+//                     <div className="flex">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+//                   <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-16 h-6 text-center bg-slate-50 rounded-lg border-slate-950">
+//                       refund</div>
+//                   </td>
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+//                   <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+//                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className=" text-center  items-center  whitespace-no-wrap">
+//                     <div className="flex">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+//                   <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+//                   <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-16 h-6 text-center bg-slate-50 rounded-lg">
+//                       refund</div>
+//                   </td>
+//                 </tr>
+//                 <tr
+//                   className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+//                   <td className="pr-6 whitespace-no-wrap">
+//                     <div className="flex items-center">
+//                       <div className="h-8 w-8 ml-5">
+//                         <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+//                       </div>
+//                       <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+//                     </div>
+//                   </td>
+//                   <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+//                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+//                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+//                   <td className="whitespace-nowrap px-4 py-2">
+//                     <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+//                       Paid</div>
+//                   </td>
+
+//                 </tr>
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Right Side: Credit Card Form */}
+//       <div className="w-2/6 p-4">
+//         <CreditCardForm />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TransactionHistory;
+
+
+
 import React, { useState } from 'react';
-
-const CreditCardForm = () => {
-    const [cardholder, setCardholder] = useState('');
-    const [cardNumber, setCardNumber] = useState('');
-    const [expired, setExpired] = useState({ month: '', year: '' });
-    const [securityCode, setSecurityCode] = useState('');
-    const [card, setCard] = useState('front');
-
-    const formatCardNumber = (value) => {
-        if (value.length > 18) {
-            return;
-        }
-        setCardNumber(value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '));
-    };
-
-    const isValid = () => {
-        if (cardholder.length < 5) {
-            return false;
-        }
-        if (cardNumber === '') {
-            return false;
-        }
-        if (expired.month === '' && expired.year === '') {
-            return false;
-        }
-        if (securityCode.length !== 3) {
-            return false;
-        }
-        return true;
-    };
-
-    const onSubmit = () => {
-        alert(`You did it ${cardholder}.`);
-    };
-
-    return (
-        <div className="m-4">
-            <div className="credit-card w-full sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
+import CreditCardForm from '../../components/CreditCardForm'; // Replace with the correct path to your CreditCardForm component
 
 
+const CustomerTransaction = () => {
+  return (
+    <div className="flex">
+      {/* Left Side: Transaction History Table */}
+      <div className="w-full p-4">
+        <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div className="overflow-hidden">
+            <h1 className=' font-poppins font-extrabold mx-5 text-[#2C2738] text-sm'>Today</h1>
+            <table className="min-w-full text-left text-sm font-light">
+              <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
+                <tr>
+                  <th scope="col" className="px-6 py-4">Customer</th>
+                  <th scope="col" className="px-6 py-4">Order ID</th>
+                  <th scope="col" className="px-6 py-4">Time</th>
+                  <th scope="col" className="px-6 py-4">Payment</th>
+                  <th scope="col" className="px-6 py-4">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500">
+                  <td className=" text-center  items-center  whitespace-no-wrap">
+                    <div className="flex">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+                  <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+                  <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                </tr>
 
-        <header class="flex flex-col justify-center items-center">
-          <div
-            class="relative"
-            x-show="card === 'front'"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-90"
-            x-transition:enter-end="opacity-100 transform scale-100"
-          >
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+                  <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h1 className=' font-poppins font-extrabold mx-5 mt-6 text-[#2C2738] text-sm'>07/08/2023</h1>
+            <table className="min-w-full text-left text-sm font-light">
+              <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
+                <tr>
+                  <th scope="col" className="px-6 py-4">Customer</th>
+                  <th scope="col" className="px-6 py-4">Order ID</th>
+                  <th scope="col" className="px-6 py-4">Time</th>
+                  <th scope="col" className="px-6 py-4">Payment</th>
+                  <th scope="col" className="px-6 py-4">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className=" text-center  items-center  whitespace-no-wrap">
+                    <div className="flex">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+                  <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-16 h-6 text-center bg-slate-50 rounded-lg border-slate-950">
+                      refund</div>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+                  <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+                  <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
 
-            <div class="front bg-transparent text-lg w-full text-white px-12 absolute left-0 bottom-12">
-              <p class="number mb-5 sm:text-xl" x-text="cardNumber !== '' ? cardNumber : '0000 0000 0000 0000'"></p>
-              <div class="flex flex-row justify-between">
-                <p x-text="cardholder !== '' ? cardholder : 'Card holder'"></p>
-                <div class="">
-                  <span x-text="expired.month"></span>
-                  <span x-show="expired.month !== ''">/</span>
-                  <span x-text="expired.year"></span>
-                </div>
-              </div>
-            </div>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className=" text-center  items-center  whitespace-no-wrap">
+                    <div className="flex">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Tharindi Senadeera</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+                  <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_2.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+                  <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-16 h-6 text-center bg-slate-50 rounded-lg">
+                      refund</div>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+                  <td className="pr-6 whitespace-no-wrap">
+                    <div className="flex items-center">
+                      <div className="h-8 w-8 ml-5">
+                        <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_3.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                      </div>
+                      <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+                  <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div
-            class="relative"
-            x-show="card === 'back'"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-90"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            
-          >
-            <img class="w-full h-auto" src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/svg-cards/card-visa-back.png" alt="" />
-            
-            <div
-              class="bg-transparent text-white text-xl w-full flex justify-end absolute bottom-20 px-8  sm:bottom-24 right-0 sm:px-12"
-            >
-              <div class="border border-white w-16 h-9 flex justify-center items-center">
-                <p x-text="securityCode !== '' ? securityCode : 'code'"></p>
-              </div>
-            </div>
-          </div>
-          <ul class="flex">
-            <li class="mx-2">
-              <img class="w-16" src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/computop.png" alt="" />
-            </li>
-            <li class="mx-2">
-              <img class="w-14" src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/verified-by-visa.png" alt="" />
-            </li>
-            <li class="ml-5">
-              <img class="w-7" src="https://www.computop-paygate.com/Templates/imagesaboutYou_desktop/images/mastercard-id-check.png" alt="" />
-            </li>
-          </ul>
-        </header>
-
-
-        <main class="mt-4 p-4">
-          <h1 class="text-xl font-semibold text-gray-700 text-center">Card payment</h1>
-          <div class="">
-            <div class="my-3">
-              <input
-                type="text"
-                class="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                placeholder="Card holder"
-                maxlength="22"
-                x-model="cardholder"
-              />
-            </div>
-            <div class="my-3">
-              <input
-                type="text"
-                class="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                placeholder="Card number"
-                x-model="cardNumber"
-                x-on:keydown="format()"
-                x-on:keyup="isValid()"
-                maxlength="19"
-              />
-            </div>
-            <div class="my-3 flex flex-col">
-              <div class="mb-2">
-                <label for="" class="text-gray-700">Expired</label>
-              </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <select
-                  name=""
-                  id=""
-                  class="form-select appearance-none block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                  x-model="expired.month"
-                >
-                  <option value="" selected disabled>MM</option>
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select
-                  name=""
-                  id=""
-                  class="form-select appearance-none block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                  x-model="expired.year"
-                >
-                  <option value="" selected disabled>YY</option>
-                  <option value="2021">2021</option>
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                </select>
-                <input
-                  type="text"
-                  class="block w-full col-span-2 px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                  placeholder="Security code"
-                  maxlength="3"
-                  x-model="securityCode"
-                  x-on:focus="card = 'back'"
-                  x-on:blur="card = 'front'"
-                />
-              </div>
-            </div>
-          </div>
-        </main>
-
-
-        <footer class="mt-6 p-4">
-          <button
-            class="submit-button px-4 py-3 rounded-full bg-blue-300 text-blue-900 focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
-            x-bind:disabled="!isValid"
-            x-on:click="onSubmit()"
-          >
-            Pay now
-          </button>
-        </footer>
-
+        </div>
       </div>
 
 
+    </div>
+
+  );
+}
+
+const Membership = () => {
+  return (
+    <div className="flex">
+      {/* Left Side: Transaction History Table */}
+      <div className="w-full p-4">
+        <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div className="overflow-hidden">
+            <h1 className=' font-poppins font-extrabold mx-5 text-[#2C2738] text-sm'>Today</h1>
+            <table className="min-w-full text-left text-sm font-light">
+              <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
+                <tr>
+                  {/* <th scope="col" className="px-6 py-4">Customer</th> */}
+                  <th scope="col" className="px-6 py-4">Transaction ID</th>
+                  <th scope="col" className="px-6 py-4">Time</th>
+                  <th scope="col" className="px-6 py-4">Payment</th>
+                  <th scope="col" className="px-6 py-4">Status</th>
+                  <th scope="col" className="px-6 py-4"> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500">
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1225</td>
+                  <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                      Download
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1226</td>
+                  <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                      Download
+                    </button>
+                  </td>
+                </tr>
+
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+                  <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                      Download
+                    </button>
+                  </td>
+                </tr>
+                <tr
+                  className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 ">
+
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">1227</td>
+                  <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
+                  <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                      Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                      Download
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
 
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  );
+}
+
+const TransactionHistory = () => {
+  const [activeTab, setActiveTab] = useState('transactions'); // Default active tab
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
+  return (
+    <div>
+      {/* Navigation Bar */}
+      <div className="flex items-center justify-center bg-gray-200 p-4">
+        <button
+          className={`mr-4 font-semibold ${activeTab === 'transactions' ? 'text-green-600' : 'text-gray-600'
+            }`}
+          onClick={() => handleTabChange('transactions')}
+        >
+          Customer Transactions
+        </button>
+        <button
+          className={`font-semibold ${activeTab === 'payment' ? 'text-green-600' : 'text-gray-600'
+            }`}
+          onClick={() => handleTabChange('payment')}
+        >
+          Membership
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="flex">
+        {/* Left Side: Customer Transactions */}
+        <div className={`w-full p-4 ${activeTab === 'payment' && 'hidden'}`}>
+          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            {/* Transaction History Table */}
+            <CustomerTransaction />
+          </div>
+        </div>
+
+        {/* Right Side: Credit Card Form */}
+        <div className={`flex ${activeTab === 'transactions' && 'hidden'}`}>
+          <div className='w-4/6'>
+            <Membership />
+          </div>
+          <div className='w-2/6'>
+            <CreditCardForm />
+          </div>
 
 
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
-export default CreditCardForm;
+export default TransactionHistory;
 
-
-// import React from 'react'
-
-// export default function Transaction() {
-//     return (
-//         <div>
-//             trrr
-//         </div>
-//     )
-// }
