@@ -13,6 +13,8 @@ function Signup () {
     password:""
   })
 
+  const [errors, setErrors] = useState({});
+
   const{fname,lname,email,password}=user
   const onInputChange=(e)=>{
     setUser({...user,[e.target.name]: e.target.value});
@@ -21,8 +23,40 @@ function Signup () {
 
   const onSubmit=async(e)=>{
        e.preventDefault();
+       const validationErrors = {};
+
+       if (!user.fname) {
+        validationErrors.fname = 'First Name is required';
+      }
+
+      if (!user.lname) {
+        validationErrors.lname = 'Last Name is required';
+      }
+
+      if (!user.email) {
+        validationErrors.email = 'Email is required';
+      } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+        validationErrors.email = 'Invalid email format';
+      }
+      
+    const res = await axios.get(`http://localhost:8080/api/v1/auth/checkEmail/${user.email}`)
+    if(res.data.status === "Error"){
+      validationErrors.email = 'Email already exists';
+    }
+    console.log(res);
+
+      if (!user.password) {
+        validationErrors.password = 'Password is required';
+      } else if (user.password.length < 6) {
+        validationErrors.password = 'Password must be at least 6 characters';
+      }
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+      } else {
+
        await axios.post("http://localhost:8080/api/v1/auth/register",user)
        navigate("/")
+      }
   };
 
   return (
@@ -60,6 +94,7 @@ function Signup () {
                         >
                             First Name
                         </label>
+                        {errors.fname && <p className="text-red-500">{errors.fname}</p>}
                         <input
                             type="text"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -75,6 +110,7 @@ function Signup () {
                         >
                             Last Name
                         </label>
+                        {errors.lname && <p className="text-red-500">{errors.lname}</p>}
                         <input
                             type="text"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -90,6 +126,7 @@ function Signup () {
           >
               Email
           </label>
+          {errors.email && <p className="text-red-500">{errors.email}</p>}
           <input
               type="text"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -105,6 +142,7 @@ function Signup () {
           >
               Password
           </label>
+          {errors.password && <p className="text-red-500">{errors.password}</p>}
           <input
               type="password"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"

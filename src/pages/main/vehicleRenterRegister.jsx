@@ -19,6 +19,8 @@ function VehicleRenterRegister() {
     contact_num:"",
 
   })
+  const [errors, setErrors] = useState({});
+
 
   const{email,password,addressLine1,addressLine2,city,company_name,brn,contact_num,district}=user
 
@@ -29,8 +31,64 @@ function VehicleRenterRegister() {
 
 const onSubmit=async(e)=>{
   e.preventDefault();
-  await axios.post("http://localhost:8080/api/v1/auth/register/vehicle_renter",user)
-  navigate("/")
+  const validationErrors = {};
+
+  if (!user.company_name) {
+    validationErrors.company_name = 'Company Name is required';
+  }
+
+  if (!user.brn) {
+    validationErrors.brn = 'BRN is required';
+  } else if (!/^[0-9]{9}[A-Za-z]$/.test(user.brn)) {
+    validationErrors.brn = 'Invalid BRN format';
+  }
+
+  if (!user.contact_num) {
+    validationErrors.contact_num = 'Contact number is required';
+  } else if (!/^[0-9]{10}$/.test(user.contact_num)) {
+    validationErrors.contact_num = 'Invalid contact number format';
+  }
+
+  if (!user.addressLine1) {
+    validationErrors.addressLine1 = 'Address is required';
+  }
+
+  if (!user.addressLine2) {
+    validationErrors.addressLine2 = 'Address is required';
+  }
+
+  if (!user.city) {
+    validationErrors.city = 'City is required';
+  }
+
+  if (!user.district) {
+    validationErrors.district = 'District is required';
+  }
+
+  if (!user.email) {
+    validationErrors.email = 'Email is required';
+  } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+    validationErrors.email = 'Invalid email format';
+  }
+
+  const res = await axios.get(`http://localhost:8080/api/v1/auth/checkEmail/${user.email}`)
+    if(res.data.status === "Error"){
+      validationErrors.email = 'Email already exists';
+    }
+    console.log(res);
+
+    if (!user.password) {
+      validationErrors.password = 'Password is required';
+    } else if (user.password.length < 6) {
+      validationErrors.password = 'Password must be at least 6 characters';
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+          await axios.post("http://localhost:8080/api/v1/auth/register/vehicle_renter",user)
+          navigate("/")
+    }
 };
 
   return (
@@ -60,6 +118,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="company_name" className="block text-sm font-semibold leading-6 text-gray-900">
               Company name
             </label>
+            {errors.company_name && <p className="text-red-500">{errors.company_name}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -74,6 +133,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="brn" className="block text-sm font-semibold leading-6 text-gray-900">
               BRN
             </label>
+            {errors.brn && <p className="text-red-500">{errors.brn}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -91,6 +151,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="contact_num" className="block text-sm font-semibold leading-6 text-gray-900">
               Contact number 
             </label>
+            {errors.contact_num && <p className="text-red-500">{errors.contact_num}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -109,6 +170,7 @@ const onSubmit=async(e)=>{
               <label htmlFor="addressLine1" className="block text-sm font-semibold leading-6 text-gray-900">
                 Address Line 1
               </label>
+              {errors.addressLine1 && <p className="text-red-500">{errors.addressLine1}</p>}
               <div className="mt-2.5">
                 <input
                   type="text"
@@ -123,6 +185,7 @@ const onSubmit=async(e)=>{
               <label htmlFor="addressLine2" className="block text-sm font-semibold leading-6 text-gray-900">
               Address Line 2
               </label>
+              {errors.addressLine2 && <p className="text-red-500">{errors.addressLine2}</p>}
               <div className="mt-2.5">
                 <input
                   type="text"
@@ -140,6 +203,7 @@ const onSubmit=async(e)=>{
                <label htmlFor="city" className="block text-sm font-semibold leading-6 text-gray-900">
                  City
                </label>
+               {errors.city && <p className="text-red-500">{errors.city}</p>}
                <div className="mt-2.5">
                  <input
                    type="text"
@@ -154,6 +218,7 @@ const onSubmit=async(e)=>{
                <label htmlFor="district" className="block text-sm font-semibold leading-6 text-gray-900">
                  District
                </label>
+               {errors.district && <p className="text-red-500">{errors.district}</p>}
                <div className="mt-2.5">
                <select
                name="district"
@@ -204,6 +269,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
               Email
             </label>
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -218,6 +284,7 @@ const onSubmit=async(e)=>{
                 <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
                   Password
                 </label>
+                {errors.password && <p className="text-red-500">{errors.password}</p>}
                 <div className="mt-2.5">
                   <input
                     type="password"

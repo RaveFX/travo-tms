@@ -18,6 +18,7 @@ import Hotel_rooms from "./pages/hotel/hotel_rooms";
 import Hotel_reseravationDetails from "./pages/hotel/hotel_reseravationDetails";
 import Store_dashboard from "./pages/store/store_dashboard";
 import Traveller_dashboard from "./pages/traveler/traveller_dashboard";
+import Vehicle_dashboard from "./pages/vehicle_renter/vehicle_dashboard";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 export default function App() {
@@ -42,6 +43,9 @@ export default function App() {
     <Route exact path="/hotelagent_rooms" element={<Hotel_rooms/>}/>
     <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails/>}/>
     <Route exact path="/traveler_dashboard" element={<Traveller_dashboard/>}/>
+    <Route exact path="/store_dashboard" element={<Store_dashboard/>}/>
+    <Route exact path="/vehicle_dashboard" element={<Vehicle_dashboard/>}/>
+    
     
     
     

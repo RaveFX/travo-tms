@@ -30,6 +30,8 @@ function GuideRegister() {
     
 
   });
+  const [errors, setErrors] = useState({});
+
 
   
   const{fname,lname,email,password,mobile_num,addressLine1,addressLine2,city,gender,nic,qualifications,district}=user
@@ -69,6 +71,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="fname" className="block text-sm font-semibold leading-6 text-gray-900">
               First name
             </label>
+            {errors.fname && <p className="text-red-500">{errors.fname}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -83,6 +86,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="lname" className="block text-sm font-semibold leading-6 text-gray-900">
               Last name
             </label>
+            {errors.lname && <p className="text-red-500">{errors.lname}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -101,6 +105,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="nic" className="block text-sm font-semibold leading-6 text-gray-900">
               NIC
             </label>
+            {errors.nic && <p className="text-red-500">{errors.nic}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -117,6 +122,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="mobile_num" className="block text-sm font-semibold leading-6 text-gray-900">
               Mobile number
             </label>
+            {errors.mobile_num && <p className="text-red-500">{errors.mobile_num}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -129,41 +135,27 @@ const onSubmit=async(e)=>{
             
            </div>
            </div>
+           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
+           <div>
            <label htmlFor="gender" className="block text-sm mt-5 font-semibold leading-6 text-gray-900">
               Gender
             </label>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-3">
-           
-           <div>
-           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-3">
-      
-           <div className="flex items-center gap-x-3">
-           <label className="flex items-center text-sm">
-        <input
-          type="radio"
-          name="gender"
-          value={gender}
-          onChange={(e)=>onInputChange(e)}
-          className="mr-2"
-        />
-        male
-        </label>
-         </div>
-         <div className="flex items-center gap-x-3">
-         <label className="flex items-center text-sm">
-        <input
-          type="radio"
-          name="gender"
-          value={gender}
-          onChange={(e)=>onInputChange(e)}
-          className="mr-2"
-        />
-        female
-        </label>
-           </div>
-           </div>
-         </div>
-       </div>  
+            {errors.gender && <p className="text-red-500">{errors.gender}</p>}
+            <div className="mt-2.5">
+               <select
+               name="gender"
+               value={gender} 
+               onChange={(e)=>onInputChange(e)}
+               className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             >
+             <option>{gender}</option>
+               <option value="Male">Male</option>
+               <option value="Female">Female</option>
+               
+             </select>
+               </div>  
+               </div>
+               </div>
        <div className="border-b border-gray-900/10 pb-12"></div>    
 
        <div className="col-span-full pt-12">
@@ -198,6 +190,7 @@ const onSubmit=async(e)=>{
               <label htmlFor="addressLine1" className="block text-sm font-semibold leading-6 text-gray-900">
                 Address Line 1
               </label>
+              {errors.addressLine1 && <p className="text-red-500">{errors.addressLine1}</p>}
               <div className="mt-2.5">
                 <input
                   type="text"
@@ -212,6 +205,7 @@ const onSubmit=async(e)=>{
               <label htmlFor="addressLine2" className="block text-sm font-semibold leading-6 text-gray-900">
               Address Line 2
               </label>
+              {errors.addressLine2 && <p className="text-red-500">{errors.addressLine2}</p>}
               <div className="mt-2.5">
                 <input
                   type="text"
@@ -229,6 +223,7 @@ const onSubmit=async(e)=>{
                <label htmlFor="city" className="block text-sm font-semibold leading-6 text-gray-900">
                  City
                </label>
+               {errors.city && <p className="text-red-500">{errors.city}</p>}
                <div className="mt-2.5">
                  <input
                    type="text"
@@ -243,6 +238,7 @@ const onSubmit=async(e)=>{
                <label htmlFor="district" className="block text-sm font-semibold leading-6 text-gray-900">
                  District
                </label>
+               {errors.district && <p className="text-red-500">{errors.district}</p>}
                <div className="mt-2.5">
                <select
                name="district"
@@ -297,6 +293,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
               Email
             </label>
+            {errors.email && <p className="text-red-500">{errors.email}</p>}
             <div className="mt-2.5">
               <input
                 type="text"
@@ -311,6 +308,7 @@ const onSubmit=async(e)=>{
             <label htmlFor="password" className="block text-sm font-semibold leading-6 text-gray-900">
               Password
             </label>
+            {errors.password && <p className="text-red-500">{errors.password}</p>}
             <div className="mt-2.5">
               <input
                 type="password"
