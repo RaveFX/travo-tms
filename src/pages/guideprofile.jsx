@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import TopNavbar from "../components/navbar2";
 import Sidebar from "../components/sidebar";
 import { Carousel } from "@material-tailwind/react";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 import {
   Card,
@@ -12,6 +14,38 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+
+class Connfbut extends React.Component {
+  submit = () => {
+    confirmAlert({
+      title: "Manual Confirmation",
+      message: "Are you sure to Confirm this arrival?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => alert("Confirmed"),
+        },
+        {
+          label: "No",
+          onClick: () => alert("Cancelled"),
+        },
+      ],
+    });
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <Button
+          className="font-poppins bg-[#22577A] mx-17"
+          onClick={this.submit}
+        >
+          Manual Confirmation
+        </Button>
+      </div>
+    );
+  }
+}
 
 function Profiledata() {
   return (
@@ -77,7 +111,7 @@ function Guideqr() {
             </h5>
           </a>
           <div class="mt-7 mx-5 mb-5 flex items-center justify-between">
-            <Button className="bg-[#22577A] ">Manual Confirmation</Button>
+            <Connfbut />
           </div>
         </div>
       </div>

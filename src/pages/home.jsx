@@ -37,23 +37,31 @@ export default function HomePage() {
                 Dashboard
               </Button>
             </Link>
-            <button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
+            <Button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
               User Stories
-            </button>
+            </Button>
           </div>
         </div>
       </div>
 
-      <Button className="drop-shadow-lg p-2 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
+      <Button
+        disabled
+        className="drop-shadow-lg p-2 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white"
+      >
         <h1>Trending Destinations</h1>
       </Button>
 
       <Newcards />
-      <Button className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
+      <Button
+        disabled
+        className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white"
+      >
         <h1>Customer Testimonials</h1>
       </Button>
       <Testimonials />
-      <Footers />
+      <footer>
+        <Footers />
+      </footer>
     </div>
   );
 }

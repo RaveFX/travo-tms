@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function Navingation_home() {
   return (
-    <div class="font-poppins ">
-      <nav class="  bg-transparent fixed z-20 top-0 w-screen h-15 left-0 ">
+    <div class="font-poppins shadow-md ">
+      <nav class="  bg-transparent  z-20 top-0 w-screen h-15 left-0  ">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" class="flex items-center">
             <img
@@ -57,7 +57,7 @@ export default function Navingation_home() {
               <li>
                 <Link
                   to="/"
-                  class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-gray-950"
+                  class="block py-2 pl-3 pr-4 text-black  rounded md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-gray-950"
                   aria-current="page"
                 >
                   Home
@@ -66,7 +66,7 @@ export default function Navingation_home() {
               <li>
                 <Link
                   to="/AboutUs"
-                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-black-700 md:p-0 md:dark:hover:text-blue-950 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-black-700 md:p-0 md:dark:hover:text-blue-950  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   About
                 </Link>
@@ -74,7 +74,7 @@ export default function Navingation_home() {
               <li>
                 <Link
                   to="Services"
-                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-950 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-950 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Services
                 </Link>
@@ -82,7 +82,7 @@ export default function Navingation_home() {
               <li>
                 <Link
                   to="Contact"
-                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-950 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-950 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Contact
                 </Link>

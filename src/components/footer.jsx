@@ -80,7 +80,7 @@ function Footers() {
                         class="text-sm font-normal text-gray-500 hover:text-gray-900"
                       >
                         {" "}
-                        Pricing{" "}
+                        FAQ{" "}
                       </a>
                     </li>
 
@@ -110,7 +110,6 @@ function Footers() {
                         class="text-sm font-normal text-gray-500 hover:text-gray-900"
                       >
                         {" "}
-                        API Status{" "}
                       </a>
                     </li>
                   </ul>
@@ -152,7 +151,7 @@ function Footers() {
                             value="Subscribe"
                             name="member[subscribe]"
                             id="member_submit"
-                            class="block w-full px-5 py-3 text-base font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10"
+                            class="block w-full px-5 py-3 text-base font-medium text-white bg-[#22577A] border border-transparent rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 sm:px-10"
                           >
                             Notify me
                           </button>
