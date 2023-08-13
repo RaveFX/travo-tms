@@ -42,6 +42,7 @@ import Requests from "./pages/Admin/Requests"
 import Userprofile from "./pages/Admin/Userprofile"
 import Advertisments from "./pages/Admin/Advertisments"
 import Add_dvertisments from "./pages/Admin/Addadverisments"
+import Transaction from "./pages/Admin/Transaction"
 
 
 export default function App() {
@@ -55,7 +56,7 @@ export default function App() {
                     <Route path="userprofile" element={<Userprofile />} />
                     <Route path="advertisments" element={<Advertisments />} />
                     <Route path="add_advertisments" element={<Add_dvertisments />} />
-
+                    <Route path="transaction" element={<Transaction />} />
                 </Route>
             </Routes>
         </Router>
