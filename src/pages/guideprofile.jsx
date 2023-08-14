@@ -35,11 +35,8 @@ class Connfbut extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <Button
-          className="font-poppins bg-[#22577A] mx-17"
-          onClick={this.submit}
-        >
+      <div className="container font-poppins">
+        <Button className=" bg-[#22577A] mx-17" onClick={this.submit}>
           Manual Confirmation
         </Button>
       </div>

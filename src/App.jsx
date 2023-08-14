@@ -10,6 +10,7 @@ import Store from "./pages/store";
 import StoreProduct from "./pages/storeviewpd";
 import Expenses from "./pages/expenses";
 import GuideProfile from "./pages/guideprofile";
+import Travelbuddy from "./pages/travelbuddy";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route exact path="/StoreProduct" element={<StoreProduct />} />
           <Route exact path="/Expenses" element={<Expenses />} />
           <Route exact path="/GuideProfile" element={<GuideProfile />} />
+          <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
         </Routes>
       </Router>
 

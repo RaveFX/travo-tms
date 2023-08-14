@@ -27,7 +27,7 @@ const shopItems = [
     price: "Rent your vehicle with us",
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1661775983935-579b5c94e2c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww&w=1000&q=80",
-    buttonname: "Book Now",
+    buttonname: "Rent Now",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const shopItems = [
     price: "Camping items for rent",
     imageSrc:
       "https://www.beyondthetent.com/wp-content/uploads/2023/03/Cool-Camping-Gear.jpg",
-    buttonname: "Book Now",
+    buttonname: "Rent now",
   },
   {
     id: 2,
@@ -45,6 +45,15 @@ const shopItems = [
       "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
     buttonname: "Book Now",
     links: "/GuideProfile",
+  },
+  {
+    id: 2,
+    name: "Travel Buddy",
+    price: "Connect with travellers",
+    imageSrc:
+      "https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/c7c4elegquhjubd1xmyb",
+    buttonname: "Turn on",
+    links: "/Travelbuddy",
   },
 
   // Add more items as needed
