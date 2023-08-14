@@ -4,7 +4,7 @@ import TopNavbar from "../components/navbar2";
 import Sidebar from "../components/sidebar";
 import { Button, CardBody } from "@material-tailwind/react";
 import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
-import ImageGrid from "../components/imagegrid";
+import ImageGrids from "../components/imagegrid";
 
 function ImageGrid() {
   return (
@@ -19,7 +19,7 @@ function ImageGrid() {
           </div>
           <div>
             <div className="mx-5 my-10 flex">
-              <ImageGrid />
+              <ImageGrids />
             </div>
           </div>
         </div>

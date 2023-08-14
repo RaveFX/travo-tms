@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ImageGrid() {
     return (
 
 <section class="py-20">
-  <h1 class="mb-12 text-center font-sans text-5xl font-bold text-gray-900">Activities<span class="text-blue-600"></span></h1>
+  <h1 class="mb-1 text-center font-sans text-5xl font-bold text-gray-900">Activities<span class="text-blue-600"></span></h1>
   <div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
     <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
       <a href="#">
@@ -53,9 +54,11 @@ export default function ImageGrid() {
         </div>
 
         <div class="mt-1 p-2">
+        <Link to="./add_activity">
         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded mr-5 mx-10">
                 Add Activity
          </button>
+         </Link>
         </div>
       </a>
     </article>

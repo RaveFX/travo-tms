@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/Edit_Profile";
 import AddActivity from "./pages/Add_Activity";
 import Dashboard from "./pages/Dashboard";
+import ImageGrid from "./pages/Activity";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
           <Route exact path="/reviews" element={<ReviewsDetails />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/profile/edit_profile" element={<EditProfile />} />
-          <Route exact path="/activities" element={<AddActivity />} />
+          <Route exact path="/activities" element={<ImageGrid />} />
+          <Route exact path="/activities/add_activity" element={<AddActivity />} />
         </Routes>
       </Router>
 
