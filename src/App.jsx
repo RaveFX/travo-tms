@@ -12,6 +12,7 @@ import Rating from "./pages/Store_manager/Rating"
 import Productadd from './components/Productaddform'
 import Product_card from './components/product_card'
 import Stock from './pages/Store_manager/Stockdetails'
+import Profile from './pages/Store_manager/profile'
 
 
 
@@ -39,6 +40,7 @@ export default function App() {
                     <Route path="productadd" element={<Productadd />} />
                     <Route path="product_card" element={<Product_card />} />
                     <Route path="stock" element={<Stock />} />
+                    <Route path="storemanager_profile" element={<Profile />} />
                 </Route>
                 <Route path="/admin" element={<Admin_Layout />}>
                     <Route index element={<Admin_Dashboard />} />

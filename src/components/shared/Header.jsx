@@ -90,22 +90,22 @@ export default function TopNavbar() {
                     </Button>
                 </div>
                 <div className="flex items-center gap-5">
-                    <Link to="/Travdash">
+                    <Link to="/storemanager_profile">
                         <div>
                             <BellIcon className=" fill-black h-10" />
                         </div>
                     </Link>
                     <div>
-                        <Link to="/Travdash">
+                        <Link to="/storemanager_profile">
                             <Avatar
                                 className="rounded-full"
-                                src="https://media.istockphoto.com/id/1485163882/photo/speech-bubble-with-financial-chart-icon.jpg?s=612x612&w=0&k=20&c=B-e9uCZauH3JAODUIvI7ncdfDRdIQe6drjsJ_HVdYE4="
+                                // src={people01}
                                 alt="avatar"
                             />
                         </Link>
                     </div>
                     <div>
-                        <Link to="/Travdash">
+                        <Link to="/storemanager_profile">
                             <h2 className="text-sm font-semibold text-gray-700">
                                 Sam store
                             </h2>

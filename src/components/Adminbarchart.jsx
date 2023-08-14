@@ -44,7 +44,7 @@ export default class Example extends PureComponent {
 
     render() {
         return (
-            <ResponsiveContainer width="100%" height={500}>
+            <ResponsiveContainer width="80%" height={500}>
                 <BarChart
                     data={data}
                     margin={{

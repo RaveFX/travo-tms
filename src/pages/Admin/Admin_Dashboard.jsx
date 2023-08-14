@@ -8,10 +8,6 @@ import client from '../../assets/clients.png';
 import complete from '../../assets/clients.png';
 import bookmark from '../../assets/clients.png';
 import menu from '../../assets/clients.png';
-import Storemanager_barchart from '../../components/Storemanager_barchart';
-import ConversationSection from '../../components/conversation';
-import Storemanager_piechart from '../../components/Storemanager_piechart'
-import Storemanager_delivery from '../../components/Storemanager_delivery'
 import Barchart from '../../components/Adminbarchart'
 import Piechart from '../../components/Adminpiechart'
 
@@ -442,20 +438,7 @@ export default function Admin_Dashboard() {
         { title: "Registrtion Requests", src: menu, amount: "20" },
     ];
     return (
-        // <div className='flex flex-col gap-4'>
-        //     <DashboardTG />
 
-        //     <Order />
-        //     {/* <ConversationSection /> */}
-        //     <Storemanager_piechart />
-        //     <Storemanager_delivery />
-        //     <Order />
-
-
-
-
-
-        // </div>
         <div className='flex m-2'>
             <div className='w-7/8'>
                 <div className=' flex flex-row '>
@@ -476,7 +459,7 @@ export default function Admin_Dashboard() {
                 </div>
 
             </div>
-            <div className='w-1/8 absolute right-6'>
+            <div className='w-1/8 absolute right-1'>
                 <Calendar />
                 <Piechart />
             </div>

@@ -99,7 +99,7 @@ export default function TopNavbar() {
                         <Link to="/Travdash">
                             <Avatar
                                 className="rounded-full"
-                                src="https://media.istockphoto.com/id/1471342538/photo/3d-user-icon-user-symbol.jpg?s=612x612&w=0&k=20&c=h9Cw1LJCaVcRTisoocGog1pnyXcdJ5W1QT3YR4YP4J0="
+                                // src={people01}
                                 alt="avatar"
                             />
                         </Link>
