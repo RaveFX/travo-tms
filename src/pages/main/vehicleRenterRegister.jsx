@@ -13,7 +13,7 @@ function VehicleRenterRegister() {
     addressLine1:"",
     addressLine2:"",
     city:"",
-    distrct:"",
+    district:"",
     company_name:"",
     brn:"",
     contact_num:"",
@@ -42,6 +42,12 @@ const onSubmit=async(e)=>{
   } else if (!/^[0-9]{9}[A-Za-z]$/.test(user.brn)) {
     validationErrors.brn = 'Invalid BRN format';
   }
+
+  const res1 = await axios.get(`http://localhost:8080/api/v1/auth/checkBRN/${user.brn}`)
+    if(res1.data.status === "Error"){
+      validationErrors.brn = 'BRN already exists';
+    }
+    console.log(res1);
 
   if (!user.contact_num) {
     validationErrors.contact_num = 'Contact number is required';

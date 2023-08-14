@@ -28,7 +28,7 @@ function ServiceProviders() {
         <Link to="/hotel_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/hotel_agent.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/hotel_agent.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Hotel</h3>
       </card>
       
@@ -37,7 +37,7 @@ function ServiceProviders() {
       <Link to="/activity_agent_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/activity_register.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 " src="/activity_register.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Activities</h3>
       </card>
       
@@ -47,7 +47,7 @@ function ServiceProviders() {
       <Link to="/guide_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/Guide_register.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/Guide_register.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Travel Guide</h3>
       </card>
       
@@ -57,7 +57,7 @@ function ServiceProviders() {
       <Link to="/vehicle_renter_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/vehicle_renter.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/vehicle_renter.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Vehicle Renter</h3>
       </card>
       
@@ -67,7 +67,7 @@ function ServiceProviders() {
       <Link to="/store_manager_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/store_manager.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/store_manager.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Store</h3>
       </card>
       

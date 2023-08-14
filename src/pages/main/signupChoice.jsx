@@ -1,44 +1,82 @@
 import React from 'react'
 import Newnav from "../../components/newnav";
 import {
-    Card,
-    CardBody
-  } from "@material-tailwind/react";
+  Card,
+  CardHeader,
+  CardFooter,
+  Typography,
+  CardBody,
+  Button
+} from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
+function Shopitem() {
+  return (
+    <div className=" flex ml-10 flex-wrap gap-5">
+      {shopItems.map((item) => (
+        <Card key={item.id} className="w-56 hover:scale-105">
+          <CardHeader className="rounded-lg m-2" shadow={false} floated={false}>
+            <img
+              src={item.imageSrc}
+              alt="card-image"
+              className="h-40 w-full object-cover bg-slate-100"
+            />
+          </CardHeader>
+          <CardBody>
+            <div className="font-poppins flex mx-10">
+              <Typography
+                color="blue-gray"
+                className="text-sm font-bold font-poppins"
+              >
+                {item.name}
+              </Typography>
+            </div>
+            
+          </CardBody>
+          <CardFooter className="pt-0 ">
+            <Link to={item.links}>
+              <Button
+                ripple={false}
+                fullWidth={true}
+                className="w-full font-poppins h-12 bg-white text-black shadow-none  focus:scale-105 focus:shadow-none active:scale-100"
+              >
+                {item.buttonname}
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+const shopItems = [
+  {
+  imageSrc:
+    "/store_manager.png",
+  buttonname: "Traveller",
+  links: "/Signup",
+},
+{
+  imageSrc:
+    "/hotel_agent.png",
+  buttonname: "Service Provider",
+  links: "/service_providers",
+},]
 
 function SignupChoice() {
   return (
     <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/photo3.jpg')"}}>
     <Newnav />
     <div className="py-24 sm:py-32">
-    <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
       <div className="max-w-2xl">
         <img
           src="/travo-white.png"
-          alt="Sample image" />
+          alt="Sample image" className='w-[60%] mt-16' />
         <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl ml-20">Sign-up As,</h2>
-
-        <ul role="list" className="grid sm:grid-cols-2 sm:gap-y-16 xl:col-span-2 pt-20">
-        <Link to="/Signup">
-      <li>
-      <card>
-      <img className="h-30 w-30 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/store_manager.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Traveller</h3>
-      </card>
-      
-      </li>
-      </Link>
-      <Link to="/service_providers">
-      <li>
-      <card>
-      <img className="ml-6 h-30 w-30 rounded-md transition duration-300 ease-in-out hover:scale-110" src="/hotel_agent.png" alt="" />
-      <h3 className="text-base font-semibold leading-7 tracking-tight">Service Provider</h3>
-      </card>
-      
-      </li>
-      </Link>
-        
-      </ul>
+      </div>
+      <div className='mt-24'>
+      <Shopitem/>
       </div>
      
     </div>
