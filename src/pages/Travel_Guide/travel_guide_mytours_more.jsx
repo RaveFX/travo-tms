@@ -1,5 +1,7 @@
 import React from 'react'
-import Sidebar from '../../components/sidebar';
+// import Sidebar from '../../components/sidebar';
+import Sidebar from '../../components/sidebar1';
+
 import TopNavbar from '../../components/topNavbar';
 import { Rating, Button } from "@material-tailwind/react";
 

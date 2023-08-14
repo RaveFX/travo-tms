@@ -1,5 +1,7 @@
 import React from 'react'
-import Sidebar from '../../components/sidebar';
+// import Sidebar from '../../components/sidebar';
+import Sidebar from '../../components/sidebar1';
+
 import EditProfile from '../../components/edit_profile';
 import TopNavbar from '../../components/topNavbar';
 import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';

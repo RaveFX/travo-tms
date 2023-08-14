@@ -1,5 +1,7 @@
 import { Typography, Avatar, Rating } from "@material-tailwind/react";
-import Sidebar from '../../components/sidebar';
+// import Sidebar from '../../components/sidebar';
+import Sidebar from '../../components/sidebar1';
+
 import TopNavbar from '../../components/topNavbar';
 
 export function rating() {

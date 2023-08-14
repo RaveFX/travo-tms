@@ -54,13 +54,13 @@ export default function Sidebar(props) {
     };
 
     const navList = [
-        { icon: <RectangleGroupIcon className="h-5 w-5" />, name: "Dashboard", link: "/" },
+        { icon: <RectangleGroupIcon className="h-5 w-5" />, name: "Dashboard", link: "/vehicle_owner_dashboard" },
         {
-            icon: <MapIcon className="h-5 w-5" />, name: "Requests", link: "/travel_guide_request",         },
-        { icon: <HeartIcon className="h-5 w-5" />, name: "Tours", link: "/travel_guide_mytours" },
-        { icon: <UserGroupIcon className="h-5 w-5" />, name: "Ratings", link: "/travel_guide_rating" },
-        { icon: <BanknotesIcon className="h-5 w-5" />, name: "Profile", link: "/travel_guide_profile" },
-        { icon: <Cog6ToothIcon className="h-5 w-5" />, name: "Settings", link: "#" },
+            icon: <MapIcon className="h-5 w-5" />, name: "Vehicle", link: "/vehicle_owner_vehicles",         },
+            { icon: <UserGroupIcon className="h-5 w-5" />, name: "Requests", link: "/vehicle_owner_request" },
+            { icon: <HeartIcon className="h-5 w-5" />, name: "Ratings", link: "/vehicle_owner_rating" },
+            { icon: <  BanknotesIcon className="h-5 w-5" />, name: "Profile", link: "/vehicle_owner_profile" },
+            { icon: <Cog6ToothIcon className="h-5 w-5" />, name: "Setting", link: "#" },
     ]
 
     return (

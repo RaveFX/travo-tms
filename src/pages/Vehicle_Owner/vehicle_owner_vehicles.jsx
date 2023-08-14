@@ -10,7 +10,9 @@ import {
 
 
 } from "@material-tailwind/react";
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
+// import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
+import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+
 import TopNavbar from '../../components/topNavbar';
 // import ButtonVariants from './button';
 import { car, van, bike, scooter, bus } from '../../assets';

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
+// import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
+import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+
 import ListWithAvatar from '../../components/list';
 import TopNavbar from '../../components/topNavbar';
 import Calendar from '../../components/calender';

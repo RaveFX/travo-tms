@@ -31,6 +31,11 @@ import Vehicle_Owner_Profile from './pages/Vehicle_Owner/vehicle_owner_profile';
 import Vehicle_Owner_Edit_Profile from './pages/Vehicle_Owner/vehicle_owner_edit_profile';
 import 'boxicons';
 
+
+import Travel_Guide_Success from './pages/Travel_Guide/travel_guide_success';
+
+
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
@@ -71,6 +76,9 @@ export default function App() {
   <Route path='/vehicle_owner_rating' element={<Vehicle_Owner_Rating/>}> </Route>
   <Route path='/vehicle_owner_profile' element={<Vehicle_Owner_Profile/>}></Route>
   <Route path='/vehicle_owner_edit_profile' element={<Vehicle_Owner_Edit_Profile/>}></Route>
+
+  <Route path='/travel_guide_success' element={<Travel_Guide_Success/>}></Route>
+
   
 </Routes>
 </BrowserRouter>
