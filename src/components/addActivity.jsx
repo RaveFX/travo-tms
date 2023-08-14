@@ -12,7 +12,6 @@ export default function Activityadd() {
                     {/* Right Side - Add Photos */}
                     <div className="p-10 bg-white flex items-center justify-center m-4">
                         <div className="bg-gray-300 p-16  text-white font-bold text-4xl cursor-pointer">
-                            {/* You can add your photo upload component here */}
                             +
                         </div>
                     </div>
