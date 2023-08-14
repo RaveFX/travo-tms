@@ -30,18 +30,19 @@ const requestMore = () => {
                     ))}
                 </div>
 
-                <div className='overflow-y-auto'>
-                    <div><p className='text-3xl m-5'>Kandy</p></div>
+                <div className=''>
+                <div><p className='text-3xl m-5'>Tour: Kandy</p></div>
+                <div><p className='text-xl m-5'>Request ID: 1</p></div>
                     <div className='flex m-5 sm:flex-row flex-col '>
                         <div className='overflow-hidden relative sm:w-1/2 w-full justify-center'>
-                            <div className='flex'>
+                            {/* <div className='flex'>
                                 <Carousel
                                     transition={{ duration: 2 }}
                                     className='rounded-xl bg-black items-center  '
                                 >{slides.map((s) => (
                                     <img className='h-fiull w-full object-cover' src={s} />
                                 ))}</Carousel>
-                            </div>
+                            </div> */}
                             <div className='m-5'>
                                 <p className='text-2xl underline'>Tour Information</p>
                                 <div className='flex my-2'>

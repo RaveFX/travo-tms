@@ -44,6 +44,10 @@ const GridImage = () => {
 
                     </ul>
                 </div>
+                <div className='flex justify-end items-end'>
+                <Button variant="text" className="rounded-full text-green">Edit </Button>
+                    <Button variant="text" className="rounded-full" color="red">Delete </Button>
+                </div>
 
             </div>
         </div>

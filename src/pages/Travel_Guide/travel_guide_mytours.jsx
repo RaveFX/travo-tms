@@ -74,8 +74,12 @@ const travel_guide_mytours = () => {
                                 <TopNavbar key={index} path={nav.path}  />
                             ))}
                 </div>
+               
                 </div>
                 {/* <div><GridImage /></div> */}
+                <div className="flex justify-end m-5">
+                        <Button className="w-48 rounded-full text-green" variant="outlined">Add New Tour</Button>
+                    </div>
                 <div className='justify-right px-5 flex xs:flex-col sm:flex-row md:flex-wrap lg:flex-wrap relative  '>
                                
                                 {tours.map((tour, index) => (
