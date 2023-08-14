@@ -10,13 +10,13 @@ import Activityadd from "./components/addActivity";
 import AddActivity from "./pages/Add_Activity";
 import NameCard from "./components/namecard";
 import Dashboard from "./pages/Dashboard";
+import StatDash from "./components/statdash";
 
 export default function App() {
   return (
     <>
       {/* <NameCard /> */}
-    {/* <Calendar />
-    <Activityadd /> */}
+    {/* <StatDash /> */}
       <Router>
         <Routes>
           <Route exact path="/" element={<Dashboard />} />

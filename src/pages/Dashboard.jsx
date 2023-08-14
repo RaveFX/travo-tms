@@ -5,6 +5,7 @@ import Sidebar from "../components/sidebar";
 import { Button, CardBody } from "@material-tailwind/react";
 import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
 import Namecards from "../components/namecard";
+import Statdash from "../components/statdash";
 
 function Dashboard() {
   return (
