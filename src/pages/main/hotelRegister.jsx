@@ -96,7 +96,7 @@ const onSubmit=async(e)=>{
     } else {
 
         await axios.post("http://localhost:8080/api/v1/auth/register/hotel",user)
-        navigate("/")
+        navigate("/register_success")
 
     }
 };

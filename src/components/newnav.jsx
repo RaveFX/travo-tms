@@ -51,7 +51,7 @@ function Newnav() {
             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-gray-700">
               <li>
                 <a
-                  href="#"
+                  href="/"
                   class="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-gray-950"
                   aria-current="page"
                 >

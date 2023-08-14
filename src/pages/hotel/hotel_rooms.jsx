@@ -1,6 +1,14 @@
 import React from 'react'
 import UserNav from '../../components/userNav'
 import SideBar from '../../components/sidebar'
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Typography,
+  Avatar,
+  Spinner
+} from "@material-tailwind/react";
 
 function Hotel_rooms() {
   return (
@@ -8,9 +16,15 @@ function Hotel_rooms() {
     <SideBar active="Reviews"/>
     <div className="flex flex-col w-full bg-[#FFFFFF] bg-opacity-20 ">
       <UserNav />
-      <div className='flex justify-between'>
-          <h1 className=' font-poppins font-extrabold my-4 mx-20 text-[#2C2738]'>Rooms</h1>
-          </div>
+      <div className='flex justify-between h-[70%]' >
+          
+          <img className="h-full w-full" src="/hotel_room2.jpg" alt="" />
+      
+         
+      </div>
+      <div>
+      
+      </div>
 
           
     </div>
