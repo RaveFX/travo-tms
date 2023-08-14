@@ -283,7 +283,7 @@ const DashboardTG = () => {
 
     return (
         <div className='flex flex-row gap-4'>
-            <div className='flex  sm:flex-shrink flex-wrap mr-12'>
+            <div className='flex  sm:flex-shrink flex-wrap mr-16'>
                 {dashs.map((dash, index) => (
                     <DashboardCard key={index} title={dash.title} src={dash.src} />
                 ))}
@@ -432,13 +432,12 @@ const Order = () => {
     );
 }
 
-export default function Dashboard() {
+export default function Admin_Dashboard() {
 
     const dashs = [
         { title: "Total Travelers", src: client, amount: "124" },
         { title: "Total Hotels", src: complete, amount: "45" },
         { title: "Total Activities", src: bookmark, amount: "40" },
-        { title: "Total Vehicles", src: menu, amount: "20" },
         { title: "Total Orders", src: menu, amount: "20" },
         { title: "Registrtion Requests", src: menu, amount: "20" },
     ];
@@ -463,7 +462,7 @@ export default function Dashboard() {
                     {/* <div className='m-5'> */}
                     {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
                     {/* </div> */}
-                    <div className='flex  sm:flex-shrink flex-wrap mr-6'>
+                    <div className='flex  sm:flex-shrink flex-wrap ml-10'>
                         {dashs.map((dash, index) => (
                             <DashboardCard key={index} title={dash.title} src={dash.src} />
                         ))}

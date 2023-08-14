@@ -2,17 +2,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function Requests() {
+export default function Admin_Advertisments() {
 
     return (
         <div className="bg-white p-8 rounded-md w-full">
             <div className=''>
-                <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Requests</Link></button>
+                <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Advertistments</Link></button>
             </div>
 
             <div className="flex items-center justify-between pb-6">
                 <div>
-                    <h2 className="text-gray-600 font-semibold">Registration Requests</h2>
+                    <h2 className="text-gray-600 font-semibold">Advertistments Requests</h2>
                 </div>
                 <div className="flex items-center justify-between">
                     <div className="flex bg-gray-50 items-center p-2 rounded-md">
@@ -47,9 +47,7 @@ export default function Requests() {
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 
                                     </th>
-                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,12 +87,12 @@ export default function Requests() {
                                             <span class="relative">On delivery</span>
                                         </span>
                                     </td> */}
-                                    <td className=" justify-center">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
+                                    <td class="justify-center">
+                                        <a href="/admin/admin_add_advertisments">
+                                            <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
+                                        </a>
                                     </td>
-                                    <td className=" ">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -132,12 +130,12 @@ export default function Requests() {
                                             <span class="relative">Pendding</span>
                                         </span>
                                     </td> */}
-                                    <td className=" justify-center">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
+                                    <td class="justify-center">
+                                        <a href="/admin/admin_add_advertisments">
+                                            <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
+                                        </a>
                                     </td>
-                                    <td className=" ">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -167,20 +165,12 @@ export default function Requests() {
                                             sandu@gmail.com
                                         </p>
                                     </td>
-                                    {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Pendding</span>
-                                        </span>
-                                    </td> */}
-                                    <td className=" justify-center">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
+                                    <td class="justify-center">
+                                        <a href="/admin/admin_add_advertisments">
+                                            <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
+                                        </a>
                                     </td>
-                                    <td className=" ">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td class="px-5 py-5 bg-white text-sm">
@@ -214,12 +204,12 @@ export default function Requests() {
                                             <span class="relative">Cancel</span>
                                         </span>
                                     </td> */}
-                                    <td className=" justify-center">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
+                                    <td class="justify-center">
+                                        <a href="/admin/admin_add_advertisments">
+                                            <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
+                                        </a>
                                     </td>
-                                    <td className=" ">
-                                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -228,11 +218,11 @@ export default function Requests() {
                                 Showing 1 to 4 of 50 Entries
                             </span>
                             <div className="inline-flex mt-2 xs:mt-0">
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-l">
                                     Prev
                                 </button>
                                 &nbsp; &nbsp;
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-r">
                                     Next
                                 </button>
                             </div>

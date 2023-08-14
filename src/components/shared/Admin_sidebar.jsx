@@ -28,7 +28,7 @@ export default function Admin_sidebar() {
                 </Typography>
             </div>
             <List className="text-white gap-3">
-                <Link to="/">
+                <Link to="/admin">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <RectangleGroupIcon className="h-5 w-5 " />
@@ -36,23 +36,23 @@ export default function Admin_sidebar() {
                         Dashboard
                     </ListItem>
                 </Link>
-                <Link to="/requests">
+                <Link to="/admin/admin_requests">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <BanknotesIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Requests
                     </ListItem>
                 </Link>
-                <Link to="/users">
+                <Link to="/admin/admin_users">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <UserGroupIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Users
                     </ListItem>
                 </Link>
-                <Link to="/transaction">
+                <Link to="/admin/admin_transaction">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -60,7 +60,7 @@ export default function Admin_sidebar() {
                         Transactions
                     </ListItem>
                 </Link>
-                <Link to="/advertisments">
+                <Link to="/admin/admin_advertisments">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />

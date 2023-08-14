@@ -23,6 +23,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import Navbar from './navbar';
 
 export default function Layout() {
   return (
@@ -30,6 +31,7 @@ export default function Layout() {
       <Sidebar />
       <div className="flex flex-col flex-1">
         <Header />
+        {/* <Navbar /> */}
         <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
           <Outlet />
         </div>

@@ -2,17 +2,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function Advertisments() {
+export default function Users() {
 
     return (
         <div className="bg-white p-8 rounded-md w-full">
-            <div className=''>
-                <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Advertistments</Link></button>
-            </div>
+
 
             <div className="flex items-center justify-between pb-6">
                 <div>
-                    <h2 className="text-gray-600 font-semibold">Advertistments Requests</h2>
+                    <h1 className="text-gray-600 font-semibold">Users</h1>
                 </div>
                 <div className="flex items-center justify-between">
                     <div className="flex bg-gray-50 items-center p-2 rounded-md">
@@ -20,6 +18,15 @@ export default function Advertisments() {
                             <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                         </svg>
                         <input className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search..." />
+                    </div>
+                    <div>
+                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                            <option >Travel Guide</option>
+                            <option>Store Mnager</option>
+                            <option>Vehicle Renter</option>
+                            <option>Activity Manager</option>
+                            <option>Hotel Manager</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -36,7 +43,7 @@ export default function Advertisments() {
                                         User type
                                     </th>
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Requested at
+                                        Joined at
                                     </th>
                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         email
@@ -88,7 +95,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/add_advertisments">
+                                        <a href="/admin_userprofile">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -131,7 +138,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/add_advertisments">
+                                        <a href="/admin_userprofile">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -165,8 +172,16 @@ export default function Advertisments() {
                                             sandu@gmail.com
                                         </p>
                                     </td>
+                                    {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Pendding</span>
+                                        </span>
+                                    </td> */}
                                     <td class="justify-center">
-                                        <a href="/add_advertisments">
+                                        <a href="/admin_userprofile">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -205,7 +220,7 @@ export default function Advertisments() {
                                         </span>
                                     </td> */}
                                     <td class="justify-center">
-                                        <a href="/add_advertisments">
+                                        <a href="/admin_userprofile">
                                             <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                         </a>
                                     </td>
@@ -218,11 +233,11 @@ export default function Advertisments() {
                                 Showing 1 to 4 of 50 Entries
                             </span>
                             <div className="inline-flex mt-2 xs:mt-0">
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-l">
                                     Prev
                                 </button>
                                 &nbsp; &nbsp;
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-r">
                                     Next
                                 </button>
                             </div>

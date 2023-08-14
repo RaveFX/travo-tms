@@ -47,7 +47,7 @@ export default function Sidebar() {
                 <Link to="/orders">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <UserGroupIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Orders
                     </ListItem>
@@ -55,7 +55,7 @@ export default function Sidebar() {
                 <Link to="/renting">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <HeartIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Renting
                     </ListItem>
@@ -63,7 +63,7 @@ export default function Sidebar() {
                 <Link to="/transaction">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <UserGroupIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Transaction
                     </ListItem>
@@ -71,23 +71,23 @@ export default function Sidebar() {
                 <Link to="/rating">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <HeartIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Rating
                     </ListItem>
                 </Link>
-                <Link to="/profile">
+                {/* <Link to="/profile">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Profile
                     </ListItem>
-                </Link>
-                <Link to="/product_card">
+                </Link> */}
+                <Link to="/admin">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
-                            <MapIcon className="h-5 w-5" />
+                            <Cog6ToothIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Setting
                     </ListItem>

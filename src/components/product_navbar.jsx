@@ -296,13 +296,13 @@ const product_navbar = () => {
             Cameras
           </button>
           <button className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-            Tents
+            Shoes
           </button>
           <button className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-            Bags
+            Hats
           </button>
           <button className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
-            Jackets
+            Boots
           </button>
           <button className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition">
             Cameras

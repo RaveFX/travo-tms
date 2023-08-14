@@ -126,10 +126,10 @@ import {
     CardFooter,
 } from "@material-tailwind/react";
 
-const AddAdverisments = () => {
+const Admin_AddAdverisments = () => {
     return (
         <div className='m-3'>
-            <div className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+            <div className="w-full max-w-6xl rounded bg-white shadow-xl p-8 lg:p-20 mx-auto text-gray-800 relative md:text-left">
                 <div className="md:flex items-center -mx-10">
                     <div className="flex p-4 ml-4">
                         <Card className="w-96">
@@ -167,7 +167,7 @@ const AddAdverisments = () => {
                                 <h1 className="font-bold uppercase text-2xl mb-5">Advertisement ID:58</h1>
                             </div>
                             <div className='m-6'>
-                                <p className="text-sm"><b>Name:</b> WATERPROOF JACKET</p>
+                                <p className="text-sm"><b>Name:</b> Camping Tent</p>
                                 <p className="text-sm"><b>Price:</b> Rs.4000.00</p>
                                 <p className="text-sm"><b>Color:</b> Red,White,Yellow</p>
                                 <p className="text-sm"><b>Quantity:</b> 23</p>
@@ -191,7 +191,7 @@ const AddAdverisments = () => {
     );
 };
 
-export default AddAdverisments;
+export default Admin_AddAdverisments;
 
 
 

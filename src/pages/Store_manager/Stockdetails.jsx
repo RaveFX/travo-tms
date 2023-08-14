@@ -23,7 +23,7 @@ export default function Stockdetails() {
                         </svg>
                         <input className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search..." />
                     </div>
-                    <div>
+                    {/* <div>
                         <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
                             <option >Travel Guide</option>
                             <option>Store Mnager</option>
@@ -31,7 +31,7 @@ export default function Stockdetails() {
                             <option>Activity Manager</option>
                             <option>Hotel Manager</option>
                         </select>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div>
@@ -70,27 +70,27 @@ export default function Stockdetails() {
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
                                                 <img class="w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                    src="https://media.istockphoto.com/id/1404685266/photo/black-abs-luggage-with-4-wheels-isolated-on-white.jpg?s=612x612&w=0&k=20&c=CcU6hlytSgX0bJRYflZIx_NCiO2nAa0e40RXeaQTMdg="
                                                     alt="" />
                                             </div>
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    Vera Carpenter
+                                                    Black bag
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Store Agent</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">12</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            Jan 21, 2020
+                                            Bag
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            thia@gmail.com
+                                            Black,Red
                                         </p>
                                     </td>
                                     {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -113,27 +113,27 @@ export default function Stockdetails() {
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
                                                 <img class="w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                    src="https://media.istockphoto.com/id/470801960/photo/rain-jacket.webp?b=1&s=170667a&w=0&k=20&c=erUj8jH3qGNcJYzPproJ11uewI76QxUaHZMMR3-GbgU="
                                                     alt="" />
                                             </div>
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    Blake Bowman
+                                                    Jackets
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Activity Agent</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Jacket</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            Jan 01, 2020
+                                            20
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            thrini@gmail.com
+                                            yellow,green
                                         </p>
                                     </td>
                                     {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -156,27 +156,27 @@ export default function Stockdetails() {
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
                                                 <img class="w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                    src="https://media.istockphoto.com/id/1453988945/photo/yellow-bucket-hat-isolated-on-white.webp?b=1&s=170667a&w=0&k=20&c=KiTFBMsBnptqQzuoRpB3XIJy0U2wh5lJhfbVAljgG30="
                                                     alt="" />
                                             </div>
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    Dana Moore
+                                                    Hat
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Hotel Ahent</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Cap</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            Jan 10, 2020
+                                            100
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            sandu@gmail.com
+                                            Black,red,white,yellow
                                         </p>
                                     </td>
                                     {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -199,24 +199,24 @@ export default function Stockdetails() {
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
                                                 <img class="w-full h-full rounded-full"
-                                                    src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
+                                                    src="https://media.istockphoto.com/id/1355329741/photo/smartphone-and-mini-tripod-isolated-on-white.webp?b=1&s=170667a&w=0&k=20&c=T1voaiuVAkClbIq8qsXnOZHAibWLa3LeXGcCKkv4T7o="
                                                     alt="" />
                                             </div>
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    Alonzo Cox
+                                                    Selfie stick
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Hotel Agent</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Others</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">50</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">ravindu@gmail.com</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">black</p>
                                     </td>
                                     {/* <td class="px-5 py-5 bg-white text-sm">
                                         <span
@@ -240,11 +240,11 @@ export default function Stockdetails() {
                                 Showing 1 to 4 of 50 Entries
                             </span>
                             <div className="inline-flex mt-2 xs:mt-0">
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-l">
                                     Prev
                                 </button>
                                 &nbsp; &nbsp;
-                                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
+                                <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-r">
                                     Next
                                 </button>
                             </div>

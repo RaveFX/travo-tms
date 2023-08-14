@@ -11,8 +11,8 @@ export default function Productaddform() {
 
 
                     {/* Right Side - Add Photos */}
-                    <div className="p-10 bg-white flex items-center justify-center m-4">
-                        <div className="bg-gray-300 p-16  text-white font-bold text-4xl cursor-pointer">
+                    <div className="p-16 bg-white flex items-center justify-center m-4">
+                        <div className="bg-gray-400 p-16  text-white font-bold text-4xl cursor-pointer">
                             {/* You can add your photo upload component here */}
                             +
                         </div>
@@ -63,6 +63,23 @@ export default function Productaddform() {
                                         placeholder="Enter product price"
                                     />
                                 </div>
+                                <div className="mb-4">
+                                    <div>
+                                        <label htmlFor="productName" className="block text-sm font-medium text-gray-700">
+                                            Description
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="text"
+                                            id="productName"
+                                            name="productName"
+                                            className="mt-1 p-2 border border-gray-300 rounded-lg w-full"
+                                            placeholder="Enter product name"
+                                        />
+                                    </div>
+                                </div>
+
                             </form>
 
 
