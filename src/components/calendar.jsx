@@ -7,7 +7,7 @@ const Calendar = () => {
             <div className="  shadow-lg ">
                 <div className="md:p-2 md:pb-8 w-[44vh] h-[36vh] dark:bg-primary bg-white rounded-md">
                     <div className=" flex items-center justify-between">
-                        <h1 className="text-xl font-bold dark:text-textGray text-gray-800">October 2020</h1>
+                        <h1 className="text-xl font-bold dark:text-textGray text-gray-800">August 2023</h1>
                         <div className="flex items-center text-gray-800 dark:text-gray-100">
                             <svg xmlns="http:www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-left" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -109,10 +109,8 @@ const Calendar = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="w-full h-full">
-                                            <div className="fle2 ite2s-center justify-center w-full rounded-full cursor-pointer">
-                                                <p className="text-xs w-8 h-8 flex items-center justify-center font-medium text-white bg-green rounded-full">8</p>
-                                            </div>
+                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">8</p>
                                         </div>
                                     </td>
                                     <td>
@@ -148,8 +146,10 @@ const Calendar = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
-                                            <p className="text-xs text-gray-500 dark:text-textGray font-medium">15</p>
+                                        <div className="w-full h-full">
+                                            <div className="px-2 py-2 cursor-pointer flex w-full justify-center">
+                                                <p className="text-xs text-gray-500 dark:text-textGray font-medium">15</p>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
@@ -241,4 +241,4 @@ const Calendar = () => {
     );
 };
 
-export default Calendar;
+export default Calendar

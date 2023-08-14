@@ -52,7 +52,7 @@ export default function TopNavbar() {
             </div>
           </Link>
           <div>
-            <Link to="/Travdash">
+            <Link to="/Profile">
               <Avatar
                 className="rounded-full"
                 src="/ravindu.png"
@@ -61,7 +61,7 @@ export default function TopNavbar() {
             </Link>
           </div>
           <div>
-            <Link to="/Travdash">
+            <Link to="/Profile">
               <h2 className="text-sm font-semibold text-gray-700">
                 Ravindu Viranga
               </h2>

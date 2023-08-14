@@ -40,7 +40,7 @@ export default function Sidebar(props) {
     {
       icon: <RectangleGroupIcon className="h-5 w-5" />,
       name: "Dashboard",
-      link: "/dashboard",
+      link: "/",
     },
     {
       icon: <MapIcon className="h-5 w-5" />,

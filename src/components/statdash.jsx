@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Statdash = () => {
     return ( 
     <div class="flex flex-wrap gap-x-4 gap-y-12 bg-gray-100 px-4 py-20 lg:px-20">
-  <div class="flex w-72">
+  <div class="flex w-25">
     <div class="flex w-full max-w-full flex-col break-words rounded-lg border border-gray-100 bg-white text-gray-600 shadow-lg">
       <div class="p-3">
         <div class="absolute -mt-10 h-16 w-16 rounded-xl bg-gradient-to-tr from-gray-700 to-gray-400 text-center text-white shadow-lg">
@@ -24,7 +24,7 @@ const Statdash = () => {
       </div>
     </div>
   </div>
-  <div class="flex w-72">
+  <div class="flex w-25">
     <div class="flex w-full max-w-full flex-col break-words rounded-lg border border-gray-100 bg-white text-gray-600 shadow-lg">
       <div class="p-3">
         <div class="absolute -mt-10 h-16 w-16 rounded-xl bg-gradient-to-tr from-blue-700 to-blue-500 text-center text-white shadow-lg">
@@ -37,13 +37,13 @@ const Statdash = () => {
           <h4 class="text-2xl font-semibold tracking-tighter xl:text-2xl">2,300</h4>
         </div>
       </div>
-      <hr class="opacity-50" />
+      <hr class="opacity-30" />
       <div class="p-4">
         <p class="font-light"><span class="text-sm font-bold text-green-600">+3% </span>vs last month</p>
       </div>
     </div>
   </div>
-  <div class="flex w-72">
+  <div class="flex w-25">
     <div class="flex w-full max-w-full flex-col break-words rounded-lg border border-gray-100 bg-white text-gray-600 shadow-lg">
       <div class="p-3">
         <div class="absolute -mt-10 h-16 w-16 rounded-xl bg-gradient-to-tr from-emerald-700 to-emerald-500 text-center text-white shadow-lg">

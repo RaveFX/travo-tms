@@ -11,12 +11,14 @@ import AddActivity from "./pages/Add_Activity";
 import NameCard from "./components/namecard";
 import Dashboard from "./pages/Dashboard";
 import StatDash from "./components/statdash";
+import Stat from "./components/stat";
 
 export default function App() {
   return (
     <>
       {/* <NameCard /> */}
     {/* <StatDash /> */}
+    {/* <Stat /> */}
       <Router>
         <Routes>
           <Route exact path="/" element={<Dashboard />} />

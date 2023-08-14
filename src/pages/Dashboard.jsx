@@ -5,6 +5,7 @@ import Sidebar from "../components/sidebar";
 import { Button, CardBody } from "@material-tailwind/react";
 import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
 import Namecards from "../components/namecard";
+import Calendar from "../components/calendar";
 import Statdash from "../components/statdash";
 
 function Dashboard() {
@@ -21,6 +22,8 @@ function Dashboard() {
           <div>
             <div className="mx-5 my-10 flex">
                <Namecards />
+               <Statdash />
+               <Calendar />
             </div>
           </div>
         </div>
