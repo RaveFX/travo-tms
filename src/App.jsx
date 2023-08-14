@@ -15,6 +15,8 @@ import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import SwiperCard from "./pages/web-component/SwiperCard";
 import Itinerary from "./pages/Traveller/Itinerary";
+import Selections from "./pages/Traveller/Selection";
+import TravelGuide from "./pages/Traveller/TravelGuied";
 
 
 
@@ -30,7 +32,11 @@ function App() {
               
             </Route>
             <Route path="/trip-planner" element={<TripPlanner />} />
+           
             <Route path="/itinerary" element={<Itinerary />} />
+            <Route path="/selections" element={<Selections />} />
+            <Route path="/hire-guied" element={<TravelGuide  />} />
+            
             {/* <Route path="/mytrips" element={<Mytrips />} /> */}
             {/* Add other routes here */}
           </Routes>

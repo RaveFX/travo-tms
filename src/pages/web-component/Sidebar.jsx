@@ -36,9 +36,10 @@ import {
 
   export default function Sidebar(props) {
 
-    const {active,isSubSidebarOpen,setIsSubSidebarOpen} = props;
-
+    const {active,isSubSidebarOpen,setIsSubSidebarOpen,setSubSidebarState, subSidebarState} = props;
+    console.log(subSidebarState);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    
 
     // const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
 
@@ -56,9 +57,9 @@ import {
     const navList = [
       {icon : <RectangleGroupIcon className="h-5 w-5" />, name : "Dashboard", link : "/dashboard"},
       {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/mytrips",subItems: [
-        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "/mytrips/itinerary" },
-        { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "/mytrips/selections" },
-        { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "/mytrips/saves" },
+        { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "",state:1 },
+        { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "",state:2 },
+        { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "",state:3 },
       ],},
       {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/community"},
@@ -108,10 +109,12 @@ import {
                 {item.name === 'My Trips' && isSubSidebarOpen &&(
                   <div className="ml-[2.5rem] mt-1 space-y-1">
                   {item.subItems.map((subItem, subKey) => (
-                    <Link to={subItem.link} className="w-[100%] !style:none" key={subKey}>
+                    <Link to={subItem.link} className="w-[100%] !style:none" key={subKey}
+                      onClick={()=>setSubSidebarState(subItem.state)}
+                    >
                       <ListItem
                         className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
-                          active === subItem.name ? 'active' : ''
+                          active === subItem.state ? 'active' : ''
                         }`}
                       >
                         {subItem.icon}

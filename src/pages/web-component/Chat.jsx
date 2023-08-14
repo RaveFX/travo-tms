@@ -9,19 +9,27 @@ function Chat() {
   const handleSendMessage = () => {
     if (newMessage.trim() === '') return;
 
-    const newMessages = [...messages, { text: newMessage, sender: 'user' }];
+    const newMessages = [{ text: newMessage, sender: 'user' },...messages];
     setMessages(newMessages);
     setNewMessage('');
   };
 
   return (
-    <div className="flex flex-col  m-5 gap-2 p-5 w-[420px] h-fit bg-white">
-      <div className="chat-messages bg-gray-300 flex flex-col justify-content-left relative left-[70%] w-fit rounded-[20px] ">
-        {messages.map((message, index) => (
-          <div key={index} className="{`message ${message.sender}`} bg-[#57CC99] flex flex-col justify-content-end text-white bg-opacity-[80%] m-2 w-fit pl-3 pr-3 p-2  rounded-[15px]">
-            {message.text}
-          </div>
-        ))}
+    <div className="flex flex-col  m-5 gap-2 p-5 w-[420px] h-fit bg-white rounded-lg shadow-lg z-[1000]">
+      <div className=' p-0 m-0 h-[400px] flex flex-col border border-[#72C075] rounded-lg'>
+      <div className="chat-messages bg-white flex flex-col overflow-y-auto relative justify-content-end rounded-[20px] " style={{ scrollbarWidth: 'none' }}>
+        <div className='flex flex-col-reverse overflow-y-auto ' 
+        style={{ minHeight: '400px', scrollbarWidth: 'none' }}
+        >
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${
+              message.sender === 'user' ? 'self-end' : 'self-start'
+            } py-2 px-4 rounded-full m-2 bg-[#377A85] bg-opacity-80 text-white`}>
+              {message.text}
+            </div>
+          ))}
+        </div>
+      </div>
       </div>
       <div className="chat-input flex justify-content-end bottom-[90%]">
       <div className="flex w-full flex-row w-[400px] items-center gap-2 rounded-[99px] border border-gray-900/10 bg-gray-900/5 p-2">

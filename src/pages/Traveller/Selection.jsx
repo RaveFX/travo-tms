@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "../web-component/Sidebar";
 import TopNavbar from "../web-component/Navbar";
-
-
+import Map from "../web-component/Map";
 import { TripNameBar } from "../web-component/TripName";
 import Calendar from "../web-component/calander";
 import BacknNext from "../web-component/BackNext";
@@ -43,7 +42,7 @@ function Icon({ id, open }) {
   );
 }
 
-function Itinerary() {
+function Selections() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleBackClick = () => {
@@ -90,21 +89,27 @@ function Itinerary() {
   ];
 
   return (
+    
     <>
       <div className="flex overflow-hidden w-full">
         {/* <Sidebar active="Selections" isSubSidebarOpen={isSubSidebarOpen} setIsSubSidebarOpen={setIsSubSidebarOpen}/> */}
         <div
-          className="flex flex-col  h-fit bg-white bg-opacity-20 overflow-y-scroll w-full"
+          className="flex flex-col w-full h-fit bg-white bg-opacity-20 overflow-y-scroll w-full"
           style={{ scrollbarWidth: "none" }}
         >
           {/* <TopNavbar /> */}
           <div className="flex justify-between">
             {/* <TripNameBar isSubSidebarOpen={isSubSidebarOpen}  isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/> */}
           </div>
-          <div>
+          <div className="flex flex-row ">
             {/* <Chat /> */}
+            {/* <div className="w-[30%]" >
+                <Map />
+            </div> */}
             <>
-              <Tabs value="1" className="max-w-[60rem] m-8 mb-0 bg-transparent">
+            
+            <div className="w-full">
+              <Tabs value="1" className="max-w-[50rem] m-8 mb-0 bg-transparent">
                 <TabsHeader
                   className="bg-transparent"
                   indicatorProps={{
@@ -124,9 +129,9 @@ function Itinerary() {
                 </TabsHeader>
               </Tabs>
 
-              <div className="m-5 mt-7 pt-0 p-5">
+              <div className="m-5 mt-0 pt-0 p-5">
                 <Accordion
-                  open={open === "1"}
+                  open={true}
                   icon={<Icon id={"1"} open={open} />}
                 >
                   <AccordionHeader onClick={() => handleOpen("1")}>
@@ -140,10 +145,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
 
@@ -154,10 +159,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8 ">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -167,10 +172,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                   </AccordionBody>
@@ -190,10 +195,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
 
@@ -204,10 +209,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -217,10 +222,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                   </AccordionBody>
@@ -240,10 +245,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
 
@@ -254,10 +259,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -267,10 +272,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                   </AccordionBody>
@@ -290,10 +295,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
 
@@ -304,10 +309,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -317,10 +322,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                   </AccordionBody>
@@ -340,10 +345,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 ">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
 
@@ -354,10 +359,10 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 ">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -367,26 +372,19 @@ function Itinerary() {
                     </div>
                     <div className="flex flex-col justify-center gap-4 ">
                       <Typography className="w-fit ml-[38%] opacity-[50%]">
-                        You haven't add item yet
+                        Add item for make poll
                       </Typography>
                       <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                        Add item
+                        Add item from Saves
                       </Button>
                     </div>
                   </AccordionBody>
                 </Accordion>
-                {/* <div className="flex flex-row justify-center gap-[150px] mt-30 pt-20">
-          <Button className="flex flex-col justify-center w-[150px] h-[150px] text-white  bg-[#57CC99] normal-case shadow-none focus:shadow-none hover:shadow-none active:shadow-none">
-            <img className="" src="./public/images/travelguied.svg" />
-            <Typography>Add Travel guied</Typography>
-          </Button>
-          <Button className="flex flex-col w-[150px] h-[150px] text-white bg-[#57CC99] normal-case shadow-none focus:shadow-none hover:shadow-none active:shadow-none">
-            <img className="" src="./public/images/vehicle.svg" />
-            <Typography>Rent a Vehicle</Typography>
-          </Button>
-        </div> */}
+                
               </div>
+            </div>
             </>
+            
 
             {/* <MemberPopup isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/> */}
             {/* {isMemberOpen && <Members isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/>} */}
@@ -400,4 +398,4 @@ function Itinerary() {
   );
 }
 
-export default Itinerary;
+export default Selections;
