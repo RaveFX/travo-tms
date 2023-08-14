@@ -29,7 +29,7 @@ const EditProfile = ({ name, email, location }) => {
                     type
                     tabIndex={0}
                     aria-label="Enter date of birth"
-                    className="w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                    className="w-55 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -40,7 +40,7 @@ const EditProfile = ({ name, email, location }) => {
                     type
                     tabIndex={0}
                     aria-label="Enter date of birth"
-                    className="w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                    className="w-55 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   />
                 </div>
               </div>
@@ -53,7 +53,7 @@ const EditProfile = ({ name, email, location }) => {
                     type
                     tabIndex={0}
                     aria-label="Enter date of birth"
-                    className="w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                    className="w-55 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -64,7 +64,7 @@ const EditProfile = ({ name, email, location }) => {
                     type
                     tabIndex={0}
                     aria-label="Enter date of birth"
-                    className="w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                    className="w-55 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   />
                 </div>
               </div>
@@ -77,7 +77,7 @@ const EditProfile = ({ name, email, location }) => {
                     type
                     tabIndex={0}
                     aria-label="Enter date of birth"
-                    className="w-64 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                    className="w-55 bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   />
                 </div>
                 <div className="flex flex-col  pr-2">
@@ -91,7 +91,7 @@ const EditProfile = ({ name, email, location }) => {
                     class="text-green bg-gray-300 hover:bg-black rounded-full  focus:ring-green font-medium text-sm px-5 
                                     py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                   >
-                    <Link to="/vehicle_owner_dashboard">Save</Link>
+                    <Link to="/dashboard">Save</Link>
                   </button>
                 </div>
               </div>
@@ -152,7 +152,7 @@ const EditProfile = ({ name, email, location }) => {
                     class="text-green bg-gray-300 hover:bg-black rounded-full  focus:ring-green font-medium text-sm px-5 
                                     py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                   >
-                    <Link to="/vehicle_owner_dashboard">Save</Link>
+                    <Link to="/dashboard">Save</Link>
                   </button>
                 </div>
               </div>

@@ -36,9 +36,9 @@ export function Profile() {
               href="#"
               target="BLANK()"
             >
-              @immohitdhiman@gmail.com
+              ravinduviranga20@gmail.com
             </a>
-            <p className="mt-2 text-gray-500 text-sm">Nugegoda </p>
+            <p className="mt-2 text-gray-500 text-sm">Anuradhapura </p>
           </div>
           <hr className="mt-6" />
           <div className="flex  bg-gray-50 ">

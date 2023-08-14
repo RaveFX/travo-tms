@@ -8,14 +8,18 @@ import EditProfile from "./pages/Edit_Profile";
 import Calendar from "./components/calendar";
 import Activityadd from "./components/addActivity";
 import AddActivity from "./pages/Add_Activity";
+import NameCard from "./components/namecard";
+import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (
     <>
+      {/* <NameCard /> */}
     {/* <Calendar />
     <Activityadd /> */}
       <Router>
         <Routes>
+          <Route exact path="/" element={<Dashboard />} />
           <Route exact path="/schedule" element={<Schedule />} />
           <Route exact path="/schedule/details" element={<ScheduleDetails />} />
           <Route exact path="/reviews" element={<ReviewsDetails />} />
