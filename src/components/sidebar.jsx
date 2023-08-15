@@ -46,7 +46,6 @@ export default function Sidebar(props) {
     {
       icon: <MapIcon className="h-5 w-5" />,
       name: "My Trips",
-      link: "/mytrips",
     },
     {
       icon: <BuildingStorefrontIcon className="h-5 w-5" />,
@@ -56,7 +55,6 @@ export default function Sidebar(props) {
     {
       icon: <UserGroupIcon className="h-5 w-5" />,
       name: "Community",
-      link: "/community",
     },
     {
       icon: <BanknotesIcon className="h-5 w-5" />,
@@ -67,7 +65,6 @@ export default function Sidebar(props) {
     {
       icon: <Cog6ToothIcon className="h-5 w-5" />,
       name: "Settings",
-      link: "/settings",
     },
   ];
 

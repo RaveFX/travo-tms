@@ -36,6 +36,7 @@ const shopItems = [
     imageSrc:
       "https://www.beyondthetent.com/wp-content/uploads/2023/03/Cool-Camping-Gear.jpg",
     buttonname: "Rent now",
+    links: "/Store",
   },
   {
     id: 2,
