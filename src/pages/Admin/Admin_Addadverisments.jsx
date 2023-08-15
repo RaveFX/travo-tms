@@ -174,7 +174,7 @@ const Admin_AddAdverisments = () => {
                                 <p className="text-sm"><b>Quantity:</b> 23</p>
                             </div>
                             <div>
-                                <p className="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos, voluptatum dolorum! Laborum blanditiis consequatur, voluptates, sint enim fugiat saepe, dolor fugit, magnam explicabo eaque quas id quo porro dolorum facilis... <a href="#" className="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE <i className="mdi mdi-arrow-right"></i></a></p>
+                                <p className="text-sm">Experience the great outdoors in ultimate comfort with our premium camping tent. Crafted with durable materials and advanced weatherproof technology, it offers spacious accommodation for your adventures. Easy setup and versatile design make it perfect for families or solo explorers. Embrace nature without compromising on luxury. Your next unforgettable journey starts here.<a href="#" className="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE <i className="mdi mdi-arrow-right"></i></a></p>
                             </div>
                             <div>
                                 <div className="inline-block align-bottom m-2">

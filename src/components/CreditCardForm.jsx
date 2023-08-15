@@ -173,7 +173,7 @@ const CreditCardForm = () => {
 
         <footer class="mt-6 p-4">
           <button
-            class="submit-button px-4 py-3 rounded-full bg-green-300 text-blue-900 focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
+            class="submit-button px-4 py-3 rounded-full bg-green-300 bg-button1 focus:ring focus:outline-none w-full text-xl font-semibold transition-colors"
             x-bind:disabled="!isValid"
             x-on:click="onSubmit()"
           >

@@ -11,9 +11,9 @@ export default function Stockdetails() {
             <div className="flex items-center justify-between pb-6">
                 <div>
                     <Link to="/productadd">
-                        <button class="bg-green-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Product</button>
+                        <button class="bg-green px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Product</button>
                     </Link>
-                    <button class="bg-green-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Category</button>
+                    <button class="bg-green px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Category</button>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -124,11 +124,11 @@ export default function Stockdetails() {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Jacket</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">50</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            20
+                                            Jacket
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -167,11 +167,11 @@ export default function Stockdetails() {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Cap</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">100</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            100
+                                            Cap
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -210,10 +210,10 @@ export default function Stockdetails() {
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">Others</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">50</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">50</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">Other</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">black</p>

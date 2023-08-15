@@ -84,12 +84,17 @@ export default function Productaddform() {
 
 
                             <div className="flex items-center justify-center p-4">
-                                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg mr-4">
-                                    Save Product
+                                <button className="px-4 py-2 bg-button1 text-white rounded-lg mr-4">
+                                    Save
                                 </button>
-                                <Link to="/products" className="text-blue-500 underline">
-                                    Cancel
+                                <Link to="/products">
+                                    <button className="px-4 py-2 bg-green text-white rounded-lg mr-4">
+                                        Cancel
+                                    </button>
                                 </Link>
+                                {/* <Link   className="text-blue-500 underline">
+                                    Cancel
+                                </Link> */}
                             </div>
                         </div>
 

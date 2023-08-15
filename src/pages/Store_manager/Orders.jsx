@@ -1,4 +1,5 @@
 import React from 'react';
+import { Select, Option } from "@material-tailwind/react";
 
 const ProductOrderTable = () => {
     return (
@@ -74,12 +75,18 @@ const ProductOrderTable = () => {
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
+                                        {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                             <span class="relative">On delivery</span>
-                                        </span>
+                                        </span> */}
+                                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                            <option >On delivery</option>
+                                            <option>Pendding</option>
+                                            <option>Cancel</option>
+                                            <option>Deliverd</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -111,12 +118,18 @@ const ProductOrderTable = () => {
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
+                                        {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                             <span class="relative">Pendding</span>
-                                        </span>
+                                        </span> */}
+                                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                            <option >On delivery</option>
+                                            <option>Pendding</option>
+                                            <option>Cancel</option>
+                                            <option>Deliverd</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -148,12 +161,18 @@ const ProductOrderTable = () => {
                                         </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
+                                        {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
                                             <span class="relative">Pendding</span>
-                                        </span>
+                                        </span> */}
+                                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                            <option >On delivery</option>
+                                            <option>Pendding</option>
+                                            <option>Cancel</option>
+                                            <option>Deliverd</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -181,12 +200,18 @@ const ProductOrderTable = () => {
                                         <p class="text-gray-900 whitespace-no-wrap">1</p>
                                     </td>
                                     <td class="px-5 py-5 bg-white text-sm">
-                                        <span
+                                        {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
                                             <span class="relative">Cancel</span>
-                                        </span>
+                                        </span> */}
+                                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                            <option >On delivery</option>
+                                            <option>Pendding</option>
+                                            <option>Cancel</option>
+                                            <option>Deliverd</option>
+                                        </select>
                                     </td>
                                 </tr>
                             </tbody>

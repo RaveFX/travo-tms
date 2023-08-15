@@ -342,8 +342,13 @@ const CustomerTransaction = () => {
                   <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
+                      Download
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -360,8 +365,13 @@ const CustomerTransaction = () => {
                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
+                      Download
+                    </button>
                   </td>
 
                 </tr>
@@ -379,8 +389,13 @@ const CustomerTransaction = () => {
                   <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
+                      Download
+                    </button>
                   </td>
                 </tr>
                 <tr
@@ -415,8 +430,13 @@ const CustomerTransaction = () => {
                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
+                      Download
+                    </button>
                   </td>
 
                 </tr>
@@ -458,11 +478,11 @@ const Membership = () => {
                   <td className="whitespace-nowrap px-6 py-4">17.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.10,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
                   </td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
                       Download
                     </button>
                   </td>
@@ -474,11 +494,11 @@ const Membership = () => {
                   <td className="whitespace-nowrap px-6 py-4">20.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.21,000</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
                   </td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
                       Download
                     </button>
                   </td>
@@ -491,11 +511,11 @@ const Membership = () => {
                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
                   </td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
                       Download
                     </button>
                   </td>
@@ -507,11 +527,11 @@ const Membership = () => {
                   <td className="whitespace-nowrap px-6 py-4">12.08.2023</td>
                   <td className="whitespace-nowrap px-6 py-4">Rs.22,500</td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <div className="w-14 h-6 text-center bg-green-400 rounded-lg">
+                    <div className="w-14 h-6 text-center bg-green rounded-lg">
                       Paid</div>
                   </td>
                   <td className="whitespace-nowrap px-4 py-2">
-                    <button className="w-16 h-6 text-center bg-green-600 rounded-lg text-white">
+                    <button className="w-16 h-6 text-center bg-green rounded-lg text-white">
                       Download
                     </button>
                   </td>

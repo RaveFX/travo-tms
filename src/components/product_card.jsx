@@ -15,7 +15,7 @@ const product_card = () => {
                         <div className='m-4'>
                             <div className="mb-6">
                                 <h1 className="font-bold uppercase text-2xl mb-5">Product ID:58</h1>
-                                <p className="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos, voluptatum dolorum! Laborum blanditiis consequatur, voluptates, sint enim fugiat saepe, dolor fugit, magnam explicabo eaque quas id quo porro dolorum facilis... <a href="#" className="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE <i className="mdi mdi-arrow-right"></i></a></p>
+                                <p className="text-sm">Stay dry and stylish with our high-performance waterproof jacket. Engineered with cutting-edge waterproofing technology, it repels rain while maintaining breathability. Its sleek design and durable construction make it a must-have for outdoor enthusiasts. Conquer the elements in confidence and comfort, wherever your adventures take you.<a href="#" className="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE <i className="mdi mdi-arrow-right"></i></a></p>
                             </div>
                             <div className='m-6'>
                                 <p className="text-sm"><b>Name:</b> WATERPROOF JACKET</p>
