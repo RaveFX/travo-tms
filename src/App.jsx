@@ -20,6 +20,7 @@ import Store_dashboard from "./pages/store/store_dashboard";
 import Traveller_dashboard from "./pages/traveler/traveller_dashboard";
 import Vehicle_dashboard from "./pages/vehicle_renter/vehicle_dashboard";
 import Register_success from "./pages/main/register_success";
+import Travdash from "./pages/traveler/travdash";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 export default function App() {
@@ -43,10 +44,11 @@ export default function App() {
     <Route exact path="/hotelagent_reservations" element={<Hotel_reservations/>}/>
     <Route exact path="/hotelagent_rooms" element={<Hotel_rooms/>}/>
     <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails/>}/>
-    <Route exact path="/traveler_dashboard" element={<Traveller_dashboard/>}/>
+    <Route exact path="/traveler_dashboard" element={<Travdash/>}/>
     <Route exact path="/store_dashboard" element={<Store_dashboard/>}/>
     <Route exact path="/vehicle_dashboard" element={<Vehicle_dashboard/>}/>
     <Route exact path="/register_success" element={<Register_success/>}/>
+
     
     
     

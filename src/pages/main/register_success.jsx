@@ -36,7 +36,7 @@ import {
             color="white"
             className="mb-3 font-thin  text-md leading-[1.5] w-72"
           >
-          We have successfully send your registration request. Our staff will contact you within the next 24hrs. We have sent an confirmation mail to the email you provided during registration. It should arrive in a couple of minutes
+          We have successfully send your registration request. Our staff will contact you within the next 24hrs. We will send an confirmation mail to the email you provided during registration to inform you the registration status.
           </Typography>
           <Typography className="flex justify-center items-center" >
             <Spinner />
