@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export default function ImageGrid() {
     return (
 
-<section class="py-20">
-  <h1 class="mb-1 text-center font-sans text-5xl font-bold text-gray-900">Activities<span class="text-blue-600"></span></h1>
+<section class="py-2">
+  <h1 class="mb-1 m font-sans text-4xl font- text-gray-900">Activities<span class="text-blue-600"></span></h1>
   <div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
     <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
       <a href="#">
