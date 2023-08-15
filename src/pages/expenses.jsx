@@ -23,7 +23,7 @@ import {
   Input,
 } from "@material-tailwind/react";
 
-const TABLE_HEAD = ["Transaction", "Category", "Cost", "Paid by", "cost", ""];
+const TABLE_HEAD = ["Transaction", "Category", "Cost", "Paid by", "Date", ""];
 
 const TABLE_ROWS = [
   {
@@ -74,7 +74,11 @@ function ExpenseTable() {
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <Typography variant="h5" color="blue-gray" className="font-poppins">
+            <Typography
+              variant="h5"
+              color="blue-gray"
+              className="ml-3 font-poppins"
+            >
               Recent Expenses
             </Typography>
           </div>
@@ -82,7 +86,10 @@ function ExpenseTable() {
             <div className="w-full text-xs md:w-72">
               <Input label="Search" />
             </div>
-            <Button className="flex items-center bg-[#22577A] gap-3" size="sm">
+            <Button
+              className="flex mr-3 items-center bg-[#22577A] gap-3"
+              size="sm"
+            >
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
             </Button>
           </div>
