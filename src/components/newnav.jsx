@@ -13,9 +13,7 @@ export default function Navingation_home() {
               class="h-8 mr-3"
               alt="Flowbite Logo"
             ></img>
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Travo
-            </span>
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
           </Link>
           <div class="flex md:order-2">
             <button
