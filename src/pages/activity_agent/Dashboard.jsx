@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
+import TopNavbar from "../../components/activity_agent/navbar2";
+import Sidebar from "../../components/activity_agent/sidebar";
 import { Button, CardBody } from "@material-tailwind/react";
 import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
-import Table from "../components/table";
+import Namecards from "../../components/activity_agent/namecard";
+import Calendar from "../../components/activity_agent/calendar";
+import Statdash from "../../components/activity_agent/statdash";
 
-function Schedule() {
+function Dashboard() {
   return (
     <>
       <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
@@ -19,7 +21,9 @@ function Schedule() {
           </div>
           <div>
             <div className="mx-5 my-10 flex">
-              <Table />
+               <Namecards />
+               <Statdash />
+               <Calendar />
             </div>
           </div>
         </div>
@@ -28,4 +32,4 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+export default Dashboard;

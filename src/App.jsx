@@ -1,13 +1,13 @@
 import "@fontsource/poppins";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Schedule from "./pages/Activity_Agent_Schedule";
-import ScheduleDetails from "./pages/Activity_Agent_Schedule_Details";
-import ReviewsDetails from "./pages/Reviews_Details";
-import Profile from "./pages/Profile";
-import EditProfile from "./pages/Edit_Profile";
-import AddActivity from "./pages/Add_Activity";
-import Dashboard from "./pages/Dashboard";
-import ImageGrid from "./pages/Activity";
+import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
+import ScheduleDetails from "./pages/activity_agent/Activity_Agent_Schedule_Details";
+import ReviewsDetails from "./pages/activity_agent/Reviews_Details";
+import Profile from "./pages/activity_agent/Profile";
+import EditProfile from "./pages/activity_agent/Edit_Profile";
+import AddActivity from "./pages/activity_agent/Add_Activity";
+import Dashboard from "./pages/activity_agent/Dashboard";
+import ImageGrid from "./pages/activity_agent/Activity";
 
 export default function App() {
   return (
