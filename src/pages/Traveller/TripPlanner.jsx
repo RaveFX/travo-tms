@@ -11,7 +11,12 @@ import Notepad from "../web-component/Notepad";
 import Map from "../web-component/Map";
 import { SpeedDialPop } from "../web-component/SpeedPop";
 
-import { Button, ButtonGroup } from "@material-tailwind/react";
+import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
+import {
+  MapIcon,
+  DocumentIcon,
+  ChatBubbleOvalLeftEllipsisIcon,
+} from "@heroicons/react/24/outline";
 
 function TripPlanner() {
   const navigate = useNavigate();
@@ -54,33 +59,70 @@ function TripPlanner() {
   //     activeTitle = "";
   // }
 
+  const handleChatButtonClick = () => {
+    setSelectedComponent(<Chat />);
+  };
+
+  const handleMapButtonClick = () => {
+    if (!selectedComponent) {
+      setSelectedComponent(<Map />);
+    } else {
+      setSelectedComponent(null);
+    }
+  };
+
+  const handleNoteButtonClick = () => {
+    setSelectedComponent(<Notepad />);
+  };
+
   return (
     <div className="flex h-screen overflow-hidden ">
       <Sidebar
-        active={
-          subSidebarState === 1
-            ? "Itinerary"
-            : subSidebarState === 2
-            ? "Selections"
-            : subSidebarState === 3
-            ? "Saves"
-            : activeStep === 0
-            ? "My Trips"
-            : ""
-        }
+        active="My Trips"
         isSubSidebarOpen={isSubSidebarOpen}
         setIsSubSidebarOpen={setIsSubSidebarOpen}
         subSidebarState={subSidebarState}
         setSubSidebarState={setSubSidebarState}
       />
-      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20  ">
+      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
         <TopNavbar />
-        <div className="overflow-y-scroll">
+        <div className="overflow-y-scroll"
+        style={{ scrollbarWidth: 'none' }}>
           <div className="flex flex-row justify-between">
             <TripNameBar />
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}
+          </div>
+          <div className="flex flex-row items-center relative left-10 top-65 mt-4 mb-4 space-x-2">
+            <Typography
+              onClick={handleChatButtonClick}
+              color="[#377A85]"
+              size="regular"
+              ripple="light"
+              className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none "
+              
+            >
+              <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6" />
+            </Typography>
+            <Typography
+              onClick={handleMapButtonClick}
+              color="[#377A85]"
+              size="regular"
+              ripple="light"
+              className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none  "
+            >
+              <MapIcon className="h-6 w-6 flex justify-center" />
+            </Typography>
+            <Typography
+              onClick={handleNoteButtonClick}
+              color="[#377A85]"
+              size="regular"
+              ripple="light"
+              className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] absoulute hover:shadow-none active:shadow-none focus:shadow-none"
+            >
+              <DocumentIcon className="h-6 w-6" />
+            </Typography>
           </div>
           <div className="flex flex-col w-full">
               <PlanStepper
@@ -91,12 +133,7 @@ function TripPlanner() {
                 subSidebarState={subSidebarState}
                 setSubSidebarState={setSubSidebarState}
               >
-                <div>
-                  {/* <Map /> */}
-                  {/* <Chat /> */}
-                  <Notepad />
-                  
-                </div>
+                <div>{selectedComponent}</div>
               </PlanStepper>
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>

@@ -17,6 +17,8 @@ import SwiperCard from "./pages/web-component/SwiperCard";
 import Itinerary from "./pages/Traveller/Itinerary";
 import Selections from "./pages/Traveller/Selection";
 import TravelGuide from "./pages/Traveller/TravelGuied";
+import HotelDetails from "./pages/Traveller/Hotels";
+import Hotel from "./pages/Traveller/HotelDetails";
 
 
 
@@ -36,6 +38,8 @@ function App() {
             <Route path="/itinerary" element={<Itinerary />} />
             <Route path="/selections" element={<Selections />} />
             <Route path="/hire-guied" element={<TravelGuide  />} />
+            <Route path="/hotels" element={<HotelDetails  />} />
+            <Route path="/hotel-details" element={<Hotel  />} />
             
             {/* <Route path="/mytrips" element={<Mytrips />} /> */}
             {/* Add other routes here */}

@@ -21,8 +21,8 @@ const appointmentData = [
 
 const CalanderMain = () => {
   return (
-    <div className="">
-      <h4 className="text-xl font-semibold "> Calendar</h4>
+    <div className="bg-white rounded-lg p-4">
+      <div className="text-[#578B6A] font-[700] text-[24px] ">Calendar</div>
       <div className="mt-4">
         <Calendar
           localizer={localizer}

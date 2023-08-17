@@ -70,7 +70,7 @@ import {
     return (
       <Card
           className={`${
-            isSidebarOpen ? 'w-[16.25rem]' : 'w-[6.5rem]'
+            isSidebarOpen ? 'w-[260px]' : 'w-[60px]'
           } bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen rounded-none transition-all duration-300 ease-in-out`}
         >
           
@@ -79,27 +79,27 @@ import {
                 <img
                   src={isSidebarOpen ? '/images/logo.png' : '/images/minilogo.svg'}
                   alt="Logo"
-                  className="mb-2 mt-4 pb-4"
+                  className="mt-[2rem] mb-[2rem] gap-1 pb-4"
                 />
                 {/* <img src="/images/logo.png" alt="Logo" className="" /> */}
             </Typography>
           </div>
           
-          <button onClick={handleSidebarToggle} className='z-10 '>
+          <button onClick={handleSidebarToggle} className=' '>
           <ChevronLeftIcon
-                className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3p-1 absolute -right-[0.7rem] ${
+                className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full  gap-3p-1 absolute -right-[0.7rem] ${
                   isIconRotated ? 'rotate-180 transition-all duration-300 ease-in-out' : 'transition-all duration-300 ease-in-out'
                 }`}
               />
           </button>
           {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
           
-          <List className={`!min-w-full text-white gap-1.5 flex justify-items-center`}>
+          <List className={`!min-w-full text-white gap-[1.7rem] flex justify-items-center`}>
             {
             navList.map((item, key) => (
               <React.Fragment key={key}>
                 <Link to={item.link} className='w-[100%] !style:none' key={key}>
-                  <ListItem className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${active === item.name ? "active" : ""}`} onClick={item.name === 'My Trips' ? handleSubSidebarToggle : undefined}>
+                  <ListItem className={`gap-[1rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${active === item.name ? "active" : ""}`} onClick={item.name === 'My Trips' ? handleSubSidebarToggle : undefined}>
                     {item.icon}
                     <span className={`${isSidebarOpen? "": "hidden"}`}>
                       {item.name}
@@ -107,14 +107,14 @@ import {
                   </ListItem>
                 </Link>
                 {item.name === 'My Trips' && isSubSidebarOpen &&(
-                  <div className="ml-[2.5rem] mt-1 space-y-1">
+                  <div className="ml-[0rem] mt-1 space-y-1">
                   {item.subItems.map((subItem, subKey) => (
                     <Link to={subItem.link} className="w-[100%] !style:none" key={subKey}
                       onClick={()=>setSubSidebarState(subItem.state)}
                     >
                       <ListItem
                         className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
-                          active === subItem.state ? 'active' : ''
+                          subKey === subSidebarState-1 ? 'active' : ''
                         }`}
                       >
                         {subItem.icon}
@@ -128,7 +128,7 @@ import {
             ))
             }
           </List>
-          <List className={`!min-w-full Flex flex-col ${isSubSidebarOpen ? 'mt-[80px]' : 'mt-[225px]'} text-white items-center`}>
+          <List className={`!min-w-full Flex flex-col ${isSubSidebarOpen ? 'mt-[7rem]' : 'mt-[17rem] '} text-white `}>
             <ListItem className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}>
               <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />

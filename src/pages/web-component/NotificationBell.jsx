@@ -46,7 +46,7 @@ import {
             </svg>
           </IconButton>
         </MenuHandler>
-        <MenuList className="flex flex-col gap-2">
+        <MenuList className="flex flex-col gap-2 z-[1000]">
           <MenuItem className="flex items-center gap-4 py-2 pr-8 pl-2">
             <Avatar
               variant="circular"

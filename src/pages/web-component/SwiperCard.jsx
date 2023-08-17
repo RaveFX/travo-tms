@@ -13,9 +13,9 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export default function SwiperCard(){
     return(
-      <div className='swiper h-[100%] hover:none'>
+      <div className='swiper  w-fit hover:none'>
           <Swiper
-            className='h-[100%] w-[97rem]'
+            className='h-[100%] w-[100%]'
             slidesPerView={4}
             initialSlide={2}
             freeMode={true}

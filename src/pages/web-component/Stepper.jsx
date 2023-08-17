@@ -46,7 +46,7 @@ export function PlanStepper(props) {
       // setSubSidebarState(1);
 
       subSidebarState == 1
-        ? (stepContent = <Itinerary active="Itinerary" />)
+        ? (stepContent = <Itinerary/>)
         : subSidebarState == 2
         ? (stepContent = <Selections />)
         : subSidebarState == 3
@@ -56,6 +56,7 @@ export function PlanStepper(props) {
       setIsSubSidebarOpen(true);
       break;
     case 2:
+      setIsSubSidebarOpen(false);
       stepContent = <GuiedNVehicle />;
       break;
     case 3:
