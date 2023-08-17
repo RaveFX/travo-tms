@@ -9,15 +9,15 @@ import {
 import React from 'react'
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
-import TopNavbar from '../../components/topNavbar';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
+// import { Link } from 'react-router-dom';
+// import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 const requestMore = () => {
     const slides = [
-        "../public/16.png",
-        "../public/16.png",
-        "../public/16.png",
+        "../public/Vehicle_owner/16.png",
+        "../public/Vehicle_owner/16.png",
+        "../public/Vehicle_owner/16.png",
 
 
     ]

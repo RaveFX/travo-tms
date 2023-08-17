@@ -1,8 +1,8 @@
 import React from 'react'
-import Sidebar from '../../components/sidebar1';
+import Sidebar from '../../components/Travel_guide/sidebar1';
 
-// import Sidebar from '../../components/sidebar';
-import TopNavbar from '../../components/topNavbar';
+// import Sidebar from '../../components/Travel_guide/sidebar';
+import TopNavbar from '../../components/Travel_guide/topNavbar';
 
 
 

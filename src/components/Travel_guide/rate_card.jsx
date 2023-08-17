@@ -1,5 +1,5 @@
 import React from 'react'
-import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../assets';
+// import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../Travel_guide/assets';
 import { Rating, Button } from "@material-tailwind/react";
 
 

@@ -1,8 +1,9 @@
 // src/TopNavbar.js
 import React from 'react';
-import SearchBar from '../components/searchbar';
+import SearchBar from './searchbar';
 import { Link } from 'react-router-dom';
-import { people01 } from '../assets'
+// import { people01 } from '../assets/Travel_Guide'
+import { people01 } from '../../assets/Travel_guide'
 
 
 
@@ -16,7 +17,7 @@ const TopNavbar = ({path}) => {
             <div>
                 <div className="flex space-x-4">
                     <div className='flex flex-row justify-items-center gap-[10px]'>
-                        <img src="../public/notification.svg" alt="Logo" className="" />
+                        <img src="../public/Travel_guide/notification.svg" alt="Logo" className="" />
                         <Link to={path}>
                         <img src={people01} 
                         alt="Logo" className="w-8 rounded-full cursor-pointer"  />

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
 import Sidebar from '../../components/sidebar';
-import TopNavbar from '../../components/topNavbar';
-import Calendar from '../../components/calender';
-import TourCard from '../../components/tour_card';
-import RateCard from '../../components/rate_card';
-import ConversationSection from '../../components/conversation';
+import TopNavbar from '../../components/Travel_guide/topNavbar';
+import Calendar from '../../components/Travel_guide/calender';
+import TourCard from '../../components/Travel_guide/tour_card';
+import RateCard from '../../components/Travel_guide/rate_card';
+import ConversationSection from '../../components/Travel_guide/conversation';
 
 
 import RequestMore from '../../components/requestMore';

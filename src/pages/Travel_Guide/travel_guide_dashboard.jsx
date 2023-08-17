@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
-import Sidebar from '../../components/sidebar1';
-import ListWithAvatar from '../../components/list';
-import TopNavbar from '../../components/topNavbar';
-import Calendar from '../../components/calender';
-import TourCard from '../../components/tour_card';
-import RateCard from '../../components/rate_card';
-import ConversationSection from '../../components/conversation';
-import RequestMore from '../../components/requestMore';
+import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets/Travel_guide';
+import Sidebar from '../../components/Travel_guide/sidebar1';
+import ListWithAvatar from '../../components/Travel_guide/list';
+import TopNavbar from '../../components/Travel_guide/topNavbar';
+import Calendar from '../../components/Travel_guide/calender';
+import TourCard from '../../components/Travel_guide/tour_card';
+import RateCard from '../../components/Travel_guide/rate_card';
+import ConversationSection from '../../components/Travel_guide/conversation';
+import RequestMore from '../../components/Travel_guide/requestMore';
 import { Link } from 'react-router-dom';
 import { Rating, Button } from "@material-tailwind/react";
 

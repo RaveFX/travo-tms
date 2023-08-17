@@ -2,7 +2,7 @@ import { Typography, Avatar, Rating } from "@material-tailwind/react";
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
 
-import TopNavbar from '../../components/topNavbar';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 
 export function rating() {
 

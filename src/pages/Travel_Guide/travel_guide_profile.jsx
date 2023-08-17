@@ -1,14 +1,14 @@
 import React from 'react'
 // import Sidebar from '../../components/sidebar';
-import Sidebar from '../../components/sidebar1';
+import Sidebar from '../../components/Travel_guide/sidebar1';
 
-import TopNavbar from '../../components/topNavbar';
-import Profile from '../../components/profile';
+import TopNavbar from '../../components/Travel_guide/topNavbar';
+import Profile from '../../components/Travel_guide/profile';
 import { List, ListItem, Card, Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 
 
-import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
+// import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
 
 
 const travel_guide_profile = () => {

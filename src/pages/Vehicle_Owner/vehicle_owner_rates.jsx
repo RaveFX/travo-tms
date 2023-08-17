@@ -13,10 +13,10 @@ import {
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
 
-import TopNavbar from '../../components/topNavbar';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 // import ButtonVariants from './button';
-import { car, van, bike, scooter, bus, user } from '../../assets';
-import { Box } from "@mui/material";
+import { car, van, bike, scooter, bus, user } from '../../assets/Vehicle_owner/index/';
+// import { Box } from "@mui/material";
 import { Link } from 'react-router-dom';
 
 
@@ -109,11 +109,11 @@ const Rates = () => {
         { title: "Add New", variant: "outlined" }
     ]
     const lists = [
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/19.png" },
-        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/18.png" },
-        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/17.png" },
-        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/16.png" },
-        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/15.png" }
+        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/19.png" },
+        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/18.png" },
+        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/17.png" },
+        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/16.png" },
+        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/15.png" }
     ]
 
 

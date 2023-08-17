@@ -13,9 +13,9 @@ import {
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
 
-import TopNavbar from '../../components/topNavbar';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 // import ButtonVariants from './button';
-import { car, van, bike, scooter, bus } from '../../assets';
+import { car, van, bike, scooter, bus } from '../../assets/Vehicle_owner/index/';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -112,11 +112,11 @@ const Vehicles = () => {
         { title: "Add New", variant: "outlined" }
     ]
     const lists = [
-        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/15.png" },
-        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/16.png" },
-        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/17.png" },
-        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/18.png" },
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/19.png" }
+        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/15.png" },
+        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/16.png" },
+        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/17.png" },
+        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/18.png" },
+        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/19.png" }
     ]
     const [vehicles, seVehicles] = useState([])
     useEffect(() => {

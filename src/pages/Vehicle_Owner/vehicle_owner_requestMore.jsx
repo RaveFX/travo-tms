@@ -3,7 +3,7 @@ import React from 'react'
 // import Sidebar from '../../components/sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
 
-import TopNavbar from '../../components/topNavbar';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 import { Link } from 'react-router-dom';
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 

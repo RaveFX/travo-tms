@@ -72,7 +72,7 @@ export default function Sidebar(props) {
             <div className="">
                 <Typography variant="h5" color="white">
                     <img
-                        src={isSidebarOpen ? '../public/logo.png' : '../public/minilogo.svg'}
+                        src={isSidebarOpen ? '../public/Vehicle_owner/logo.png' : '../public/Vehicle_owner/minilogo.svg'}
                         alt="Logo"
                         className="mb-2 mt-4 pb-4"
                     />

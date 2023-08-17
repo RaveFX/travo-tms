@@ -1,10 +1,10 @@
 import '@fontsource/poppins';
-import NavBar from './components/navbar';
-import Landing from './components/landingPage';
-import CardList from './components/cards';
-import SideBar from './components/sidebar';
-import SideBar1 from './components/sidebar1';
-import TopNavbar from './components/topNavbar';
+// import NavBar from './components/navbar';
+// import Landing from './components/landingPage';
+// import CardList from './components/cards';
+// import SideBar from './components/sidebar';
+// import SideBar1 from './components/sidebar1';
+// import TopNavbar from './components/topNavbar';
 import Travel_Guide_Dashboard from './pages/Travel_Guide/travel_guide_dashboard';
 import Travel_Guide_Mytours from './pages/Travel_Guide/travel_guide_mytours';
 import Travel_Guide_Myrates from './pages/Travel_Guide/travel_guide_myrates';
@@ -17,7 +17,7 @@ import Travel_Guide_Rating from './pages/Travel_Guide/travel_guide_rating';
 import Travel_Guide_Confirmed from './pages/Travel_Guide/travel_guide_confirmed';
 import Travel_Guide_Profile from './pages/Travel_Guide/travel_guide_profile';
 import Travel_Guide_Edit_Profile from './pages/Travel_Guide/travel_guide_edit_profile';
-import Profile from './components/profile';
+import Profile from './components/Travel_guide/profile';
 
 import Vehicle_Owner_Dashboard from './pages/Vehicle_Owner/vehicle_owner_dashboard';
 import Vehicle_Owner_Vehicles from './pages/Vehicle_Owner/vehicle_owner_vehicles';

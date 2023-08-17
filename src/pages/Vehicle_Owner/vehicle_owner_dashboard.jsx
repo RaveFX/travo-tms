@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
+import { customer, bookmark, invitation, request, star } from '../../assets/Vehicle_owner/index/';
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
 import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
 
-import ListWithAvatar from '../../components/list';
-import TopNavbar from '../../components/topNavbar';
-import Calendar from '../../components/calender';
-import TourCard from '../../components/tour_card';
-import RateCard from '../../components/rate_card';
-import ConversationSection from '../../components/conversation';
-import RequestMore from '../../components/requestMore';
+import ListWithAvatar from '../../components/Vehicle_owner/list';
+import TopNavbar from '../../components/Vehicle_owner/topNavbar';
+import Calendar from '../../components/Vehicle_owner/calender';
+import TourCard from '../../components/Vehicle_owner/tour_card';
+import RateCard from '../../components/Vehicle_owner/rate_card';
+// import ConversationSection from '../../components/Vehicle_owner/conversation';
+// import RequestMore from '../../components/Vehicle_owner/requestMore';
 import { Link } from 'react-router-dom';
 import { Rating, Button } from "@material-tailwind/react";
 
@@ -86,14 +86,14 @@ const DashboardTG = () => {
         { title: "Income", src: invitation, amount: "LKR.55" },
     ];
     const tours = [
-        { image: "../public/19.png", name: "Suzuki Wagon R", des: "LKR2500",path:"/vehicle_owner_vehicles" },
-        { image: "../public/16.png", name: "Toyota Priu", des: "LKR2500" },
-        { image: "../public/17.png", name: "Suzuki Alto ", des: "LKR2500" },
+        { image: "../public/Vehicle_owner/19.png", name: "Suzuki Wagon R", des: "LKR2500",path:"/vehicle_owner_vehicles" },
+        { image: "../public/Vehicle_owner/16.png", name: "Toyota Priu", des: "LKR2500" },
+        { image: "../public/Vehicle_owner/17.png", name: "Suzuki Alto ", des: "LKR2500" },
 
     ];
     const rates = [
-        { image: "../public/15.png", name: "Nissan", rate: "Rs.1500/Per Km" },
-        { image: "../public/16.png", name: "Toyota Prius", rate: "Rs.800/Per Km" },
+        { image: "../public/Vehicle_owner/15.png", name: "Nissan", rate: "Rs.1500/Per Km" },
+        { image: "../public/Vehicle_owner/16.png", name: "Toyota Prius", rate: "Rs.800/Per Km" },
     ]
     const topnav=[
         {path:"/vehicle_owner_profile"}

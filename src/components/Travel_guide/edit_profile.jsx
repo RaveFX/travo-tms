@@ -1,6 +1,6 @@
 import React from 'react'
-import { Rating, Button, Card, List, ListItem } from "@material-tailwind/react";
-import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../assets';
+// import { Rating, Button, Card, List, ListItem } from "@material-tailwind/react";
+// import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../Travel_guide/assets';
 import { Link } from 'react-router-dom';
 
 
