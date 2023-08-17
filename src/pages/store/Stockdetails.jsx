@@ -1,28 +1,28 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Sidebar from '../../components/store/sidebar';
+import TopNavbar from '../../components/store/topNavbar';
 
-import TopNavbar from '../../components/admin/topNavbar';
-import Sidebar from '../../components/admin/sidebar';
-
-export default function Admin_Advertisments() {
+export default function Stockdetails() {
 
     return (
         <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
             <Sidebar />
-
             <div className="flex flex-col flex-1">
                 <TopNavbar />
                 <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
                     <div className="bg-white p-8 rounded-md w-full">
-                        <div className=''>
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Advertistments</Link></button>
-                        </div>
+
 
                         <div className="flex items-center justify-between pb-6">
                             <div>
-                                <h2 className="text-gray-600 font-semibold">Advertistments Requests</h2>
+                                <Link to="/store_product_addform">
+                                    <button class="bg-green px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Product</button>
+                                </Link>
+                                <button class="bg-green px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer m-1">New Category</button>
                             </div>
+
                             <div className="flex items-center justify-between">
                                 <div className="flex bg-gray-50 items-center p-2 rounded-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -30,6 +30,15 @@ export default function Admin_Advertisments() {
                                     </svg>
                                     <input className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search..." />
                                 </div>
+                                {/* <div>
+                        <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                            <option >Travel Guide</option>
+                            <option>Store Mnager</option>
+                            <option>Vehicle Renter</option>
+                            <option>Activity Manager</option>
+                            <option>Hotel Manager</option>
+                        </select>
+                    </div> */}
                             </div>
                         </div>
                         <div>
@@ -39,20 +48,23 @@ export default function Admin_Advertisments() {
                                         <thead>
                                             <tr>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    Name
+                                                    Product Name
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    User type
+                                                    Qauntity
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    Requested at
+                                                    Category
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    email
+                                                    Colors
                                                 </th>
                                                 {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                         Status
                                     </th> */}
+                                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+
+                                                </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
 
                                                 </th>
@@ -65,27 +77,27 @@ export default function Admin_Advertisments() {
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                                src="https://media.istockphoto.com/id/1404685266/photo/black-abs-luggage-with-4-wheels-isolated-on-white.jpg?s=612x612&w=0&k=20&c=CcU6hlytSgX0bJRYflZIx_NCiO2nAa0e40RXeaQTMdg="
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Vera Carpenter
+                                                                Black bag
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Store Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">12</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 21, 2020
+                                                        Bag
                                                     </p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        thia@gmail.com
+                                                        Black,Red
                                                     </p>
                                                 </td>
                                                 {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -97,7 +109,7 @@ export default function Admin_Advertisments() {
                                         </span>
                                     </td> */}
                                                 <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
+                                                    <a href="/store_product">
                                                         <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                                     </a>
                                                 </td>
@@ -108,27 +120,27 @@ export default function Admin_Advertisments() {
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                                src="https://media.istockphoto.com/id/470801960/photo/rain-jacket.webp?b=1&s=170667a&w=0&k=20&c=erUj8jH3qGNcJYzPproJ11uewI76QxUaHZMMR3-GbgU="
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Blake Bowman
+                                                                Jackets
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Activity Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">50</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 01, 2020
+                                                        Jacket
                                                     </p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        thrini@gmail.com
+                                                        yellow,green
                                                     </p>
                                                 </td>
                                                 {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -140,7 +152,7 @@ export default function Admin_Advertisments() {
                                         </span>
                                     </td> */}
                                                 <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
+                                                    <a href="/store_product">
                                                         <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                                     </a>
                                                 </td>
@@ -151,31 +163,39 @@ export default function Admin_Advertisments() {
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                                                src="https://media.istockphoto.com/id/1453988945/photo/yellow-bucket-hat-isolated-on-white.webp?b=1&s=170667a&w=0&k=20&c=KiTFBMsBnptqQzuoRpB3XIJy0U2wh5lJhfbVAljgG30="
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Dana Moore
+                                                                Hat
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Ahent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">100</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 10, 2020
+                                                        Cap
                                                     </p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        sandu@gmail.com
+                                                        Black,red,white,yellow
                                                     </p>
                                                 </td>
+                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Pendding</span>
+                                        </span>
+                                    </td> */}
                                                 <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
+                                                    <a href="/store_product">
                                                         <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                                     </a>
                                                 </td>
@@ -186,24 +206,24 @@ export default function Admin_Advertisments() {
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 w-10 h-10">
                                                             <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
+                                                                src="https://media.istockphoto.com/id/1355329741/photo/smartphone-and-mini-tripod-isolated-on-white.webp?b=1&s=170667a&w=0&k=20&c=T1voaiuVAkClbIq8qsXnOZHAibWLa3LeXGcCKkv4T7o="
                                                                 alt="" />
                                                         </div>
                                                         <div class="ml-3">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Alonzo Cox
+                                                                Selfie stick
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">50</p>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">Other</p>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">ravindu@gmail.com</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">black</p>
                                                 </td>
                                                 {/* <td class="px-5 py-5 bg-white text-sm">
                                         <span
@@ -214,7 +234,7 @@ export default function Admin_Advertisments() {
                                         </span>
                                     </td> */}
                                                 <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
+                                                    <a href="/store_product">
                                                         <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                                     </a>
                                                 </td>
@@ -246,13 +266,9 @@ export default function Admin_Advertisments() {
 
 
 
-
-
-
-
-
     );
 };
+
 
 
 

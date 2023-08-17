@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import people01 from '../../assets/people01.png'; // Use default import for the image
+import people01 from '../../assets/admin/people01.png'; // Use default import for the image
 
 
 // Import images for the dashs array
-import client from '../../assets/clients.png';
-import complete from '../../assets/clients.png';
-import bookmark from '../../assets/clients.png';
-import menu from '../../assets/clients.png';
-import Barchart from '../../components/Adminbarchart'
-import Piechart from '../../components/Adminpiechart'
+import client from '../../assets/admin/clients.png';
+import complete from '../../assets/admin/clients.png';
+import bookmark from '../../assets/admin/clients.png';
+import menu from '../../assets/admin/clients.png';
+import Barchart from '../../components/admin/Adminbarchart'
+import Piechart from '../../components/admin/Adminpiechart'
+import TopNavbar from '../../components/admin/topNavbar';
+import Sidebar from '../../components/admin/sidebar';
 
 
 
@@ -437,33 +439,85 @@ export default function Admin_Dashboard() {
         { title: "Total Orders", src: menu, amount: "20" },
         { title: "Registrtion Requests", src: menu, amount: "20" },
     ];
+
+    // const topnav = [
+    //     { path: "/travel_guide_profile" }
+    // ]
     return (
+        // <div className='flex'>
+        //     <div><Sidebar /></div>
 
-        <div className='flex m-2'>
-            <div className='w-7/8'>
-                <div className=' flex flex-row '>
-                    {/* <div className='m-5'> */}
-                    {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
-                    {/* </div> */}
-                    <div className='flex  sm:flex-shrink flex-wrap ml-10'>
-                        {dashs.map((dash, index) => (
-                            <DashboardCard key={index} title={dash.title} src={dash.src} />
-                        ))}
+        //     <div className='h-screen flex flex-grow flex-col'>
+
+        //         <div>
+        //             {topnav.map((nav, index) => (
+        //                 <TopNavbar key={index} path={nav.path} />
+        //             ))}
+        //         </div>
+
+        //         <div className='overflow-y-auto flex-1'>
+        // <div className='flex '>
+        //     <div className='w-7/8'>
+        //         <div className=' flex flex-row '>
+        //             <div className='flex  sm:flex-shrink flex-wrap ml-10'>
+        //                 {dashs.map((dash, index) => (
+        //                     <DashboardCard key={index} title={dash.title} src={dash.src} />
+        //                 ))}
+        //             </div>
+        //         </div>
+        //         <div>
+        //             <div className='grid gap-3 md:grid-cols-2'>
+        //                 <Order width="50%" height={350} />
+        //                 <Barchart />
+        //             </div>
+        //         </div>
+
+        //     </div>
+        //     <div className='w-1/8 absolute right-1'>
+        //         <Calendar />
+        //         <Piechart />
+        //     </div>
+
+        // </div>
+        //         </div>
+        //     </div>
+
+        // </div>
+
+        <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
+            <Sidebar />
+            {/* <SideBar2 /> */}
+            <div className="flex flex-col flex-1">
+                <TopNavbar />
+                <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
+                    <div>
+                        <div className='flex '>
+                            <div className='w-7/8'>
+                                <div className=' flex flex-row '>
+                                    <div className='flex  sm:flex-shrink flex-wrap ml-10'>
+                                        {dashs.map((dash, index) => (
+                                            <DashboardCard key={index} title={dash.title} src={dash.src} />
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className='grid gap-3 md:grid-cols-2'>
+                                        <Order width="50%" height={350} />
+                                        <Barchart />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className='w-1/8 absolute right-1'>
+                                <Calendar />
+                                <Piechart />
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div className='grid gap-3 md:grid-cols-2'>
-                        <Order width="50%" height={350} />
-                        <Barchart />
-                    </div>
-                </div>
-
             </div>
-            <div className='w-1/8 absolute right-1'>
-                <Calendar />
-                <Piechart />
-            </div>
-
         </div>
+
     );
 }

@@ -28,7 +28,7 @@ export default function Sidebar() {
                 </Typography>
             </div>
             <List className="text-white gap-3">
-                <Link to="/">
+                <Link to="/store_dashboard">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <RectangleGroupIcon className="h-5 w-5 " />
@@ -36,7 +36,7 @@ export default function Sidebar() {
                         Dashboard
                     </ListItem>
                 </Link>
-                <Link to="/products">
+                <Link to="/store_myshop">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
@@ -44,7 +44,7 @@ export default function Sidebar() {
                         My Shop
                     </ListItem>
                 </Link>
-                <Link to="/orders">
+                <Link to="/store_order">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <UserGroupIcon className="h-5 w-5" />
@@ -52,7 +52,7 @@ export default function Sidebar() {
                         Orders
                     </ListItem>
                 </Link>
-                <Link to="/renting">
+                <Link to="/store_renting">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <HeartIcon className="h-5 w-5" />
@@ -60,7 +60,7 @@ export default function Sidebar() {
                         Renting
                     </ListItem>
                 </Link>
-                <Link to="/transaction">
+                <Link to="/store_transaction">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <UserGroupIcon className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function Sidebar() {
                         Transaction
                     </ListItem>
                 </Link>
-                <Link to="/rating">
+                <Link to="/store_rating">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <HeartIcon className="h-5 w-5" />
@@ -76,15 +76,15 @@ export default function Sidebar() {
                         Rating
                     </ListItem>
                 </Link>
-                {/* <Link to="/profile">
+                <Link to="/store_profile">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <MapIcon className="h-5 w-5" />
                         </ListItemPrefix>
                         Profile
                     </ListItem>
-                </Link> */}
-                <Link to="/admin">
+                </Link>
+                <Link to="#">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <Cog6ToothIcon className="h-5 w-5" />

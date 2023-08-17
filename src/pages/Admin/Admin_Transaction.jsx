@@ -1,10 +1,15 @@
 
 import React, { useState } from 'react';
-import CreditCardForm from '../../components/CreditCardForm'; // Replace with the correct path to your CreditCardForm component
+import CreditCardForm from '../../components/store/CreditCardForm'; // Replace with the correct path to your CreditCardForm component
+
+import TopNavbar from '../../components/admin/topNavbar';
+import Sidebar from '../../components/admin/sidebar';
 
 
 const CustomerTransaction = () => {
     return (
+
+
         <div className="flex">
             {/* Left Side: Transaction History Table */}
             <div className="w-full p-4">
@@ -318,49 +323,35 @@ const TransactionHistory = () => {
     };
 
     return (
-        <div>
-            {/* Navigation Bar */}
-            {/* <div className="flex items-center justify-center bg-gray-200 p-4">
-                <button
-                    className={`mr-4 font-semibold ${activeTab === 'transactions' ? 'text-green-600' : 'text-gray-600'
-                        }`}
-                    onClick={() => handleTabChange('transactions')}
-                >
-                    Customer Transactions
-                </button>
-                <button
-                    className={`font-semibold ${activeTab === 'payment' ? 'text-green-600' : 'text-gray-600'
-                        }`}
-                    onClick={() => handleTabChange('payment')}
-                >
-                    Membership
-                </button>
-            </div> */}
+        <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
+            <Sidebar />
 
-            {/* Content */}
-            <div className="flex">
-                {/* Left Side: Customer Transactions */}
-                {/* <div className={`w-full p-4 ${activeTab === 'payment' && 'hidden'}`}> */}
-                <div className='w-full'>
-                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        {/* Transaction History Table */}
-                        <CustomerTransaction />
+            <div className="flex flex-col flex-1">
+                <TopNavbar />
+                <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
+                    <div>
+
+
+
+                        <div className="flex">
+
+                            <div className='w-full'>
+                                <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+
+                                    <CustomerTransaction />
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
-
-                {/* Right Side: Credit Card Form */}
-                {/* <div className={`flex ${activeTab === 'transactions' && 'hidden'}`}>
-                    <div className='w-4/6'>
-                        <Membership />
-                    </div>
-                    <div className='w-2/6'>
-                        <CreditCardForm />
-                    </div>
-
-
-                </div> */}
             </div>
         </div>
+
+
+
+
     );
 };
 

@@ -1,27 +1,20 @@
+import React from 'react';
+import { Select, Option } from "@material-tailwind/react";
+import Sidebar from '../../components/store/sidebar';
+import TopNavbar from '../../components/store/topNavbar';
 
-import React from 'react'
-import { Link } from 'react-router-dom';
-
-import TopNavbar from '../../components/admin/topNavbar';
-import Sidebar from '../../components/admin/sidebar';
-
-export default function Admin_Advertisments() {
-
+const ProductOrderTable = () => {
     return (
         <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
             <Sidebar />
-
             <div className="flex flex-col flex-1">
                 <TopNavbar />
                 <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
                     <div className="bg-white p-8 rounded-md w-full">
-                        <div className=''>
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Advertistments</Link></button>
-                        </div>
-
                         <div className="flex items-center justify-between pb-6">
                             <div>
-                                <h2 className="text-gray-600 font-semibold">Advertistments Requests</h2>
+                                <h2 className="text-gray-600 font-semibold">Products Order</h2>
+                                <span className="text-xs">All products item</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <div className="flex bg-gray-50 items-center p-2 rounded-md">
@@ -30,6 +23,10 @@ export default function Admin_Advertisments() {
                                     </svg>
                                     <input className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search..." />
                                 </div>
+                                {/* <div className="lg:ml-40 ml-10 space-x-8">
+                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"></button>
+                        <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"></button>
+                    </div> */}
                             </div>
                         </div>
                         <div>
@@ -42,21 +39,17 @@ export default function Admin_Advertisments() {
                                                     Name
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    User type
+                                                    Products
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    Requested at
+                                                    Created at
                                                 </th>
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                    email
+                                                    QRT
                                                 </th>
-                                                {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Status
-                                    </th> */}
                                                 <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-
+                                                    Status
                                                 </th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -76,7 +69,7 @@ export default function Admin_Advertisments() {
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Store Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">Travel bags</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
@@ -85,23 +78,23 @@ export default function Admin_Advertisments() {
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        thia@gmail.com
+                                                        2
                                                     </p>
                                                 </td>
-                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
+                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                             <span class="relative">On delivery</span>
-                                        </span>
-                                    </td> */}
-                                                <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
-                                                        <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                                    </a>
+                                        </span> */}
+                                                    <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                                        <option >On delivery</option>
+                                                        <option>Pendding</option>
+                                                        <option>Cancel</option>
+                                                        <option>Deliverd</option>
+                                                    </select>
                                                 </td>
-
                                             </tr>
                                             <tr>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -119,7 +112,7 @@ export default function Admin_Advertisments() {
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Activity Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">Shoes</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
@@ -128,23 +121,23 @@ export default function Admin_Advertisments() {
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        thrini@gmail.com
+                                                        1
                                                     </p>
                                                 </td>
-                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
+                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
                                             <span class="relative">Pendding</span>
-                                        </span>
-                                    </td> */}
-                                                <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
-                                                        <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                                    </a>
+                                        </span> */}
+                                                    <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                                        <option >On delivery</option>
+                                                        <option>Pendding</option>
+                                                        <option>Cancel</option>
+                                                        <option>Deliverd</option>
+                                                    </select>
                                                 </td>
-
                                             </tr>
                                             <tr>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -162,7 +155,7 @@ export default function Admin_Advertisments() {
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Ahent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">Tent</p>
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
@@ -171,15 +164,23 @@ export default function Admin_Advertisments() {
                                                 </td>
                                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">
-                                                        sandu@gmail.com
+                                                        1
                                                     </p>
                                                 </td>
-                                                <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
-                                                        <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                                    </a>
+                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    {/* <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Pendding</span>
+                                        </span> */}
+                                                    <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                                        <option >On delivery</option>
+                                                        <option>Pendding</option>
+                                                        <option>Cancel</option>
+                                                        <option>Deliverd</option>
+                                                    </select>
                                                 </td>
-
                                             </tr>
                                             <tr>
                                                 <td class="px-5 py-5 bg-white text-sm">
@@ -197,28 +198,28 @@ export default function Admin_Advertisments() {
                                                     </div>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Agent</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">Travel bag</p>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
                                                 </td>
                                                 <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">ravindu@gmail.com</p>
+                                                    <p class="text-gray-900 whitespace-no-wrap">1</p>
                                                 </td>
-                                                {/* <td class="px-5 py-5 bg-white text-sm">
-                                        <span
+                                                <td class="px-5 py-5 bg-white text-sm">
+                                                    {/* <span
                                             class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                             <span aria-hidden
                                                 class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
                                             <span class="relative">Cancel</span>
-                                        </span>
-                                    </td> */}
-                                                <td class="justify-center">
-                                                    <a href="/admin_add_advertisments">
-                                                        <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                                    </a>
+                                        </span> */}
+                                                    <select className="bg-gray-50 outline-none ml-1 block" type="text" name="" id="" placeholder="search...">
+                                                        <option >On delivery</option>
+                                                        <option>Pendding</option>
+                                                        <option>Cancel</option>
+                                                        <option>Deliverd</option>
+                                                    </select>
                                                 </td>
-
                                             </tr>
                                         </tbody>
                                     </table>
@@ -227,7 +228,7 @@ export default function Admin_Advertisments() {
                                             Showing 1 to 4 of 50 Entries
                                         </span>
                                         <div className="inline-flex mt-2 xs:mt-0">
-                                            <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-l">
+                                            <button className="text-sm text-indigo-50 transition duration-150 bg-green  font-semibold py-2 px-4 rounded-l">
                                                 Prev
                                             </button>
                                             &nbsp; &nbsp;
@@ -251,13 +252,10 @@ export default function Admin_Advertisments() {
 
 
 
+
+
+
     );
 };
 
-
-
-
-
-
-
-
+export default ProductOrderTable;

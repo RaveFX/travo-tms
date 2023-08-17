@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import people01 from '../../assets/people01.png'; // Use default import for the image
+import people01 from '../../assets/store/people01.png'; // Use default import for the image
 
 
 // Import images for the dashs array
-import client from '../../assets/clients.png';
-import complete from '../../assets/clients.png';
-import bookmark from '../../assets/clients.png';
-import menu from '../../assets/clients.png';
-import Storemanager_barchart from '../../components/Storemanager_barchart';
-import Storemanager_piechart from '../../components/Storemanager_piechart'
-import Storemanager_delivery from '../../components/Storemanager_delivery'
+import client from '../../assets/store/clients.png';
+import complete from '../../assets/store/clients.png';
+import bookmark from '../../assets/store/clients.png';
+import menu from '../../assets/store/clients.png';
+import Storemanager_barchart from '../../components/store/Storemanager_barchart';
+import Storemanager_piechart from '../../components/store/Storemanager_piechart'
+
+import Sidebar from '../../components/store/sidebar';
+import TopNavbar from '../../components/store/topNavbar';
+
 
 
 
@@ -429,36 +432,46 @@ export default function Dashboard() {
         { title: "Total Orders", src: menu, amount: "20" },
     ];
     return (
-        <div className='flex m-2'>
-            <div className='w-7/8'>
-                <div className=' flex flex-row '>
-                    {/* <div className='m-5'> */}
-                    {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
-                    <div className=' mx-2 mr-[8vh] m-3'>
-                        <p className='text-3xl'>Hi, Sam store</p>
-                        <p className=''>Store manager</p>
-                    </div>
-                    {/* </div> */}
-                    <div className='flex  sm:flex-shrink flex-wrap mr-6'>
-                        {dashs.map((dash, index) => (
-                            <DashboardCard key={index} title={dash.title} src={dash.src} />
-                        ))}
+        <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
+            <Sidebar />
+            <div className="flex flex-col flex-1">
+                <TopNavbar />
+
+                <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
+                    <div className='flex m-2'>
+                        <div className='w-7/8'>
+                            <div className=' flex flex-row '>
+                                {/* <div className='m-5'> */}
+                                {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
+                                <div className=' mx-2 mr-[8vh] m-3'>
+                                    <p className='text-3xl'>Hi, Sam store</p>
+                                    <p className=''>Store manager</p>
+                                </div>
+                                {/* </div> */}
+                                <div className='flex  sm:flex-shrink flex-wrap mr-6'>
+                                    {dashs.map((dash, index) => (
+                                        <DashboardCard key={index} title={dash.title} src={dash.src} />
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <div className='grid gap-3 md:grid-cols-2'>
+                                    <Order width="50%" height={350} />
+                                    <Storemanager_barchart />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className='w-1/8 absolute right-6'>
+                            <Calendar />
+                            <Storemanager_piechart />
+                        </div>
+
                     </div>
                 </div>
-                <div>
-                    <div className='grid gap-3 md:grid-cols-2'>
-                        <Order width="50%" height={350} />
-                        <Storemanager_barchart />
-                    </div>
-                </div>
-
             </div>
-            <div className='w-1/8 absolute right-6'>
-                <Calendar />
-                <Storemanager_piechart />
-            </div>
-
         </div>
+
 
 
 
