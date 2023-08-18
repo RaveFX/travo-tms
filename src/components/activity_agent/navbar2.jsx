@@ -55,7 +55,7 @@ export default function TopNavbar() {
             <Link to="/Profile">
               <Avatar
                 className="rounded-full"
-                src="/ravindu.png"
+                src="/activity_agent/ravindu.png"
                 alt="avatar"
               />
             </Link>

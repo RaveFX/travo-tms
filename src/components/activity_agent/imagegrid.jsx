@@ -11,7 +11,7 @@ export default function ImageGrid() {
         <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
           <a href="#">
             <div class="relative flex items-end overflow-hidden rounded-xl">
-              <img src="/safari.jpg" alt="Hotel Photo" />
+              <img src="/activity_agent/safari.jpg" alt="Hotel Photo" />
             </div>
 
             <div class="mt-1 p-2">
@@ -28,7 +28,7 @@ export default function ImageGrid() {
         <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
           <a href="#">
             <div class="relative h-[53%] flex items-end overflow-hidden rounded-xl">
-              <img src="/surfing.jpg" alt="Hotel Photo" />
+              <img src="/activity_agent/surfing.jpg" alt="Hotel Photo" />
             </div>
 
             <div class="mt-1 p-2">

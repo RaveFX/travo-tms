@@ -75,7 +75,7 @@ export default function Sidebar(props) {
       <div className="">
         <Typography variant="h5" color="white">
           <img
-            src={isSidebarOpen ? "/travwhite.png" : "/travballoonlight.png"}
+            src={isSidebarOpen ? "/activity_agent/travwhite.png" : "/activity_agent/travballoonlight.png"}
             alt="Logo"
             className={
               isSidebarOpen

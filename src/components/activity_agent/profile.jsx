@@ -24,7 +24,7 @@ export function Profile() {
         <div className="flex justify-center px-5  -mt-12">
           <img
             className="h-32 w-32 bg-white p-2 rounded-full   "
-            src="/ravindu.png"
+            src="/activity_agent/ravindu.png"
             alt=""
           />
         </div>
