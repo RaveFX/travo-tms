@@ -1,6 +1,6 @@
 import React from "react";
-import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
+import TopNavbar from "../../components/navbar-general";
+import Sidebar from "../../components/sidebar-rave";
 import { Link } from "react-router-dom";
 
 import { PencilIcon } from "@heroicons/react/24/solid";

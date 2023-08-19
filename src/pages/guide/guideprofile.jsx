@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
+import TopNavbar from "../../components/navbar-general";
+import Sidebar from "../../components/sidebar-rave";
 import { Carousel } from "@material-tailwind/react";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css

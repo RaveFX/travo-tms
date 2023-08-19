@@ -1,16 +1,16 @@
 import "@fontsource/poppins";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/home";
-import Travdash from "./pages/travdash";
-import AboutUs from "./pages/about";
-import Services from "./pages/services";
-import Contact from "./pages/contact";
-import Budget from "./pages/budget";
-import Store from "./pages/store";
-import StoreProduct from "./pages/storeviewpd";
-import Expenses from "./pages/expenses";
-import GuideProfile from "./pages/guideprofile";
-import Travelbuddy from "./pages/travelbuddy";
+import HomePage from "./pages/main/home";
+import Travdash from "./pages/traveler/travdash";
+import AboutUs from "./pages/main/about";
+import Services from "./pages/main/services";
+import Contact from "./pages/main/contact";
+import Budget from "./pages/traveler/budget";
+import Store from "./pages/traveler/store";
+import StoreProduct from "./pages/traveler/storeviewpd";
+import Expenses from "./pages/traveler/expenses";
+import GuideProfile from "./pages/guide/guideprofile";
+import Travelbuddy from "./pages/traveler/travelbuddy";
 
 export default function App() {
   return (

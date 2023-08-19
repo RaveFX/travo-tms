@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
+import TopNavbar from "../../components/navbar-general";
+import Sidebar from "../../components/sidebar-rave";
 import { Button, CardBody } from "@material-tailwind/react";
-import Cardss from "../components/card";
+// import Cardss from "../../components/card";
 import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
 
 const data = [

@@ -1,5 +1,5 @@
 import React from "react";
-import Navingation_home from "../components/newnav";
+import Navingation_home from "../../components/homenavbar";
 
 function contact() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../components/navbar2";
-import Sidebar from "../components/sidebar";
-import { Carousel } from "@material-tailwind/react";
+import TopNavbar from "../../components/navbar-general";
+import Sidebar from "../../components/sidebar-rave";
+// import { Carousel } from "@material-tailwind/react";
 
 import {
   Card,

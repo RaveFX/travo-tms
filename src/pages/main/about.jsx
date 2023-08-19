@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navingation_home from "../components/newnav";
+import Navingation_home from "../../components/homenavbar";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 function AboutUs() {
