@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Sidebar from "../../pages/web-component/Sidebar";
-import TopNavbar from "../../pages/web-component/Navbar";
-import Chat from "../../pages/web-component/Chat";
+import Sidebar from "../web-component/Sidebar";
+import TopNavbar from "../web-component/Navbar";
+import Chat from "../web-component/Chat";
 import Calendar from "../web-component/calander";
 import { PlanStepper } from "../web-component/Stepper";
 import BacknNext from "../web-component/BackNext";
@@ -86,8 +86,7 @@ function TripPlanner() {
       />
       <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
         <TopNavbar />
-        <div className="overflow-y-scroll"
-        style={{ scrollbarWidth: 'none' }}>
+        <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
             <TripNameBar />
             {/* {isMemberOpen && (
@@ -101,7 +100,6 @@ function TripPlanner() {
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none "
-              
             >
               <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6" />
             </Typography>
@@ -125,16 +123,16 @@ function TripPlanner() {
             </Typography>
           </div>
           <div className="flex flex-col w-full">
-              <PlanStepper
-                activeStep={activeStep}
-                setActiveStep={setActiveStep}
-                isSubSidebarOpen={isSubSidebarOpen}
-                setIsSubSidebarOpen={setIsSubSidebarOpen}
-                subSidebarState={subSidebarState}
-                setSubSidebarState={setSubSidebarState}
-              >
-                <div>{selectedComponent}</div>
-              </PlanStepper>
+            <PlanStepper
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+              isSubSidebarOpen={isSubSidebarOpen}
+              setIsSubSidebarOpen={setIsSubSidebarOpen}
+              subSidebarState={subSidebarState}
+              setSubSidebarState={setSubSidebarState}
+            >
+              <div>{selectedComponent}</div>
+            </PlanStepper>
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

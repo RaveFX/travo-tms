@@ -3,9 +3,9 @@ import TabBar from "./pages/web-component/TabBar";
 import Cardtrip from "./pages/web-component/card";
 import BoxForm from "./pages/web-component/BoxForm";
 import TopNavbarLanding from "./pages/web-component/Landingpg-Navbar";
-import Dashboard from "./pages/Traveller/Dashboard";
-import Mytrips from "./pages/Traveller/Mytrips";
-import TripPlanner from "./pages/Traveller/TripPlanner";
+import Dashboard from "./pages/traveler/Dashboard";
+import Mytrips from "./pages/traveler/Mytrips";
+import TripPlanner from "./pages/traveler/TripPlanner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -14,11 +14,11 @@ import "swiper/css/free-mode";
 import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import SwiperCard from "./pages/web-component/SwiperCard";
-import Itinerary from "./pages/Traveller/Itinerary";
-import Selections from "./pages/Traveller/Selection";
-import TravelGuide from "./pages/Traveller/TravelGuied";
-import HotelDetails from "./pages/Traveller/Hotels";
-import Hotel from "./pages/Traveller/HotelDetails";
+import Itinerary from "./pages/traveler/Itinerary";
+import Selections from "./pages/traveler/Selection";
+import TravelGuide from "./pages/traveler/TravelGuied";
+import HotelDetails from "./pages/traveler/Hotels";
+import Hotel from "./pages/traveler/HotelDetails";
 
 
 

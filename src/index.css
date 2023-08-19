@@ -24,3 +24,23 @@ height: 100%;
 margin: 0.5rem !important;
 width: auto !important;
 }
+
+.rbc-event {
+    border: none;
+    background-color: #2AB57D;
+  }
+  .rbc-event-content {
+    color: white;
+}
+
+.rbc-event-label {
+    display: none;
+}
+
+.rbc-event {
+    border: none;
+    background-color: #2AB57D;
+  }
+  .rbc-event-content {
+    color: white;
+}

@@ -80,7 +80,7 @@ import {
                   src={isSidebarOpen ? '/images/logo.png' : '/images/minilogo.svg'}
                   alt="Logo"
                   className="mt-[2rem] mb-[2rem] gap-1 pb-4"
-                />
+                /> 
                 {/* <img src="/images/logo.png" alt="Logo" className="" /> */}
             </Typography>
           </div>
@@ -94,7 +94,7 @@ import {
           </button>
           {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
           
-          <List className={`!min-w-full text-white gap-[1.7rem] flex justify-items-center`}>
+          <List className={`!min-w-full text-white gap-1 flex justify-items-center`}>
             {
             navList.map((item, key) => (
               <React.Fragment key={key}>
@@ -107,13 +107,13 @@ import {
                   </ListItem>
                 </Link>
                 {item.name === 'My Trips' && isSubSidebarOpen &&(
-                  <div className="ml-[0rem] mt-1 space-y-1">
+                  <div className="ml-[2rem] mt-1 space-y-1">
                   {item.subItems.map((subItem, subKey) => (
                     <Link to={subItem.link} className="w-[100%] !style:none" key={subKey}
                       onClick={()=>setSubSidebarState(subItem.state)}
                     >
                       <ListItem
-                        className={`gap-[2rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
+                        className={`gap-[1rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
                           subKey === subSidebarState-1 ? 'active' : ''
                         }`}
                       >
@@ -128,7 +128,7 @@ import {
             ))
             }
           </List>
-          <List className={`!min-w-full Flex flex-col ${isSubSidebarOpen ? 'mt-[7rem]' : 'mt-[17rem] '} text-white `}>
+          <List className={`!min-w-full Flex flex-col ${isSubSidebarOpen ? 'mt-[3.4rem]' : 'mt-[12rem]'} text-white `}>
             <ListItem className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}>
               <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />

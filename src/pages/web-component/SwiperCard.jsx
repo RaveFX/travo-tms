@@ -13,7 +13,7 @@ import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export default function SwiperCard(){
     return(
-      <div className='swiper  w-fit hover:none'>
+      <div className='swiper container h-fit w-[1720px] hover:none'>
           <Swiper
             className='h-[100%] w-[100%]'
             slidesPerView={4}
@@ -28,10 +28,27 @@ export default function SwiperCard(){
           >
             
               {/* Swiper slides */}
-              <SwiperSlide>
-                <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>
+              <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+                <SwiperSlide className='w-[100%]'>
+                  <Cardtrip />
+                </SwiperSlide>
+              </div>
+              {/* <SwiperSlide>
                 <Cardtrip />
               </SwiperSlide>
               <SwiperSlide>            
@@ -48,7 +65,7 @@ export default function SwiperCard(){
               </SwiperSlide>
               <SwiperSlide>            
                 <Cardtrip />
-              </SwiperSlide>
+              </SwiperSlide> */}
               {/* More Swiper slides */}
               {/* ... */}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from '../../pages/web-component/Sidebar';
+import Sidebar from '../web-component/Sidebar';
 import TopNavbar from '../../pages/web-component/Navbar';
 import CalanderMain from '../web-component/CalanderMain';
 import {
@@ -12,9 +12,17 @@ import {
   Typography,
 } from '@material-tailwind/react';
 
-const shopItems = [
+const Explore = [
   {
     id: 1,
+    name: "Destinations",
+    price: "Find plsces to visit",
+    imageSrc:
+      "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
+    buttonname: "Explore Now",
+  },
+  {
+    id: 2,
     name: "Hotels",
     price: "Book your stay with us",
     imageSrc:
@@ -22,7 +30,7 @@ const shopItems = [
     buttonname: "Book Now",
   },
   {
-    id: 2,
+    id: 3,
     name: "Vehicles",
     price: "Rent your vehicle with us",
     imageSrc:
@@ -30,31 +38,15 @@ const shopItems = [
     buttonname: "Rent Now",
   },
   {
-    id: 2,
-    name: "Camping Items",
-    price: "Camping items for rent",
-    imageSrc:
-      "https://www.beyondthetent.com/wp-content/uploads/2023/03/Cool-Camping-Gear.jpg",
-    buttonname: "Rent now",
-  },
-  {
-    id: 2,
+    id: 4,
     name: "Travel Guides",
     price: "Guides for your trip",
     imageSrc:
       "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
-    buttonname: "Book Now",
+    buttonname: "Find Now",
     links: "/GuideProfile",
   },
-  {
-    id: 2,
-    name: "Travel Buddy",
-    price: "Connect with travellers",
-    imageSrc:
-      "https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/c7c4elegquhjubd1xmyb",
-    buttonname: "Turn on",
-    links: "/Travelbuddy",
-  },
+  
 
   // Define your shop items here...
 ];
@@ -82,45 +74,8 @@ const Dashboard = () => {
     // Add more ongoing trips
   ];
   
-  const OngoingTripsSection = () => {
-    return (
-      <div className="bg-white p-4 shadow-md rounded-lg">
-        <h2 className="text-xl font-semibold mb-4">Ongoing Trips</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {ongoingTrips.map((trip) => (
-            <Link key={trip.id} to={`/edit-trip/${trip.id}`}>
-              <Card className="cursor-pointer">
-                <CardHeader className="rounded-lg m-2" shadow={false} floated={false}>
-                  <Typography
-                    color="blue-gray"
-                    className="text-sm font-bold font-poppins"
-                  >
-                    {trip.name}
-                  </Typography>
-                </CardHeader>
-                <CardBody>
-                  <Typography
-                    variant="small"
-                    color="red"
-                    className="font-bold text-xs mb-2 font-poppins opacity-75 mx-5"
-                  >
-                    Start Date: {trip.startDate}
-                  </Typography>
-                  <Typography
-                    variant="small"
-                    color="red"
-                    className="mb-2 text-xs w-[75%] bg-slate-300 p-1.5 font-poppins opacity-75 rounded-lg mx-6"
-                  >
-                    End Date: {trip.endDate}
-                  </Typography>
-                </CardBody>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  
+  
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -133,7 +88,7 @@ const Dashboard = () => {
           </h1>
           <div className='flex flex-row gap-[1%]'>
             <div className='flex flex-col gap-[2rem] w-[75%]'>
-              <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-full]'>
+              <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-[75%]'>
                 <div className="mb-2 flex flex-col items-start justify-between w-full">
                   <Typography className="text-[#578B6A] font-[700] text-[32px] ">
                   Hello Sanduni!
@@ -163,9 +118,9 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className='flex flex-col gap-[1rem]'>
-                <div className="text-[#578B6A] font-[700] text-[24px] ">Other Options</div>
+                <div className="text-[#578B6A] font-[700] text-[24px] ">Explore Now</div>
                 <div className="flex flex-wrap gap-2">
-                  {shopItems.map((item) => (
+                  {Explore.map((item) => (
                     <Card key={item.id} className="w-[225px]">
                       <CardHeader
                         className="rounded-lg m-2"
@@ -200,10 +155,45 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className='w-[25%] h-auto'>
+            <div className='w-[30%] h-auto'>
               <CalanderMain />
             </div>
           </div>
+          <div className="bg-white p-4 shadow-md rounded-lg">
+        <h2 className="text-xl font-semibold mb-4">Ongoing Trips</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {ongoingTrips.map((trip) => (
+            <Link key={trip.id} to={`/edit-trip/${trip.id}`}>
+              <Card className="cursor-pointer">
+                <CardHeader className="rounded-lg m-2" shadow={false} floated={false}>
+                  <Typography
+                    color="blue-gray"
+                    className="text-sm font-bold font-poppins"
+                  >
+                    {trip.name}
+                  </Typography>
+                </CardHeader>
+                <CardBody>
+                  <Typography
+                    variant="small"
+                    color="red"
+                    className="font-bold text-xs mb-2 font-poppins opacity-75 mx-5"
+                  >
+                    Start Date: {trip.startDate}
+                  </Typography>
+                  <Typography
+                    variant="small"
+                    color="red"
+                    className="mb-2 text-xs w-[75%] bg-slate-300 p-1.5 font-poppins opacity-75 rounded-lg mx-6"
+                  >
+                    End Date: {trip.endDate}
+                  </Typography>
+                </CardBody>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </div>
       
 
           {/* Other Options */}

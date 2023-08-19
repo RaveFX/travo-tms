@@ -1,8 +1,8 @@
 import React from "react";
 import Calendar from "./calander";
-import Itinerary from "../Traveller/Itinerary";
-import { Saves } from "../Traveller/Saves";
-import Selections from "../Traveller/Selection";
+import Itinerary from "../traveler/Itinerary";
+import { Saves } from "../traveler/Saves";
+import Selections from "../traveler/Selection";
 import GuiedNVehicle from "./Guied-Vehicle";
 import { FinalPlan } from "./FinalPlan";
 
@@ -14,7 +14,6 @@ import {
   BuildingLibraryIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-
 
 export function PlanStepper(props) {
   // const [activeStep, setActiveStep] = React.useState(0);
@@ -46,7 +45,7 @@ export function PlanStepper(props) {
       // setSubSidebarState(1);
 
       subSidebarState == 1
-        ? (stepContent = <Itinerary/>)
+        ? (stepContent = <Itinerary />)
         : subSidebarState == 2
         ? (stepContent = <Selections />)
         : subSidebarState == 3
