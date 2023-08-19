@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TopNavbar from "../../components/navbar-general";
 import Sidebar from "../../components/sidebar-rave";
-import { Carousel } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+// import {
+//   Card,
+//   CardHeader,
+//   CardBody,
+//   CardFooter,
+//   Typography,
+//   Button,
+// } from "@material-tailwind/react";
 
 class Connfbut extends React.Component {
   submit = () => {

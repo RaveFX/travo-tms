@@ -4,13 +4,13 @@ import TopNavbar from "../../components/navbar-general";
 import Sidebar from "../../components/sidebar-rave";
 import { Carousel } from "@material-tailwind/react";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-} from "@material-tailwind/react";
+// import {
+//   Card,
+//   CardHeader,
+//   CardBody,
+//   CardFooter,
+//   Typography,
+// } from "@material-tailwind/react";
 
 import { ButtonGroup, Button } from "@material-tailwind/react";
 
