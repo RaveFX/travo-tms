@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Sidebar from "../web-component/Sidebar";
-import TopNavbar from "../web-component/Navbar";
-import Map from "../web-component/Map";
-import { TripNameBar } from "../web-component/TripName";
-import Calendar from "../web-component/calander";
-import BacknNext from "../web-component/BackNext";
+// import Sidebar from "../../components/web-component/Sidebar";
+// import TopNavbar from "../web-component/Navbar";
+// import Map from "../web-component/Map";
+// import { TripNameBar } from "../web-component/TripName";
+// import Calendar from "../web-component/calander";
+// import BacknNext from "../web-component/BackNext";
 import { useNavigate } from "react-router-dom";
-import Members from "../web-component/Members";
+// import Members from "../web-component/Members";
 
 import {
   Tabs,

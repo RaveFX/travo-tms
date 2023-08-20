@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from '../web-component/Sidebar';
-import TopNavbar from '../../pages/web-component/Navbar';
-import CalanderMain from '../web-component/CalanderMain';
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
+import CalanderMain from '../../components/web-component/CalanderMain';
 import {
   Button,
   Card,

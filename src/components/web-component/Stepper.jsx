@@ -1,8 +1,8 @@
 import React from "react";
 import Calendar from "./calander";
-import Itinerary from "../traveler/Itinerary";
-import { Saves } from "../traveler/Saves";
-import Selections from "../traveler/Selection";
+import Itinerary from "../../pages/traveler/Itinerary";
+import { Saves } from "../../pages/traveler/Saves";
+import Selections from "../../pages/traveler/Selection";
 import GuiedNVehicle from "./Guied-Vehicle";
 import { FinalPlan } from "./FinalPlan";
 

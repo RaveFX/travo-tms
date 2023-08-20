@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Sidebar from "../web-component/Sidebar";
-import TopNavbar from "../web-component/Navbar";
-import Chat from "../web-component/Chat";
-import Calendar from "../web-component/calander";
-import { PlanStepper } from "../web-component/Stepper";
-import BacknNext from "../web-component/BackNext";
-import { TripNameBar } from "../web-component/TripName";
+import Sidebar from "../../components/web-component/Sidebar";
+import TopNavbar from "../../components/web-component/Navbar";
+import Chat from "../../components/web-component/Chat";
+import Calendar from "../../components/web-component/calander";
+import { PlanStepper} from "../../components/web-component/Stepper";
+import BacknNext from "../../components/web-component/BackNext";
+import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
-import Notepad from "../web-component/Notepad";
-import Map from "../web-component/Map";
-import { SpeedDialPop } from "../web-component/SpeedPop";
+import Notepad from "../../components/web-component/Notepad";
+import Map from "../../components/web-component/Map";
+import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import {

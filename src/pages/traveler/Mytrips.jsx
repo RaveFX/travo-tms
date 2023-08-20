@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SwiperCard from '../web-component/SwiperCard';
-import TabBar from '../web-component/TabBar';
-import PopupModal from '../web-component/PopupModal';
+import SwiperCard from '../../components/web-component/SwiperCard';
+import TabBar from '../../components/web-component/TabBar';
+import PopupModal from '../../components/web-component/PopupModal';
 import { Button } from "@material-tailwind/react";
-import Sidebar from "../web-component/Sidebar";
-import TopNavbar from "../web-component/Navbar";
+import Sidebar from "../../components/web-component/Sidebar";
+import TopNavbar from "../../components/web-component/Navbar";
 
 
 function Mytrips() {
