@@ -38,7 +38,7 @@ export function TripNameBar(props) {
   };
   return (
     <>
-    <Navbar className=" mx-auto max-w-[100%] px-4 py-3 rounded-none bg-[#E3E3E3] h-50 !shadow-0 z-5  shadow-md backdrop-saturate-0 backdrop-blur-0 bg-opacity-80 border border-none text-white mx-auto max-w-[100%] px-4 py-3 rounded-none">
+    <Navbar className=" mx-auto max-w-[100%] px-4 py-3 rounded-none bg-[#E3E3E3] h-50 !shadow-0 shadow-md backdrop-saturate-0 backdrop-blur-0 bg-opacity-80 border border-none text-white mx-auto max-w-[100%] px-4 py-3 rounded-none">
       <div className="flex flex-wrap items-center justify-between gap-4 text-blue-gray-900">
         <div className="relative flex flex-col w-full gap-0.5 md:w-max rounded-full">
             <div className='flex justify-center'>
@@ -60,7 +60,7 @@ export function TripNameBar(props) {
         </div>} */}
               
         <div className="ml-auto flex flex-row gap-6 md:mr-4">
-          <MemberPopOver className="z-5"/>
+          <MemberPopOver className="z-[1000]"/>
           <SubscriptionPopover />
          
           {/* <Button className='bg-white hover:bg-[#F5F1F1] hover:shadow-[0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)] rounded-full w-[140px] h-[44px] p-0 m-0 relative -left-[12%] z-5 shadow-[0 2px 4px rgba(0,0,0,0.15)]' onClick={handleAvatarClick}>

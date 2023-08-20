@@ -12,14 +12,14 @@ import {
     return (
       <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
         <CardHeader color="blue-gray" className="relative h-56">
-            <img src="/images/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />
+            <img src="/traveler/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />
         </CardHeader>
         <CardBody>
           <Typography variant="h5" color="blue-gray" className="mb-2">
             Trip to Sigiriya
           </Typography>
           <Typography className="flex flex-row ">
-            <img src="/images/Profile Picture.svg" alt="Logo" className="h-[24px] w-[24px] mr-[5px]" />
+            <img src="/traveler/Profile Picture.svg" alt="Logo" className="h-[24px] w-[24px] mr-[5px]" />
             @username from Matara
           </Typography>
           <Typography>

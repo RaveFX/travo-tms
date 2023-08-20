@@ -41,7 +41,7 @@ import {
             {/* </Button> */}
             
             <Button variant="text" color="blue-gray" className='p-0 m-0 hover:shadow-none active:shadow-none focus:shadow-none' >
-              <Avatar variant="circular" alt="candice" src='./public/images/Profile-Picture.svg' className='w-9 h-9 p-0 m-0'/>
+              <Avatar variant="circular" alt="candice" src='./public/traveler/Profile-Picture.svg' className='w-9 h-9 p-0 m-0'/>
             </Button>
           </div>
           

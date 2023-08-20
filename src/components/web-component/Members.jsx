@@ -13,11 +13,11 @@ import {
 export default function MemberPopOver() {
 
   const members = [
-    { id: 1, name: 'Sanduni', avatarSrc: './public/images/Female(1).svg', details: 'Member details here' },
-    { id: 2, name: 'Kanishka', avatarSrc: './public/images/Female.svg', details: 'Member details here' },
-    { id: 3, name: 'Samuel', avatarSrc: './public/images/Female(1).svg', details: 'Member details here' },
-    { id: 4, name: 'Samindu', avatarSrc: './public/images/Male.svg', details: 'Member details here' },
-    { id: 5, name: 'Madushi', avatarSrc: './public/images/Male(1).svg', details: 'Member details here' },
+    { id: 1, name: 'Sanduni', avatarSrc: './public/traveler/Female(1).svg', details: 'Member details here' },
+    { id: 2, name: 'Kanishka', avatarSrc: './public/traveler/Female.svg', details: 'Member details here' },
+    { id: 3, name: 'Samuel', avatarSrc: './public/traveler/Female(1).svg', details: 'Member details here' },
+    { id: 4, name: 'Samindu', avatarSrc: './public/traveler/Male.svg', details: 'Member details here' },
+    { id: 5, name: 'Madushi', avatarSrc: './public/traveler/Male(1).svg', details: 'Member details here' },
     // Add more members as needed
   ];
 
