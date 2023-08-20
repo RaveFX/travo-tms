@@ -19,7 +19,6 @@ import TopNavbarLanding from "./pages/web-component/Landingpg-Navbar";
 import Dashboard from "./pages/traveler/Dashboard";
 import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -40,7 +39,7 @@ export default function App() {
 
   return (
     <>
-      <Router>
+      
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/Travdash" element={<Travdash />} />
@@ -53,16 +52,15 @@ export default function App() {
           <Route exact path="/Expenses" element={<Expenses />} />
           <Route exact path="/GuideProfile" element={<GuideProfile />} />
           <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
-        </Routes>
-      </Router>
+        
 
-      <div className="bg-[#F6F8FA] w-full h-screen"></div>
       
-          <Routes>
+      
+          
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/mytrips" element={<Mytrips />} >
+            <Route path="/mytrips" element={<Mytrips />} />
               
-            </Route>
+            
             <Route path="/trip-planner" element={<TripPlanner />} />
            
             <Route path="/itinerary" element={<Itinerary />} />
@@ -74,7 +72,7 @@ export default function App() {
             {/* <Route path="/mytrips" element={<Mytrips />} /> */}
             {/* Add other routes here */}
           </Routes>
-
+        
     </>
   );
 }
