@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import {
   Card,
   Typography,
@@ -7,201 +9,147 @@ import {
   ListItemPrefix,
   ListItemSuffix,
   Chip,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-  Alert,
-  Input,
 } from "@material-tailwind/react";
 import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
+  RectangleGroupIcon,
+  MapIcon,
+  HeartIcon,
+  UserGroupIcon,
   Cog6ToothIcon,
-  InboxIcon,
+  BanknotesIcon,
   PowerIcon,
-} from "@heroicons/react/24/solid";
-import {
-  ChevronRightIcon,
-  ChevronDownIcon,
-  CubeTransparentIcon,
-  MagnifyingGlassIcon,
+  ChevronLeftIcon,
+  CheckIcon,
+  ClipboardDocumentIcon,
+  BookmarkIcon,
+  StarIcon
 } from "@heroicons/react/24/outline";
 
-export default function SideBar() {
-  const [open, setOpen] = React.useState(0);
-  const [openAlert, setOpenAlert] = React.useState(true);
+export default function SideBar(props) {
+  const { active } = props;
 
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const [isIconRotated, setIsIconRotated] = useState(false);
+
+  const handleSidebarToggle = () => {
+    setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
+    setIsIconRotated((prevIsIconRotated) => !prevIsIconRotated);
   };
 
+  const navList = [
+    {
+      icon: <RectangleGroupIcon className="h-5 w-5" />,
+      name: "Dashboard",
+      link: "/hotelagent_dashboard",
+    },
+    {
+      icon: <MapIcon className="h-5 w-5" />,
+      name: "Reservations",
+      link: "/hotelagent_reservations",
+    },
+    {
+      icon: <HeartIcon className="h-5 w-5" />,
+      name: "Rooms",
+      link: "/hotelagent_rooms",
+    },
+    {
+      icon: <UserGroupIcon className="h-5 w-5" />,
+      name: "Advertisements",
+      link: "/community",
+    },
+    {
+      icon: <BanknotesIcon className="h-5 w-5" />,
+      name: "Transactions",
+      link: "/hotelagent_transactions",
+    },
+    {
+      icon: <StarIcon className="h-5 w-5" />,
+      name: "Reviews",
+      link: "/hotelagent_reviews",
+    },
+    {
+      icon: <Cog6ToothIcon className="h-5 w-5" />,
+      name: "Settings",
+      link: "/settings",
+    },
+  ];
+
+  // const wValue = isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]";
+
   return (
-    <Card className="fixed top-[h-(full-(h-16))] left-0 h-full w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 font-poppins">
-      <div className="mb-2 flex items-center gap-4 p-4">
-        <img src="/img/logo-ct-dark.png" alt="brand" className="h-8 w-8" />
-        <Typography variant="h5" color="blue-gray">
-          Sidebar
+    <Card
+      className={`${
+        isSidebarOpen ? "w-[16.25rem]" : "w-[4rem]"
+      } font-poppins bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen rounded-none transition-all duration-300 ease-in-out`}
+    >
+      <div className="mt-10 mb-10">
+        <Typography variant="h5" color="white">
+          <img
+            src={isSidebarOpen ? "/logo.png" : "/minilogo.png"}
+            alt="Logo"
+            className={
+              isSidebarOpen
+                ? "max-w-[60%] h-15 ml-10 "
+                : "mb-2 mt-4 ml-2 pb-4 w-12"
+            }
+          />
+          {/* <img src="/images/logo.png" alt="Logo" className="" /> */}
         </Typography>
       </div>
-      <div className="p-2">
-        <Input
-          icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-          label="Search"
+
+      <button onClick={handleSidebarToggle} className="z-10 ">
+        <ChevronLeftIcon
+          className={`h-[24\px] w-[24px] bg-[#2AB57D] rounded-full z-10 gap-3 p-1 absolute -right-[0.7rem] ${
+            isIconRotated
+              ? "rotate-180 transition-all duration-300 ease-in-out"
+              : "transition-all duration-300 ease-in-out"
+          }`}
         />
-      </div>
-      <List>
-        <Accordion
-          open={open === 1}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 1 ? "rotate-180" : ""
-              }`}
-            />
-          }
-        >
-          <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader
-              onClick={() => handleOpen(1)}
-              className="border-b-0 p-3"
+      </button>
+      {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
+
+      <List
+        className={`${
+          isSidebarOpen ? "ml" : "ml-0"
+        } text-white text-sm gap-1.5 self-center  flex `}
+      >
+        {navList.map((item, key) => (
+          <>
+            <Link
+              to={item.link}
+              className="h-16 w-[100%] !style:none"
+              key={key}
             >
-              <ListItemPrefix>
-                <PresentationChartBarIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                Dashboard
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Analytics
+              <ListItem
+                className={`gap-[2rem]   hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
+                  active === item.name ? "active" : ""
+                }`}
+              >
+                {item.icon}
+                <span className={`${isSidebarOpen ? "" : "hidden"}`}>
+                  {item.name}
+                </span>
               </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Reporting
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Projects
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-        <Accordion
-          open={open === 2}
-          icon={
-            <ChevronDownIcon
-              strokeWidth={2.5}
-              className={`mx-auto h-4 w-4 transition-transform ${
-                open === 2 ? "rotate-180" : ""
-              }`}
-            />
-          }
+            </Link>
+          </>
+        ))}
+      </List>
+
+      <List
+        className={`!min-w-full Flex flex-col mt-40 text-white items-center`}
+      >
+        <ListItem
+          className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}
         >
-          <ListItem className="p-0" selected={open === 2}>
-            <AccordionHeader
-              onClick={() => handleOpen(2)}
-              className="border-b-0 p-3"
-            >
-              <ListItemPrefix>
-                <ShoppingBagIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal">
-                E-Commerce
-              </Typography>
-            </AccordionHeader>
-          </ListItem>
-          <AccordionBody className="py-1">
-            <List className="p-0">
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Orders
-              </ListItem>
-              <ListItem>
-                <ListItemPrefix>
-                  <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                </ListItemPrefix>
-                Products
-              </ListItem>
-            </List>
-          </AccordionBody>
-        </Accordion>
-        <hr className="my-2 border-blue-gray-50" />
-        <ListItem>
           <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
+            <PowerIcon className={`${isSidebarOpen ? "ml-10" : ""} h-5 w-5 `} />
           </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="blue-gray"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Profile
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Log Out
+          <span className={`${isSidebarOpen ? "ml-10" : "hidden"}`}>
+            Log Out
+          </span>
         </ListItem>
       </List>
-      <Alert
-        open={openAlert}
-        className="mt-auto"
-        onClose={() => setOpenAlert(false)}
-      >
-        <CubeTransparentIcon className="mb-4 h-12 w-12" />
-        <Typography variant="h6" className="mb-1">
-          Upgrade to PRO
-        </Typography>
-        <Typography variant="small" className="font-normal opacity-80">
-          Upgrade to Material Tailwind PRO and get even more components,
-          plugins, advanced features and premium.
-        </Typography>
-        <div className="mt-4 flex gap-3">
-          <Typography
-            as="a"
-            href="#"
-            variant="small"
-            className="font-medium opacity-80"
-            onClick={() => setOpenAlert(false)}
-          >
-            Dismiss
-          </Typography>
-          <Typography as="a" href="#" variant="small" className="font-medium">
-            Upgrade Now
-          </Typography>
-        </div>
-      </Alert>
     </Card>
   );
 }
