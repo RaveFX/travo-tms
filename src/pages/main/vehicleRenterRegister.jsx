@@ -316,7 +316,7 @@ const onSubmit=async(e)=>{
       </form>
     </div>
     <div className=" lg:fixed top-0 right-0 mt-20 max-w-3xl ">
-    <img className="" src="/vehicle_renter.png" alt="" />
+    <img className="" src="/main/vehicle_renter.png" alt="" />
     </div>
     </div>
     </div>

@@ -4,6 +4,7 @@ import axios from "../../api/axios";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Newnav from "../../components/newnav";
 import {Alert} from "@material-tailwind/react";
+import Navingation_home from "../../components/homenavbar";
 
 
 function Signin () {
@@ -62,7 +63,7 @@ function Signin () {
           navigate('/activity_dashboard')
         }
         else if (response.data.role === 'VEHICLE_RENTER') {
-          navigate('/vehicle_dashboard')
+          navigate('/vehicle_owner_dashboard')
         }
         else if (response.data.role === 'GUIDE') {
           navigate('/guide_dashboard')
@@ -84,10 +85,10 @@ function Signin () {
   
   return (
     <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{
-      backgroundImage: "url('/login.png')",
+      backgroundImage: "url('/main/login.png')",
       //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
     }}>
-    <Newnav />
+    <Navingation_home />
     <section className="flex flex-col md:flex-row justify-center space-y-10 md:space-y-16 md:space-x-20  my-2 mx-5 md:mx-0 md:my-0 font-poppins">
       <div className="md:w-1/3 max-w pt-20 pr-20">
         <img

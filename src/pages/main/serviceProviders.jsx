@@ -1,5 +1,6 @@
 import React from 'react'
 import Newnav from "../../components/newnav";
+import Navingation_home from "../../components/homenavbar";
 import {
   Card,
   CardBody
@@ -9,10 +10,10 @@ import { Link } from 'react-router-dom';
 function ServiceProviders() {
   return (
     <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{
-      backgroundImage: "url('/photo2.jpg')",
+      backgroundImage: "url('/main/photo2.jpg')",
       //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
     }}>
-    <Newnav />
+    <Navingation_home />
     <div className="py-24 sm:py-32">
     <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
       <div className="max-w-2xl">
@@ -28,7 +29,7 @@ function ServiceProviders() {
         <Link to="/hotel_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/hotel_agent.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/main/hotel_agent.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Hotel</h3>
       </card>
       
@@ -37,7 +38,7 @@ function ServiceProviders() {
       <Link to="/activity_agent_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 " src="/activity_register.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 " src="/main/activity_register.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Activities</h3>
       </card>
       
@@ -47,7 +48,7 @@ function ServiceProviders() {
       <Link to="/guide_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/Guide_register.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/main/Guide_register.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Travel Guide</h3>
       </card>
       
@@ -57,7 +58,7 @@ function ServiceProviders() {
       <Link to="/vehicle_renter_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/vehicle_renter.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/main/vehicle_renter.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Vehicle Renter</h3>
       </card>
       
@@ -67,7 +68,7 @@ function ServiceProviders() {
       <Link to="/store_manager_register">
       <li>
       <card>
-      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/store_manager.png" alt="" />
+      <img className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2" src="/main/store_manager.png" alt="" />
       <h3 className="text-base font-semibold leading-7 tracking-tight">Store</h3>
       </card>
       

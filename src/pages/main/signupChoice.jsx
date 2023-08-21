@@ -1,5 +1,6 @@
 import React from 'react'
 import Newnav from "../../components/newnav";
+import Navingation_home from "../../components/homenavbar";
 import {
   Card,
   CardHeader,
@@ -52,21 +53,21 @@ function Shopitem() {
 const shopItems = [
   {
   imageSrc:
-    "/store_manager.png",
+    "/main/store_manager.png",
   buttonname: "Traveller",
   links: "/Signup",
 },
 {
   imageSrc:
-    "/hotel_agent.png",
+    "/main/hotel_agent.png",
   buttonname: "Service Provider",
   links: "/service_providers",
 },]
 
 function SignupChoice() {
   return (
-    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/photo3.jpg')"}}>
-    <Newnav />
+    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/main/photo3.jpg')"}}>
+    <Navingation_home />
     <div className="py-24 sm:py-32">
     <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
       <div className="max-w-2xl">

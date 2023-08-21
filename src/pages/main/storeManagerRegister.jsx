@@ -316,7 +316,7 @@ function StoreManagerRegister() {
       </form>
     </div>
     <div className="lg:fixed top-0 right-0 mt-20 max-w-3xl ">
-    <img className="" src="/store_manager.png" alt="" />
+    <img className="" src="/main/store_manager.png" alt="" />
     </div>
     </div>
     </div>

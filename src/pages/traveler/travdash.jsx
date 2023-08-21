@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UserNav from '../../components/userNav'
-import SideBar from '../../components/sidebar'
+import TopNavbar from "../../components/navbar-general";
+import Sidebar from "../../components/sidebar-rave";
 import { Button, CardBody } from "@material-tailwind/react";
+// import Cardss from "../../components/card";
 
-// import Cardss from "../components/card";
 import {
   Card,
   CardHeader,
@@ -36,6 +36,7 @@ const shopItems = [
     imageSrc:
       "https://www.beyondthetent.com/wp-content/uploads/2023/03/Cool-Camping-Gear.jpg",
     buttonname: "Rent now",
+    links: "/Store",
   },
   {
     id: 2,
@@ -117,10 +118,10 @@ function Travdash() {
     <>
       <div className="font-poppins flex bg-[#F6F8FA] w-full">
         <div className="fixed">
-        <SideBar active="Reviews"/>
+          <Sidebar />
         </div>
         <div className="w-screen ml-[18.25%]">
-        <UserNav />
+          <TopNavbar />
 
           <section class="py-8 w-[55%]">
             <div class=" mx-10 mr-auto">
