@@ -1,7 +1,8 @@
 import "@fontsource/poppins";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/main/home";
-import Travdash from "./pages/traveler/travdash";
+// import Travdash from "./pages/traveler/travdash";
+import Community from "./pages/traveler/Community";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
 import Contact from "./pages/main/contact";
@@ -42,7 +43,7 @@ export default function App() {
       
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/Travdash" element={<Travdash />} />
+          {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
           <Route exact path="/AboutUs" element={<AboutUs />} />
           <Route exact path="/Services" element={<Services />} />
           <Route exact path="/Contact" element={<Contact />} />
@@ -59,7 +60,7 @@ export default function App() {
           
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/mytrips" element={<Mytrips />} />
-              
+            <Route path="/community" element={<Community />} />  
             
             <Route path="/trip-planner" element={<TripPlanner />} />
            
