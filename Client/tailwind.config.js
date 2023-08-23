@@ -6,9 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'poppins': ['Poppins', 'sans-serif']
-      },
       colors: {
         primary: "#F6F8FA",
         secondary: "#00f6ff",
@@ -25,11 +22,18 @@ export default {
         dimGray:"#DADADA",
         green1:"#57CC99",
         green2:"#38A3A5",
-
-
-
-
       },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif']
+      },
+    },
+    screens: {
+      xs: "480px",
+      ss: "620px",
+      sm: "768px",
+      md: "1060px",
+      lg: "1200px",
+      xl: "1700px",
     },
   },
   plugins: [],
