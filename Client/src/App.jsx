@@ -29,8 +29,6 @@ import Vehicle_Owner_RequestMore from './pages/Vehicle_Owner/vehicle_owner_reque
 import Vehicle_Owner_Rating from './pages/Vehicle_Owner/vehicle_owner_rating';
 import Vehicle_Owner_Profile from './pages/Vehicle_Owner/vehicle_owner_profile';
 import Vehicle_Owner_Edit_Profile from './pages/Vehicle_Owner/vehicle_owner_edit_profile';
-import 'boxicons';
-
 
 import Travel_Guide_Success from './pages/Travel_Guide/travel_guide_success';
 
@@ -51,39 +49,39 @@ export default function App() {
 
 
       <BrowserRouter>
-<Routes>
-  
-  <Route path='/' element={<Travel_Guide_Dashboard/>}> </Route>
-  <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
-  <Route path='/travel_guide_mytours' element={<Travel_Guide_Mytours/>}></Route>
-  <Route path='/travel_guide_myrates' element={<Travel_Guide_Myrates/>}></Route>
-  <Route path='/travel_guide_mytours_more' element={<Travel_Guide_Mytours_More/>}></Route>
-  <Route path='/travel_guide_invitation' element={<Travel_Guide_Invitation/>}></Route>
-  <Route path='/travel_guide_rating' element={<Travel_Guide_Rating/>}></Route>
-  <Route path='/travel_guide_request' element={<Travel_Guide_Request/>}></Route>
-  <Route path='/travel_guide_requestMore' element={<Travel_Guide_RequestMore/>}></Route>
-  <Route path='/travel_guide_confirmed' element={<Travel_Guide_Confirmed/>}></Route>
-  <Route path='/travel_guide_profile' element={<Travel_Guide_Profile/>}></Route>
-  <Route path='/travel_guide_edit_profile' element={<Travel_Guide_Edit_Profile/>}></Route>
-  <Route path='/profile' element={<Profile/>}></Route>
-  <Route path='/vehicle_owner_dashboard' element={<Vehicle_Owner_Dashboard/>}> </Route>
-  <Route path='/vehicle_owner_vehicles' element={<Vehicle_Owner_Vehicles/>}> </Route>
-  <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates/>}> </Route>
-  <Route path='/vehicle_owner_add_vehicle' element={<Vehicle_Owner_Add_Vehicle/>}> </Route>
-  <Route path='/vehicle_owner_add_preview' element={<Vehicle_Owner_Add_Preview/>}> </Route>
-  <Route path='/vehicle_owner_request' element={<Vehicle_Owner_Request/>}> </Route>
-  <Route path='/vehicle_owner_requestMore' element={<Vehicle_Owner_RequestMore/>}></Route>
-  <Route path='/vehicle_owner_rating' element={<Vehicle_Owner_Rating/>}> </Route>
-  <Route path='/vehicle_owner_profile' element={<Vehicle_Owner_Profile/>}></Route>
-  <Route path='/vehicle_owner_edit_profile' element={<Vehicle_Owner_Edit_Profile/>}></Route>
+        <Routes>
 
-  <Route path='/travel_guide_success' element={<Travel_Guide_Success/>}></Route>
+          <Route path='/' element={<Travel_Guide_Dashboard />}> </Route>
+          <Route path='/travel_guide_request' element={<Travel_Guide_Request />}></Route>
+          <Route path='/travel_guide_mytours' element={<Travel_Guide_Mytours />}></Route>
+          <Route path='/travel_guide_myrates' element={<Travel_Guide_Myrates />}></Route>
+          <Route path='/travel_guide_mytours_more' element={<Travel_Guide_Mytours_More />}></Route>
+          <Route path='/travel_guide_invitation' element={<Travel_Guide_Invitation />}></Route>
+          <Route path='/travel_guide_rating' element={<Travel_Guide_Rating />}></Route>
+          <Route path='/travel_guide_request' element={<Travel_Guide_Request />}></Route>
+          <Route path='/travel_guide_requestMore' element={<Travel_Guide_RequestMore />}></Route>
+          <Route path='/travel_guide_confirmed' element={<Travel_Guide_Confirmed />}></Route>
+          <Route path='/travel_guide_profile' element={<Travel_Guide_Profile />}></Route>
+          <Route path='/travel_guide_edit_profile' element={<Travel_Guide_Edit_Profile />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/vehicle_owner_dashboard' element={<Vehicle_Owner_Dashboard />}> </Route>
+          <Route path='/vehicle_owner_vehicles' element={<Vehicle_Owner_Vehicles />}> </Route>
+          <Route path='/vehicle_owner_rates' element={<Vehicle_Owner_Rates />}> </Route>
+          <Route path='/vehicle_owner_add_vehicle' element={<Vehicle_Owner_Add_Vehicle />}> </Route>
+          <Route path='/vehicle_owner_add_preview' element={<Vehicle_Owner_Add_Preview />}> </Route>
+          <Route path='/vehicle_owner_request' element={<Vehicle_Owner_Request />}> </Route>
+          <Route path='/vehicle_owner_requestMore' element={<Vehicle_Owner_RequestMore />}></Route>
+          <Route path='/vehicle_owner_rating' element={<Vehicle_Owner_Rating />}> </Route>
+          <Route path='/vehicle_owner_profile' element={<Vehicle_Owner_Profile />}></Route>
+          <Route path='/vehicle_owner_edit_profile' element={<Vehicle_Owner_Edit_Profile />}></Route>
 
-  
-</Routes>
-</BrowserRouter>
+          <Route path='/travel_guide_success' element={<Travel_Guide_Success />}></Route>
 
-   
+
+        </Routes>
+      </BrowserRouter>
+
+
 
     </>
   )

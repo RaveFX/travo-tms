@@ -17,7 +17,7 @@ import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 // import ButtonVariants from './button';
 import { car, van, bike, scooter, bus } from '../../assets/Vehicle_owner/index/';
 import { Link } from 'react-router-dom';
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 
 
