@@ -6,7 +6,7 @@ const Hotel = () => {
   const navigate = useNavigate();
 
   const hotel = {
-    coverPhoto: "./public/images/hotelcover.jpg",
+    coverPhoto: "/traveler/hotelcover.jpg",
     name: "Hotel XYZ",
     tagline: "Experience Luxury Like Never Before",
     location: {
@@ -17,13 +17,13 @@ const Hotel = () => {
     priceRange: "$$$",
     rooms: [
       {
-        photo: "./public/images/hotelroom1.jpg",
+        photo: "/traveler/hotelroom1.jpg",
         name: "Luxury Suite",
         description: "Spacious suite with stunning views.",
         price: "$500",
       },
       {
-        photo: "./public/images/hotelroom2.jpg",
+        photo: "/traveler/hotelroom2.jpg",
         name: "Deluxe Room",
         description: "Comfortable room with modern amenities.",
         price: "$300",

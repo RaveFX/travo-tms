@@ -32,7 +32,7 @@ export default function BoxForm (props) {
   const navigate = useNavigate();
   const handleNavigate = () => {
     // Example: Navigate to '/other-page' when the button is clicked
-    navigate('/trip-planner');
+    navigate('/traveler/trip-planner');
   };
 
   const handleSubmit = (event) => {

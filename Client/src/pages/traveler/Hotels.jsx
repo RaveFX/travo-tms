@@ -8,63 +8,63 @@ function HotelDetails() {
     {
       name: "Luxury Resort",
       description: "5-star resort with ocean view.",
-      photo: "./public/images/hotel.svg", // Replace with actual photo filename
+      photo: "/traveler/hotel.svg", // Replace with actual photo filename
       ratings: 4.5,
       totalReviews: 120,
     },
     {
       name: "Cozy Inn",
       description: "Charming inn in the heart of the city.",
-      photo: "./public/images/hotel.svg", // Replace with actual photo filename
+      photo: "/traveler/hotel.svg", // Replace with actual photo filename
       ratings: 4.8,
       totalReviews: 85,
     },
     {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
         name: "Cozy Inn",
         description: "Charming inn in the heart of the city.",
-        photo: "./public/images/hotel.svg", // Replace with actual photo filename
+        photo: "/traveler/hotel.svg", // Replace with actual photo filename
         ratings: 4.8,
         totalReviews: 85,
       },
       {
       name: "Cozy Inn",
       description: "Charming inn in the heart of the city.",
-      photo: "./public/images/hotel.svg", // Replace with actual photo filename
+      photo: "/traveler/hotel.svg", // Replace with actual photo filename
       ratings: 4.8,
       totalReviews: 85,
     },

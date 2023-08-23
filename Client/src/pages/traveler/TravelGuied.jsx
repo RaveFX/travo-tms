@@ -10,63 +10,63 @@ function TravelGuide() {
     {
       name: "Kanishka Sewwandi",
       description: "Experienced guide for adventure trips.",
-      photo: "./public/images/Female.svg", // Replace with actual photo filename
+      photo: "/traveler/Female.svg", // Replace with actual photo filename
       ratings: 4.5,
       completedTrips: 120,
     },
     {
       name: "Samindu Cooray",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Madushi Saumya",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Female(1).svg", // Replace with actual photo filename
+      photo: "/traveler/Female(1).svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Kavishka ",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Thanduni",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Samuel",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Samuel",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Samuel",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },
     {
       name: "Samuel",
       description: "Local guide with knowledge of cultural sites.",
-      photo: "./public/images/Male.svg", // Replace with actual photo filename
+      photo: "/traveler/Male.svg", // Replace with actual photo filename
       ratings: 4.8,
       completedTrips: 85,
     },

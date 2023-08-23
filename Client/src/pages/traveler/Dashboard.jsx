@@ -111,7 +111,7 @@ const Dashboard = () => {
                 </div>
                 <div className='h-full w-full rounded-lg'>
                   <img
-                    src="./public/traveler/trip.jpg"
+                    src="/traveler/trip.jpg"
                     alt="card-image"
                     className="h-full w-full object-cover rounded-lg"
                   />

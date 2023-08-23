@@ -92,17 +92,13 @@ function Itinerary() {
   return (
     <>
       <div className="flex overflow-hidden w-full">
-        {/* <Sidebar active="Selections" isSubSidebarOpen={isSubSidebarOpen} setIsSubSidebarOpen={setIsSubSidebarOpen}/> */}
         <div
           className="flex flex-col  h-fit bg-white bg-opacity-20 overflow-y-scroll w-full"
           style={{ scrollbarWidth: "none" }}
         >
-          {/* <TopNavbar /> */}
           <div className="flex justify-between">
-            {/* <TripNameBar isSubSidebarOpen={isSubSidebarOpen}  isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/> */}
           </div>
           <div>
-            {/* <Chat /> */}
             <>
               <Tabs value="1" className="max-w-[60rem] m-8 mb-0 bg-transparent">
                 <TabsHeader
@@ -375,25 +371,13 @@ function Itinerary() {
                     </div>
                   </AccordionBody>
                 </Accordion>
-                {/* <div className="flex flex-row justify-center gap-[150px] mt-30 pt-20">
-          <Button className="flex flex-col justify-center w-[150px] h-[150px] text-white  bg-[#57CC99] normal-case shadow-none focus:shadow-none hover:shadow-none active:shadow-none">
-            <img className="" src="./public/images/travelguied.svg" />
-            <Typography>Add Travel guied</Typography>
-          </Button>
-          <Button className="flex flex-col w-[150px] h-[150px] text-white bg-[#57CC99] normal-case shadow-none focus:shadow-none hover:shadow-none active:shadow-none">
-            <img className="" src="./public/images/vehicle.svg" />
-            <Typography>Rent a Vehicle</Typography>
-          </Button>
-        </div> */}
+                
               </div>
             </>
 
-            {/* <MemberPopup isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/> */}
-            {/* {isMemberOpen && <Members isMemberOpen={isMemberOpen} setIsMemberOpen={setIsMemberOpen}/>} */}
+            
           </div>
-          <div>
-            {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
-          </div>
+         
         </div>
       </div>
     </>
