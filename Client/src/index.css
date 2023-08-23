@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .active{
+        @apply bg-[#2AB57D] text-white
+    }
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
+}
+  
+.swiper {
+  width: 75rem;
+  height: 100%;
+}
+
+.swiper-slide {
+  margin: 0.5rem !important;
+  width: auto !important;
+}
+
+.rbc-event {
+  border: none;
+  background-color: #2AB57D;
+}
+
+.rbc-event-content {
+  color: white;
+}
+
+.rbc-event-label {
+  display: none;
+}
+
+.rbc-event {
+  border: none;
+  background-color: #2AB57D;
+}
+
+.rbc-event-content {
+  color: white;
+}
+
+.coverImage {
+  background-size: cover;
+  background: url('../public/traveler/hero.png') no-repeat center;
+}
