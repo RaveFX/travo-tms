@@ -1,15 +1,15 @@
-import React from 'react'
-import Newnav from "../../components/newnav";
-import Navingation_home from "../../components/homenavbar";
+import React from "react";
+//import Newnav from "../../components/newnav";
+//import Navingation_home from "../../components/homenavbar";
 import {
   Card,
   CardHeader,
   CardFooter,
   Typography,
   CardBody,
-  Button
+  Button,
 } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 function Shopitem() {
   return (
     <div className=" flex ml-10 flex-wrap gap-5">
@@ -31,7 +31,6 @@ function Shopitem() {
                 {item.name}
               </Typography>
             </div>
-            
           </CardBody>
           <CardFooter className="pt-0 ">
             <Link to={item.links}>
@@ -52,48 +51,43 @@ function Shopitem() {
 
 const shopItems = [
   {
-  imageSrc:
-    "/main/store_manager.png",
-  buttonname: "Traveller",
-  links: "/Signup",
-},
-{
-  imageSrc:
-    "/main/hotel_agent.png",
-  buttonname: "Service Provider",
-  links: "/service_providers",
-},]
+    imageSrc: "/main/store_manager.png",
+    buttonname: "Traveller",
+    links: "/Signup",
+  },
+  {
+    imageSrc: "/main/hotel_agent.png",
+    buttonname: "Service Provider",
+    links: "/service_providers",
+  },
+];
 
 function SignupChoice() {
   return (
-    <div className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"style={{backgroundImage: "url('/main/photo3.jpg')"}}>
-    <Navingation_home />
-    <div className="py-24 sm:py-32">
-    <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
-      <div className="max-w-2xl">
-        <img
-          src="/travo-white.png"
-          alt="Sample image" className='w-[60%] mt-16' />
-        <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl ml-20">Sign-up As,</h2>
-      </div>
-      <div className='mt-24'>
-      <Shopitem/>
-      </div>
-     
-    </div>
-  </div>
-        
-
+    <div
+      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
+      style={{ backgroundImage: "url('/main/photo3.jpg')" }}
+    >
+      <Navingation_home />
+      <div className="py-24 sm:py-32">
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
+          <div className="max-w-2xl">
+            <img
+              src="/travo-white.png"
+              alt="Sample image"
+              className="w-[60%] mt-16"
+            />
+            <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl ml-20">
+              Sign-up As,
+            </h2>
+          </div>
+          <div className="mt-24">
+            <Shopitem />
+          </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-  )
+      </div>
+    </div>
+  );
 }
 
-export default SignupChoice
+export default SignupChoice;

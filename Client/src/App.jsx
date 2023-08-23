@@ -1,6 +1,6 @@
 import "@fontsource/poppins";
-import PersistLogin from "./components/PersistLogin";
-import RequireAuth from "./components/RequireAuth";
+import PersistLogin from "./components/main/PersistLogin";
+import RequireAuth from "./components/main/RequireAuth";
 import Landing from "./pages/main/landingPage";
 import Signin from "./pages/main/signin";
 import Signup from "./pages/main/signup";
