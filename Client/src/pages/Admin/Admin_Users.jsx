@@ -105,19 +105,11 @@ export default function Users() {
                                             <span class="relative">On delivery</span>
                                         </span>
                                     </td> */}
-<<<<<<< Updated upstream
                                                 <td class="justify-center">
                                                     <a href="/admin_userprofile">
                                                         <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
                                                     </a>
                                                 </td>
-=======
-                                    <td class="justify-center">
-                                        <a href="/admim/admin_userprofile">
-                                            <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                        </a>
-                                    </td>
->>>>>>> Stashed changes
 
                                             </tr>
                                             <tr>
