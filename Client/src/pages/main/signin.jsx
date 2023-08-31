@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 //import Newnav from "../../components/newnav";
 import { Alert } from "@material-tailwind/react";
-//import Navingation_home from "../../components/main/homenavbar";
+import Navingation_home from "../../components/homenavbar";
 
 function Signin() {
   const { setAuth } = useAuth();
@@ -44,18 +44,24 @@ function Signin() {
 
       // const from = location?.state?.from || {pathname: "/" + response?.data?.role.toLowerCase()};
       // navigate(from, {replace: true});
+        const user_id = response.data.id;
+        const role = response.data.role;
+        sessionStorage.setItem('user_id', user_id);
+        sessionStorage.setItem('role',role);
+
+
       if (response.data.role === "TRAVELLER") {
-        navigate("/traveler_dashboard");
+        navigate("/traveler/dashboard");
       } else if (response.data.role === "HOTEL_AGENT") {
         navigate("/hotelagent_dashboard");
       } else if (response.data.role === "STORE_MANAGER") {
         navigate("/store_dashboard");
       } else if (response.data.role === "ACTIVITY_AGENT") {
-        navigate("/activity_dashboard");
+        navigate("/agent_dashboard");
       } else if (response.data.role === "VEHICLE_RENTER") {
         navigate("/vehicle_owner_dashboard");
       } else if (response.data.role === "GUIDE") {
-        navigate("/guide_dashboard");
+        navigate("/travel_guide_dashboard");
       } else {
         navigate("/admin_dashboard");
       }

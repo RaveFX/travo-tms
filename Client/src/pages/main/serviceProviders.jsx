@@ -1,19 +1,19 @@
 import React from "react";
 //import Newnav from "../../components/newnav";
-//import Navingation_home from "../../components/homenavbar";
+import Newnav from "../../components/homenavbar";
 import { Card, CardBody } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 function ServiceProviders() {
   return (
     <div
-      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
+      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white overflow : scroll"
       style={{
         backgroundImage: "url('/main/photo2.jpg')",
         //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
       }}
     >
-      <Navingation_home />
+      <Newnav />
       <div className="py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
           <div className="max-w-2xl">
