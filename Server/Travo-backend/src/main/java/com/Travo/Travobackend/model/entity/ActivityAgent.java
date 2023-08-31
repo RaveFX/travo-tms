@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.model.entity;
 
 import com.Travo.Travobackend.enumeration.Membership;
+import com.Travo.Travobackend.enumeration.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,9 @@ public class ActivityAgent {
 
     @Enumerated(EnumType.STRING)
     private Membership membership;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )

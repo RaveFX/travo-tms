@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ServiceRegisterResponse {
-    private Integer hotel_id;
+    private Integer id;
 //    private Integer user_id;
 }

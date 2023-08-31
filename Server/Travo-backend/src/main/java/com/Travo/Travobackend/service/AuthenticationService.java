@@ -119,116 +119,94 @@ public class AuthenticationService {
         hotel.setUser(user);
         var savedUser = hotelAgentRepository.save(hotel);
         return ServiceRegisterResponse.builder()
-                .hotel_id(hotel.getHotel_id())
+                .id(hotel.getHotel_id())
                 .build();
     }
-//
-//    public AuthenticationResponse register_guide(RegisterRequest request) {
-//        var user = Guide.builder()
-//                .fname(request.getFname())
-//                .lname(request.getLname())
-//                .email(request.getEmail())
-//                .nic(request.getNic())
-//                .gender(request.getGender())
-//                .contact_num(request.getContact_num())
-//                .addressLine1(request.getAddressLine1())
-//                .addressLine2(request.getAddressLine2())
-//                .city(request.getCity())
-//                .district(request.getDistrict())
-//                .qualifications(request.getQualifications())
-//                .profileImage("profileImage.jpg")
-//                .password(passwordEncoder.encode((request.getPassword())))
-//                .role(Role.GUIDE)
-//                .status(Status.PENDING)
-//                .build();
-//        var savedUser = guideRepository.save(user);
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(savedUser, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .accessToken(jwtToken)
-//                .id(user.getUser_id())
-//                .role(user.getRole())
-//                .build();
-//    }
-//
-//    public AuthenticationResponse register_store(RegisterRequest request) {
-//        var user = StoreManager.builder()
-//                .email(request.getEmail())
-//                .contact_num(request.getContact_num())
-//                .addressLine1(request.getAddressLine1())
-//                .addressLine2(request.getAddressLine2())
-//                .city(request.getCity())
-//                .district(request.getDistrict())
-//                .shop_name(request.getShop_name())
-//                .brn(request.getBrn())
-//                .profileImage("profileImage.jpg")
-//                .password(passwordEncoder.encode((request.getPassword())))
-//                .membership(Membership.SILVER)
-//                .role(Role.STORE_MANAGER)
-//                .status(Status.PENDING)
-//                .build();
-//        var savedUser = storeManagerRepository.save(user);
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(savedUser, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .accessToken(jwtToken)
-//                .id(user.getUser_id())
-//                .role(user.getRole())
-//                .build();
-//    }
-//
-//    public AuthenticationResponse register_vehicleRenter(RegisterRequest request) {
-//        var user = VehicleRenter.builder()
-//                .email(request.getEmail())
-//                .contact_num(request.getContact_num())
-//                .addressLine1(request.getAddressLine1())
-//                .addressLine2(request.getAddressLine2())
-//                .city(request.getCity())
-//                .district(request.getDistrict())
-//                .company_name(request.getCompany_name())
-//                .brn(request.getBrn())
-//                .profileImage("profileImage.jpg")
-//                .password(passwordEncoder.encode((request.getPassword())))
-//                .membership(Membership.SILVER)
-//                .role(Role.VEHICLE_RENTER)
-//                .status(Status.PENDING)
-//                .build();
-//        var savedUser= vehicleRenterRepository.save(user);
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(savedUser, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .accessToken(jwtToken)
-//                .id(user.getUser_id())
-//                .role(user.getRole())
-//                .build();
-//    }
-//
-//    public AuthenticationResponse register_activityAgent(RegisterRequest request) {
-//        var user = ActivityAgent.builder()
-//                .email(request.getEmail())
-//                .contact_num(request.getContact_num())
-//                .addressLine1(request.getAddressLine1())
-//                .addressLine2(request.getAddressLine2())
-//                .city(request.getCity())
-//                .district(request.getDistrict())
-//                .company_name(request.getCompany_name())
-//                .brn(request.getBrn())
-//                .category(request.getCategory())
-//                .profileImage("profileImage.jpg")
-//                .password(passwordEncoder.encode((request.getPassword())))
-//                .membership(Membership.SILVER)
-//                .role(Role.ACTIVITY_AGENT)
-//                .status(Status.PENDING)
-//                .build();
-//        var savedUser=activityAgentRepository.save(user);
-//        var jwtToken = jwtService.generateToken(user);
-//        saveUserToken(savedUser, jwtToken);
-//        return AuthenticationResponse.builder()
-//                .accessToken(jwtToken)
-//                .id(user.getUser_id())
-//                .role(user.getRole())
-//                .build();
-//    }
+
+    public ServiceRegisterResponse register_guide(Integer userID, RegisterRequest request) {
+        var guide = Guide.builder()
+                .fname(request.getFname())
+                .lname(request.getLname())
+                .nic(request.getNic())
+                .gender(request.getGender())
+                .contact_num(request.getContact_num())
+                .addressLine1(request.getAddressLine1())
+                .addressLine2(request.getAddressLine2())
+                .city(request.getCity())
+                .district(request.getDistrict())
+                .qualifications(request.getQualifications())
+                .status(Status.PENDING)
+                .build();
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        guide.setUser(user);
+        var savedUser = guideRepository.save(guide);
+        return ServiceRegisterResponse.builder()
+                    .id(guide.getGuide_id())
+                    .build();
+        }
+
+    public ServiceRegisterResponse register_store(Integer userID, RegisterRequest request) {
+        var store = StoreManager.builder()
+                .contact_num(request.getContact_num())
+                .addressLine1(request.getAddressLine1())
+                .addressLine2(request.getAddressLine2())
+                .city(request.getCity())
+                .district(request.getDistrict())
+                .shop_name(request.getShop_name())
+                .brn(request.getBrn())
+                .membership(Membership.SILVER)
+                .status(Status.PENDING)
+                .build();
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        store.setUser(user);
+        var savedUser = storeManagerRepository.save(store);
+        return ServiceRegisterResponse.builder()
+                    .id(store.getStore_id())
+                    .build();
+    }
+
+    public ServiceRegisterResponse register_vehicleRenter(Integer userID, RegisterRequest request) {
+        var renter = VehicleRenter.builder()
+                .contact_num(request.getContact_num())
+                .addressLine1(request.getAddressLine1())
+                .addressLine2(request.getAddressLine2())
+                .city(request.getCity())
+                .district(request.getDistrict())
+                .company_name(request.getCompany_name())
+                .brn(request.getBrn())
+                .membership(Membership.SILVER)
+                .status(Status.PENDING)
+                .build();
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        renter.setUser(user);
+        var savedUser = vehicleRenterRepository.save(renter);
+        return ServiceRegisterResponse.builder()
+                    .id(renter.getRenter_id())
+                    .build();
+    }
+
+    public ServiceRegisterResponse register_activityAgent(Integer userID, RegisterRequest request) {
+        var agent = ActivityAgent.builder()
+                .contact_num(request.getContact_num())
+                .company_name(request.getCompany_name())
+                .brn(request.getBrn())
+                .longitude(request.getLongitude())
+                .latitude(request.getLatitude())
+                .category(request.getCategory())
+                .membership(Membership.SILVER)
+                .status(Status.PENDING)
+                .build();
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        agent.setUser(user);
+        var savedUser = activityAgentRepository.save(agent);
+        return ServiceRegisterResponse.builder()
+                    .id(agent.getAgent_id())
+                    .build();
+    }
 
 
     private void updateUserToken(User user, String jwtToken) {

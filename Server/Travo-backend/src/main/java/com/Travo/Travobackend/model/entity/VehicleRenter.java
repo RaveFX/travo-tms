@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.model.entity;
 
 import com.Travo.Travobackend.enumeration.Membership;
+import com.Travo.Travobackend.enumeration.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,9 @@ public class VehicleRenter {
     private String city;
     private Integer postal_code;
     private String district;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Enumerated(EnumType.STRING)
     private Membership membership;
