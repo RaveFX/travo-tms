@@ -311,7 +311,7 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        <Route exact path="/" element={<HomePage />} />
+        {/* <Route exact path="/" element={<HomePage />} /> */}
         <Route exact path="/Travdash" element={<Travdash />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />

@@ -9,6 +9,7 @@ import {
     Button,
     Input,
     Avatar,
+    Typography,
   } from "@material-tailwind/react";
   import { BellIcon, UserCircleIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
    
@@ -33,6 +34,7 @@ import {
         
           <div className="!absolute right-1 top-1 ml-auto flex gap-2 md:mr-4">
             {/* <Button variant="text" color="blue-gray" className='p-0 m-0 hover:shadow-none active:shadow-none focus:shadow-none'> */}
+            <Typography color="black" className="text-sm font-bold text-[#57CC99] flex align-center mt-3.5" onClick="">Become a Service Provider</Typography>
             <NotificationsMenu color="black" className="h-[60px] w-[60px] relative -top-[-14px] -right-[1px] hover:shadow-none active:shadow-none focus:shadow-none "  />
               {hasNewNotification && (
               <Badge  className="relative -top-[-15px] -right-[20px] bg-[#57CC99] z-6" style={{ top: "-40px", right: "-2px" }}/>

@@ -1,11 +1,12 @@
 import React from "react";
-//import Newcards from "../../components/main/cardsnew";
-//import Testimonials from "../../components/testimonials";
-//import { Button } from "@material-tailwind/react";
-//import Footers from "../../components/footer";
+// import Newcards from "../../components/main/cardsnew";
+// import Testimonials from "../../components/testimonials";
+import { Button } from "@material-tailwind/react";
+import Footers from "../../components/main/footer";
 import { Link } from "react-router-dom";
-//import Newnav from "../../components/newnav";
-//import Navingation_home from "../../components/homenavbar";
+import TopNavbarLanding from "../../components/web-component/Landingpg-Navbar";
+import Newnav from "../../components/main/newnav";
+import Navingation_home from "../../components/homenavbar";
 
 //import hero from "public/hero.png"
 
@@ -18,7 +19,7 @@ function Landing() {
         //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
       }}
     >
-      <Navingation_home />
+      <TopNavbarLanding />
       <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
         {/* <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center" alt="hero" src="/hero.png" /> */}
         <div class="text-center lg:w-5/12 w-full">
@@ -49,11 +50,11 @@ function Landing() {
         <h1>Trending Destinations</h1>
       </Button>
 
-      <Newcards />
+      {/* <Newcards /> */}
       <Button className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
         <h1>Customer Testimonials</h1>
       </Button>
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footers />
     </div>
   );
