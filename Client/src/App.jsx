@@ -12,7 +12,7 @@ import Landing from "./pages/main/landingPage";
 import Signin from "./pages/main/signin";
 import Signup from "./pages/main/signup";
 import SignupChoice from "./pages/main/signupChoice";
-import ServiceProviders from "./pages/main/serviceProviders";
+import BecomeServiceProvider from "./pages/main/ServiceProvider";
 import HotelRegister from "./pages/main/hotelRegister";
 import ActivityAgentRegister from "./pages/main/activityAgentRegister";
 import GuideRegister from "./pages/main/guideRegister";
@@ -113,7 +113,7 @@ export default function App() {
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
-        <Route exact path="/service_providers" element={<ServiceProviders />} />
+        <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
         <Route exact path="/hotel_register" element={<HotelRegister />} />
         <Route
           exact
