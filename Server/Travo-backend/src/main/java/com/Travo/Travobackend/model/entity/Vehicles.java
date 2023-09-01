@@ -22,7 +22,6 @@ public class Vehicles {
     @ManyToOne
     @JoinColumn(name = "renter_id", referencedColumnName = "renter_id" )
     private VehicleRenter vehicleRenter;
-
     private String Vehicle_type;
     private String Vehicle_model;
     private Integer Rate;

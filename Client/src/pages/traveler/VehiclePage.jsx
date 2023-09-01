@@ -97,25 +97,6 @@ const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, i
 
 
 const VehiclePage = () => {
-    const vehicle_type = [
-        { type: "Car", src: car },
-        { type: "Van", src: van },
-        { type: "Bus", src: bus },
-        { type: "Scooter", src: scooter },
-        { type: "Motor Bike", src: bike },
-
-
-    ]
-    const btns = [
-        { title: "Add New", variant: "outlined" }
-    ]
-    const lists = [
-        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/15.png" },
-        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/16.png" },
-        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/17.png" },
-        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/18.png" },
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/19.png" }
-    ]
     const [vehicles,setVehicles]=useState([]);
 
     useEffect(() => {
@@ -126,6 +107,26 @@ const VehiclePage = () => {
         const result=await axios.get("http://localhost:8080/api/v1/traveler/Vehicles")
         setVehicles(result.data);
     }
+    const vehicle_type = [
+        { type: "Car", src: car },
+        { type: "Van", src: van },
+        { type: "Bus", src: bus },
+        { type: "Scooter", src: scooter },
+        { type: "Motor Bike", src: bike },
+
+
+    ]
+    // const btns = [
+    //     { title: "Add New", variant: "outlined" }
+    // ]
+    // const lists = [
+    //     { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/15.png" },
+    //     { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/16.png" },
+    //     { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/17.png" },
+    //     { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/18.png" },
+    //     { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/19.png" }
+    // ]
+    
     return (
         <div className='flex'>
             <div><Sidebar /></div>
@@ -143,9 +144,9 @@ const VehiclePage = () => {
                     
                     <div className="sm:flex flex-wrap xs:justify-center ">
                         <h1>jjj</h1>
-                        {vehicles.map((vehicle) => (
+                        {vehicles.map((vehicles) => (
                             // console.log (hii)
-                            <h1>{vehicle.vehicle_type}</h1>
+                            <h1>{vehicles.vehicle_id}</h1>
                             
                         //    ? <VehicleCard key={index} names={vehicle.vehicle_id} type={vehicle.vehicle_type} />
                             // seat={vehicle.seat} img={vehicle.img} large_bag={vehicle.large_bag} small_bag={vehicle.small_bag} price={vehicle.price} milage={vehicle.milage} />
