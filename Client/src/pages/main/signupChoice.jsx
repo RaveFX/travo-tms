@@ -1,6 +1,7 @@
 import React from "react";
 //import Newnav from "../../components/newnav";
 //import Navingation_home from "../../components/homenavbar";
+import Navingation_home from "../../components/homenavbar";
 import {
   Card,
   CardHeader,
@@ -73,7 +74,7 @@ function SignupChoice() {
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-2">
           <div className="max-w-2xl">
             <img
-              src="/travo-white.png"
+              src="/travowhite.png"
               alt="Sample image"
               className="w-[60%] mt-16"
             />

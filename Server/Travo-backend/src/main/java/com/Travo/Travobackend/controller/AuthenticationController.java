@@ -16,7 +16,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin("http://127.0.0.1:5173")
+
 
 public class AuthenticationController {
     //traveler registration

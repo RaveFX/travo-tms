@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 
 @Data
@@ -50,6 +52,13 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     private TokenDTO token;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Reviews> reviews = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Reservation> reservations = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

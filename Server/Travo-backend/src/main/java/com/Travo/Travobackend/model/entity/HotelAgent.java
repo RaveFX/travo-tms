@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -25,6 +28,9 @@ public class HotelAgent extends User {
 
     @Enumerated(EnumType.STRING)
     private Membership membership;
+
+    @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
+    private Set<Room> room = new HashSet<>();
 
 
 }

@@ -1,11 +1,11 @@
 import React from "react";
-//import Newcards from "../../components/main/cardsnew";
-//import Testimonials from "../../components/testimonials";
-//import { Button } from "@material-tailwind/react";
-//import Footers from "../../components/footer";
+import Newcards from "../../components/home-cards";
+import Testimonials from "../../components/home-testimonials";
+import { Button } from "@material-tailwind/react";
+import Footers from "../../components/home-footer";
 import { Link } from "react-router-dom";
 //import Newnav from "../../components/newnav";
-//import Navingation_home from "../../components/homenavbar";
+import Navingation_home from "../../components/homenavbar";
 
 //import hero from "public/hero.png"
 

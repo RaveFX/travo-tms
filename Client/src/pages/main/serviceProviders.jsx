@@ -1,6 +1,6 @@
 import React from "react";
 //import Newnav from "../../components/newnav";
-//import Navingation_home from "../../components/homenavbar";
+import Navingation_home from "../../components/homenavbar";
 import { Card, CardBody } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
@@ -101,6 +101,21 @@ function ServiceProviders() {
                   />
                   <h3 className="text-base font-semibold leading-7 tracking-tight">
                     Store
+                  </h3>
+                </card>
+              </li>
+            </Link>
+
+            <Link to="/Admin_Dashboard">
+              <li>
+                <card>
+                  <img
+                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                    src="/main/store_manager.png"
+                    alt=""
+                  />
+                  <h3 className="text-base font-semibold leading-7 tracking-tight">
+                    Admin
                   </h3>
                 </card>
               </li>
