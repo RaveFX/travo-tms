@@ -8,6 +8,21 @@ function Community() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
+  // const handleNavigate = () => {
+  //   // Example: Navigate to '/other-page' when the button is clicked
+  //   navigate('/planner');
+  // };
+
+  //   const [activeTab, setActiveTab] = React.useState("all trips");
+//   const handleCreateTripClick = () => {
+//     setIsOpen(true);
+//   };
+
+//   const handleOpenCalander = () => {
+//     setIsOpen(true);
+//   };
+
+//   const posts = [
   const [posts, setPosts] = useState([
     {
       profileImage: "/traveler/trip.jpg", // Replace with your image URLs

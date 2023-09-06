@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Hotel_reseravationDetails() {
   return (
     <div className="flex h-screen ">
-      <SideBar active="Reviews" />
+      <SideBar active="Reservations" />
       <div className="flex flex-col w-full bg-[#FFFFFF] bg-opacity-20 ">
         <UserNav />
         <div className="flex justify-between">

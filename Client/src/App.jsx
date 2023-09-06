@@ -8,7 +8,6 @@ import "swiper/css/free-mode";
 // Tharindi
 import PersistLogin from "./components/main/PersistLogin";
 import RequireAuth from "./components/main/RequireAuth";
-import Landing from "./pages/main/landingPage";
 import Signin from "./pages/main/signin";
 import Signup from "./pages/main/signup";
 import SignupChoice from "./pages/main/signupChoice";
@@ -109,7 +108,7 @@ export default function App() {
     <>
       <Routes>
         {/* Tharindi */}
-        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
@@ -311,7 +310,6 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        {/* <Route exact path="/" element={<HomePage />} /> */}
         <Route exact path="/Travdash" element={<Travdash />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />

@@ -1,19 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 //import Newnav from "../../components/newnav";
-//import Navingation_home from "../../components/homenavbar";
+
+import TopNavbar from '../../components/web-component/Navbar';
 import { Card, CardBody } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function ServiceProviders() {
+  const role = sessionStorage.getItem('role');
+  const user_id = sessionStorage.getItem('user_id');
+  const handleClickstore = () => {
+    const res = axios.get(
+      `http://localhost:8080/api/v1/auth/checkstore/${user_id}`
+    );
+    if (res.data.status === "Error") {
+      navigate("/store_manager_register");
+    }
+    else{
+      navigate("/store_dashboard");
+    }
+    
+  };
+  
   return (
     <div
-      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
+      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white overflow : scroll"
       style={{
         backgroundImage: "url('/main/photo2.jpg')",
         //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
       }}
     >
-      <Navingation_home />
+      <TopNavbar />
       <div className="py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
           <div className="max-w-2xl">
@@ -91,9 +108,11 @@ function ServiceProviders() {
               </li>
             </Link>
 
-            <Link to="/store_manager_register">
-              <li>
+            <Link  role="button" onClick={handleClickstore}>
+              <li >
+              
                 <card>
+                
                   <img
                     className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
                     src="/main/store_manager.png"
@@ -103,6 +122,7 @@ function ServiceProviders() {
                     Store
                   </h3>
                 </card>
+             
               </li>
             </Link>
           </ul>
