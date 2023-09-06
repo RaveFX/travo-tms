@@ -8,11 +8,13 @@ import com.Travo.Travobackend.enumeration.TokenType;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.model.other.*;
 import com.Travo.Travobackend.repository.*;
+import com.Travo.Travobackend.repository.JDBCDao.ServiceProviderJDBCDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,6 +37,9 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final TokenRepository tokenRepository;
+
+    @Autowired
+    private ServiceProviderJDBCDao serviceProviderJDBCDao;
 
     //traveler signup
     public AuthenticationResponse register(RegisterRequest request) {
@@ -76,6 +81,16 @@ public class AuthenticationService {
             return GlobalService.response("Error", "Brn Already Exists");
         } else {
             return GlobalService.response("Success", "Brn Available");
+        }
+    }
+
+    public Response checkStore(Integer userID){
+        var store = storeManagerRepository.findByUserId(userID);
+        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+        if (store.isPresent()){
+            return GlobalService.response("Success", "acc doesn't exists");
+        }else{
+            return GlobalService.response("Error", "acc exists");
         }
     }
 

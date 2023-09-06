@@ -16,8 +16,6 @@ function GuideRegister() {
   const [user, setUser] = useState({
     fname: "",
     lname: "",
-    email: "",
-    password: "",
     gender: "",
     mobile_num: "",
     addressLine1: "",
@@ -32,8 +30,6 @@ function GuideRegister() {
   const {
     fname,
     lname,
-    email,
-    password,
     mobile_num,
     addressLine1,
     addressLine2,
@@ -50,7 +46,7 @@ function GuideRegister() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/api/v1/auth/register/guide", user);
+    await axios.post("http://localhost:8080/api/v1/auth/register/guide/855", user);
     navigate("/");
   };
   return (
@@ -330,49 +326,6 @@ function GuideRegister() {
                     <option value="Trincomalee">Trincomalee</option>
                     <option value="Vavuniya">Vavuniya</option>
                   </select>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-b border-gray-900/10 pb-12"></div>
-
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Email
-                </label>
-                {errors.email && <p className="text-red-500">{errors.email}</p>}
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={(e) => onInputChange(e)}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                {errors.password && (
-                  <p className="text-red-500">{errors.password}</p>
-                )}
-                <div className="mt-2.5">
-                  <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => onInputChange(e)}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
                 </div>
               </div>
             </div>
