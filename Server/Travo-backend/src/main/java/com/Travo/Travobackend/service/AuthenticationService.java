@@ -85,14 +85,106 @@ public class AuthenticationService {
     }
 
     public Response checkStore(Integer userID){
-        var store = storeManagerRepository.findByUserId(userID);
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var store = storeManagerRepository.findByUserId(user);
         //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
         if (store.isPresent()){
-            return GlobalService.response("Success", "acc doesn't exists");
+            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+            if(storeActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
         }else{
-            return GlobalService.response("Error", "acc exists");
+            return GlobalService.response("Error", "acc doesn't exists");
         }
     }
+
+//    public Response checkGuide(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
+//        }else{
+//            return GlobalService.response("Error", "acc doesn't exists");
+//        }
+//    }
+
+//    public Response checkGuide(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
+//        }else{
+//            return GlobalService.response("Error", "acc doesn't exists");
+//        }
+//    }
+
+//    public Response checkGuide(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
+//        }else{
+//            return GlobalService.response("Error", "acc doesn't exists");
+//        }
+//    }
+
+//    public Response checkGuide(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
+//        }else{
+//            return GlobalService.response("Error", "acc doesn't exists");
+//        }
+//    }
+
+//    public Response checkVehicleRenter(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
+//        }else{
+//            return GlobalService.response("Error", "acc doesn't exists");
+//        }
+//    }
 
     public AuthenticationResponse authenticate(HttpServletResponse response, AuthenticationRequest request) {
         authenticationManager.authenticate(

@@ -3,21 +3,26 @@ import React, { Component } from "react";
 
 import TopNavbar from '../../components/web-component/Navbar';
 import { Card, CardBody } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ServiceProviders() {
+  const navigate = useNavigate();
   const role = sessionStorage.getItem('role');
   const user_id = sessionStorage.getItem('user_id');
-  const handleClickstore = () => {
-    const res = axios.get(
-      `http://localhost:8080/api/v1/auth/checkstore/${user_id}`
+  const handleClickstore = async () => {
+    const res = await axios.get(
+      `http://localhost:8080/api/v1/auth/checkStore/${user_id}`
     );
+    console.log(res);
     if (res.data.status === "Error") {
       navigate("/store_manager_register");
     }
-    else{
+    else if(res.data.status === "Active"){
       navigate("/store_dashboard");
+    }
+    else{
+      navigate("/register_success");
     }
     
   };
@@ -108,10 +113,10 @@ function ServiceProviders() {
               </li>
             </Link>
 
-            <Link  role="button" onClick={handleClickstore}>
+            
               <li >
               
-                <card>
+                <card role="button" onClick={handleClickstore}>
                 
                   <img
                     className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
@@ -124,7 +129,7 @@ function ServiceProviders() {
                 </card>
              
               </li>
-            </Link>
+            
           </ul>
         </div>
       </div>
