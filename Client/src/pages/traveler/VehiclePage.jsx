@@ -26,10 +26,10 @@ const CardDefault = ({ type, src }) => {
 
     return (
 
-        <Card className="sm:m-5 m-2 sm:w-40 w-15 h-15  justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
+        <Card className="sm:m-5 m-2 sm:w-40 w-20 sm:h-24 h-20 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
 
 
-            <CardBody>
+            <CardBody className="sm:w-40 w-36">
                 <Typography variant="h5" className="text-center text-xs ">
 
                     {type}
@@ -46,7 +46,7 @@ const CardDefault = ({ type, src }) => {
 
 const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, img }) => {
     return (
-        <Card className="max-w-[24rem] overflow-hidden m-3">
+        <Card className="max-w-[20rem] overflow-hidden m-3">
             <CardHeader
                 floated={false}
                 shadow={false}
@@ -81,9 +81,9 @@ const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, i
 
                     </Typography>
                 </Typography>
-                <Typography variant="lead" className="mt-3 font-normal ">
-                    <Button variant="text" className="rounded-full text-green">Edit </Button>
-                    <Button variant="text" className="rounded-full" color="red">Delete </Button>
+                <Typography className="mt-3 font-normal ">
+                    <Button className="sm:w-48 w-48 mx-4 text-xs rounded-full justify-end bg-button2" variant="gradient" color="green"><Link to="/vehicle_owner_rates">Book</Link></Button>
+
                 </Typography>
             </CardBody>
             {/* <CardFooter className="flex items-center justify-between">
@@ -104,7 +104,7 @@ const VehiclePage = () => {
     },[]); 
 
     const loadVehicles=async()=>{
-        const result=await axios.get("http://localhost:8080/api/v1/traveler/Vehicles")
+        const result=await axios.get("http://localhost:8080/api/v1/traveler/vehicles")
         setVehicles(result.data);
     }
     const vehicle_type = [
@@ -134,7 +134,7 @@ const VehiclePage = () => {
             <div className='h-screen flex flex-grow flex-col '>
                 <div><TopNavbar /></div>
                 <div className="overflow-y-auto ">
-                    <div className=" flex flex-row overflow-auto my-5 xs:justify-center">
+                    <div className=" flex flex-row  my-5 xs:justify-center">
 
                         {vehicle_type.map((vehicle, index) => (
                             <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
@@ -143,13 +143,12 @@ const VehiclePage = () => {
                     </div>
                     
                     <div className="sm:flex flex-wrap xs:justify-center ">
-                        <h1>jjj</h1>
-                        {vehicles.map((vehicles) => (
-                            // console.log (hii)
-                            <h1>{vehicles.vehicle_id}</h1>
+                       
+                        {vehicles.map((vehicles,index) => (
                             
-                        //    ? <VehicleCard key={index} names={vehicle.vehicle_id} type={vehicle.vehicle_type} />
-                            // seat={vehicle.seat} img={vehicle.img} large_bag={vehicle.large_bag} small_bag={vehicle.small_bag} price={vehicle.price} milage={vehicle.milage} />
+                            
+                            <VehicleCard key={index} names={vehicles.vehicle_model} 
+                            seat={vehicles.seat} img={vehicles.img} large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} price={vehicles.rate} milage={vehicles.milage} />
                         ))}
                     </div>
                 </div>

@@ -29,10 +29,15 @@ public class VehiclesJDBCDao {
 
                 vehiclesDTO.setVehicle_id(rs.getInt("Vehicle_id"));
                 vehiclesDTO.setVehicle_type(rs.getString("Vehicle_type"));
+                vehiclesDTO.setSeat(rs.getInt("seat"));
+                vehiclesDTO.setLarge_bag(rs.getInt("large_bag"));
+                vehiclesDTO.setSmall_bag(rs.getInt("small_bag"));
+                vehiclesDTO.setRate(rs.getInt("rate"));
                 vehiclesDTO.setVehicle_model(rs.getString("Vehicle_model"));
                 vehiclesDTO.setDescription(rs.getString("Description"));
                 vehiclesDTO.setLocation(rs.getString("Location"));
                 vehiclesDTO.setBluetooth(rs.getBoolean("Bluetooth"));
+                vehiclesDTO.setImg(rs.getString("img"));
 
 
 

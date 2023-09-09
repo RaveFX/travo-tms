@@ -27,9 +27,6 @@ public class HotelController {
         return hotelService.hotelReservations();
     }
 
-    @GetMapping("/hotels")
-    public List<HotelDTO> getHotels(){
-        return hotelService.hotels();
-    }
+
 
 }

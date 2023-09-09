@@ -1,21 +1,23 @@
 //package com.Travo.Travobackend.service;
 //
-//import com.Travo.Travobackend.model.dto.VehiclesDTO;
-//import com.Travo.Travobackend.repository.JDBCDao.VehiclesJDBCDao;
+//import com.Travo.Travobackend.model.dto.TripDTO;
+//import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
 //import com.Travo.Travobackend.repository.TripRepository;
-//import com.Travo.Travobackend.repository.VehiclesRepository;
+//
 //import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
 //
 //import java.util.List;
 //
+//@Service
 //public class TripService {
 //    @Autowired
 //    private TripRepository tripRepository;
 //
 //    @Autowired
-//    private VehiclesJDBCDao vehiclesJDBCDao;
+//    private TripJDBCDao tripJDBCDao;
 //
-//    public List<VehiclesDTO> vehicles(){
-//        return vehiclesJDBCDao.getAllVehicles();
+//    public List<TripDTO>trips(){
+//        return tripJDBCDao.getAllTrips();
 //    }
 //}

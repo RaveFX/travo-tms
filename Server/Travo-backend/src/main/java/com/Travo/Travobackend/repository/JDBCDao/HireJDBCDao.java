@@ -19,22 +19,23 @@ public class HireJDBCDao {
         HashMap<String, Object> params = new HashMap<>();
         List<RequestDTO> requests = new ArrayList<>();
 
-        SQL.append("SELECT * FROM hire join traveler on hire.traveler_id = traveler.traveler_id");
+        SQL.append("SELECT * FROM hire");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
                 RequestDTO requestDTO = new RequestDTO();
 
-                requestDTO.setDate(rs.getDate("date"));
+                requestDTO.setName(rs.getString("name"));
+                requestDTO.setEmergency_contact(rs.getInt("emergency_contact"));
+                requestDTO.setAttendance(rs.getInt("attendance"));
+                requestDTO.setStart_date(rs.getDate("start_date"));
                 requestDTO.setDestination(rs.getString("destination"));
-
-
-
 
                 requests.add(requestDTO);
             }
             return requests;
         });
+
 
 
     }

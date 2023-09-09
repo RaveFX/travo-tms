@@ -16,25 +16,25 @@
 //    public List<TripDTO> getAllTrips() {
 //        StringBuffer SQL = new StringBuffer();
 //        HashMap<String, Object> params = new HashMap<>();
-//        List<VehiclesDTO> vehicles = new ArrayList<>();
+//        List<TripDTO> trips = new ArrayList<>();
 //
 //        SQL.append("SELECT * FROM trips");
 //
 //        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
 //            while (rs.next()) {
-//                VehiclesDTO vehiclesDTO = new VehiclesDTO();
+//                TripDTO tripDTO = new TripDTO();
 //
-//                vehiclesDTO.setVehicle_id(rs.getInt("Vehicle_id"));
-//                vehiclesDTO.setVehicle_type(rs.getString("Vehicle_type"));
-//                vehiclesDTO.setVehicle_model(rs.getString("Vehicle_model"));
-//                vehiclesDTO.setDescription(rs.getString("Description"));
-//                vehiclesDTO.setLocation(rs.getString("Location"));
-//                vehiclesDTO.setBluetooth(rs.getBoolean("Bluetooth"));
+//                tripDTO.setTrip_id(rs.getInt("Vehicle_id"));
+//                tripDTO.setDescription(rs.getString("Vehicle_type"));
+//                tripDTO.setCreated_date(rs.getDate("Vehicle_model"));
+//                tripDTO.setTotal_distance(rs.getInt("Description"));
+//                tripDTO.setEnd_date(rs.getDate("Location"));
+//                tripDTO.setTravel_mode(rs.getString("Bluetooth"));
 //
 //
-//                vehicles.add(vehiclesDTO);
+//                trips.add(tripDTO);
 //            }
-//            return vehicles;
+//            return trips;
 //        });
 //    }
 //    }

@@ -25,7 +25,7 @@ const GridImage = () => {
             <div>
 
                 <p className='text-4xl'>Experience</p>
-                
+
             </div>
         </div>
     );
@@ -35,7 +35,7 @@ const TourCard = ({ image, name, des }) => {
         <div className="card card-compact rounded-xl  bg-white sm:w-60 w-80 h-64 sm:mx-6 my-2 relative shadow-xl  hover:bg-slate-100 ">
             <figure>
                 <Link to="/travel_guide_mytours_more">
-                <img src={image} alt="kandy" className=' rounded-xl sm:w-56 w-72 h-36 sm:m-2 m-4 cursor-pointer' />
+                    <img src={image} alt="kandy" className=' rounded-xl sm:w-56 w-72 h-36 sm:m-2 m-4 cursor-pointer' />
                 </Link>
             </figure>
             <div className="card-body mx-5">
@@ -60,33 +60,36 @@ const travel_guide_mytours = () => {
         { image: "https://tse1.mm.bing.net/th?id=OIP.MOUnGlhdLu1Betuwu1OaxQHaHa&pid=Api&P=0&h=220", name: "Galle /Fort /Weligama /Unawatuna ", des: "2 DAYS TRIP" },
 
     ];
-    const topnav=[
-        {path:"/travel_guide_profile"}
+    const topnav = [
+        { path: "/travel_guide_profile" }
     ]
     return (
         <div className='flex'>
             <div><Sidebar /></div>
-            <div className='flex flex-grow flex-col w-full'>
+            <div className='h-screen flex  flex-grow flex-col flex-1'>
                 <div>
-                <div>
-                    
-                    {topnav.map((nav, index) => (
-                                <TopNavbar key={index} path={nav.path}  />
-                            ))}
+                    <div>
+
+                        {topnav.map((nav, index) => (
+                            <TopNavbar key={index} path={nav.path} />
+                        ))}
+                    </div>
                 </div>
-               
-                </div>
-                {/* <div><GridImage /></div> */}
-                <div className="flex justify-end m-5">
+
+                <div className='overflow-y-auto' >
+
+                    <div className="flex justify-end mt-5">
                         <Button className="w-48 rounded-full text-green" variant="outlined">Add New Tour</Button>
                     </div>
-                <div className='justify-right px-5 flex xs:flex-col sm:flex-row md:flex-wrap lg:flex-wrap relative  '>
-                               
-                                {tours.map((tour, index) => (
-                                    <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
-                                ))}
-                                
-                            </div>
+                    {/* <div><GridImage /></div> */}
+                    <div className='flex sm:flex-row flex-wrap w-full overflow-y-auto xs:justify-center  '>
+
+                        {tours.map((tour, index) => (
+                            <TourCard key={index} image={tour.image} name={tour.name} des={tour.des} />
+                        ))}
+
+                    </div>
+                </div>
             </div>
         </div>
     )

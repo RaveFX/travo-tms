@@ -11,7 +11,10 @@ public class VehiclesDTO {
     private Integer vehicle_id;
     private String Vehicle_type;
     private String Vehicle_model;
+    private Integer Seat;
     private Integer Rate;
+    private Integer Large_bag;
+    private Integer Small_bag;
     private Integer passengers;
     private String Description;
     private String licence_plate;
@@ -20,4 +23,5 @@ public class VehiclesDTO {
     private Boolean wifi;
     private Boolean sunroof;
     private String location;
+    private String img;
 }

@@ -22,6 +22,7 @@ public class Trip {
     @ManyToOne
     @JoinColumn(name = "traveler_id", referencedColumnName = "traveler_id" )
     private Traveler traveler;
+    private String name;
     private Date Created_date;
     private String Description;
     private Date Start_date;

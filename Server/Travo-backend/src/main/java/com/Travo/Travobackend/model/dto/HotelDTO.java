@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelDTO {
-    private Integer room_id;
     private String description;
     private Integer adult_count;
     private Integer child_count;
@@ -17,6 +16,8 @@ public class HotelDTO {
     private String view;
     private Boolean ac;
     private Boolean wifi;
-    private String hotel_name;
+    private Boolean breakfast;
+    private Boolean lunch;
+    private Boolean Dinner;
 
 }
