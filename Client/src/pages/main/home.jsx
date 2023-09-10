@@ -12,14 +12,14 @@ import Navingation_home from "../../components/homenavbar";
 function Landing() {
   return (
     <div
-      className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
+      className="font-poppins relative overflow-scroll bg-cover bg-no-repeat w-screen h-screen text-white"
       style={{
         backgroundImage: "url('/hero.png')",
         //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
       }}
     >
       <Navingation_home />
-      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+      <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
         {/* <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center" alt="hero" src="/hero.png" /> */}
         <div class="text-center lg:w-5/12 w-full">
           <h1 className="mt-3 mb-0 text-7xl font-bold leading-tight">
@@ -38,7 +38,10 @@ function Landing() {
             >
               Begin Now!
             </Link>
-            <Link className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
+            <Link
+              className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8"
+              to="/TravelerDashboard"
+            >
               User Stories
             </Link>
           </div>

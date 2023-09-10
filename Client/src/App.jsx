@@ -112,7 +112,11 @@ export default function App() {
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
-        <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
+        <Route
+          exact
+          path="/service_providers"
+          element={<BecomeServiceProvider />}
+        />
         <Route exact path="/hotel_register" element={<HotelRegister />} />
         <Route
           exact
@@ -285,8 +289,8 @@ export default function App() {
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
-        <Route path="/traveler/mytrips" element={<Mytrips />} />
+        <Route path="/TravelerDashboard" element={<TravelerDashboard />} />
+        <Route path="/Mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
@@ -322,7 +326,7 @@ export default function App() {
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 
-      <div className="bg-[#F6F8FA] w-full h-full"></div>
+      <div className="bg-[#F6F8FA]  w-full h-full"></div>
     </>
   );
 }
