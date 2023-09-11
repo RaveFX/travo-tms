@@ -43,12 +43,16 @@ public class ReservationJDBCDao {
 
     }
 
-    public List<HotelReservationDTO> getHotelReservations() {
+    public List<HotelReservationDTO> getHotelReservations(Integer userID) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<HotelReservationDTO> hotelReservations = new ArrayList<>();
+        params.put("userID", userID);
 
-        SQL.append("SELECT * FROM reservation INNER JOIN rooms ON reservation.room_id = rooms.room_id INNER JOIN hotel_agent ON rooms.hotel_id = hotel_agent.hotel_id WHERE hotel_agent.user_id=1752");
+        SQL.append("SELECT * FROM reservation\n                                     ");
+        SQL.append("INNER JOIN rooms ON reservation.room_id = rooms.room_id        \n");
+        SQL.append("INNER JOIN hotel_agent ON rooms.hotel_id = hotel_agent.hotel_id\n");
+        SQL.append("WHERE hotel_agent.user_id=:userID");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {

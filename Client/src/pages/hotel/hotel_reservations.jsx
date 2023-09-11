@@ -85,6 +85,7 @@ function Hotel_reservations() {
                     </tr>
                   </thead>
                     <tbody>
+                    <Link to="/hotelagent_reservation_details">
                     <tr
                       className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                       <td className=" text-center  items-center  whitespace-no-wrap">
@@ -103,6 +104,7 @@ function Hotel_reservations() {
                       Cancelled</div>
                       </td>
                     </tr>
+                    </Link>
                     <tr
                       className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                       <td className="pr-6 whitespace-no-wrap">
