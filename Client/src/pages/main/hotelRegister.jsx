@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavWhite from "../../components/main/navWhite";
+import TopNavbar from '../../components/web-component/Navbar';
 
 function HotelRegister() {
+  const user_id = sessionStorage.getItem('user_id');
+  console.log(user_id);
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
-    email: "",
-    password: "",
-    dob: "",
     longitude: "",
     latitude: "",
     hotel_name: "",
     brn: "",
-    contact_num: "",
+    contact_num: ""
   });
   const [errors, setErrors] = useState({});
 
   const {
-    email,
-    password,
     longitude,
     latitude,
     hotel_name,
@@ -29,7 +26,7 @@ function HotelRegister() {
   } = user;
 
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value});
   };
 
   const onSubmit = async (e) => {
@@ -68,32 +65,12 @@ function HotelRegister() {
       validationErrors.latitude = "Address is required";
     }
 
-   
-    // if (!user.email) {
-    //   validationErrors.email = "Email is required";
-    // } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-    //   validationErrors.email = "Invalid email format";
-    // }
-
-    // const res = await axios.get(
-    //   `http://localhost:8080/api/v1/auth/checkEmail/${user.email}`
-    // );
-    // if (res.data.status === "Error") {
-    //   validationErrors.email = "Email already exists";
-    // }
-    // console.log(res);
-
-    // if (!user.password) {
-    //   validationErrors.password = "Password is required";
-    // } else if (user.password.length < 6) {
-    //   validationErrors.password = "Password must be at least 6 characters";
-    // }
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       await axios.post(
-        "http://localhost:8080/api/v1/auth/register/hotel/855",
+        `http://localhost:8080/api/v1/auth/register/hotel/${user_id}`,
         user
       );
       navigate("/register_success");
@@ -102,7 +79,7 @@ function HotelRegister() {
 
   return (
     <div className="py-1 sm:py-20 overflow : scroll">
-      <NavWhite />
+    <TopNavbar />
       <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20  xl:grid-cols-2">
         <div className="max-w-3xl">
           <div className="mx-auto max-w-2xl text-center">

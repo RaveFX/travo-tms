@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavWhite from "../../components/main/navWhite";
+import TopNavbar from '../../components/web-component/Navbar'
 
 function StoreManagerRegister() {
+  const user_id = sessionStorage.getItem('user_id');
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -81,7 +82,7 @@ function StoreManagerRegister() {
       setErrors(validationErrors);
     } else {
       await axios.post(
-        "http://localhost:8080/api/v1/auth/register/store/855",
+        `http://localhost:8080/api/v1/auth/register/store/${user_id}`,
         user
       );
       navigate("/");
@@ -89,7 +90,7 @@ function StoreManagerRegister() {
   };
   return (
     <div className="py-1 sm:py-20">
-      <NavWhite />
+    <TopNavbar />
       <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
         <div className="max-w-3xl">
           <div className="mx-auto max-w-2xl text-center">
