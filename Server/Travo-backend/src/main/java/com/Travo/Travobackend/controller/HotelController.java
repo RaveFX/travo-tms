@@ -7,10 +7,7 @@ import com.Travo.Travobackend.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,9 +20,14 @@ public class HotelController {
     @Autowired
     private final HotelService hotelService;
 
-    @GetMapping("/reservations")
-    public List<HotelReservationDTO> getReservations(){
-        return hotelService.hotelReservations();
+//    @GetMapping("/reservations")
+//    public List<HotelReservationDTO> getReservations(){
+//        return hotelService.hotelReservations();
+//    }
+
+    @GetMapping("/reservations/{userID}")
+    public List<HotelReservationDTO> getHotelReservations(@PathVariable Integer userID){
+        return hotelService.hotelOwnerReservations(userID);
     }
 
 }

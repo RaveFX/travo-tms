@@ -14,6 +14,7 @@ import java.util.Date;
 public class HotelReservationDTO {
     private Integer reservation_id;
     private Integer user_id;
+    private Date date;
     private Date checkin_date;
     private LocalDate checkout_date;
     private LocalTime checkin_time;

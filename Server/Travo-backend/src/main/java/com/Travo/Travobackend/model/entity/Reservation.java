@@ -28,6 +28,7 @@ public class Reservation {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
 
+    private LocalDate date;
     private LocalDate checkin_date;
     private LocalDate checkout_date;
     private LocalTime checkin_time;
