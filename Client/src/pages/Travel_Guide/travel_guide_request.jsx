@@ -97,7 +97,7 @@ const request = () => {
                                                 <th className="text-gray-600 dark:text-gray-400 font-normal pr-24 text-sm tracking-normal ">Customer</th>
                                                 <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal ">Contact</th>
                                                 <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal ">Trip To</th>
-                                                <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal ">Requested Date</th>
+                                                <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal ">Trip Date</th>
                                                 <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal ">Attendances</th>
                                                 <th className="text-gray-600 dark:text-gray-400 font-normal  text-center text-sm tracking-normal "></th>
 
