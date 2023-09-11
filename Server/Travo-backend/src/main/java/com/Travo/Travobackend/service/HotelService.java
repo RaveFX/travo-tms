@@ -1,9 +1,6 @@
 package com.Travo.Travobackend.service;
 
-import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.HotelReservationDTO;
-import com.Travo.Travobackend.repository.HotelAgentRepository;
-import com.Travo.Travobackend.repository.JDBCDao.HotelNameJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.ReservationJDBCDao;
 import com.Travo.Travobackend.repository.ReservationRepository;
 

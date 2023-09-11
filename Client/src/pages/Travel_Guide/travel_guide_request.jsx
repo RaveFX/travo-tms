@@ -115,7 +115,7 @@ const request = () => {
                                                         <div className="h-8 w-8">
                                                             <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
                                                         </div>
-                                                        <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">{request.name}</p>
+                                                        <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">{request.fname}</p>
                                                     </div>
                                                 </td>
                                        

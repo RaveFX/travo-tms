@@ -19,5 +19,6 @@ public class HotelDTO {
     private Boolean breakfast;
     private Boolean lunch;
     private Boolean Dinner;
+    private String hotel_name;
 
 }

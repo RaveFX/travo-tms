@@ -1,10 +1,14 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @SuperBuilder
@@ -37,5 +41,9 @@ public class Vehicles {
     private Boolean sunroof;
     private String location;
     private String img;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehicles")
+    private Set<Trip> trips = new HashSet<>();
 
 }

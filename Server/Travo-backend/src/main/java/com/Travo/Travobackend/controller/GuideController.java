@@ -23,4 +23,15 @@ public class GuideController {
 
         return guideService.requests();
     }
+//    @GetMapping("/requestsMore")
+//    public List<RequestDTO> getRequestsMore(){
+//
+//        return guideService.requestsMore();
+//    }
+
+//    @GetMapping("/tours")
+//    public List<ToursDTO> getTours(){
+//
+//        return guideService.requests();
+//    }
 }

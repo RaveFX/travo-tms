@@ -24,15 +24,15 @@ public class Hire {
     @ManyToOne
     @JoinColumn(name = "traveler_id", referencedColumnName = "traveler_id" )
     private Traveler traveler;
-    private String name;
-    private Integer emergency_contact;
+//    private String name;
+//    private Integer emergency_contact;
     private Date Date;
-    private Date Start_date;
+//    private Date Start_date;
     private Integer Num_of_days;
     private Integer Payment;
     private String Status;
     private Integer Attendance;
-    private String Destination;
+//    private String Destination;
     @ManyToOne
     @JoinColumn(name = "Trip_id", referencedColumnName = "Trip_id" )
     private Trip trip;

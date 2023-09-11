@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,8 @@ import lombok.experimental.SuperBuilder;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @SuperBuilder
@@ -24,6 +27,7 @@ public class Trip {
     private Traveler traveler;
     private String name;
     private Date Created_date;
+    private String Start_location;
     private String Description;
     private Date Start_date;
     private Date End_date;
@@ -35,5 +39,9 @@ public class Trip {
     private Vehicles vehicles;
     private Integer Total_distance;
     private Boolean TravelBuddy_status;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "trip")
+    private Set<Hire> hires = new HashSet<>();
 
 }

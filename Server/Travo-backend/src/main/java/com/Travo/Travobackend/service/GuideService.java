@@ -2,7 +2,7 @@ package com.Travo.Travobackend.service;
 
 import com.Travo.Travobackend.model.dto.RequestDTO;
 import com.Travo.Travobackend.repository.HireRepository;
-import com.Travo.Travobackend.repository.JDBCDao.HireJDBCDao;
+import com.Travo.Travobackend.repository.JDBCDao.GuideJDBCDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,16 @@ public class GuideService {
     private HireRepository hireRepository;
 
     @Autowired
-    private HireJDBCDao hireJDBCDao;
+    private GuideJDBCDao hireJDBCDao;
 
     public List<RequestDTO> requests(){
         return hireJDBCDao.getAllRequests();
     }
+//    public List<RequestDTO> requestsMore(){
+//        return hireJDBCDao.getAllRequestsMore();
+//    }
+
+//    public List<TourDTO> tours(){
+//        return hireJDBCDao.getAllTours();
+//    }
 }

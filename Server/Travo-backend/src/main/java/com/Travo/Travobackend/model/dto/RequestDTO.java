@@ -10,9 +10,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestDTO {
-    private String name;
+    private String fname;
     private Integer emergency_contact;
     private String destination;
     private Integer attendance;
     private Date start_date;
+    private String Start_location;
+    private Integer Num_of_days;
+    private Integer Hire_Id;
 }
