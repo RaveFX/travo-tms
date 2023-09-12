@@ -58,7 +58,6 @@ const request = () => {
                         <div className='flex mx-auto container'>
                             <div className='w-3/4'>
                                 <p className='text-2xl text-dimBlack'>Requests</p>
-                                {user_id}
                             </div>
                             <div className=''>
                                 <button type="button" class="text-centerfocus:outline-none text-white bg-green hover:bg-black focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Requests</Link></button>

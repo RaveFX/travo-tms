@@ -21,14 +21,12 @@ public class GuideService {
         return hireJDBCDao.getAllRequests();
     }
 
+    public List<RequestDTO> confirmrequests(){
+        return hireJDBCDao.getAllConfirmRequests();
+    }
+
     public void updateUserStatus(Integer hireId, Status newStatus) {
         hireJDBCDao.updateUserStatus(hireId, newStatus);
     }
-//    public List<RequestDTO> requestsMore(){
-//        return hireJDBCDao.getAllRequestsMore();
-//    }
 
-//    public List<TourDTO> tours(){
-//        return hireJDBCDao.getAllTours();
-//    }
 }
