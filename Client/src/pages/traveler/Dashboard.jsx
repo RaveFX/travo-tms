@@ -107,7 +107,7 @@ const Dashboard = () => {
                       Why Wait?
                     </Typography>
                     <Button 
-                      className='md:!w-auto h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
+                      className='md:!w-auto h-[3rem] m-4 justify-center py-2  shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
                         Continue Editing
                     </Button>
                   </div>

@@ -289,7 +289,7 @@ export default function App() {
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
+        <Route path="/TravelerDashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
@@ -314,7 +314,7 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        <Route exact path="/Travdash" element={<Travdash />} />
+        {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />
