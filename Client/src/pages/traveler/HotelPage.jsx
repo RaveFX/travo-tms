@@ -1,53 +1,16 @@
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    Button,
-    Typography,
-    CardFooter,
-    Avatar,
-    Tooltip,
-
-
-} from "@material-tailwind/react";
-// import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
-
-import TopNavbar from '../../components/Vehicle_owner/topNavbar';
-// import ButtonVariants from './button';
-import { car, van, bike, scooter, bus, user } from '../../assets/Vehicle_owner/index/';
-// import { Box } from "@mui/material";
+import React from 'react'
+// import Sidebar from '../../components/sidebar';
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
+import { Rating, Button ,Card,CardBody,Typography} from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 
 
 
-//    function CardDefault() {
-const CardDefault = ({ type, src }) => {
-
-    return (
-
-        <Card className="m-5 w-40  justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
-
-
-            <CardBody>
-                <Typography variant="h5" className="text-center">
-
-                    {type}
-
-                </Typography>
-
-                <img src={src} alt="card-image" className="" />
-            </CardBody>
-
-        </Card>
-
-    );
-}
-
 const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, src }) => {
 
     return (
-        <Card className="sm:w-[48rem] xs:w-[20rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
+        <Card className="sm:w-[48rem] xs:w-[60rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
 
             <CardBody className="p-5 bg-white">
                 <Typography variant="h5" color="blue-gray">{names}</Typography>
@@ -81,7 +44,7 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
                     </Typography>
                 </div>
                 <Typography variant="lead" className="mt-3 font-normal ">
-                    <Button variant="gradient" className="rounded-full bg-green" color="green">Edit Rates</Button>
+                    <Button variant="gradient" className="rounded-full bg-green" color="green">View More</Button>
                     {/* <Button variant="gradient">Gradient</Button> */}
                 </Typography>
             </CardBody>
@@ -95,54 +58,47 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
 
 
 
-const Rates = () => {
-    const vehicle_type = [
-        { type: "Car", src: car },
-        { type: "Van", src: van },
-        { type: "Bus", src: bus },
-        { type: "Scooter", src: scooter },
-        { type: "Motor Bike", src: bike },
+const hotel_page = () => {
+    // const vehicle_type = [
+    //     { type: "Car", src: car },
+    //     { type: "Van", src: van },
+    //     { type: "Bus", src: bus },
+    //     { type: "Scooter", src: scooter },
+    //     { type: "Motor Bike", src: bike },
 
 
-    ]
+    // ]
     const btns = [
         { title: "Add New", variant: "outlined" }
     ]
     const lists = [
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../../public/Vehicle_owner/19.png" },
+        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "https://tse3.mm.bing.net/th?id=OIP.JJ_h16-xl50fgUHR9LkZIAHaE8&pid=Api&P=0&h=220" },
         { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/18.png" },
         { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/17.png" },
         { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/16.png" },
         { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/15.png" }
     ]
 
-
-
-
     return (
-        <div className='flex'>
-            <div><Vehicle_Owner_Sidebar /></div>
+        <div className="flex h-screen overflow-hidden">
+            <Sidebar active="Dashboard" />
+            <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20">
+                <TopNavbar />
 
-            <div className='h-screen flex flex-grow flex-col'>
-                <div><TopNavbar /></div>
-                <div className="overflow-y-auto">
-                    {/* <p className="text-2xl p-3">Vehicle rates</p> */}
+                <div className='overflow-y-auto' >
+
                     <div className=" flex flex-row overflow-auto  xs:justify-center">
 
-                        {vehicle_type.map((vehicle, index) => (
-                            <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
-                        ))}
-                        {/* <ButtonVariants  */}
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
-                        {lists.map((list, index) => (
+                    {lists.map((list, index) => (
                             <VegicleCard key={index} names={list.names} large_bag={list.large_bag} seat={list.seat} small_bag={list.small_bag} price={list.price} milage={list.milage} type={list.type} src={list.src} />
                         ))}
                         {/* <VegicleCard />
-                <VegicleCard />
-                <VegicleCard />
-                <VegicleCard />
-                <VegicleCard /> */}
+<VegicleCard />
+<VegicleCard />
+<VegicleCard />
+<VegicleCard /> */}
 
                     </div>
                 </div>
@@ -151,7 +107,9 @@ const Rates = () => {
 
             </div>
         </div>
-    )
-}
-export default Rates
+    );
 
+
+}
+
+export default hotel_page

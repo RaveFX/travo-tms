@@ -20,7 +20,7 @@ const Explore = [
     imageSrc:
       "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
     buttonname: "Explore Now",
-    links:"/DestinationPage"
+    links:"/traveler/DestinationPage"
   },
   {
     id: 2,
@@ -29,6 +29,7 @@ const Explore = [
     imageSrc:
       "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
     buttonname: "Book Now",
+    links: "/traveler/HotelPage",
   },
   {
     id: 3,
@@ -37,7 +38,7 @@ const Explore = [
     imageSrc:
       "https://plus.unsplash.com/premium_photo-1661775983935-579b5c94e2c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww&w=1000&q=80",
     buttonname: "Rent Now",
-    links: "/VehiclePage",
+    links: "/traveler/VehiclePage",
 
   },
   // {
