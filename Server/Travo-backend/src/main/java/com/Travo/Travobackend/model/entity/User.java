@@ -30,12 +30,6 @@ public class User implements UserDetails {
     private Integer user_id;
     private String email;
     private String password;
-    private String contact_num;
-    private String addressLine1;
-    private String addressLine2;
-    private String city;
-    private Integer postal_code;
-    private String district;
     private LocalDate registration_date;
     private String profileImage = "profileImage.jpg";
 

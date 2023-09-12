@@ -1,9 +1,6 @@
 package com.Travo.Travobackend.controller;
 
-import com.Travo.Travobackend.model.other.AuthenticationRequest;
-import com.Travo.Travobackend.model.other.AuthenticationResponse;
-import com.Travo.Travobackend.model.other.RegisterRequest;
-import com.Travo.Travobackend.model.other.Response;
+import com.Travo.Travobackend.model.other.*;
 import com.Travo.Travobackend.service.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,6 +24,32 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.checkEmail(email));
     }
 
+    @GetMapping("/checkStore/{userID}")
+    public ResponseEntity<Response> checkStore(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkStore(userID));
+    }
+
+    @GetMapping("/checkGuide/{userID}")
+    public ResponseEntity<Response> checkGuide(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkGuide(userID));
+    }
+
+    @GetMapping("/checkHotel/{userID}")
+    public ResponseEntity<Response> checkHotel(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkHotel(userID));
+    }
+
+    @GetMapping("/checkActivityAgent/{userID}")
+    public ResponseEntity<Response> checkActivityAgent(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkActivityAgent(userID));
+    }
+
+    @GetMapping("/checkVehicleRenter/{userID}")
+    public ResponseEntity<Response> checkVehicleRenter(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkVehicleRenter(userID));
+    }
+
+
     @GetMapping("/checkBRN/{brn}")
     public ResponseEntity<Response> checkBrn(@PathVariable String brn) {
         return ResponseEntity.ok(service.checkBrn(brn));
@@ -39,41 +62,46 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.register(request));
     }
 
-    @PostMapping("/register/hotel")
-    public ResponseEntity<AuthenticationResponse> register_hotel(
+    @PostMapping("/register/hotel/{userID}")
+    public ResponseEntity<ServiceRegisterResponse> register_hotel(
+            @PathVariable Integer userID,
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register_hotel(request));
+        return ResponseEntity.ok(service.register_hotel(userID, request));
     }
 
 
 
-    @PostMapping("/register/guide")
-    public ResponseEntity<AuthenticationResponse> register_guide(
+    @PostMapping("/register/guide/{userID}")
+    public ResponseEntity<ServiceRegisterResponse> register_guide(
+            @PathVariable Integer userID,
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register_guide(request));
+        return ResponseEntity.ok(service.register_guide(userID, request));
     }
 
-    @PostMapping("/register/store")
-    public ResponseEntity<AuthenticationResponse> register_store(
+    @PostMapping("/register/store/{userID}")
+    public ResponseEntity<ServiceRegisterResponse> register_store(
+            @PathVariable Integer userID,
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register_store(request));
+        return ResponseEntity.ok(service.register_store(userID, request));
     }
 
-    @PostMapping("/register/vehicle_renter")
-    public ResponseEntity<AuthenticationResponse> register_vehicleRenter(
+    @PostMapping("/register/vehicle_renter/{userID}")
+    public ResponseEntity<ServiceRegisterResponse> register_vehicleRenter(
+            @PathVariable Integer userID,
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register_vehicleRenter(request));
+        return ResponseEntity.ok(service.register_vehicleRenter(userID, request));
     }
 
-    @PostMapping("/register/activity_agent")
-    public ResponseEntity<AuthenticationResponse> register_activityAgent(
+    @PostMapping("/register/activity_agent/{userID}")
+    public ResponseEntity<ServiceRegisterResponse> register_activityAgent(
+            @PathVariable Integer userID,
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register_activityAgent(request));
+        return ResponseEntity.ok(service.register_activityAgent(userID, request));
     }
 
     @PostMapping("/authenticate")

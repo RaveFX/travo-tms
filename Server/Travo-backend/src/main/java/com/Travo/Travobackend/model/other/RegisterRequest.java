@@ -51,6 +51,9 @@ public class RegisterRequest {
 
     //hotel agent
     private String hotel_name;
+    private Integer longitude;
+    private Integer latitude;
+    private Integer user_id;
 
     //shop
     private String shop_name;

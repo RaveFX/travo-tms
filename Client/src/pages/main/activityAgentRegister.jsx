@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavWhite from "../../components/main/navWhite";
+import TopNavbar from '../../components/web-component/Navbar'
 
 function ActivityAgentRegister() {
+  const user_id = sessionStorage.getItem('user_id');
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
-    email: "",
-    password: "",
-    dob: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    district: "",
+    longitude: "",
+    latitude: "",
     company_name: "",
     brn: "",
     contact_num: "",
@@ -22,15 +18,11 @@ function ActivityAgentRegister() {
   const [errors, setErrors] = useState({});
 
   const {
-    email,
-    password,
-    addressLine1,
-    addressLine2,
-    city,
+    longitude,
+    latitude,
     company_name,
     brn,
     contact_num,
-    district,
     category,
   } = user;
 
@@ -70,47 +62,19 @@ function ActivityAgentRegister() {
       validationErrors.category = "Category is required";
     }
 
-    if (!user.addressLine1) {
-      validationErrors.addressLine1 = "Address is required";
+    if (!user.longitude) {
+      validationErrors.longitude = "Longitude is required";
     }
 
-    if (!user.addressLine2) {
-      validationErrors.addressLine2 = "Address is required";
+    if (!user.latitude) {
+      validationErrors.latitude = "Latitude is required";
     }
-
-    if (!user.city) {
-      validationErrors.city = "City is required";
-    }
-
-    if (!user.district) {
-      validationErrors.district = "District is required";
-    }
-
-    if (!user.email) {
-      validationErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-      validationErrors.email = "Invalid email format";
-    }
-
-    const res = await axios.get(
-      `http://localhost:8080/api/v1/auth/checkEmail/${user.email}`
-    );
-    if (res.data.status === "Error") {
-      validationErrors.email = "Email already exists";
-    }
-    console.log(res);
-
-    if (!user.password) {
-      validationErrors.password = "Password is required";
-    } else if (user.password.length < 6) {
-      validationErrors.password = "Password must be at least 6 characters";
-    }
-
+    
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       await axios.post(
-        "http://localhost:8080/api/v1/auth/register/activity_agent",
+        `http://localhost:8080/api/v1/auth/register/activity_agent/${user_id}`,
         user
       );
       navigate("/");
@@ -119,7 +83,7 @@ function ActivityAgentRegister() {
 
   return (
     <div className="py-1 sm:py-20">
-      <NavWhite />
+    <TopNavbar />
       <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
         <div className="max-w-3xl">
           <div className="mx-auto max-w-2xl text-center">
@@ -247,155 +211,51 @@ function ActivityAgentRegister() {
               <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
                 <div>
                   <label
-                    htmlFor="addressLine1"
+                    htmlFor="longitude"
                     className="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Address Line 1
+                    Longitude
                   </label>
-                  {errors.addressLine1 && (
-                    <p className="text-red-500">{errors.addressLine1}</p>
+                  {errors.longitude && (
+                    <p className="text-red-500">{errors.longitude}</p>
                   )}
                   <div className="mt-2.5">
                     <input
                       type="text"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      name="addressLine1"
-                      value={addressLine1}
+                      name="longitude"
+                      value={longitude}
                       onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </div>
                 <div>
                   <label
-                    htmlFor="addressLine2"
+                    htmlFor="latitude"
                     className="block text-sm font-semibold leading-6 text-gray-900"
                   >
-                    Address Line 2
+                    Latitude
                   </label>
-                  {errors.addressLine2 && (
-                    <p className="text-red-500">{errors.addressLine2}</p>
+                  {errors.latitude && (
+                    <p className="text-red-500">{errors.latitude}</p>
                   )}
                   <div className="mt-2.5">
                     <input
                       type="text"
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      name="addressLine2"
-                      value={addressLine2}
+                      name="latitude"
+                      value={latitude}
                       onChange={(e) => onInputChange(e)}
                     />
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-5">
-                <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    City
-                  </label>
-                  {errors.city && <p className="text-red-500">{errors.city}</p>}
-                  <div className="mt-2.5">
-                    <input
-                      type="text"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      name="city"
-                      value={city}
-                      onChange={(e) => onInputChange(e)}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="district"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    District
-                  </label>
-                  {errors.district && (
-                    <p className="text-red-500">{errors.district}</p>
-                  )}
-                  <div className="mt-2.5">
-                    <select
-                      name="district"
-                      value={district}
-                      onChange={(e) => onInputChange(e)}
-                      className="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    >
-                      <option>{district}</option>
-                      <option value="Ampara">Ampara</option>
-                      <option value="Anuradhapura">Anuradhapura</option>
-                      <option value="Badulla">Badulla</option>
-                      <option value="Batticaloa">Batticaloa</option>
-                      <option value="Colombo">Colombo</option>
-                      <option value="Galle">Galle</option>
-                      <option value="Gampaha">Gampaha</option>
-                      <option value="Hambantota">Hambantota</option>
-                      <option value="Jaffna">Jaffna</option>
-                      <option value="Kalutara">Kalutara</option>
-                      <option value="Kandy">Kandy</option>
-                      <option value="Kegalle">Kegalle</option>
-                      <option value="Kilinochchi">kilinochchi</option>
-                      <option value="Kurunegala">Kurunegala</option>
-                      <option value="Mannar">Mannar</option>
-                      <option value="Matale">Matale</option>
-                      <option value="Matara">Matara</option>
-                      <option value="Monaragala">Monaragala</option>
-                      <option value="Mullaitivu">Mullaitivu</option>
-                      <option value="Nuwara Eliya">Nuwara Eliya</option>
-                      <option value="Polonnaruwa">Polonnaruwa</option>
-                      <option value="Puttalam">Puttalam</option>
-                      <option value="Ratnapura">Ratnapura</option>
-                      <option value="Trincomalee">Trincomalee</option>
-                      <option value="Vavuniya">Vavuniya</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
-            <div className="border-b border-gray-900/10 pb-12"></div>
+            
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Email
-                </label>
-                {errors.email && <p className="text-red-500">{errors.email}</p>}
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    name="email"
-                    value={email}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                {errors.password && (
-                  <p className="text-red-500">{errors.password}</p>
-                )}
-                <div className="mt-2.5">
-                  <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => onInputChange(e)}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
+            
 
             <div className="mt-10">
               <button

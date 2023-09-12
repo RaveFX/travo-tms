@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.model.entity;
 
 import com.Travo.Travobackend.enumeration.Membership;
+import com.Travo.Travobackend.enumeration.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +14,10 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @Entity
 @Table(name = "activityAgent")
-@PrimaryKeyJoinColumn(name="agent_id")
-public class ActivityAgent extends User {
+public class ActivityAgent {
+    @Id
+    @GeneratedValue
+    private Integer agent_id;
     private String company_name;
     private String brn;
     private String description;
@@ -22,8 +25,19 @@ public class ActivityAgent extends User {
     private String branch;
     private String acc_name;
     private Integer acc_num;
+    private String contact_num;
+    private Integer longitude;
+    private Integer latitude;
     private String category;
+
 
     @Enumerated(EnumType.STRING)
     private Membership membership;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+    private User user;
 }

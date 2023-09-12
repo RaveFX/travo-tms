@@ -11,6 +11,7 @@ import RequireAuth from "./components/main/RequireAuth";
 import Signin from "./pages/main/signin";
 import Signup from "./pages/main/signup";
 import SignupChoice from "./pages/main/signupChoice";
+import BecomeServiceProvider from "./pages/main/ServiceProvider";
 import ServiceProviders from "./pages/main/serviceProviders";
 import HotelRegister from "./pages/main/hotelRegister";
 import ActivityAgentRegister from "./pages/main/activityAgentRegister";
@@ -111,10 +112,12 @@ export default function App() {
     <>
       <Routes>
         {/* Tharindi */}
+        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
-        <Route exact path="/service_providers" element={<ServiceProviders />} />
+        <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
+        <Route exact path="/service_provider" element={<ServiceProviders />} />
         <Route exact path="/hotel_register" element={<HotelRegister />} />
         <Route
           exact
@@ -161,7 +164,7 @@ export default function App() {
         {/* Thirani */}
         <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
         <Route path="/admin_users" element={<Admin_Users />}>
-          
+          {" "}
         </Route>
         <Route path="admin_requests" element={<Admin_Requests />} />
         <Route path="admin_userprofile" element={<Admin_Userprofile />} />
@@ -235,45 +238,50 @@ export default function App() {
           path="/vehicle_owner_dashboard"
           element={<Vehicle_Owner_Dashboard />}
         >
-          
+          {" "}
         </Route>
         <Route
           path="/vehicle_owner_vehicles"
           element={<Vehicle_Owner_Vehicles />}
         >
-          
+          {" "}
         </Route>
         <Route path="/vehicle_owner_rates" element={<Vehicle_Owner_Rates />}>
-          
+          {" "}
         </Route>
         <Route
           path="/vehicle_owner_add_vehicle"
           element={<Vehicle_Owner_Add_Vehicle />}
         >
-          
+          {" "}
         </Route>
         <Route
           path="/vehicle_owner_add_preview"
           element={<Vehicle_Owner_Add_Preview />}
         >
-          
+          {" "}
         </Route>
         <Route
           path="/vehicle_owner_request"
           element={<Vehicle_Owner_Request />}
         >
-          
+          {" "}
         </Route>
         <Route
           path="/vehicle_owner_requestMore"
           element={<Vehicle_Owner_RequestMore />}
         ></Route>
-        <Route path="/vehicle_owner_rating" element={<Vehicle_Owner_Rating />}> </Route>
-        <Route path="/vehicle_owner_profile" element={<Vehicle_Owner_Profile />} ></Route>
-          
-          
-        
-        <Route  path="/vehicle_owner_edit_profile" element={<Vehicle_Owner_Edit_Profile />} ></Route>
+        <Route path="/vehicle_owner_rating" element={<Vehicle_Owner_Rating />}>
+          {" "}
+        </Route>
+        <Route
+          path="/vehicle_owner_profile"
+          element={<Vehicle_Owner_Profile />}
+        ></Route>
+        <Route
+          path="/vehicle_owner_edit_profile"
+          element={<Vehicle_Owner_Edit_Profile />}
+        ></Route>
 
         {/* Sanduni */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />

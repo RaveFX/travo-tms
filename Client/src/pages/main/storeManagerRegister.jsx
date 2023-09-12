@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavWhite from "../../components/main/navWhite";
+import TopNavbar from '../../components/web-component/Navbar'
 
 function StoreManagerRegister() {
+  const user_id = sessionStorage.getItem('user_id');
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
-    email: "",
-    password: "",
     dob: "",
     addressLine1: "",
     addressLine2: "",
@@ -22,8 +21,6 @@ function StoreManagerRegister() {
   const [errors, setErrors] = useState({});
 
   const {
-    email,
-    password,
     addressLine1,
     addressLine2,
     city,
@@ -81,31 +78,11 @@ function StoreManagerRegister() {
       validationErrors.district = "District is required";
     }
 
-    if (!user.email) {
-      validationErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-      validationErrors.email = "Invalid email format";
-    }
-
-    const res = await axios.get(
-      `http://localhost:8080/api/v1/auth/checkEmail/${user.email}`
-    );
-    if (res.data.status === "Error") {
-      validationErrors.email = "Email already exists";
-    }
-    console.log(res);
-
-    if (!user.password) {
-      validationErrors.password = "Password is required";
-    } else if (user.password.length < 6) {
-      validationErrors.password = "Password must be at least 6 characters";
-    }
-
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       await axios.post(
-        "http://localhost:8080/api/v1/auth/register/store",
+        `http://localhost:8080/api/v1/auth/register/store/${user_id}`,
         user
       );
       navigate("/");
@@ -113,7 +90,7 @@ function StoreManagerRegister() {
   };
   return (
     <div className="py-1 sm:py-20">
-      <NavWhite />
+    <TopNavbar />
       <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
         <div className="max-w-3xl">
           <div className="mx-auto max-w-2xl text-center">
@@ -313,48 +290,9 @@ function StoreManagerRegister() {
               </div>
             </div>
 
-            <div className="border-b border-gray-900/10 pb-12"></div>
+          
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Email
-                </label>
-                {errors.email && <p className="text-red-500">{errors.email}</p>}
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    name="email"
-                    value={email}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                {errors.password && (
-                  <p className="text-red-500">{errors.password}</p>
-                )}
-                <div className="mt-2.5">
-                  <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => onInputChange(e)}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
+            
 
             <div className="mt-10">
               <button

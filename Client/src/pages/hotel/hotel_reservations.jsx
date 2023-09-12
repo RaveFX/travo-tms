@@ -5,6 +5,7 @@ import SideBar from "../../components/main/sidebar";
 import { Link } from "react-router-dom";
 
 function Hotel_reservations() {
+  const user_id = sessionStorage.getItem('user_id');
   const [reservations,setReservations]=useState([]);
 
     useEffect(() => {
@@ -12,7 +13,7 @@ function Hotel_reservations() {
     },[]); 
 
     const loadReservations=async()=>{
-        const result=await axios.get("http://localhost:8080/api/v1/hotel/reservations")
+        const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservations/${user_id}`)
         setReservations(result.data);
     }
   return (
@@ -32,6 +33,7 @@ function Hotel_reservations() {
                   <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
                     <tr>
                       <th scope="col" className="px-6 py-4">Customer</th>
+                      <th scope="col" className="px-6 py-4">Date</th>
                       <th scope="col" className="px-6 py-4">Reservation ID</th>
                       <th scope="col" className="px-6 py-4">Check-In</th>
                       <th scope="col" className="px-6 py-4">Payment</th>
@@ -51,6 +53,7 @@ function Hotel_reservations() {
                                                         <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">{reservations.user_id}</p>
                                                     </div>
                       </td>
+                      <td className="whitespace-nowrap px-6 py-4 font-medium">{reservations.date}</td>
                       <td className="whitespace-nowrap px-6 py-4 font-medium">{reservations.reservation_id}</td>
                       <td className="whitespace-nowrap px-6 py-4">{reservations.checkin_date}</td>
                       <td className="whitespace-nowrap px-6 py-4">{reservations.payment}</td>
@@ -82,6 +85,7 @@ function Hotel_reservations() {
                     </tr>
                   </thead>
                     <tbody>
+                    <Link to="/hotelagent_reservation_details">
                     <tr
                       className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                       <td className=" text-center  items-center  whitespace-no-wrap">
@@ -100,6 +104,7 @@ function Hotel_reservations() {
                       Cancelled</div>
                       </td>
                     </tr>
+                    </Link>
                     <tr
                       className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                       <td className="pr-6 whitespace-no-wrap">
