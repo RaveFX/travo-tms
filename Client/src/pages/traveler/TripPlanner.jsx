@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
 import Calendar from "../../components/web-component/calander";
-import { PlanStepper} from "../../components/web-component/Stepper";
+import { PlanStepper } from "../../components/web-component/Stepper";
 import BacknNext from "../../components/web-component/BackNext";
 import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
+import { useParams } from "react-router-dom";
+import axios from "../../api/axios";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
@@ -20,7 +22,30 @@ import {
 
 function TripPlanner() {
   const navigate = useNavigate();
+  const [tripDetails, setTripDetails] = useState({});
   const [isOpen, setIsOpen] = useState(true);
+  const { id } = useParams();
+  
+
+  useEffect(() => {
+
+    const getTripDetails = async () => {
+      try {
+        
+        let response = await axios.get(`/trips/${id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        setTripDetails(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    getTripDetails();
+
+  }, [id]);
+
   const handleBackClick = () => {
     // Navigate to the previous page or route when the "Back" button is clicked
     navigate("/mytrips");
@@ -88,7 +113,7 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar />
+            <TripNameBar Name={tripDetails.trip_name} Id={id} Description={tripDetails.description}/>
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}

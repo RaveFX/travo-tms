@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface StoreManagerRepository extends JpaRepository<StoreManager, Integer> {
     Optional<StoreManager> findByBrn(String brn);
 
-    Optional<StoreManager> findByUserId(Integer user_id);
+    //Optional<StoreManager> findByUserId(Integer user_id);
 
 }

@@ -24,10 +24,10 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.checkEmail(email));
     }
 
-    @GetMapping("/checkStore/{userID}")
-    public ResponseEntity<Response> checkStore(@PathVariable Integer userID){
-        return ResponseEntity.ok(service.checkStore(userID));
-    }
+//    @GetMapping("/checkStore/{userID}")
+//    public ResponseEntity<Response> checkStore(@PathVariable Integer userID){
+//        return ResponseEntity.ok(service.checkStore(userID));
+//    }
 
     @GetMapping("/checkBRN/{brn}")
     public ResponseEntity<Response> checkBrn(@PathVariable String brn) {

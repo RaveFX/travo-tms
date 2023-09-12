@@ -84,15 +84,15 @@ public class AuthenticationService {
         }
     }
 
-    public Response checkStore(Integer userID){
-        var store = storeManagerRepository.findByUserId(userID);
-        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
-        if (store.isPresent()){
-            return GlobalService.response("Success", "acc doesn't exists");
-        }else{
-            return GlobalService.response("Error", "acc exists");
-        }
-    }
+//    public Response checkStore(Integer userID){
+//        var store = storeManagerRepository.findByUserId(userID);
+//        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
+//        if (store.isPresent()){
+//            return GlobalService.response("Success", "acc doesn't exists");
+//        }else{
+//            return GlobalService.response("Error", "acc exists");
+//        }
+//    }
 
     public AuthenticationResponse authenticate(HttpServletResponse response, AuthenticationRequest request) {
         authenticationManager.authenticate(

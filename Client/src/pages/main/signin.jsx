@@ -36,6 +36,7 @@ function Signin() {
       );
       const responseData = response.data;
       console.log(response.data.role);
+      console.log(response.data);
 
       // setAuth(response?.data);
 
