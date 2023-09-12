@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 
     const [hasNewNotification, setHasNewNotification] = useState(true);
     return (
-      <Navbar className="mx-auto max-w-[100%] px-4 py-3 rounded-none flex flex-wrap items-center justify-between">
+      <Navbar className="font-poppins mx-auto max-w-[100%] px-4 py-3 rounded-none flex flex-wrap items-center justify-between">
         <div className="flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900">
           <div className="relative flex w-full gap-2 md:w-max rounded-full">
               <Input

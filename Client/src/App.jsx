@@ -326,7 +326,7 @@ export default function App() {
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 
-      <div className="bg-[#F6F8FA] w-full h-full"></div>
+      <div className="bg-[#F6F8FA]  w-full h-full"></div>
     </>
   );
 }
