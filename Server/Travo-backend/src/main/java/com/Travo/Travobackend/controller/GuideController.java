@@ -22,6 +22,11 @@ public class GuideController {
 
         return guideService.requests();
     }
+    @GetMapping("/confirmed")
+    public List<RequestDTO> getConfirmRequests(){
+
+        return guideService.confirmrequests();
+    }
 
     @PutMapping("/update-status/{hireId}/{newStatus}")
     public void updateStatus(
@@ -31,15 +36,5 @@ public class GuideController {
         System.out.println("not works" +hireId);
         guideService.updateUserStatus(hireId, newStatus);
     }
-//    @GetMapping("/requestsMore")
-//    public List<RequestDTO> getRequestsMore(){
-//
-//        return guideService.requestsMore();
-//    }
+  }
 
-//    @GetMapping("/tours")
-//    public List<ToursDTO> getTours(){
-//
-//        return guideService.requests();
-//    }
-}
