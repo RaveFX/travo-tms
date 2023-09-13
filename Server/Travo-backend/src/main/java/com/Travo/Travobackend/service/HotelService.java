@@ -17,11 +17,11 @@ public class HotelService {
     @Autowired
     private ReservationJDBCDao reservationJDBCDao;
 
-//    public List<HotelReservationDTO> hotelReservations(){
-//        return reservationJDBCDao.getAllHotelReservations();
-//    }
+    // public List<HotelReservationDTO> hotelReservations(){
+    // return reservationJDBCDao.getAllHotelReservations();
+    // }
 
-    public List<HotelReservationDTO> hotelOwnerReservations(Integer userID){
+    public List<HotelReservationDTO> hotelOwnerReservations(Integer userID) {
         return reservationJDBCDao.getHotelReservations(userID);
     }
 

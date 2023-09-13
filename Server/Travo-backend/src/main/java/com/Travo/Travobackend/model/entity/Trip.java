@@ -1,47 +1,72 @@
 package com.Travo.Travobackend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.sql.Time;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "trip")
+@Table(name = "trip_group")
 public class Trip {
     @Id
-    @GeneratedValue
-    private Integer Trip_id;
-    @ManyToOne
-    @JoinColumn(name = "traveler_id", referencedColumnName = "traveler_id" )
-    private Traveler traveler;
-    private String name;
-    private Date Created_date;
-    private String Start_location;
-    private String Description;
-    private Date Start_date;
-    private Date End_date;
-    private Time Start_time;
-    private String Travel_mode;
-    private String Destination;
-    @ManyToOne
-    @JoinColumn(name = "Vehicle_id", referencedColumnName = "Vehicle_id" )
-    private Vehicles vehicles;
-    private Integer Total_distance;
-    private Boolean TravelBuddy_status;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer tripId;
+    private String trip_admin;
+    private String tripName;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "trip")
-    private Set<Hire> hires = new HashSet<>();
+    public Integer getTripId() {
+        return tripId;
+    }
 
+    public void setTripId(Integer tripId) {
+        this.tripId = tripId;
+    }
+
+    public String getTrip_admin() {
+        return trip_admin;
+    }
+
+    public void setTrip_admin(String trip_admin) {
+        this.trip_admin = trip_admin;
+    }
+
+    public String getTripName() {
+        return tripName;
+    }
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
+    }
+
+    public List<GroupMessages> getGroupMessages() {
+        return groupMessages;
+    }
+
+    public void setGroupMessages(List<GroupMessages> groupMessages) {
+        this.groupMessages = groupMessages;
+    }
+
+    private String uniqueLink;
+
+    public String getUniqueLink() {
+        return uniqueLink;
+    }
+
+    // Setter method for uniqueLink
+    public void setUniqueLink(String uniqueLink) {
+        this.uniqueLink = uniqueLink;
+    }
+
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GroupMessages> groupMessages = new ArrayList<>();
+
+    // Other trip-related fields and getters/setters...
 }

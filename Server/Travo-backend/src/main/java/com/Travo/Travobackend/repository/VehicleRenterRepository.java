@@ -10,7 +10,9 @@ import java.util.Optional;
 
 public interface VehicleRenterRepository extends JpaRepository<VehicleRenter, Integer> {
     Optional<VehicleRenter> findByBrn(String brn);
+
     Optional<VehicleRenter> findById(Integer renter_id);
+
     @Query("SELECT s FROM VehicleRenter s WHERE s.user = :user")
     Optional<VehicleRenter> findByUserId(User user);
 

@@ -36,7 +36,7 @@ public class HotelAgent {
     private Membership membership;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     @Enumerated(EnumType.STRING)
@@ -44,6 +44,5 @@ public class HotelAgent {
 
     @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
     private Set<Room> room = new HashSet<>();
-
 
 }

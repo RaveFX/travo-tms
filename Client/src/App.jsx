@@ -102,10 +102,9 @@ import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
-import DestinationPage from "./pages/traveler/DestinationPage";
-import HotelPage from "./pages/traveler/HotelPage";
-import VehiclePage from "./pages/traveler/VehiclePage";
 import Travelbuddy from "./pages/traveler/travelbuddy";
+import TripAddButton from "./pages/traveler/TripAddButtonPage";
+
 
 export default function App() {
   return (
@@ -187,8 +186,14 @@ export default function App() {
         <Route path="store_profile" element={<Store_Profile />} />
 
         {/* Trineesha */}
-        <Route path="/travel_guide_dashboard" element={<Travel_Guide_Dashboard />} />
-        <Route path="/travel_guide_request" element={<Travel_Guide_Request />} ></Route>
+        <Route
+          path="/travel_guide_dashboard"
+          element={<Travel_Guide_Dashboard />}
+        />
+        <Route
+          path="/travel_guide_request"
+          element={<Travel_Guide_Request />}
+        ></Route>
         <Route
           path="/travel_guide_mytours"
           element={<Travel_Guide_Mytours />}
@@ -286,13 +291,14 @@ export default function App() {
         {/* Sanduni */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
-        <Route path="/traveler/trip-planner" element={<TripPlanner />} />
+        <Route path="/traveler/trip-planner/:tripId" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
+        <Route path="travo/text//trip/13/LXtGvIeJLtgC1IH0T0HR" element={<TripAddButton />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />
@@ -309,7 +315,6 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/Travdash" element={<Travdash />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
@@ -319,9 +324,6 @@ export default function App() {
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
-        <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
-        <Route exact path="/traveler/HotelPage" element={<HotelPage />} />
-        <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 
