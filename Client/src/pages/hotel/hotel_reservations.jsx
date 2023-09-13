@@ -44,7 +44,7 @@ function Hotel_reservations() {
                   {
                     reservations.map((reservations)=>(
                       <tr
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 hover:bg-gray-100">
                       <td className=" text-center  items-center  whitespace-no-wrap">
                                                     <div className="flex">
                                                         <div className="h-8 w-8 ml-5">
