@@ -76,6 +76,9 @@ const DashboardCard = ({ title, src, amount }) => {
 
 
 const DashboardTG = () => {
+
+    const role = sessionStorage.getItem('role');
+  const user_id = sessionStorage.getItem('user_id');
     const dashs = [
         { title: "Client", src: customer, amount: "128" },
         { title: "Complete", src: star, amount: "40" },
@@ -104,7 +107,7 @@ const DashboardTG = () => {
 
             <div className='h-screen flex flex-grow flex-col'>
                 <div>
-
+<h1>{user_id}</h1>
                     {topnav.map((nav, index) => (
                         <TopNavbar key={index} path={nav.path} />
                     ))}
