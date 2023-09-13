@@ -1,7 +1,8 @@
 import React from "react";
-import TopNavbar from "../../components/navbar-general";
-import Sidebar from "../../components/sidebar-rave";
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import { PencilIcon } from "@heroicons/react/24/solid";
 import {
@@ -25,50 +26,79 @@ import {
 
 const TABLE_HEAD = ["Transaction", "Category", "Cost", "Paid by", "Date", ""];
 
-const TABLE_ROWS = [
-  {
-    img: "https://s.hdnux.com/photos/51/23/24/10827008/4/rawImage.jpg",
-    name: "Himantha",
-    Transaction: "Sprite 2L x 2",
-    cost: "LKR 500.00",
-    category: "food",
-    datepaid: "02/06/2023",
-  },
-  {
-    img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg",
-    name: "Kasun",
-    Transaction: "LunchPakcs",
-    cost: "LKR 2500.00",
-    category: "food",
-    datepaid: "03/06/2023",
-  },
-  {
-    img: "https://blog.ongig.com/wp-content/uploads/2020/06/Tom_Holland_by_Gage_Skidmore.jpg",
-    name: "Dilshan",
-    Transaction: "Dinner Packs",
-    cost: "LKR 3500.00",
-    category: "food",
-    datepaid: "04/06/2023",
-  },
-  {
-    img: "https://www.bradford.ac.uk/media-v8/content-team/Ed-Sheeran.jpg",
-    name: "Nipuna",
-    Transaction: "Bus Tickets",
-    cost: "LKR 1500.00",
-    category: "tickets",
-    datepaid: "05/06/2023",
-  },
-  {
-    img: "https://www.thesun.co.uk/wp-content/uploads/2018/05/nintchdbpict000202268962.jpg",
-    name: "Kavindu",
-    Transaction: "Train Tickets",
-    cost: "LKR 2500.00",
-    category: "tickets",
-    datepaid: "06/06/2023",
-  },
-];
+// const TABLE_ROWS = [
+//   {
+//     img: "https://s.hdnux.com/photos/51/23/24/10827008/4/rawImage.jpg",
+//     name: "Himantha",
+//     Transaction: "Sprite 2L x 2",
+//     cost: "LKR 500.00",
+//     category: "food",
+//     datepaid: "02/06/2023",
+//   },
+//   {
+//     img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg",
+//     name: "Kasun",
+//     Transaction: "LunchPakcs",
+//     cost: "LKR 2500.00",
+//     category: "food",
+//     datepaid: "03/06/2023",
+//   },
+//   {
+//     img: "https://blog.ongig.com/wp-content/uploads/2020/06/Tom_Holland_by_Gage_Skidmore.jpg",
+//     name: "Dilshan",
+//     Transaction: "Dinner Packs",
+//     cost: "LKR 3500.00",
+//     category: "food",
+//     datepaid: "04/06/2023",
+//   },
+//   {
+//     img: "https://www.bradford.ac.uk/media-v8/content-team/Ed-Sheeran.jpg",
+//     name: "Nipuna",
+//     Transaction: "Bus Tickets",
+//     cost: "LKR 1500.00",
+//     category: "tickets",
+//     datepaid: "05/06/2023",
+//   },
+//   {
+//     img: "https://www.thesun.co.uk/wp-content/uploads/2018/05/nintchdbpict000202268962.jpg",
+//     name: "Kavindu",
+//     Transaction: "Train Tickets",
+//     cost: "LKR 2500.00",
+//     category: "tickets",
+//     datepaid: "06/06/2023",
+//   },
+// ];
+
+;
 
 function ExpenseTable() {
+  const [TABLE_ROWS, setTableData] = useState([]);
+
+  const getTableData = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/v1/budget/");
+      const jsonData = await response.json();
+
+      const filteredData = jsonData.map((expensedata) => ({
+        img: expensedata.img,
+        name: expensedata.name,
+        Transaction: expensedata.cause,
+        cost: expensedata.cost,
+        category: expensedata.type,
+        datepaid: expensedata.datepaid,
+        
+      }));
+
+      setTableData(filteredData);
+      console.log(filteredData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getTableData();
+  }, [])
   return (
     <Card className="h-full w-full  ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -258,12 +288,13 @@ function Expenses() {
   return (
     <>
       <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className="fixed">
+        <div className="">
           <Sidebar />
         </div>
-        <div className="ml-[18.25%] flex flex-col w-full">
+        <div className="flex flex-col w-full">
+        <TopNavbar />
           <div>
-            <TopNavbar />
+            
           </div>
           <div>
             <div className="flex m-10">

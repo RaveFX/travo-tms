@@ -110,7 +110,7 @@ export default function Sidebar(props) {
   return (
     <Card
       className={`${
-        isSidebarOpen ? "w-[280px]" : "w-[60px]"
+        isSidebarOpen ? "w-[20rem]" : "w-[4rem]"
       } bg-gradient-to-b from-[#377A85] to-[#72C075]  h-screen rounded-none transition-all duration-300 ease-in-out`}
     >
       <div className="">

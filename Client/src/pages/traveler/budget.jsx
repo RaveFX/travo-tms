@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../../components/navbar-general";
-import Sidebar from "../../components/sidebar-rave";
+// import TopNavbar from "../../components/navbar-general";
+// import Sidebar from "../../components/sidebar-rave";
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
 import { Button, CardBody } from "@material-tailwind/react";
 // import Cardss from "../../components/card";
 import axios from 'axios';
@@ -158,7 +160,7 @@ function Budgetform() {
           'Content-Type': 'multipart/form-data', // Set the content type for form data
         },
       });
-
+      console.log(response);
       // Handle the response here (e.g., show a success message)
       console.log('Response: Success', response.data);
     } catch (error) {
@@ -187,8 +189,8 @@ function Budgetform() {
               <option >Other</option>
             </select>
 
-            <Input name="date" id="date" size="lg" placeholder="Date" />
-            <Input name="time" id="time" size="lg" placeholder="Time" />
+            {/* <Input type="date" name="date" id="date" size="lg" placeholder="Date" /> */}
+            {/* <Input name="time" id="time" size="lg" placeholder="Time" /> */}
           </div>
           <div className="flex flex-row gap-6">
             <div className="flex mb-4 gap-6">
@@ -209,13 +211,15 @@ function Budgetform() {
 function Budget() {
   return (
     <>
-      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className="fixed">
+      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-scroll ">
+        <div className="">
           <Sidebar />
         </div>
-        <div className="ml-[18.25%] flex flex-col w-full">
+        
+        <div className=" flex flex-col w-full">
           <div>
-            <TopNavbar />
+          <TopNavbar />
+           
           </div>
           <div>
             <div className="flex">
