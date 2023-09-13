@@ -1,2 +1,4 @@
-package com.Travo.Travobackend.repository;public interface WebSocketConfigurer {
+package com.Travo.Travobackend.repository;
+
+public interface WebSocketConfigurer {
 }

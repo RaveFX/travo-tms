@@ -102,6 +102,7 @@ import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
+import TripAddButton from "./pages/traveler/TripAddButtonPage";
 
 export default function App() {
   return (
@@ -286,13 +287,14 @@ export default function App() {
         {/* Sanduni */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
-        <Route path="/traveler/trip-planner" element={<TripPlanner />} />
+        <Route path="/traveler/trip-planner/:tripId" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
+        <Route path="travo/text//trip/13/LXtGvIeJLtgC1IH0T0HR" element={<TripAddButton />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

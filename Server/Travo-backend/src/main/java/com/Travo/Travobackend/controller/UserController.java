@@ -33,7 +33,7 @@ public class UserController {
             @PathVariable Integer userId,
             @PathVariable Status newStatus
     ) {
-        System.out.println("not works" +userId);
+//        System.out.println("not works" +userId);
         userService.updateUserStatus(userId, newStatus);
     }
 
