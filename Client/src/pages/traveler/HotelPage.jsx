@@ -2,7 +2,7 @@ import React from 'react'
 // import Sidebar from '../../components/sidebar';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
-import { Rating, Button ,Card,CardBody,Typography} from "@material-tailwind/react";
+import { Rating, Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 
 
@@ -13,40 +13,44 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
         <Card className="sm:w-[48rem] xs:w-[60rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
 
             <CardBody className="p-5 bg-white">
-                <Typography variant="h5" color="blue-gray">{names}</Typography>
-                <div className="sm:flex lg:flex flex-row  ">
-                    <Typography className="sm:w-1/2 lg:w-full lg:flex">
-                        <Typography className="w-1/2">
-                            <Typography className="flex" variant="" color="blue-gray"><i class='bx bx-user'></i> {seat} seats</Typography>
-                            <Typography variant="" color="blue-gray">{large_bag} Large bag</Typography>
-                            <Typography variant="" color="blue-gray">{milage}</Typography>
+                <div className='flex'>
+                    <div className="w-1/3 sm:flex lg:flex flex-row  ">
+                        <Typography className=" rounded-none " >
+                            <img
+                                src={src}
+                                alt="ui/ux review check"
+                                className="w-60"
+                            />
                         </Typography>
-                        <Typography>
-                            <Typography variant="" color="blue-gray">{type}</Typography>
-                            <Typography variant="" color="blue-gray">{small_bag} Small bag</Typography>
+                    </div>
+                    <div className='w-full mx-10'>
+                        <Typography variant="h5" color="blue-gray">{names}</Typography>
+
+                        <Typography className="sm:w-1/2 lg:w-full lg:flex">
+                            <Typography className="w-1/2">
+                                <Typography className="flex" variant="" color="blue-gray"><i class='bx bx-user'></i> {seat} seats</Typography>
+                                <Typography variant="" color="blue-gray">{large_bag} Large bag</Typography>
+                                <Typography variant="" color="blue-gray">{milage}</Typography>
+                            </Typography>
+                            <Typography>
+                                <Typography variant="" color="blue-gray">{type}</Typography>
+                                <Typography variant="" color="blue-gray">{small_bag} Small bag</Typography>
+
+                            </Typography>
+                            <Typography className="px-5">
+                            <Typography variant="" className="font-thin text-xs" color="Green-500">Price per day</Typography>
+
+                            <Typography variant="h6" color="Green-500">{price}</Typography>
 
                         </Typography>
-                    </Typography>
-                    <Typography className="px-5">
-                        <Typography variant="" className="font-thin text-xs" color="Green-500">Price per day</Typography>
+                            <Typography variant="lead" className=" font-normal  ">
+                                <Button variant="gradient" className="rounded-full bg-green" color="green">View More</Button>
+                            </Typography>
+                        </Typography>
 
-                        <Typography variant="h6" color="Green-500">{price}</Typography>
-
-                    </Typography>
-                    <Typography className=" rounded-none " >
-
-
-                        <img
-                            src={src}
-                            alt="ui/ux review check"
-                            className="w-40"
-                        />
-                    </Typography>
+                    </div>
                 </div>
-                <Typography variant="lead" className="mt-3 font-normal ">
-                    <Button variant="gradient" className="rounded-full bg-green" color="green">View More</Button>
-                    {/* <Button variant="gradient">Gradient</Button> */}
-                </Typography>
+
             </CardBody>
             {/* <CardFooter className="flex items-center justify-between">
          
@@ -91,14 +95,10 @@ const hotel_page = () => {
 
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
-                    {lists.map((list, index) => (
+                        {lists.map((list, index) => (
                             <VegicleCard key={index} names={list.names} large_bag={list.large_bag} seat={list.seat} small_bag={list.small_bag} price={list.price} milage={list.milage} type={list.type} src={list.src} />
                         ))}
-                        {/* <VegicleCard />
-<VegicleCard />
-<VegicleCard />
-<VegicleCard />
-<VegicleCard /> */}
+
 
                     </div>
                 </div>

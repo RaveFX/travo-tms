@@ -12,6 +12,7 @@ const topnav=[
 ]
 
 const Confirmed = () => {
+    const user_id = sessionStorage.getItem('user_id');
     const [requests,setRequest]=useState([]);
     
     useEffect(() => {
@@ -19,7 +20,7 @@ const Confirmed = () => {
     },[]); 
 
     const loadRequest=async()=>{
-        const result=await axios.get(`http://localhost:8080/api/v1/guide/confirmed`)
+        const result=await axios.get(`http://localhost:8080/api/v1/guide/confirmed/${user_id}`)
         setRequest(result.data);
     }
     return (

@@ -39,6 +39,7 @@ public class Hire {
     private Trip trip;
     private Boolean accepted;
 
+    @Column(columnDefinition = "varchar(255) default PENDING'")
     @Enumerated(EnumType.STRING)
     private Status status;
 }

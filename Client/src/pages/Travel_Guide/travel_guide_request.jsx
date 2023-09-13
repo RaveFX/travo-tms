@@ -35,7 +35,7 @@ const request = () => {
     },[]); 
 
     const loadRequest=async()=>{
-        const result=await axios.get(`http://localhost:8080/api/v1/guide/requests`)
+        const result=await axios.get(`http://localhost:8080/api/v1/guide/requests/${user_id}`)
         setRequest(result.data);
     }
     const topnav=[

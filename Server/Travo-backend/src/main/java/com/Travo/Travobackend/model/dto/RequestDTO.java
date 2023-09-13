@@ -20,6 +20,7 @@ public class RequestDTO {
     private String Start_location;
     private Integer Num_of_days;
     private Integer Hire_Id;
+    private Integer guide_id;
     private Status status;
 //    private String contact_num;
 //    private String city;

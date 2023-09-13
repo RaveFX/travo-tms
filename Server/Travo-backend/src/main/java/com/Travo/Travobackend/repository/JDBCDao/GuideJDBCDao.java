@@ -18,14 +18,15 @@ public class GuideJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public List<RequestDTO> getAllRequests( ) {
+    public List<RequestDTO> getAllRequests(Integer userId ) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<RequestDTO> requests = new ArrayList<>();
 
-        SQL.append("SELECT * FROM `hire` join traveler on hire.traveler_id=traveler.traveler_id join trip on trip.trip_id= hire.trip_id");
-//                "where user.user_id= :userId");
-//        params.put("userId", userId);
+
+        SQL.append("SELECT * FROM `hire` join traveler on hire.traveler_id=traveler.traveler_id join trip on trip.trip_id= hire.trip_id join guide on hire.guide_id=guide.guide_id"+
+               " where guide.user_id= :userId");
+        params.put("userId", userId);
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -37,6 +38,7 @@ public class GuideJDBCDao {
                 requestDTO.setStart_date(rs.getDate("start_date"));
                 requestDTO.setDestination(rs.getString("destination"));
                 requestDTO.setHire_Id(rs.getInt("hire_id"));
+                requestDTO.setGuide_id(rs.getInt("guide_id"));
                 requestDTO.setStart_location(rs.getString("start_location"));
                 requestDTO.setNum_of_days(rs.getInt("num_of_days"));
 
@@ -58,13 +60,13 @@ public class GuideJDBCDao {
 
 
     }
-    public List<RequestDTO> getAllConfirmRequests( ) {
+    public List<RequestDTO> getAllConfirmRequests( Integer userId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<RequestDTO> confirmrequests = new ArrayList<>();
 
-        SQL.append("SELECT * FROM `hire` join traveler on hire.traveler_id=traveler.traveler_id join trip on trip.trip_id= hire.trip_id where hire.status= \"CONFIRM\"");
-//        params.put("userId", userId);
+        SQL.append("SELECT * FROM `hire` join traveler on hire.traveler_id=traveler.traveler_id join trip on trip.trip_id= hire.trip_id join guide on hire.guide_id=guide.guide_id where guide.user_id= :userId && hire.status= \"CONFIRM\" ");
+        params.put("userId", userId);
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
