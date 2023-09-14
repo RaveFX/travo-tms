@@ -77,7 +77,7 @@ function ActivityAgentRegister() {
         `http://localhost:8080/api/v1/auth/register/activity_agent/${user_id}`,
         user
       );
-      navigate("/");
+      navigate("/register_success");
     }
   };
 

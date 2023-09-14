@@ -48,7 +48,7 @@ function GuideRegister() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post(`http://localhost:8080/api/v1/auth/register/guide/${user_id}`, user);
-    navigate("/");
+    navigate("/register_success");
   };
   return (
     <div className="py-1 sm:py-20">

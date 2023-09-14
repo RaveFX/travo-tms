@@ -33,12 +33,12 @@ function Landing() {
           </p>
           <div className="flex justify-center mx-auto">
             <Link
-              className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8"
-              to="/signup_as"
+              className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8"
+              to="/signup"
             >
               Begin Now!
             </Link>
-            <Link className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
+            <Link className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8">
               User Stories
             </Link>
           </div>
