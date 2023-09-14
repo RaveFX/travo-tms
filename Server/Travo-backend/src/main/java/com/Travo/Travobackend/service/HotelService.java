@@ -25,4 +25,10 @@ public class HotelService {
         return reservationJDBCDao.getHotelReservations(userID);
     }
 
+    public HotelReservationDTO reservationDetails(Integer reservationID){
+        return reservationJDBCDao.getReservationDetails(reservationID);
+    }
+
+
+
 }

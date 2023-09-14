@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import UserNav from "../../components/main/userNav";
 import SideBar from "../../components/main/sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Hotel_reservations() {
+  const navigate = useNavigate();
   const user_id = sessionStorage.getItem('user_id');
   const [reservations,setReservations]=useState([]);
+  const [details,setDetails]=useState([]);
 
     useEffect(() => {
         loadReservations();
@@ -16,6 +18,13 @@ function Hotel_reservations() {
         const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservations/${user_id}`)
         setReservations(result.data);
     }
+
+    const handleClickReservation = async (id) => {
+      const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservationDetails/${id}`)
+      setDetails(result.data);
+      navigate("/hotelagent_reservation_details");
+
+    };
   return (
     <div className="flex h-screen ">
     <SideBar active="Reservations"/>
@@ -43,7 +52,7 @@ function Hotel_reservations() {
                   <tbody>
                   {
                     reservations.map((reservations)=>(
-                      <tr
+                      <tr role="button" onClick={()=>handleClickReservation(reservations.reservation_id)}
                       className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 hover:bg-gray-100">
                       <td className=" text-center  items-center  whitespace-no-wrap">
                                                     <div className="flex">

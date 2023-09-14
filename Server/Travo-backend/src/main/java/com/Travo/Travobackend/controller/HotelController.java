@@ -29,5 +29,10 @@ public class HotelController {
     public List<HotelReservationDTO> getHotelReservations(@PathVariable Integer userID){
         return hotelService.hotelOwnerReservations(userID);
     }
+//hotels get reservation details
+    @GetMapping("/reservationDetails/{reservationID}")
+    public HotelReservationDTO getHotelReservationDetails(@PathVariable Integer reservationID){
+        return hotelService.reservationDetails(reservationID);
+    }
 
 }
