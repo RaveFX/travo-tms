@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Calendar = () => {
   const [from, setFrom] = useState(null);
@@ -26,10 +26,9 @@ const Calendar = () => {
 
   const handleDateClick = (date) => {
     if (from === null) {
-        setFrom(date);
-    }
-    else {
-        setTo(date);
+      setFrom(date);
+    } else {
+      setTo(date);
     }
   };
 
@@ -42,21 +41,14 @@ const Calendar = () => {
   return (
     <div className="flex flex-col items-center justify-center ">
       <h1 className="text-4xl font-bold m-4">When do you want to go?</h1>
-      <div className='flex'>
+      <div className="flex">
         {from && (
-                <div className="m-4 pr-6">
-                From: {from.toLocaleDateString()}
-                </div>
-            )}
-        {to && (
-                <div className="m-4 pl-6">
-                To: {to.toLocaleDateString()}
-                </div>
-            )}
-        </div>
+          <div className="m-4 pr-6">From: {from.toLocaleDateString()}</div>
+        )}
+        {to && <div className="m-4 pl-6">To: {to.toLocaleDateString()}</div>}
+      </div>
       <div className="grid grid-cols-7 gap-2 w-[500px] p-10 rounded-[10%] bg-[#DADADA]">
-        
-        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
           <div key={day} className="text-center font-semibold">
             {day}
           </div>
@@ -64,24 +56,32 @@ const Calendar = () => {
         {calendar.map((date, index) => (
           <div
             key={index}
-            className={`${
-              date ? 'cursor-pointer' : ''
+            className={`${date ? "cursor-pointer" : ""} ${
+              from && date
+                ? from.getTime() === date.getTime()
+                  ? "bg-[#2AB57D]"
+                  : ""
+                : ""
             } ${
-                from && date ? from.getTime() === date.getTime() ? 'bg-[#2AB57D]' : '' : ''
+              to && date
+                ? to.getTime() === date.getTime()
+                  ? "bg-[#2AB57D]"
+                  : ""
+                : ""
             } ${
-                to && date ? to.getTime() === date.getTime() ? 'bg-[#2AB57D]' : '' : ''
-            } ${
-                from && to && date ? from.getTime() < date.getTime() && to.getTime() > date.getTime()  ? 'bg-[#2AB57D] opacity-[30%]' : '' : ''
+              from && to && date
+                ? from.getTime() < date.getTime() &&
+                  to.getTime() > date.getTime()
+                  ? "bg-[#2AB57D] opacity-[30%]"
+                  : ""
+                : ""
             } rounded-full text-center font-medium py-2`}
             onClick={() => handleDateClick(date)}
           >
-            {console.log(date)}
-            {console.log(from)}
-            {date ? date.getDate() : ''}
+            {date ? date.getDate() : ""}
           </div>
         ))}
       </div>
-      
     </div>
   );
 };

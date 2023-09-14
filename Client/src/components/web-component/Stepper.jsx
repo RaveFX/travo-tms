@@ -96,9 +96,7 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 0 ? "blue-gray" : "gray"}
-              >
-                {/* Calander */}
-              </Typography>
+              />
             </div>
           </Step>
           <Step
@@ -112,9 +110,7 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 1 ? "blue-gray" : "gray"}
-              >
-                {/* Planner */}
-              </Typography>
+              />
             </div>
           </Step>
           <Step
@@ -128,9 +124,7 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 2 ? "blue-gray" : "gray"}
-              >
-                {/* Finnish */}
-              </Typography>
+              />
             </div>
           </Step>
           <Step
@@ -144,9 +138,7 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 3 ? "blue-gray" : "gray"}
-              >
-                {/* Finnish */}
-              </Typography>
+              />
             </div>
           </Step>
         </Stepper>
@@ -157,9 +149,6 @@ export function PlanStepper(props) {
         >
           Next
         </Button>
-        {/* <div className="mt-10 flex justify-between"> */}
-
-        {/* </div> */}
       </div>
     </>
   );

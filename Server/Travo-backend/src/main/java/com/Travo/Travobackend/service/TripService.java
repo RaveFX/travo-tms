@@ -42,8 +42,15 @@ public class TripService {
         Trip existingTrip = tripRepo.findById(tripID).orElse(null);
 
         if(existingTrip != null){
-            existingTrip.setTrip_name(tripDTO.getTrip_name());
-            existingTrip.setDescription(tripDTO.getDescription());
+
+            if(!Objects.equals(tripDTO.getTrip_name(), null)) {
+                System.out.println("Name");
+                existingTrip.setTrip_name(tripDTO.getTrip_name());
+            }
+            if(!Objects.equals(tripDTO.getDescription(), null)) {
+                System.out.println("Desc");
+                existingTrip.setDescription(tripDTO.getDescription());
+            }
 
             return tripRepo.save(existingTrip);
 

@@ -33,7 +33,7 @@ export default function Sidebar(props) {
     setSubSidebarState,
     subSidebarState,
   } = props;
-  console.log(subSidebarState);
+  // console.log(subSidebarState);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
@@ -53,12 +53,12 @@ export default function Sidebar(props) {
     {
       icon: <RectangleGroupIcon className="h-5 w-5" />,
       name: "Dashboard",
-      link: "/TravelerDashboard",
+      link: "Dashboard",
     },
     {
       icon: <MapIcon className="h-5 w-5" />,
       name: "My Trips",
-      link: "/Mytrips",
+      link: "Mytrips",
       subItems: [
         {
           icon: <ClipboardDocumentIcon className="h-5 w-5" />,
@@ -83,27 +83,27 @@ export default function Sidebar(props) {
     {
       icon: <ShoppingCartIcon className="h-5 w-5" />,
       name: "Travo Store",
-      link: "/Store",
+      link: "Store",
     },
     {
       icon: <BanknotesIcon className="h-5 w-5" />,
       name: "Budget",
-      link: "/Budget",
+      link: "Budget",
     },
     {
       icon: <UserGroupIcon className="h-5 w-5" />,
       name: "Community",
-      link: "/traveler/community",
+      link: "community",
     },
     {
       icon: <BanknotesIcon className="h-5 w-5" />,
       name: "Transactions",
-      link: "/transactions",
+      link: "transactions",
     },
     {
       icon: <Cog6ToothIcon className="h-5 w-5" />,
       name: "Settings",
-      link: "/settings",
+      link: "settings",
     },
   ];
 
@@ -142,7 +142,11 @@ export default function Sidebar(props) {
       >
         {navList.map((item, key) => (
           <React.Fragment key={key}>
-            <Link to={item.link} className="w-[100%] !style:none" key={key}>
+            <Link
+              to={`/Traveler/${item.link}`}
+              className="w-[100%] !style:none"
+              key={key}
+            >
               <ListItem
                 className={`gap-[1rem] hover:bg-[#FFFFFF] hover:bg-opacity-30 ${
                   active === item.name ? "active" : ""

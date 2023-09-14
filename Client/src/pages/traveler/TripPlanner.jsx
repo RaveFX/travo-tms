@@ -25,13 +25,10 @@ function TripPlanner() {
   const [tripDetails, setTripDetails] = useState({});
   const [isOpen, setIsOpen] = useState(true);
   const { id } = useParams();
-  
 
   useEffect(() => {
-
     const getTripDetails = async () => {
       try {
-        
         let response = await axios.get(`/trips/${id}`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -40,10 +37,9 @@ function TripPlanner() {
       } catch (err) {
         console.error(err);
       }
-    }
+    };
 
     getTripDetails();
-
   }, [id]);
 
   const handleBackClick = () => {
@@ -113,7 +109,11 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar Name={tripDetails.trip_name} Id={id} Description={tripDetails.description}/>
+            <TripNameBar
+              Name={tripDetails.trip_name}
+              Id={id}
+              Description={tripDetails.description}
+            />
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}
@@ -121,7 +121,7 @@ function TripPlanner() {
           <div className="flex flex-row items-center relative left-10 top-65 mt-4 mb-4 space-x-2">
             <Typography
               onClick={handleChatButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none "
@@ -130,7 +130,7 @@ function TripPlanner() {
             </Typography>
             <Typography
               onClick={handleMapButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none  "
@@ -139,7 +139,7 @@ function TripPlanner() {
             </Typography>
             <Typography
               onClick={handleNoteButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] absoulute hover:shadow-none active:shadow-none focus:shadow-none"

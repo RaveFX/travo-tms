@@ -39,6 +39,7 @@ export default function BoxForm(props) {
         {
           trip_name: tripName,
           state: publicTrip ? "PUBLIC" : "PRIVATE",
+          discription: "bla bla bla",
           trip_creator_id: sessionStorage.getItem("user_id"),
         },
         {
