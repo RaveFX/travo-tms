@@ -95,6 +95,7 @@ public class ReservationJDBCDao {
                 hotelReservationDTO.setDate(rs.getDate("date"));
                 hotelReservationDTO.setUser_id(rs.getInt("user_id"));
                 hotelReservationDTO.setRoom_id(rs.getInt("room_id"));
+                hotelReservationDTO.setTrip_id(rs.getInt("trip_id"));
                 hotelReservationDTO.setPayment(rs.getInt("payment"));
                 hotelReservationDTO.setStatus(rs.getInt("status"));
                 hotelReservationDTO.setCheckin_date(rs.getDate("checkin_date"));

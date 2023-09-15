@@ -8,10 +8,11 @@ function Hotel_reseravationDetails() {
   const user_id = sessionStorage.getItem('user_id');
   const [reservations,setReservations]=useState([]);
   const [details,setDetails]=useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
 
   useEffect(() => {
     loadReservations();
-},[]); 
+  },[]); 
   const loadReservations=async()=>{
     const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservations/${user_id}`)
     setReservations(result.data);
@@ -19,6 +20,13 @@ function Hotel_reseravationDetails() {
   const handleClickReservation = async (id) => {
     const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservationDetails/${id}`)
     setDetails(result.data);
+  };
+
+  const handleRowClick = (rowId) => {
+    // Check if the row is already selected
+    setSelectedRow(rowId);
+    console.log(selectedRow);
+    
   };
   return (
     <div className="flex h-screen ">
@@ -39,8 +47,12 @@ function Hotel_reseravationDetails() {
                     <tbody>
                     {
                       reservations.map((reservations)=>(
-                      <tr role="button" onClick={()=>handleClickReservation(reservations.reservation_id)}
-                      className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 hover:bg-gray-100">
+                      <tr key={reservations.reservation_id} role="button" onClick={()=>{handleClickReservation(reservations.reservation_id); handleRowClick(reservations.reservation_id);}}
+                      className={`${
+                        selectedRow === reservations.reservation_id
+                          ? 'bg-gray-100'
+                          : 'bg-white'
+                      } border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600 hover:bg-gray-100`}>
                       <td className=" text-center  items-center  whitespace-no-wrap">
                                                     <div className="flex">
                                                         <div className="h-8 w-8 ml-5">
@@ -51,8 +63,13 @@ function Hotel_reseravationDetails() {
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 font-medium">{reservations.reservation_id}</td>
                       <td className="whitespace-nowrap px-4 py-2">
-                      <div className="w-16 h-6 text-center bg-slate-50 rounded-lg border-slate-950">
-                      Cancelled</div>
+                        <div
+                          className={`w-16 h-6 text-center rounded-lg border-slate-950 ${
+                            reservations.status === 0 ? 'bg-red-200' : 'bg-green-200'
+                          }`}
+                        >
+                          {reservations.status === 0 ? 'Cancelled' : 'Active'}
+                        </div>
                       </td>
                     </tr>
                     ))
@@ -72,7 +89,7 @@ function Hotel_reseravationDetails() {
         <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
         <div style={{width:'50%'}}>
         <div style={{display:'flex',flexDirection:'row'}}>
-        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Booking ID : </h1>
+        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Reservation ID : </h1>
         <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{details.reservation_id}</h1>
         </div>
         <div style={{display:'flex',flexDirection:'row'}}>
@@ -90,7 +107,7 @@ function Hotel_reseravationDetails() {
         </div>
         <div style={{width:'50%'}}>
         <div style={{display:'flex',flexDirection:'row'}}>
-        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Booking Date : </h1>
+        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Booked Date : </h1>
         <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{details.date}</h1>
         </div>
         <div style={{display:'flex',flexDirection:'row'}}>
@@ -103,7 +120,7 @@ function Hotel_reseravationDetails() {
         </div>
         <div style={{display:'flex',flexDirection:'row'}}>
         <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Reservation Status : </h1>
-        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{details.status}</h1>
+        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{details.status === 0 ? 'Cancelled' : 'Active'}</h1>
         </div>
         
         </div>
@@ -126,7 +143,7 @@ function Hotel_reseravationDetails() {
         </div>
         <div style={{display:'flex',flexDirection:'row'}}>
         <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Trip ID : </h1>
-        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>1023</h1>
+        <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{details.trip_id}</h1>
         </div>
         <div style={{display:'flex',flexDirection:'row'}}>
         <h1 style={{paddingTop:'20px'}} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Notes : </h1>
