@@ -104,6 +104,7 @@ import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import DestinationPage from "./pages/traveler/DestinationPage";
 import HotelPage from "./pages/traveler/HotelPage";
+import HotelPageMore from "./pages/traveler/HotelPageMore";
 import VehiclePage from "./pages/traveler/VehiclePage";
 import Travelbuddy from "./pages/traveler/travelbuddy";
 
@@ -321,6 +322,7 @@ export default function App() {
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
         <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
         <Route exact path="/traveler/HotelPage" element={<HotelPage />} />
+        <Route exact path="/traveler/HotelPageMore/:hotelID" element={<HotelPageMore />} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>

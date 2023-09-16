@@ -25,6 +25,11 @@ public class TraveleroptionService {
 
 
     }
+    public List<HotelDTO> hotelDetails(Integer hotelId) {
+        return hotelNameJDBCDao.getHotelsDetail(hotelId);
+
+
+    }
 
     public List<VehiclesDTO> vehicles() {
         return vehiclesJDBCDao.getAllVehicles();

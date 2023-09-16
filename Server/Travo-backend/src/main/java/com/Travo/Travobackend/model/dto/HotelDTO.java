@@ -20,5 +20,7 @@ public class HotelDTO {
     private Boolean lunch;
     private Boolean Dinner;
     private String hotel_name;
+    private Integer hotel_id;
+
 
 }
