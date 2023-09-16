@@ -292,11 +292,11 @@ import { useParams } from "react-router-dom";
 
 export function SubscriptionPopover() {
   const { tripId } = useParams();
-  const [tripinfo, setTripinfo] = useState({});
   const [uniqueLink, setUniqueLink] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
   const [isCopying, setIsCopying] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const link = `http://127.0.0.1:5173/travo/text/${uniqueLink}`;
 
   const loadTripinfo = async () => {
     try {
@@ -315,7 +315,7 @@ export function SubscriptionPopover() {
   const handleCopyToClipboard = async () => {
     try {
       setIsCopying(true);
-      await navigator.clipboard.writeText(uniqueLink);
+      await navigator.clipboard.writeText(link);
       setCopySuccess(true);
     } catch (err) {
       console.error('Could not copy to clipboard: ', err);
