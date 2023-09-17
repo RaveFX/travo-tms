@@ -21,7 +21,7 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 
-const trip_id = sessionStorage.getItem('trip_id');
+// const trip_id = sessionStorage.getItem('trip_id');
 
 function TripPlanner() {
   const { tripId } = useParams();

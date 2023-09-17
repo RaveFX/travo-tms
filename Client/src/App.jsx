@@ -294,7 +294,7 @@ export default function App() {
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
-        <Route path="travo/text//trip/13/LXtGvIeJLtgC1IH0T0HR" element={<TripAddButton />} />
+        <Route path="travo/text/trip/:tripId/:uniqueLink" element={<TripAddButton />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

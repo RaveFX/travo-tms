@@ -143,19 +143,6 @@ function Mytrips() {
   const user_id = sessionStorage.getItem('user_id');
   const [tripinfo, setTripinfo] = useState([]);
 
-  // const createTrip = async () => {
-  //   try {
-  //     const response = await axios.post('http://localhost:8080/api/v1/trips/create', 'http://localhost:8080/api/v1/trips/create-members', {
-  //       user_id: user_id,
-  //       trip_admin: user_id,
-  //     });
-  //     console.log('Trip created:', response.data);
-  //     const tripId = response.data.tripId;
-  //     navigate(`/traveler/trip-planner/${tripId}`);
-  //   } catch (error) {
-  //     console.error('Error creating trip:', error);
-  //   }
-  // }
 
   const createTrip = async () => {
     try {
@@ -165,6 +152,7 @@ function Mytrips() {
 
       console.log('Trip created:', tripResponse.data);
       const tripId = tripResponse.data.tripId;
+      const unique_link = tripResponse.data.unique_link;
 
       const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trips/create-members', {
         user_id: user_id,

@@ -78,7 +78,6 @@ public class TripController {
         Trip trip = tripRepository.findById(tripId).orElse(null);
 
         if (trip != null) {
-            // Return a 200 OK response with the trip information if found
             return ResponseEntity.ok(trip);
         } else {
             // Return a 404 Not Found response if the trip is not found

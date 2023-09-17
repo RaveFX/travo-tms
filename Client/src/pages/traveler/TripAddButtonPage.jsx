@@ -1,50 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Button } from "@material-tailwind/react";
+import React, { useEffect } from 'react';
 
+function TripAddButton() {
+    useEffect(() => {
+        console.log("eeeee");
+        const currentPath = window.location.pathname;
 
+        if (currentPath.startsWith('/travo/text/trip/')) {
+            const pathParts = currentPath.split('/');
+            const tripId = pathParts[4];
+            const uniqueLink = pathParts[5];
 
-
-// const TripAddButtonPage = () => {
-//     return <Button>Join to trip</Button>;
-// };
-
-// export default TripAddButtonPage;
-
-
-
-function TripAddButtonPage({ tripId }) {
-    const [joining, setJoining] = useState(false);
-
-    const handleJoin = async () => {
-        // Check if the user is logged in (you need to implement your own authentication)
-        const isAuthenticated = checkAuthentication();
-
-        if (!isAuthenticated) {
-            // If not authenticated, redirect to login page
-            window.location.href = '/login';
-            return;
+            // Implement your logic based on tripId and uniqueLink
+            if (tripId === 'someValue' && uniqueLink === 'someLink') {
+                // Redirect to a specific page or do something else
+                window.location.href = '/specific-page';
+            } else {
+                // Handle other cases or display content based on the parameters
+                // For example, display the tripId and uniqueLink
+                console.log('Trip ID:', tripId);
+                console.log('Unique Link:', uniqueLink);
+            }
+        } else {
+            // Handle cases where the URL doesn't match the desired pattern
+            console.log('Invalid URL');
         }
+    }, []);
 
-        setJoining(true);
-
-        try {
-            // Send a request to join the trip
-            await axios.post(`/api/trips/join/${tripId}`);
-            // Redirect to the trip planner page after joining
-            window.location.href = `/trip/${tripId}/planner`;
-        } catch (error) {
-            console.error('Error joining the trip:', error);
-            setJoining(false);
-        }
-    };
-
-    return (
-        <Button onClick={handleJoin} disabled={joining}>Join to trip</Button>
-        // <button onClick={handleJoin} disabled={joining}>
-        //     {joining ? 'Joining...' : 'Join Trip'}
-        // </button>
-    );
+    return <div>This is the TripAddButton page.</div>;
 }
 
-export default TripAddButtonPage;
+export default TripAddButton;
