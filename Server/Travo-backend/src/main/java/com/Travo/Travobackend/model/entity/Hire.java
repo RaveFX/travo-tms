@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.Travo.Travobackend.enumeration.HireStatus;
 import com.Travo.Travobackend.enumeration.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,6 +34,7 @@ public class Hire {
     private Integer Payment;
 //    private String Status;
     private Integer Attendance;
+    private HireStatus hireStatus;
 //    private String Destination;
     @ManyToOne
     @JoinColumn(name = "Trip_id", referencedColumnName = "Trip_id" )

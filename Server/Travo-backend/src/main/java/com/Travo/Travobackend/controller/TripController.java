@@ -71,22 +71,22 @@ public class TripController {
         }
     }
 
-    @PostMapping("/{tripId}/group-messages")
-    public ResponseEntity<GroupMessages> createGroupMessage(
-            @PathVariable Integer tripId,
-            @RequestBody GroupMessages groupMessage) {
-        System.out.println("rrrrrr");
-        Optional<Trip> optionalTrip = tripRepository.findById(tripId);
-        if (optionalTrip.isPresent()) {
-            Trip trip = optionalTrip.get();
-            groupMessage.setTrip(trip); // Associate the group message with the trip
-            GroupMessages savedMessage = groupMessagesRepository.save(groupMessage);
-            return ResponseEntity.ok(savedMessage);
-        } else {
-            // Handle the case where the trip with the given ID does not exist
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @PostMapping("/{tripId}/group-messages")
+//    public ResponseEntity<GroupMessages> createGroupMessage(
+//            @PathVariable Integer tripId,
+//            @RequestBody GroupMessages groupMessage) {
+//        System.out.println("rrrrrr");
+//        Optional<Trip> optionalTrip = tripRepository.findById(tripId);
+//        if (optionalTrip.isPresent()) {
+//            Trip trip = optionalTrip.get();
+//            groupMessage.setTrip(trip); // Associate the group message with the trip
+//            GroupMessages savedMessage = groupMessagesRepository.save(groupMessage);
+//            return ResponseEntity.ok(savedMessage);
+//        } else {
+//            // Handle the case where the trip with the given ID does not exist
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     // @GetMapping("/{tripId}/group-messages")
     // public ResponseEntity<List<GroupMessages>>
