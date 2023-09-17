@@ -60,7 +60,6 @@ const Dashboard = () => {
   const user_id = sessionStorage.getItem('user_id');
 
   const role = sessionStorage.getItem('role');
-  // const user_id = sessionStorage.getItem('user_id');
 
   const handleNavigate = () => {
     // Example: Navigate to '/other-page' when the button is clicked

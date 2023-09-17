@@ -21,9 +21,9 @@ import java.util.Set;
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer trip_id;
-    private String trip_admin;
-    private String trip_name;
+    private Integer Trip_id;
+    private String Trip_admin;
+    private String Trip_name;
 
     private Date Created_date;
     private String Start_location;
@@ -45,27 +45,27 @@ public class Trip {
     private Set<Hire> hires = new HashSet<>();
 
     public Integer getTripId() {
-        return trip_id;
+        return Trip_id;
     }
 
     public void setTripId(Integer tripId) {
-        this.trip_id = tripId;
+        this.Trip_id = tripId;
     }
 
     public String getTrip_admin() {
-        return trip_admin;
+        return Trip_admin;
     }
 
     public void setTrip_admin(String trip_admin) {
-        this.trip_admin = trip_admin;
+        this.Trip_admin = trip_admin;
     }
 
     public String getTrip_name() {
-        return trip_name;
+        return Trip_name;
     }
 
     public void setTrip_name(String trip_name) {
-        this.trip_name = trip_name;
+        this.Trip_name = trip_name;
     }
 
 

@@ -2,11 +2,15 @@ package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.model.entity.GroupMessages;
+import com.Travo.Travobackend.model.entity.TripMembers;
 import com.Travo.Travobackend.repository.GroupMessagesRepository;
+import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.model.entity.Trip;
+import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +23,18 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class TripController {
 
+    private final TripService tripService; // Initialize this field in the constructor
     @Autowired
     private TripRepository tripRepository;
     private final GroupMessagesRepository groupMessagesRepository;
+    private TripMemberRepository tripMembersRepository;
 
     @Autowired
-    public TripController(TripRepository tripRepository, GroupMessagesRepository groupMessageRepository) {
+    public TripController(TripService tripService, TripRepository tripRepository, GroupMessagesRepository groupMessagesRepository,TripMemberRepository tripMembersRepository) {
+        this.tripService = tripService; // Initialize tripService here
         this.tripRepository = tripRepository;
-        this.groupMessagesRepository = groupMessageRepository;
+        this.groupMessagesRepository = groupMessagesRepository;
+        this.tripMembersRepository = tripMembersRepository;
     }
 
     private String generateRandomToken(int length) {
@@ -45,7 +53,7 @@ public class TripController {
 
         if (savedTrip.getTripId() != null) {
             String uniqueToken = generateRandomToken(20);
-            String uniqueLink = "/trip/" + savedTrip.getTripId() + "/" + uniqueToken;
+            String uniqueLink =  savedTrip.getTripId() + "" + uniqueToken;
             System.out.println(uniqueLink);
 
             savedTrip.setUniqueLink(uniqueLink);
@@ -56,14 +64,23 @@ public class TripController {
         }
     }
 
+    @PostMapping("/create-members")
+    public TripMembers createTripMembers(@RequestBody TripMembers tripMembers) {
+        System.out.println("member add");
+        return tripMembersRepository.save(tripMembers);
+    }
+
+    @GetMapping("/triplist")
+    public List<TripDTO> gettriplist() {
+        return tripService.tripList();
+    }
+
     @GetMapping("/trip-information/{tripId}")
     public ResponseEntity<Trip> getTripInfo(@PathVariable Integer tripId) {
         System.out.println("works");
-        // Retrieve the trip information from your repository or service
         Trip trip = tripRepository.findById(tripId).orElse(null);
 
         if (trip != null) {
-            // Return a 200 OK response with the trip information if found
             return ResponseEntity.ok(trip);
         } else {
             // Return a 404 Not Found response if the trip is not found
@@ -71,38 +88,16 @@ public class TripController {
         }
     }
 
-//    @PostMapping("/{tripId}/group-messages")
-//    public ResponseEntity<GroupMessages> createGroupMessage(
-//            @PathVariable Integer tripId,
-//            @RequestBody GroupMessages groupMessage) {
-//        System.out.println("rrrrrr");
-//        Optional<Trip> optionalTrip = tripRepository.findById(tripId);
-//        if (optionalTrip.isPresent()) {
-//            Trip trip = optionalTrip.get();
-//            groupMessage.setTrip(trip); // Associate the group message with the trip
-//            GroupMessages savedMessage = groupMessagesRepository.save(groupMessage);
-//            return ResponseEntity.ok(savedMessage);
-//        } else {
-//            // Handle the case where the trip with the given ID does not exist
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+         @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
+         public boolean checkTrip(@PathVariable String tripId, @PathVariable String uniqueKey) {
+             System.out.println("8");
+                 return tripService.uniqueKeyExistsForTrip(tripId, uniqueKey);
+           }
 
-    // @GetMapping("/{tripId}/group-messages")
-    // public ResponseEntity<List<GroupMessages>>
-    // getGroupMessagesForTrip(@PathVariable Integer tripId) {
-    // Optional<Trip> optionalTrip = tripRepository.findById(tripId);
-    // if (optionalTrip.isPresent()) {
-    // Trip trip = optionalTrip.get();
 
-    // // Retrieve group messages associated with the trip using
-    // groupMessagesRepository
-    // List<GroupMessages> groupMessages = groupMessagesRepository.findByTrip(trip);
-
-    // return ResponseEntity.ok(groupMessages);
-    // } else {
-    // // Handle the case where the trip with the given ID does not exist
-    // return ResponseEntity.notFound().build();
-    // }
-    // }
+    @PostMapping("/group-messages/{tripId}")
+    public GroupMessages saveMessages(@RequestBody GroupMessages groupMessages) {
+        System.out.println("member add");
+        return groupMessagesRepository.save(groupMessages);
+    }
 }
