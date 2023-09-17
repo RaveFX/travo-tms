@@ -56,8 +56,11 @@ import Travel_Guide_Invitation from "./pages/Travel_Guide/travel_guide_invitatio
 import Travel_Guide_Rating from "./pages/Travel_Guide/travel_guide_rating";
 import Travel_Guide_Confirmed from "./pages/Travel_Guide/travel_guide_confirmed";
 import Travel_Guide_Profile from "./pages/Travel_Guide/travel_guide_profile";
+import Travel_Guide_Add_Tour from "./pages/Travel_Guide/travel_guide_add_tour";
 import Travel_Guide_Edit_Profile from "./pages/Travel_Guide/travel_guide_edit_profile";
 import Travel_Guide_Success from "./pages/Travel_Guide/travel_guide_success";
+
+
 
 import Vehicle_Owner_Dashboard from "./pages/Vehicle_Owner/vehicle_owner_dashboard";
 import Vehicle_Owner_Vehicles from "./pages/Vehicle_Owner/vehicle_owner_vehicles";
@@ -190,83 +193,40 @@ export default function App() {
         {/* Trineesha */}
         <Route path="/travel_guide_dashboard" element={<Travel_Guide_Dashboard />} />
         <Route path="/travel_guide_request" element={<Travel_Guide_Request />} ></Route>
-        <Route
-          path="/travel_guide_mytours"
-          element={<Travel_Guide_Mytours />}
-        ></Route>
-        <Route
-          path="/travel_guide_myrates"
-          element={<Travel_Guide_Myrates />}
-        ></Route>
-        <Route
-          path="/travel_guide_mytours_more"
-          element={<Travel_Guide_Mytours_More />}
-        ></Route>
-        <Route
-          path="/travel_guide_invitation"
-          element={<Travel_Guide_Invitation />}
-        ></Route>
-        <Route
-          path="/travel_guide_rating"
-          element={<Travel_Guide_Rating />}
-        ></Route>
-        <Route
-          path="/travel_guide_request"
-          element={<Travel_Guide_Request />}
-        ></Route>
-        <Route
-          path="/travel_guide_requestMore"
-          element={<Travel_Guide_RequestMore />}
-        ></Route>
-        <Route
-          path="/travel_guide_confirmed"
-          element={<Travel_Guide_Confirmed />}
-        ></Route>
-        <Route
-          path="/travel_guide_profile"
-          element={<Travel_Guide_Profile />}
-        ></Route>
-        <Route
-          path="/travel_guide_edit_profile"
-          element={<Travel_Guide_Edit_Profile />}
-        ></Route>
-        <Route
-          path="/travel_guide_success"
-          element={<Travel_Guide_Success />}
-        ></Route>
-
-        <Route
-          path="/vehicle_owner_dashboard"
-          element={<Vehicle_Owner_Dashboard />}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_vehicles"
-          element={<Vehicle_Owner_Vehicles />}
-        >
-          {" "}
-        </Route>
-        <Route path="/vehicle_owner_rates" element={<Vehicle_Owner_Rates />}>
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_add_vehicle"
+        <Route path="/travel_guide_mytours"element={<Travel_Guide_Mytours />}></Route>
+        <Route path="/travel_guide_myrates"element={<Travel_Guide_Myrates />}></Route>
+        <Route path="/travel_guide_mytours_more" element={<Travel_Guide_Mytours_More />}></Route>
+        <Route path="/travel_guide_invitation" element={<Travel_Guide_Invitation />}></Route>
+        <Route path="/travel_guide_rating" element={<Travel_Guide_Rating />}></Route>
+        <Route path="/travel_guide_request"element={<Travel_Guide_Request />}></Route>
+        <Route path="/travel_guide_requestMore" element={<Travel_Guide_RequestMore />}></Route>
+        <Route path="/travel_guide_confirmed" element={<Travel_Guide_Confirmed />}></Route>
+        <Route path="/travel_guide_profile" element={<Travel_Guide_Profile />}></Route>
+        <Route path="/travel_guide_add_tour" element={<Travel_Guide_Add_Tour />}></Route>
+        <Route path="/travel_guide_edit_profile" element={<Travel_Guide_Edit_Profile />}></Route>
+        <Route path="/travel_guide_success"element={<Travel_Guide_Success />}></Route>
+        
+        
+        
+        <Route path="/vehicle_owner_dashboard" element={<Vehicle_Owner_Dashboard />}></Route>
+        <Route path="/vehicle_owner_vehicles" element={<Vehicle_Owner_Vehicles />}></Route>
+        <Route path="/vehicle_owner_rates" element={<Vehicle_Owner_Rates />}> </Route>
+        <Route path="/vehicle_owner_add_vehicle"
           element={<Vehicle_Owner_Add_Vehicle />}
         >
-          {" "}
+          
         </Route>
         <Route
           path="/vehicle_owner_add_preview"
           element={<Vehicle_Owner_Add_Preview />}
         >
-          {" "}
+          
         </Route>
         <Route
           path="/vehicle_owner_request"
           element={<Vehicle_Owner_Request />}
         >
-          {" "}
+          
         </Route>
         <Route
           path="/vehicle_owner_requestMore"

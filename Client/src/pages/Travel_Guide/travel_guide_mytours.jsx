@@ -81,7 +81,9 @@ const travel_guide_mytours = () => {
                 <div className='overflow-y-auto' >
 
                     <div className="flex justify-end mt-5">
+                        <Link to={"/travel_guide_add_tour"}>
                         <Button className="w-48 rounded-full text-green" variant="outlined">Add New Tour</Button>
+                        </Link>
                     </div>
                     {/* <div><GridImage /></div> */}
                     <div className='flex sm:flex-row flex-wrap w-full overflow-y-auto xs:justify-center  '>
