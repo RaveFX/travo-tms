@@ -11,7 +11,9 @@ import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 
-export default function SwiperCard(){
+export default function SwiperCard(props){
+  const {tripDetails} = props;
+
     return(
       <div className='swiper container h-fit w-[1720px] hover:none'>
           <Swiper
@@ -29,47 +31,13 @@ export default function SwiperCard(){
             
               {/* Swiper slides */}
               <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
+                {tripDetails.map((trip) => (
                 <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
+                  <Cardtrip trip={trip} />
                 </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
+               ))}
+                
               </div>
-              {/* <SwiperSlide>
-                <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>            
-              <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>            
-                <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>            
-                <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>            
-                <Cardtrip />
-              </SwiperSlide>
-              <SwiperSlide>            
-                <Cardtrip />
-              </SwiperSlide> */}
-              {/* More Swiper slides */}
-              {/* ... */}
-
-              {/* Swiper navigation */}
             
               <div className="flex justify-center w-[100%] absolute bottom-7 z-10 ">
                 <div className="flex items-end justify-between px-[1rem] w-auto h-auto ">

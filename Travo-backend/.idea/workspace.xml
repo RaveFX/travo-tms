@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffb6a375-bd43-4866-a626-3bab7c87b27b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/web-component/BoxForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/web-component/BoxForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/components/web-component/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/web-component/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/components/web-component/Stepper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/web-component/Stepper.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/components/web-component/TripName.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/web-component/TripName.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/components/web-component/calander.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/components/web-component/calander.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/src/pages/traveler/TripPlanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/pages/traveler/TripPlanner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/Travo-backend/src/main/java/com/Travo/Travobackend/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Travo-backend/src/main/java/com/Travo/Travobackend/service/TripService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "traveller-v2",
+    "ignore.virus.scanning.warn.message": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -42,6 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1694630907346</updated>
       <workItem from="1694630912685" duration="74000" />
+      <workItem from="1694758884704" duration="158000" />
     </task>
     <servers />
   </component>

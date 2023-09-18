@@ -131,9 +131,10 @@ export function TripNameBar(props) {
               {isNameEditing ? ( // Render input field when editing is enabled
                 <Input
                   type="text"
+                  placeholder="Trip Name"
                   value={editableName}
                   onChange={(e) => setEditableName(e.target.value)}
-                  className="!text-2xl !font-poppins !font-extrabold !border-0 !m-1 !text-[#578B6A] !w-[12rem] !p-0 active:ring-0 focus:ring-0 border-0 focus:outline-none border-0"
+                  className="!text-2xl !font-poppins !font-extrabold !border-0 !m-1 !text-[#578B6A] !w-[20rem] !p-0 active:ring-0 focus:ring-0 border-0 focus:outline-none border-0"
                   labelProps={{
                     className: "hidden",
                   }}
@@ -160,13 +161,14 @@ export function TripNameBar(props) {
                 {/* <PencilSquareIcon className="w-5 h-5 m-1" /> */}
               </button>
             </div>
-            <div className="flex">
+            <div className="flex gap-3">
               {isDiscEditing ? ( // Render input field when editing is enabled
                 <Input
                   type="text"
+                  placeholder="Trip Description"
                   value={editableDisc}
                   onChange={(e) => setEditableDisc(e.target.value)}
-                  className="!text-1 !font-poppins !m-1 !text-[#5F647E] !border-0 !w-[12rem] !p-0 active:ring-0 focus:ring-0 focus:outline-none"
+                  className="!text-1 !font-poppins !m-1 !text-[#5F647E] !border-0 !w-[20rem] !p-0 active:ring-0 focus:ring-0 focus:outline-none"
                   labelProps={{
                     className: "hidden",
                   }}

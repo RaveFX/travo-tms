@@ -50,7 +50,9 @@ const BecomeServiceProvider = () => {
                 alt="Hotel Icon"
                 className="mx-auto w-fit h-fit mb-2"
               />
-              <h2 className="text-lg font-semibold mb-1">Hotel & Accomodation</h2>
+              <h2 className="text-lg font-semibold mb-1">
+                Hotel & Accomodation
+              </h2>
               {/* <button className="bg-[#22577A] text-white px-4 py-2 rounded hover:bg-[#22578A]">
                 Select
               </button> */}
@@ -99,7 +101,6 @@ const BecomeServiceProvider = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Step 1 */}
             <div className="flex flex-col items-center">
-              
               <img
                 src="main/request.png"
                 alt="Step 1 Icon"
@@ -107,13 +108,13 @@ const BecomeServiceProvider = () => {
               />
               <div className="text-2xl font-semibold mb-2">Fill the form</div>
               <p className="text-gray-600">
-                Sign up as a service provider by clicking the "Become a Service Provider" button.
+                Sign up as a service provider by clicking the "Become a Service
+                Provider" button.
               </p>
             </div>
 
             {/* Step 2 */}
             <div className="flex flex-col items-center">
-              
               <img
                 src="main/send.png"
                 alt="Step 2 Icon"
@@ -127,7 +128,6 @@ const BecomeServiceProvider = () => {
 
             {/* Step 3 */}
             <div className="flex flex-col items-center">
-              
               <img
                 src="main/verified.png"
                 alt="Step 3 Icon"
@@ -141,7 +141,6 @@ const BecomeServiceProvider = () => {
 
             {/* Step 4 */}
             <div className="flex flex-col items-center">
-              
               <img
                 src="main/paid.png"
                 alt="Step 3 Icon"
@@ -153,7 +152,7 @@ const BecomeServiceProvider = () => {
               </p>
             </div>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   );
