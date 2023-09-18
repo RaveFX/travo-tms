@@ -203,7 +203,7 @@ export default function App() {
         <Route path="/travel_guide_confirmed" element={<Travel_Guide_Confirmed />}></Route>
         <Route path="/travel_guide_profile" element={<Travel_Guide_Profile />}></Route>
         <Route path="/travel_guide_add_tour" element={<Travel_Guide_Add_Tour />}></Route>
-        <Route path="/travel_guide_edit_profile" element={<Travel_Guide_Edit_Profile />}></Route>
+        <Route path="/travel_guide_edit_profile/:userId" element={<Travel_Guide_Edit_Profile />}></Route>
         <Route path="/travel_guide_success"element={<Travel_Guide_Success />}></Route>
         
         
