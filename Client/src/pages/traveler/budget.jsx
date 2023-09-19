@@ -7,9 +7,7 @@ import TopNavbar from '../../components/web-component/Navbar';
 import { Button, CardBody } from "@material-tailwind/react";
 // import Cardss from "../../components/card";
 import axios from 'axios';
-import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
-
-import { Alert } from "@material-tailwind/react";
+import { Alert, Card, Input, Checkbox, Typography } from "@material-tailwind/react";
  
 function Icon() {
   return (
