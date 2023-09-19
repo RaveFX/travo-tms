@@ -24,6 +24,7 @@ import Hotel_reservations from "./pages/hotel/hotel_reservations";
 import Hotel_rooms from "./pages/hotel/hotel_rooms";
 import Hotel_reseravationDetails from "./pages/hotel/hotel_reseravationDetails";
 import Register_success from "./pages/main/register_success";
+import Hotel_transactions from "./pages/hotel/hotel_transactions";
 
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
@@ -144,6 +145,7 @@ export default function App() {
           element={<Hotel_reservations />}
         />
         <Route exact path="/hotelagent_rooms" element={<Hotel_rooms />} />
+        <Route exact path="/hotelagent_transactions" element={<Hotel_transactions />} />
         <Route
           exact
           path="/hotelagent_reservation_details"

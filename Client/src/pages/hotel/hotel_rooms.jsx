@@ -1,14 +1,7 @@
 import React from "react";
 import UserNav from "../../components/main/userNav";
 import SideBar from "../../components/main/sidebar";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Avatar,
-  Spinner,
-} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 
 function Hotel_rooms() {
   return (
@@ -23,6 +16,7 @@ function Hotel_rooms() {
             <h1 className="font-poppins text-white pb-3">The elegant luxury bedrooms in this gallery showcase custom interior 
             designs & decorating ideas. View pictures and find your
             perfect luxury bedroom design.</h1>
+            <Button className="bg-green">Add Rooms</Button>
             </div>
             </div>
      <div style={{marginTop:'480px',marginLeft:'30px'}}>
@@ -56,18 +50,24 @@ function Hotel_rooms() {
       className="w-full h-40 object-cover"
     />
     <div className="p-4">
-    <p className="text-gray-500 text-sm">Room Id : 12</p>
+    
       <h2 className="text-xl font-semibold">Deluxe Room</h2>
+      <p className="text-gray-500 text-sm">Room Id : 12</p>
       <p className="text-gray-500">Spacious room with a city view</p>
+      <span className="text-sm font-bold text-gray-500">
+      Rs.10000 / night
+    </span> 
+      <div className="mt-2 flex justify-between items-center">
       
-      <div className="mt-4 flex justify-between items-center">
-        <span className="text-sm font-bold text-gray-500">
-          Rs.10000 / night
-        </span>
         <button
            className="px-6 py-2  text-green rounded-full hover:bg-green hover:text-white"
         >
           Edit
+        </button>
+        <button
+           className="px-6 py-2  text-red-500 rounded-full hover:bg-red-500 hover:text-white"
+        >
+          Delete
         </button>
       </div>
     </div>
