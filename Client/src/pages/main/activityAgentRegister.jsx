@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TopNavbar from '../../components/web-component/Navbar'
+import TopNavbar from '../../components/web-component/Navbar';
+import { GoogleMap, LoadScript, Marker, useJsApiLoader } from '@react-google-maps/api';
+import PlacesAutocomplete, {
+  geocodeByLatLng,
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
+
+const containerStyle = {
+  width: '100%',
+  height: '500px',
+};
+
+const center = {
+  lat: 7.8731,
+  lng: 80.7718,
+};
+
+
 
 function ActivityAgentRegister() {
   const user_id = sessionStorage.getItem('user_id');
   let navigate = useNavigate();
 
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
+  const [markerPosition, setMarkerPosition] = useState(null);
+
   const [user, setUser] = useState({
-    longitude: "",
-    latitude: "",
+    longitude: null,
+    latitude: null,
     company_name: "",
     brn: "",
     contact_num: "",
@@ -28,6 +50,51 @@ function ActivityAgentRegister() {
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (markerPosition) {
+      reverseGeocode(markerPosition);
+    }
+  }, [markerPosition]);
+
+  const reverseGeocode = async (position) => {
+    try {
+      const { lat, lng } = position; // Destructure latitude and longitude from the position object
+      const geocoder = new window.google.maps.Geocoder(); // Create a Geocoder instance from the Google Maps JavaScript API
+      // Use the geocode method of the Geocoder instance to perform reverse geocoding
+      geocoder.geocode({ location: { lat, lng } }, (results, status) => {
+        if (status === 'OK' && results[0]) {// Check if the geocoding was successful and if there are results
+          setSearchValue(results[0].formatted_address);// Update the searchValue with the formatted address
+        } else {
+          console.error('Reverse geocode failed with status:', status);
+        }
+      });
+    } catch (error) {
+      console.error('Error reverse geocoding:', error);
+    }
+  };
+
+  const handlePlaceSelect = async (address) => {
+    try {
+      const results = await geocodeByAddress(address);
+      const latLng = await getLatLng(results[0]);
+      setSelectedPlace(latLng);
+    } catch (error) {
+      console.error('Error selecting place:', error);
+    }
+  };
+
+  const handleMarkerDrag = (e) => {
+    const newPosition = { lat: e.latLng.lat(), lng: e.latLng.lng() };
+    setMarkerPosition(newPosition);
+
+  // Update the user state with latitude and longitude
+  setUser({ ...user, latitude: newPosition.lat, longitude: newPosition.lng });
+  };
+
+  const autocompleteServiceOptions = {
+    componentRestrictions: { country: 'LK' },
   };
 
   const onSubmit = async (e) => {
@@ -62,13 +129,13 @@ function ActivityAgentRegister() {
       validationErrors.category = "Category is required";
     }
 
-    if (!user.longitude) {
-      validationErrors.longitude = "Longitude is required";
-    }
+    // if (!user.longitude) {
+    //   validationErrors.longitude = "Longitude is required";
+    // }
 
-    if (!user.latitude) {
-      validationErrors.latitude = "Latitude is required";
-    }
+    // if (!user.latitude) {
+    //   validationErrors.latitude = "Latitude is required";
+    // }
     
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -207,52 +274,64 @@ function ActivityAgentRegister() {
             </div>
 
             <div className="border-b border-gray-900/10 pb-12"></div>
+            <div className="relative mt-10">
+          <label htmlFor="location" className="block text-sm font-semibold leading-6 text-gray-900">
+            Location
+          </label>
+          <LoadScript
+            googleMapsApiKey="AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA"
+            libraries={['places']}
+          >
+          <PlacesAutocomplete
+          value={searchValue}
+          onChange={setSearchValue}
+          onSelect={handlePlaceSelect}
+          autocompleteService={autocompleteServiceOptions}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>
-              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
-                <div>
-                  <label
-                    htmlFor="longitude"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    Longitude
-                  </label>
-                  {errors.longitude && (
-                    <p className="text-red-500">{errors.longitude}</p>
-                  )}
-                  <div className="mt-2.5">
-                    <input
-                      type="text"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      name="longitude"
-                      value={longitude}
-                      onChange={(e) => onInputChange(e)}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="latitude"
-                    className="block text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    Latitude
-                  </label>
-                  {errors.latitude && (
-                    <p className="text-red-500">{errors.latitude}</p>
-                  )}
-                  <div className="mt-2.5">
-                    <input
-                      type="text"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      name="latitude"
-                      value={latitude}
-                      onChange={(e) => onInputChange(e)}
-                    />
-                  </div>
-                </div>
+              <input
+                {...getInputProps({
+                  placeholder: 'Search for a location...',
+                  className: 'location-search-input',
+                })}
+              style={{width:"500px"}}/>
+              <div className="autocomplete-dropdown-container">
+                {loading && <div>Loading...</div>}
+                {suggestions.map((suggestion) => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
               </div>
-              
             </div>
-
+          )}
+        </PlacesAutocomplete>
+         
+        <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={selectedPlace || center}
+        zoom={8}
+      >
+        {selectedPlace && (
+          <Marker
+            position={selectedPlace}
+            draggable={true}
+            onDragEnd={handleMarkerDrag}
+          />
+        )}
+      </GoogleMap>
+          </LoadScript>
+        </div>
             
 
             

@@ -31,7 +31,7 @@ public class HotelAgent {
     private String contact_num;
     private Integer longitude;
     private Integer latitude;
-    
+
 
     @Enumerated(EnumType.STRING)
     private Membership membership;

@@ -48,13 +48,7 @@ function HotelRegister() {
     setUser({ ...user, [e.target.name]: e.target.value});
   };
 
-  // const handleMapClick = (e) => {
-  //   const { latLng } = event;
-  //   const latitude = latLng.lat();
-  //   const longitude = latLng.lng();
 
-  //   setUser({ ...user, latitude, longitude });
-  // };
   useEffect(() => {
     if (markerPosition) {
       reverseGeocode(markerPosition);
