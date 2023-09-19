@@ -1,7 +1,9 @@
 package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.HotelReservationDTO;
+import com.Travo.Travobackend.model.dto.RoomDTO;
 import com.Travo.Travobackend.model.entity.Reservation;
+import com.Travo.Travobackend.model.entity.Room;
 import com.Travo.Travobackend.repository.ReservationRepository;
 import com.Travo.Travobackend.service.HotelService;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,11 @@ public class HotelController {
     @GetMapping("/reservationDetails/{reservationID}")
     public HotelReservationDTO getHotelReservationDetails(@PathVariable Integer reservationID){
         return hotelService.reservationDetails(reservationID);
+    }
+
+    @GetMapping("/rooms/{userID}")
+    public List<RoomDTO> getRooms(@PathVariable Integer userID){
+        return hotelService.hotelRooms(userID);
     }
 
 }
