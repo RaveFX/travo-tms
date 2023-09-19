@@ -65,7 +65,6 @@ export function SubscriptionPopover() {
   const [anchorEl, setAnchorEl] = useState(null);
   const link = `http://127.0.0.1:5173/travo/text${uniqueLink}`;
 
-  console.log("hiii");
 
   const loadTripinfo = async () => {
     try {

@@ -44,6 +44,7 @@ import Admin_Userprofile from "./pages/Admin/Admin_Userprofile";
 import Admin_Advertisments from "./pages/Admin/Admin_Advertisments";
 import Admin_Add_dvertisments from "./pages/Admin/Admin_Addadverisments";
 import Admin_Transaction from "./pages/Admin/Admin_Transaction";
+import Admin_userlistpage from "./pages/Admin/Admin_userlistpage"
 
 // Trineesha
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
@@ -162,17 +163,13 @@ export default function App() {
 
         {/* Thirani */}
         <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
-        <Route path="/admin_users" element={<Admin_Users />}>
-          {" "}
-        </Route>
+        <Route path="admin_users" element={<Admin_Users />} />
         <Route path="admin_requests" element={<Admin_Requests />} />
         <Route path="admin_userprofile" element={<Admin_Userprofile />} />
         <Route path="admin_advertisments" element={<Admin_Advertisments />} />
-        <Route
-          path="admin_add_advertisments"
-          element={<Admin_Add_dvertisments />}
-        />
+        <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
         <Route path="admin_transaction" element={<Admin_Transaction />} />
+        <Route path="admin_userlistpage" element={<Admin_userlistpage />}></Route>
 
         <Route path="store_dashboard" element={<Store_Dashboard />} />
         <Route path="store_myshop" element={<Store_Myshop />} />

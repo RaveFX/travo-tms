@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserInformationDTO {
     private Integer user_id;
+    private String fname;
+    private String lname;
     private String email;
     private String password;
     private String contact_num;

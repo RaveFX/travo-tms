@@ -5,8 +5,7 @@ import { connectToWebSocket, sendMessage } from "../../api/WebSocketService"; //
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-
+let client = null;
 
 function Chat() {
   const [messages, setMessages] = useState([]);
