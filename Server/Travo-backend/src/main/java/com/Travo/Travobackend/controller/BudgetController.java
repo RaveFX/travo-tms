@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import com.Travo.Travobackend.model.entity.Budget;
 import com.Travo.Travobackend.service.BudgetService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/budget")
 
@@ -19,16 +21,27 @@ public class BudgetController {
         return ResponseEntity.status(HttpStatus.CREATED).body(addedBudget);
     }
 
-    @GetMapping("/{budgetID}")
-    public ResponseEntity<Budget> getBudgetById(@PathVariable Integer budgetID){
-        Budget budget =budgetService.getBudgetById(budgetID);
+    @GetMapping("/getAllBudgets")
+    public ResponseEntity<List<Budget>> getAllBudgets() {
+    List<Budget> budgets = budgetService.getAllBudgets();
 
-        if(budget != null){
-            return ResponseEntity.ok(budget);
-        }else {
-            return ResponseEntity.notFound().build();
-        }
+    if (!budgets.isEmpty()) {
+        return ResponseEntity.ok(budgets);
+    } else {
+        return ResponseEntity.noContent().build();
     }
+    }
+
+    // @GetMapping("/{budgetID}")
+    // public ResponseEntity<Budget> getBudgetById(@PathVariable Integer budgetID){
+    //     Budget budget =budgetService.getBudgetById(budgetID);
+
+    //     if(budget != null){
+    //         return ResponseEntity.ok(budget);
+    //     }else {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    // }
 
     @PutMapping("/{budgetID}")
     public ResponseEntity<Budget> updateBudget(

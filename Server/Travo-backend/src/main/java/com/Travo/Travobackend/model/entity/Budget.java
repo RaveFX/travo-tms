@@ -22,6 +22,4 @@ public class Budget {
     private Date date;
     private String type;
     private Time time;
-
-
 }

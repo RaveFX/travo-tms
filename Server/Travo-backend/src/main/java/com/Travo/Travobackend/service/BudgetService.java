@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import com.Travo.Travobackend.model.dto.BudgetDTO;
 import com.Travo.Travobackend.model.entity.Budget;
 import com.Travo.Travobackend.repository.BudgetRepo;
+import java.util.List;
+
 @Service
 public class BudgetService {
     @Autowired
@@ -17,7 +19,6 @@ public class BudgetService {
         budget.setType(budgetDTO.getType());
         budget.setTime(budgetDTO.getTime());
         return budgetRepo.save(budget);
-
     }
 
     public Budget getBudgetById(Integer budgetID) {
@@ -49,8 +50,8 @@ public class BudgetService {
         return false; // budget not found
     }
 
-//    public Budget getAllBudgets() {
-//        return (Budget) budgetRepo.findAll();
-//    }
+    public List<Budget> getAllBudgets() {
+        return budgetRepo.findAll();
+    }
 }
 
