@@ -14,7 +14,7 @@ public class BudgetController {
     @Autowired
     private BudgetService budgetService;
     @PostMapping("/addBudget")
-    public ResponseEntity<Budget> addBudget(@RequestBody BudgetDTO budgetDTO){
+    public ResponseEntity<Budget> addBudget(@ModelAttribute BudgetDTO budgetDTO){
         Budget addedBudget = budgetService.addBudget(budgetDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedBudget);
     }
@@ -33,7 +33,7 @@ public class BudgetController {
     @PutMapping("/{budgetID}")
     public ResponseEntity<Budget> updateBudget(
             @PathVariable Integer budgetID,
-            @RequestBody BudgetDTO budgetDTO
+            @ModelAttribute BudgetDTO budgetDTO
     ){
         Budget updatedBudget = budgetService.updateBudget(budgetID,budgetDTO);
 
