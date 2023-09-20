@@ -26,27 +26,22 @@ function RoleChange() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="relative">
-            <div className="absolute top-40 left-0 right-0 text-center p-0 bg-black-100 text-white text-shadow-20 z-[100]">
+            <div className="absolute top-[100px] left-0 right-0 text-center p-0 bg-black-100 text-white text-shadow-20 z-[100]">
               <h1 className="text-4xl md:text-8xl font-semibold mb-4">
-                Become a Service Provider
-              </h1>
+                Request to Become a Service Provider
+                </h1>
               <p className="text-white mb-8">
                 Join our platform as a service provider and offer your travel
                 planning expertise to our users.
               </p>
-              <button className="bg-[#2AB57D] text-white px-4 py-2 font-semibold rounded hover:bg-[#2AB67D]">
-                Become a Service Provider
-              </button>
+              
             </div>
-            <div className=" absolute top-0 left-0 right-0 w-full h-[500px] z-0 object-cover bg-black opacity-70"></div>
-            <video
-              className="top-0 left-0 right-0 w-full h-[500px] z-0 object-cover bg-black-200"
-              autoPlay
-              loop
-              muted
-            >
-              <source src="main/video.mp4" type="video/mp4" />
-            </video>
+            <div className=" absolute top-0 left-0 right-0 w-full h-[400px] z-0 object-cover bg-black opacity-70"></div>
+            <img
+                src="traveler/apply.jpg"
+                alt="Guide Icon"
+                className="top-0 left-0 right-0 w-full h-[400px] z-0 object-cover bg-black-200"
+              />
           </div>
           {/* <div className="flex justify-center mt-[50px]">
             <h1 className="text-7xl font-bold text-[#57CC99]">
@@ -62,7 +57,7 @@ function RoleChange() {
               <source src="main/video.mp4" type="video/mp4" />
             </video>
           </div> */}
-          <div className="flex justify-center mt-[150px]">
+          <div className="flex justify-center mt-[30px]">
             {/* Role Selection Buttons */}
             <button
               className="bg-[#377A85] hover:scale-125 text-white font-bold py-9 px-12 rounded-lg m-8 flex flex-col items-center"
