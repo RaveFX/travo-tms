@@ -7,9 +7,7 @@ import TopNavbar from '../../components/web-component/Navbar';
 import { Button, CardBody } from "@material-tailwind/react";
 // import Cardss from "../../components/card";
 import axios from 'axios';
-import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
-
-import { Alert } from "@material-tailwind/react";
+import { Alert, Card, Input, Checkbox, Typography } from "@material-tailwind/react";
  
 function Icon() {
   return (
@@ -194,7 +192,7 @@ function Budgetform() {
           </div>
           <div className="flex flex-row gap-6">
             <div className="flex mb-4 gap-6">
-              <FileUpload />
+              {/* <FileUpload /> */}
             </div>
             <div className="flex mb-4 gap-6">
               <Button type="submit" className="bg-[#22577A] mt-6 mb-5 ">
