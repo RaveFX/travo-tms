@@ -58,6 +58,10 @@ function Community() {
     setPosts(updatedPosts);
   };
 
+  const navigateToCreatePost = () => {
+    navigate("/create-post"); // Use the URL path to your CreatePost component
+  };
+
   return (
     <div className="flex h-screen overflow-hidden">
       <Sidebar active="Community" />
@@ -73,6 +77,7 @@ function Community() {
                 className="h-[100px] w-[100px] rounded-full border-1 border-white"
               />
             </div>
+            <button onClick={navigateToCreatePost}>Create Post</button>
           </div>
           {/* Post Section */}
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
@@ -81,7 +86,7 @@ function Community() {
                 key={index}
                 className="flex md:flex-row flex-col justify-center bg-white rounded-lg shadow-md p-4"
               >
-                <div className="flex md:flex-row flex:col">
+                <div className="flex md:flex-row flex:col"> 
                   <img
                     src={post.media}
                     alt="Post Media"

@@ -80,6 +80,7 @@ import HotelDetails from "./pages/traveler/Hotels";
 import Hotel from "./pages/traveler/HotelDetails";
 import Community from "./pages/traveler/Community";
 import RoleChange from "./pages/traveler/ChangeRole";
+import CreatePost from "./pages/traveler/CreatePost";
 
 // RavinduJay
 import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
@@ -290,7 +291,7 @@ export default function App() {
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/TravelerDashboard" element={<TravelerDashboard />} />
+        <Route path="/traveler/Dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
@@ -300,6 +301,7 @@ export default function App() {
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
         <Route path="/traveler/change-role" element={<RoleChange />} />
+        <Route path="/create-post" element={<CreatePost />} />
 
 
         {/* RavinduJay */}

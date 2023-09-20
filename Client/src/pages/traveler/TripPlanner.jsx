@@ -155,6 +155,7 @@ function TripPlanner() {
               setIsSubSidebarOpen={setIsSubSidebarOpen}
               subSidebarState={subSidebarState}
               setSubSidebarState={setSubSidebarState}
+              Id={id}
             >
               <div>{selectedComponent}</div>
             </PlanStepper>

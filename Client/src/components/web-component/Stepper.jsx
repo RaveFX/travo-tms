@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../../api/axios";
 import Calendar from "./calander";
 import Itinerary from "../../pages/traveler/Itinerary";
 import { Saves } from "../../pages/traveler/Saves";
@@ -20,7 +21,34 @@ export function PlanStepper(props) {
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
-  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(null);
+
+  const handleNext = () => {
+    // if (isLastStep) return;
+    // if (activeStep === 0) {
+    //   const updateTripDetailsDates = async () => {
+    //     try {
+    //       let dates = {
+    //         start_date: from.toLocaleDateString(),
+    //         end_date: to.toLocaleDateString(),
+    //       };
+    //       let response = await axios.put(`/trips/dates/${Id}`, dates, {
+    //         headers: { "Content-Type": "application/json" },
+    //         withCredentials: true,
+    //       });
+    //       console.log("a", response);
+    //       //setResponse(response);
+    //       // setIsNameEditing(false);  // Save the edited name and disable editing mode
+    //     } catch (err) {
+    //       console.error(err);
+    //     }
+    //   };
+    //   console.log("b", activeStep);
+    //   updateTripDetailsDates();
+    // }
+    setActiveStep((cur) => cur + 1);
+  };
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
 
   // activeStep = props;
@@ -34,11 +62,14 @@ export function PlanStepper(props) {
     setSubSidebarState,
     active,
     children,
+    Id,
   } = props;
   let stepContent;
   switch (activeStep) {
     case 0:
-      stepContent = <Calendar />;
+      stepContent = (
+        <Calendar Id={Id} to={to} from={from} setFrom={setFrom} setTo={setTo} />
+      );
       setIsSubSidebarOpen(false);
       break;
     case 1:
