@@ -130,7 +130,7 @@ export function SubscriptionPopover() {
         </MenuItem>
         <MenuItem>
           <div className="flex gap-2">
-            <Input value={`http://127.0.0.1:5173/travo/text${uniqueLink}`} type="text" readOnly />
+            <Input value={`http://127.0.0.1:5173/travo/text/${tripId}/${uniqueLink}`} type="text" readOnly />
             <Button
               className={`${copySuccess ? 'bg-[#57CC99] disabled' : 'bg-[#F5F1F1]'
                 } font-poppins text-[#000000] hover:bg-[#57CC99] hover:shadow-[0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)] shadow-[0 2px 4px rgba(0,0,0,0.15)]`}
@@ -151,7 +151,7 @@ export function SubscriptionPopover() {
         <MenuItem>
           <div className="flex gap-2 mt-4">
             <a
-              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this link: http://127.0.0.1:5173/travo/text${uniqueLink}`)}`}
+              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`Check out this link: http://127.0.0.1:5173/travo/text/${tripId}/${uniqueLink}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] text-white p-2 rounded hover:bg-[#128C7E]"

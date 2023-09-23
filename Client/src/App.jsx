@@ -18,6 +18,7 @@ import ActivityAgentRegister from "./pages/main/activityAgentRegister";
 import GuideRegister from "./pages/main/guideRegister";
 import StoreManagerRegister from "./pages/main/storeManagerRegister";
 import VehicleRenterRegister from "./pages/main/vehicleRenterRegister";
+import Addtripsignup from "./pages/main/addtripsignin";
 import Hotel_dashboard from "./pages/hotel/hotel_dashboard";
 import Hotel_reviews from "./pages/hotel/hotel_reviews";
 import Hotel_reservations from "./pages/hotel/hotel_reservations";
@@ -115,6 +116,7 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/addtripsignin/:pathTripId" element={<Addtripsignup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
         <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
         <Route exact path="/service_provider" element={<ServiceProviders />} />
@@ -295,7 +297,7 @@ export default function App() {
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
-        <Route path="travo/text/trip/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
+        <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

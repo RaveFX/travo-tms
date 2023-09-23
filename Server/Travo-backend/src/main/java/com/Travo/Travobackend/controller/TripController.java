@@ -3,11 +3,13 @@ package com.Travo.Travobackend.controller;
 import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.model.entity.GroupMessages;
 import com.Travo.Travobackend.model.entity.TripMembers;
+import com.Travo.Travobackend.model.other.Response;
 import com.Travo.Travobackend.repository.GroupMessagesRepository;
 import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.service.TripService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -88,11 +90,18 @@ public class TripController {
         }
     }
 
-         @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
-         public boolean checkTrip(@PathVariable String tripId, @PathVariable String uniqueKey) {
-             System.out.println("8");
-                 return tripService.uniqueKeyExistsForTrip(tripId, uniqueKey);
-           }
+//         @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
+//         public boolean checkTrip(@PathVariable String tripId, @PathVariable String uniqueKey) {
+//             System.out.println("8");
+//                 return tripService.uniqueKeyExistsForTrip(tripId, uniqueKey);
+//           }
+
+
+    @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
+    public ResponseEntity<String> checkTrip(@PathVariable Integer tripId, @PathVariable String uniqueKey){
+        String result = tripService.checkTrip(tripId, uniqueKey);
+        return ResponseEntity.ok(result);
+    }
 
 
     @PostMapping("/group-messages/{tripId}")

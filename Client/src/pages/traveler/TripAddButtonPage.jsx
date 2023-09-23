@@ -1,52 +1,45 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 function TripAddButton() {
     const [tripId, setTripId] = useState(null);
     const [uniqueLink, setUniqueLink] = useState(null);
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        // Prevent multiple clicks while loading
         if (isLoading) {
             return;
         }
-
         const currentPath = window.location.pathname;
 
-        if (currentPath.startsWith('/travo/text/trip/')) {
+        if (currentPath.startsWith('/travo/text/')) {
             const pathParts = currentPath.split('/');
-            const pathTripId = pathParts[4];
-            const pathUniqueLink = pathParts[5];
+            const pathTripId = pathParts[3];
+            const pathUniqueLink = pathParts[4];
 
             setIsLoading(true);
 
-            // Make an API request to check if the tripId exists in the database
-            axios
-                .get(`http://localhost:8080/api/v1/trips/checkTrip/${pathTripId}/${pathUniqueLink}`)
+
+            axios.get(`http://localhost:8080/api/v1/trips/checkTrip/${pathTripId}/${pathUniqueLink}`)
                 .then((response) => {
-                    // if (response.data.exists && response.data.uniqueLink === pathUniqueLink) {
-
-                    //     setTripId(pathTripId);
-                    //     setUniqueLink(pathUniqueLink);
-
-                    // } else {
-                    //     setMessage('Something went wrong. Invalid URL.');
-                    // }
                     const exists = response.data;
-                    if (exists) {
-                        // The trip ID exists, you can continue with your logic
+                    console.log("Type of exists", typeof exists);
+                    console.log("Exists", exists);
+                    if (exists === 1) {
+                        navigate(`/addtripsignin/${pathTripId}`);
                     } else {
-                        // Handle the case where the trip ID does not exist
+                        setMessage('Something went wrong. Please try again later.............');
                     }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
-                    setMessage('Something went wrong. Please try again later.');
+                    setMessage('Something went wrong. Please later.');
                 })
                 .finally(() => {
-                    // Set loading state to false after the API request is complete
                     setIsLoading(false);
                 });
         } else {
