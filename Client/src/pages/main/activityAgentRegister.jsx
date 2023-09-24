@@ -279,7 +279,7 @@ function ActivityAgentRegister() {
             Location
           </label>
           <LoadScript
-            googleMapsApiKey="AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA"
+            googleMapsApiKey="KEY"
             libraries={['places']}
           >
           <PlacesAutocomplete
