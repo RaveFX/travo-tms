@@ -21,8 +21,9 @@ public class RoomJDBCDao {
         List<RoomDTO> hotelRooms = new ArrayList<>();
         params.put("userID", userID);
 
-        SQL.append("SELECT * FROM room\n                                     ");
-        SQL.append("WHERE hotel_id=:userID");
+        SQL.append("SELECT rooms.room_id, rooms.room_name, rooms.description, rooms.price FROM rooms\n                                     ");
+        SQL.append("INNER JOIN hotel_agent ON rooms.hotel_id = hotel_agent.hotel_id\n");
+        SQL.append("WHERE hotel_agent.user_id=:userID");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
