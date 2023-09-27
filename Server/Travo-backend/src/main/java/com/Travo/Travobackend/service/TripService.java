@@ -6,7 +6,7 @@ import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.repository.TripRepo;
 import com.Travo.Travobackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -7,7 +7,12 @@ import com.Travo.Travobackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,4 +34,51 @@ public class CommunityService {
     }
 
 
+    public Object Post(CommunityDTO communityDTO) {
+        Community existingPost = communityRepo.findById((long) communityDTO.getPost_id()).orElse(null);
+
+        if(existingPost != null){
+
+            System.out.println("Likes");
+            existingPost.setLikes(communityDTO.getLikes());
+            return communityRepo.save(existingPost);
+        }else{
+            return new CommunityDTO("Post not found");
+        }
+    }
+
+    public List<CommunityDTO> getAllPost() throws IOException {
+        List<Community> posts = communityRepo.findAll();
+        // Initialize CommunityDTO list
+        List<CommunityDTO> communityDTOList = new ArrayList<>();
+
+        String rootDirectory = System.getProperty("user.dir");
+        String imageUploadPath = rootDirectory + "/src/main/resources/static/posts/images";
+
+        //For each to traverse posts lists
+        for(Community post : posts){
+
+
+            //Get the listing object using the listing id
+            String imageName = communityRepo.findPostImageById(post.getPost_id());
+
+            //Add the images to send to the frontend
+            Path imagePath = Paths.get(imageUploadPath, imageName);
+            byte[] image = Files.readAllBytes(imagePath);
+
+            var c = CommunityDTO.builder()
+                    .post_id(post.getPost_id())
+                    .creator_id(post.getCreator_id())
+                    .description(post.getDescription())
+                    .Likes(post.getLikes())
+                    .image(image)
+                    .build();
+
+            communityDTOList.add(c);
+
+        }
+
+        return communityDTOList;
+        
+    }
 }

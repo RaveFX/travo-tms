@@ -25,29 +25,27 @@ export function PlanStepper(props) {
   const [to, setTo] = useState(null);
 
   const handleNext = () => {
-    // if (isLastStep) return;
-    // if (activeStep === 0) {
-    //   const updateTripDetailsDates = async () => {
-    //     try {
-    //       let dates = {
-    //         start_date: from.toLocaleDateString(),
-    //         end_date: to.toLocaleDateString(),
-    //       };
-    //       let response = await axios.put(`/trips/dates/${Id}`, dates, {
-    //         headers: { "Content-Type": "application/json" },
-    //         withCredentials: true,
-    //       });
-    //       console.log("a", response);
-    //       //setResponse(response);
-    //       // setIsNameEditing(false);  // Save the edited name and disable editing mode
-    //     } catch (err) {
-    //       console.error(err);
-    //     }
-    //   };
-    //   console.log("b", activeStep);
-    //   updateTripDetailsDates();
-    // }
-    setActiveStep((cur) => cur + 1);
+    if (isLastStep) return;
+    if (activeStep === 0) {
+      const updateTripDetailsDates = async () => {
+        try {
+          let dates = {
+            start_date: from,
+            end_date: to,
+          };
+          console.log("dates", dates);
+          let response = await axios.put(`/trips/dates/${Id}`, dates, {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          });
+          setActiveStep((cur) => cur + 1);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      updateTripDetailsDates();
+    }
+    //
   };
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
 

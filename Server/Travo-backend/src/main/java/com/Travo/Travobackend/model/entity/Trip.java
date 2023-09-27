@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -25,8 +26,8 @@ public class Trip {
     private TripState State;
 
     private int Trip_creatorID;
-    private LocalDate Created_date;
-    private LocalDate Start_Date;
-    private LocalDate End_Date;
+    private Timestamp Created_date;
+    private Timestamp Start_Date;
+    private Timestamp End_Date;
     private String Description;
 }

@@ -88,6 +88,7 @@ public class AuthenticationController {
             HttpServletResponse response,
             @RequestBody AuthenticationRequest request
     ){
+        System.out.println("awa");
         return ResponseEntity.ok(service.authenticate(response,request));
     }
 

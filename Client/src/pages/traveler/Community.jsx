@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
+import { Button } from "@material-tailwind/react";
 function Community() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [postDetails, setPostDetails] = useState([]);
 
   // const handleNavigate = () => {
   //   // Example: Navigate to '/other-page' when the button is clicked
@@ -14,15 +17,15 @@ function Community() {
   // };
 
   //   const [activeTab, setActiveTab] = React.useState("all trips");
-//   const handleCreateTripClick = () => {
-//     setIsOpen(true);
-//   };
+  //   const handleCreateTripClick = () => {
+  //     setIsOpen(true);
+  //   };
 
-//   const handleOpenCalander = () => {
-//     setIsOpen(true);
-//   };
+  //   const handleOpenCalander = () => {
+  //     setIsOpen(true);
+  //   };
 
-//   const posts = [
+  //   const posts = [
   const [posts, setPosts] = useState([
     {
       profileImage: "/traveler/trip.jpg", // Replace with your image URLs
@@ -45,50 +48,94 @@ function Community() {
     // Add more posts here...
   ]);
 
-  const handleLikeClick = (index) => {
-    const updatedPosts = [...posts];
-    updatedPosts[index].isLiked = !updatedPosts[index].isLiked;
+  const handleLikeClick = async (postId) => {
+    try {
+      const updatedPostDetails = postDetails.map((post) => {
+        if (post.id === postId) {
+          const updatedPost = { ...post };
+          updatedPost.isLiked = !updatedPost.isLiked;
+          updatedPost.likes += updatedPost.isLiked ? 1 : -1;
+          return updatedPost;
+        }
+        return post;
+      });
+      setPostDetails(updatedPostDetails);
 
-    if (updatedPosts[index].isLiked) {
-      updatedPosts[index].likes += 1;
-    } else {
-      updatedPosts[index].likes -= 1;
+      // Send a request to update likes on the server
+      await axios.put(`/community/like-post/${postId}`);
+    } catch (error) {
+      console.error("Error updating post like:", error);
     }
-
-    setPosts(updatedPosts);
   };
 
   const navigateToCreatePost = () => {
     navigate("/create-post"); // Use the URL path to your CreatePost component
   };
 
+  useEffect(() => {
+    const getPostDetails = async () => {
+      try {
+        let response = await axios.get(`/community/all-post`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        console.log(response.data);
+        setPostDetails(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getPostDetails();
+
+    // const posts = postDetails.map()
+    // const getImage = async (id=posts.creator_id) =>{
+    //   try {
+    //     let response = await axios.get(`/post_img/${id}`, {
+    //       headers: { "Content-Type": "application/json" },
+    //       withCredentials: true,
+    //     });
+    //     console.log(response.data);
+    //     setPostDetails(response.data);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // }
+    // console.log("Before");
+    // getImage();
+    // console.log("After");
+  }, []);
+
   return (
     <div className="flex h-screen overflow-hidden">
       <Sidebar active="Community" />
-      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 ">
+      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 mb-4">
         <TopNavbar />
-        <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
+        <div
+          className="overflow-y-scroll min-h-[100vh] mb-4"
+          style={{ scrollbarWidth: "none" }}
+        >
           {/* Cover Photo and Profile Picture Section */}
           <div className="relative h-[22%] bg-black coverImage ">
-            <div className="absolute bottom-0 left-8 md:left-6 pb-1 md:pb-1">
+            <div className="absolute bottom-2 left-8 md:left-6 pb-1 md:pb-1">
               <img
                 src="/traveler/trip.jpg"
                 alt="Profile"
                 className="h-[100px] w-[100px] rounded-full border-1 border-white"
               />
             </div>
-            <button onClick={navigateToCreatePost}>Create Post</button>
+            <Button onClick={navigateToCreatePost} className="absolute top-[90PX] right-0 h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold">Create Post</Button>
           </div>
           {/* Post Section */}
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
-            {posts.map((post, index) => (
+            {postDetails.map((post, index) => (
               <div
                 key={index}
                 className="flex md:flex-row flex-col justify-center bg-white rounded-lg shadow-md p-4"
               >
-                <div className="flex md:flex-row flex:col"> 
+                <div className="flex md:flex-row flex:col">
                   <img
-                    src={post.media}
+                    src={`data:application/img;base64,${post.image}`}
                     alt="Post Media"
                     className="mt-4 object-cover md:w-[500px] md:h-[600px] w-[250px] h-[300px] rounded-lg"
                   />
@@ -105,8 +152,8 @@ function Community() {
                     </div>
                     <hr className="my-2" />
                     <div className="flex flex-col justify-between h-full space-x-4">
-                      <p className="mt-1 p-4 pt-0 w-fill text-gray-800">
-                        {post.caption}
+                      <p className="mt-1 p-4 pt-0 w-[600px] text-gray-800">
+                        {post.description}
                       </p>
                       <button
                         onClick={() => handleLikeClick(index)}

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -19,11 +20,11 @@ public class TripDTO {
     @JsonProperty("state")
     private String State;
     @JsonProperty("created_date")
-    private LocalDate Created_date;
+    private Timestamp Created_date;
     @JsonProperty("start_date")
-    private LocalDate Start_Date;
+    private Timestamp Start_Date;
     @JsonProperty("end_date")
-    private LocalDate End_Date;
+    private Timestamp End_Date;
     @JsonProperty("description")
     private String Description;
 }

@@ -70,7 +70,6 @@ public class TripController {
             @PathVariable Long tripID,
             @RequestBody TripDTO tripDTO
     ){
-        System.out.println("ssss");
         Trip updateTrip = tripService.updateDate(tripID, tripDTO);
 
         if(updateTrip != null){
