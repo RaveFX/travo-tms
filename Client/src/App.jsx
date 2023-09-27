@@ -104,13 +104,14 @@ import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
+import Newhome from "./pages/main/newhome";
 
 export default function App() {
   return (
     <>
       <Routes>
         {/* Tharindi */}
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/" element={<Newhome />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
@@ -291,7 +292,7 @@ export default function App() {
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/traveler/Dashboard" element={<TravelerDashboard />} />
+        <Route path="/TravelerDashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
@@ -320,6 +321,7 @@ export default function App() {
 
         {/* RavinduRave */}
         {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
+        <Route exact path="/Newhome" element={<Newhome />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />

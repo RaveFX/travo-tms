@@ -26,17 +26,21 @@ function Icon() {
   );
 }
  
-function FormAlert() {
+function SubmitAlert() {
   return (
     <Alert
       icon={<Icon />}
       className="rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
     >
-      Successfully Submitted
+      Expense Recorded Successfully!
     </Alert>
-  );
-}
 
+   
+  );
+  
+  
+}
+ 
 
 const data = [
   {
@@ -150,7 +154,7 @@ function Budgetform() {
     // Get the form data
     const formData = new FormData(e.target);
 
-    FormAlert();
+    
 
     try {
       const response = await axios.post('http://localhost:8080/api/v1/budget/addBudget', formData, {
@@ -159,6 +163,7 @@ function Budgetform() {
         },
       });
       console.log(response);
+      <SubmitAlert />;
       // Handle the response here (e.g., show a success message)
       console.log('Response: Success', response.data);
     } catch (error) {
@@ -187,8 +192,8 @@ function Budgetform() {
               <option >Other</option>
             </select>
 
-            {/* <Input type="date" name="date" id="date" size="lg" placeholder="Date" /> */}
-            {/* <Input name="time" id="time" size="lg" placeholder="Time" /> */}
+           <Input type="date" name="date" id="date" size="lg" placeholder="Date" /> 
+           
           </div>
           <div className="flex flex-row gap-6">
             <div className="flex mb-4 gap-6">
@@ -232,10 +237,10 @@ function Budget() {
               </div>
               <div
                 className="
-            mt-5 ml-10 mb-5 flex"
+              mt-5 ml-10 "
               >
                 <Link to="/Expenses">
-                  <Button className="bg-[#22577A] mb-5 text-white font-poppins h-12">
+                  <Button className="bg-[#22577A] text-white font-poppins ">
                     View All Expenses
                   </Button>
                 </Link>
