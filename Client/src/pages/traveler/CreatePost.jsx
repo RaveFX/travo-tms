@@ -12,6 +12,37 @@ function CreatePost() {
   const [autocompleteService, setAutocompleteService] = useState(null);
   const MAX_WORD_LIMIT = 200;
 
+  const images = [];
+
+  const handleImageUpload = async () => {
+    const generateUniqueFileName = (file) => {
+      const timestamp = new Date().getTime();
+      const randomString = Math.random().toString(36).substring(2, 7);
+      const originalFileName = file.name;
+      const fileExtension = originalFileName.substring(
+        originalFileName.lastIndexOf(".")
+      );
+      return `${timestamp}_${randomString}${fileExtension}`;
+    };
+
+    try {
+      let imagename = generateUniqueFileName(selectedImage);
+      console.log(imagename);
+      const formData = new FormData();
+      formData.append("image", selectedImage, imagename);
+
+      const response = await axios.post("/community/upload-image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return imagename; // Assuming the backend returns the image URL.
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      throw error;
+    }
+  };
   useEffect(() => {
     if (window.google) {
       setAutocompleteService(
@@ -20,28 +51,27 @@ function CreatePost() {
     }
   }, []);
 
-  const handlePostSubmit = () => {
-    const formData = new FormData();
-    formData.append("creator_id", sessionStorage.getItem("user_id")); // Replace with the actual creator_id
-    formData.append("post_img", selectedImage); // Replace with the selectedImage file
-    formData.append("description", postText);
-    formData.append("likes", 0); // You can set the initial likes value
+  const handlePostSubmit = async () => {
+    try {
+      const imageUrl = await handleImageUpload();
+      console.log("Image URL:", imageUrl);
 
-    axios
-      .post("/community/create-post", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Set the content type for multi-part form data
-        },
-      })
-      .then((response) => {
-        // Handle the successful response from the backend
-        console.log("Post created successfully:", response.data);
-        // Reset form fields or navigate to another page
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error("Error creating post:", error);
-      });
+      const postData = {
+        creator_id: sessionStorage.getItem("user_id"), // Replace with the actual creator_id
+        post_img: imageUrl, // Use the image URL obtained from the upload
+        description: postText,
+        likes: 0,
+        location: location,
+      };
+
+      const response = await axios.post("/community/create-post", postData);
+
+      console.log("Post created successfully:", response.data);
+      // Reset form fields or navigate to another page
+    } catch (error) {
+      // Handle errors here
+      console.error("Error creating post:", error);
+    }
 
     setSelectedImage(null);
     setPostText("");
@@ -65,11 +95,10 @@ function CreatePost() {
     e.preventDefault();
   };
 
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setSelectedImage(file);
-    }
+  const handleFileInputChange = (event) => {
+    const { name, files } = event.target;
+    const selectedFile = files[0];
+    setSelectedImage(selectedFile);
   };
 
   const handleLocationChange = (e) => {
@@ -120,6 +149,7 @@ function CreatePost() {
                     <input
                       type="file"
                       accept="image/*"
+                      name="images"
                       onChange={handleFileInputChange}
                       className="hidden"
                     />
