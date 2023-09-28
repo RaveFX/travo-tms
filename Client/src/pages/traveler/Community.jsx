@@ -3,9 +3,9 @@ import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
-import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as OutlineHeartIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
-import { Button } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 function Community() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +72,10 @@ function Community() {
     navigate("/create-post"); // Use the URL path to your CreatePost component
   };
 
+  const navigateToProfile = () => {
+    navigate("/community-profile"); // Use the URL path to your CreatePost component
+  };
+
   useEffect(() => {
     const getPostDetails = async () => {
       try {
@@ -88,45 +92,41 @@ function Community() {
 
     getPostDetails();
 
-    // const posts = postDetails.map()
-    // const getImage = async (id=posts.creator_id) =>{
-    //   try {
-    //     let response = await axios.get(`/post_img/${id}`, {
-    //       headers: { "Content-Type": "application/json" },
-    //       withCredentials: true,
-    //     });
-    //     console.log(response.data);
-    //     setPostDetails(response.data);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // }
-    // console.log("Before");
-    // getImage();
-    // console.log("After");
+    
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden ">
       <Sidebar active="Community" />
       <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 mb-4">
         <TopNavbar />
         <div
-          className="overflow-y-scroll min-h-[100vh] mb-4"
+          className="overflow-y-scroll min-h-screen mb-4"
           style={{ scrollbarWidth: "none" }}
         >
           {/* Cover Photo and Profile Picture Section */}
-          <div className="relative h-[22%] bg-black coverImage ">
+          <div className="relative h-[22%] ">
+          <div className="absolute inset-0 bg-black bg-opacity-90 coverImage"></div>
             <div className="absolute bottom-2 left-8 md:left-6 pb-1 md:pb-1">
+            
+
               <img
                 src="/traveler/trip.jpg"
                 alt="Profile"
                 className="h-[100px] w-[100px] rounded-full border-1 border-white"
               />
             </div>
-            <Button onClick={navigateToCreatePost} className="absolute top-[90PX] right-0 h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold">Create Post</Button>
+            <Button
+            onClick={navigateToProfile}
+            className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow: bg-blur hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold ">
+            {" "}
+            <Typography >Go to Profile</Typography>
+            
+          </Button>
+            
           </div>
           {/* Post Section */}
+          <Button onClick={navigateToCreatePost} className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold animated-button"> <PlusIcon className="w-7 h-7"/></Button>
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
             {postDetails.map((post, index) => (
               <div
@@ -143,7 +143,7 @@ function Community() {
                     <div className="flex items-center space-x-4">
                       <img
                         src={post.profileImage}
-                        alt={`${post.username}'s Profile`}
+                        alt={`${post.creator_id}'s Profile`}
                         className="h-6 w-6 rounded-full"
                       />
                       <span className="font-semibold text-lg">

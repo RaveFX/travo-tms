@@ -47,8 +47,14 @@ public class CommunityService {
         }
     }
 
-    public List<CommunityDTO> getAllPost() throws IOException {
-        List<Community> posts = communityRepo.findAll();
+    // Function getPost with parameter id with default value null
+     public List<CommunityDTO> getAllPost(Long creatorId) throws IOException {
+         List<Community> posts;
+         if (creatorId == null) {
+            posts = communityRepo.findAll();
+        } else {
+            posts = communityRepo.findPostsByCreatorId(creatorId);
+        }
         // Initialize CommunityDTO list
         List<CommunityDTO> communityDTOList = new ArrayList<>();
 
@@ -61,6 +67,8 @@ public class CommunityService {
 
             //Get the listing object using the listing id
             String imageName = communityRepo.findPostImageById(post.getPost_id());
+
+
 
             //Add the images to send to the frontend
             Path imagePath = Paths.get(imageUploadPath, imageName);
@@ -79,6 +87,9 @@ public class CommunityService {
         }
 
         return communityDTOList;
+
+        
         
     }
+
 }

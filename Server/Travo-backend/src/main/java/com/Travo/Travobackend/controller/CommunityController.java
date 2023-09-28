@@ -46,13 +46,24 @@ public class CommunityController {
    @GetMapping("all-post")
     public ResponseEntity<List<CommunityDTO>> getAllPost() throws IOException {
 
-        List<CommunityDTO> community = communityService.getAllPost();
+        List<CommunityDTO> community = communityService.getAllPost(null);
         if(community != null){
             return ResponseEntity.ok(community);
         }else {
             return ResponseEntity.ok(null);
         }
     }
+
+    @GetMapping("/posts-by-creator/{creatorId}")
+    public ResponseEntity<List<CommunityDTO>> getPostsByCreatorId(@PathVariable Long creatorId) {
+        try {
+            List<CommunityDTO> posts = communityService.getAllPost(creatorId);
+            return ResponseEntity.ok(posts);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
     //Function to get the images
 //    @GetMapping("/post_img/{id}")

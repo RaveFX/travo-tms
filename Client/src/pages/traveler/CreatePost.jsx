@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
-import { PhotoIcon } from "@heroicons/react/24/outline";
+import { 
+  PhotoIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 function CreatePost() {
   const navigate = useNavigate();
@@ -76,6 +79,8 @@ function CreatePost() {
     setSelectedImage(null);
     setPostText("");
     setLocation("");
+
+    navigate("/traveler/community");
   };
 
   const updateWordCount = () => {
@@ -126,7 +131,15 @@ function CreatePost() {
   return (
     <div className="flex h-screen justify-center items-center bg-[#D9D9D9]">
       <div className="bg-white p-8 rounded-lg shadow-md w-[600px] flex flex-col">
+        <div className="flex justify-between">
         <h1 className="text-1xl font-semibold mb-4">Create a Post</h1>
+        <XMarkIcon
+          className="w-5 h-5 cursor-pointer"
+          onClick={() => {
+            navigate("/traveler/community");
+          }}
+        />
+        </div>
         <div className="flex">
           <div className="w-1/2 pr-4">
             <div

@@ -55,4 +55,10 @@ public class ImageService {
         return communityRepo.findPostImageById(id);
 
     }
+
+    public String getUserImageName(Long id) {
+
+        return communityRepo.findPostsByCreatorId(id).toString();
+
+    }
 }

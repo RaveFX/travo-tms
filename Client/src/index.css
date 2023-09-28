@@ -46,6 +46,23 @@
 }
 
 .coverImage {
-  background-size: cover;
-  background: url('../public/traveler/hero.png') no-repeat center;
+  background-size:contain;
+  background: url('../public/traveler/cover1.jpg') no-repeat center;
+  background-blend-mode:overlay;
+  background-color: #797979;
+  background-color: opacity 0;
+}
+
+.animated-button {
+  animation: zoomInOut 1s infinite alternate; /* Add the desired animation */
+  transform-origin: center; /* Zoom from the center of the button */
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Adjust this value to control the zoom level */
+  }
 }
