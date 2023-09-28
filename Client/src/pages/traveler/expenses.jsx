@@ -143,7 +143,7 @@ function ExpenseTable() {
                   </td>
                   <td className={classes}>
                     <div className="flex items-center gap-3">
-                      {/* You can add code here to display the "Date" information */}
+                      {budget.date}
                     </div>
                   </td>
                   <td className={classes}>
@@ -288,10 +288,10 @@ function Expenses() {
   return (
     <>
       <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className="fixed">
+        <div className="">
           <Sidebar />
         </div>
-        <div className="ml-[18.25%] flex flex-col w-full">
+        <div className="flex flex-col w-full">
           <div>
             <TopNavbar />
           </div>

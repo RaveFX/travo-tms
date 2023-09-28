@@ -1,0 +1,55 @@
+package com.Travo.Travobackend.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import org.hibernate.annotations.GenericGenerator;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Getter
+@AllArgsConstructor
+
+@Data
+@Entity
+@Table(name = "files")
+
+public class DBFile {
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+
+    private String fileName;
+
+    private String fileType;
+
+    @Lob
+    private byte[] data;
+
+    public DBFile() {
+
+    }
+
+    public DBFile(String fileName, String fileType, byte[] data) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+}

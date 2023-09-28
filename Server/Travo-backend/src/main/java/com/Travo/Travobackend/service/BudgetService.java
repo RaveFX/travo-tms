@@ -17,7 +17,7 @@ public class BudgetService {
         budget.setCost(budgetDTO.getCost());
         budget.setDate(budgetDTO.getDate());
         budget.setType(budgetDTO.getType());
-        budget.setTime(budgetDTO.getTime());
+        budget.setReceipt(budgetDTO.getReceipt());
         return budgetRepo.save(budget);
     }
 
@@ -33,7 +33,7 @@ public class BudgetService {
             existingBudget.setCost(budgetDTO.getCost());
             existingBudget.setDate(budgetDTO.getDate());
             existingBudget.setType(budgetDTO.getType());
-            existingBudget.setTime(budgetDTO.getTime());
+            existingBudget.setReceipt(budgetDTO.getReceipt());
 
             return budgetRepo.save(existingBudget);
         }

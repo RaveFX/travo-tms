@@ -19,7 +19,8 @@ public class Budget {
     private int id;
     private String cause;
     private int cost;
-    private Date date;
+    private String date;
     private String type;
-    private Time time;
+    private String receipt;
+
 }
