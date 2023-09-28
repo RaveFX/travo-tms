@@ -1,5 +1,5 @@
 import React from "react";
-import Newnav from "../../components/main/newnav";
+import TopNavbar from '../../components/web-component/Navbar'
 import {
   Card,
   CardHeader,
@@ -51,7 +51,7 @@ const BackgroundBlogCard = () => {
 function Register_success() {
   return (
     <div>
-      <Newnav />
+    <TopNavbar />
       <BackgroundBlogCard />
     </div>
   );

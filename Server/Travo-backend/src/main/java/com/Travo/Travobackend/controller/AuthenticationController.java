@@ -29,6 +29,27 @@ public class AuthenticationController {
 //        return ResponseEntity.ok(service.checkStore(userID));
 //    }
 
+    @GetMapping("/checkGuide/{userID}")
+    public ResponseEntity<Response> checkGuide(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkGuide(userID));
+    }
+
+    @GetMapping("/checkHotel/{userID}")
+    public ResponseEntity<Response> checkHotel(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkHotel(userID));
+    }
+
+    @GetMapping("/checkActivityAgent/{userID}")
+    public ResponseEntity<Response> checkActivityAgent(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkActivityAgent(userID));
+    }
+
+    @GetMapping("/checkVehicleRenter/{userID}")
+    public ResponseEntity<Response> checkVehicleRenter(@PathVariable Integer userID){
+        return ResponseEntity.ok(service.checkVehicleRenter(userID));
+    }
+
+
     @GetMapping("/checkBRN/{brn}")
     public ResponseEntity<Response> checkBrn(@PathVariable String brn) {
         return ResponseEntity.ok(service.checkBrn(brn));

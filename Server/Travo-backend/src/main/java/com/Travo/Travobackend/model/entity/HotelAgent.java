@@ -32,6 +32,7 @@ public class HotelAgent {
     private Integer longitude;
     private Integer latitude;
 
+
     @Enumerated(EnumType.STRING)
     private Membership membership;
 

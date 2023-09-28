@@ -425,6 +425,8 @@ const Order = () => {
 }
 
 export default function Dashboard() {
+    const role = sessionStorage.getItem('role');
+    const user_id = sessionStorage.getItem('user_id');
     const dashs = [
         { title: "Total Sale", src: client, amount: "124" },
         { title: "Total Expenses", src: complete, amount: "45" },
@@ -444,7 +446,7 @@ export default function Dashboard() {
                                 {/* <div className='m-5'> */}
                                 {/* <img src={people01} alt="people01" className='justify-start w-[60px] h-[60px]' /> */}
                                 <div className=' mx-2 mr-[8vh] m-3'>
-                                    <p className='text-3xl'>Hi, Sam store</p>
+                                    <p className='text-3xl'>Hi, {user_id} store</p>
                                     <p className=''>Store manager</p>
                                 </div>
                                 {/* </div> */}

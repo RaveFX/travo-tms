@@ -14,6 +14,7 @@ function Hotel_dashboard() {
           <h1 className="text-3xl font-poppins font-extrabold m-4 text-[#2C2738]">
             Hotel Dashboard - {user_id}
           </h1>
+          
         </div>
       </div>
     </div>

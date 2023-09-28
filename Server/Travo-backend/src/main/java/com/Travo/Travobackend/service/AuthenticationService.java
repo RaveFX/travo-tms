@@ -84,13 +84,100 @@ public class AuthenticationService {
         }
     }
 
-//    public Response checkStore(Integer userID){
-//        var store = storeManagerRepository.findByUserId(userID);
+    public Response checkStore(Integer userID){
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var store = storeManagerRepository.findByUserId(user);
+        if (store.isPresent()){
+            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+            if(storeActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
+        }else{
+            return GlobalService.response("Error", "acc doesn't exists");
+        }
+    }
+
+    public Response checkGuide(Integer userID){
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var guide = guideRepository.findByUserId(user);
+        if (guide.isPresent()){
+            var guideActive = guideRepository.findByUserIdAndStatus(user);
+            if(guideActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
+        }else{
+            return GlobalService.response("Error", "acc doesn't exists");
+        }
+    }
+
+    public Response checkHotel(Integer userID){
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var hotel = hotelAgentRepository.findByUserId(user);
+        if (hotel.isPresent()){
+            var hotelActive = hotelAgentRepository.findByUserIdAndStatus(user);
+            if(hotelActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
+        }else{
+            return GlobalService.response("Error", "acc doesn't exists");
+        }
+    }
+
+    public Response checkActivityAgent(Integer userID){
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var agent = activityAgentRepository.findByUserId(user);
+        if (agent.isPresent()){
+            var agentActive = activityAgentRepository.findByUserIdAndStatus(user);
+            if(agentActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
+        }else{
+            return GlobalService.response("Error", "acc doesn't exists");
+        }
+    }
+
+    public Response checkVehicleRenter(Integer userID){
+        Optional<User> userOptional = repository.findById(userID);
+        User user = userOptional.get();
+        var renter = vehicleRenterRepository.findByUserId(user);
+        if (renter.isPresent()){
+            var renterActive = vehicleRenterRepository.findByUserIdAndStatus(user);
+            if(renterActive.isPresent()) {
+                return GlobalService.response("Active", "acc active");
+            }else{
+                return GlobalService.response("Pending", "acc pending");
+            }
+        }else{
+            return GlobalService.response("Error", "acc doesn't exists");
+        }
+    }
+
+//    public Response checkVehicleRenter(Integer userID){
+//        Optional<User> userOptional = repository.findById(userID);
+//        User user = userOptional.get();
+//        var store = guideRepository.findByUserId(user);
 //        //StoreManager store = serviceProviderJDBCDao.findByUser(userID);
 //        if (store.isPresent()){
-//            return GlobalService.response("Success", "acc doesn't exists");
+//            var storeActive = storeManagerRepository.findByUserIdAndStatus(user);
+//            if(storeActive.isPresent()) {
+//                return GlobalService.response("Active", "acc active");
+//            }else{
+//                return GlobalService.response("Pending", "acc pending");
+//            }
 //        }else{
-//            return GlobalService.response("Error", "acc exists");
+//            return GlobalService.response("Error", "acc doesn't exists");
 //        }
 //    }
 

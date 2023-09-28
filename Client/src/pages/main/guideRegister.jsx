@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavWhite from "../../components/main/navWhite";
+import TopNavbar from '../../components/web-component/Navbar'
 
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
@@ -11,6 +11,7 @@ const mobileRegex = /^(?:\+94|0)(?:\d{9})$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 function GuideRegister() {
+  const user_id = sessionStorage.getItem('user_id');
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -46,12 +47,12 @@ function GuideRegister() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/api/v1/auth/register/guide/855", user);
-    navigate("/");
+    await axios.post(`http://localhost:8080/api/v1/auth/register/guide/${user_id}`, user);
+    navigate("/register_success");
   };
   return (
     <div className="py-1 sm:py-20">
-      <NavWhite />
+    <TopNavbar />
       <div className="mx-auto grid max-w-9xl gap-x-8 gap-y-20 px-6 lg:px-0 lg:mr-20 xl:grid-cols-2">
         <div className="max-w-3xl">
           <div className="mx-auto max-w-2xl text-center">
