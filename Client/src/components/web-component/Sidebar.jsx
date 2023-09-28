@@ -143,7 +143,7 @@ export default function Sidebar(props) {
         {navList.map((item, key) => (
           <React.Fragment key={key}>
             <Link
-              to={`/traveler/${item.link}`}
+              to={`/${item.link}`}
               className="w-[100%] !style:none"
               key={key}
             >
