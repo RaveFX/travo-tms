@@ -299,7 +299,7 @@ export default function App() {
         {/* Sanduni */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
-        <Route path="/traveler/trip-planner" element={<TripPlanner />} />
+        <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />

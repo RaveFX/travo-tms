@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
@@ -19,11 +21,21 @@ import {
 } from "@heroicons/react/24/outline";
 
 function TripPlanner() {
+  const { id } = useParams();
+  const [details,setDetails]=useState([]);
+  useEffect(() => {
+    loadDetails();
+  },[]); 
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleBackClick = () => {
     // Navigate to the previous page or route when the "Back" button is clicked
     navigate("/mytrips");
+  };
+
+  const loadDetails = async () => {
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+    setDetails(result.data);
   };
 
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
@@ -88,7 +100,8 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar />
+            <TripNameBar trip_name={details.trip_name} description={details.description}/>
+            
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}

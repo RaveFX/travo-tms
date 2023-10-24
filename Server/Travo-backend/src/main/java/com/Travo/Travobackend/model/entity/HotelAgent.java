@@ -46,5 +46,10 @@ public class HotelAgent {
     @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
     private Set<Room> room = new HashSet<>();
 
+    @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
+    private Set<TripHotel> tripHotels = new HashSet<>();
+
+
+
 
 }

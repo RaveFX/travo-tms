@@ -15,9 +15,10 @@ import {
 import { PencilSquareIcon, UserCircleIcon, UserPlusIcon, CalendarDaysIcon} from "@heroicons/react/24/outline";
 
 
-export function TripNameBar(props) {
+export function TripNameBar({ trip_name, description }) {
   
-  const {isSubSidebarOpen,isMemberOpen, setIsMemberOpen} = props;
+  const displayTripName = trip_name || 'Trip Name Goes here';
+  const displayTripDescription = description || 'Description for the trip';
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   // const [isMemberOpen, setMemberOpen] = useState(false);
@@ -42,12 +43,12 @@ export function TripNameBar(props) {
       <div className="flex flex-wrap items-center justify-between gap-4 text-blue-gray-900">
         <div className="relative flex flex-col w-full gap-0.5 md:w-max rounded-full">
             <div className='flex justify-center'>
-               <h1 className='text-2xl font-poppins font-extrabold m-1 text-[#578B6A]'>Trip Name Goes here</h1>
+               <h1 className='text-2xl font-poppins font-extrabold m-1 text-[#578B6A]'>{displayTripName}</h1>
                <button><PencilSquareIcon  className='w-5 h-5 m-1'/></button>
 
             </div>
             <div className='flex'>
-              <p className='text-1 font-poppins m-1 text-[#5F647E]'>Description for the trip</p>
+              <p className='text-1 font-poppins m-1 text-[#5F647E]'>{displayTripDescription}</p>
               <button className=''><PencilSquareIcon  className='w-4 h-4 m-1'/></button>
             </div>
                     

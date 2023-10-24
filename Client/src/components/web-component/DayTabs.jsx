@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import {
   Tabs,
   TabsHeader,
@@ -33,6 +34,15 @@ function Icon({ id, open }) {
   );
 }
 export function DayTabs() {
+  const { id } = useParams();
+  const [days,setDays]=useState([]);
+  useEffect(() => {
+    loadDays();
+  },[]); 
+  const loadDays = async () => {
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDates/${id}`)
+    setDays(result.data);
+  };
   const [open, setOpen] = React.useState(0);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);

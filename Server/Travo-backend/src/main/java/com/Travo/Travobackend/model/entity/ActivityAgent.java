@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -40,4 +43,7 @@ public class ActivityAgent {
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
+
+    @OneToMany(mappedBy = "activityAgent", cascade = CascadeType.ALL)
+    private Set<TripActivity> tripActivities = new HashSet<>();
 }
