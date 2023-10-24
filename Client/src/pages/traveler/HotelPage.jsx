@@ -96,11 +96,11 @@ const hotel_page = () => {
             <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20">
                 <TopNavbar />
 
+                      <Headers/>
                 <div className='overflow-y-auto' >
 
                     <div className=" flex flex-row overflow-auto  xs:justify-center font-bold text-3xl my-10">
                     </div>
-                      <Headers/>
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
                             <Link to={`/traveler/HotelPageMore/${hotel.hotel_id}`}>

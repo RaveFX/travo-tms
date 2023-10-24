@@ -26,10 +26,18 @@ public class TravelerOptionController {
     }
     @GetMapping("/hotels/{hotelId}")
     public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId){
-        System.out.println("jdhfgdf");
+//        System.out.println("jdhfgdf");
         System.out.println(hotelId);
 
         return traveleroptionService.hotelDetails(hotelId);
+
+    }
+    @GetMapping("/hotels/type/{hotelId}")
+    public List<HotelDTO> getHotelTypes(@PathVariable Integer hotelId){
+//        System.out.println("jdhfgdf");
+        System.out.println(hotelId);
+
+        return traveleroptionService.types(hotelId);
 
     }
     @Autowired

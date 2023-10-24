@@ -44,6 +44,30 @@ public class TravelerOptionJDBCDao {
 
 
     }
+
+    public List<HotelDTO> getAllHotelsType(Integer hotelId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> types = new ArrayList<>();
+
+
+        SQL.append("SELECT rooms.room_name,rooms.hotel_id FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id; ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setRoom_name(rs.getString("room_name"));
+
+
+
+                types.add(hotelDTO);
+            }
+            return types;
+        });
+
+
+    }
     public List<HotelDTO> getHotelsDetail(Integer hotelId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
