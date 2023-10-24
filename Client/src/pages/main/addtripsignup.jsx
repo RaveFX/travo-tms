@@ -4,8 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 //import Newnav from "../../components/newnav";
 import Navingation_home from "../../components/homenavbar";
 
-function Signup() {
+function Addtripsignup() {
     let navigate = useNavigate();
+
+
+    const currentPath = window.location.pathname;
+    const pathParts = currentPath.split('/');
+    const TripId = pathParts[2];
+
+    console.log(TripId);
 
     const [user, setUser] = useState({
         fname: "",
@@ -56,7 +63,7 @@ function Signup() {
             setErrors(validationErrors);
         } else {
             await axios.post("http://localhost:8080/api/v1/auth/register", user);
-            navigate("/addtripsignin");
+            navigate(`/addtripsignin/${TripId}`);
         }
     };
 
@@ -157,4 +164,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Addtripsignup;

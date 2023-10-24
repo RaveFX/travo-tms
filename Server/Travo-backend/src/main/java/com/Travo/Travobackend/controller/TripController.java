@@ -72,9 +72,10 @@ public class TripController {
         return tripMembersRepository.save(tripMembers);
     }
 
-    @GetMapping("/triplist")
-    public List<TripDTO> gettriplist() {
-        return tripService.tripList();
+    @GetMapping("/triplist/{userId}")
+    public List<TripDTO> gettriplist(@PathVariable Integer userId) {
+        System.out.println(userId);
+        return tripService.tripList(userId);
     }
 
     @GetMapping("/trip-information/{tripId}")
@@ -104,9 +105,9 @@ public class TripController {
     }
 
 
-    @PostMapping("/group-messages/{tripId}")
-    public GroupMessages saveMessages(@RequestBody GroupMessages groupMessages) {
-        System.out.println("member add");
-        return groupMessagesRepository.save(groupMessages);
-    }
+//    @PostMapping("/group-messages/{tripId}")
+//    public GroupMessages saveMessages(@RequestBody GroupMessages groupMessages) {
+//        System.out.println("member add");
+//        return groupMessagesRepository.save(groupMessages);
+//    }
 }

@@ -17,6 +17,7 @@ function Mytrips() {
   const user_id = sessionStorage.getItem('user_id');
   const [tripinfo, setTripinfo] = useState([]);
 
+  console.log(user_id);
 
   const createTrip = async () => {
     try {
@@ -50,7 +51,7 @@ function Mytrips() {
   }, []);
 
   const loadTripinfo = async () => {
-    const result = await axios.get("http://localhost:8080/api/v1/trips/triplist")
+    const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
     setTripinfo(result.data);
   }
 

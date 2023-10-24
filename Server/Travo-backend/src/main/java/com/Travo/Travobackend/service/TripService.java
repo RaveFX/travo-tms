@@ -8,6 +8,7 @@ import com.Travo.Travobackend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,16 +16,22 @@ import java.util.Optional;
 public class TripService {
     @Autowired
     private TripJDBCDao tripJDBCDao;
-    public List<TripDTO> tripList(){
-        return tripJDBCDao.getAllTrips();
+
+
+    public List<TripDTO> tripList(int userId) {
+        System.out.println(userId);
+        String SQL = "SELECT t.trip_id, t.trip_admin, t.trip_name FROM trip_members tm \n" +
+                "                INNER JOIN trip t ON tm.trip_id = t.trip_id \n" +
+                "                WHERE tm.user_id = :userId";
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        return tripJDBCDao.getAllTrips(SQL, params);
     }
 
     @Autowired
     private TripRepository tripRepository; // Your trip repository
 
-//    public boolean uniqueKeyExistsForTrip(String tripId, String uniqueKey) {
-//        return tripRepository.existsByTripIdAndUniqueKey(tripId, uniqueKey);
-//    }
 public String checkTrip(Integer tripId, String uniqueKey) {
     System.out.println("tttt");
     String exists = tripRepository.existsByTripIdAndUniqueKey(tripId, uniqueKey);

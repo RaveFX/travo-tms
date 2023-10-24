@@ -6,7 +6,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Alert } from "@material-tailwind/react";
 import Navingation_home from "../../components/homenavbar";
 
-function Addtripsignup() {
+function Addtripsignin() {
     const { setAuth } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -140,7 +140,7 @@ function Addtripsignup() {
                             Don't have an account?{" "}
                             <Link
                                 className="text-red-600 hover:underline hover:underline-offset-4"
-                                to="/addtripsignup"
+                                to={`/addtripsignup/${TripId}`}
                             >
                                 Register
                             </Link>
@@ -152,4 +152,4 @@ function Addtripsignup() {
     );
 }
 
-export default Addtripsignup;
+export default Addtripsignin;
