@@ -122,7 +122,7 @@ const Dashboard = () => {
   
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden font-poppins">
       <Sidebar active="Dashboard" />
       <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20">
         <TopNavbar />
@@ -130,25 +130,25 @@ const Dashboard = () => {
           <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D]">
             {/* Dashboard */}
           </h1>
-          <div className='flex flex-row gap-[1%]'>
+          <div className=' flex flex-row gap-[1%]'>
             <div className='flex flex-col gap-[2rem] w-[75%]'>
               <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-[75%]'>
-                <div className="mb-2 flex flex-col items-start justify-between w-full">
-                  <Typography className="text-[#578B6A] font-[700] text-[32px] ">
+                <div className=" mb-2 flex flex-col items-start justify-between w-full">
+                  <Typography className="font-poppins text-[#578B6A] font-[700] text-[32px] ">
                   Hello {user_id}!
                   </Typography>
-                  <Typography className="text-[18px] text-[#5F647E] font-[400]">
+                  <Typography className="font-poppins text-[15px] text-[#5F647E] font-[400]">
                   Welcome back and explore the world.
                   </Typography>
                   <div className='flex justify-start items-center w-full'>
                     <Typography
                       variant="small"
-                      className="text-[#728659] font-[700] text-[24px] "
+                      className="text-[#728659] font-poppins font-[700] text-[24px] "
                     >
                       Why Wait?
                     </Typography>
                     <Button 
-                      className='md:!w-auto h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
+                      className='md:!w-auto h-[3rem] m-4 justify-center py-2  shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
                         Continue Editing
                     </Button>
                   </div>
@@ -161,11 +161,11 @@ const Dashboard = () => {
                   />
                 </div>
               </div>
-              <div className='flex flex-col gap-[1rem]'>
+              <div className=' flex flex-col gap-[1rem]'>
                 <div className="text-[#578B6A] font-[700] text-[24px] ">Explore Now</div>
                 <div className="flex flex-wrap gap-2">
                   {Explore.map((item) => (
-                    <Card key={item.id} className="w-[225px]">
+                    <Card key={item.id} className=" w-[225px]">
                       <CardHeader
                         className="rounded-lg m-2"
                         shadow={false}
@@ -178,9 +178,9 @@ const Dashboard = () => {
                         />
                       </CardHeader>
                       <CardBody>
-                        <div className="flex">
+                        <div className=" flex">
                           <Typography
-                            className="font-[700] text-[24px] "
+                            className="font-poppins font-[700] text-[24px] "
                           >
                             {item.name}
                           </Typography>

@@ -36,6 +36,7 @@ function Signin() {
       );
       const responseData = response.data;
       console.log(response.data.role);
+      console.log(response.data);
 
       // setAuth(response?.data);
 
@@ -67,6 +68,7 @@ function Signin() {
       }
     } catch (err) {
       if (!err?.response) {
+        console.log(err);
         setError("No Server Response");
       } else if (err.response?.status === 403) {
         setError("Invalid Email or Password");

@@ -5,12 +5,14 @@ import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
 import Calendar from "../../components/web-component/calander";
-import { PlanStepper} from "../../components/web-component/Stepper";
+import { PlanStepper } from "../../components/web-component/Stepper";
 import BacknNext from "../../components/web-component/BackNext";
 import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
+import { useParams } from "react-router-dom";
+import axios from "../../api/axios";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
@@ -27,7 +29,26 @@ function TripPlanner() {
     loadDetails();
   },[]); 
   const navigate = useNavigate();
+  const [tripDetails, setTripDetails] = useState({});
   const [isOpen, setIsOpen] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getTripDetails = async () => {
+      try {
+        let response = await axios.get(`/trips/${id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        setTripDetails(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getTripDetails();
+  }, [id]);
+
   const handleBackClick = () => {
     // Navigate to the previous page or route when the "Back" button is clicked
     navigate("/mytrips");
@@ -100,8 +121,13 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar trip_name={details.trip_name} description={details.description}/>
+            {/* <TripNameBar trip_name={details.trip_name} description={details.description}/> */}
             
+            <TripNameBar
+              Name={tripDetails.trip_name}
+              Id={id}
+              Description={tripDetails.description}
+            />
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}
@@ -109,7 +135,7 @@ function TripPlanner() {
           <div className="flex flex-row items-center relative left-10 top-65 mt-4 mb-4 space-x-2">
             <Typography
               onClick={handleChatButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none "
@@ -118,7 +144,7 @@ function TripPlanner() {
             </Typography>
             <Typography
               onClick={handleMapButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none  "
@@ -127,7 +153,7 @@ function TripPlanner() {
             </Typography>
             <Typography
               onClick={handleNoteButtonClick}
-              color="[#377A85]"
+              
               size="regular"
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] absoulute hover:shadow-none active:shadow-none focus:shadow-none"
@@ -143,6 +169,7 @@ function TripPlanner() {
               setIsSubSidebarOpen={setIsSubSidebarOpen}
               subSidebarState={subSidebarState}
               setSubSidebarState={setSubSidebarState}
+              Id={id}
             >
               <div>{selectedComponent}</div>
             </PlanStepper>

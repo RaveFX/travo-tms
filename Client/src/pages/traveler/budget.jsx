@@ -1,10 +1,47 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../../components/navbar-general";
-import Sidebar from "../../components/sidebar-rave";
+// import TopNavbar from "../../components/navbar-general";
+// import Sidebar from "../../components/sidebar-rave";
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
 import { Button, CardBody } from "@material-tailwind/react";
 // import Cardss from "../../components/card";
-import { Card, Input, Checkbox, Typography } from "@material-tailwind/react";
+import axios from 'axios';
+import { Alert, Card, Input, Checkbox, Typography } from "@material-tailwind/react";
+ 
+function Icon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-6 w-6"
+    >
+      <path
+        fillRule="evenodd"
+        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+ 
+function SubmitAlert() {
+  return (
+    <Alert
+      icon={<Icon />}
+      className="rounded-none border-l-4 border-[#2ec946] bg-[#2ec946]/10 font-medium text-[#2ec946]"
+    >
+      Expense Recorded Successfully!
+    </Alert>
+
+   
+  );
+  
+  
+}
+ 
 
 const data = [
   {
@@ -79,67 +116,92 @@ const Budgetcard = () => {
   );
 };
 
-const FileUpload = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+// const FileUpload = () => {
+//   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
+//   const handleFileChange = (e) => {
+//     const file = e.target.files[0];
+//     setSelectedFile(file);
+//   };
+
+//   return (
+//     <div className=" max-w-md p-4">
+//       <label className="block text-gray-500 font-semibold mb-2">
+//         Upload Receipt
+//       </label>
+//       <div className="flex items-center space-x-2">
+//         <label className="flex bg-white border rounded-lg shadow-md p-2 cursor-pointer">
+//           <span className="text-blue-600">Choose File</span>
+//           <input
+//             type="file"
+//             className="hidden"
+//             accept=".jpg, .jpeg, .png, .pdf"
+//             onChange={handleFileChange}
+//           />
+//         </label>
+//         <span className="text-gray-400">
+//           {selectedFile ? selectedFile.name : "No file chosen"}
+//         </span>
+//       </div>
+//     </div>
+//   );
+// };
+
+function Budgetform() {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Get the form data
+    const formData = new FormData(e.target);
+
+    
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/v1/budget/addBudget', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(response);
+      // <SubmitAlert />;
+      // Handle the response here (e.g., show a success message)
+      console.log('Response: Success', response.data);
+    } catch (error) {
+      // Handle errors here (e.g., show an error message)
+      console.error('Error: kedup', error);
+    }
   };
 
   return (
-    <div className=" max-w-md p-4">
-      <label className="block text-gray-500 font-semibold mb-2">
-        Upload Receipt
-      </label>
-      <div className="flex items-center space-x-2">
-        <label className="flex bg-white border rounded-lg shadow-md p-2 cursor-pointer">
-          <span className="text-blue-600">Choose File</span>
-          <input
-            type="file"
-            className="hidden"
-            accept=".jpg, .jpeg, .png, .pdf"
-            onChange={handleFileChange}
-          />
-        </label>
-        <span className="text-gray-400">
-          {selectedFile ? selectedFile.name : "No file chosen"}
-        </span>
-      </div>
-    </div>
-  );
-};
-
-function Budgetform() {
-  return (
     <>
       <Card color="white" shadow={true}>
-        <form className=" m-5 text-sm mt-8 mb-2 w-100 max-w-screen-lg border-solid sm:w-55">
+        <form onSubmit={handleSubmit} className=" m-5 text-sm mt-8 mb-2 w-100 max-w-screen-lg border-solid sm:w-55">
           <div className="mb-4 font-poppins flex gap-6">
-            <Input size="lg" placeholder="Cause/Event" required />
-            <Input size="lg" placeholder="Cost" required />
+            <Input name="cause" id="cause" size="lg" placeholder="Cause/Event" required />
+            <Input name="cost" id="cost" size="lg" placeholder="Cost" required />
           </div>
           <div className="flex mb-4 gap-6">
             <select
-              id="large"
-              class="block text-xs w-full px-4 py-3 text-black-100  dark:border-gray-300"
+              id="type" name="type"
+              className="block text-xs w-full px-4 py-3 text-black-100  dark:border-gray-300"
             >
               <option selected>Category</option>
-              <option value="US">Food</option>
-              <option value="CA">Travel</option>
-              <option value="FR">Tickets</option>
-              <option value="DE">Other</option>
+              <option >Food</option>
+              <option >Travel</option>
+              <option >Tickets</option>
+              <option >Other</option>
             </select>
 
-            <Input size="lg" placeholder="Date" />
-            <Input size="lg" placeholder="Time" />
+           <Input type="date" name="date" id="date" size="lg" placeholder="Date" /> 
+           
           </div>
           <div className="flex flex-row gap-6">
             <div className="flex mb-4 gap-6">
-              <FileUpload />
+              {/* <FileUpload /> */}
             </div>
             <div className="flex mb-4 gap-6">
-              <Button className="bg-[#22577A] mt-6 mb-5 ">
+              <Button type="submit" className="bg-[#22577A] mt-6 mb-5 ">
                 Submit Expenses
               </Button>
             </div>
@@ -153,13 +215,15 @@ function Budgetform() {
 function Budget() {
   return (
     <>
-      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className="fixed">
+      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-scroll ">
+        <div className="">
           <Sidebar />
         </div>
-        <div className="ml-[18.25%] flex flex-col w-full">
+        
+        <div className=" flex flex-col w-full">
           <div>
-            <TopNavbar />
+          <TopNavbar />
+           
           </div>
           <div>
             <div className="flex">
@@ -174,10 +238,10 @@ function Budget() {
               </div>
               <div
                 className="
-            mt-5 ml-10 mb-5 flex"
+              mt-5 ml-10 "
               >
                 <Link to="/Expenses">
-                  <Button className="bg-[#22577A] mb-5 text-white font-poppins h-12">
+                  <Button className="bg-[#22577A] text-white font-poppins ">
                     View All Expenses
                   </Button>
                 </Link>

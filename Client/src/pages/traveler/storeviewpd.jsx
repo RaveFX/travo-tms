@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TopNavbar from "../../components/navbar-general";
-import Sidebar from "../../components/sidebar-rave";
+import TopNavbar from '../../components/web-component/Navbar';
+import Sidebar from '../../components/web-component/Sidebar';
 import { Carousel } from "@material-tailwind/react";
 
 // import {
@@ -138,11 +138,11 @@ function ProductView() {
 function StoreProduct() {
   return (
     <>
-      <div className="font-poppins  w-full bg-[#F6F8FA] flex overflow-hidden ">
-        <div className=" fixed">
+      <div className="font-poppins  w-full bg-[#F6F8FA] flex overflow-scroll ">
+        <div className="">
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full ml-[18.5%]">
+        <div className="flex flex-col w-full ">
           <TopNavbar />
 
           <div>

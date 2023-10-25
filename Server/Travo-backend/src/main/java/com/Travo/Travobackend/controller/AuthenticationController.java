@@ -24,10 +24,10 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.checkEmail(email));
     }
 
-    @GetMapping("/checkStore/{userID}")
-    public ResponseEntity<Response> checkStore(@PathVariable Integer userID){
-        return ResponseEntity.ok(service.checkStore(userID));
-    }
+//    @GetMapping("/checkStore/{userID}")
+//    public ResponseEntity<Response> checkStore(@PathVariable Integer userID){
+//        return ResponseEntity.ok(service.checkStore(userID));
+//    }
 
     @GetMapping("/checkGuide/{userID}")
     public ResponseEntity<Response> checkGuide(@PathVariable Integer userID){
@@ -109,6 +109,7 @@ public class AuthenticationController {
             HttpServletResponse response,
             @RequestBody AuthenticationRequest request
     ){
+        System.out.println("awa");
         return ResponseEntity.ok(service.authenticate(response,request));
     }
 

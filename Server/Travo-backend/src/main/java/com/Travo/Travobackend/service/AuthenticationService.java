@@ -44,8 +44,8 @@ public class AuthenticationService {
     //traveler signup
     public AuthenticationResponse register(RegisterRequest request) {
         var user = Traveler.builder()
-                .fname(request.getFname())
-                .lname(request.getLname())
+                .first_name(request.getFname())
+                .last_name(request.getLname())
                 .email(request.getEmail())
                 .profileImage("profileImage.jpg")
                 .password(passwordEncoder.encode((request.getPassword())))

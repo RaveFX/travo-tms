@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+
+
+import SwiperCard from '../../components/web-component/SwiperCard';
 import TabBar from '../../components/web-component/TabBar';
 import PopupModal from '../../components/web-component/PopupModal';
 import { Button } from "@material-tailwind/react";
@@ -21,10 +24,12 @@ import {
   
 } from "@material-tailwind/react";
 
+import axios from "../../api/axios";
 
 function Mytrips() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [tripDetails, setTripDetails] = useState([]);
 
   const user_id = sessionStorage.getItem('user_id');
   const [trips,setTrips]=useState([]);
@@ -69,6 +74,27 @@ function Mytrips() {
     },
   ];
 //   const [activeTab, setActiveTab] = React.useState("all trips");
+
+
+// useEffect(() => {
+//   const getTripDetails = async () => {
+//     try {
+//       let response = await axios.get(`/trips/all-trips`, {
+//         headers: { "Content-Type": "application/json" },
+//         withCredentials: true,
+//       });
+//       console.log(response.data);
+//       setTripDetails(response.data);
+
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+//   getTripDetails();
+// }, []);
+
+
 const handleCreateTripClick = () => {
   setIsOpen(true);
 };
@@ -154,6 +180,8 @@ const handleOpenCalander = () => {
               </div>
           </Swiper>
         </div>
+           {/* {tripDetails.length === 0 && <div className="flex justify-center items-center h-[500px]"> No Trips Found </div>}
+          {tripDetails.length != 0 && <SwiperCard tripDetails={tripDetails}/>} */}
           <PopupModal isOpen={isOpen} setIsOpen={setIsOpen}/>
       </div>
     </div>
