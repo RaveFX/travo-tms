@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/budget")
-
+@CrossOrigin(origins = "http://localhost:5173")
 public class BudgetController {
     @Autowired
     private BudgetService budgetService;
