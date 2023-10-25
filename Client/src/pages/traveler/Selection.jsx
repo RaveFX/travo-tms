@@ -75,7 +75,6 @@ function Selections() {
     setHotelpolllist(result.data);
 
     const updatevote = await axios.get(`http://localhost:8080/api/v1/trips/updateTotalVotes/${pathTripId}/${hotelId}/${isChecked}`)
-
     setHotelpolllist(updatevote.data);
   }
 
