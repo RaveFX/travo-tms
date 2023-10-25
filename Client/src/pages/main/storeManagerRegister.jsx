@@ -85,7 +85,7 @@ function StoreManagerRegister() {
         `http://localhost:8080/api/v1/auth/register/store/${user_id}`,
         user
       );
-      navigate("/");
+      navigate("/register_success");
     }
   };
   return (

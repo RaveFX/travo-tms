@@ -56,7 +56,7 @@ export default function SideBar(props) {
     {
       icon: <UserGroupIcon className="h-5 w-5" />,
       name: "Advertisements",
-      link: "/community",
+      link: "/hotelagent_advertisments",
     },
     {
       icon: <BanknotesIcon className="h-5 w-5" />,

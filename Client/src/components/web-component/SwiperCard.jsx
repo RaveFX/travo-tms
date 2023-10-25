@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Cardtrip from "./card";
+// import Cardtrip from "./card";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button
+} from "@material-tailwind/react";
 
 
 export default function SwiperCard(){
@@ -30,6 +38,31 @@ export default function SwiperCard(){
               {/* Swiper slides */}
               <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
                 <SwiperSlide className='w-[100%]'>
+                <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
+                <CardHeader color="blue-gray" className="relative h-56">
+                    <img src="/traveler/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />
+                </CardHeader>
+                <CardBody>
+                  <Typography variant="h5" color="blue-gray" className="mb-2">
+                    Trip to Sigiriya
+                  </Typography>
+                  <Typography className="flex flex-row ">
+                    <img src="/traveler/Profile Picture.svg" alt="Logo" className="h-[24px] w-[24px] mr-[5px]" />
+                    @username from Matara
+                  </Typography>
+                  <Typography>
+                    The place is close to Barceloneta Beach and bus stop just 2 min by walk
+                    and near to &quot;Naviglio&quot; where you can enjoy the main night life
+                    in Barcelona.
+                  </Typography>
+                </CardBody>
+                <CardFooter className="flex justify-between p-0">
+                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] ">Watch</Button>
+                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Edit</Button>
+                </CardFooter>
+              </Card>
+                </SwiperSlide>
+               {/* <SwiperSlide className='w-[100%]'>
                   <Cardtrip />
                 </SwiperSlide>
                 <SwiperSlide className='w-[100%]'>
@@ -43,11 +76,8 @@ export default function SwiperCard(){
                 </SwiperSlide>
                 <SwiperSlide className='w-[100%]'>
                   <Cardtrip />
-                </SwiperSlide>
-                <SwiperSlide className='w-[100%]'>
-                  <Cardtrip />
-                </SwiperSlide>
-              </div>
+                </SwiperSlide>*/}
+          </div>
               {/* <SwiperSlide>
                 <Cardtrip />
               </SwiperSlide>

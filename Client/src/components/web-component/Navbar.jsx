@@ -20,26 +20,14 @@ import { Link } from 'react-router-dom';
 
     const [hasNewNotification, setHasNewNotification] = useState(true);
     return (
-      <Navbar className="mx-auto max-w-[100%] px-4 py-3 rounded-none flex flex-wrap items-center justify-between">
+      <Navbar className="mx-auto max-w-[100%] px-4 py-6 rounded-none flex flex-wrap items-center justify-between">
         <div className="flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900">
-          <div className="relative flex w-full gap-2 md:w-max rounded-full">
-              <Input
-                type="search"
-                label="Type here..."
-                className="pr-20 rounded-full style-none"
-                containerProps={{
-                  className: "min-w-[288px]",
-                }}
-              />
-              <Button size="sm" className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none">
-                <MagnifyingGlassIcon className="h-4 w-4" />
-              </Button>
-          </div>
+          
         
           <div className="!absolute right-1 top-1 ml-auto flex gap-2 md:mr-4">
-          <h1>{user_id}</h1>
+          
             {/* <Button variant="text" color="blue-gray" className='p-0 m-0 hover:shadow-none active:shadow-none focus:shadow-none'> */}
-            <Typography color="black" className="text-sm font-bold text-[#57CC99] flex align-center mt-3.5" onClick="">Become a Service Provider</Typography>
+            <Typography color="black" className="text-sm font-bold text-[#57CC99] flex align-center mt-3" onClick="">Become a Service Provider</Typography>
             <NotificationsMenu color="black" className="h-[60px] w-[60px] relative -top-[-14px] -right-[1px] hover:shadow-none active:shadow-none focus:shadow-none "  />
               {hasNewNotification && (
               <Badge  className="relative -top-[-15px] -right-[20px] bg-[#57CC99] z-6" style={{ top: "-40px", right: "-2px" }}/>

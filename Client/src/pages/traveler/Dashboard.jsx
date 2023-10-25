@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
 import CalanderMain from '../../components/web-component/CalanderMain';
+import { format, addMonths, subMonths, startOfMonth, eachDayOfInterval } from 'date-fns';
 import {
   Button,
   Card,
@@ -81,7 +82,43 @@ const Dashboard = () => {
     // Add more ongoing trips
   ];
   
-  
+
+
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const header = () => {
+    return (
+      <div className="flex justify-between items-center py-2 px-4 bg-gray-800 text-white">
+        <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>Previous</button>
+        <h2>{format(currentMonth, 'MMMM yyyy')}</h2>
+        <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>Next</button>
+      </div>
+    );
+  };
+
+  const daysOfWeek = () => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return (
+      <div className="grid grid-cols-7 text-center font-semibold text-gray-700">
+        {days.map(day => (
+          <div key={day} className="py-2">
+            {day}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderCells = () => {
+    const monthStart = startOfMonth(currentMonth);
+    const daysInMonth = eachDayOfInterval({ start: monthStart, end: addMonths(monthStart, 1) });
+
+    return daysInMonth.map(day => (
+      <div key={day} className="py-4 text-center border border-gray-200">
+        {format(day, 'd')}
+      </div>
+    ));
+  };
   
 
   return (
@@ -116,7 +153,7 @@ const Dashboard = () => {
                     </Button>
                   </div>
                 </div>
-                <div className='h-full w-full rounded-lg'>
+                <div className='h-100 w-full rounded-lg'>
                   <img
                     src="/traveler/trip.jpg"
                     alt="card-image"
@@ -162,8 +199,14 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className='w-[30%] h-auto'>
-              <CalanderMain />
+            <div className='w-[50%] h-auto'>
+            <div className="max-w-md mx-2 my-4">
+            <div className="shadow-lg rounded-lg">
+              {header()}
+              {daysOfWeek()}
+              <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
+            </div>
+          </div>
             </div>
           </div>
           <div className="bg-white p-4 shadow-md rounded-lg">

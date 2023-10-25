@@ -1,14 +1,12 @@
 package com.Travo.Travobackend.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,27 +19,33 @@ import java.util.Set;
 public class Trip {
     @Id
     @GeneratedValue
-    private Integer Trip_id;
-    @ManyToOne
-    @JoinColumn(name = "traveler_id", referencedColumnName = "traveler_id" )
-    private Traveler traveler;
-    private String name;
-    private Date Created_date;
-    private String Start_location;
-    private String Description;
-    private Date Start_date;
-    private Date End_date;
-    private Time Start_time;
-    private String Travel_mode;
-    private String Destination;
-    @ManyToOne
-    @JoinColumn(name = "Vehicle_id", referencedColumnName = "Vehicle_id" )
-    private Vehicles vehicles;
-    private Integer Total_distance;
-    private Boolean TravelBuddy_status;
+    private Integer trip_id;
+    private LocalDate created_date;
+    private String trip_name;
+    private String description;
+    private LocalDate start_date;
+    private LocalDate end_date;
+    private Integer completed; //if completed 1
 
-    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "admin_id", referencedColumnName = "user_id" )
+    private User user;
+
+    @PrePersist
+    protected void onCreate() {
+        created_date = LocalDate.now();
+    }
+
     @OneToMany(mappedBy = "trip")
-    private Set<Hire> hires = new HashSet<>();
+    private Set<TripMember> tripMembers = new HashSet<>();
+
+    @OneToMany(mappedBy = "trip")
+    private Set<TripAttraction> attractions = new HashSet<>();
+
+    @OneToMany(mappedBy = "trip")
+    private Set<TripHotel> hotels = new HashSet<>();
+
+    @OneToMany(mappedBy = "trip")
+    private Set<TripActivity> activities = new HashSet<>();
 
 }

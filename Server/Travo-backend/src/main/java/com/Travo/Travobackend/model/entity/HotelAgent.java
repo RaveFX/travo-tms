@@ -32,6 +32,7 @@ public class HotelAgent {
     private Integer longitude;
     private Integer latitude;
 
+
     @Enumerated(EnumType.STRING)
     private Membership membership;
 
@@ -44,6 +45,11 @@ public class HotelAgent {
 
     @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
     private Set<Room> room = new HashSet<>();
+
+    @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
+    private Set<TripHotel> tripHotels = new HashSet<>();
+
+
 
 
 }
