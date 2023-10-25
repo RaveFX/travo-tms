@@ -22,13 +22,8 @@ import axios from 'axios';
 
 //    function CardDefault() {
 const CardDefault = ({ type, src }) => {
-
-
     return (
-
         <Card className="sm:m-5 m-2 sm:w-40 w-20 sm:h-24 h-20 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
-
-
             <CardBody className="sm:w-40 w-36">
                 <Typography variant="h5" className="text-center text-xs ">
 

@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.Travo.Travobackend.enumeration.BoardType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Reservation {
     private User user;
 
     private LocalDate date;
+
     private LocalDate checkin_date;
     private LocalDate checkout_date;
     private LocalTime checkin_time;
@@ -36,5 +38,10 @@ public class Reservation {
     private Integer payment;
     private Integer status;
     private Integer trip_id;
+    private BoardType boardType;
+
+    @PrePersist
+    protected void onCreate() {
+        date = LocalDate.now();}
 
 }

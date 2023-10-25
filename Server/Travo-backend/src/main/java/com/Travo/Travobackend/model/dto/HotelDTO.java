@@ -22,6 +22,7 @@ public class HotelDTO {
     private String hotel_name;
     private Integer hotel_id;
     private String room_name;
+    private Integer room_id;
 
 
 }

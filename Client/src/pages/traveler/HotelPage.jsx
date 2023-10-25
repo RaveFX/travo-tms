@@ -103,7 +103,7 @@ const hotel_page = () => {
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
-                            <Link to={`/traveler/HotelPageMore/${hotel.hotel_id}`}>
+                            <Link to={`/traveler/HotelType/${hotel.hotel_id}`}>
                             <VegicleCard  names={hotel.hotel_name} description={hotel.description}  />
                             </Link>
                         ))}

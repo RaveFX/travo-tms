@@ -30,8 +30,8 @@ public class TraveleroptionService {
 
 
     }
-    public List<HotelDTO> hotelDetails(Integer hotelId) {
-        return hotelNameJDBCDao.getHotelsDetail(hotelId);
+    public List<HotelDTO> hotelDetails(Integer hotelId, Integer roomId) {
+        return hotelNameJDBCDao.getHotelsDetail(hotelId,roomId);
 
 
     }

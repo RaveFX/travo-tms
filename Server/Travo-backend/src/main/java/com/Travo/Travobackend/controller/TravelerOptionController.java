@@ -24,15 +24,15 @@ public class TravelerOptionController {
         return traveleroptionService.hotels();
 
     }
-    @GetMapping("/hotels/{hotelId}")
-    public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId){
+    @GetMapping("/hotels/{hotelId}/{roomId}")
+    public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId,@PathVariable Integer roomId){
 //        System.out.println("jdhfgdf");
         System.out.println(hotelId);
 
-        return traveleroptionService.hotelDetails(hotelId);
+        return traveleroptionService.hotelDetails(hotelId,roomId);
 
     }
-    @GetMapping("/hotels/type/{hotelId}")
+    @GetMapping("/hoteltypes/{hotelId}")
     public List<HotelDTO> getHotelTypes(@PathVariable Integer hotelId){
 //        System.out.println("jdhfgdf");
         System.out.println(hotelId);

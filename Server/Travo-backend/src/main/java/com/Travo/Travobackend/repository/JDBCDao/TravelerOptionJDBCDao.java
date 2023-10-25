@@ -22,7 +22,7 @@ public class TravelerOptionJDBCDao {
         List<HotelDTO> hotels = new ArrayList<>();
 
 
-        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id ");
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id group by hotel_agent.hotel_name ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -51,13 +51,14 @@ public class TravelerOptionJDBCDao {
         List<HotelDTO> types = new ArrayList<>();
 
 
-        SQL.append("SELECT rooms.room_name,rooms.hotel_id FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id; ");
+        SQL.append("SELECT rooms.room_name,rooms.hotel_id,rooms.room_id FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id; ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
                 HotelDTO hotelDTO = new HotelDTO();
 
                 hotelDTO.setRoom_name(rs.getString("room_name"));
+                hotelDTO.setRoom_id(rs.getInt("room_id"));
 
 
 
@@ -68,13 +69,14 @@ public class TravelerOptionJDBCDao {
 
 
     }
-    public List<HotelDTO> getHotelsDetail(Integer hotelId) {
+    public List<HotelDTO> getHotelsDetail(Integer hotelId,Integer roomId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<HotelDTO> hotels = new ArrayList<>();
         params.put("hotelId", hotelId);
+        params.put("roomId", roomId);
 
-        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId ");
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {

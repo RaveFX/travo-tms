@@ -42,7 +42,7 @@ const photos = [
     // Add more photos here...
 ];
 
-const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, ac,room }) => {
+const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, ac,room,link }) => {
 
     const [showAll, setShowAll] = useState(false);
     const displayedPhotos = showAll ? photos : photos.slice(0, 3);
@@ -110,8 +110,8 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
                             
                         </CardBody>
                         <CardFooter className="pt-0">
-                            <a href="#" className="inline-block">
-                                <Button variant="gradient" size="sm" className="flex items-center gap-2">
+                            <a href={link} className="inline-block">
+                                <Button variant="gradient" size="sm" className="flex items-center gap-2 ">
                                     Reserve
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -150,20 +150,21 @@ function App() {
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
     const hotelId = decodeURIComponent(splitURL[5]);
+    const roomId = decodeURIComponent(splitURL[6]);
     console.log("Type: ", hotelId)
 
 
     useEffect(() => {
         const loadHotels = async () => {
             try {
-                const result = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}`)
+                const result = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}/${roomId}`)
                 setHotels(result.data);
             } catch (error) {
                 console.error('Error fetching hotel details:', error);
             }
         };
         loadHotels();
-    }, [hotelId]);
+    }, [hotelId,roomId]);
 
 
     return (
@@ -180,7 +181,7 @@ function App() {
                         {hotels.map((hotel) => {
 
                             return <GridImage name={hotel.hotel_name} photos={photos} description={hotel.description}
-                                wifi={hotel.wifi} lunch={hotel.lunch} dinner={hotel.dinner} breakfast={hotel.breakfast} ac={hotel.ac} room={hotel.view} />;
+                                wifi={hotel.wifi} lunch={hotel.lunch} dinner={hotel.dinner} breakfast={hotel.breakfast} ac={hotel.ac} room={hotel.view} link={`/traveler/HotelBook/${hotelId}/${roomId}`} />;
 
                         })}
                     </div>
