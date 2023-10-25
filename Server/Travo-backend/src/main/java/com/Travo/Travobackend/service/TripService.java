@@ -1,8 +1,6 @@
 package com.Travo.Travobackend.service;
 
 import com.Travo.Travobackend.model.dto.TripDTO;
-import com.Travo.Travobackend.model.entity.User;
-import com.Travo.Travobackend.model.other.Response;
 import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
 import com.Travo.Travobackend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;

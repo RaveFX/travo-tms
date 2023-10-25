@@ -91,11 +91,6 @@ public class TripController {
         }
     }
 
-//         @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
-//         public boolean checkTrip(@PathVariable String tripId, @PathVariable String uniqueKey) {
-//             System.out.println("8");
-//                 return tripService.uniqueKeyExistsForTrip(tripId, uniqueKey);
-//           }
 
 
     @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
