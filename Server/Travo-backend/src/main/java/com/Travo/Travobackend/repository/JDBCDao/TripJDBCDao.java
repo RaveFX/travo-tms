@@ -18,7 +18,7 @@ public class TripJDBCDao {
             TripDTO tripDTO = new TripDTO();
             tripDTO.setTripId(rs.getInt("trip_id"));
             tripDTO.setTrip_admin(rs.getString("trip_admin"));
-            tripDTO.setTripName(rs.getString("trip_name"));
+            tripDTO.setTrip_name(rs.getString("trip_name"));
             return tripDTO;
 
         });

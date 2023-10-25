@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class TripDTO {
     private Integer tripId;
     private String trip_admin;
-    private String tripName;
+    private String trip_name;
 }

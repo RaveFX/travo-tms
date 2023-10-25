@@ -1,23 +1,18 @@
 package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.TripDTO;
-import com.Travo.Travobackend.model.entity.GroupMessages;
 import com.Travo.Travobackend.model.entity.TripMembers;
-import com.Travo.Travobackend.model.other.Response;
 import com.Travo.Travobackend.repository.GroupMessagesRepository;
 import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.service.TripService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 @RestController
@@ -100,9 +95,4 @@ public class TripController {
     }
 
 
-//    @PostMapping("/group-messages/{tripId}")
-//    public GroupMessages saveMessages(@RequestBody GroupMessages groupMessages) {
-//        System.out.println("member add");
-//        return groupMessagesRepository.save(groupMessages);
-//    }
 }

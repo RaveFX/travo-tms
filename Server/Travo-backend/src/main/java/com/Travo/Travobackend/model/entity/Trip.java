@@ -21,51 +21,51 @@ import java.util.Set;
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Trip_id;
-    private String Trip_admin;
-    private String Trip_name;
+    private Integer trip_id;
+    private String trip_admin;
+    private String trip_name;
 
-    private Date Created_date;
+    private Date created_date;
     private String Start_location;
-    private String Description;
+    private String description;
 
-    private Date Start_date;
-    private Date End_date;
-    private Time Start_time;
-    private String Travel_mode;
-    private String Destination;
+    private Date start_date;
+    private Date end_date;
+    private Time start_time;
+    private String travel_mode;
+    private String destination;
     @ManyToOne
     @JoinColumn(name = "Vehicle_id", referencedColumnName = "Vehicle_id" )
     private Vehicles vehicles;
-    private Integer Total_distance;
-    private Boolean TravelBuddy_status;
+    private Integer total_distance;
+    private Boolean travelBuddy_status;
 
     @JsonIgnore
     @OneToMany(mappedBy = "trip")
     private Set<Hire> hires = new HashSet<>();
 
     public Integer getTripId() {
-        return Trip_id;
+        return trip_id;
     }
 
     public void setTripId(Integer tripId) {
-        this.Trip_id = tripId;
+        this.trip_id = tripId;
     }
 
     public String getTrip_admin() {
-        return Trip_admin;
+        return trip_admin;
     }
 
     public void setTrip_admin(String trip_admin) {
-        this.Trip_admin = trip_admin;
+        this.trip_admin = trip_admin;
     }
 
     public String getTrip_name() {
-        return Trip_name;
+        return trip_name;
     }
 
     public void setTrip_name(String trip_name) {
-        this.Trip_name = trip_name;
+        this.trip_name = trip_name;
     }
 
 
