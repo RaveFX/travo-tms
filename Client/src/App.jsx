@@ -18,6 +18,9 @@ import ActivityAgentRegister from "./pages/main/activityAgentRegister";
 import GuideRegister from "./pages/main/guideRegister";
 import StoreManagerRegister from "./pages/main/storeManagerRegister";
 import VehicleRenterRegister from "./pages/main/vehicleRenterRegister";
+import Addtripsignin from "./pages/main/addtripsignin";
+import Addtripsignup from "./pages/main/addtripsignup";
+
 import Hotel_dashboard from "./pages/hotel/hotel_dashboard";
 import Hotel_reviews from "./pages/hotel/hotel_reviews";
 import Hotel_reservations from "./pages/hotel/hotel_reservations";
@@ -49,6 +52,7 @@ import Admin_Userprofile from "./pages/Admin/Admin_Userprofile";
 import Admin_Advertisments from "./pages/Admin/Admin_Advertisments";
 import Admin_Add_dvertisments from "./pages/Admin/Admin_Addadverisments";
 import Admin_Transaction from "./pages/Admin/Admin_Transaction";
+import Admin_userlistpage from "./pages/Admin/Admin_userlistpage"
 
 // Trineesha
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
@@ -108,6 +112,9 @@ import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
+import TripAddButton from "./pages/traveler/TripAddButtonPage";
+import Hotelselectionpage from "./pages/traveler/Hotelselectionpage";
+
 
 export default function App() {
   return (
@@ -117,6 +124,8 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/addtripsignin/:pathTripId" element={<Addtripsignin />} />
+        <Route exact path="/addtripsignup/:pathTripId" element={<Addtripsignup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
         <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
         <Route exact path="/service_provider" element={<ServiceProviders />} />
@@ -170,17 +179,13 @@ export default function App() {
 
         {/* Thirani */}
         <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
-        <Route path="/admin_users" element={<Admin_Users />}>
-          {" "}
-        </Route>
+        <Route path="admin_users" element={<Admin_Users />} />
         <Route path="admin_requests" element={<Admin_Requests />} />
         <Route path="admin_userprofile" element={<Admin_Userprofile />} />
         <Route path="admin_advertisments" element={<Admin_Advertisments />} />
-        <Route
-          path="admin_add_advertisments"
-          element={<Admin_Add_dvertisments />}
-        />
+        <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
         <Route path="admin_transaction" element={<Admin_Transaction />} />
+        <Route path="admin_userlistpage" element={<Admin_userlistpage />}></Route>
 
         <Route path="store_dashboard" element={<Store_Dashboard />} />
         <Route path="store_myshop" element={<Store_Myshop />} />
@@ -296,16 +301,21 @@ export default function App() {
           element={<Vehicle_Owner_Edit_Profile />}
         ></Route>
 
-        {/* Sanduni */}
+        {/* Sanduni
+      <Route path="/traveler/trip-planner/:tripId" element={<TripPlanner />} /> */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
+        
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
+        <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
+        <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
+
 
         {/* Tharindi */}
         <Route path="/traveler/attractions" element={<Attractions />} />

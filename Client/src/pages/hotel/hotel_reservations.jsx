@@ -10,9 +10,9 @@ function Hotel_reservations() {
   const [reservations,setReservations]=useState([]);
   const [details,setDetails]=useState([]);
 
-    useEffect(() => {
-        loadReservations();
-    },[]); 
+  useEffect(() => {
+    loadReservations();
+  }, []);
 
     const loadReservations=async()=>{
         const result=await axios.get(`http://localhost:8080/api/v1/hotel/reservations/${user_id}`)
@@ -27,17 +27,17 @@ function Hotel_reservations() {
     };
   return (
     <div className="flex h-screen ">
-    <SideBar active="Reservations"/>
-    <div className="flex flex-col w-full bg-[#FFFFFF] bg-opacity-20 ">
-      <UserNav />
-      <div className='flex justify-between'>
+      <SideBar active="Reservations" />
+      <div className="flex flex-col w-full bg-[#FFFFFF] bg-opacity-20 ">
+        <UserNav />
+        <div className='flex justify-between'>
           <h1 className=' font-poppins font-extrabold mt-4 mx-5 text-[#2C2738]'>Reservations</h1>
-      </div>
-          <div className="flex flex-col">
+        </div>
+        <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
               <div className="overflow-hidden">
-              <h1 className=' font-poppins font-extrabold mx-5 text-[#2C2738] text-sm'>Today</h1>
+                <h1 className=' font-poppins font-extrabold mx-5 text-[#2C2738] text-sm'>Today</h1>
                 <table className="min-w-full text-left text-sm font-light">
                   <thead className="border-b font-medium dark:border-neutral-500 text-[#B7BBB8]">
                     <tr>
@@ -87,10 +87,10 @@ function Hotel_reservations() {
             </div>
           </div>
         </div>
-          
 
-                                 
-    </div>
+
+
+      </div>
     </div>
   )
 }

@@ -1,13 +1,60 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import TopNavbar from '../../components/admin/topNavbar';
 import Sidebar from '../../components/admin/sidebar';
 
+
 export default function Admin_Requests() {
+    const [usersinfo, setUsersinfo] = useState([]);
+    const [userList, setUserList] = useState(usersinfo);
+
+    const handleConfirm = async (userId) => {
+        try {
+            // Send a PUT request to update the user's status
+            await axios.put(`http://localhost:8080/api/v1/user/update-status/${userId}/ACTIVE`);
+
+            // After successfully updating the status, update the local state
+            const updatedList = userList.map((user) =>
+                user.user_id === userId ? { ...user, status: 'ACTIVE' } : user
+            );
+            setUserList(updatedList);
+        } catch (error) {
+            // Handle any errors, e.g., display an error message
+            console.error('Error updating user status:', error);
+        }
+    };
+
+    const handleReject = async (userId) => {
+        try {
+            // Send a PUT request to update the user's status
+            await axios.put(`http://localhost:8080/api/v1/user/update-status/${userId}/DELETED`);
+
+            // After successfully updating the status, update the local state
+            const updatedList = userList.map((user) =>
+                user.user_id === userId ? { ...user, status: 'ACTIVE' } : user
+            );
+            setUserList(updatedList);
+        } catch (error) {
+            // Handle any errors, e.g., display an error message
+            console.error('Error updating user status:', error);
+        }
+    };
+
+
+    useEffect(() => {
+        loadUsersinfo();
+    }, []);
+
+    const loadUsersinfo = async () => {
+        const result = await axios.get("http://localhost:8080/api/v1/user/information")
+        setUsersinfo(result.data);
+    }
 
     return (
+
         <div className="flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden">
             <Sidebar />
 
@@ -62,135 +109,42 @@ export default function Admin_Requests() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <div class="flex items-center">
-                                                        <div class="flex-shrink-0 w-10 h-10">
-                                                            <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Vera Carpenter
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Store Agent</p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 21, 2020
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        thia@gmail.com
-                                                    </p>
-                                                </td>
-                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">On delivery</span>
-                                        </span>
-                                    </td> */}
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <div class="flex items-center">
-                                                        <div class="flex-shrink-0 w-10 h-10">
-                                                            <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Blake Bowman
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Activity Agent</p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 01, 2020
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        thrini@gmail.com
-                                                    </p>
-                                                </td>
-                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Pendding</span>
-                                        </span>
-                                    </td> */}
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <div class="flex items-center">
-                                                        <div class="flex-shrink-0 w-10 h-10">
-                                                            <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Dana Moore
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Ahent</p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Jan 10, 2020
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        sandu@gmail.com
-                                                    </p>
-                                                </td>
-                                                {/* <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Pendding</span>
-                                        </span>
-                                    </td> */}
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
-                                            </tr>
+
+                                            {
+                                                usersinfo.filter((userInfo) => userInfo.status === 'PENDING').map((usersinfo) => (
+                                                    <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                        <td className=" text-center  items-center  whitespace-no-wrap">
+                                                            <div className="flex">
+                                                                <div className="h-8 w-8 ml-5">
+                                                                    <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                                                                </div>
+                                                                <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">{usersinfo.user_id}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td className="whitespace-nowrap px-6 py-4 font-medium">{usersinfo.role}</td>
+                                                        <td className="whitespace-nowrap px-6 py-4">{usersinfo.registration_date}</td>
+                                                        <td className="whitespace-nowrap px-6 py-4">{usersinfo.email}</td>
+
+
+                                                        <td className=" ">
+                                                            <button
+                                                                onClick={() => handleConfirm(usersinfo.user_id)}
+                                                                class="text-centerfocus:outline-none text-white bg-button1 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                                            >
+                                                                Confirm
+                                                            </button>
+                                                        </td>
+                                                        <td className=" ">
+                                                            <button onClick={() => handleReject(usersinfo.user_id)}
+                                                                type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                                Reject
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            }
+
+
                                             <tr>
                                                 <td class="px-5 py-5 bg-white text-sm">
                                                     <div class="flex items-center">
@@ -215,16 +169,14 @@ export default function Admin_Requests() {
                                                 <td class="px-5 py-5 bg-white text-sm">
                                                     <p class="text-gray-900 whitespace-no-wrap">ravindu@gmail.com</p>
                                                 </td>
-                                                {/* <td class="px-5 py-5 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Cancel</span>
-                                        </span>
-                                    </td> */}
-                                                <td className=" justify-center">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>
+
+                                                <td className=" ">
+                                                    <button
+                                                        onClick={() => handleConfirm(userInfo.user_id)} // Pass the user ID
+                                                        className="text-centerfocus:outline-none text-white bg-button1 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                                    >
+                                                        Confirm
+                                                    </button>
                                                 </td>
                                                 <td className=" ">
                                                     <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>

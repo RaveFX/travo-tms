@@ -5,13 +5,16 @@ import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
 import Calendar from "../../components/web-component/calander";
-import { PlanStepper} from "../../components/web-component/Stepper";
+import { PlanStepper } from "../../components/web-component/Stepper";
 import BacknNext from "../../components/web-component/BackNext";
 import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
+import axios from 'axios';
+import { useParams } from "react-router-dom";
+
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import {
@@ -19,6 +22,8 @@ import {
   DocumentIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
+
+const trip_id = sessionStorage.getItem('trip_id');
 
 function TripPlanner() {
   const { id } = useParams();
@@ -146,6 +151,8 @@ function TripPlanner() {
             >
               <div>{selectedComponent}</div>
             </PlanStepper>
+
+            hhhh- {tripId}
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

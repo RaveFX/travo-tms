@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.sql.Time;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +25,7 @@ public class Trip {
     private Integer trip_id;
     private LocalDate created_date;
     private String trip_name;
+    private String trip_admin;
     private String description;
     private LocalDate start_date;
     private LocalDate end_date;
@@ -47,5 +51,17 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip")
     private Set<TripActivity> activities = new HashSet<>();
+
+    
+    private String uniqueLink;
+
+    public String getUniqueLink() {
+        return uniqueLink;
+    }
+
+    // Setter method for uniqueLink
+    public void setUniqueLink(String uniqueLink) {
+        this.uniqueLink = uniqueLink;
+    }
 
 }

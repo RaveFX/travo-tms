@@ -44,7 +44,7 @@ export default function Admin_sidebar() {
                         Requests
                     </ListItem>
                 </Link>
-                <Link to="/admin_users">
+                <Link to="/admin_userlistpage">
                     <ListItem className="hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white">
                         <ListItemPrefix>
                             <UserGroupIcon className="h-5 w-5" />

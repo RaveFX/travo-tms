@@ -54,7 +54,7 @@ export default function Sidebar(props) {
     };
 
     const navList = [
-        { icon: <RectangleGroupIcon className="h-5 w-5" />, name: "Dashboard", link: "/" },
+        { icon: <RectangleGroupIcon className="h-5 w-5" />, name: "Dashboard", link: "/travel_guide_dashboard" },
         {
             icon: <MapIcon className="h-5 w-5" />, name: "Requests", link: "/travel_guide_request",         },
         { icon: <HeartIcon className="h-5 w-5" />, name: "Tours", link: "/travel_guide_mytours" },

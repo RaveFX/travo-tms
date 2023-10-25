@@ -33,13 +33,10 @@ public class ReservationJDBCDao {
                 hotelReservationDTO.setStatus(rs.getInt("status"));
                 hotelReservationDTO.setCheckin_date(rs.getDate("checkin_date"));
 
-
-
                 hotelReservations.add(hotelReservationDTO);
             }
             return hotelReservations;
         });
-
 
     }
 
@@ -66,13 +63,10 @@ public class ReservationJDBCDao {
                 hotelReservationDTO.setStatus(rs.getInt("status"));
                 hotelReservationDTO.setCheckin_date(rs.getDate("checkin_date"));
 
-
-
                 hotelReservations.add(hotelReservationDTO);
             }
             return hotelReservations;
         });
-
 
     }
 

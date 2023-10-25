@@ -18,13 +18,13 @@ function ServiceProviders() {
     if (res.data.status === "Error") {
       navigate("/store_manager_register");
     }
-    else if(res.data.status === "Active"){
+    else if (res.data.status === "Active") {
       navigate("/store_dashboard");
     }
-    else{
+    else {
       navigate("/register_success");
     }
-    
+
   };
 
   const handleClickGuide = async () => {
@@ -35,13 +35,13 @@ function ServiceProviders() {
     if (res.data.status === "Error") {
       navigate("/guide_register");
     }
-    else if(res.data.status === "Active"){
+    else if (res.data.status === "Active") {
       navigate("/travel_guide_dashboard");
     }
-    else{
+    else {
       navigate("/register_success");
     }
-    
+
   };
 
   const handleClickHotel = async () => {
@@ -52,13 +52,13 @@ function ServiceProviders() {
     if (res.data.status === "Error") {
       navigate("/hotel_register");
     }
-    else if(res.data.status === "Active"){
+    else if (res.data.status === "Active") {
       navigate("/hotelagent_dashboard");
     }
-    else{
+    else {
       navigate("/register_success");
     }
-    
+
   };
 
   const handleClickActivity = async () => {
@@ -69,15 +69,15 @@ function ServiceProviders() {
     if (res.data.status === "Error") {
       navigate("/activity_agent_register");
     }
-    else if(res.data.status === "Active"){
+    else if (res.data.status === "Active") {
       navigate("/agent_dashboard");
     }
-    else{
+    else {
       navigate("/register_success");
     }
-    
+
   };
-  
+
   const handleClickVehicle = async () => {
     const res = await axios.get(
       `http://localhost:8080/api/v1/auth/checkVehicleRenter/${user_id}`
@@ -86,13 +86,13 @@ function ServiceProviders() {
     if (res.data.status === "Error") {
       navigate("/vehicle_renter_register");
     }
-    else if(res.data.status === "Active"){
+    else if (res.data.status === "Active") {
       navigate("/vehicle_owner_dashboard");
     }
-    else{
+    else {
       navigate("/register_success");
     }
-    
+
   };
   return (
     <div
@@ -121,86 +121,86 @@ function ServiceProviders() {
             role="list"
             className="grid sm:grid-cols-3 sm:gap-y-16 xl:col-span-2 pt-20"
           >
-            
-              <li>
-              
-                <card role="button" onClick={handleClickHotel}>
-                  <img
-                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
-                    src="/main/hotel_agent.png"
-                    alt=""
-                  />
-                  <h3 className="text-base font-semibold leading-7 tracking-tight">
-                    Hotel
-                  </h3>
-                </card>
-              </li>
-            
-            
-              <li>
-              
-                <card role="button" onClick={handleClickActivity}>
-                  <img
-                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 "
-                    src="/main/activity_register.png"
-                    alt=""
-                  />
-                  <h3 className="text-base font-semibold leading-7 tracking-tight">
-                    Activities
-                  </h3>
-                </card>
-              </li>
-            
 
-           
-              <li>
-              
-                <card role="button" onClick={handleClickGuide}>
-                  <img
-                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
-                    src="/main/Guide_register.png"
-                    alt=""
-                  />
-                  <h3 className="text-base font-semibold leading-7 tracking-tight">
-                    Travel Guide
-                  </h3>
-                </card>
-              </li>
-            
+            <li>
 
-           
-              <li>
-              
-                <card role="button" onClick={handleClickVehicle}>
-                  <img
-                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
-                    src="/main/vehicle_renter.png"
-                    alt=""
-                  />
-                  <h3 className="text-base font-semibold leading-7 tracking-tight">
-                    Vehicle Renter
-                  </h3>
-                </card>
-              </li>
-            
+              <card role="button" onClick={handleClickHotel}>
+                <img
+                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  src="/main/hotel_agent.png"
+                  alt=""
+                />
+                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                  Hotel
+                </h3>
+              </card>
+            </li>
 
-            
-              <li >
-              
-                <card role="button" onClick={handleClickstore}>
-                
-                  <img
-                    className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
-                    src="/main/store_manager.png"
-                    alt=""
-                  />
-                  <h3 className="text-base font-semibold leading-7 tracking-tight">
-                    Store
-                  </h3>
-                </card>
-             
-              </li>
-            
+
+            <li>
+
+              <card role="button" onClick={handleClickActivity}>
+                <img
+                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 "
+                  src="/main/activity_register.png"
+                  alt=""
+                />
+                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                  Activities
+                </h3>
+              </card>
+            </li>
+
+
+
+            <li>
+
+              <card role="button" onClick={handleClickGuide}>
+                <img
+                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  src="/main/Guide_register.png"
+                  alt=""
+                />
+                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                  Travel Guide
+                </h3>
+              </card>
+            </li>
+
+
+
+            <li>
+
+              <card role="button" onClick={handleClickVehicle}>
+                <img
+                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  src="/main/vehicle_renter.png"
+                  alt=""
+                />
+                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                  Vehicle Renter
+                </h3>
+              </card>
+            </li>
+
+
+
+            <li >
+
+              <card role="button" onClick={handleClickstore}>
+
+                <img
+                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  src="/main/store_manager.png"
+                  alt=""
+                />
+                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                  Store
+                </h3>
+              </card>
+
+            </li>
+
           </ul>
         </div>
       </div>
