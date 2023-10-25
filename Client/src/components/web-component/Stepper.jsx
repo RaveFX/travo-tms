@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "../../api/axios";
+import React from "react";
 import Calendar from "./calander";
 import Itinerary from "../../pages/traveler/Itinerary";
 import { Saves } from "../../pages/traveler/Saves";
@@ -21,32 +20,7 @@ export function PlanStepper(props) {
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
-
-  const handleNext = () => {
-    if (isLastStep) return;
-    if (activeStep === 0) {
-      const updateTripDetailsDates = async () => {
-        try {
-          let dates = {
-            start_date: from,
-            end_date: to,
-          };
-          console.log("dates", dates);
-          let response = await axios.put(`/trips/dates/${Id}`, dates, {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          });
-          setActiveStep((cur) => cur + 1);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      updateTripDetailsDates();
-    }
-    //
-  };
+  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
 
   // activeStep = props;
@@ -60,14 +34,11 @@ export function PlanStepper(props) {
     setSubSidebarState,
     active,
     children,
-    Id,
   } = props;
   let stepContent;
   switch (activeStep) {
     case 0:
-      stepContent = (
-        <Calendar Id={Id} to={to} from={from} setFrom={setFrom} setTo={setTo} />
-      );
+      stepContent = <Calendar />;
       setIsSubSidebarOpen(false);
       break;
     case 1:
@@ -125,7 +96,9 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 0 ? "blue-gray" : "gray"}
-              />
+              >
+                {/* Calander */}
+              </Typography>
             </div>
           </Step>
           <Step
@@ -139,7 +112,9 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 1 ? "blue-gray" : "gray"}
-              />
+              >
+                {/* Planner */}
+              </Typography>
             </div>
           </Step>
           <Step
@@ -153,7 +128,9 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 2 ? "blue-gray" : "gray"}
-              />
+              >
+                {/* Finnish */}
+              </Typography>
             </div>
           </Step>
           <Step
@@ -167,7 +144,9 @@ export function PlanStepper(props) {
               <Typography
                 variant="h6"
                 color={activeStep === 3 ? "blue-gray" : "gray"}
-              />
+              >
+                {/* Finnish */}
+              </Typography>
             </div>
           </Step>
         </Stepper>
@@ -178,6 +157,9 @@ export function PlanStepper(props) {
         >
           Next
         </Button>
+        {/* <div className="mt-10 flex justify-between"> */}
+
+        {/* </div> */}
       </div>
     </>
   );

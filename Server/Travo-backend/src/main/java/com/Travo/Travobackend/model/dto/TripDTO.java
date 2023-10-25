@@ -33,3 +33,17 @@ import lombok.NoArgsConstructor;
 //    private Timestamp end_date;
 //    private String description;
 //}
+import java.util.Date;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TripDTO {
+    private Integer trip_id;
+    private Date created_date;
+    private String trip_name;
+    private String description;
+    private Date start_date;
+    private Date end_date;
+    private Integer completed;
+}
