@@ -6,6 +6,7 @@ import com.Travo.Travobackend.service.TraveleroptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,22 @@ public class TravelerOptionController {
     @GetMapping("/hotels")
     public List<HotelDTO> getHotels(){
         return traveleroptionService.hotels();
+
+    }
+    @GetMapping("/hotels/{hotelId}/{roomId}")
+    public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId,@PathVariable Integer roomId){
+//        System.out.println("jdhfgdf");
+        System.out.println(hotelId);
+
+        return traveleroptionService.hotelDetails(hotelId,roomId);
+
+    }
+    @GetMapping("/hoteltypes/{hotelId}")
+    public List<HotelDTO> getHotelTypes(@PathVariable Integer hotelId){
+//        System.out.println("jdhfgdf");
+        System.out.println(hotelId);
+
+        return traveleroptionService.types(hotelId);
 
     }
     @Autowired

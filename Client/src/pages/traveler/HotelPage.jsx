@@ -1,26 +1,40 @@
 import React from 'react'
+import { useEffect, useState } from "react";
+import axios from 'axios';
 // import Sidebar from '../../components/sidebar';
 import Sidebar from '../../components/web-component/Sidebar';
+import Headers from '../../components/web-component/Headers';
 import TopNavbar from '../../components/web-component/Navbar';
-import { Rating, Button, Card, CardBody, Typography } from "@material-tailwind/react";
+import { Rating, Button, Card, CardBody, Typography,Carousel } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 
 
 
-const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, src }) => {
+const VegicleCard = ({ names, description, location,link, milage, small_bag, price, type, src }) => {
 
     return (
         <Card className="sm:w-[48rem] xs:w-[60rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
 
-            <CardBody className="p-5 bg-white">
+            <CardBody className="h-52 p-5 bg-white ">
                 <div className='flex'>
                     <div className="w-1/3 sm:flex lg:flex flex-row  ">
-                        <Typography className=" rounded-none " >
+                        <Typography className=" h-screen" >
+                            
                             <img
-                                src={src}
+                                src="https://www.travelandleisure.com/thmb/pCU_Y9fbQe4CT5Q73J9k2Bqd_bI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/header-grand-velas-los-cabos-MXALLINC0222-46d3772ad56f4493a83e1bcb49e119f9.jpg"
                                 alt="ui/ux review check"
-                                className="w-60"
+                                className="w-60  rounded"
+                                
                             />
+                            {/* <div className='flex'>
+                                <Carousel
+                                    transition={{ duration: 2 }}
+                                    className='rounded-xl bg-gray-200 items-center '
+                                >{slides.map((s) => (
+                                    <img className='h-fiull w-full object-cover' src={s} />
+                                ))}</Carousel>
+                            </div> */}
+                            
                         </Typography>
                     </div>
                     <div className='w-full mx-10'>
@@ -28,17 +42,16 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
 
                         <Typography className="sm:w-1/2 lg:w-full lg:flex">
                             <Typography className="w-1/2">
-                                <Typography className="flex" variant="" color="blue-gray"><i class='bx bx-user'></i> {seat} seats</Typography>
-                                <Typography variant="" color="blue-gray">{large_bag} Large bag</Typography>
-                                <Typography variant="" color="blue-gray">{milage}</Typography>
+                                <Typography className="flex mr-4 my-4" variant="small" color="blue-gray"><i class='bx bx-user'></i> {description} </Typography>
+                                
                             </Typography>
                             <Typography>
                                 <Typography variant="" color="blue-gray">{type}</Typography>
-                                <Typography variant="" color="blue-gray">{small_bag} Small bag</Typography>
-
+                                <Typography variant="" color="blue-gray">{small_bag}</Typography>
+                                <Typography variant="" color="blue-gray">{location}  location</Typography>
                             </Typography>
                             <Typography className="px-5">
-                            <Typography variant="" className="font-thin text-xs" color="Green-500">Price per day</Typography>
+                            <Typography variant="" className="font-thin text-xs" color="Green-500"></Typography>
 
                             <Typography variant="h6" color="Green-500">{price}</Typography>
 
@@ -63,42 +76,37 @@ const VegicleCard = ({ names, seat, large_bag, milage, small_bag, price, type, s
 
 
 const hotel_page = () => {
-    // const vehicle_type = [
-    //     { type: "Car", src: car },
-    //     { type: "Van", src: van },
-    //     { type: "Bus", src: bus },
-    //     { type: "Scooter", src: scooter },
-    //     { type: "Motor Bike", src: bike },
+    const [hotels,setHotels]=useState([]);
+   
+    useEffect(() => {
+        loadHotels();
+    },[]); 
 
-
-    // ]
-    const btns = [
-        { title: "Add New", variant: "outlined" }
-    ]
-    const lists = [
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "https://tse3.mm.bing.net/th?id=OIP.JJ_h16-xl50fgUHR9LkZIAHaE8&pid=Api&P=0&h=220" },
-        { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/18.png" },
-        { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/17.png" },
-        { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/16.png" },
-        { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/15.png" }
-    ]
-
+    const loadHotels=async()=>{
+        const result=await axios.get("http://localhost:8080/api/v1/traveler/hotels")
+        setHotels(result.data);
+        const hotelID = result.data.hotel_id;
+        // console.log({hotelID});
+    }
+   
+    // console.log(hotelID)
     return (
         <div className="flex h-screen overflow-hidden">
             <Sidebar active="Dashboard" />
             <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20">
                 <TopNavbar />
 
+                      <Headers/>
                 <div className='overflow-y-auto' >
 
-                    <div className=" flex flex-row overflow-auto  xs:justify-center">
-
+                    <div className=" flex flex-row overflow-auto  xs:justify-center font-bold text-3xl my-10">
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
-                        {lists.map((list, index) => (
-                            <VegicleCard key={index} names={list.names} large_bag={list.large_bag} seat={list.seat} small_bag={list.small_bag} price={list.price} milage={list.milage} type={list.type} src={list.src} />
+                        {hotels.map((hotel) => (
+                            <Link to={`/traveler/HotelType/${hotel.hotel_id}`}>
+                            <VegicleCard  names={hotel.hotel_name} description={hotel.description}  />
+                            </Link>
                         ))}
-
 
                     </div>
                 </div>

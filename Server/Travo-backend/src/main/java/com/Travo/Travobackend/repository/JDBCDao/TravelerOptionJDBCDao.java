@@ -21,7 +21,8 @@ public class TravelerOptionJDBCDao {
         HashMap<String, Object> params = new HashMap<>();
         List<HotelDTO> hotels = new ArrayList<>();
 
-        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id");
+
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id group by hotel_agent.hotel_name ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -29,6 +30,72 @@ public class TravelerOptionJDBCDao {
 
                 hotelDTO.setDescription(rs.getString("description"));
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setChild_count(rs.getInt("child_count"));
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+
+
+                hotels.add(hotelDTO);
+            }
+            return hotels;
+        });
+
+
+    }
+
+    public List<HotelDTO> getAllHotelsType(Integer hotelId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> types = new ArrayList<>();
+
+
+        SQL.append("SELECT rooms.room_name,rooms.hotel_id,rooms.room_id FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id; ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setRoom_name(rs.getString("room_name"));
+                hotelDTO.setRoom_id(rs.getInt("room_id"));
+
+
+
+                types.add(hotelDTO);
+            }
+            return types;
+        });
+
+
+    }
+    public List<HotelDTO> getHotelsDetail(Integer hotelId,Integer roomId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> hotels = new ArrayList<>();
+        params.put("hotelId", hotelId);
+        params.put("roomId", roomId);
+
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setChild_count(rs.getInt("child_count"));
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setAc(rs.getBoolean("ac"));
+                hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
+                hotelDTO.setDinner(rs.getBoolean("dinner"));
+                hotelDTO.setLunch(rs.getBoolean("lunch"));
+                hotelDTO.setView(rs.getString("view"));
+                hotelDTO.setWifi(rs.getBoolean("wifi"));
+
 
 
                 hotels.add(hotelDTO);
