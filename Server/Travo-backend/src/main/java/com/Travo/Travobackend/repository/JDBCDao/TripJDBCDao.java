@@ -2,7 +2,6 @@ package com.Travo.Travobackend.repository.JDBCDao;
 
 
 
-import com.Travo.Travobackend.model.dto.HotelReservationDTO;
 import com.Travo.Travobackend.model.dto.TripDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
