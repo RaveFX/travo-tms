@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import TopNavbar from "../../components/navbar-general";
@@ -116,36 +115,36 @@ const Budgetcard = () => {
   );
 };
 
-// const FileUpload = () => {
-//   const [selectedFile, setSelectedFile] = useState(null);
+const FileUpload = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
 
-//   const handleFileChange = (e) => {
-//     const file = e.target.files[0];
-//     setSelectedFile(file);
-//   };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
 
-//   return (
-//     <div className=" max-w-md p-4">
-//       <label className="block text-gray-500 font-semibold mb-2">
-//         Upload Receipt
-//       </label>
-//       <div className="flex items-center space-x-2">
-//         <label className="flex bg-white border rounded-lg shadow-md p-2 cursor-pointer">
-//           <span className="text-blue-600">Choose File</span>
-//           <input
-//             type="file"
-//             className="hidden"
-//             accept=".jpg, .jpeg, .png, .pdf"
-//             onChange={handleFileChange}
-//           />
-//         </label>
-//         <span className="text-gray-400">
-//           {selectedFile ? selectedFile.name : "No file chosen"}
-//         </span>
-//       </div>
-//     </div>
-//   );
-// };
+  return (
+    <div className=" max-w-md p-4">
+      <label className="block text-gray-500 font-semibold mb-2">
+        Upload Receipt
+      </label>
+      <div className="flex items-center space-x-2">
+        <label className="flex bg-white border rounded-lg shadow-md p-2 cursor-pointer">
+          <span className="text-blue-600">Choose File</span>
+          <input
+            type="file"
+            className="hidden"
+            accept=".jpg, .jpeg, .png, .pdf"
+            onChange={handleFileChange}
+          />
+        </label>
+        <span className="text-gray-400">
+          {selectedFile ? selectedFile.name : "No file chosen"}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 function Budgetform() {
 
@@ -160,11 +159,11 @@ function Budgetform() {
     try {
       const response = await axios.post('http://localhost:8080/api/v1/budget/addBudget', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data', // Set the content type for form data
         },
       });
       console.log(response);
-      // <SubmitAlert />;
+      <SubmitAlert />;
       // Handle the response here (e.g., show a success message)
       console.log('Response: Success', response.data);
     } catch (error) {
