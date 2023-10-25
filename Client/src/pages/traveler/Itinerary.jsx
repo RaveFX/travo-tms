@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {
   Tabs,
@@ -119,9 +119,10 @@ function Itinerary() {
                   <Typography className="w-fit ml-[38%] opacity-[50%]">
                     You haven't add item yet
                   </Typography>
-                  <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                  <Link to="/traveler/attractions"><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                     Add item
                   </Button>
+                  </Link>
                 </div>
 
                 <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -133,9 +134,9 @@ function Itinerary() {
                   <Typography className="w-fit ml-[38%] opacity-[50%]">
                     You haven't add item yet
                   </Typography>
-                  <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                  <Link to="/traveler/hotels"><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                     Add item
-                  </Button>
+                  </Button></Link>
                 </div>
                 <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
                   <Typography className="pl-4 text-white font-bold">
