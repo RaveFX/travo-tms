@@ -124,27 +124,27 @@ export default function Sidebar(props) {
         </Typography>
       </div>
 
-      <button onClick={handleSidebarToggle} className=" ">
+      <button onClick={handleSidebarToggle}  className=" ">
         <ChevronLeftIcon
-          className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full  gap-3p-1 absolute -right-[0.7rem] ${
-            isIconRotated
-              ? "rotate-180 transition-all duration-300 ease-in-out"
-              : "transition-all duration-300 ease-in-out"
-          }`}
+          style={{ 
+            zIndex: 9999,
+            transform: isIconRotated ? "rotate(180deg)" : "rotate(0deg)",
+           }}
+          className={`h-[24px] w-[24px] bg-[#2AB57D] rounded-full  gap-3p-1 absolute right-[-1rem] top-[7rem] transition-all duration-300 ease-in-out` }
         />
       </button>
       {/* <button onClick={handleSidebarToggle}><ChevronLeftIcon className="h-[24px] w-[24px] bg-[#2AB57D] rounded-full p-1 ml-[250px] " /></button> */}
 
       <List
         className={`!min-w-full font-poppins text-white gap-1 flex justify-items-center ${
-          isSidebarOpen ? "ml-5" : "ml-0"
+          isSidebarOpen ? "ml-0" : "ml-0"
         }`}
       >
         {navList.map((item, key) => (
           <React.Fragment key={key}>
             <Link
               to={`/traveler/${item.link}`}
-              className="w-[100%] !style:none"
+              className="w-5!style:none"
               key={key}
             >
               <ListItem
@@ -188,7 +188,7 @@ export default function Sidebar(props) {
         ))}
       </List>
       <List
-        className={`!min-w-full font-poppins Flex flex-col ${
+        className={`!min-w-fit font-poppins Flex flex-col ${
           isSubSidebarOpen ? "mt-[2rem]" : "mt-[8rem]"
         } ${isSidebarOpen ? "ml-5" : "ml-0"} text-white `}
       >

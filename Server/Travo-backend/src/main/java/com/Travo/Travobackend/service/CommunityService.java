@@ -3,6 +3,7 @@ package com.Travo.Travobackend.service;
 import com.Travo.Travobackend.model.dto.CommunityDTO;
 import com.Travo.Travobackend.model.entity.Community;
 import com.Travo.Travobackend.repository.CommunityRepo;
+import com.Travo.Travobackend.repository.TravelerRepository;
 import com.Travo.Travobackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class CommunityService {
 
     private final CommunityRepo communityRepo;
     private final UserRepository userRepo;
+    private final TravelerRepository travelerRepo;
 
     public Community createPost(CommunityDTO communityDTO) {
 
@@ -61,18 +63,16 @@ public class CommunityService {
         String rootDirectory = System.getProperty("user.dir");
         String imageUploadPath = rootDirectory + "/src/main/resources/static/posts/images";
 
+        System.out.println(posts);
+
         //For each to traverse posts lists
         for(Community post : posts){
-
-
-            //Get the listing object using the listing id
-            String imageName = communityRepo.findPostImageById(post.getPost_id());
-
-
-
             //Add the images to send to the frontend
-            Path imagePath = Paths.get(imageUploadPath, imageName);
+            Path imagePath = Paths.get(imageUploadPath, post.getPost_img());
             byte[] image = Files.readAllBytes(imagePath);
+//            Object[] result = new String[]{travelerRepo.findUsernameByTravelerId(post.getCreator_id())};
+//            String creatorFirstName = (String) result[0];
+//            String creatorLastName = (String) result[1];
 
             var c = CommunityDTO.builder()
                     .post_id(post.getPost_id())
@@ -88,8 +88,6 @@ public class CommunityService {
 
         return communityDTOList;
 
-        
-        
     }
 
 }
