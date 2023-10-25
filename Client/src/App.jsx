@@ -85,9 +85,6 @@ import TravelGuide from "./pages/traveler/TravelGuied";
 import HotelDetails from "./pages/traveler/Hotels";
 import Hotel from "./pages/traveler/HotelDetails";
 import Community from "./pages/traveler/Community";
-import RoleChange from "./pages/traveler/ChangeRole";
-import CreatePost from "./pages/traveler/CreatePost";
-import CommunityProfile from "./pages/traveler/CommunityProfile";
 
 // RavinduJay
 import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
@@ -117,22 +114,18 @@ import HotelPageMore from "./pages/traveler/HotelPageMore";
 import HotelBook from "./pages/traveler/HotelBook";
 import VehiclePage from "./pages/traveler/VehiclePage";
 import Travelbuddy from "./pages/traveler/travelbuddy";
-import Newhome from "./pages/main/newhome";
 
 export default function App() {
   return (
     <>
       <Routes>
         {/* Tharindi */}
-        <Route exact path="/" element={<Newhome />} />
+        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signup_as" element={<SignupChoice />} />
-        <Route
-          exact
-          path="/service_providers"
-          element={<BecomeServiceProvider />}
-        />
+        <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
+        <Route exact path="/service_provider" element={<ServiceProviders />} />
         <Route exact path="/hotel_register" element={<HotelRegister />} />
         <Route
           exact
@@ -313,10 +306,6 @@ export default function App() {
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
         <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
-        <Route path="/traveler/change-role" element={<RoleChange />} />
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/community-profile" element={<CommunityProfile />} />
-
 
         {/* Tharindi */}
         <Route path="/traveler/attractions" element={<Attractions />} />
@@ -336,8 +325,8 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
-        <Route exact path="/Newhome" element={<Newhome />} />
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/Travdash" element={<Travdash />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />
@@ -355,7 +344,7 @@ export default function App() {
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 
-      <div className="bg-[#F6F8FA]  w-full h-full"></div>
+      <div className="bg-[#F6F8FA] w-full h-full"></div>
     </>
   );
 }
