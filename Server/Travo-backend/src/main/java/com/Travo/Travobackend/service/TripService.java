@@ -6,6 +6,7 @@ import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.repository.*;
 import com.Travo.Travobackend.repository.JDBCDao.ActivityJDBCDao;
+import com.Travo.Travobackend.repository.JDBCDao.AttractionJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.HotelJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class TripService {
     private HotelAgentRepository hotelAgentRepository;
     @Autowired
     private ActivityAgentRepository activityAgentRepository;
+    @Autowired
+    private AttractionJDBCDao attractionJDBCDao;
+
 
 
     public List<TripDTO> tripList(Integer userID){
@@ -122,5 +126,16 @@ public class TripService {
             return("Error adding activity: " + e.getMessage());
         }
 
+    }
+
+    public List<HotelDTO> selectedHotelList(Integer tripID, Integer day){
+        return hotelJDBCDao.getSelectedHotelList(tripID, day);
+    }
+
+    public List<ActivityDTO> selectedActivityList(Integer tripID, Integer day){
+        return activityJDBCDao.getSelectedActivityList(tripID, day);
+    }
+    public List<AttractionDTO> selectedAttractionList(Integer tripID, Integer day){
+        return attractionJDBCDao.getSelectedAttractionList(tripID, day);
     }
 }

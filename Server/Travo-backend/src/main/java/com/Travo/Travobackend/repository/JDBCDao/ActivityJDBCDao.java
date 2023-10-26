@@ -39,4 +39,33 @@ public class ActivityJDBCDao {
 
 
     }
+
+    public List<ActivityDTO> getSelectedActivityList(Integer tripID, Integer day) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> activities = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
+
+        SQL.append("SELECT activity_agent.agent_id, activity_agent.company_name, activity_agent.activity_img,activity_agent.description, activity_agent.total_reviews FROM trip_activity  \n");
+        SQL.append("INNER JOIN activity_agent ON trip_activity.activity_id = activity_agent.agent_id        \n");
+        SQL.append("WHERE trip_activity.trip_id=:tripID AND trip_activity.day=:day       \n");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+
+                activityDTO.setAgent_id(rs.getInt("agent_id"));
+                activityDTO.setCompany_name(rs.getString("company_name"));
+                activityDTO.setActivity_img(rs.getString("activity_img"));
+                activityDTO.setDescription(rs.getString("description"));
+                activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+
+                activities.add(activityDTO);
+            }
+            return activities;
+        });
+
+
+    }
 }

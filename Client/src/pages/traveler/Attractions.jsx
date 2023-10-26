@@ -54,15 +54,18 @@ function Attractions() {
 
   const handleAddAttraction = async (attraction) => {
     try {
+      const photoReference = attraction.photos[0].photo_reference;
+      console.log('Photo Reference:', photoReference);
       // Make a POST request to your backend API endpoint to store the attraction details
       await axios.post("http://localhost:8080/api/v1/trip/add-attraction", {
         place_id: attraction.place_id,
         name: attraction.name,
         address : attraction.formatted_address,
-        image_url: attraction.photos[0].photo_reference,
+        img_url: photoReference,
         trip_id: id,
         day : day
       });
+      
       // Handle success, e.g., show a success message to the user
       console.log("Attraction added successfully!");
       // Display a success message using SweetAlert2

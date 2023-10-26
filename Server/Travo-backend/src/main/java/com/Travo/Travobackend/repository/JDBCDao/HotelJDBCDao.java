@@ -38,4 +38,33 @@ public class HotelJDBCDao {
 
 
     }
+
+    public List<HotelDTO> getSelectedHotelList(Integer tripID, Integer day) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> hotels = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
+
+        SQL.append("SELECT hotel_agent.hotel_id, hotel_agent.hotel_name, hotel_agent.description, hotel_agent.hotel_img, hotel_agent.total_reviews  FROM trip_hotel  \n");
+        SQL.append("INNER JOIN hotel_agent ON trip_hotel.hotel_id = hotel_agent.hotel_id        \n");
+        SQL.append("WHERE trip_hotel.trip_id=:tripID AND trip_hotel.day=:day       \n");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setHotel_img(rs.getString("hotel_img"));
+                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+
+                hotels.add(hotelDTO);
+            }
+            return hotels;
+        });
+
+
+    }
 }

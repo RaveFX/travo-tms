@@ -56,4 +56,18 @@ public class TripController {
         return tripService.addActivity(activityDTO);
     }
 
+    @GetMapping("/selectedHotelList/{tripID}/{day}")
+    public List<HotelDTO> getSelectedHotelList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.selectedHotelList(tripID, day);
+    }
+    @GetMapping("/selectedActivityList/{tripID}/{day}")
+    public List<ActivityDTO> getSelectedActivityList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.selectedActivityList(tripID, day);
+    }
+
+    @GetMapping("/selectedAttractionList/{tripID}/{day}")
+    public List<AttractionDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.selectedAttractionList(tripID, day);
+    }
+
 }

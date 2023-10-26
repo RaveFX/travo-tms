@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
-import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button,Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";

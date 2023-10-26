@@ -19,7 +19,10 @@ public class TripAttraction {
     private String place_id;
     private String name;
     private String address;
+
+    @Column(length = 1000)
     private String img_url;
+
     private Integer day;
     private Integer longitude;
     private Integer latitude;
