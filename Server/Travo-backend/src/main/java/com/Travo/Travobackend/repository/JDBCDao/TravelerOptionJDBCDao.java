@@ -16,6 +16,7 @@ public class TravelerOptionJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+
     public List<HotelDTO> getAllHotelsName() {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
@@ -28,12 +29,12 @@ public class TravelerOptionJDBCDao {
             while (rs.next()) {
                 HotelDTO hotelDTO = new HotelDTO();
 
-                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setRoom_description(rs.getString("description"));
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
                 hotelDTO.setChild_count(rs.getInt("child_count"));
                 hotelDTO.setPrice(rs.getInt("price"));
                 hotelDTO.setAdult_count(rs.getInt("adult_count"));
-                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setHotel_description(rs.getString("description"));
                 hotelDTO.setHotel_id(rs.getInt("hotel_id"));
 
 
@@ -51,7 +52,7 @@ public class TravelerOptionJDBCDao {
         List<HotelDTO> types = new ArrayList<>();
 
 
-        SQL.append("SELECT rooms.room_name,rooms.hotel_id,rooms.room_id FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id; ");
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -59,12 +60,38 @@ public class TravelerOptionJDBCDao {
 
                 hotelDTO.setRoom_name(rs.getString("room_name"));
                 hotelDTO.setRoom_id(rs.getInt("room_id"));
-
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setRoom_description(rs.getString("description"));
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
 
 
                 types.add(hotelDTO);
             }
             return types;
+        });
+
+
+    }
+    public List<HotelDTO> getHotelBasics(Integer hotelId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> basics = new ArrayList<>();
+        params.put("hotelId", hotelId);
+
+        SQL.append("SELECT * FROM hotel_agent where hotel_id=:hotelId ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+
+                basics.add(hotelDTO);
+            }
+            return basics;
         });
 
 
@@ -82,12 +109,12 @@ public class TravelerOptionJDBCDao {
             while (rs.next()) {
                 HotelDTO hotelDTO = new HotelDTO();
 
-                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setHotel_description(rs.getString("description"));
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
                 hotelDTO.setChild_count(rs.getInt("child_count"));
                 hotelDTO.setPrice(rs.getInt("price"));
                 hotelDTO.setAdult_count(rs.getInt("adult_count"));
-                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setRoom_description(rs.getString("description"));
                 hotelDTO.setHotel_id(rs.getInt("hotel_id"));
                 hotelDTO.setAc(rs.getBoolean("ac"));
                 hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
@@ -135,4 +162,6 @@ public class TravelerOptionJDBCDao {
             return vehicles;
         });
     }
+
+
 }

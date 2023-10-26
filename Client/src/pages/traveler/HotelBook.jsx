@@ -56,71 +56,36 @@ function App() {
                 <div className='overflow-y-auto' >
                     <div className='sm:flex flex-wrap justify-center '>
 
-                        <Card color="transparent" shadow={false} className='mt-10'>
+                        <Card color="transparent" shadow={false} className='mt-10 w-1/3 h-screen'>
                             <Typography variant="h4" color="blue-gray">
                                 Book Now
                             </Typography>
                             <Typography color="gray" className="mt-1 font-normal">
                                 Nice to meet you! Enter your details for Booking.
                             </Typography>
-                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                            <form className="mt-8 mb-2 max-w-screen-lg ">
                                 <div className="mb-1 flex flex-col gap-6">
                                     <div className=''>
                                         <div className=''>
                                             <Typography variant="h6" color="blue-gray" className="">
-                                                Check-in Date
+                                                Check-in / Check-out Date
                                             </Typography>
-                                           
+
                                             <Datepicker
 
                                                 value={value}
                                                 onChange={handleValueChange}
+                                                color="green"
 
                                             />
                                         </div>
-                                       
 
-                                    </div>
-                                    <div className='flex flex-row'>
-                                        <div className=''>
-                                            <Typography variant="h6" color="blue-gray" className="">
-                                                Check-out Date
-                                            </Typography>
-                                            <Input
-                                                size="lg"
-                                                placeholder="mm/dd/yyyy"
-                                                className="w-1/2 !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                                labelProps={{
-                                                    className: "before:content-none after:content-none",
-                                                }}
-                                            />
-                                        </div>
-                                        <div className=''>
-                                            <Typography variant="h6" color="blue-gray" className="">
-                                                Check-out Time
-                                            </Typography>
-                                            <Input
-                                                size="lg"
-                                                placeholder="mm/dd/yyyy"
-                                                className="w-1/2 !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                                labelProps={{
-                                                    className: "before:content-none after:content-none",
-                                                }}
-                                            />
-                                        </div>
 
                                     </div>
                                     <Typography variant="h6" color="blue-gray" className="-mb-6">
                                         Board Type
                                     </Typography>
-                                    {/* <Input
-                                        size="lg"
-                                        placeholder="name@mail.com"
-                                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                                        labelProps={{
-                                            className: "before:content-none after:content-none",
-                                        }}
-                                    /> */}
+
                                     <div className="w-72">
                                         <Select label="Select Board Type">
                                             <Option>Full Board</Option>
@@ -131,15 +96,12 @@ function App() {
 
                                 </div>
 
-                                <Button className="mt-6 bg-green" fullWidth>
-                                    Book Now
-                                </Button>
-                                <Typography color="gray" className="mt-4 text-center font-normal">
-                                    Already have an account?{" "}
-                                    <a href="#" className="font-medium text-gray-900">
-                                        Sign In
-                                    </a>
-                                </Typography>
+                                <Link to={`/traveler/HotelPayment`}>
+                                    <Button className="mt-6 bg-green" fullWidth>
+                                        Book Now
+                                    </Button>
+                                </Link>
+
                             </form>
                         </Card>
                     </div>

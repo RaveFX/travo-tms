@@ -106,6 +106,8 @@ import DestinationPage from "./pages/traveler/DestinationPage";
 import HotelPage from "./pages/traveler/HotelPage";
 import HotelType from "./pages/traveler/HotelType";
 import HotelPageMore from "./pages/traveler/HotelPageMore";
+import HotelPayment from "./pages/traveler/HotelPayment";
+import PaymentSuccess from "./pages/traveler/PaymentSuccess";
 import HotelBook from "./pages/traveler/HotelBook";
 import VehiclePage from "./pages/traveler/VehiclePage";
 import Travelbuddy from "./pages/traveler/travelbuddy";
@@ -327,6 +329,8 @@ export default function App() {
         <Route exact path="/traveler/HotelType/:hotelID" element={<HotelType/>} />
         <Route exact path="/traveler/HotelPageMore/:hotelID/:roomId" element={<HotelPageMore />} />
         <Route exact path="/traveler/HotelBook/:hotelID/:roomId" element={<HotelBook/>} />
+        <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
+        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>

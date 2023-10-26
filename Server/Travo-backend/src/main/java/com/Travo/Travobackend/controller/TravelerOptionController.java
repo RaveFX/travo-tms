@@ -1,14 +1,13 @@
 package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.HotelDTO;
+import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
+import com.Travo.Travobackend.repository.ReservationRepository;
 import com.Travo.Travobackend.service.TraveleroptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,9 @@ public class TravelerOptionController {
     @Autowired
     private final TraveleroptionService traveleroptionService;
 
+    @Autowired
+    private ReservationRepository reservationRepository;
+
     @GetMapping("/hotels")
     public List<HotelDTO> getHotels(){
         return traveleroptionService.hotels();
@@ -26,10 +28,15 @@ public class TravelerOptionController {
     }
     @GetMapping("/hotels/{hotelId}/{roomId}")
     public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId,@PathVariable Integer roomId){
-//        System.out.println("jdhfgdf");
         System.out.println(hotelId);
 
         return traveleroptionService.hotelDetails(hotelId,roomId);
+
+    }
+    @GetMapping("/hotels/{hotelId}")
+    public List<HotelDTO> getHotelBasics(@PathVariable Integer hotelId){
+        System.out.println(hotelId);
+        return traveleroptionService.basics(hotelId);
 
     }
     @GetMapping("/hoteltypes/{hotelId}")
@@ -47,4 +54,14 @@ public class TravelerOptionController {
     public List<VehiclesDTO> getVehicles(){
         return vehicleService.vehicles();
     }
+
+//    @PostMapping("/hotels/{hotelId}/{roomId}")
+//    ReservationDTO bookHotel(@RequestBody ReservationDTO bookHotel){
+////        return reservationRepository.save(bookHotel);
+//        return
+//    }
+
+
+
+
 }
