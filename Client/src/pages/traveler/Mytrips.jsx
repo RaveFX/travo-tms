@@ -21,15 +21,14 @@ import {
   
 } from "@material-tailwind/react";
 import SwiperCard from '../../components/web-component/SwiperCard';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 
 
 
 function Mytrips() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const user_id = sessionStorage.getItem('user_id');
+  // const user_id = sessionStorage.getItem('user_id');
   const [tripinfo, setTripinfo] = useState([]);
 
   const user_id = sessionStorage.getItem('user_id');
@@ -79,14 +78,14 @@ function Mytrips() {
     console.log('Card clicked for trip:', trip);
   };
 
-  useEffect(() => {
-    loadTripinfo();
-  }, []);
+  // useEffect(() => {
+  //   loadTripinfo();
+  // }, []);
 
-  const loadTripinfo = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
-    setTripinfo(result.data);
-  }
+  // const loadTripinfo = async () => {
+  //   const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
+  //   setTripinfo(result.data);
+  // }
 
   const data = [
     {

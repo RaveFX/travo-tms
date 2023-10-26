@@ -30,6 +30,7 @@ public class Trip {
     private LocalDate start_date;
     private LocalDate end_date;
     private Integer completed; //if completed 1
+    private String uniqueLink;
 
     @ManyToOne
     @JoinColumn(name = "admin_id", referencedColumnName = "user_id" )
@@ -51,9 +52,6 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip")
     private Set<TripActivity> activities = new HashSet<>();
-
-    
-    private String uniqueLink;
 
     public String getUniqueLink() {
         return uniqueLink;

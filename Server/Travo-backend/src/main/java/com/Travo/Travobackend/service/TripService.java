@@ -46,19 +46,17 @@ public class TripService {
     }
 
 
-    public List<TripDTO> tripList(int userId) {
-        System.out.println(userId);
-        String SQL = "SELECT t.trip_id, t.trip_admin, t.trip_name FROM trip_members tm \n" +
-                "                INNER JOIN trip t ON tm.trip_id = t.trip_id \n" +
-                "                WHERE tm.user_id = :userId";
+//    public List<TripDTO> tripList(int userId) {
+//        System.out.println(userId);
+//        String SQL = "SELECT t.trip_id, t.trip_admin, t.trip_name FROM trip_members tm \n" +
+//                "                INNER JOIN trip t ON tm.trip_id = t.trip_id \n" +
+//                "                WHERE tm.user_id = :userId";
+//
+//        HashMap<String, Object> params = new HashMap<>();
+//        params.put("userId", userId);
+//        return tripJDBCDao.getAllTrips(SQL, params);
+//    }
 
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("userId", userId);
-        return tripJDBCDao.getAllTrips(SQL, params);
-    }
-
-    @Autowired
-    private TripRepository tripRepository; // Your trip repository
 
     public String checkTrip(Integer tripId, String uniqueKey) {
         System.out.println("tttt");

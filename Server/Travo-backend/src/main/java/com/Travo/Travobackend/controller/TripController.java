@@ -31,14 +31,14 @@ import java.util.Random;
 @RequestMapping("/api/v1/trip")
 @RequiredArgsConstructor
 public class TripController {
+    @Autowired
     private final TripService tripService; // Initialize this field in the constructor
     @Autowired
     private TripRepository tripRepository;
-    private final GroupMessagesRepository groupMessagesRepository;
-    private TripMemberRepository tripMembersRepository;
-
     @Autowired
-    private final TripService tripService;
+    private final GroupMessagesRepository groupMessagesRepository;
+    @Autowired
+    private TripMemberRepository tripMembersRepository;
 
     @GetMapping("/tripList/{userID}")
     public List<TripDTO> getTripList(@PathVariable Integer userID){
@@ -56,15 +56,6 @@ public class TripController {
     }
 
 
-
-    @Autowired
-    public TripController(TripService tripService, TripRepository tripRepository, GroupMessagesRepository groupMessagesRepository,TripMemberRepository tripMembersRepository) {
-        this.tripService = tripService; // Initialize tripService here
-        this.tripRepository = tripRepository;
-        this.groupMessagesRepository = groupMessagesRepository;
-        this.tripMembersRepository = tripMembersRepository;
-    }
-
     private String generateRandomToken(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
@@ -79,9 +70,9 @@ public class TripController {
     public Trip createTrip(@RequestBody Trip trip) {
         Trip savedTrip = tripRepository.save(trip);
 
-        if (savedTrip.getTripId() != null) {
+        if (savedTrip.getTrip_id() != null) {
             String uniqueToken = generateRandomToken(20);
-            String uniqueLink =  savedTrip.getTripId() + "" + uniqueToken;
+            String uniqueLink =  savedTrip.getTrip_id() + "" + uniqueToken;
             System.out.println(uniqueLink);
 
             savedTrip.setUniqueLink(uniqueLink);
@@ -98,12 +89,12 @@ public class TripController {
         return tripMembersRepository.save(tripMembers);
     }
 
-    @GetMapping("/triplist/{userId}")
-    public List<TripDTO> gettriplist(@PathVariable Integer userId) {
-        System.out.println(userId);
-        return tripService.tripList(userId);
-    }
-
+//    @GetMapping("/triplist/{userId}")
+//    public List<TripDTO> gettriplist(@PathVariable Integer userId) {
+//        System.out.println(userId);
+//        return tripService.tripList(userId);
+//    }
+//
     @GetMapping("/trip-information/{tripId}")
     public ResponseEntity<Trip> getTripInfo(@PathVariable Integer tripId) {
         System.out.println("works");

@@ -42,8 +42,8 @@ public class Vehicles {
     private String location;
     private String img;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "vehicles")
-    private Set<Trip> trips = new HashSet<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "vehicles")
+//    private Set<Trip> trips = new HashSet<>();
 
 }

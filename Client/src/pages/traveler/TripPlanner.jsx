@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
-import axios from 'axios';
-import { useParams } from "react-router-dom";
+
 
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
@@ -23,7 +22,7 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 
-const trip_id = sessionStorage.getItem('trip_id');
+//const trip_id = sessionStorage.getItem('trip_id');
 
 function TripPlanner() {
   const { id } = useParams();
