@@ -119,7 +119,7 @@ function Itinerary() {
                   <Typography className="w-fit ml-[38%] opacity-[50%]">
                     You haven't add item yet
                   </Typography>
-                  <Link to="/traveler/attractions"><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                  <Link to={`/traveler/attractions/${id}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                     Add item
                   </Button>
                   </Link>
@@ -147,9 +147,9 @@ function Itinerary() {
                   <Typography className="w-fit ml-[38%] opacity-[50%]">
                     You haven't add item yet
                   </Typography>
-                  <Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                  <Link to="/traveler/activities"><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                     Add item
-                  </Button>
+                  </Button></Link> 
                 </div>
               </AccordionBody>
                 </Accordion>

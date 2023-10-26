@@ -1,14 +1,10 @@
 package com.Travo.Travobackend.controller;
 
-import com.Travo.Travobackend.model.dto.HotelReservationDTO;
-import com.Travo.Travobackend.model.dto.TripDTO;
+import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,4 +31,20 @@ public class TripController {
     public List<LocalDate> getDatesBetweenForTrip(@PathVariable Integer tripId) {
         return tripService.getDatesBetweenForTrip(tripId);
     }
+
+    @GetMapping("/hotelList")
+    public List<HotelDTO> getHotelList(){
+        return tripService.hotelList();
+    }
+
+    @GetMapping("/activityList")
+    public List<ActivityDTO> getActivityList(){
+        return tripService.activityList();
+    }
+
+    @PostMapping("/add-attraction")
+    public String addAttractionToTrip(@RequestBody AttractionDTO attractionDTO) {
+        return tripService.addAttraction(attractionDTO);
+    }
+
 }
