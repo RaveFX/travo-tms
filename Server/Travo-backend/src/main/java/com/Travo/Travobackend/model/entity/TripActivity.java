@@ -16,6 +16,7 @@ public class TripActivity {
     @Id
     @GeneratedValue
     private Integer id;
+    private Integer day;
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )

@@ -305,12 +305,12 @@ export default function App() {
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
-        <Route path="/traveler/hotels" element={<HotelDetails />} />
+        <Route path="/traveler/hotels/:id/:day" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
 
         {/* Tharindi */}
-        <Route path="/traveler/attractions/:id" element={<Attractions />} />
-        <Route path="/traveler/activities" element={<Activities />} />
+        <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
+        <Route path="/traveler/activities/:id/:day" element={<Activities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

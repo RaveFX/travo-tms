@@ -14,4 +14,6 @@ public class ActivityDTO {
     private String activity_img;
     private Double total_reviews;
     private String category;
+    private Integer trip_id;
+    private Integer day;
 }

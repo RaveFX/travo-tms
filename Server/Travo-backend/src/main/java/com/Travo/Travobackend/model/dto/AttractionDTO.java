@@ -13,5 +13,6 @@ public class AttractionDTO {
     private String address;
     private String img_url;
     private Integer trip_id;
+    private Integer day;
 
 }

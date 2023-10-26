@@ -5,13 +5,23 @@ import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button, Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 function Activities() {
+    const { id,day } = useParams();
     const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
     const [subSidebarState, setSubSidebarState] = useState(1);
     const [activities,setActivities]=useState([]);
     const [isOpen, setIsOpen] = useState(true);
+
+    // Define the styles object
+   const styles = {
+    sweetAlertContainer: {
+      zIndex: 1000000, // Set a high z-index value for SweetAlert2 in this component
+    },
+  };
 
     useEffect(() => {
         loadActivities();
@@ -21,6 +31,30 @@ function Activities() {
         const result=await axios.get(`http://localhost:8080/api/v1/trip/activityList`)
         setActivities(result.data);
     }
+
+    const handleAddActivity = async (activity) => {
+      try {
+        // Make a POST request to your backend API endpoint to store the attraction details
+        await axios.post("http://localhost:8080/api/v1/trip/add-activity", {
+          agent_id: activity.agent_id,
+          trip_id: id,
+          day : day
+        });
+        // Handle success, e.g., show a success message to the user
+        console.log("Activity added successfully!");
+        // Display a success message using SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: 'Activity added successfully!',
+          showConfirmButton: false,
+          timer: 1500, // Automatically close after 1.5 seconds
+          customClass: styles.sweetAlertContainer,
+        });
+      } catch (error) {
+        // Handle error, e.g., show an error message to the user
+        console.error("Error adding activity: ", error);
+      }
+    };
 
     const data = [
         {
@@ -120,7 +154,7 @@ function Activities() {
                     ({activity.total_reviews}  reviews)
                   </span>
                   <div className="absolute bottom-2 right-2">
-                    <Button className="bg-green">Add Activity</Button>
+                    <Button className="bg-green" onClick={() => handleAddActivity(activity)}>Add Activity</Button>
                   </div>
                 
                 </div>

@@ -6,10 +6,11 @@ import { Button, Input } from "@material-tailwind/react";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 function Attractions() {
-  const { id } = useParams();
+  const { id , day} = useParams();
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [attractions, setAttractions] = useState([]);
@@ -59,10 +60,22 @@ function Attractions() {
         name: attraction.name,
         address : attraction.formatted_address,
         image_url: attraction.photos[0].photo_reference,
-        trip_id: id
+        trip_id: id,
+        day : day
       });
       // Handle success, e.g., show a success message to the user
       console.log("Attraction added successfully!");
+      // Display a success message using SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Attraction added successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Automatically close after 1.5 seconds
+        customClass: {
+          // Apply a custom z-index to the SweetAlert modal
+          
+        },
+      });
     } catch (error) {
       // Handle error, e.g., show an error message to the user
       console.error("Error adding attraction: ", error);

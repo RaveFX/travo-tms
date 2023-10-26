@@ -13,4 +13,6 @@ public class HotelDTO {
     private String description;
     private String hotel_img;
     private Double total_reviews;
+    private Integer trip_id;
+    private Integer day;
 }

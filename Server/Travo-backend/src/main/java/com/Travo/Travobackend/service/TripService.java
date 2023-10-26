@@ -3,14 +3,11 @@ package com.Travo.Travobackend.service;
 
 
 import com.Travo.Travobackend.model.dto.*;
-import com.Travo.Travobackend.model.entity.Trip;
-import com.Travo.Travobackend.model.entity.TripAttraction;
-import com.Travo.Travobackend.model.entity.User;
+import com.Travo.Travobackend.model.entity.*;
+import com.Travo.Travobackend.repository.*;
 import com.Travo.Travobackend.repository.JDBCDao.ActivityJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.HotelJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
-import com.Travo.Travobackend.repository.TripAttractionRepository;
-import com.Travo.Travobackend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +31,14 @@ public class TripService {
     private ActivityJDBCDao activityJDBCDao;
     @Autowired
     private TripAttractionRepository tripAttractionRepository;
+    @Autowired
+    private TripHotelRepository tripHotelRepository;
+    @Autowired
+    private TripActivityRepository tripActivityRepository;
+    @Autowired
+    private HotelAgentRepository hotelAgentRepository;
+    @Autowired
+    private ActivityAgentRepository activityAgentRepository;
 
 
     public List<TripDTO> tripList(Integer userID){
@@ -66,7 +71,7 @@ public class TripService {
             tripAttraction.setAddress(attractionDTO.getAddress());
             tripAttraction.setName(attractionDTO.getName());
             tripAttraction.setImg_url(attractionDTO.getImg_url());
-
+            tripAttraction.setDay(attractionDTO.getDay());
             Optional<Trip> tripOptional = tripRepository.findById(attractionDTO.getTrip_id());
             Trip trip = tripOptional.get();
             tripAttraction.setTrip(trip);
@@ -75,6 +80,46 @@ public class TripService {
             return("Attraction added successfully!");
         } catch (Exception e) {
             return("Error adding attraction: " + e.getMessage());
+        }
+
+    }
+
+    public String addHotel(HotelDTO hotelDTO){
+        try {
+            TripHotel tripHotel = new TripHotel();
+            tripHotel.setDay(hotelDTO.getDay());
+            Optional<HotelAgent> hotelOptional = hotelAgentRepository.findById(hotelDTO.getHotel_id());
+            HotelAgent hotelAgent = hotelOptional.get();
+            tripHotel.setHotelAgent(hotelAgent);
+
+            Optional<Trip> tripOptional = tripRepository.findById(hotelDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            tripHotel.setTrip(trip);
+            tripHotelRepository.save(tripHotel);
+
+            return("Hotel added successfully!");
+        } catch (Exception e) {
+            return("Error adding hotel: " + e.getMessage());
+        }
+
+    }
+
+    public String addActivity(ActivityDTO activityDTO){
+        try {
+            TripActivity tripActivity = new TripActivity();
+            tripActivity.setDay(activityDTO.getDay());
+            Optional<ActivityAgent> activityOptional = activityAgentRepository.findById(activityDTO.getAgent_id());
+            ActivityAgent activityAgent = activityOptional.get();
+            tripActivity.setActivityAgent(activityAgent);
+
+            Optional<Trip> tripOptional = tripRepository.findById(activityDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            tripActivity.setTrip(trip);
+            tripActivityRepository.save(tripActivity);
+
+            return("Activity added successfully!");
+        } catch (Exception e) {
+            return("Error adding activity: " + e.getMessage());
         }
 
     }

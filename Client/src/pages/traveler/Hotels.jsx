@@ -5,10 +5,13 @@ import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button,Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 
 function HotelDetails() {
+  const { id , day} = useParams();
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [hotels,setHotels]=useState([]);
@@ -17,10 +20,37 @@ useEffect(() => {
     loadHotels();
 },[]); 
 
+
 const loadHotels=async()=>{
     const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
     setHotels(result.data);
 }
+const handleAddHotel = async (hotel) => {
+  try {
+    // Make a POST request to your backend API endpoint to store the attraction details
+    await axios.post("http://localhost:8080/api/v1/trip/add-hotel", {
+      hotel_id: hotel.hotel_id,
+      trip_id: id,
+      day : day
+    });
+    // Handle success, e.g., show a success message to the user
+    console.log("Hotel added successfully!");
+    // Display a success message using SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: 'Hotel added successfully!',
+      showConfirmButton: false,
+      timer: 1500, // Automatically close after 1.5 seconds
+      customClass: {
+        // Apply a custom z-index to the SweetAlert modal
+        
+      },
+    });
+  } catch (error) {
+    // Handle error, e.g., show an error message to the user
+    console.error("Error adding hotel: ", error);
+  }
+};
 
   const data = [
     {
@@ -120,7 +150,7 @@ const loadHotels=async()=>{
                     ({hotel.total_reviews}  reviews)
                   </span>
                   <div className="absolute bottom-2 right-2">
-                    <Button className="bg-green">Add Hotel</Button>
+                    <Button className="bg-green" onClick={() => handleAddHotel(hotel)}>Add Hotel</Button>
                   </div>
                 
                 </div>

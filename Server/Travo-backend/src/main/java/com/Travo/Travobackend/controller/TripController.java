@@ -47,4 +47,13 @@ public class TripController {
         return tripService.addAttraction(attractionDTO);
     }
 
+    @PostMapping("/add-hotel")
+    public String addHotelToTrip(@RequestBody HotelDTO hotelDTO) {
+        return tripService.addHotel(hotelDTO);
+    }
+    @PostMapping("/add-activity")
+    public String addActivityToTrip(@RequestBody ActivityDTO activityDTO) {
+        return tripService.addActivity(activityDTO);
+    }
+
 }

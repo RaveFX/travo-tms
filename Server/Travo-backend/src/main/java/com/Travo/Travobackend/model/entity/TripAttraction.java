@@ -20,6 +20,7 @@ public class TripAttraction {
     private String name;
     private String address;
     private String img_url;
+    private Integer day;
     private Integer longitude;
     private Integer latitude;
 
