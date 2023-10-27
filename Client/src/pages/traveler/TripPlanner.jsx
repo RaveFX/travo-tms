@@ -16,6 +16,7 @@ import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import {
   MapIcon,
+  MapPinIcon,
   DocumentIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
@@ -123,7 +124,7 @@ function TripPlanner() {
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none  "
             >
-              <MapIcon className="h-6 w-6 flex justify-center" />
+              <MapPinIcon className="h-6 w-6 flex justify-center" />
             </Typography>
             <Typography
               onClick={handleNoteButtonClick}

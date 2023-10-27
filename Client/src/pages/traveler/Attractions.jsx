@@ -15,6 +15,7 @@ function Attractions() {
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [attractions, setAttractions] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchAttractions = async () => {

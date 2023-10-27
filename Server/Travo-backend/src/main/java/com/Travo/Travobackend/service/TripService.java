@@ -76,6 +76,7 @@ public class TripService {
             tripAttraction.setName(attractionDTO.getName());
             tripAttraction.setImg_url(attractionDTO.getImg_url());
             tripAttraction.setDay(attractionDTO.getDay());
+
             Optional<Trip> tripOptional = tripRepository.findById(attractionDTO.getTrip_id());
             Trip trip = tripOptional.get();
             tripAttraction.setTrip(trip);
