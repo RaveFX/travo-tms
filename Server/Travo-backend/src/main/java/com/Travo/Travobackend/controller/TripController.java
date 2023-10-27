@@ -4,6 +4,7 @@ import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -69,5 +70,23 @@ public class TripController {
     public List<AttractionDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
         return tripService.selectedAttractionList(tripID, day);
     }
+
+    @DeleteMapping("/removeSelectedHotel/{row_id}")
+    public ResponseEntity<String> deleteHotel(@PathVariable Integer row_id) {
+        tripService.removeHotelById(row_id);
+        return ResponseEntity.ok("Hotel deleted successfully");
+    }
+    @DeleteMapping("/removeSelectedActivity/{row_id}")
+    public ResponseEntity<String> deleteActivity(@PathVariable Integer row_id) {
+        tripService.removeActivityById(row_id);
+        return ResponseEntity.ok("Activity deleted successfully");
+    }
+    @DeleteMapping("/removeSelectedAttraction/{row_id}")
+    public ResponseEntity<String> deleteAttraction(@PathVariable Integer row_id) {
+        tripService.removeAttractionById(row_id);
+        return ResponseEntity.ok("Attraction deleted successfully");
+    }
+
+
 
 }

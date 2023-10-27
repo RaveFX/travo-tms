@@ -16,4 +16,5 @@ public class ActivityDTO {
     private String category;
     private Integer trip_id;
     private Integer day;
+    private Integer row_id;
 }

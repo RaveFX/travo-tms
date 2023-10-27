@@ -40,3 +40,7 @@
 .read-the-docs {
   color: #888;
 }
+
+.swal-overlay {
+  z-index: 99999; /* Set a high z-index value */
+}

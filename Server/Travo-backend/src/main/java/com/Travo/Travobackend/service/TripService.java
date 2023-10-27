@@ -138,4 +138,14 @@ public class TripService {
     public List<AttractionDTO> selectedAttractionList(Integer tripID, Integer day){
         return attractionJDBCDao.getSelectedAttractionList(tripID, day);
     }
+    //remove hotel from selected list
+    public void removeHotelById(Integer id) {
+        tripHotelRepository.deleteById(id);
+    }
+    public void removeActivityById(Integer id) {
+        tripActivityRepository.deleteById(id);
+    }
+    public void removeAttractionById(Integer id) {
+        tripAttractionRepository.deleteById(id);
+    }
 }

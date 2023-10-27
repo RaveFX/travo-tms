@@ -46,7 +46,7 @@ public class HotelJDBCDao {
         params.put("tripID", tripID);
         params.put("day", day);
 
-        SQL.append("SELECT hotel_agent.hotel_id, hotel_agent.hotel_name, hotel_agent.description, hotel_agent.hotel_img, hotel_agent.total_reviews  FROM trip_hotel  \n");
+        SQL.append("SELECT hotel_agent.hotel_id, hotel_agent.hotel_name, hotel_agent.description, hotel_agent.hotel_img, hotel_agent.total_reviews, trip_hotel.id, trip_hotel.day  FROM trip_hotel  \n");
         SQL.append("INNER JOIN hotel_agent ON trip_hotel.hotel_id = hotel_agent.hotel_id        \n");
         SQL.append("WHERE trip_hotel.trip_id=:tripID AND trip_hotel.day=:day       \n");
 
@@ -59,6 +59,8 @@ public class HotelJDBCDao {
                 hotelDTO.setHotel_img(rs.getString("hotel_img"));
                 hotelDTO.setDescription(rs.getString("description"));
                 hotelDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+                hotelDTO.setRow_id(rs.getInt("id"));
+                hotelDTO.setDay(rs.getInt("day"));
 
                 hotels.add(hotelDTO);
             }

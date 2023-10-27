@@ -75,9 +75,11 @@ function Attractions() {
         showConfirmButton: false,
         timer: 1500, // Automatically close after 1.5 seconds
         customClass: {
-          // Apply a custom z-index to the SweetAlert modal
-          
+          container: 'custom-swal-container' // Define your custom class here
         },
+        style: {
+          zIndex: 100000 // Set a high z-index value
+        }
       });
     } catch (error) {
       // Handle error, e.g., show an error message to the user

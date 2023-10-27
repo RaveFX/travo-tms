@@ -3,6 +3,9 @@ import { StarIcon } from "@heroicons/react/24/outline";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2/dist/sweetalert2.css'; // Import SweetAlert CSS
+//import 'sweetalert2/dist/sweetalert2.min.js'; // Import SweetAlert JavaScrip
 import {
   Tabs,
   TabsHeader,
@@ -42,6 +45,7 @@ function Itinerary() {
   const [hotels, setHotels] = useState([]);
   const [activities,setActivities]=useState([]);
   const [attractions, setAttractions] = useState([]);
+  
 
   useEffect(() => {
     loadDays();
@@ -55,6 +59,109 @@ function Itinerary() {
       console.error('Error loading days:', error);
     }
   };
+
+  const handleRemoveAttraction = (attraction) => {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Attraction will be removed from the Intinerary!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, remove it!',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 9999 // Set a high z-index value
+      }
+    }).then(async (result) => {
+      // If user confirms, proceed with the removal logic
+      if (result.isConfirmed) {
+        try{
+           const day = attraction.day;
+           await axios.delete(`http://localhost:8080/api/v1/trip/removeSelectedAttraction/${attraction.row_id}`)
+           console.log("Attraction added removed!");
+           const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${day}`)
+           setAttractions(result.data);
+
+           //navigate(`/traveler/trip-planner/${id}`);
+        }catch (error) {
+          console.error("Error removing attraction: ", error);
+        }
+      }
+    });
+  };
+
+  const handleRemoveHotel = (hotel) => {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Hotel will be removed from the Intinerary!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, remove it!',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 9999 // Set a high z-index value
+      }
+    }).then(async (result) => {
+      // If user confirms, proceed with the removal logic
+      if (result.isConfirmed) {
+        try{
+           const day = hotel.day;
+           await axios.delete(`http://localhost:8080/api/v1/trip/removeSelectedHotel/${hotel.row_id}`)
+           console.log("Hotel added removed!");
+           const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedHotelList/${id}/${day}`)
+           setHotels(result.data);
+
+           //navigate(`/traveler/trip-planner/${id}`);
+        }catch (error) {
+          console.error("Error removing hotel: ", error);
+        }
+      }
+    });
+  };
+
+  const handleRemoveActivity = (activity) => {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Activity will be removed from the Intinerary!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, remove it!',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 9999 // Set a high z-index value
+      }
+    }).then(async (result) => {
+      // If user confirms, proceed with the removal logic
+      if (result.isConfirmed) {
+        try{
+           const day = activity.day;
+           await axios.delete(`http://localhost:8080/api/v1/trip/removeSelectedActivity/${activity.row_id}`)
+           console.log("activity added removed!");
+           const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedActivityList/${id}/${day}`)
+           setActivities(result.data);
+
+           //navigate(`/traveler/trip-planner/${id}`);
+        }catch (error) {
+          console.error("Error removing activity: ", error);
+        }
+      }
+    });
+  };
+
 
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
@@ -157,7 +264,7 @@ function Itinerary() {
                         
                         <div className="flex items-center">
                           <div className="absolute bottom-2 right-2">
-                            <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full"  onClick={() => handleAddAttraction(attraction)}>Remove</Button>
+                            <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full"  onClick={() => handleRemoveAttraction(attraction)}>Remove</Button>
                           </div>
                         
                         </div>
@@ -215,7 +322,7 @@ function Itinerary() {
                                   ({hotel.total_reviews}  reviews)
                                 </span>
                                 <div className="absolute bottom-2 right-2">
-                                  <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full" onClick={() => handleAddHotel(hotel)}>Remove</Button>
+                                  <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full" onClick={() => handleRemoveHotel(hotel)}>Remove</Button>
                                 </div>
                               
                               </div>
@@ -273,7 +380,7 @@ function Itinerary() {
                                 ({activity.total_reviews}  reviews)
                               </span>
                               <div className="absolute bottom-2 right-2">
-                                <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full" onClick={() => handleAddActivity(activity)}>Remove</Button>
+                                <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full" onClick={() => handleRemoveActivity(activity)}>Remove</Button>
                               </div>
                             
                             </div>

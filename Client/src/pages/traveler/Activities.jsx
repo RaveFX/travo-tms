@@ -48,7 +48,12 @@ function Activities() {
           title: 'Activity added successfully!',
           showConfirmButton: false,
           timer: 1500, // Automatically close after 1.5 seconds
-          customClass: styles.sweetAlertContainer,
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
         });
       } catch (error) {
         // Handle error, e.g., show an error message to the user

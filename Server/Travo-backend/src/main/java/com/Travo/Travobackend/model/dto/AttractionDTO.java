@@ -14,5 +14,6 @@ public class AttractionDTO {
     private String img_url;
     private Integer trip_id;
     private Integer day;
+    private Integer row_id;
 
 }

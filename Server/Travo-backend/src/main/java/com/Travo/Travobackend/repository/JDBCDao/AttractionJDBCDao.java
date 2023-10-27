@@ -33,6 +33,8 @@ public class AttractionJDBCDao {
                 attractionDTO.setName(rs.getString("name"));
                 attractionDTO.setAddress(rs.getString("address"));
                 attractionDTO.setImg_url(rs.getString("img_url"));
+                attractionDTO.setRow_id(rs.getInt("id"));
+                attractionDTO.setDay(rs.getInt("day"));
 
                 attractions.add(attractionDTO);
             }

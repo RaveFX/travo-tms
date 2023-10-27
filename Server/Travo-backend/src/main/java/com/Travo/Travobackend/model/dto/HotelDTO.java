@@ -15,4 +15,5 @@ public class HotelDTO {
     private Double total_reviews;
     private Integer trip_id;
     private Integer day;
+    private Integer row_id;
 }
