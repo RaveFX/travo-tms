@@ -1,6 +1,6 @@
 import React from 'react'
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 import { Link } from 'react-router-dom';
@@ -94,13 +94,13 @@ const request = () => {
                                                         <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">Carrie Anthony</p>
                                                     </div>
                                                 </td>
-                                       
+
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal ">07045869852</td>
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">Kandy</td>
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">02.03.20</td>
                                                 <td className="text-center text-sm  whitespace-no-wrap text-gray-600 dark:text-gray-400 tracking-normal">20</td>
                                                 <td className="text-center text-xl  whitespace-no-wrap text-black dark:text-black tracking-normal underline"><Link className='rounded-full px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700' to="/vehicle_owner_requestMore">More</Link></td>
-                                            
+
 
                                                 <td className=" justify-center">
                                                     <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Confirm</button>

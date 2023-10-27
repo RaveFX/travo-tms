@@ -1,65 +1,632 @@
 import React from "react";
-import Newcards from "../../components/home-cards";
-import Testimonials from "../../components/home-testimonials";
-import { Button } from "@material-tailwind/react";
-import Footers from "../../components/home-footer";
+import NewhomeNavbar from "../../components/web-component/NewhomeNavbar";
+import {
+  Input,
+  Stepper,
+  Step,
+  Carousel,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+  Avatar,
+} from "@material-tailwind/react";
+import {
+  CogIcon,
+  UserIcon,
+  BuildingLibraryIcon,
+} from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-//import Newnav from "../../components/newnav";
-import Navingation_home from "../../components/homenavbar";
 
-//import hero from "public/hero.png"
-
-
-function Landing() {
+function HomeCarousel() {
   return (
-    <div
-      className="font-poppins relative overflow-scroll bg-cover bg-no-repeat w-screen h-screen text-white"
-      style={{
-        backgroundImage: "url('/hero.png')",
-        //  background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
-      }}
-    >
-      <Navingation_home />
-      <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        {/* <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center" alt="hero" src="/hero.png" /> */}
-        <div class="text-center lg:w-5/12 w-full">
-          <h1 className="mt-3 mb-0 text-7xl font-bold leading-tight">
-            Your Journey, Starts Here
-          </h1>
-          {/* <h1 className="my-3 text-5xl font-bold leading-tight">Starts Here</h1> */}
+    <Carousel loop className="">
+      <div className="relative h-full w-full">
 
-          <p className="text-2xl mb-8 text-white drop-shadow-md ">
-            Travo makes your travelling life easier by streamlining all your
-            travel needs under a single roof!
-          </p>
-          <div className="flex justify-center mx-auto">
-            <Link
-              className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8"
-              to="/signup"
+        <video
+          autoPlay
+          loop
+          muted
+          className="h-full w-full object-cover"
+          src="./video.mp4"
+        />
+        {/* <img
+          src="https://i.imgur.com/pBcrUnx.jpg"
+          alt="image 1"
+          className="h-full w-full object-cover"
+        /> */}
+        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+
+
+          <div className="w-3/4 text-center md:w-2/4">
+
+
+            <Typography
+              variant="h3"
+              color="white"
+              className="mb-4 font-normal font-poppins text-2xl md:text-2xl lg:text-3xl"
             >
-              Begin Now!
-            </Link>
-            <Link className="hover:underline bg-violet-950 text-white font-bold rounded-full  py-4 px-8">
-              User Stories
-            </Link>
+              TRAVO - Travel Management System
+            </Typography>
+            <Typography
+              variant="h1"
+              color="white"
+              className="mb-4 font-poppins text-3xl md:text-4xl lg:text-5xl"
+            >
+              Your Journey, Starts Here
+            </Typography>
+            <Typography
+              variant="lead"
+              color="white"
+              className="mb-12 opacity-80 font-poppins"
+            >
+              Travo makes your travelling life easier by streamlining all your travel needs under a single roof!
+            </Typography>
+            <Typography
+              variant="h3"
+              color="white"
+              className="mb-4 font-normal font-poppins text-2xl md:text-2xl lg:text-3xl"
+            >
+              So why do you wait?
+            </Typography>
+            <div className="flex   justify-center gap-2">
+              <Link to="/signup_as">
+                <Button className="font-poppins" size="lg" color="white">
+                  Sign Up
+                </Button>
+              </Link>
+              <Link to="/traveler/dashboard">
+                <Button
+                  className="font-poppins"
+                  size="lg"
+                  color="white"
+                  variant="text"
+                >
+                  Dashboard
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
+      <div className="relative h-full w-full">
+        <img
+          src="https://i.imgur.com/y9y92yI.jpg"
+          alt="image 2"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+            <Typography
+              variant="h1"
+              color="white"
+              className="font-poppins mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+              The Beauty of Nature
+            </Typography>
+            <Typography
+              variant="lead"
+              color="white"
+              className="mb-12 opacity-80 font-poppins"
+            >
+              It is not so much for its beauty that the forest makes a claim
+              upon men&apos;s hearts, as for that subtle something, that quality
+              of air that emanation from old trees, that so wonderfully changes
+              and renews a weary spirit.
+            </Typography>
+            <div className="flex gap-2">
+              <Button className="font-poppins" size="lg" color="white">
+                Explore
+              </Button>
+              <Button
+                className="font-poppins"
+                size="lg"
+                color="white"
+                variant="text"
+              >
+                Gallery
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className=" relative h-full w-full">
+        <img
+          src="https://i.imgur.com/WEBpMNv.jpg"
+          alt="image 3"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+            <Typography
+              variant="h1"
+              color="white"
+              className="font-poppins mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+              The Beauty of Nature
+            </Typography>
+            <Typography
+              variant="lead"
+              color="white"
+              className="mb-12 opacity-80 font-poppins"
+            >
+              It is not so much for its beauty that the forest makes a claim
+              upon men&apos;s hearts, as for that subtle something, that quality
+              of air that emanation from old trees, that so wonderfully changes
+              and renews a weary spirit.
+            </Typography>
+            <div className="flex gap-2">
+              <Button className="font-poppins" size="lg" color="white">
+                Explore
+              </Button>
+              <Button
+                className="font-poppins"
+                size="lg"
+                color="white"
+                variant="text"
+              >
+                Gallery
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Carousel>
+  );
+}
 
-      <Link to="/Newhome">
-      <Button className="drop-shadow-lg p-2 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
-        <h1>Trending Destinations</h1>
-      </Button>
-      </Link>
+const placedata = [
+  {
+    title: "Sigiriya",
+    description:
+      "Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka.",
+    imgUrl:
+      "./cardimage.jpg",
+  },
+  {
+    title: "Ella",
+    description:
+      "Small town in the Badulla District of Uva Province, Sri Lanka. The area has a rich bio-diversity, dense with numerous varieties of flora and fauna",
+    imgUrl:
+      "/ella.jpg",
+  },
+  {
+    title: "Dunhinda Falls",
+    description:
+      "Dunhinda Falls is a waterfall located about 5 kilometres from Badulla in the lower central hills of Sri Lanka. The waterfall gets its name from the smoky dew drops.",
+    imgUrl:
+      "/dunhinda.jpg",
+  },
+  {
+    title: "Sri Pada (Adam's Peak)",
+    description:
+      "Adam's Peak is a 2,243 m (7,359 ft) tall conical sacred mountain located in central Sri Lanka.It is well known for the Sri Pada (Śrī Pāda; Sinhala: ශ්‍රී පාද, sacred footprint)",
+    imgUrl:
+      "/adams.jpg",
+  },
 
-      <Newcards />
-      <Button className="drop-shadow-lg p-2 mt-10 pl-5 pr-5  bg-rose-700 font-poppins ml-10 mb-10 font-bold text-2xl text-white">
-        <h1>Customer Testimonials</h1>
+];
+
+function Placeinput() {
+  const [email, setEmail] = React.useState("");
+  const onChange = ({ target }) => setEmail(target.value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Get the form data
+    const formData = new FormData(e.target);
+
+
+
+    try {
+      const response = await axios.post('https://maps.googleapis.com/maps/api/place/nearbysearch/json', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set the content type for form data
+        },
+      });
+      console.log(response);
+      // Handle the response here (e.g., show a success message)
+      console.log('Response: Success', response.data);
+    } catch (error) {
+      // Handle errors here (e.g., show an error message)
+      console.error('Error: kedup', error);
+    }
+  };
+
+  return (
+    <div className="relative content-center flex rounded-full w-full max-w-[24rem]">
+      <Input
+        type="email"
+        label="Enter your favourite destination"
+        value={email}
+        onChange={onChange}
+        className=""
+        containerProps={{
+          className: "font-poppins min-w-0 ",
+        }}
+      />
+      <Button
+        size="sm"
+        color={email ? "gray" : "blue-gray"}
+        disabled={!email}
+        className="!absolute right-1 top-1 font-poppins rounded"
+      >
+        Find Nearby
       </Button>
-      <Testimonials />
-      <Footers />
     </div>
   );
 }
 
-export default Landing;
+function PlaceCard() {
+  return (
+    <>
+      {placedata.map((placedata) => (
+
+        <Card className="w-72 ">
+          <CardHeader color="blue-gray" className="mt-4 ">
+            <img className="" src={placedata.imgUrl} alt="card-image" />
+          </CardHeader>
+          <CardBody>
+            <Typography variant="h5" color="blue-gray" className="mb-2 font-poppins">
+              {placedata.title}
+            </Typography>
+            <Typography className="font-poppins" >{placedata.description}</Typography>
+          </CardBody>
+          <CardFooter className="pt-0">
+            <Button className="font-poppins">Read More</Button>
+          </CardFooter>
+        </Card>
+      ))}
+    </>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5 text-yellow-700"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+const LINKS = [
+  {
+    title: "Product",
+    items: ["Overview", "Features", "Solutions", "Tutorials"],
+  },
+  {
+    title: "Company",
+    items: ["About us", "Careers", "Press", "News"],
+  },
+  {
+    title: "Resource",
+    items: ["Blog", "Newsletter", "Events", "Help center"],
+  },
+];
+
+const currentYear = new Date().getFullYear();
+
+function Footercomp() {
+  return (
+    <footer className="bg-white pt-12 relative w-full">
+      <div className="mx-auto w-full max-w-7xl px-8">
+        <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
+          <Typography variant="h5" className="font-poppins mb-6">
+            Travo - Travel Management System
+          </Typography>
+          <div className="grid grid-cols-3 justify-between gap-4">
+            {LINKS.map(({ title, items }) => (
+              <ul key={title}>
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="mb-3 font-medium font-poppins opacity-40"
+                >
+                  {title}
+                </Typography>
+                {items.map((link) => (
+                  <li key={link}>
+                    <Typography
+                      as="a"
+                      href="#"
+                      color="gray"
+                      className="font-poppins py-1.5 font-normal transition-colors hover:text-blue-gray-900"
+                    >
+                      {link}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
+          <Typography
+            variant="small"
+            className="mb-4 font-poppins text-center font-normal text-blue-gray-900 md:mb-0"
+          >
+            &copy; {currentYear} <a href="https://material-tailwind.com/">Travo TMS</a>. All
+            Rights Reserved.
+          </Typography>
+          <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </Typography>
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </Typography>
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+              </svg>
+            </Typography>
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </Typography>
+            <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </Typography>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+const testimonials = [
+
+  {
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
+    name: "Thirani Upetha",
+    work: "Software Engineer @ Google",
+    description:
+      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
+
+  },
+  {
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
+    name: "Thirani Upetha",
+    work: "Software Engineer @ Google",
+    description:
+      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
+
+  }, {
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
+    name: "Thirani Upetha",
+    work: "Software Engineer @ Google",
+    description:
+      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
+
+  },
+  {
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
+    name: "Thirani Upetha",
+    work: "Software Engineer @ Google",
+    description:
+      "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
+
+  },
+];
+
+function TestimonialCard() {
+  return (
+    <>
+
+      {testimonials.map((testimonials) => (
+        <Card color="white" shadow className="font-poppins p-7 w-full max-w-[26rem]">
+          <CardHeader
+            color="transparent"
+            floated={false}
+            shadow={false}
+            className="mx-0 flex items-center gap-4 pt-0 pb-8"
+          >
+            <Avatar
+              size="lg"
+              variant="circular"
+              src={testimonials.avatar}
+              alt="tania andrew"
+            />
+            <div className="flex w-full flex-col gap-0.5">
+              <div className="flex items-center justify-between">
+                <Typography className="font-poppins" variant="h5" color="blue-gray">
+                  {testimonials.name}
+                </Typography>
+                <div className=" flex items-center gap-0">
+                  <StarIcon />
+                  <StarIcon />
+                  <StarIcon />
+                  <StarIcon />
+                  <StarIcon />
+                </div>
+              </div>
+              <Typography className="font-poppins" color="blue-gray">{testimonials.work}</Typography>
+            </div>
+          </CardHeader>
+          <CardBody className="mb-6 p-0">
+            <Typography className="font-poppins">
+              {testimonials.description}
+            </Typography>
+          </CardBody>
+        </Card>
+      ))}
+    </>
+  );
+
+}
+
+
+
+function Steppermain() {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [isLastStep, setIsLastStep] = React.useState(false);
+  const [isFirstStep, setIsFirstStep] = React.useState(false);
+
+  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
+
+  return (
+    <div className="w-full py-4">
+      <Stepper
+        activeStep={activeStep}
+        isLastStep={(value) => setIsLastStep(value)}
+        isFirstStep={(value) => setIsFirstStep(value)}
+      >
+        <Step onClick={() => setActiveStep(0)}>
+          <UserIcon className="h-5 w-5" />
+          <div className="absolute -bottom-[4.5rem] w-max text-center">
+            <Typography
+              variant="h6"
+              className=" font-poppins"
+              color={activeStep === 0 ? "blue-gray" : "gray"}
+            >
+              Step 1
+            </Typography>
+            <Typography
+              color={activeStep === 0 ? "blue-gray" : "gray"}
+              className="font-normal font-poppins"
+            >
+              Sign Up!
+            </Typography>
+          </div>
+        </Step>
+        <Step onClick={() => setActiveStep(1)}>
+          <CogIcon className="h-5 w-5" />
+          <div className="absolute -bottom-[4.5rem] w-max text-center">
+            <Typography
+              className=" font-poppins"
+              variant="h6"
+              color={activeStep === 1 ? "blue-gray" : "gray"}
+            >
+              Step 2
+            </Typography>
+            <Typography
+              color={activeStep === 1 ? "blue-gray" : "gray"}
+              className="font-normal font-poppins"
+            >
+              Enter trip details
+            </Typography>
+          </div>
+        </Step>
+        <Step onClick={() => setActiveStep(2)}>
+          <BuildingLibraryIcon className="h-5 w-5" />
+          <div className="absolute -bottom-[4.5rem] w-max text-center">
+            <Typography
+              className=" font-poppins"
+              variant="h6"
+              color={activeStep === 2 ? "blue-gray" : "gray"}
+            >
+              Step 3
+            </Typography>
+            <Typography
+              color={activeStep === 2 ? "blue-gray" : "gray"}
+              className="font-normal font-poppins"
+            >
+              Plan your trip
+            </Typography>
+          </div>
+        </Step>
+      </Stepper>
+      <div className="mt-32 flex justify-between">
+        <Button className=" font-poppins" onClick={handlePrev} disabled={isFirstStep}>
+          Prev
+        </Button>
+        <Button className=" font-poppins" onClick={handleNext} disabled={isLastStep}>
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+export default function Newhome() {
+  return (
+    <div className="w-screen h-screen overflow-scroll bg-blue-gray-50">
+      <div>
+        <NewhomeNavbar />
+      </div>
+      <div>
+        <HomeCarousel />
+      </div>
+      <div className="">
+        <div className="my-24">
+          <Typography variant="h2" className=" font-poppins mt-6 text-center">
+            Trending Destinations
+          </Typography>
+          <Typography variant="h7" className=" font-poppins 3 text-center">
+            Destinations worth visiting
+          </Typography>
+        </div>
+        <div className="justify-center flex my-12">
+          <Placeinput />
+        </div>
+
+        <div className=" justify-center mx-12  gap-5 flex overflow-x-scroll ">
+          <PlaceCard />
+        </div>
+        <div className="my-24">
+          <Typography variant="h2" className=" font-poppins mt-6 text-center">
+            Trip Planning made Easy!
+          </Typography>
+          <Typography variant="h7" className=" font-poppins 3 text-center">
+            Planning your trip has never been easier
+          </Typography>
+        </div>
+        <div className="mx-72">
+          <Steppermain />
+        </div>
+        <div className="my-24">
+          <Typography variant="h2" className=" font-poppins mt-6 text-center">
+            Customer Testimonials
+          </Typography>
+          <Typography variant="h7" className=" font-poppins 3 text-center">
+            Hear from our customers ...
+          </Typography>
+        </div>
+        <div className=" mt-12 justify-center mx-36  gap-5 flex overflow-x-scroll ">
+          <TestimonialCard />
+        </div>
+
+        <div className="mt-16">
+          <Footercomp />
+        </div>
+
+      </div>
+    </div>
+  );
+}

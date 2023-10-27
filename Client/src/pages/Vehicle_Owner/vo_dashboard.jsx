@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { customer, bookmark, invitation, request, star } from '../../assets/Vehicle_owner/index/';
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 import ListWithAvatar from '../../components/Vehicle_owner/list';
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';

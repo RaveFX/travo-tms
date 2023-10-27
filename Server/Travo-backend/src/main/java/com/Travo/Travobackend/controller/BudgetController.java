@@ -32,6 +32,13 @@ public class BudgetController {
     }
     }
 
+    @GetMapping("/getTotalCost")
+    public ResponseEntity<Double> getTotalCost() {
+        double totalCost = budgetService.getTotalCost();
+
+        return ResponseEntity.ok(totalCost);
+    }
+
     // @GetMapping("/{budgetID}")
     // public ResponseEntity<Budget> getBudgetById(@PathVariable Integer budgetID){
     //     Budget budget =budgetService.getBudgetById(budgetID);
