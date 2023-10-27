@@ -9,8 +9,19 @@ import {
 import TopNavbar from '../../components/admin/topNavbar';
 import Sidebar from '../../components/admin/sidebar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-function UserTable({ userData }) {
+function UserTable({ userData, hotelData, activeTab, guideData, activityData, vehicleData }) {
+
+    let dataToDisplay;
+
+    if (activeTab === "hotelAgent") {
+        dataToDisplay = hotelData;
+    } else if (activeTab === "guide") {
+        dataToDisplay = guideData;
+    } else {
+        dataToDisplay = userData;
+    }
     return (
         <div>
             <table className="min-w-full text-left text-sm font-light">
@@ -24,7 +35,7 @@ function UserTable({ userData }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {userData.map((user) => (
+                    {dataToDisplay.map((user) => (
                         <tr
                             key={user.id}
                             className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
@@ -50,9 +61,10 @@ function UserTable({ userData }) {
                             <td className="whitespace-nowrap px-6 py-4">{user.email}</td>
                             <td className="whitespace-nowrap px-6 py-4">{user.nmb}</td>
                             <td class="justify-center">
-                                <a href="/admin_userprofile">
+                                <Link to={`/admin_userprofile/${user.id}`}>
                                     <button type="button" class="text-center focus:outline-none text-white bg-button1 transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">More Info..</button>
-                                </a>
+                                </Link>
+
                             </td>
                         </tr>
                     ))}
@@ -92,7 +104,40 @@ export default function Admin_userlistpage() {
         } catch (error) {
             console.error("Error loading user information:", error);
         }
+
     };
+
+
+
+
+    const [hotelinfo, setHotelinfo] = useState([]);
+
+    useEffect(() => {
+        loadHotelinfo();
+    }, []);
+
+
+
+    const loadHotelinfo = async () => {
+        try {
+            const response = await axios.get("http://localhost:8080/api/v1/hotel/information");
+            const hotelData = response.data.map((hotelInfo) => ({
+                id: hotelInfo.user_id,
+                hotel_id: hotelInfo.hotel_id,
+                registration_date: hotelInfo.registration_date,
+                email: hotelInfo.email,
+                nmb: hotelInfo.contact_num,
+            }));
+            setHotelinfo(hotelData);
+        } catch (error) {
+            console.error("Error loading hotel information:", error);
+        }
+    };
+
+
+
+
+
 
     const data = [
         {
@@ -100,8 +145,8 @@ export default function Admin_userlistpage() {
             value: "traveler",
         },
         {
-            label: "Guide",
-            value: "guide",
+            label: "Hotel Agent",
+            value: "hotelAgent",
         },
         {
             label: "Activity Manager",
@@ -112,8 +157,8 @@ export default function Admin_userlistpage() {
             value: "vehicleRenter",
         },
         {
-            label: "Hotel Agent",
-            value: "hotelAgent",
+            label: "Guide",
+            value: "guide",
         },
         // Add more roles as needed
     ];
@@ -157,11 +202,17 @@ export default function Admin_userlistpage() {
                     </Tabs>
 
                     {/* Render the user table based on the activeTab */}
-                    {activeTab === "traveler" && <UserTable userData={usersinfo} />}
-                    {activeTab === "guide" && <UserTable userData={usersinfo} />}
+                    {/* {activeTab === "traveler" && <UserTable userData={usersinfo} />}
+                    {activeTab === "guide" && <UserTable hotelData={hotelinfo} />}
                     {activeTab === "activityManager" && (
                         <UserTable userData={usersinfo} />
-                    )}
+                    )} */}
+
+
+                    {activeTab === "traveler" && <UserTable userData={usersinfo} hotelData={hotelinfo} activeTab={activeTab} guideData={hotelinfo} />}
+                    {activeTab === "hotelAgent" && <UserTable userData={usersinfo} hotelData={hotelinfo} activeTab={activeTab} guideData={hotelinfo} />}
+                    {activeTab === "activityManager" && <UserTable userData={usersinfo} hotelData={hotelinfo} activeTab={activeTab} guideData={hotelinfo} />}
+
 
                 </div>
             </div>

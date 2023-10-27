@@ -1,7 +1,7 @@
 
 import { Textarea, Button, IconButton } from "@material-tailwind/react";
 import { LinkIcon } from "@heroicons/react/24/outline";
-import { connectToWebSocket, sendMessage } from "../../api/WebSocketService"; // Import the WebSocket service
+// import { connectToWebSocket, sendMessage } from "../../api/WebSocketService"; // Import the WebSocket service
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 

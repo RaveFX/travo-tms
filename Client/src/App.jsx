@@ -171,7 +171,7 @@ export default function App() {
         <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
         <Route path="admin_users" element={<Admin_Users />} />
         <Route path="admin_requests" element={<Admin_Requests />} />
-        <Route path="admin_userprofile" element={<Admin_Userprofile />} />
+        <Route path="admin_userprofile/:user_id" element={<Admin_Userprofile />} />
         <Route path="admin_advertisments" element={<Admin_Advertisments />} />
         <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
         <Route path="admin_transaction" element={<Admin_Transaction />} />

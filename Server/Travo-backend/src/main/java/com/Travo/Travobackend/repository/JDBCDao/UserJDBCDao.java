@@ -20,46 +20,6 @@ public class UserJDBCDao {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-//    public List<UserInformationDTO> getAllUserInformation() {
-//        StringBuffer SQL = new StringBuffer();
-//        HashMap<String, Object> params = new HashMap<>();
-//        List<UserInformationDTO> userInformation = new ArrayList<>();
-//
-//        SQL.append("SELECT * FROM user");
-//
-//        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
-//            while (rs.next()) {
-//                UserInformationDTO userInformationDTO = new UserInformationDTO();
-//
-//                // Use the setter methods on the instance, not the class
-//                userInformationDTO.setEmail(rs.getString("email"));
-//                userInformationDTO.setUser_id(rs.getInt("user_id"));
-//                userInformationDTO.setProfileImage(rs.getString("profile_image"));
-////                userInformationDTO.setRole(rs.get("role"));
-//                java.sql.Date sqlDate = rs.getDate("registration_date");
-//                if (sqlDate != null) {
-//                    userInformationDTO.setRegistration_date(sqlDate.toLocalDate());
-//                }
-//
-//                // Retrieve role and status as strings from the ResultSet
-//                String roleString = rs.getString("role");
-//                String statusString = rs.getString("status");
-//
-//                // Map the role and status strings to the corresponding enums
-//                if (roleString != null) {
-//                    userInformationDTO.setRole(Role.valueOf(roleString));
-//                }
-//
-//                if (statusString != null) {
-//                    userInformationDTO.setStatus(Status.valueOf(statusString));
-//                }
-//
-//                userInformation.add(userInformationDTO);
-//            }
-//            return userInformation;
-//        });
-//    }
-
 
     public List<UserInformationDTO> getAllUserInformation() {
         String sql = "SELECT u.*, t.* FROM user u INNER JOIN traveler t ON u.user_id = t.traveler_id";
