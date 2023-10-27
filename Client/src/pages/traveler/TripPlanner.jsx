@@ -151,7 +151,7 @@ function TripPlanner() {
               <div>{selectedComponent}</div>
             </PlanStepper>
 
-            hhhh- {tripId}
+           
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

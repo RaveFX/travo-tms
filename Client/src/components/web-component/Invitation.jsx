@@ -11,6 +11,8 @@ import {
 import { UserPlusIcon, ClipboardDocumentIcon, CheckIcon } from "@heroicons/react/24/outline";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import Popover from "@mui/material/Popover";
+
 
 export function SubscriptionPopover() {
   const { tripId } = useParams();
@@ -19,6 +21,14 @@ export function SubscriptionPopover() {
   const [isCopying, setIsCopying] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const link = `http://127.0.0.1:5173/travo/text/${tripId}/${uniqueLink}`;
+
+  const openPopover = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const closePopover = () => {
+    setAnchorEl(null);
+  };
 
 
   const loadTripinfo = async () => {
@@ -62,24 +72,38 @@ export function SubscriptionPopover() {
 
   return (
     <div>
-      <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"
-      // id="subscription-menu"
-      // anchorEl={anchorEl}
-      // open={Boolean(anchorEl)}
-      // onClose={handleClose}
-      >
-        <MenuHandler>
+
+        
           <Button
-            onClick={handleClick} className={`flex flex-row gap-3 bg-white font-extrabold font-poppins text-[#000000] ${isCopying ? 'pointer-events-none' : 'hover:bg-[#F5F1F1] hover:shadow-[0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)]'} rounded-full w-[140px] h-[44px] relative -left-[12%] z-5 shadow-[0 2px 4px rgba(0,0,0,0.15)]`}
+            onClick={openPopover} className={`flex flex-row gap-3 bg-white font-extrabold font-poppins text-[#000000] ${isCopying ? 'pointer-events-none' : 'hover:bg-[#F5F1F1] hover:shadow-[0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)]'} rounded-full w-[140px] h-[44px] relative -left-[12%] z-5 shadow-[0 2px 4px rgba(0,0,0,0.15)]`}
             aria-controls="subscription-menu"
             aria-haspopup="true"
           >
             <UserPlusIcon className='w-5 h-5 stroke-[#000000] m-0 p-0' strokeWidth="3" />
             Invite- {tripId}
           </Button>
-        </MenuHandler>
+          
+          <Popover
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={closePopover}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+        <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"
+      // id="subscription-menu"
+      // anchorEl={anchorEl}
+      // open={Boolean(anchorEl)}
+      // onClose={handleClose}
+      >
         <MenuItem>
-          <Typography variant="h6" color="blue-gray" className="mb-6">
+          <Typography variant="h6" color="blue-gray" className="mb-6 mt-10">
             Invite your friends!
           </Typography>
         </MenuItem>
@@ -121,7 +145,9 @@ export function SubscriptionPopover() {
             </a>
           </div>
         </MenuItem>
-      </Menu>
+        </Menu>
+        </Popover>
+      
     </div>
   );
 }

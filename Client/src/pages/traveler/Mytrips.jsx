@@ -52,6 +52,7 @@ function Mytrips() {
   console.log(user_id);
 
   const createTrip = async () => {
+    setIsOpen(true);
     try {
       const tripResponse = await axios.post('http://localhost:8080/api/v1/trips/create', {
         trip_admin: user_id,
@@ -124,11 +125,7 @@ function Mytrips() {
             <div className="w-[70%] pt-8 ">
               <TabBar data={data} />
             </div>
-            <Button
-              className='h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'
-              onClick={handleCreateTripClick}>
-              Create Trip
-            </Button>
+            
             <Button onClick={createTrip} className='h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
               Create Trip
             </Button>
@@ -197,7 +194,7 @@ function Mytrips() {
           </Swiper>
         </div>
           <PopupModal isOpen={isOpen} setIsOpen={setIsOpen}/>
-          <div className="trip-list">
+          {/*<div className="trip-list">
             {tripinfo.map((tripinfo) => (
               <Link to={`/traveler/trip-planner/${tripinfo.tripId}`} >
                 <button
@@ -208,10 +205,10 @@ function Mytrips() {
                 </button>
               </Link>
             ))}
-          </div>
+            </div>*/}
 
         </div>
-        <SwiperCard />
+        
         <PopupModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
