@@ -16,7 +16,7 @@ public class TripJDBCDao {
     public List<TripDTO> getAllTrips(String SQL, Map<String, Object> params) {
         return namedParameterJdbcTemplate.query(SQL, params, (rs, rowNum) -> {
             TripDTO tripDTO = new TripDTO();
-            tripDTO.setTripId(rs.getInt("trip_id"));
+            tripDTO.setTrip_id(rs.getInt("trip_id"));
             tripDTO.setTrip_admin(rs.getString("trip_admin"));
             tripDTO.setTrip_name(rs.getString("trip_name"));
             return tripDTO;

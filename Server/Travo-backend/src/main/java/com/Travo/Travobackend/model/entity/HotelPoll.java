@@ -20,4 +20,5 @@ public class HotelPoll {
     private Integer hotel_id;
     private Integer trip_id;
     private Integer total_votes;
+    private Integer day;
 }

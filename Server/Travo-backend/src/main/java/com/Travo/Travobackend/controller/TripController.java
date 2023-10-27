@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/api/v1/trips")
+@RequestMapping("/api/v1/trip")
 @RequiredArgsConstructor
 public class TripController {
 

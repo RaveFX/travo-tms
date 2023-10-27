@@ -71,10 +71,10 @@ function Selections() {
   }, []);
 
   const loadHotelpolllist = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trips/hoteLlist/${pathTripId}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/hoteLlist/${pathTripId}`)
     setHotelpolllist(result.data);
 
-    const updatevote = await axios.get(`http://localhost:8080/api/v1/trips/updateTotalVotes/${pathTripId}/${hotelId}/${isChecked}`)
+    const updatevote = await axios.get(`http://localhost:8080/api/v1/trip/updateTotalVotes/${pathTripId}/${hotelId}/${isChecked}`)
     setHotelpolllist(updatevote.data);
   }
 
@@ -102,8 +102,43 @@ function Selections() {
     },
   ];
 
-  return (
+  const handleCheckboxChange = async (hotelId, checked) => {
 
+    const updatedHotelpolllist = hotelpolllist.map((hotel) => {
+      if (hotel.hotel_id === hotelId) {
+        const newTotalVotes = checked ? hotel.total_votes + 1 : hotel.total_votes - 1;
+
+
+        updateTotalVotes(hotelId, newTotalVotes, checked);
+
+        console.log(checked)
+        console.log(hotelId)
+        console.log(newTotalVotes)
+
+
+        return {
+          ...hotel,
+          total_votes: newTotalVotes,
+        };
+      }
+      return hotel;
+    });
+
+    setHotelpolllist(updatedHotelpolllist);
+  };
+
+  const updateTotalVotes = async (hotelId, newTotalVotes, isChecked) => {
+    try {
+      const response = await axios.put(`http://localhost:8080/api/v1/trip/updateTotalVotes/${pathTripId}/${hotelId}/${isChecked}`);
+      // Handle the response as needed
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  };
+
+
+  return (
     <>
       <div className="flex overflow-hidden w-full">
         <div
@@ -176,14 +211,15 @@ function Selections() {
                                 <div>
                                   <div className="flex flex-row gap-10 mb-5">
                                     <div className="flex">
-                                      <p className="text-sm">{hotel.hotel_name}</p>
+                                      <p className="text-sm">{hotel.hotel_id}{hotel.hotel_name}</p>
                                     </div>
                                     <div className="flex">
                                       <input
                                         type="checkbox"
                                         className="cursor-pointer"
-                                        id={`acceptCheckbox-${hotel.hotel_id}`} // Use a unique ID based on hotelId
-                                        name="acceptance" // Use the same 'name' for checkboxes in the same group
+                                        id={`acceptCheckbox-${hotel.hotel_id}`}
+                                        name="acceptance"
+                                        onChange={(e) => handleCheckboxChange(hotel.hotel_id, e.target.checked)}
                                       />
                                     </div>
                                   </div>

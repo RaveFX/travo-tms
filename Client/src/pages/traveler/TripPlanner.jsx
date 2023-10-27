@@ -24,7 +24,7 @@ import {
 const trip_id = sessionStorage.getItem('trip_id');
 
 function TripPlanner() {
-  const { tripId } = useParams();
+  const { trip_id } = useParams();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleBackClick = () => {
@@ -140,7 +140,7 @@ function TripPlanner() {
               <div>{selectedComponent}</div>
             </PlanStepper>
 
-            hhhh- {tripId}
+            hhhh- {trip_id}
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TripDTO {
-    private Integer tripId;
+    private Integer trip_id;
     private String trip_admin;
     private String trip_name;
 }

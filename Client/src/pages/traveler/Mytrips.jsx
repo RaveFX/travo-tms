@@ -21,22 +21,22 @@ function Mytrips() {
 
   const createTrip = async () => {
     try {
-      const tripResponse = await axios.post('http://localhost:8080/api/v1/trips/create', {
+      const tripResponse = await axios.post('http://localhost:8080/api/v1/trip/create', {
         trip_admin: user_id,
       });
 
       console.log('Trip created:', tripResponse.data);
-      const tripId = tripResponse.data.tripId;
+      const trip_id = tripResponse.data.trip_id;
       const unique_link = tripResponse.data.unique_link;
 
-      const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trips/create-members', {
+      const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trip/create-members', {
         user_id: user_id,
-        trip_id: tripId,
+        trip_id: trip_id,
         trip_admin: 1,
       });
 
       console.log('Trip members created:', tripMembersResponse.data);
-      navigate(`/traveler/trip-planner/${tripId}`);
+      navigate(`/traveler/trip-planner/${trip_id}`);
     } catch (error) {
       console.error('Error creating trip:', error);
     }
@@ -51,7 +51,7 @@ function Mytrips() {
   }, []);
 
   const loadTripinfo = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/triplist/${user_id}`)
     setTripinfo(result.data);
   }
 
@@ -103,12 +103,12 @@ function Mytrips() {
           </div>
           <div className="trip-list">
             {tripinfo.map((tripinfo) => (
-              <Link to={`/traveler/trip-planner/${tripinfo.tripId}`} >
+              <Link to={`/traveler/trip-planner/${tripinfo.trip_id}`} >
                 <button
                   className="h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold"
                   onClick={() => handleCardClick(tripinfo)}
                 >
-                  {tripinfo.tripId} {tripinfo.trip_admin}
+                  {tripinfo.trip_id} {tripinfo.trip_admin}
                 </button>
               </Link>
             ))}
