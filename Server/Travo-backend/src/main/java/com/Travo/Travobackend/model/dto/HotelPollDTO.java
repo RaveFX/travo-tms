@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelPollDTO {
+    private Integer id;
     private Integer hotel_id;
     private Integer trip_id;
     private Integer total_votes;

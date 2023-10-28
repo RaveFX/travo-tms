@@ -26,10 +26,10 @@ import {
 
 function TripPlanner() {
   const { id } = useParams();
-  const [details,setDetails]=useState([]);
+  const [details, setDetails] = useState([]);
   useEffect(() => {
     loadDetails();
-  },[]); 
+  }, []);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleBackClick = () => {
@@ -37,8 +37,11 @@ function TripPlanner() {
     navigate("/mytrips");
   };
 
+  const user_id = sessionStorage.getItem('user_id');
+  console.log(user_id)
+
   const loadDetails = async () => {
-    const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
     setDetails(result.data);
   };
 
@@ -104,8 +107,8 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar trip_name={details.trip_name} description={details.description}/>
-            
+            <TripNameBar trip_name={details.trip_name} description={details.description} />
+
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}
@@ -151,7 +154,7 @@ function TripPlanner() {
               <div>{selectedComponent}</div>
             </PlanStepper>
 
-           
+
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

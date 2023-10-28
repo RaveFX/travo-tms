@@ -76,7 +76,7 @@ function TripAddButton() {
                                 onClick={handleButtonClick}
                                 disabled={isLoading}
                             >
-                                {isLoading ? 'Loading...' : 'Add to trip'}
+                                {isLoading ? 'Loading...' : 'Join trip'}
                             </button>
 
                             {trip_id && uniqueLink ? (

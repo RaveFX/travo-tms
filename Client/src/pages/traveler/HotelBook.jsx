@@ -1,8 +1,6 @@
 import React from 'react';
-import Grid from '../../components/web-component/Grid';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
-import Datepicker from "react-tailwindcss-datepicker";
 import {
     Rating, Button, Card, Chip,
     CardBody,
@@ -49,22 +47,22 @@ function App() {
         } else {
             try {
                 // if (boardType === "Full Board") {
-                    
+
                 //     hotels.price= 2;
                 // } if (boardType === "Half Board") {
                 //     hotels.price= 3;
                 // }
-            await axios.post(
-                `http://localhost:8080/api/v1/traveler/hotelBooking/${userId}/${hotelId}/${roomId}`,{
+                await axios.post(
+                    `http://localhost:8080/api/v1/traveler/hotelBooking/${userId}/${hotelId}/${roomId}`, {
                     boardType: boardType,
                 }
-                
-            );
 
-            navigate("/traveler/HotelPayment");
-        } catch (error) {
-            console.error("Error storing boardType: ", error);
-        }
+                );
+
+                navigate("/traveler/HotelPayment");
+            } catch (error) {
+                console.error("Error storing boardType: ", error);
+            }
         }
     };
 
@@ -74,10 +72,10 @@ function App() {
     const roomId = decodeURIComponent(splitURL[7]);
     const hotelId = decodeURIComponent(splitURL[6]);
     console.log("Type: ", hotelId);
-    
+
     const handleBookings = async (booking) => {
         try {
-           
+
             // Make a POST request to your backend API endpoint to store the attraction details
             await axios.post(`http://localhost:8080/api/v1/traveler/hotelBooking/${userId}/${hotelId}/${roomId}`, {
                 boardType: booking.boardType,
@@ -152,13 +150,13 @@ function App() {
                                 </div>
 
 
-                                    <Button className="mt-6 bg-green"
-                                        //  onClick={()=>handleBookings(booking)} 
-                                        type='submit'
-                                        fullWidth>
-                                        Book Now
-                                    </Button>
-                               
+                                <Button className="mt-6 bg-green"
+                                    //  onClick={()=>handleBookings(booking)} 
+                                    type='submit'
+                                    fullWidth>
+                                    Book Now
+                                </Button>
+
 
                             </form>
                         </Card>

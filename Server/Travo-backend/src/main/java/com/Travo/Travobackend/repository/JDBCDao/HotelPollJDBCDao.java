@@ -46,6 +46,7 @@ public class HotelPollJDBCDao {
     public List<HotelPollDTO> getAllPollHotels(String SQL, Map<String, Object> params) {
         return namedParameterJdbcTemplate.query(SQL, params, (rs, rowNum) -> {
             HotelPollDTO hotelPollDTO = new HotelPollDTO();
+            hotelPollDTO.setId(rs.getInt("id"));
             hotelPollDTO.setHotel_id(rs.getInt("hotel_id"));
             hotelPollDTO.setTotal_votes(rs.getInt("total_votes"));
             hotelPollDTO.setHotel_name(rs.getString("acc_name"));
