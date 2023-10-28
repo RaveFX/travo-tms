@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.repository.JDBCDao;
 
 import com.Travo.Travobackend.model.dto.HotelDTO;
+import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -132,6 +133,45 @@ public class TravelerOptionJDBCDao {
 
 
     }
+
+//    public List<HotelDTO> getBookingDetail(Integer hotelId,Integer roomId,Integer userId) {
+//        StringBuffer SQL = new StringBuffer();
+//        HashMap<String, Object> params = new HashMap<>();
+//        List<HotelDTO> bookingDetail = new ArrayList<>();
+//        params.put("hotelId", hotelId);
+//        params.put("roomId", roomId);
+//        params.put("userId", userId);
+//
+//        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
+//
+//        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+//            while (rs.next()) {
+//                HotelDTO hotelDTO = new HotelDTO();
+//
+//                hotelDTO.setHotel_description(rs.getString("description"));
+//                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+//                hotelDTO.setChild_count(rs.getInt("child_count"));
+//                hotelDTO.setPrice(rs.getInt("price"));
+//                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+//                hotelDTO.setRoom_description(rs.getString("description"));
+//                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+//                hotelDTO.setAc(rs.getBoolean("ac"));
+//                hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
+//                hotelDTO.setDinner(rs.getBoolean("dinner"));
+//                hotelDTO.setLunch(rs.getBoolean("lunch"));
+//                hotelDTO.setView(rs.getString("view"));
+//                hotelDTO.setWifi(rs.getBoolean("wifi"));
+//
+//
+//
+//                bookingDetail.add(hotelDTO);
+//            }
+//            return bookingDetail;
+//        });
+//
+//
+//    }
+
 
     public List<VehiclesDTO> getAllVehicles() {
         StringBuffer SQL = new StringBuffer();

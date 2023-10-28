@@ -12,48 +12,7 @@ import {
   Typography,
 } from '@material-tailwind/react';
 
-const Explore = [
-  {
-    id: 1,
-    name: "Destinations",
-    price: "Find plsces to visit",
-    imageSrc:
-      "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
-    buttonname: "Explore Now",
-    links:"/traveler/DestinationPage"
-  },
-  {
-    id: 2,
-    name: "Hotels",
-    price: "Book your stay with us",
-    imageSrc:
-      "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
-    buttonname: "Book Now",
-    links: "/traveler/HotelPage",
-  },
-  {
-    id: 3,
-    name: "Vehicles",
-    price: "Rent your vehicle with us",
-    imageSrc:
-      "https://plus.unsplash.com/premium_photo-1661775983935-579b5c94e2c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww&w=1000&q=80",
-    buttonname: "Rent Now",
-    links: "/traveler/VehiclePage",
 
-  },
-  // {
-  //   id: 4,
-  //   name: "Travel Guides",
-  //   price: "Guides for your trip",
-  //   imageSrc:
-  //     "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
-  //   buttonname: "Find Now",
-  //   links: "/GuideProfile",
-  // },
-  
-
-  // Define your shop items here...
-];
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -79,6 +38,49 @@ const Dashboard = () => {
       endDate: '2023-09-15',
     },
     // Add more ongoing trips
+  ];
+
+  const Explore = [
+    {
+      id: 1,
+      name: "Destinations",
+      price: "Find plsces to visit",
+      imageSrc:
+        "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
+      buttonname: "Explore Now",
+      links:"/traveler/DestinationPage"
+    },
+    {
+      id: 2,
+      name: "Hotels",
+      price: "Book your stay with us",
+      imageSrc:
+        "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
+      buttonname: "Book Now",
+      links: `/traveler/HotelPage/${user_id}`,
+    },
+    {
+      id: 3,
+      name: "Vehicles",
+      price: "Rent your vehicle with us",
+      imageSrc:
+        "https://plus.unsplash.com/premium_photo-1661775983935-579b5c94e2c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww&w=1000&q=80",
+      buttonname: "Rent Now",
+      links: "/traveler/VehiclePage",
+  
+    },
+    // {
+    //   id: 4,
+    //   name: "Travel Guides",
+    //   price: "Guides for your trip",
+    //   imageSrc:
+    //     "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
+    //   buttonname: "Find Now",
+    //   links: "/GuideProfile",
+    // },
+    
+  
+    // Define your shop items here...
   ];
   
   

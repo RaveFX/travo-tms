@@ -76,6 +76,12 @@ const VegicleCard = ({ names, description, location,link, milage, small_bag, pri
 
 
 const hotel_page = () => {
+    // const user_id = sessionStorage.getItem('user_id');
+    const currentURL = window.location.href;
+    const splitURL = currentURL.split("/");
+    const user_id = decodeURIComponent(splitURL[5]);
+    
+    console.log(user_id);
     const [hotels,setHotels]=useState([]);
    
     useEffect(() => {
@@ -103,7 +109,7 @@ const hotel_page = () => {
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
-                            <Link to={`/traveler/HotelType/${hotel.hotel_id}`}>
+                            <Link to={`/traveler/HotelType/${user_id}/${hotel.hotel_id}`}>
                             <VegicleCard  names={hotel.hotel_name} description={hotel.description}  />
                             </Link>
                         ))}

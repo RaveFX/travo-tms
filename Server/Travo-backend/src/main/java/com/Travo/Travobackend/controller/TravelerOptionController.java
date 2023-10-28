@@ -7,6 +7,7 @@ import com.Travo.Travobackend.repository.ReservationRepository;
 import com.Travo.Travobackend.service.TraveleroptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class TravelerOptionController {
     public List<HotelDTO> getHotelDetails(@PathVariable Integer hotelId,@PathVariable Integer roomId){
         System.out.println(hotelId);
 
-        return traveleroptionService.hotelDetails(hotelId,roomId);
+return traveleroptionService.hotelDetails(hotelId,roomId);
 
     }
     @GetMapping("/hotels/{hotelId}")
@@ -47,21 +48,34 @@ public class TravelerOptionController {
         return traveleroptionService.types(hotelId);
 
     }
-    @Autowired
-    private final TraveleroptionService vehicleService;
 
-    @GetMapping("/vehicles")
-    public List<VehiclesDTO> getVehicles(){
-        return vehicleService.vehicles();
+//    @Autowired
+//    private final TraveleroptionService vehicleService;
+//
+//    @GetMapping("/vehicles")
+//    public List<VehiclesDTO> getVehicles(){
+//        return vehicleService.vehicles();
+//    }
+
+    @PostMapping("/hotelBooking/{userId}/{hotelId}/{roomId}")
+    public String hotelBooking(
+            @RequestBody ReservationDTO reservationDTO,
+            @PathVariable Integer hotelId,
+            @PathVariable Integer roomId,
+            @PathVariable Integer userId){
+        return traveleroptionService.hotelBooking(reservationDTO,userId,hotelId,roomId);
+
     }
-
-//    @PostMapping("/hotels/{hotelId}/{roomId}")
-//    ReservationDTO bookHotel(@RequestBody ReservationDTO bookHotel){
-////        return reservationRepository.save(bookHotel);
-//        return
+//    @GetMapping("/hotelBooking/{userId}/{hotelId}/{roomId}")
+//    public List<HotelDTO> getBookingDetail(@PathVariable Integer hotelId,@PathVariable Integer roomId,@PathVariable Integer userId){
+//        return traveleroptionService.BookingDetail(hotelId,roomId,userId);
+//
 //    }
 
 
+    }
 
 
-}
+
+
+

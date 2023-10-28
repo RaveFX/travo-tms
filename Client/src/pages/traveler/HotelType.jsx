@@ -18,7 +18,8 @@ function App() {
 
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
-    const hotelId = decodeURIComponent(splitURL[5]);
+    const user_id = decodeURIComponent(splitURL[5]);
+    const hotelId = decodeURIComponent(splitURL[6]);
     console.log("Type: ", hotelId)
 
 
@@ -65,7 +66,7 @@ function App() {
 
                             {
                                 rooms.map((rooms) => (
-                                    <Link to={`/traveler/HotelPageMore/${hotelId}/${rooms.room_id}`}>
+                                    <Link to={`/traveler/HotelPageMore/${user_id}/${hotelId}/${rooms.room_id}`}>
                                         <div style={{ width: '90%' }} className="bg-white shadow-md rounded-lg overflow-hidden mb-5">
                                             <img
                                                 src='https://cdn1.goibibo.com/voy_ing/t_fs/abd3c6ae798711eab6bd0242ac110002.jpg'

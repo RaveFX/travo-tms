@@ -29,6 +29,10 @@ public class Reservation {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "hotel_id", referencedColumnName = "hotel_id" )
+    private HotelAgent hotelAgent;
+
     private LocalDate date;
 
     private LocalDate checkin_date;
@@ -38,7 +42,7 @@ public class Reservation {
     private Integer payment;
     private Integer status;
     private Integer trip_id;
-    private BoardType boardType;
+    private String boardType;
 
     @PrePersist
     protected void onCreate() {

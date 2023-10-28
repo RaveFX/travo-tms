@@ -4,7 +4,7 @@ import Sidebar from '../../components/web-component/Sidebar';
 // import Headers from '../../components/web-component/Headers';
 import TopNavbar from '../../components/web-component/Navbar';
 import {
-    Rating, Button, Card,Chip,
+    Rating, Button, Card, Chip,
     CardBody,
     CardFooter,
     Typography,
@@ -42,7 +42,7 @@ const photos = [
     // Add more photos here...
 ];
 
-const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, ac,room,link }) => {
+const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, ac, room, link, fullBoard,halfBoard }) => {
 
     const [showAll, setShowAll] = useState(false);
     const displayedPhotos = showAll ? photos : photos.slice(0, 3);
@@ -74,10 +74,23 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
             </div>
 
             <div className='flex flex-col sm:flex-row'>
-                <div className='w-full sm:w-1/2 lg:w-1/2 xl:w-1/2 p-5'>
-                    <p className='text-sm'> {description}</p>
-                    <p className='text-md text-base mt-4'>Room Type</p>
-                    <Chip className='bg-button2' size="lg" value={room}/>
+                <div className='flex flex-col w-full'>
+
+
+                    <div className='w-full sm:w-1/2 lg:w-3/4 xl:w-1/2 p-5'>
+                        <p className='text-sm'> {description}</p>
+                        <p className='text-md text-base mt-4'>Room Type</p>
+                        <Chip className='bg-button2' size="lg" value={room} />
+                    </div>
+
+                    <div className='w-full sm:w-1/2 lg:w-3/4 xl:w-1/2 p-5'>
+                        {/* <p className='text-sm'> {price}</p> */}
+                        <p className='text-md text-base mt-1'>Full Board Price (Rs.)</p>
+                        <Chip className='bg-button2 ' size="lg" value={fullBoard} />
+                        <p className='text-md text-base mt-1'>Half Board Price (Rs.)</p>
+                        <Chip className='bg-button2' size="lg" value={halfBoard} />
+                    </div>
+
                 </div>
 
                 <div className='w-full sm:w-1/2 lg:w-1/2 xl:w-1/2  p-5'>
@@ -97,17 +110,17 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
                     <Card className="mt-6 w-96">
                         <CardBody>
                             <Typography variant="h5" color="blue-gray" className="mb-2">
-                            Property highlights
+                                Property highlights
                             </Typography>
                             <h1 className='text-none mb-2'>Location : </h1>
                             <Typography variant="h6" color="blue-gray" className="mb-2">
-                            {breakfast && <h1>Breakfast Info</h1>}
+                                {breakfast && <h1>Breakfast Info</h1>}
                             </Typography>
-                            <h1 className='text-none mb-2'>Continental, Vegetarian</h1>
+                            {/* <h1 className='text-none mb-2'>Continental, Vegetarian</h1> */}
                             <Typography variant='h6'>
-                            Free parking available at the hotel
+                                Free parking available at the hotel
                             </Typography>
-                            
+
                         </CardBody>
                         <CardFooter className="pt-0">
                             <a href={link} className="inline-block">
@@ -131,7 +144,7 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
                             </a>
                         </CardFooter>
                     </Card>
-                    
+
                 </div>
 
             </div>
@@ -149,9 +162,12 @@ function App() {
 
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
-    const hotelId = decodeURIComponent(splitURL[5]);
-    const roomId = decodeURIComponent(splitURL[6]);
-    console.log("Type: ", hotelId)
+    const user_id = decodeURIComponent(splitURL[5]);
+    const hotelId = decodeURIComponent(splitURL[6]);
+    const roomId = decodeURIComponent(splitURL[7]);
+    const userId =
+
+        console.log("Type: ", hotelId)
 
 
     useEffect(() => {
@@ -164,7 +180,7 @@ function App() {
             }
         };
         loadHotels();
-    }, [hotelId,roomId]);
+    }, [hotelId, roomId]);
 
 
     return (
@@ -179,9 +195,10 @@ function App() {
 
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => {
+                            const halfBoard = Math.floor((2*hotel.price)/3)
 
                             return <GridImage name={hotel.hotel_name} photos={photos} description={hotel.description}
-                                wifi={hotel.wifi} lunch={hotel.lunch} dinner={hotel.dinner} breakfast={hotel.breakfast} ac={hotel.ac} room={hotel.view} link={`/traveler/HotelBook/${hotelId}/${roomId}`} />;
+                                wifi={hotel.wifi} lunch={hotel.lunch} dinner={hotel.dinner} breakfast={hotel.breakfast} ac={hotel.ac} room={hotel.view} halfBoard={halfBoard} fullBoard={hotel.price} link={`/traveler/HotelBook/${user_id}/${hotelId}/${roomId}`} />;
 
                         })}
                     </div>
