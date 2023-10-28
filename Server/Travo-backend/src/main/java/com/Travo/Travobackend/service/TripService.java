@@ -7,6 +7,7 @@ import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
+import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,15 @@ public class TripService {
     private TripRepository tripRepository;
 
     @Autowired
+    private TripMemberRepository tripMemberRepositoryRepositoryRepository;
+
+    @Autowired
     private TripJDBCDao tripJDBCDao;
 
+
+
     public List<TripDTO> tripList(Integer userID){
+        System.out.println(userID);
         return tripJDBCDao.getTripList(userID);
     }
 
@@ -59,12 +66,12 @@ public class TripService {
 
 
     public String checkTrip(Integer tripId, String uniqueKey) {
-        System.out.println("tttt");
         String exists = tripRepository.existsByTripIdAndUniqueKey(tripId, uniqueKey);
-        System.out.println("tt");
         System.out.println(exists);
 
         return exists;
     }
+
+
 
 }

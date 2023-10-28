@@ -15,19 +15,26 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "trip_member")
 public class TripMember {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer member_id;
+
+    private String member_fname;
+    private String image;
 
     @Enumerated(EnumType.STRING)
-    private TripRole tripRole;
+    private TripRole tripRole = TripRole.MEMBER;
 
-    @ManyToOne
-    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )
-    private Trip trip;
+    private Integer trip_id;
+    private Integer user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id", referencedColumnName = "user_id" )
-    private User user;
+
+//    @ManyToOne
+//    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )
+//    private Trip trip;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+//    private User user;
 
 
 

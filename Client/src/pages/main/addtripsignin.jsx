@@ -46,14 +46,20 @@ function Addtripsignin() {
             const role = response.data.role;
             sessionStorage.setItem('user_id', user_id);
             sessionStorage.setItem('role', role);
+            console.log(user_id)
+            console.log(TripId)
+
+            const trip_role = 'MEMBER';
 
 
             if (response.data.role === "TRAVELLER" || response.data.role === "HOTEL_AGENT" || response.data.role === "STORE_MANAGER" || response.data.role === "ACTIVITY_AGENT" || response.data.role === "VEHICLE_RENTER" || response.data.role === "GUIDE") {
-                const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trips/create-members', {
+                const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trip/create-members', {
                     user_id: user_id,
                     trip_id: TripId,
-                    trip_admin: 0,
+                    trip_role: trip_role,
                 });
+
+
 
                 console.log('Trip members created:', tripMembersResponse.data);
                 navigate(`/traveler/trip-planner/${TripId}`);

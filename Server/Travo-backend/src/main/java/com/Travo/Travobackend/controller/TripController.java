@@ -1,7 +1,11 @@
 package com.Travo.Travobackend.controller;
 
-import com.Travo.Travobackend.model.dto.HotelReservationDTO;
 import com.Travo.Travobackend.model.dto.TripDTO;
+import com.Travo.Travobackend.model.dto.TripMemberDTO;
+import com.Travo.Travobackend.model.entity.TripMember;
+import com.Travo.Travobackend.model.other.AuthenticationResponse;
+import com.Travo.Travobackend.model.other.RegisterRequest;
+import com.Travo.Travobackend.service.TripMemberService;
 import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.Travo.Travobackend.model.dto.TripDTO;
-import com.Travo.Travobackend.model.entity.TripMembers;
 import com.Travo.Travobackend.repository.GroupMessagesRepository;
 import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.model.entity.Trip;
-import com.Travo.Travobackend.service.TripService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +32,7 @@ import java.util.Random;
 public class TripController {
     @Autowired
     private final TripService tripService; // Initialize this field in the constructor
+    private final TripMemberService tripMemberService;
     @Autowired
     private TripRepository tripRepository;
     @Autowired
@@ -83,11 +83,13 @@ public class TripController {
         }
     }
 
+
     @PostMapping("/create-members")
-    public TripMembers createTripMembers(@RequestBody TripMembers tripMembers) {
-        System.out.println("member add");
-        return tripMembersRepository.save(tripMembers);
+    public ResponseEntity<String> addTripMember(@RequestBody TripMemberDTO tripMemberDTO) {
+        String result = tripMemberService.addTripMember(tripMemberDTO);
+        return ResponseEntity.ok(result);
     }
+
 
 //    @GetMapping("/triplist/{userId}")
 //    public List<TripDTO> gettriplist(@PathVariable Integer userId) {
@@ -95,19 +97,16 @@ public class TripController {
 //        return tripService.tripList(userId);
 //    }
 //
-    @GetMapping("/trip-information/{tripId}")
-    public ResponseEntity<Trip> getTripInfo(@PathVariable Integer tripId) {
-        System.out.println("works");
-        Trip trip = tripRepository.findById(tripId).orElse(null);
-
-        if (trip != null) {
-            return ResponseEntity.ok(trip);
-        } else {
-            // Return a 404 Not Found response if the trip is not found
-            return ResponseEntity.notFound().build();
-        }
-    }
-
+//@GetMapping("/trip-information/{tripId}")
+//public ResponseEntity<Trip> getTripInfo(@PathVariable Integer tripId) {
+//    Trip trip = tripRepository.findById(tripId).orElse(null);
+//
+//    if (trip != null) {
+//        return ResponseEntity.ok(trip);
+//    } else {
+//        return ResponseEntity.notFound().build();
+//    }
+//}
 
 
     @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
