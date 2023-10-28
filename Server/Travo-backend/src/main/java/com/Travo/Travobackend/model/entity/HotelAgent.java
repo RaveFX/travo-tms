@@ -50,6 +50,7 @@ public class HotelAgent {
     private Set<TripHotel> tripHotels = new HashSet<>();
 
 
+    private Set<Reservation> reservations = new HashSet<>();
 
 
 }

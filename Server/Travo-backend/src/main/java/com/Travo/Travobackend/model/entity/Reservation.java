@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.Travo.Travobackend.enumeration.BoardType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +29,12 @@ public class Reservation {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "hotel_id", referencedColumnName = "hotel_id" )
+    private HotelAgent hotelAgent;
+
     private LocalDate date;
+
     private LocalDate checkin_date;
     private LocalDate checkout_date;
     private LocalTime checkin_time;
@@ -36,5 +42,10 @@ public class Reservation {
     private Integer payment;
     private Integer status;
     private Integer trip_id;
+    private String boardType;
+
+    @PrePersist
+    protected void onCreate() {
+        date = LocalDate.now();}
 
 }

@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.repository.JDBCDao;
 
 import com.Travo.Travobackend.model.dto.HotelDTO;
+import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,19 +17,26 @@ public class TravelerOptionJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+
     public List<HotelDTO> getAllHotelsName() {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<HotelDTO> hotels = new ArrayList<>();
 
-        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id");
+
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id group by hotel_agent.hotel_name ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
                 HotelDTO hotelDTO = new HotelDTO();
 
-                hotelDTO.setDescription(rs.getString("description"));
+                hotelDTO.setRoom_description(rs.getString("description"));
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setChild_count(rs.getInt("child_count"));
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
 
 
                 hotels.add(hotelDTO);
@@ -38,6 +46,132 @@ public class TravelerOptionJDBCDao {
 
 
     }
+
+    public List<HotelDTO> getAllHotelsType(Integer hotelId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> types = new ArrayList<>();
+
+
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setRoom_name(rs.getString("room_name"));
+                hotelDTO.setRoom_id(rs.getInt("room_id"));
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setRoom_description(rs.getString("description"));
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+
+
+                types.add(hotelDTO);
+            }
+            return types;
+        });
+
+
+    }
+    public List<HotelDTO> getHotelBasics(Integer hotelId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> basics = new ArrayList<>();
+        params.put("hotelId", hotelId);
+
+        SQL.append("SELECT * FROM hotel_agent where hotel_id=:hotelId ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+
+                basics.add(hotelDTO);
+            }
+            return basics;
+        });
+
+
+    }
+    public List<HotelDTO> getHotelsDetail(Integer hotelId,Integer roomId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> hotels = new ArrayList<>();
+        params.put("hotelId", hotelId);
+        params.put("roomId", roomId);
+
+        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setHotel_description(rs.getString("description"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setChild_count(rs.getInt("child_count"));
+                hotelDTO.setPrice(rs.getInt("price"));
+                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+                hotelDTO.setRoom_description(rs.getString("description"));
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setAc(rs.getBoolean("ac"));
+                hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
+                hotelDTO.setDinner(rs.getBoolean("dinner"));
+                hotelDTO.setLunch(rs.getBoolean("lunch"));
+                hotelDTO.setView(rs.getString("view"));
+                hotelDTO.setWifi(rs.getBoolean("wifi"));
+
+
+
+                hotels.add(hotelDTO);
+            }
+            return hotels;
+        });
+
+
+    }
+
+//    public List<HotelDTO> getBookingDetail(Integer hotelId,Integer roomId,Integer userId) {
+//        StringBuffer SQL = new StringBuffer();
+//        HashMap<String, Object> params = new HashMap<>();
+//        List<HotelDTO> bookingDetail = new ArrayList<>();
+//        params.put("hotelId", hotelId);
+//        params.put("roomId", roomId);
+//        params.put("userId", userId);
+//
+//        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
+//
+//        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+//            while (rs.next()) {
+//                HotelDTO hotelDTO = new HotelDTO();
+//
+//                hotelDTO.setHotel_description(rs.getString("description"));
+//                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+//                hotelDTO.setChild_count(rs.getInt("child_count"));
+//                hotelDTO.setPrice(rs.getInt("price"));
+//                hotelDTO.setAdult_count(rs.getInt("adult_count"));
+//                hotelDTO.setRoom_description(rs.getString("description"));
+//                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+//                hotelDTO.setAc(rs.getBoolean("ac"));
+//                hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
+//                hotelDTO.setDinner(rs.getBoolean("dinner"));
+//                hotelDTO.setLunch(rs.getBoolean("lunch"));
+//                hotelDTO.setView(rs.getString("view"));
+//                hotelDTO.setWifi(rs.getBoolean("wifi"));
+//
+//
+//
+//                bookingDetail.add(hotelDTO);
+//            }
+//            return bookingDetail;
+//        });
+//
+//
+//    }
+
 
     public List<VehiclesDTO> getAllVehicles() {
         StringBuffer SQL = new StringBuffer();
@@ -68,4 +202,6 @@ public class TravelerOptionJDBCDao {
             return vehicles;
         });
     }
+
+
 }

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelDTO {
-    private String description;
+    private String hotel_description;
     private Integer adult_count;
     private Integer child_count;
     private Integer price;
@@ -20,5 +20,11 @@ public class HotelDTO {
     private Boolean lunch;
     private Boolean Dinner;
     private String hotel_name;
+    private Integer hotel_id;
+    private String room_name;
+    private Integer room_id;
+    private String room_description;
+
+
 
 }
