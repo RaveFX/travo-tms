@@ -41,8 +41,8 @@ public class Trip {
         created_date = LocalDate.now();
     }
 
-//    @OneToMany(mappedBy = "trip")
-//    private Set<TripMember> tripMembers = new HashSet<>();
+    @OneToMany(mappedBy = "trip")
+    private Set<TripMember> tripMembers = new HashSet<>();
 
     @OneToMany(mappedBy = "trip")
     private Set<TripAttraction> attractions = new HashSet<>();

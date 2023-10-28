@@ -28,10 +28,10 @@ import SwiperCard from '../../components/web-component/SwiperCard';
 function Mytrips() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  // const user_id = sessionStorage.getItem('user_id');
+  const user_id = sessionStorage.getItem('user_id');
   const [tripinfo, setTripinfo] = useState([]);
 
-  const user_id = sessionStorage.getItem('user_id');
+  //const user_id = sessionStorage.getItem('user_id');
   const [trips,setTrips]=useState([]);
   const [details,setDetails]=useState([]);
 
@@ -42,6 +42,7 @@ function Mytrips() {
     const loadTrips=async()=>{
         const result=await axios.get(`http://localhost:8080/api/v1/trip/tripList/${user_id}`)
         setTrips(result.data);
+        
     }
 
 

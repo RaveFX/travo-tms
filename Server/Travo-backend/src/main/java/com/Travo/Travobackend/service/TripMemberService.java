@@ -32,24 +32,20 @@ public class TripMemberService {
             tripMember.setMember_fname(tripMemberDTO.getMember_fname());
             tripMember.setImage(tripMemberDTO.getImage());
             tripMember.setTripRole(tripMemberDTO.getTripRole());
-            tripMember.setTrip_id(tripMemberDTO.getTrip_id());
-            tripMember.setUser_id(tripMemberDTO.getUser_id());
+
+//            tripMember.setTrip_id(tripMemberDTO.getTrip_id());
+//            tripMember.setUser_id(tripMemberDTO.getUser_id());
 
             // Fetch Trip by ID
-//            Optional<Trip> tripOptional = tripRepository.findById(tripMemberDTO.getTrip().getTrip_id());
-//            if (tripOptional.isPresent()) {
-//                tripMember.setTrip(tripOptional.get());
-//            } else {
-//                return "Trip not found!";
-//            }
+            Optional<Trip> tripOptional = tripRepository.findById(tripMemberDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            tripMember.setTrip(trip);
+//
 //
 //            // Fetch User by ID
-//            Optional<User> userOptional = userRepository.findById(tripMemberDTO.getUser().getUser_id());
-//            if (userOptional.isPresent()) {
-//                tripMember.setUser(userOptional.get());
-//            } else {
-//                return "User not found!";
-//            }
+            Optional<User> userOptional = userRepository.findById(tripMemberDTO.getUser_id());
+            User user = userOptional.get();
+            tripMember.setUser(user);
 
             tripMemberRepository.save(tripMember);
             return "Trip member added successfully!";

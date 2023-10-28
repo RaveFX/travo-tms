@@ -59,7 +59,7 @@ public class TripService {
 
 
     public List<TripDTO> tripList(Integer userID){
-        System.out.println(userID);
+        //System.out.println(userID);
         return tripJDBCDao.getTripList(userID);
     }
 
