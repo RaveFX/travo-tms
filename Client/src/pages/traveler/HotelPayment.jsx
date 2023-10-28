@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
+import Swal from "sweetalert2"; 
+
 import {
   Card,
   Input,
@@ -19,7 +21,21 @@ import { Link } from 'react-router-dom';
 
 
 function HotelDetails() {
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
+  const placeOrder = () => {
+    
+    setTimeout(() => {
+      setOrderPlaced(true); // Set the orderPlaced state to true
+    }, 2000); // Simulate a 2-second delay
+
+    // Show SweetAlert when order is successfully placed
+    Swal.fire({
+      icon: "success",
+      title: "Order Placed!",
+      text: "Your Payment has been placed successfully.",
+    });
+  };
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -109,11 +125,11 @@ function HotelDetails() {
                   }
                   containerProps={{ className: "-ml-2.5" }}
                 />
-                <Link to={`/traveler/PaymentSuccess`}>
-                <Button className="mt-6 bg-green" fullWidth>
+                {/* <Link to={`/traveler/PaymentSuccess`}> */}
+                <Button className="mt-6 bg-green" fullWidth onClick={placeOrder}>
                   Place Order
                 </Button>
-                </Link>
+                {/* </Link> */}
               </form>
             </Card>
           </div>

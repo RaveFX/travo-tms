@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -66,11 +67,14 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return traveleroptionService.hotelBooking(reservationDTO,userId,hotelId,roomId);
 
     }
-//    @GetMapping("/hotelBooking/{userId}/{hotelId}/{roomId}")
-//    public List<HotelDTO> getBookingDetail(@PathVariable Integer hotelId,@PathVariable Integer roomId,@PathVariable Integer userId){
-//        return traveleroptionService.BookingDetail(hotelId,roomId,userId);
-//
-//    }
+    @GetMapping("/checkAvailability/{roomId}/{boardType}")
+    public List<ReservationDTO> getAvailability(
+            @PathVariable Integer roomId,
+            @PathVariable String boardType
+            ){
+        return traveleroptionService.availability(roomId,boardType);
+
+    }
 
 
     }

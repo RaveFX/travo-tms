@@ -75,11 +75,10 @@ function App() {
                                             <div className="p-4">
 
                                                 <h2 className="text-xl font-semibold">{rooms.room_name}</h2>
-                                                <p className="text-gray-500 text-sm">Room Id : {rooms.room_id}</p>
+                                                <p className="text-gray-500 text-sm">Description:{rooms.room_description}</p>
                                                 <p className="text-gray-500">{rooms.description}</p>
-                                                <span className="text-sm font-bold text-gray-500">
-                                                    Rs.{rooms.price} / night
-                                                </span>
+                                                {/* <span className="text-sm font-bold text-gray-500">
+                                                    Rs.{rooms.price}                                                 </span> */}
 
                                             </div>
                                         </div>

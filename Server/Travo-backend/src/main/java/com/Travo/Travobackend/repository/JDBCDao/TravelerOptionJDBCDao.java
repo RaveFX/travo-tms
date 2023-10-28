@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,11 +31,12 @@ public class TravelerOptionJDBCDao {
             while (rs.next()) {
                 HotelDTO hotelDTO = new HotelDTO();
 
-                hotelDTO.setRoom_description(rs.getString("description"));
+
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
                 hotelDTO.setChild_count(rs.getInt("child_count"));
                 hotelDTO.setPrice(rs.getInt("price"));
                 hotelDTO.setAdult_count(rs.getInt("adult_count"));
+                hotelDTO.setRoom_description(rs.getString("description"));
                 hotelDTO.setHotel_description(rs.getString("description"));
                 hotelDTO.setHotel_id(rs.getInt("hotel_id"));
 
@@ -43,6 +45,7 @@ public class TravelerOptionJDBCDao {
             }
             return hotels;
         });
+
 
 
     }
@@ -134,43 +137,30 @@ public class TravelerOptionJDBCDao {
 
     }
 
-//    public List<HotelDTO> getBookingDetail(Integer hotelId,Integer roomId,Integer userId) {
-//        StringBuffer SQL = new StringBuffer();
-//        HashMap<String, Object> params = new HashMap<>();
-//        List<HotelDTO> bookingDetail = new ArrayList<>();
-//        params.put("hotelId", hotelId);
-//        params.put("roomId", roomId);
-//        params.put("userId", userId);
-//
-//        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id where rooms.hotel_id=:hotelId and rooms.room_id=:roomId; ");
-//
-//        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
-//            while (rs.next()) {
-//                HotelDTO hotelDTO = new HotelDTO();
-//
-//                hotelDTO.setHotel_description(rs.getString("description"));
-//                hotelDTO.setHotel_name(rs.getString("hotel_name"));
-//                hotelDTO.setChild_count(rs.getInt("child_count"));
-//                hotelDTO.setPrice(rs.getInt("price"));
-//                hotelDTO.setAdult_count(rs.getInt("adult_count"));
-//                hotelDTO.setRoom_description(rs.getString("description"));
-//                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
-//                hotelDTO.setAc(rs.getBoolean("ac"));
-//                hotelDTO.setBreakfast(rs.getBoolean("breakfast"));
-//                hotelDTO.setDinner(rs.getBoolean("dinner"));
-//                hotelDTO.setLunch(rs.getBoolean("lunch"));
-//                hotelDTO.setView(rs.getString("view"));
-//                hotelDTO.setWifi(rs.getBoolean("wifi"));
-//
-//
-//
-//                bookingDetail.add(hotelDTO);
-//            }
-//            return bookingDetail;
-//        });
-//
-//
-//    }
+    public List<ReservationDTO> getAvailability(Integer roomId,String boardType) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ReservationDTO> availability = new ArrayList<>();
+        params.put("roomId", roomId);
+        params.put("boardType",boardType);
+
+        SQL.append("SELECT checkin_date FROM reservation where room_id=:roomId and board_type=:boardType  ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ReservationDTO reservationDTO = new ReservationDTO();
+//                reservationDTO.setRoom_id(rs.getInt("room_id"));
+//                reservationDTO.setBoardType(rs.getString("board_type"));
+                reservationDTO.setCheckin_date(rs.getDate("checkin_date"));
+
+
+                availability.add(reservationDTO);
+            }
+            return availability;
+        });
+
+
+    }
 
 
     public List<VehiclesDTO> getAllVehicles() {

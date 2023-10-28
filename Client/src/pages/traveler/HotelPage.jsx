@@ -56,9 +56,7 @@ const VegicleCard = ({ names, description, location,link, milage, small_bag, pri
                             <Typography variant="h6" color="Green-500">{price}</Typography>
 
                         </Typography>
-                            <Typography variant="lead" className=" font-normal  ">
-                                <Button variant="gradient" className="rounded-full bg-green" color="green">View More</Button>
-                            </Typography>
+                           
                         </Typography>
 
                     </div>
@@ -110,7 +108,7 @@ const hotel_page = () => {
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
                             <Link to={`/traveler/HotelType/${user_id}/${hotel.hotel_id}`}>
-                            <VegicleCard  names={hotel.hotel_name} description={hotel.description}  />
+                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description}  />
                             </Link>
                         ))}
 

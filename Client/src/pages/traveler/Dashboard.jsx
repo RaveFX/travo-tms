@@ -17,7 +17,6 @@ import {
 const Dashboard = () => {
   const navigate = useNavigate();
 
-  const role = sessionStorage.getItem('role');
   const user_id = sessionStorage.getItem('user_id');
 
   const handleNavigate = () => {
