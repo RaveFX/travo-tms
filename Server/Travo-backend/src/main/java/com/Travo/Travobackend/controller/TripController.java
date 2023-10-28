@@ -92,6 +92,11 @@ public class TripController {
         return tripService.addToSchedule(scheduleDTO);
     }
 
+    @GetMapping("/scheduleByDay/{tripID}/{day}")
+    public List<ScheduleDTO> getScheduleByDay(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.scheduleByDay(tripID, day);
+    }
+
 
 
 

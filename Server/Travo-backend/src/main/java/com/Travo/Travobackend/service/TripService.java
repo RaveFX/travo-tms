@@ -5,10 +5,7 @@ package com.Travo.Travobackend.service;
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.repository.*;
-import com.Travo.Travobackend.repository.JDBCDao.ActivityJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.AttractionJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.HotelJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
+import com.Travo.Travobackend.repository.JDBCDao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +41,8 @@ public class TripService {
     private AttractionJDBCDao attractionJDBCDao;
     @Autowired
     private TripScheduleRepository tripScheduleRepository;
+    @Autowired
+    private ScheduleJDBCDao scheduleJDBCDao;
 
 
 
@@ -173,5 +172,9 @@ public class TripService {
             return("Error adding schedule: " + e.getMessage());
         }
 
+    }
+
+    public List<ScheduleDTO> scheduleByDay(Integer tripID, Integer day){
+        return scheduleJDBCDao.getScheduleByDay(tripID, day);
     }
 }

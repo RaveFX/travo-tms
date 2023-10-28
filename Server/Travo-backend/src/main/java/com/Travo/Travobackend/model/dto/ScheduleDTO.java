@@ -11,6 +11,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduleDTO {
+    private Integer schedule_id;
     private String type; //attraction or hotel or activity
     private String type_id; //place_id, hotel_id, agent_id
     private String location_name;
