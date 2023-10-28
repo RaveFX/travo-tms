@@ -111,6 +111,14 @@ import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
+import DestinationPage from "./pages/traveler/DestinationPage";
+import HotelPage from "./pages/traveler/HotelPage";
+import HotelType from "./pages/traveler/HotelType";
+import HotelPageMore from "./pages/traveler/HotelPageMore";
+import HotelPayment from "./pages/traveler/HotelPayment";
+import PaymentSuccess from "./pages/traveler/PaymentSuccess";
+import HotelBook from "./pages/traveler/HotelBook";
+import VehiclePage from "./pages/traveler/VehiclePage";
 import Travelbuddy from "./pages/traveler/travelbuddy";
 import TripAddButton from "./pages/traveler/TripAddButtonPage";
 import Hotelselectionpage from "./pages/traveler/Hotelselectionpage";
@@ -344,6 +352,14 @@ export default function App() {
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
+        <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
+        <Route exact path="/traveler/HotelPage/:user_id" element={<HotelPage />} />
+        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType/>} />
+        <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />
+        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook/>} />
+        <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
+        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
+        <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 
