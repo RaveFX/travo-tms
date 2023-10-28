@@ -19,13 +19,13 @@ public class TripSchedule {
     @Id
     @GeneratedValue
     private Integer id;
-    private String type;
-    private Integer type_id;//id in the trip_activity, trip_hotel, trip_attraction table
-    private Integer day;
+    private String type; //attraction or hotel or activity
+    private Integer type_id; //id in the trip_activity, trip_hotel, trip_attraction table
+    private String location_name;
+    private Integer day; //eg-day1, day2, day3
     private LocalDate date;
     private LocalTime start_time;
     private LocalTime end_time;
-    private Integer rank; //position in the shedule
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )

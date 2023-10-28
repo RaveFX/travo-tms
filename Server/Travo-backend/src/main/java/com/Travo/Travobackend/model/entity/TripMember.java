@@ -19,7 +19,7 @@ public class TripMember {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private TripRole tripRole;
+    private TripRole tripRole = TripRole.MEMBER;
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )

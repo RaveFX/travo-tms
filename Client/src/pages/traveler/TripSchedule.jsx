@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import { XMarkIcon } from '@heroicons/react/20/solid'
+import { MapPinIcon, HomeModernIcon, HeartIcon } from "@heroicons/react/24/outline";
 import {
     Tabs,
     TabsHeader,
@@ -40,6 +40,32 @@ import {
 function TripSchedule() {
   const { id } = useParams();
   const [days, setDays] = useState([]);
+  const [hotels, setHotels] = useState([]);
+  const [activities,setActivities]=useState([]);
+  const [attractions, setAttractions] = useState([]);
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [error, setError] = useState('');
+
+  const handleStartTimeChange = (e) => {
+    const newStartTime = e.target.value;
+    setStartTime(newStartTime);
+    if (newStartTime >= endTime) {
+      setError('Start time must be before end time');
+    } else {
+      setError('');
+    }
+  };
+
+  const handleEndTimeChange = (e) => {
+    const newEndTime = e.target.value;
+    setEndTime(newEndTime);
+    if (startTime >= newEndTime) {
+      setError('Start time must be before end time');
+    } else {
+      setError('');
+    }
+  };
 
   useEffect(() => {
     loadDays();
@@ -54,12 +80,22 @@ function TripSchedule() {
     }
   };
 
+ 
   const [open, setOpen] = useState('0');
 
   const handleOpen = async (value) => {
     setOpen(open === value ? '0' : value);
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedHotelList/${id}/${value}`)
+    setHotels(result.data);
+
+    const result2=await axios.get(`http://localhost:8080/api/v1/trip/selectedActivityList/${id}/${value}`)
+    setActivities(result2.data);
+
+    const result3=await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${value}`)
+    setAttractions(result3.data);
 
   }
+ 
 
   return (
     <div className="flex overflow-hidden w-full">
@@ -99,8 +135,9 @@ function TripSchedule() {
                       <div className="flex items-center p-4">
               <div className="flex-1 mr-2">
                 <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
+                {error && <div style={{ color: 'red' }}>{error}</div>}
                 <input
-                  type="time"
+                  type="time" value={startTime} onChange={handleStartTimeChange}
                   className="border rounded p-2 w-full"
                   
                 />
@@ -108,23 +145,40 @@ function TripSchedule() {
               <div className="flex-1 mr-2">
                 <label className="block text-gray-700 text-sm font-bold mb-2">End Time:</label>
                 <input
-                  type="time"
+                  type="time" value={endTime} onChange={handleEndTimeChange}
                   className="border rounded p-2 w-full"
                   
                 />
               </div>
               <div className="flex-1 mr-2">
-                <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
-                {/* Replace the options with the actual options you want to provide in the dropdown */}
-                <select
-                  className="border rounded p-2 w-full"
-               
-                >
-                  <option value="">Select a location</option>
-                  <option value="location1">Location 1</option>
-                  <option value="location2">Location 2</option>
-                </select>
-              </div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
+                <select className="border rounded p-2 w-full">
+                <option value="">Select a location</option>
+                {attractions.map((attraction) => (
+                  <option key={attraction.row_id} value={attraction.name}>
+                    <span className="flex items-center">
+                      <MapPinIcon className="w-5 h-5 mr-2 text-blue-500" /> {attraction.name}
+                    </span>
+                  </option>
+                ))}
+                {hotels.map((hotel) => (
+                  <option key={hotel.row_id} value={hotel.hotel_name}>
+                    <span className="flex items-center">
+                      <HomeModernIcon className="w-5 h-5 mr-2 text-red-500" /> {hotel.hotel_name}
+                    </span>
+                  </option>
+                ))}
+                {activities.map((activity) => (
+                  <option key={activity.row_id} value={activity.company_name}>
+                    <span className="flex items-center">
+                      <HeartIcon className="w-5 h-5 mr-2 text-green-500" /> {activity.company_name}
+                    </span>
+                  </option>
+                ))}
+              </select>
+
+            </div>
+            
               <button
                 className="bg-[#57CC99] text-white rounded p-2 hover:bg-[#4DAF7C] focus:outline-none focus:ring focus:border-blue-300 mt-6"         
               >
