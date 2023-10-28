@@ -7,11 +7,8 @@ import {
     CardFooter,
     Avatar,
     Tooltip,
-    TabPanel,
-    Tabs,
-    TabsHeader,
-    TabsBody,
-    Tab,
+
+
 } from "@material-tailwind/react";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
@@ -26,41 +23,24 @@ import axios from 'axios';
 //    function CardDefault() {
 const CardDefault = ({ type, src }) => {
     return (
-        // <Card className="sm:m-5 m-2 sm:w-40 w-20 sm:h-24 h-20 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
-        //     <CardBody className="sm:w-40 w-36">
-        //         <Typography variant="h5" className="text-center text-xs ">
+        <Card className="sm:m-5 m-2 sm:w-40 w-20 sm:h-24 h-20 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
+            <CardBody className="sm:w-40 w-36">
+                <Typography variant="h5" className="text-center text-xs ">
 
-        //             {type}
+                    {type}
 
-        //         </Typography>
+                </Typography>
 
-        //         <img src={src} alt="card-image" className="" />
-        //     </CardBody>
+                <img src={src} alt="card-image" className="" />
+            </CardBody>
 
-        // </Card>
-        <Tabs value="html">
-            <TabsHeader>
-                {data.map(({ label, value }) => (
-                    <Tab key={value} value={value}>
-                        {label}
-                    </Tab>
-                ))}
-            </TabsHeader>
-            <TabsBody>
-                {data.map(({ value, desc }) => (
-                    <TabPanel key={value} value={value}>
-                        {desc}
-                    </TabPanel>
-                ))}
-            </TabsBody>
-        </Tabs>
+        </Card>
 
     );
 }
 
 const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, img }) => {
     return (
-
         <Card className="max-w-[20rem] overflow-hidden m-3">
             <CardHeader
                 floated={false}
@@ -112,31 +92,25 @@ const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, i
 
 
 const VehiclePage = () => {
-    const [vehicles, setVehicles] = useState([]);
-    const [activeType, setActiveType] = useState('Car');
+    const [vehicles,setVehicles]=useState([]);
 
     useEffect(() => {
         loadVehicles();
-    }, []);
+    },[]); 
 
-    const loadVehicles = async () => {
-        const result = await axios.get(`http://localhost:8080/api/v1/traveler/vehicles`)
+    const loadVehicles=async()=>{
+        const result=await axios.get("http://localhost:8080/api/v1/traveler/vehicles")
         setVehicles(result.data);
     }
     const vehicle_type = [
-        { type: "Car", value: "Car", src: car },
-        { type: "Van", value: "Van", src: van },
-        { type: "Bus", value: "Bus", src: bus },
-        { type: "Scooter", value: "Scooter", src: scooter },
-        { type: "Motor Bike", value: "Motor Bike", src: bike },
+        { type: "Car", src: car },
+        { type: "Van", src: van },
+        { type: "Bus", src: bus },
+        { type: "Scooter", src: scooter },
+        { type: "Motor Bike", src: bike },
 
 
     ]
-    // const type = vehicles.map((vehicles) => (
-    //     vehicles.vehicle_type
-    // ))
-    // console.log(type);
-
     // const btns = [
     //     { title: "Add New", variant: "outlined" }
     // ]
@@ -147,7 +121,7 @@ const VehiclePage = () => {
     //     { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/18.png" },
     //     { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/19.png" }
     // ]
-
+    
     return (
         <div className='flex'>
             <div><Sidebar /></div>
@@ -155,49 +129,23 @@ const VehiclePage = () => {
             <div className='h-screen flex flex-grow flex-col '>
                 <div><TopNavbar /></div>
                 <div className="overflow-y-auto ">
+                    <div className=" flex flex-row  my-5 xs:justify-center">
 
-                    <Tabs value={activeType}>
-                        <TabsHeader>
-                            {vehicle_type.map(({ type, value, src }) => (
-                                <Tab key={value} value={value} onClick={() => setActiveType(value)} >
-                                    {type}
-                                    <img src={src} alt="card-image" className="w-28" />
-                                </Tab>
-                            ))}
-                        </TabsHeader>
-                        <TabsBody>
-                        <div className="sm:flex flex-wrap  ">
-                            {vehicles && Array.isArray(vehicles) ? (
-
-                                vehicles
-                                    .filter((vehicle) => vehicle.vehicle_type === activeType)
-                                    .map((vehicles, index) => (
-
-
-                                        <VehicleCard key={index} names={vehicles.vehicle_model}
-                                            seat={vehicles.seat} img={"https://www.indratraders.lk/wp-content/uploads/2022/03/sss.jpg"} large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} price={vehicles.rate} milage={vehicles.milage} />
-                                    ))) :
-                                (
-                                    <p>No vehicles available.</p>
-                                )}
-                            {/* </div> */}
-                            {/* } */}
-                            {/* </TabPanel> */}
-                            {/* ))} */}
-                        </div>
-                        </TabsBody>
-                    </Tabs>
-
-
-                    {/* <div className="sm:flex flex-wrap xs:justify-center ">
-
-                        {vehicles.map((vehicles, index) => (
-
-
-                            <VehicleCard key={index} names={vehicles.vehicle_model}
-                                seat={vehicles.seat} img={"https://www.indratraders.lk/wp-content/uploads/2022/03/sss.jpg"} large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} price={vehicles.rate} milage={vehicles.milage} />
+                        {vehicle_type.map((vehicle, index) => (
+                            <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
                         ))}
-                    </div> */}
+
+                    </div>
+                    
+                    <div className="sm:flex flex-wrap xs:justify-center ">
+                       
+                        {vehicles.map((vehicles,index) => (
+                            
+                            
+                            <VehicleCard key={index} names={vehicles.vehicle_model} 
+                            seat={vehicles.seat} img={"https://www.indratraders.lk/wp-content/uploads/2022/03/sss.jpg"} large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} price={vehicles.rate} milage={vehicles.milage} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

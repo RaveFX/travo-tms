@@ -97,12 +97,12 @@ public class TraveleroptionService {
 //    public List<HotelDTO> BookingDetail(Integer hotelId) {
 //        return hotelNameJDBCDao.GetBookingDetail(hotelId);
 //
-//
-//
-//
-//
-//
-//        public List<VehiclesDTO> vehicles() {
-//        return vehiclesJDBCDao.getAllVehicles();
-//    }
+//===========================Vehicle====================
+        public List<VehiclesDTO> vehicles() {
+        return vehiclesJDBCDao.getAllVehicles();
+    }
+
+    public List<VehiclesDTO> vehicletypes(String vehicleType) {
+        return vehiclesJDBCDao.getVehicleTypes(vehicleType);
+    }
 }

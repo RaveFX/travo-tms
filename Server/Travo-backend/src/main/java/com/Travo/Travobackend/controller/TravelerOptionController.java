@@ -50,13 +50,7 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
 
     }
 
-//    @Autowired
-//    private final TraveleroptionService vehicleService;
-//
-//    @GetMapping("/vehicles")
-//    public List<VehiclesDTO> getVehicles(){
-//        return vehicleService.vehicles();
-//    }
+
 
     @PostMapping("/hotelBooking/{userId}/{hotelId}/{roomId}")
     public String hotelBooking(
@@ -74,6 +68,20 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
             ){
         return traveleroptionService.availability(roomId,boardType);
 
+    }
+
+//==========================Vehicle===============================
+
+    @Autowired
+    private final TraveleroptionService vehicleService;
+
+    @GetMapping("/vehicles")
+    public List<VehiclesDTO> getVehicles(){
+        return vehicleService.vehicles();
+    }
+    @GetMapping("/vehicleTypes/{vehicleType}")
+    public List<VehiclesDTO> getVehicleTypes(@PathVariable String vehicleType){
+        return vehicleService.vehicletypes(vehicleType);
     }
 
 
