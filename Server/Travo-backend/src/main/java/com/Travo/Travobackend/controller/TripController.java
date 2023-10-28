@@ -97,7 +97,31 @@ public class TripController {
         return tripService.scheduleByDay(tripID, day);
     }
 
+    @DeleteMapping("/removeScheduledActivity/{row_id}")
+    public ResponseEntity<String> deleteScheduledActivity(@PathVariable Integer row_id) {
+        tripService.removeScheduleById(row_id);
+        return ResponseEntity.ok("Scheduled Activity deleted successfully");
+    }
 
+  //for the schedule dropdown
+  @GetMapping("/selectedScheduleHotelList/{tripID}/{day}")
+  public List<HotelDTO> getSelectedScheduleHotelList(@PathVariable Integer tripID, @PathVariable Integer day){
+      return tripService.selectedScheduleHotelList(tripID, day);
+  }
+    @GetMapping("/selectedScheduleActivityList/{tripID}/{day}")
+    public List<ActivityDTO> getSelectedScheduleActivityList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.selectedScheduleActivityList(tripID, day);
+    }
 
+    @GetMapping("/selectedScheduleAttractionList/{tripID}/{day}")
+    public List<AttractionDTO> getSelectedScheduleAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return tripService.selectedScheduleAttractionList(tripID, day);
+    }
+
+    //update start time and end time
+    @PutMapping("/update-schedule-time")
+    public String updateSchedule(@RequestBody ScheduleDTO scheduleDTO) {
+        return tripService.updateSchedule(scheduleDTO);
+    }
 
 }

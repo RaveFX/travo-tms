@@ -67,6 +67,33 @@ public class HotelJDBCDao {
             return hotels;
         });
 
+    }
+
+    public List<HotelDTO> getSchedule_SelectedHotelList(Integer tripID, Integer day) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<HotelDTO> hotels = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
+
+        SQL.append("SELECT hotel_agent.hotel_id, hotel_agent.hotel_name,trip_hotel.id, trip_hotel.day  FROM trip_hotel  \n");
+        SQL.append("INNER JOIN hotel_agent ON trip_hotel.hotel_id = hotel_agent.hotel_id        \n");
+        SQL.append("WHERE trip_hotel.trip_id=:tripID AND trip_hotel.day=:day       \n");
+        SQL.append("AND trip_hotel.hotel_id NOT IN (SELECT type_id FROM trip_schedule WHERE trip_id=:tripID AND day=:day AND type='hotel')       \n");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                HotelDTO hotelDTO = new HotelDTO();
+
+                hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setHotel_name(rs.getString("hotel_name"));
+                hotelDTO.setRow_id(rs.getInt("id"));
+                hotelDTO.setDay(rs.getInt("day"));
+
+                hotels.add(hotelDTO);
+            }
+            return hotels;
+        });
 
     }
 }

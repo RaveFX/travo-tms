@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import {
   Tabs,
   TabsHeader,
@@ -49,8 +50,27 @@ function TripSchedule() {
   const [locationDate, setLocationDate] = useState('');
   const [endTime, setEndTime] = useState('');
   const [error, setError] = useState('');
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState([{schedule_id:'schedule_id',location_name:'location_name',start_time:'start_time',end_time:'end_time',error:''}]);
+  const [editedStartTime, setEditedStartTime] = useState('');
+  const [editedEndTime, setEditedEndTime] = useState('');
+  const [editedTimes, setEditedTimes] = useState({});
 
+
+  const handleStartTimeEdit = (scheduleId, newStartTime) => {
+    setEditedTimes((prevEditedTimes) => ({
+      ...prevEditedTimes,
+      [scheduleId]: { ...prevEditedTimes[scheduleId], start_time: newStartTime },
+    }));
+  };
+  
+  const handleEndTimeEdit = (scheduleId, newEndTime) => {
+    setEditedTimes((prevEditedTimes) => ({
+      ...prevEditedTimes,
+      [scheduleId]: { ...prevEditedTimes[scheduleId], end_time: newEndTime },
+    }));
+  };
+  
+  
 
   const handleStartTimeChange = (e) => {
     const newStartTime = e.target.value;
@@ -72,7 +92,7 @@ function TripSchedule() {
     }
   };
 
-  const handleRemoveSchedule = (schedule_id) => {
+  const handleRemoveSchedule = (schedule_id, scheduleDay) => {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -92,13 +112,20 @@ function TripSchedule() {
       // If user confirms, proceed with the removal logic
       if (result.isConfirmed) {
         try{
-          //  const day = attraction.day;
-          //  await axios.delete(`http://localhost:8080/api/v1/trip/removeSelectedAttraction/${attraction.row_id}`)
-          //  console.log("Attraction added removed!");
-          //  const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${day}`)
-          //  setAttractions(result.data);
+           await axios.delete(`http://localhost:8080/api/v1/trip/removeScheduledActivity/${schedule_id}`)
+           console.log("Schedule removed!");
+           const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${scheduleDay}`)
+           setSchedules(response.data);
 
-           //navigate(`/traveler/trip-planner/${id}`);
+           const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleHotelList/${id}/${scheduleDay}`)
+            setHotels(result.data);
+
+            const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleActivityList/${id}/${scheduleDay}`)
+            setActivities(result2.data);
+
+            const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${scheduleDay}`)
+            setAttractions(result3.data);
+           
         }catch (error) {
           console.error("Error removing schedule: ", error);
         }
@@ -139,22 +166,39 @@ function TripSchedule() {
     const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${value}`);
     setSchedules(response.data);
 
-    const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedHotelList/${id}/${value}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleHotelList/${id}/${value}`)
     setHotels(result.data);
 
-    const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedActivityList/${id}/${value}`)
+    const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleActivityList/${id}/${value}`)
     setActivities(result2.data);
 
-    const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${value}`)
+    const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${value}`)
     setAttractions(result3.data);
   }
 
 
 
 
-  const handleAddButtonClick = () => {
+  const handleAddButtonClick = async () => {
     if (locationName && startTime && endTime) {
       const selectedLocation = JSON.parse(locationName);
+      const loadDay = locationDay;
+      const newStartTime = new Date(`2023-01-01T${startTime}`);
+      const newEndTime = new Date(`2023-01-01T${endTime}`);
+      
+      const isOverlap = schedules.some((schedule) => {
+        const existingStartTime = new Date(`2023-01-01T${schedule.start_time}`);
+        const existingEndTime = new Date(`2023-01-01T${schedule.end_time}`);
+        return (
+          (newStartTime >= existingStartTime && newStartTime < existingEndTime) ||
+          (newEndTime > existingStartTime && newEndTime <= existingEndTime) ||
+          (newStartTime <= existingStartTime && newEndTime >= existingEndTime)
+        );
+      });
+      if (isOverlap) {
+        setError('Schedule overlaps with existing activities. Please choose a different time.');
+        return;
+      }
       const data = {
         location_name: selectedLocation.location_Name,
         type: selectedLocation.location_Type,
@@ -166,23 +210,52 @@ function TripSchedule() {
         date: locationDate
       };
       console.log(data);
+      try {
+        // Make a POST request to your backend endpoint with the data
+        await axios.post('http://localhost:8080/api/v1/trip/add-schedule', data);
+  
+        // Get updated schedules data after adding a new schedule
+        const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${loadDay}`);
+        setSchedules(response.data);
+        const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleHotelList/${id}/${loadDay}`)
+        setHotels(result.data);
 
-      // Make a POST request to your backend endpoint with the data
-      axios.post('http://localhost:8080/api/v1/trip/add-schedule', data)
-        .then((response) => {
-          // Handle the response from the backend if needed
-          console.log('Data successfully sent to the backend:', response.data);
-        })
-        .catch((error) => {
-          // Handle errors if the POST request fails
-          console.error('Error sending data to the backend:', error);
-        });
+        const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleActivityList/${id}/${loadDay}`)
+        setActivities(result2.data);
+
+        const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${loadDay}`)
+        setAttractions(result3.data);
+       
+  
+        // Handle the response from the backend if needed
+        console.log('Data successfully sent to the backend');
+      } catch (error) {
+        // Handle errors if the POST request fails
+        console.error('Error sending data to the backend:', error);
+      }
     } else {
       // Handle validation or display an error message if any of the required fields are missing
       console.error('Please fill out all required fields.');
     }
   };
 
+  const updateScheduleTime = async (scheduleId, newStartTime, newEndTime) => {
+    try {
+      const response = await axios.put(`http://localhost:8080/api/v1/trip/update-schedule-time`, {
+        schedule_id : scheduleId,
+        start_time: newStartTime,
+        end_time: newEndTime,
+      });
+      console.log('Schedule time updated successfully:', response.data);
+      const response1 = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${loadDay}`);
+      setSchedules(response1.data);
+      // You can update the local state or perform any additional actions if necessary
+    } catch (error) {
+      console.error('Error updating schedule time:', error);
+    }
+  };
+  
+  
 
 
 
@@ -225,23 +298,25 @@ function TripSchedule() {
                     
 
                     {schedules.map((schedule) => (
+                      
+                      
                       <div className="flex items-center p-4">
                       <div className="flex-1 mr-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
-                        {error && <div style={{ color: 'red' }}>{error}</div>}
+                        {error && <div style={{ color: 'red' }}>{schedule.error}</div>}
                         <input
-                          type="time" value={schedule.start_time} 
+                          type="time"
+                          value={schedule.start_time}
                           className="border rounded p-2 w-full"
-
                         />
                       </div>
                       <div className="flex-1 mr-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2">End Time:</label>
                         <input
-                          type="time" value={schedule.end_time}
-                          className="border rounded p-2 w-full"
-
-                        />
+                        type="time"
+                        value={schedule.end_time}
+                        className="border rounded p-2 w-full"
+                      />
                       </div>
                       <div className="flex-1 mr-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
@@ -249,22 +324,24 @@ function TripSchedule() {
 
                       </div>
 
-                      <button onClick={() => handleRemoveSchedule(schedule.schedule_id)}
+                      <button onClick={() => handleRemoveSchedule(schedule.schedule_id, index+1)}
                         className={`rounded p-2 focus:outline-none focus:ring focus:border-blue-300 mt-6 bg-gray-200 hover:bg-red-70`}
                       >
                         <XMarkIcon className="w-4 h-4 stroke-yellow" />
                       </button>
                       </div>
+                     
                       ))}
 
                    
-                    
+                      
+                      <div className="flex items-center p-4">{error && <div style={{ color: 'red' }}>{error}</div>}</div>
                     <div className="flex items-center p-4">
 
 
                       <div className="flex-1 mr-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
-                        {error && <div style={{ color: 'red' }}>{error}</div>}
+                        
                         <input
                           type="time" value={startTime} onChange={handleStartTimeChange}
                           className="border rounded p-2 w-full"

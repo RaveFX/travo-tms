@@ -46,6 +46,7 @@ public class TripService {
 
 
 
+
     public List<TripDTO> tripList(Integer userID){
         return tripJDBCDao.getTripList(userID);
     }
@@ -176,5 +177,37 @@ public class TripService {
 
     public List<ScheduleDTO> scheduleByDay(Integer tripID, Integer day){
         return scheduleJDBCDao.getScheduleByDay(tripID, day);
+    }
+
+    public void removeScheduleById(Integer id) {
+        tripScheduleRepository.deleteById(id);
+    }
+
+    //for the schedule dropdown
+    public List<HotelDTO> selectedScheduleHotelList(Integer tripID, Integer day){
+        return hotelJDBCDao.getSchedule_SelectedHotelList(tripID, day);
+    }
+
+    public List<ActivityDTO> selectedScheduleActivityList(Integer tripID, Integer day){
+        return activityJDBCDao.getSchedule_SelectedActivityList(tripID, day);
+    }
+    public List<AttractionDTO> selectedScheduleAttractionList(Integer tripID, Integer day){
+        return attractionJDBCDao.getSchedule_SelectedAttractionList(tripID, day);
+    }
+
+    public String updateSchedule(ScheduleDTO scheduleDTO){
+        Optional<TripSchedule> optionalSchedule = tripScheduleRepository.findById(scheduleDTO.getSchedule_id());
+        if (optionalSchedule.isPresent()) {
+            TripSchedule tripSchedule = optionalSchedule.get();
+            tripSchedule.setStart_time(scheduleDTO.getStart_time());
+            tripSchedule.setEnd_time(scheduleDTO.getEnd_time());
+
+            tripScheduleRepository.save(tripSchedule);
+
+            return("Schedule added successfully!");
+        }else {
+            return ("Schedule not found");
+        }
+
     }
 }
