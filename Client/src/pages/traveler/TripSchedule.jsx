@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import { MapPinIcon, HomeModernIcon, HeartIcon } from "@heroicons/react/24/outline";
 import {
     Tabs,
     TabsHeader,
@@ -44,6 +42,11 @@ function TripSchedule() {
   const [activities,setActivities]=useState([]);
   const [attractions, setAttractions] = useState([]);
   const [startTime, setStartTime] = useState('');
+  const [locationName, setLocationName] = useState('');
+  const [locationType, setLocationType] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [locationDay, setLocationDay] = useState('');
+  const [locationDate, setLocationDate] = useState('');
   const [endTime, setEndTime] = useState('');
   const [error, setError] = useState('');
 
@@ -66,6 +69,33 @@ function TripSchedule() {
       setError('');
     }
   };
+
+  // const handleLocationChange = (e) => {
+  //   const selected = JSON.parse(e.target.value);
+  //   const selectedOption = selected.location_Name;
+  //   const selectedId = selected.location_Id;
+  //   const selectedType = selected.location_Type;
+  //   const selectedTripDay = e.target.getAttribute('tripDay');
+  //   const selectedDate = e.target.getAttribute('date');
+  //   //console.log(e.target);
+  //   //console.log(selectedOption.locationId);
+     
+  //   setLocationName(selectedOption);
+  //   setLocationType(selectedType);
+  //   setLocationId(selectedId);
+  //   setLocationDay(selectedTripDay);
+  //   setLocationDate(selectedDate);
+  // };
+
+  const handleLocationChange = (e) => {
+    const selectedOption = e.target.value;
+    const selectedTripDay = e.target.getAttribute('tripDay');
+    const selectedDate = e.target.getAttribute('date');
+    setLocationName(selectedOption);
+    setLocationDay(selectedTripDay);
+    setLocationDate(selectedDate);
+  };
+  
 
   useEffect(() => {
     loadDays();
@@ -93,8 +123,42 @@ function TripSchedule() {
 
     const result3=await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${value}`)
     setAttractions(result3.data);
-
   }
+
+  
+
+  
+  const handleAddButtonClick = () => {
+    if (locationName && startTime && endTime) {
+      const selectedLocation = JSON.parse(locationName);
+      const data = {
+        location_name: selectedLocation.location_Name,
+        type: selectedLocation.location_Type,
+        type_id: selectedLocation.location_Id,
+        start_time: startTime,
+        end_time: endTime,
+        trip_id : id,
+        day : locationDay,
+        date : locationDate
+      };
+      console.log(data);
+
+      // Make a POST request to your backend endpoint with the data
+      axios.post('http://localhost:8080/api/v1/trip/add-schedule', data)
+        .then((response) => {
+          // Handle the response from the backend if needed
+          console.log('Data successfully sent to the backend:', response.data);
+        })
+        .catch((error) => {
+          // Handle errors if the POST request fails
+          console.error('Error sending data to the backend:', error);
+        });
+    } else {
+      // Handle validation or display an error message if any of the required fields are missing
+      console.error('Please fill out all required fields.');
+    }
+  };
+
  
 
   return (
@@ -152,34 +216,34 @@ function TripSchedule() {
               </div>
               <div className="flex-1 mr-2">
               <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
-                <select className="border rounded p-2 w-full">
+                <select value={locationName} tripDay={index+1} date={day} className="border rounded p-2 w-full" onChange={handleLocationChange}>
                 <option value="">Select a location</option>
                 {attractions.map((attraction) => (
-                  <option key={attraction.row_id} value={attraction.name}>
-                    <span className="flex items-center">
-                      <MapPinIcon className="w-5 h-5 mr-2 text-blue-500" /> {attraction.name}
-                    </span>
+                  <option  value={JSON.stringify({ location_Name: attraction.name, location_Id: attraction.place_id, location_Type: 'attraction' })}>
+                    
+                     {attraction.name}
+                    
                   </option>
                 ))}
                 {hotels.map((hotel) => (
-                  <option key={hotel.row_id} value={hotel.hotel_name}>
-                    <span className="flex items-center">
-                      <HomeModernIcon className="w-5 h-5 mr-2 text-red-500" /> {hotel.hotel_name}
-                    </span>
+                  <option value={JSON.stringify({ location_Name: hotel.hotel_name, location_Id: hotel.hotel_id, location_Type: 'hotel' })} >
+                    
+                      {hotel.hotel_name}
+                    
                   </option>
                 ))}
                 {activities.map((activity) => (
-                  <option key={activity.row_id} value={activity.company_name}>
-                    <span className="flex items-center">
-                      <HeartIcon className="w-5 h-5 mr-2 text-green-500" /> {activity.company_name}
-                    </span>
+                  <option value={JSON.stringify({ location_Name: activity.company_name, location_Id: activity.agent_id, location_Type: 'activity' })}>
+                    
+                     {activity.company_name}
+                    
                   </option>
                 ))}
               </select>
 
             </div>
             
-              <button
+              <button onClick={handleAddButtonClick}
                 className="bg-[#57CC99] text-white rounded p-2 hover:bg-[#4DAF7C] focus:outline-none focus:ring focus:border-blue-300 mt-6"         
               >
                 Add

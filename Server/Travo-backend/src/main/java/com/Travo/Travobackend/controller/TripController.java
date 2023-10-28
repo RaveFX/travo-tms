@@ -87,6 +87,12 @@ public class TripController {
         return ResponseEntity.ok("Attraction deleted successfully");
     }
 
+    @PostMapping("/add-schedule")
+    public String addSchedule(@RequestBody ScheduleDTO scheduleDTO) {
+        return tripService.addToSchedule(scheduleDTO);
+    }
+
+
 
 
 }

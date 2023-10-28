@@ -42,6 +42,8 @@ public class TripService {
     private ActivityAgentRepository activityAgentRepository;
     @Autowired
     private AttractionJDBCDao attractionJDBCDao;
+    @Autowired
+    private TripScheduleRepository tripScheduleRepository;
 
 
 
@@ -148,5 +150,28 @@ public class TripService {
     }
     public void removeAttractionById(Integer id) {
         tripAttractionRepository.deleteById(id);
+    }
+
+    public String addToSchedule(ScheduleDTO scheduleDTO){
+        try {
+            TripSchedule tripSchedule = new TripSchedule();
+            tripSchedule.setType(scheduleDTO.getType());
+            tripSchedule.setType_id(scheduleDTO.getType_id());
+            tripSchedule.setLocation_name(scheduleDTO.getLocation_name());
+            tripSchedule.setStart_time(scheduleDTO.getStart_time());
+            tripSchedule.setEnd_time(scheduleDTO.getEnd_time());
+            tripSchedule.setDate(scheduleDTO.getDate());
+            tripSchedule.setDay(scheduleDTO.getDay());
+
+            Optional<Trip> tripOptional = tripRepository.findById(scheduleDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            tripSchedule.setTrip(trip);
+            tripScheduleRepository.save(tripSchedule);
+
+            return("Schedule added successfully!");
+        } catch (Exception e) {
+            return("Error adding schedule: " + e.getMessage());
+        }
+
     }
 }
