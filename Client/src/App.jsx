@@ -33,6 +33,7 @@ import Hotel_editRooms from "./pages/hotel/hotel_editRooms";
 import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
 import Attractions from "./pages/traveler/Attractions";
+import Activities from "./pages/traveler/Activities";
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -319,14 +320,15 @@ export default function App() {
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
-        <Route path="/traveler/hotels" element={<HotelDetails />} />
+        <Route path="/traveler/hotels/:id/:day" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
         <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
         <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
 
 
         {/* Tharindi */}
-        <Route path="/traveler/attractions" element={<Attractions />} />
+        <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
+        <Route path="/traveler/activities/:id/:day" element={<Activities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

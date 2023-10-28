@@ -31,6 +31,8 @@ public class HotelAgent {
     private String contact_num;
     private Integer longitude;
     private Integer latitude;
+    private String hotel_img= "hotel_img.jpg";
+    private Double total_reviews;
 
 
     @Enumerated(EnumType.STRING)

@@ -52,6 +52,9 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip")
     private Set<TripActivity> activities = new HashSet<>();
+    
+    @OneToMany(mappedBy = "trip")
+    private Set<TripSchedule> schedules = new HashSet<>();
 
     public String getUniqueLink() {
         return uniqueLink;
@@ -61,5 +64,6 @@ public class Trip {
     public void setUniqueLink(String uniqueLink) {
         this.uniqueLink = uniqueLink;
     }
+    
 
 }

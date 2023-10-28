@@ -32,6 +32,8 @@ public class ActivityAgent {
     private Integer longitude;
     private Integer latitude;
     private String category;
+    private String activity_img= "activity_img.jpg";
+    private Double total_reviews;
 
 
     @Enumerated(EnumType.STRING)

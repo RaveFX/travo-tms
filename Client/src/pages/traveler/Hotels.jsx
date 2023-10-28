@@ -1,83 +1,58 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
-import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button,Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 function HotelDetails() {
+  const { id , day} = useParams();
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
-  // Sample data for hotels and accommodations
-  const hotels = [
-    // ... populate with hotel objects
-    {
-      name: "Luxury Resort",
-      description: "5-star resort with ocean view.",
-      photo: "/traveler/hotel.svg", // Replace with actual photo filename
-      ratings: 4.5,
-      totalReviews: 120,
-    },
-    {
-      name: "Cozy Inn",
-      description: "Charming inn in the heart of the city.",
-      photo: "/traveler/hotel.svg", // Replace with actual photo filename
-      ratings: 4.8,
-      totalReviews: 85,
-    },
-    {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
+  const [hotels,setHotels]=useState([]);
+
+useEffect(() => {
+    loadHotels();
+},[]); 
+
+
+const loadHotels=async()=>{
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
+    setHotels(result.data);
+}
+const handleAddHotel = async (hotel) => {
+  try {
+    // Make a POST request to your backend API endpoint to store the attraction details
+    await axios.post("http://localhost:8080/api/v1/trip/add-hotel", {
+      hotel_id: hotel.hotel_id,
+      trip_id: id,
+      day : day
+    });
+    // Handle success, e.g., show a success message to the user
+    console.log("Hotel added successfully!");
+    // Display a success message using SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: 'Hotel added successfully!',
+      showConfirmButton: false,
+      timer: 1500, // Automatically close after 1.5 seconds
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
       },
-      {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
-      },
-      {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
-      },
-      {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
-      },
-      {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
-      },
-      {
-        name: "Cozy Inn",
-        description: "Charming inn in the heart of the city.",
-        photo: "/traveler/hotel.svg", // Replace with actual photo filename
-        ratings: 4.8,
-        totalReviews: 85,
-      },
-      {
-      name: "Cozy Inn",
-      description: "Charming inn in the heart of the city.",
-      photo: "/traveler/hotel.svg", // Replace with actual photo filename
-      ratings: 4.8,
-      totalReviews: 85,
-    },
-    // ... add more hotels
-  ];
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+  } catch (error) {
+    // Handle error, e.g., show an error message to the user
+    console.error("Error adding hotel: ", error);
+  }
+};
 
   const data = [
     {
@@ -141,23 +116,23 @@ function HotelDetails() {
           </div>
       <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4" style={{ scrollbarWidth: 'none' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-          {hotels.map((hotel, index) => (
+          {hotels.map((hotel) => (
             <div
-              key={index}
-              className="bg-white p-4 rounded-lg shadow border border-[#57CC99]"
+              key={hotel.hotel_id}
+              className="bg-white p-4 rounded-lg shadow border relative "
               onClick={""}
             >
               <div className="flex items-center justify-center mb-2">
                 <img
-                  src={hotel.photo}
-                  alt={`${hotel.name}'s Photo`}
+                  src={`/main/${hotel.hotel_img}`}
+                  alt={`${hotel.hotel_name}'s Photo`}
                   className="w-full h-44 rounded-md object-cover"
                 />
               </div>
-              <h2 className="text-xl font-semibold mb-2">{hotel.name}</h2>
+              <h2 className="text-xl font-semibold mb-2">{hotel.hotel_name}</h2>
               <p className="mb-2">{hotel.description}</p>
               <div className="flex items-center mb-2">
-                <span className="mr-2 flex flex-row gap-1 justify-center">{hotel.ratings.toFixed(1)}<StarIcon  className="w-4 h-4 strok-yellow"/></span>
+                <span className="mr-2 flex flex-row gap-1 justify-center">{hotel.total_reviews.toFixed(1)}<StarIcon  className="w-4 h-4 strok-yellow"/></span>
                 <div className="flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -174,15 +149,15 @@ function HotelDetails() {
                     />
                   </svg>
                   <span className="ml-1 text-sm text-gray-500">
-                    ({hotel.totalReviews}  reviews)
+                    ({hotel.total_reviews}  reviews)
                   </span>
-                  <span className="ml-24 text-sm text-gray-500">
-                  <Button className="bg-green">Add Hotel</Button>
-                  </span>
+                  <div className="absolute bottom-2 right-2">
+                    <Button className="bg-green" onClick={() => handleAddHotel(hotel)}>Add Hotel</Button>
+                  </div>
                 
                 </div>
               </div>
-              {/* ... other details */}
+            
             </div>
           ))}
         </div>

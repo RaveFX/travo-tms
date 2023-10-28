@@ -16,8 +16,14 @@ public class TripAttraction {
     @Id
     @GeneratedValue
     private Integer id;
+    private String place_id;
+    private String name;
+    private String address;
 
-    private String attraction_name;
+    @Column(length = 1000)
+    private String img_url;
+
+    private Integer day;
     private Integer longitude;
     private Integer latitude;
 

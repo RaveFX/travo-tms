@@ -4,10 +4,12 @@ import UserNav from "../../components/main/userNav";
 import SideBar from "../../components/main/sidebar";
 import { Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function Hotel_rooms() {
   const user_id = sessionStorage.getItem('user_id');
   const [rooms,setRooms]=useState([]);
+
 
   useEffect(() => {
     loadRooms();
@@ -18,6 +20,26 @@ function Hotel_rooms() {
       setRooms(result.data);
       
   }
+
+  const handleRemoveAttraction = () => {
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this attraction!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, remove it!'
+    }).then((result) => {
+      // If user confirms, proceed with the removal logic
+      if (result.isConfirmed) {
+        // Perform the removal logic here, for example, calling an API to delete the attraction
+        // After successful removal, you can show a success message using Swal.fire
+        Swal.fire('Deleted!', 'The attraction has been removed.', 'success');
+      }
+    });
+  };
   return (
     <div className="flex h-screen ">
       <SideBar active="Rooms"/>
@@ -60,7 +82,7 @@ function Hotel_rooms() {
           Edit
         </button>
         <button
-           className="px-6 py-2  text-red-500 rounded-full hover:bg-red-500 hover:text-white"
+           className="px-6 py-2  text-red-500 rounded-full hover:bg-red-500 hover:text-white" onClick={() => handleRemoveAttraction()}
         >
           Delete
         </button>
