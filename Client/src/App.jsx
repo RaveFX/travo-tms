@@ -109,8 +109,15 @@ import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
+import PrivateRoute from "./pages/main/PrivateRoute";
 
 export default function App() {
+  
+const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
+
+
+
+
   return (
     <>
       <Routes>
@@ -298,7 +305,7 @@ export default function App() {
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
+        <Route path="/traveler/dashboard" element={<TravelerDashboard />}/>
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />

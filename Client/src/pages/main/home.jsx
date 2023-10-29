@@ -10,6 +10,8 @@ import Navingation_home from "../../components/homenavbar";
 //import hero from "public/hero.png"
 
 function Landing() {
+  sessionStorage.setItem('isAuthenticated','false');
+
   return (
     <div
       className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
