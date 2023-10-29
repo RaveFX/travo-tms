@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TopNavbar from "../../components/navbar-general";
-import Sidebar from "../../components/sidebar-rave";
+import Sidebar from '../../components/web-component/Sidebar';
+import TopNavbar from '../../components/web-component/Navbar';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -43,8 +43,10 @@ function ExpenseTable() {
       });
   }, []);
 
+
+
   return (
-    <Card className="h-full w-full  ">
+    <Card className="h-screen w-full ">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
@@ -118,10 +120,10 @@ function ExpenseTable() {
                           budget.type === "food"
                             ? "green"
                             : budget.type === "travel"
-                            ? "amber"
-                            : budget.type === "ticket"
-                            ? "lightBlue"
-                            : "red"
+                              ? "amber"
+                              : budget.type === "ticket"
+                                ? "lightBlue"
+                                : "red"
                         }
                       />
                     </div>
@@ -284,10 +286,10 @@ function ExpenseTable() {
   );
 }
 
-function Expenses() {
+export default function Expenses() {
   return (
     <>
-      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
+      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden  ">
         <div className="">
           <Sidebar />
         </div>
@@ -306,4 +308,4 @@ function Expenses() {
   );
 }
 
-export default Expenses;
+

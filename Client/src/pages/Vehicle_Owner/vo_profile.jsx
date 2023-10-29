@@ -3,7 +3,7 @@ import React from 'react'
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 import Profile from '../../components/Vehicle_owner/profile';
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 
 import { List, ListItem, Card, Button } from "@material-tailwind/react";
@@ -20,8 +20,8 @@ const vehicle_owner_profile = () => {
     const basics = [
         { name: "Natashia Bunny", location: "Nugegoda,Colomco 5", email: "nata123@gamil.com" }
     ]
-    const edits=[
-        {path:"/vehicle_owner_edit_profile"}
+    const edits = [
+        { path: "/vehicle_owner_edit_profile" }
     ]
     return (
         <div className='flex'>
@@ -40,8 +40,8 @@ const vehicle_owner_profile = () => {
                     ))}
 
                 </div> */}
-               <div>
-                {edits.map((edit, index) => (
+                <div>
+                    {edits.map((edit, index) => (
                         <Profile key={index} path={edit.path} />
                     ))}
                 </div>
@@ -50,4 +50,4 @@ const vehicle_owner_profile = () => {
     )
 }
 
-export default vehicle_owner_profile
+export default vehicle_owner_profile;

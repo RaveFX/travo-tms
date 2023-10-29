@@ -21,6 +21,8 @@ public class BudgetService {
         return budgetRepo.save(budget);
     }
 
+
+
     public Budget getBudgetById(Integer budgetID) {
         return budgetRepo.findById(budgetID).orElse(null);
     }
@@ -53,5 +55,18 @@ public class BudgetService {
     public List<Budget> getAllBudgets() {
         return budgetRepo.findAll();
     }
+
+    public double getTotalCost() {
+        List<Budget> allBudgets = budgetRepo.findAll();
+        double totalCost = 0.0;
+
+        for (Budget budget : allBudgets) {
+            totalCost += budget.getCost();
+        }
+
+        return totalCost;
+    }
 }
+
+
 

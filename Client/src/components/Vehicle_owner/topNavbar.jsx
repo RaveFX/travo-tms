@@ -22,7 +22,7 @@ const TopNavbar = ({path}) => {
                         <img src={people01} 
                         alt="Logo" className="w-8 rounded-full cursor-pointer"  />
                         </Link>
-                        <div className='font-poppins font-medium text-base justify-center'>Natashia Bunny</div>
+                        <div className='font-poppins font-medium text-base justify-center'>Herman Collins</div>
                     </div>
 
                     {/* <li>

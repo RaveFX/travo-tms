@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 
 // Tharindi
+<></>
 import PersistLogin from "./components/main/PersistLogin";
 import RequireAuth from "./components/main/RequireAuth";
 import Signin from "./pages/main/signin";
@@ -31,6 +32,7 @@ import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
 
 // Thirani
+<></>
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
 import Store_Products_Add from "./pages/store/Productaddform";
@@ -51,6 +53,7 @@ import Admin_Add_dvertisments from "./pages/Admin/Admin_Addadverisments";
 import Admin_Transaction from "./pages/Admin/Admin_Transaction";
 
 // Trineesha
+<></>
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
 import Travel_Guide_Mytours from "./pages/Travel_Guide/travel_guide_mytours";
 import Travel_Guide_Myrates from "./pages/Travel_Guide/travel_guide_myrates";
@@ -64,16 +67,18 @@ import Travel_Guide_Profile from "./pages/Travel_Guide/travel_guide_profile";
 import Travel_Guide_Edit_Profile from "./pages/Travel_Guide/travel_guide_edit_profile";
 import Travel_Guide_Success from "./pages/Travel_Guide/travel_guide_success";
 
-import Vehicle_Owner_Dashboard from "./pages/Vehicle_Owner/vehicle_owner_dashboard";
-import Vehicle_Owner_Vehicles from "./pages/Vehicle_Owner/vehicle_owner_vehicles";
-import Vehicle_Owner_Rates from "./pages/Vehicle_Owner/vehicle_owner_rates";
-import Vehicle_Owner_Add_Vehicle from "./pages/Vehicle_Owner/vehicle_owner_add_vehicle";
-import Vehicle_Owner_Add_Preview from "./pages/Vehicle_Owner/vehicle_owner_add_preview";
-import Vehicle_Owner_Request from "./pages/Vehicle_Owner/vehicle_owner_request";
-import Vehicle_Owner_RequestMore from "./pages/Vehicle_Owner/vehicle_owner_requestMore";
-import Vehicle_Owner_Rating from "./pages/Vehicle_Owner/vehicle_owner_rating";
-import Vehicle_Owner_Profile from "./pages/Vehicle_Owner/vehicle_owner_profile";
-import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vehicle_owner_edit_profile";
+import Vehicle_Owner_Dashboard from "./pages/Vehicle_Owner/vo_dashboard";
+import Vehicle_Owner_Vehicles from "./pages/Vehicle_Owner/vo_vehicles";
+import Vehicle_Owner_Rates from "./pages/Vehicle_Owner/vo_rates";
+import Vehicle_Owner_Add_Vehicle from "./pages/Vehicle_Owner/vo_addvehicle";
+import Vehicle_Owner_Add_Preview from "./pages/Vehicle_Owner/vo_addpreview";
+import Vehicle_Owner_Request from "./pages/Vehicle_Owner/vo_request";
+import Vehicle_Owner_RequestMore from "./pages/Vehicle_Owner/vo_requestMore";
+import Vehicle_Owner_Rating from "./pages/Vehicle_Owner/vo_rating";
+import Vehicle_Owner_Profile from "./pages/Vehicle_Owner/vo_profile";
+import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vo_editprofile";
+<></>
+
 
 // Sanduni
 import TravelerDashboard from "./pages/traveler/Dashboard";
@@ -90,18 +95,7 @@ import CreatePost from "./pages/traveler/CreatePost";
 import CommunityProfile from "./pages/traveler/CommunityProfile";
 import UserProfile from "./pages/main/profile";
 
-// RavinduJay
-import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
-import ScheduleDetails from "./pages/activity_agent/Activity_Agent_Schedule_Details";
-import ReviewsDetails from "./pages/activity_agent/Reviews_Details";
-import Profile from "./pages/activity_agent/Profile";
-import EditProfile from "./pages/activity_agent/Edit_Profile";
-import AddActivity from "./pages/activity_agent/Add_Activity";
-import Dashboard from "./pages/activity_agent/Dashboard";
-import ImageGrid from "./pages/activity_agent/Activity";
-
 // RavinduRave
-import HomePage from "./pages/main/home";
 import Travdash from "./pages/traveler/travdash";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
@@ -112,7 +106,20 @@ import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
-import Newhome from "./pages/main/newhome";
+import Newhome from "./pages/main/home";
+
+
+// RavinduJay
+<></>
+import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
+import ScheduleDetails from "./pages/activity_agent/Activity_Agent_Schedule_Details";
+import ReviewsDetails from "./pages/activity_agent/Reviews_Details";
+import Profile from "./pages/activity_agent/Profile";
+import EditProfile from "./pages/activity_agent/Edit_Profile";
+import AddActivity from "./pages/activity_agent/Add_Activity";
+import Dashboard from "./pages/activity_agent/Dashboard";
+import ImageGrid from "./pages/activity_agent/Activity";
+
 
 export default function App() {
   return (
@@ -186,139 +193,86 @@ export default function App() {
         <Route exact path="/dashboard" element={<Travdash />} />
         <Route exact path="/register_success" element={<Register_success />} />
 
-        <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={["TRAVELLER"]} />}>
-            {/* Routes Authorized to Admins */}
+
+        {/* Tharindi */}
+        <>
+          <Route exact path="/" element={<Newhome />} />
+          <Route exact path="/signin" element={<Signin />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/signup_as" element={<SignupChoice />} />
+          <Route exact path="/service_providers" element={<BecomeServiceProvider />} />
+          <Route exact path="/hotel_register" element={<HotelRegister />} />
+          <Route exact path="/activity_agent_register" element={<ActivityAgentRegister />} />
+          <Route exact path="/guide_register" element={<GuideRegister />} />
+          <Route exact path="/vehicle_renter_register" element={<VehicleRenterRegister />} />
+          <Route exact path="/store_manager_register" element={<StoreManagerRegister />} />
+          <Route exact path="/hotelagent_dashboard" element={<Hotel_dashboard />} />
+          <Route exact path="/hotelagent_reviews" element={<Hotel_reviews />} />
+          <Route exact path="/hotelagent_reservations" element={<Hotel_reservations />} />
+          <Route exact path="/hotelagent_rooms" element={<Hotel_rooms />} />
+          <Route exact path="/hotelagent_transactions" element={<Hotel_transactions />} />
+          <Route exact path="/hotelagent_advertisments" element={<Hotel_advertisments />} />
+          <Route exact path="/hotelagent_add_room" element={<Hotel_addRooms />} />
+          <Route exact path="/hotelagent_edit_room" element={<Hotel_editRooms />} />
+          <Route exact path="/hotelagent_room_details" element={<Hotel_roomDetails />} />
+          <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails />} />
+          <Route exact path="/dashboard" element={<Travdash />} />
+          <Route exact path="/register_success" element={<Register_success />} />
+          <Route element={<PersistLogin />}>
+            <Route element={<RequireAuth allowedRoles={["TRAVELLER"]} />}>
+              {/* Routes Authorized to Admins */}
+            </Route>
           </Route>
-        </Route>
+        </>
 
         {/* Thirani */}
-        <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
-        <Route path="/admin_users" element={<Admin_Users />}>
-          {" "}
-        </Route>
-        <Route path="admin_requests" element={<Admin_Requests />} />
-        <Route path="admin_userprofile" element={<Admin_Userprofile />} />
-        <Route path="admin_advertisments" element={<Admin_Advertisments />} />
-        <Route
-          path="admin_add_advertisments"
-          element={<Admin_Add_dvertisments />}
-        />
-        <Route path="admin_transaction" element={<Admin_Transaction />} />
-
-        <Route path="store_dashboard" element={<Store_Dashboard />} />
-        <Route path="store_myshop" element={<Store_Myshop />} />
-        <Route path="store_product_addform" element={<Store_Products_Add />} />
-        <Route path="store_product" element={<Store_Product />} />
-        <Route path="store_order" element={<Store_Orders />} />
-        <Route path="store_transaction" element={<Store_Transaction />} />
-        <Route path="store_renting" element={<Store_Renting />} />
-        <Route path="store_rating" element={<Store_Rating />} />
-        <Route path="store_stock" element={<Store_Stock />} />
-        <Route path="store_profile" element={<Store_Profile />} />
+        <>
+          <Route path="/admin_dashboard" element={<Admin_Dashboard />} />
+          <Route path="/admin_users" element={<Admin_Users />} />
+          <Route path="admin_requests" element={<Admin_Requests />} />
+          <Route path="admin_userprofile" element={<Admin_Userprofile />} />
+          <Route path="admin_advertisments" element={<Admin_Advertisments />} />
+          <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
+          <Route path="admin_transaction" element={<Admin_Transaction />} />
+          <Route path="store_dashboard" element={<Store_Dashboard />} />
+          <Route path="store_myshop" element={<Store_Myshop />} />
+          <Route path="store_product_addform" element={<Store_Products_Add />} />
+          <Route path="store_product" element={<Store_Product />} />
+          <Route path="store_order" element={<Store_Orders />} />
+          <Route path="store_transaction" element={<Store_Transaction />} />
+          <Route path="store_renting" element={<Store_Renting />} />
+          <Route path="store_rating" element={<Store_Rating />} />
+          <Route path="store_stock" element={<Store_Stock />} />
+          <Route path="store_profile" element={<Store_Profile />} />
+        </>
 
         {/* Trineesha */}
-        <Route
-          path="/travel_guide_dashboard"
-          element={<Travel_Guide_Dashboard />}
-        />
-        <Route
-          path="/travel_guide_request"
-          element={<Travel_Guide_Request />}
-        ></Route>
-        <Route
-          path="/travel_guide_mytours"
-          element={<Travel_Guide_Mytours />}
-        ></Route>
-        <Route
-          path="/travel_guide_myrates"
-          element={<Travel_Guide_Myrates />}
-        ></Route>
-        <Route
-          path="/travel_guide_mytours_more"
-          element={<Travel_Guide_Mytours_More />}
-        ></Route>
-        <Route
-          path="/travel_guide_invitation"
-          element={<Travel_Guide_Invitation />}
-        ></Route>
-        <Route
-          path="/travel_guide_rating"
-          element={<Travel_Guide_Rating />}
-        ></Route>
-        <Route
-          path="/travel_guide_request"
-          element={<Travel_Guide_Request />}
-        ></Route>
-        <Route
-          path="/travel_guide_requestMore"
-          element={<Travel_Guide_RequestMore />}
-        ></Route>
-        <Route
-          path="/travel_guide_confirmed"
-          element={<Travel_Guide_Confirmed />}
-        ></Route>
-        <Route
-          path="/travel_guide_profile"
-          element={<Travel_Guide_Profile />}
-        ></Route>
-        <Route
-          path="/travel_guide_edit_profile"
-          element={<Travel_Guide_Edit_Profile />}
-        ></Route>
-        <Route
-          path="/travel_guide_success"
-          element={<Travel_Guide_Success />}
-        ></Route>
-
-        <Route
-          path="/vehicle_owner_dashboard"
-          element={<Vehicle_Owner_Dashboard />}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_vehicles"
-          element={<Vehicle_Owner_Vehicles />}
-        >
-          {" "}
-        </Route>
-        <Route path="/vehicle_owner_rates" element={<Vehicle_Owner_Rates />}>
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_add_vehicle"
-          element={<Vehicle_Owner_Add_Vehicle />}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_add_preview"
-          element={<Vehicle_Owner_Add_Preview />}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_request"
-          element={<Vehicle_Owner_Request />}
-        >
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_requestMore"
-          element={<Vehicle_Owner_RequestMore />}
-        ></Route>
-        <Route path="/vehicle_owner_rating" element={<Vehicle_Owner_Rating />}>
-          {" "}
-        </Route>
-        <Route
-          path="/vehicle_owner_profile"
-          element={<Vehicle_Owner_Profile />}
-        ></Route>
-        <Route
-          path="/vehicle_owner_edit_profile"
-          element={<Vehicle_Owner_Edit_Profile />}
-        ></Route>
+        <>
+          <Route path="/travel_guide_dashboard" element={<Travel_Guide_Dashboard />} />
+          <Route path="/travel_guide_request" element={<Travel_Guide_Request />} />
+          <Route path="/travel_guide_mytours" element={<Travel_Guide_Mytours />} />
+          <Route path="/travel_guide_myrates" element={<Travel_Guide_Myrates />} />
+          <Route path="/travel_guide_mytours_more" element={<Travel_Guide_Mytours_More />} />
+          <Route path="/travel_guide_invitation" element={<Travel_Guide_Invitation />} />
+          <Route path="/travel_guide_rating" element={<Travel_Guide_Rating />} />
+          <Route path="/travel_guide_request" element={<Travel_Guide_Request />} />
+          <Route path="/travel_guide_requestMore" element={<Travel_Guide_RequestMore />} />
+          <Route path="/travel_guide_confirmed" element={<Travel_Guide_Confirmed />} />
+          <Route path="/travel_guide_profile" element={<Travel_Guide_Profile />} />
+          <Route path="/travel_guide_edit_profile" element={<Travel_Guide_Edit_Profile />} />
+          <Route path="/travel_guide_success" element={<Travel_Guide_Success />} />
+          
+          <Route path="/vehicle_owner_dashboard" element={<Vehicle_Owner_Dashboard />} />
+          <Route path="/vehicle_owner_vehicles" element={<Vehicle_Owner_Vehicles />} />
+          <Route path="/vehicle_owner_rates" element={<Vehicle_Owner_Rates />} />{" "}
+          <Route path="/vehicle_owner_add_vehicle" element={<Vehicle_Owner_Add_Vehicle />} />
+          <Route path="/vehicle_owner_add_preview" element={<Vehicle_Owner_Add_Preview />} />
+          <Route path="/vehicle_owner_request" element={<Vehicle_Owner_Request />} />
+          <Route path="/vehicle_owner_requestMore" element={<Vehicle_Owner_RequestMore />} />
+          <Route path="/vehicle_owner_rating" element={<Vehicle_Owner_Rating />} />
+          <Route path="/vehicle_owner_profile" element={<Vehicle_Owner_Profile />} />
+          <Route path="/vehicle_owner_edit_profile" element={<Vehicle_Owner_Edit_Profile />} />
+        </>
 
         {/* Sanduni */}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
@@ -356,12 +310,25 @@ export default function App() {
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />
-        <Route exact path="/Budget" element={<Budget />} />
-        <Route exact path="/Store" element={<Store />} />
+        <Route exact path="/traveler/budget" element={<Budget />} />
+        <Route exact path="/traveler/store" element={<Store />} />
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
+
+        {/* RavinduJay */}
+        <>
+          <Route exact path="/agent_dashboard" element={<Dashboard />} />
+          <Route exact path="/schedule" element={<Schedule />} />
+          <Route exact path="/schedule/details" element={<ScheduleDetails />} />
+          <Route exact path="/reviews" element={<ReviewsDetails />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/profile/edit_profile" element={<EditProfile />} />
+          <Route exact path="/activities" element={<ImageGrid />} />
+          <Route exact path="/activities/add_activity" element={<AddActivity />} />
+        </>
+
       </Routes>
 
       <div className="bg-[#F6F8FA]  w-full h-full"></div>

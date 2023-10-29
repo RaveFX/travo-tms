@@ -1,6 +1,6 @@
 import { Typography, Avatar, Rating } from "@material-tailwind/react";
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 
@@ -44,8 +44,8 @@ export function rating() {
                         </div>
                         <div className="h-[300px]">
                             <p className="mb-6 font-medium">
-                            "Highly recommend this travel guide! Their expertise and enthusiasm added so much value to the trip. 
-                            A well-organized itinerary allowed us to explore unique places. Just a minor issue with transportation delays, but the overall experience was fantastic. Will consider booking with them again in the future."
+                                "Highly recommend this travel guide! Their expertise and enthusiasm added so much value to the trip.
+                                A well-organized itinerary allowed us to explore unique places. Just a minor issue with transportation delays, but the overall experience was fantastic. Will consider booking with them again in the future."
                             </p>
                         </div>
                         <div className="flex">
@@ -66,8 +66,8 @@ export function rating() {
                         </div>
                         <div className="h-[300px]">
                             <p className="mb-6 font-medium">
-                            "Had an amazing time with this travel guide! Their local insights made the tour unforgettable. 
-                            The guide's friendliness and attention to detail were commendable. Despite minor weather disruptions, the journey was worth every moment."
+                                "Had an amazing time with this travel guide! Their local insights made the tour unforgettable.
+                                The guide's friendliness and attention to detail were commendable. Despite minor weather disruptions, the journey was worth every moment."
                             </p>
                         </div>
                         <div className="flex">
@@ -88,8 +88,8 @@ export function rating() {
                         </div>
                         <div className="h-[300px]">
                             <p className="mb-6 font-medium">
-                            "A delightful travel guide! Their passion for the destinations shone through. Loved the carefully curated itinerary and engaging storytelling.
-                             Minor communication glitch, but the overall trip was fantastic. Highly recommended for an enriching adventure."
+                                "A delightful travel guide! Their passion for the destinations shone through. Loved the carefully curated itinerary and engaging storytelling.
+                                Minor communication glitch, but the overall trip was fantastic. Highly recommended for an enriching adventure."
                             </p>
                         </div>
                         <div className="flex">
@@ -110,8 +110,8 @@ export function rating() {
                         </div>
                         <div className="h-[300px]">
                             <p className="mb-6 font-medium">
-                            "Booked a tour with this travel guide, and it was incredible! Their knowledge and professionalism made the experience exceptional. The group dynamics were fantastic, but wish there were more photo stops. Still,
-                             a memorable journey that exceeded expectations."
+                                "Booked a tour with this travel guide, and it was incredible! Their knowledge and professionalism made the experience exceptional. The group dynamics were fantastic, but wish there were more photo stops. Still,
+                                a memorable journey that exceeded expectations."
                             </p>
                         </div>
                         <div className="flex">
@@ -155,4 +155,4 @@ export function rating() {
     );
 }
 
-export default rating
+export default rating;

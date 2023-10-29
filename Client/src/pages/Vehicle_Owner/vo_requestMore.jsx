@@ -1,7 +1,7 @@
 import { Carousel, IconButton } from '@material-tailwind/react'
 import React from 'react'
 // import Sidebar from '../../components/sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 import { Link } from 'react-router-dom';
@@ -17,20 +17,20 @@ const requestMore = () => {
         "https://cdn.getyourguide.com/img/location/5c83eaac2b43a.jpeg/88.jpg",
 
     ]
-    const topnav=[
-        {path:"/travel_guide_profile"}
+    const topnav = [
+        { path: "/travel_guide_profile" }
     ]
     return (
         <div className='flex'>
             <div className=''><Vehicle_Owner_Sidebar /></div>
             <div className='flex flex-grow flex-col'>
                 <div>
-                <div>
-                    
-                    {topnav.map((nav, index) => (
-                                <TopNavbar key={index} path={nav.path}  />
-                            ))}
-                </div>
+                    <div>
+
+                        {topnav.map((nav, index) => (
+                            <TopNavbar key={index} path={nav.path} />
+                        ))}
+                    </div>
                 </div>
                 <div><p className='text-3xl m-5'>Tour To: Kandy</p></div>
                 <div><p className='text-lg mx-5'>Request_Id:</p></div>
@@ -45,7 +45,7 @@ const requestMore = () => {
                             ))}</Carousel>
                         </div> */}
                         <div className='bg-back mx-[5vh] p-5  '>
-                        <p className='py-8 text-center text-2xl'>Tour Information</p>
+                            <p className='py-8 text-center text-2xl'>Tour Information</p>
                             <div className='flex my-2'>
                                 <div>
                                     <p className='text-black'>Guide Need from : </p>
@@ -151,13 +151,13 @@ const requestMore = () => {
 
                             </div>
                             <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/profile">Profile</Link></button>
-                            
+
 
 
                         </div>
                         <div className='flex  mt-24 justify-center '>
-                        <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/request">Accept</Link></button>
-                        <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
+                            <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/request">Accept</Link></button>
+                            <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
 
                         </div>
                     </div>

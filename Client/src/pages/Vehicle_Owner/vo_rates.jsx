@@ -11,7 +11,7 @@ import {
 
 } from "@material-tailwind/react";
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 // import ButtonVariants from './button';
@@ -153,5 +153,5 @@ const Rates = () => {
         </div>
     )
 }
-export default Rates
+export default Rates;
 

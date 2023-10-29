@@ -1,12 +1,9 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import TopNavbar from "../../components/navbar-general";
-// import Sidebar from "../../components/sidebar-rave";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
 import { Button, CardBody } from "@material-tailwind/react";
-// import Cardss from "../../components/card";
 import axios from 'axios';
 import { Alert, Card, Input, Checkbox, Typography } from "@material-tailwind/react";
  
@@ -43,9 +40,27 @@ function SubmitAlert() {
 }
  
 
+function TotalCostDisplay() {
+  const [totalCost, setTotalCost] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/v1/budget/getTotalCost')
+      .then((response) => response.json())
+      .then((data) => setTotalCost(data))
+      .catch((error) => console.error('Error:', error));
+  }, []);
+
+  return (
+    <div>
+      <h2></h2>
+      <p>{totalCost !== null ? `LKR ${totalCost.toFixed(2)}` : 'Loading...'}</p>
+    </div>
+  );
+}
+
 const data = [
   {
-    amount: "LKR 200,000",
+    amount: "LKR 200,00",
     label: "Total Expenses",
     imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
     bgColor: "#eff2f7",
@@ -59,7 +74,7 @@ const data = [
     textColor: "#212b36",
   },
   {
-    amount: "LKR 8,000",
+    amount: <TotalCostDisplay />,
     label: "Your Expenses",
     imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
     bgColor: "#eff2f7",
@@ -212,7 +227,7 @@ function Budgetform() {
   );
 }
 
-function Budget() {
+export default function Budget() {
   return (
     <>
       <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-scroll ">
@@ -254,4 +269,4 @@ function Budget() {
   );
 }
 
-export default Budget;
+

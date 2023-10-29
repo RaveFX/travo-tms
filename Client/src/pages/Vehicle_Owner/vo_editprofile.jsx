@@ -3,18 +3,18 @@ import React from 'react'
 import EditProfile from '../../components/Vehicle_owner/edit_profile';
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
 // import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar';
-import Vehicle_Owner_Sidebar from './vehicle_owner_sidebar1';
+import Vehicle_Owner_Sidebar from './vo_sidebar1';
 
 
 // import { complete, menu, close, kandy, people01, customer, bookmark, invitation, request, star } from '../../assets';
 
 
-const topnav=[
-    {path:"/vehicle_owner_profile"}
+const topnav = [
+    { path: "/vehicle_owner_profile" }
 ]
 const vehicle_owner_edit_profile = () => {
     return (
-        
+
         <div className='flex'>
             <div><Vehicle_Owner_Sidebar /></div>
 
@@ -25,7 +25,7 @@ const vehicle_owner_edit_profile = () => {
                         <TopNavbar key={index} path={nav.path} />
                     ))}
                 </div>
-                <EditProfile/>
+                <EditProfile />
             </div>
         </div>
 
