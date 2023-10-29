@@ -6,23 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "hotel_poll")
-public class HotelPoll {
+@Table(name = "poll_user")
+public class PollUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer hotel_id;
-    private Integer trip_id;
-    private Integer total_votes;
-    private Integer day;
-    @OneToMany(mappedBy = "hotelPoll")
-    private Set<PollUser> pollUsers = new HashSet<>();
+
+    private Integer user_id;
+
+    @ManyToOne
+    @JoinColumn(name = "hotelpoll_id", referencedColumnName = "id" )
+    private HotelPoll hotelPoll;
+
+
+
 }

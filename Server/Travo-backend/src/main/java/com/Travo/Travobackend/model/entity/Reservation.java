@@ -16,6 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "reservation")
+
 public class Reservation {
     @Id
     @GeneratedValue

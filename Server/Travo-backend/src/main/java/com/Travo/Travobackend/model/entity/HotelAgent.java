@@ -31,9 +31,8 @@ public class HotelAgent {
     private String contact_num;
     private Integer longitude;
     private Integer latitude;
-    private String hotel_img= "hotel_img.jpg";
+    private String hotel_img = "hotel_img.jpg";
     private Double total_reviews;
-
 
     @Enumerated(EnumType.STRING)
     private Membership membership;
@@ -51,8 +50,6 @@ public class HotelAgent {
     @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
     private Set<TripHotel> tripHotels = new HashSet<>();
 
-
-    //private Set<Reservation> reservations = new HashSet<>();
-
+    // private Set<Reservation> reservations = new HashSet<>();
 
 }
