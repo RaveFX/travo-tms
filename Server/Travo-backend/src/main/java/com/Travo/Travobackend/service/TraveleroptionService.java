@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,12 +58,20 @@ public class TraveleroptionService {
 
 
     }
+    public List<ReservationDTO>availability (Integer roomId,String boardType) {
+        return hotelNameJDBCDao.getAvailability(roomId,boardType);
+
+
+    }
     public String hotelBooking(ReservationDTO reservationDTO, Integer userId, Integer hotelId, Integer roomId) {
         try{
             Reservation reservation = new Reservation();
 //            reservation.setReservation_id(reservationDTO.getReservation_id());
-//            reservation.setCheckin_date(reservationDTO.getCheckout_date());
+            reservation.setCheckin_date(reservationDTO.getCheckout_date());
+            reservation.setCheckout_date(reservationDTO.getCheckout_date());
             reservation.setBoardType(reservationDTO.getBoardType());
+            reservation.setPayment(reservationDTO.getPayment());
+            reservation.setStatus(reservationDTO.getStatus());
 
             Optional<Room> roomOptional = roomRepository.findById(roomId);
             Room room = roomOptional.get();
@@ -88,12 +97,15 @@ public class TraveleroptionService {
 //    public List<HotelDTO> BookingDetail(Integer hotelId) {
 //        return hotelNameJDBCDao.GetBookingDetail(hotelId);
 //
-//
-//
-//
-//
-//
-//        public List<VehiclesDTO> vehicles() {
-//        return vehiclesJDBCDao.getAllVehicles();
-//    }
+//===========================Vehicle====================
+        public List<VehiclesDTO> vehicles() {
+        return vehiclesJDBCDao.getAllVehicles();
+    }
+    public List<VehiclesDTO> company() {
+        return vehiclesJDBCDao.getVehicleRenter();
+    }
+
+    public List<VehiclesDTO> vehicle(Integer vehicleId) {
+        return vehiclesJDBCDao.getVehicleTypes(vehicleId);
+    }
 }

@@ -86,9 +86,9 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
                     <div className='w-full sm:w-1/2 lg:w-3/4 xl:w-1/2 p-5'>
                         {/* <p className='text-sm'> {price}</p> */}
                         <p className='text-md text-base mt-1'>Full Board Price (Rs.)</p>
-                        <Chip className='bg-button2 ' size="lg" value={fullBoard} />
+                        <Chip className='bg-textGray ' size="lg" value={fullBoard} />
                         <p className='text-md text-base mt-1'>Half Board Price (Rs.)</p>
-                        <Chip className='bg-button2' size="lg" value={halfBoard} />
+                        <Chip className='bg-textGray' size="lg" value={halfBoard} />
                     </div>
 
                 </div>

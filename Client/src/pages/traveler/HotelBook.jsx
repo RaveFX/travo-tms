@@ -1,6 +1,11 @@
 import React from 'react';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
+import Datepicker from "react-tailwindcss-datepicker";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import {
     Rating, Button, Card, Chip,
     CardBody,
@@ -16,82 +21,141 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function App() {
     const [boardType, setBoardType] = useState('');
+    const [checkin_date, setCheckin_date] = useState('');
+    const [checkout_date, setCheckout_date] = useState('');
+    const [checkinDate, setCheckinDate] = useState(null);
+    const [reservedDates, setReservedDates] = useState([]);
+
+    const [fullPayment, setFullPayment] = useState('')
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
 
-    // const [hotels, setHotels] = useState([]);
+    const [hotels, setHotels] = useState([]);
+
+    const currentURL = window.location.href;
+    const splitURL = currentURL.split("/");
+
+    const roomId = decodeURIComponent(splitURL[6]);
+    const hotelId = decodeURIComponent(splitURL[5]);
+
+    const room_Id = decodeURIComponent(splitURL[5]);
+    
 
 
-    // useEffect(() => {
-    //     const loadHotels = async () => {
-    //         try {
-    //             const result = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}/${roomId}`)
-    //             setHotels(result.data);
-    //         } catch (error) {
-    //             console.error('Error fetching hotel details:', error);
-    //         }
-    //     };
-    //     loadHotels();
-    // }, [hotelId, roomId]);
+    useEffect(() => {
+        const fetchReservedDates = async () => {
+            // Make an API call to fetch the reserved dates for this room
+            try {
+                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}/${boardType}`);
+                console.log(response.data);
+                // Assuming the response is an array of reserved dates, update the state
+                setReservedDates(response.data);
+            } catch (error) {
+                console.error('Error fetching reserved dates:', error);
+            }
+        };
+    
+        fetchReservedDates();
+    }, []);
+    console.log(reservedDates);
 
+    useEffect(() => {
+        const loadHotels = async () => {
+            try {
+                const result = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}/${roomId}`)
+                setHotels(result.data);
+
+            } catch (error) {
+                console.error('Error fetching hotel details:', error);
+            }
+        };
+        loadHotels();
+    }, [hotelId, roomId]);
+
+
+    const userID = decodeURIComponent(splitURL[5]);
+    const roomID = decodeURIComponent(splitURL[7]);
+    const hotelID = decodeURIComponent(splitURL[6]);
+
+    const handleBoardTypeChange = (value) => {
+        setBoardType(value);
+
+        // Calculate the fullPayment based on the selected board type and hotels data
+        if (value === 'FullBoard') {
+            setFullPayment(hotels[0].price); // Replace with the actual data
+        } if (value === 'HalfBoard') {
+            setFullPayment(Math.floor((2 * hotels[0].price) / 3)); // Replace with the actual data
+        }
+    };
     const onSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = {};
 
+
         if (!boardType) {
-            validationErrors.boardType = "boardType is required";
+            validationErrors.boardType = "Board Type is required";
+        }
+        if (!checkin_date) {
+            validationErrors.checkin_date = "Check In is required";
+        }
+        if (!checkout_date) {
+            validationErrors.checkout_date = "Check Out is required";
         }
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            try {
-                // if (boardType === "Full Board") {
-
-                //     hotels.price= 2;
-                // } if (boardType === "Half Board") {
-                //     hotels.price= 3;
-                // }
-                await axios.post(
-                    `http://localhost:8080/api/v1/traveler/hotelBooking/${userId}/${hotelId}/${roomId}`, {
-                    boardType: boardType,
-                }
-
-                );
-
-                navigate("/traveler/HotelPayment");
-            } catch (error) {
-                console.error("Error storing boardType: ", error);
+            if (boardType && checkin_date && checkout_date) {
+                setErrors({});
             }
+            if(checkin_date > checkout_date){
+                alert("Check Out date should be after Check In date");
+                return;
+            }
+            if(checkin_date < new Date().toISOString().split('T')[0]){
+                alert("Check In date should be after today");
+                return;}
+            // console.log("reserve:",reservedDates);
+            // console.log("checkin",checkin_date);
+            if(reservedDates==checkin_date){
+                alert("Check In date is already reserved");
+                return;
+            }
+           
+
+            if (hotels.length > 0) {
+                try {
+                    let fullPayment;
+
+                    if (boardType === "FullBoard") {
+                        fullPayment = hotels[0].price;
+                    } if (boardType === "HalfBoard") {
+                        fullPayment = Math.floor((2 * hotels[0].price) / 3);
+                    }
+                  
+                    await axios.post(
+                        `http://localhost:8080/api/v1/traveler/hotelBooking/${userID}/${hotelID}/${roomID}`, {
+                        boardType: boardType,
+                        payment: fullPayment,
+                        status: 0,
+                        checkin_date: checkin_date,
+                        checkout_date: checkout_date,
+
+                    }
+
+                    );
+                    console.log(hotels.price);
+
+                    navigate("/traveler/HotelPayment");
+                } catch (error) {
+                    console.error("Error storing boardType: ", error);
+                }
+            }
+
         }
     };
 
-    const currentURL = window.location.href;
-    const splitURL = currentURL.split("/");
-    const userId = decodeURIComponent(splitURL[5]);
-    const roomId = decodeURIComponent(splitURL[7]);
-    const hotelId = decodeURIComponent(splitURL[6]);
-    console.log("Type: ", hotelId);
 
-    const handleBookings = async (booking) => {
-        try {
-
-            // Make a POST request to your backend API endpoint to store the attraction details
-            await axios.post(`http://localhost:8080/api/v1/traveler/hotelBooking/${userId}/${hotelId}/${roomId}`, {
-                boardType: booking.boardType,
-                user_id: userId,
-                hotel_id: hotelId,
-                room_id: roomId
-            });
-
-            // Handle success, e.g., show a success message to the user
-            console.log("Attraction added successfully!");
-            // Display a success message using SweetAlert2
-        } catch (error) {
-            // Handle error, e.g., show an error message to the user
-            console.error("Error adding attraction: ", error);
-        }
-    };
 
     return (
 
@@ -113,24 +177,30 @@ function App() {
                                 <div className="mb-1 flex flex-col gap-6">
                                     <div className=''>
                                         <div className=''>
-                                            {/* <Typography variant="h6" color="blue-gray" className="">
-                                                Check-in / Check-out Date
-                                            </Typography>
 
-                                            <Datepicker
 
-                                                value={value}
-                                                onChange={handleValueChange}
-                                                color="green"
+                                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                <DemoContainer components={['DatePicker', 'DatePicker']}>
+                                                    <DatePicker
+                                                        label="Check-in Date"
+                                                        value={checkin_date}
+                                                        onChange={(value) => setCheckin_date(value)}
 
-                                            /> */}
+                                                        // disabled={(date) => reservedDates.includes(date.format('DD/MM/YYYY'))}
+                                                    />
+                                                    <DatePicker
+                                                        label="Check-out Date"
+                                                        value={checkout_date}
+                                                        onChange={(value) => setCheckout_date(value)}
+                                                        // disabled={(date) => reservedDates.includes(date.format('DD/MM/YYYY'))}
+                                                    />
+                                                </DemoContainer>
+                                            </LocalizationProvider>
                                         </div>
 
 
                                     </div>
-                                    <Typography variant="h6" color="blue-gray" className="-mb-6">
-                                        Board Type
-                                    </Typography>
+
 
                                     <div className="w-72">
                                         {errors.boardType && (
@@ -138,12 +208,23 @@ function App() {
                                         )}
                                         <Select
                                             label="Select Board Type"
+                                            className='h-12 '
                                             value={boardType}
-                                            onChange={(value) => setBoardType(value)}>
-                                            <Option value="Full Board">Full Board</Option>
-                                            <Option value="Half Board">Half Board</Option>
+                                            onChange={(value) => {
+                                                setBoardType(value);
+                                                handleBoardTypeChange(value); // Call the handleBoardTypeChange function here
+                                            }}
+
+                                        >
+
+                                            <Option value="FullBoard">Full Board</Option>
+                                            <Option value="HalfBoard">Half Board</Option>
 
                                         </Select>
+                                        {fullPayment !== null && (
+                                            <p className='mt-5'>Full Payment: Rs. {fullPayment}</p>
+                                        )}
+
 
                                     </div>
 
@@ -153,7 +234,8 @@ function App() {
                                 <Button className="mt-6 bg-green"
                                     //  onClick={()=>handleBookings(booking)} 
                                     type='submit'
-                                    fullWidth>
+                                    fullWidth
+                                    disabled={!checkin_date || !checkout_date}>
                                     Book Now
                                 </Button>
 
@@ -169,6 +251,6 @@ function App() {
             </div>
         </div>
     );
-}
 
+}
 export default App;

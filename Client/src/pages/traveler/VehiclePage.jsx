@@ -7,8 +7,11 @@ import {
     CardFooter,
     Avatar,
     Tooltip,
-
-
+    TabPanel,
+    Tabs,
+    TabsHeader,
+    TabsBody,
+    Tab,
 } from "@material-tailwind/react";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/Vehicle_owner/topNavbar';
@@ -18,29 +21,9 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 
-
-
-//    function CardDefault() {
-const CardDefault = ({ type, src }) => {
+const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, img,link }) => {
     return (
-        <Card className="sm:m-5 m-2 sm:w-40 w-20 sm:h-24 h-20 justify-center items-center cursor-pointer hover:bg-green hover:scale-125 duration-300 delay-100">
-            <CardBody className="sm:w-40 w-36">
-                <Typography variant="h5" className="text-center text-xs ">
 
-                    {type}
-
-                </Typography>
-
-                <img src={src} alt="card-image" className="" />
-            </CardBody>
-
-        </Card>
-
-    );
-}
-
-const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, img }) => {
-    return (
         <Card className="max-w-[20rem] overflow-hidden m-3">
             <CardHeader
                 floated={false}
@@ -51,40 +34,37 @@ const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, i
                 <img
                     src={img}
                     alt="ui/ux review check"
-                    className=" p-16"
+                    className=" h-48 w-full rounded-t-lg object-cover"
                 />
             </CardHeader>
-            <CardBody className="mx-5">
-                <Typography variant="h5" color="blue-gray">{names}</Typography>
-                <Typography className="flex ">
+            <CardBody className="">
+                <Typography variant="h5" color="blue-gray" className="h-8">{names}</Typography>
+                <Typography className="flex h-14 ">
                     <Typography className="w-3/4 flex">
                         <Typography className="w-1/2">
-                            <Typography variant="" color="blue-gray">{seat} seats</Typography>
-                            <Typography variant="" color="blue-gray">{large_bag} Large bag</Typography>
-                            <Typography variant="" color="blue-gray">{milage}</Typography>
+                            <Typography variant="" color="blue-gray" className="text-sm">{seat} seats</Typography>
+                            <Typography variant="" color="blue-gray" className="text-sm">{large_bag} Large bag</Typography>
+                            <Typography variant="" color="blue-gray" className="text-sm">{small_bag} Small bag</Typography>
                         </Typography>
                         <Typography>
-                            <Typography variant="" color="blue-gray">{type}</Typography>
-                            <Typography variant="" color="blue-gray">{small_bag} Small bag</Typography>
+                            <Typography variant="" color="blue-gray" className="text-sm">{type}</Typography>
+                            <Typography variant="" color="blue-gray" className="text-sm">{milage}</Typography>
 
                         </Typography>
                     </Typography>
-                    <Typography>
+                    <Typography className="pl-2">
                         <Typography variant="" className="font-thin text-xs" color="Green-500">Price per day</Typography>
 
-                        <Typography variant="h6" color="Green-500">{price}</Typography>
+                        <Typography variant="h6" color="Green-500">Rs.{price}</Typography>
 
                     </Typography>
                 </Typography>
                 <Typography className="mt-3 font-normal ">
-                    <Button className="sm:w-48 w-48 mx-4 text-xs rounded-full justify-end bg-button2" variant="gradient" color="green"><Link to="/vehicle_owner_rates">Book</Link></Button>
+                    <Button className="sm:w-48 w-48 mx-4 text-xs rounded-full justify-end bg-button2" variant="gradient" color="green"><Link to={link}>More Info</Link></Button>
 
                 </Typography>
             </CardBody>
-            {/* <CardFooter className="flex items-center justify-between">
-         
-          <Typography className="font-normal">January 10</Typography>
-        </CardFooter> */}
+
         </Card>
     );
 }
@@ -92,36 +72,50 @@ const VehicleCard = ({ names, seat, large_bag, milage, small_bag, type, price, i
 
 
 const VehiclePage = () => {
-    const [vehicles,setVehicles]=useState([]);
+    const [vehicles, setVehicles] = useState([]);
+    const [renter, setRenter] = useState([]);
+    const [activeType, setActiveType] = useState('Car');
+    const [selectedCompany, setSelectedCompany] = useState('');
 
     useEffect(() => {
         loadVehicles();
-    },[]); 
+        loadRenter();
+    }, []);
 
-    const loadVehicles=async()=>{
-        const result=await axios.get("http://localhost:8080/api/v1/traveler/vehicles")
+    const loadVehicles = async () => {
+        const result = await axios.get(`http://localhost:8080/api/v1/traveler/vehicles`)
         setVehicles(result.data);
+       
     }
+    const loadRenter = async () => {
+        const result1 = await axios.get(`http://localhost:8080/api/v1/traveler/renter`)
+        setRenter(result1.data);
+    }
+    const filterVehicles = () => {
+        return vehicles.filter((vehicle) => {
+            // Check if the vehicle type matches the selected type
+            const typeMatch = vehicle.vehicle_type === activeType;
+
+            // Check if the company name matches the selected company
+            const companyMatch = !selectedCompany || vehicle.company_name === selectedCompany;
+
+            // Return true if both conditions are met
+            return typeMatch && companyMatch;
+        });
+    };
+
+
     const vehicle_type = [
-        { type: "Car", src: car },
-        { type: "Van", src: van },
-        { type: "Bus", src: bus },
-        { type: "Scooter", src: scooter },
-        { type: "Motor Bike", src: bike },
+        { type: "Car", value: "Car", src: car },
+        { type: "Van", value: "Van", src: van },
+        { type: "Bus", value: "Bus", src: bus },
+        { type: "Scooter", value: "Scooter", src: scooter },
+        { type: "Motor Bike", value: "Motor Bike", src: bike },
 
 
     ]
-    // const btns = [
-    //     { title: "Add New", variant: "outlined" }
-    // ]
-    // const lists = [
-    //     { names: "Nissan Wingroad Estate", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/15.png" },
-    //     { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/16.png" },
-    //     { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/17.png" },
-    //     { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "450km per rental", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/18.png" },
-    //     { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited Milage", small_bag: 1, type: "Automatic", price: "LKR2500", img: "../public/Vehicle_owner/19.png" }
-    // ]
-    
+
+
     return (
         <div className='flex'>
             <div><Sidebar /></div>
@@ -129,26 +123,65 @@ const VehiclePage = () => {
             <div className='h-screen flex flex-grow flex-col '>
                 <div><TopNavbar /></div>
                 <div className="overflow-y-auto ">
-                    <div className=" flex flex-row  my-5 xs:justify-center">
+                    {/* <div className="flex flex-row"> */}
+                    {/* <div className="w-1/6"> */}
+                    <Tabs value="html" orientation="vertical">
+                        <TabsHeader className="w-32 m-2">
 
-                        {vehicle_type.map((vehicle, index) => (
-                            <CardDefault key={index} src={vehicle.src} type={vehicle.type} />
-                        ))}
+                            {renter.map((renter, index) => (
+                                <Tab
+                                    key={index}
+                                    value={renter.company_name}
+                                    onClick={() => setSelectedCompany(renter.company_name)}
+                                >
+                                    {renter.company_name}
+                                </Tab>
+                            ))}
 
-                    </div>
-                    
-                    <div className="sm:flex flex-wrap xs:justify-center ">
-                       
-                        {vehicles.map((vehicles,index) => (
-                            
-                            
-                            <VehicleCard key={index} names={vehicles.vehicle_model} 
-                            seat={vehicles.seat} img={vehicles.img} large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} price={vehicles.rate} milage={vehicles.milage} />
-                        ))}
-                    </div>
+                        </TabsHeader>
+                        <TabsBody>
+                            <Tabs value={activeType}>
+                                <TabsHeader className="m-2">
+                                    {vehicle_type.map(({ type, value, src }) => (
+                                        <Tab key={value} value={value} onClick={() => setActiveType(value)} >
+                                            {type}
+                                            <img src={src} alt="card-image" className="w-28" />
+                                        </Tab>
+                                    ))}
+                                </TabsHeader>
+                                <TabsBody>
+                                    <div className="sm:flex flex-wrap  ">
+                                        {filterVehicles().length > 0 ? (
+                                            filterVehicles().map((vehicles, index) => (
+                                                    // let vehicleId={vehicles.vehicle_id}
+                                                <VehicleCard key={index} names={vehicles.vehicle_model}
+                                                
+                                                    seat={vehicles.seat} img={"https://www.indratraders.lk/wp-content/uploads/2022/03/sss.jpg"} 
+                                                    large_bag={vehicles.large_bag} small_bag={vehicles.small_bag} 
+                                                    price={vehicles.rate} milage={vehicles.milage} link={`/traveler/VehicleMoreInfo/${vehicles.vehicle_id}`} />
+                                            ))) :
+                                            (
+                                                <div className="w-full flex flex-col items-center justify-center">
+                                                    <img src="../../../public/traveler/unavailable.png" className="w-60 opacity-50"/>
+                                                   <p className="text-center"> No vehicles available.</p>
+                                                </div>
+                                            )}
+
+                                    </div>
+                                </TabsBody>
+                            </Tabs>
+
+                        </TabsBody>
+                    </Tabs>
+
+                    {/* </div> */}
+                    {/* <div className="w-full"> */}
+
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
+        // </div>
+        // </div>
     )
 }
 export default VehiclePage

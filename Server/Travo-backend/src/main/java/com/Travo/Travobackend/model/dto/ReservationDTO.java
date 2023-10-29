@@ -19,7 +19,7 @@ public class ReservationDTO {
     private Integer user_id;
     private Date date;
     private Date checkin_date;
-    private LocalDate checkout_date;
+    private Date checkout_date;
     private LocalTime checkin_time;
     private LocalTime checkout_time;
     private Integer payment;

@@ -24,4 +24,6 @@ public class VehiclesDTO {
     private Boolean sunroof;
     private String location;
     private String img;
+    private String company_name;
+    private String contact_num;
 }

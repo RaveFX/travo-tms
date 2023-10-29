@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Data
 @SuperBuilder
@@ -36,8 +37,8 @@ public class Reservation {
 
     private LocalDate date;
 
-    private LocalDate checkin_date;
-    private LocalDate checkout_date;
+    private Date checkin_date;
+    private Date checkout_date;
     private LocalTime checkin_time;
     private LocalTime checkout_time;
     private Integer payment;

@@ -19,6 +19,7 @@ const Dashboard = () => {
   const user_id = sessionStorage.getItem('user_id');
 
   const role = sessionStorage.getItem('role');
+  
 
   const handleNavigate = () => {
     // Example: Navigate to '/other-page' when the button is clicked
@@ -69,15 +70,15 @@ const Dashboard = () => {
       links: "/traveler/VehiclePage",
   
     },
-    // {
-    //   id: 4,
-    //   name: "Travel Guides",
-    //   price: "Guides for your trip",
-    //   imageSrc:
-    //     "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
-    //   buttonname: "Find Now",
-    //   links: "/GuideProfile",
-    // },
+    {
+      id: 4,
+      name: "Activities",
+      price: "Find activities to do",
+      imageSrc:
+        "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
+      buttonname: "Find Now",
+      links: "/traveler/VehiclePage",
+    },
     
   
     // Define your shop items here...
@@ -166,7 +167,7 @@ const Dashboard = () => {
                 <div className="text-[#578B6A] font-[700] text-[24px] ">Explore Now</div>
                 <div className="flex flex-wrap gap-2">
                   {Explore.map((item) => (
-                    <Card key={item.id} className="w-[225px]">
+                    <Card key={item.id} className="w-[210px]">
                       <CardHeader
                         className="rounded-lg m-2"
                         shadow={false}
@@ -175,11 +176,11 @@ const Dashboard = () => {
                         <img
                           src={item.imageSrc}
                           alt="card-image"
-                          className="h-40 w-full object-cover bg-slate-100"
+                          className="h-32 w-full object-cover bg-slate-100"
                         />
                       </CardHeader>
                       <CardBody>
-                        <div className="flex">
+                        <div className="flex -m-5 items-center justify-center">
                           <Typography
                             className="font-[700] text-[24px] "
                           >
@@ -189,9 +190,9 @@ const Dashboard = () => {
                       </CardBody>
                       <CardFooter>
                         <Link to={item.links}>
-                          <Button
-                            className='h-[3rem] justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-[500] text-[14px] '>
-                            {item.buttonname}
+                          <Button 
+                            className='h-[3rem] items-center justify-center -my-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-[500] text-[14px] '>
+                              {item.buttonname}
                           </Button>
                         </Link>
                       </CardFooter>
