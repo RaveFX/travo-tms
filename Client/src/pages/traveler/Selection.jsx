@@ -162,7 +162,7 @@ function Selections() {
         const response = await axios.post('http://localhost:8080/api/v1/trip/updatePolluser/addlist', data);
         console.log('Poll added successfully:', response.data);
       } else {
-        const response = await axios.delete('http://localhost:8080/api/v1/trip/updatePolluser/removelist', data);
+        const response = await axios.delete('http://localhost:8080/api/v1/trip/updatePolluser/remove/${poll_id}', data);
         console.log('Poll removed successfully:', response.data);
       }
     } catch (error) {

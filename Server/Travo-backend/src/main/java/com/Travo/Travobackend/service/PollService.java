@@ -1,19 +1,15 @@
 package com.Travo.Travobackend.service;
 
-import com.Travo.Travobackend.enumeration.Status;
-import com.Travo.Travobackend.enumeration.TripRole;
+
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.HotelPoll;
 import com.Travo.Travobackend.model.entity.PollUser;
-import com.Travo.Travobackend.model.entity.TripMember;
 import com.Travo.Travobackend.repository.HotelPollRepository;
 import com.Travo.Travobackend.repository.JDBCDao.HotelPollJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.UserJDBCDao;
 import com.Travo.Travobackend.repository.PollUserRepository;
-import com.Travo.Travobackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,10 +32,10 @@ public class PollService {
 
 
 
-
     public void updateHotelPoll(Integer tripId, Integer hotelId, Boolean isChecked) {
         hotelPollJDBCDao.updateHotelPoll(tripId,hotelId,isChecked);
     }
+
 
     public List<HotelPollDTO> hotelList(int tripId) {
         System.out.println(tripId);
@@ -78,7 +74,15 @@ public class PollService {
         }
     }
 
-
+    public String deletePollUserById(Integer hotelpollId) {
+        try {
+            System.out.println(hotelpollId);
+            pollUserRepository.deleteByHotelpollId(hotelpollId);
+            return "PollUser deleted successfully!";
+        } catch (Exception e) {
+            return "Error deleting PollUser: " + e.getMessage();
+        }
+    }
 
 
 

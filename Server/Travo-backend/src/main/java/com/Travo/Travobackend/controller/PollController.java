@@ -57,5 +57,13 @@ public class PollController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/updatePolluser/remove/{poll_id}")
+    public ResponseEntity<String> deletePollUser(@PathVariable("poll_id") Integer hotelpoll_id) {
+        System.out.println("byee");
+        String result = pollService.deletePollUserById(hotelpoll_id);
+        return ResponseEntity.ok(result);
+    }
+
+
 
 }
