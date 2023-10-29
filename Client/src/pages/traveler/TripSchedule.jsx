@@ -287,7 +287,7 @@ function TripSchedule() {
               {days.map((day, index) => (
                 <Accordion key={index + 1} open={open === index + 1} icon={<Icon id={(index + 1).toString()} open={open} />}>
                   <AccordionHeader onClick={() => handleOpen((index + 1).toString())}>
-                    Day {index + 1}
+                    Day {index + 1} Schedule
                   </AccordionHeader>
                   <AccordionBody>
                     <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">

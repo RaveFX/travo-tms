@@ -34,6 +34,8 @@ public class ScheduleJDBCDao {
                 scheduleDTO.setLocation_name(rs.getString("location_name"));
                 scheduleDTO.setStart_time(rs.getObject("start_time", LocalTime.class));
                 scheduleDTO.setEnd_time(rs.getObject("end_time", LocalTime.class));
+                scheduleDTO.setType(rs.getString("type"));
+
 
 
                 schedules.add(scheduleDTO);
