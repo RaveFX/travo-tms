@@ -11,8 +11,7 @@ import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
-import { useParams } from "react-router-dom";
-import axios from "../../api/axios";
+//import axios from "../../api/axios";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
@@ -32,15 +31,12 @@ function TripPlanner() {
   const navigate = useNavigate();
   const [tripDetails, setTripDetails] = useState({});
   const [isOpen, setIsOpen] = useState(true);
-  const { id } = useParams();
+  
 
   useEffect(() => {
     const getTripDetails = async () => {
       try {
-        let response = await axios.get(`/trips/${id}`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
+        let response = await axios.get(`http://localhost:8080/api/v1/trip/${id}`)
         setTripDetails(response.data);
       } catch (err) {
         console.error(err);

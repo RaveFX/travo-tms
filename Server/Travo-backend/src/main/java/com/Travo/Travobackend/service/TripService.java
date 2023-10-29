@@ -120,7 +120,7 @@ public class TripService {
 
     public String getCreatorName(Integer id) {
         return userRepo.getEmailById(id);
-
+    }
 
     public List<TripDTO> tripList(Integer userID){
         return tripJDBCDao.getTripList(userID);

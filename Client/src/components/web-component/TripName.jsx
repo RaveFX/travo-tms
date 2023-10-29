@@ -80,7 +80,7 @@ export function TripNameBar(props) {
     const updateTripDetailsName = async () => {
       try {
         let response = await axios.put(
-          `/trips/${Id}`,
+          `/trip/${Id}`,
           {
             trip_name: editableName,
           },
@@ -103,7 +103,7 @@ export function TripNameBar(props) {
     const updateTripDetailsDescription = async () => {
       try {
         let response = await axios.put(
-          `/trips/${Id}`,
+          `/trip/${Id}`,
           {
             description: editableDisc,
           },

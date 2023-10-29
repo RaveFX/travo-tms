@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +35,8 @@ public class TripJDBCDao {
                 tripDTO.setTrip_id(rs.getInt("trip_id"));
                 tripDTO.setTrip_name(rs.getString("trip_name"));
                 tripDTO.setDescription(rs.getString("description"));
-                tripDTO.setStart_date(rs.getDate("start_date"));
-                tripDTO.setEnd_date(rs.getDate("end_date"));
+                tripDTO.setStart_date(rs.getObject("start_time", LocalDate.class));
+                tripDTO.setEnd_date(rs.getObject("end_time", LocalDate.class));
 
 
 
@@ -61,8 +63,8 @@ public class TripJDBCDao {
                 tripDTO.setTrip_id(rs.getInt("trip_id"));
                 tripDTO.setTrip_name(rs.getString("trip_name"));
                 tripDTO.setDescription(rs.getString("description"));
-                tripDTO.setStart_date(rs.getDate("start_date"));
-                tripDTO.setEnd_date(rs.getDate("end_date"));
+                tripDTO.setStart_date(rs.getObject("start_time", LocalDate.class));
+                tripDTO.setEnd_date(rs.getObject("end_time", LocalDate.class));
             }
             return tripDTO;
         });

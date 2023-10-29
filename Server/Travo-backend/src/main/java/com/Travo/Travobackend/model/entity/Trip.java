@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.Travo.Travobackend.enumeration.TripState;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

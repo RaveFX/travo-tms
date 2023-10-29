@@ -35,7 +35,7 @@ export default function BoxForm(props) {
 
     try {
       let response = await axios.post(
-        "/trips/create-trip",
+        "/trip/create-trip",
         {
           trip_name: tripName,
           state: publicTrip ? "PUBLIC" : "PRIVATE",

@@ -76,7 +76,7 @@ function Mytrips() {
 // useEffect(() => {
 //   const getTripDetails = async () => {
 //     try {
-//       let response = await axios.get(`/trips/all-trips`, {
+//       let response = await axios.get(`/trip/all-trips`, {
 //         headers: { "Content-Type": "application/json" },
 //         withCredentials: true,
 //       });

@@ -34,15 +34,15 @@ import {
   BookmarkIcon,
 } from "@heroicons/react/24/outline";
 
-export default function Sidebar(props) {
-  const {
-    active,
-    isSubSidebarOpen,
-    setIsSubSidebarOpen,
-    setSubSidebarState,
-    subSidebarState,
-  } = props;
-  // console.log(subSidebarState);
+// export default function Sidebar(props) {
+//   const {
+//     active,
+//     isSubSidebarOpen,
+//     setIsSubSidebarOpen,
+//     setSubSidebarState,
+//     subSidebarState,
+//   } = props;
+//   // console.log(subSidebarState);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   export default function Sidebar(props) {
