@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -18,16 +17,16 @@ import java.time.LocalDate;
 @Table(name = "Trip")
 public class Trip {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Trip_id;
-    private String Trip_name;
+    @GeneratedValue
+    private Integer trip_id;
+    private String trip_name;
 
     @Enumerated(EnumType.STRING)
     private TripState State;
 
     private int Trip_creatorID;
-    private Timestamp Created_date;
-    private Timestamp Start_Date;
-    private Timestamp End_Date;
-    private String Description;
+    private LocalDate created_date;
+    private LocalDate start_date;
+    private LocalDate end_date;
+    private String description;
 }

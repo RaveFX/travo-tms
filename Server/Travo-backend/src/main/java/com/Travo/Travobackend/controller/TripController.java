@@ -24,7 +24,7 @@ public class TripController {
     }
 
     @GetMapping("/{tripID}")
-    public ResponseEntity<Trip> getTripById(@PathVariable Long tripID){
+    public ResponseEntity<Trip> getTripById(@PathVariable Integer tripID){
         Trip trip = tripService.getTripById(tripID);
 
         if(trip != null){
@@ -35,7 +35,7 @@ public class TripController {
     }
 
     @GetMapping("/creator/{id}")
-    public ResponseEntity<String> getCreatorName(@PathVariable Long id){
+    public ResponseEntity<String> getCreatorName(@PathVariable Integer id){
         return ResponseEntity.ok(tripService.getCreatorName(id));
     }
 
@@ -53,7 +53,7 @@ public class TripController {
 
     @PutMapping("/{tripID}")
     public ResponseEntity<Trip> updateTrip(
-            @PathVariable Long tripID,
+            @PathVariable Integer tripID,
             @RequestBody TripDTO tripDTO
     ){
         Trip updateTrip = tripService.updateTrip(tripID, tripDTO);
@@ -67,7 +67,7 @@ public class TripController {
 
     @PutMapping("/dates/{tripID}")
     public ResponseEntity<Trip> updateDate(
-            @PathVariable Long tripID,
+            @PathVariable Integer tripID,
             @RequestBody TripDTO tripDTO
     ){
         Trip updateTrip = tripService.updateDate(tripID, tripDTO);
