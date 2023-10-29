@@ -140,4 +140,10 @@ public class TripController {
     }
 
 
+    @GetMapping("/guideList")
+    public List<GuideDTO> getGuideDetail(){
+        return tripService.getGuideDetails();
+    }
+
+
 }

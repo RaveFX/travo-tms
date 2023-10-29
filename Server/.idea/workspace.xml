@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d81f5ffe-c59f-4be5-96fa-6342241dd78e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/model/dto/GuideTourDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/controller/GuideController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/controller/GuideController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/repository/JDBCDao/GuideJDBCDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/repository/JDBCDao/GuideJDBCDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/service/GuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Travo-backend/src/main/java/com/Travo/Travobackend/service/GuideService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2Vqr1gHaykVsbpwiVRkPDYepU9u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "tri-guide",
+    "last_opened_file_path": "C:/Users/trine/OneDrive/Documents/travo-tms/Server"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d81f5ffe-c59f-4be5-96fa-6342241dd78e" name="Changes" comment="" />
+      <created>1695574238081</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695574238081</updated>
+    </task>
+    <servers />
+  </component>
+</project>

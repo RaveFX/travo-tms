@@ -142,8 +142,12 @@ const handleOpenCalander = () => {
                 </div>
                 <div className="flex justify-center w-[100%] absolute bottom-7 z-10 ">
                 <div className="flex items-end justify-between px-[1rem] w-auto h-auto ">
+                  {/* <Link to="/traveler/travelGuide">
+                    <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A]">Guide</Button>
+                    </Link> */}
                   <div className="swiper-prev flex flex-col justify-center items-center flex-shrink-0 text-gray w-[3rem] h-[3rem] rounded-[5rem] bg-[#fff] drop-shadow-lg">
                     <ArrowLeftIcon className="h-4 w-4" />
+
                   </div>
                 </div>
                 <div className="flex items-end justify-between px-[1rem] w-auto h-auto">

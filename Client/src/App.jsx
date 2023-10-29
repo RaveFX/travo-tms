@@ -76,13 +76,15 @@ import Vehicle_Owner_Rating from "./pages/Vehicle_Owner/vehicle_owner_rating";
 import Vehicle_Owner_Profile from "./pages/Vehicle_Owner/vehicle_owner_profile";
 import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vehicle_owner_edit_profile";
 
+import TravelGuideList from "./pages/traveler/travelGuide";
+
 // Sanduni
 import TravelerDashboard from "./pages/traveler/Dashboard";
 import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
 import Itinerary from "./pages/traveler/Itinerary";
 import Selections from "./pages/traveler/Selection";
-import TravelGuide from "./pages/traveler/TravelGuied";
+import TravelGuide from "./pages/traveler/travelGuide";
 import HotelDetails from "./pages/traveler/Hotels";
 import Hotel from "./pages/traveler/HotelDetails";
 import Community from "./pages/traveler/Community";
@@ -337,6 +339,10 @@ export default function App() {
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
+
+        {/* Trineesha */}
+        <Route exact path="/traveler/travelGuide" element={<TravelGuideList/>} />
+
       </Routes>
 
       <div className="bg-[#F6F8FA] w-full h-full"></div>
