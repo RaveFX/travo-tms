@@ -62,6 +62,8 @@ function Attractions() {
         place_id: attraction.place_id,
         name: attraction.name,
         address : attraction.formatted_address,
+        latitude: attraction.geometry.location.lat, // Include latitude
+        longitude: attraction.geometry.location.lng, // Include longitude
         img_url: photoReference,
         trip_id: id,
         day : day

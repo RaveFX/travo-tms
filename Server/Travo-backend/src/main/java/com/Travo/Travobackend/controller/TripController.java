@@ -124,4 +124,20 @@ public class TripController {
         return tripService.updateSchedule(scheduleDTO);
     }
 
+    //display on map
+    @GetMapping("/selectedHotelListForMap/{tripID}")
+    public List<HotelDTO> getSelectedHotelListForMap(@PathVariable Integer tripID){
+        return tripService.selectedHotelListForMap(tripID);
+    }
+    @GetMapping("/selectedActivityListForMap/{tripID}")
+    public List<ActivityDTO> getSelectedActivityListForMap(@PathVariable Integer tripID){
+        return tripService.selectedActivityListForMap(tripID);
+    }
+
+    @GetMapping("/selectedAttractionListForMap/{tripID}")
+    public List<AttractionDTO> getSelectedAttractionListForMap(@PathVariable Integer tripID){
+        return tripService.selectedAttractionListForMap(tripID);
+    }
+
+
 }

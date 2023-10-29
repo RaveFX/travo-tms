@@ -78,6 +78,8 @@ public class TripService {
             tripAttraction.setName(attractionDTO.getName());
             tripAttraction.setImg_url(attractionDTO.getImg_url());
             tripAttraction.setDay(attractionDTO.getDay());
+            tripAttraction.setLongitude(attractionDTO.getLongitude());
+            tripAttraction.setLatitude(attractionDTO.getLatitude());
 
             Optional<Trip> tripOptional = tripRepository.findById(attractionDTO.getTrip_id());
             Trip trip = tripOptional.get();
@@ -209,5 +211,16 @@ public class TripService {
             return ("Schedule not found");
         }
 
+    }
+
+    public List<HotelDTO> selectedHotelListForMap(Integer tripID){
+        return hotelJDBCDao.getHotelListForMap(tripID);
+    }
+
+    public List<ActivityDTO> selectedActivityListForMap(Integer tripID) {
+        return activityJDBCDao.getActivityListForMap(tripID);
+    }
+    public List<AttractionDTO> selectedAttractionListForMap(Integer tripID){
+        return attractionJDBCDao.getAttractionListForMap(tripID);
     }
 }
