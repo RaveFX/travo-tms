@@ -30,10 +30,6 @@ public class HotelPollJDBCDao {
         // Determine the value to add to total_votes based on the isChecked flag.
         int x = isChecked ? 1 : -1;
 
-        System.out.println(x);
-        System.out.println(tripId);
-        System.out.println(hotelId);
-
         String sql = "UPDATE hotel_poll SET total_votes = total_votes + :x WHERE hotel_id = :hotelId AND trip_id = :tripId";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("x", x);

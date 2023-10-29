@@ -1,4 +1,4 @@
-package com.Travo.Travobackend.model.entity;
+package com.Travo.Travobackend.model.dto;
 
 
 import lombok.AllArgsConstructor;

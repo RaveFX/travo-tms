@@ -34,6 +34,10 @@ import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
 import Attractions from "./pages/traveler/Attractions";
 import Activities from "./pages/traveler/Activities";
+
+import PollAttractions from "./pages/traveler/pollAttractions";
+
+
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -315,15 +319,20 @@ export default function App() {
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
-        
+
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
+
+
+
         <Route path="/traveler/hotels/:id/:day" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
         <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
         <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
+        <Route path="/traveler/attractionspoll/:id/:day" element={<PollAttractions />} />
+
 
 
         {/* Tharindi */}
@@ -356,11 +365,11 @@ export default function App() {
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
         <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
         <Route exact path="/traveler/HotelPage/:user_id" element={<HotelPage />} />
-        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType/>} />
+        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType />} />
         <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />
-        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook/>} />
-        <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
-        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
+        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook />} />
+        <Route exact path="/traveler/HotelPayment" element={<HotelPayment />} />
+        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess />} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>

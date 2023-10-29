@@ -56,8 +56,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<Trip> trips = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
-    private Set<TripMember> tripMembers = new HashSet<>();
+//    @OneToMany(mappedBy = "user")
+//    private Set<TripMember> tripMembers = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -15,5 +15,7 @@ public class AttractionDTO {
     private Integer trip_id;
     private Integer day;
     private Integer row_id;
+    private Integer total_votes;
+
 
 }

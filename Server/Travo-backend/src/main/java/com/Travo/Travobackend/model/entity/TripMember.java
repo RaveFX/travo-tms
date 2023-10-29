@@ -24,17 +24,17 @@ public class TripMember {
     @Enumerated(EnumType.STRING)
     private TripRole tripRole = TripRole.MEMBER;
 
-//    private Integer trip_id;
-//    private Integer user_id;
+    private Integer trip_id;
+    private Integer user_id;
 
 
-    @ManyToOne
-    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )
-    private Trip trip;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )
+//    private Trip trip;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+//    private User user;
 
 
 

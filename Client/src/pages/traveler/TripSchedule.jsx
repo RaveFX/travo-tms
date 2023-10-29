@@ -15,7 +15,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 function Icon({ id, open }) {
   return (
@@ -50,7 +50,7 @@ function TripSchedule() {
   const [locationDate, setLocationDate] = useState('');
   const [endTime, setEndTime] = useState('');
   const [error, setError] = useState('');
-  const [schedules, setSchedules] = useState([{schedule_id:'schedule_id',location_name:'location_name',start_time:'start_time',end_time:'end_time',error:''}]);
+  const [schedules, setSchedules] = useState([{ schedule_id: 'schedule_id', location_name: 'location_name', start_time: 'start_time', end_time: 'end_time', error: '' }]);
   const [editedStartTime, setEditedStartTime] = useState('');
   const [editedEndTime, setEditedEndTime] = useState('');
   const [editedTimes, setEditedTimes] = useState({});
@@ -62,15 +62,15 @@ function TripSchedule() {
       [scheduleId]: { ...prevEditedTimes[scheduleId], start_time: newStartTime },
     }));
   };
-  
+
   const handleEndTimeEdit = (scheduleId, newEndTime) => {
     setEditedTimes((prevEditedTimes) => ({
       ...prevEditedTimes,
       [scheduleId]: { ...prevEditedTimes[scheduleId], end_time: newEndTime },
     }));
   };
-  
-  
+
+
 
   const handleStartTimeChange = (e) => {
     const newStartTime = e.target.value;
@@ -111,22 +111,22 @@ function TripSchedule() {
     }).then(async (result) => {
       // If user confirms, proceed with the removal logic
       if (result.isConfirmed) {
-        try{
-           await axios.delete(`http://localhost:8080/api/v1/trip/removeScheduledActivity/${schedule_id}`)
-           console.log("Schedule removed!");
-           const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${scheduleDay}`)
-           setSchedules(response.data);
+        try {
+          await axios.delete(`http://localhost:8080/api/v1/trip/removeScheduledActivity/${schedule_id}`)
+          console.log("Schedule removed!");
+          const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${scheduleDay}`)
+          setSchedules(response.data);
 
-           const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleHotelList/${id}/${scheduleDay}`)
-            setHotels(result.data);
+          const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleHotelList/${id}/${scheduleDay}`)
+          setHotels(result.data);
 
-            const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleActivityList/${id}/${scheduleDay}`)
-            setActivities(result2.data);
+          const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleActivityList/${id}/${scheduleDay}`)
+          setActivities(result2.data);
 
-            const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${scheduleDay}`)
-            setAttractions(result3.data);
-           
-        }catch (error) {
+          const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${scheduleDay}`)
+          setAttractions(result3.data);
+
+        } catch (error) {
           console.error("Error removing schedule: ", error);
         }
       }
@@ -185,7 +185,7 @@ function TripSchedule() {
       const loadDay = locationDay;
       const newStartTime = new Date(`2023-01-01T${startTime}`);
       const newEndTime = new Date(`2023-01-01T${endTime}`);
-      
+
       const isOverlap = schedules.some((schedule) => {
         const existingStartTime = new Date(`2023-01-01T${schedule.start_time}`);
         const existingEndTime = new Date(`2023-01-01T${schedule.end_time}`);
@@ -213,7 +213,7 @@ function TripSchedule() {
       try {
         // Make a POST request to your backend endpoint with the data
         await axios.post('http://localhost:8080/api/v1/trip/add-schedule', data);
-  
+
         // Get updated schedules data after adding a new schedule
         const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${loadDay}`);
         setSchedules(response.data);
@@ -225,8 +225,8 @@ function TripSchedule() {
 
         const result3 = await axios.get(`http://localhost:8080/api/v1/trip/selectedScheduleAttractionList/${id}/${loadDay}`)
         setAttractions(result3.data);
-       
-  
+
+
         // Handle the response from the backend if needed
         console.log('Data successfully sent to the backend');
       } catch (error) {
@@ -242,7 +242,7 @@ function TripSchedule() {
   const updateScheduleTime = async (scheduleId, newStartTime, newEndTime) => {
     try {
       const response = await axios.put(`http://localhost:8080/api/v1/trip/update-schedule-time`, {
-        schedule_id : scheduleId,
+        schedule_id: scheduleId,
         start_time: newStartTime,
         end_time: newEndTime,
       });
@@ -254,8 +254,8 @@ function TripSchedule() {
       console.error('Error updating schedule time:', error);
     }
   };
-  
-  
+
+
 
 
 
@@ -295,53 +295,53 @@ function TripSchedule() {
                         Schedule Your Trip
                       </Typography>
                     </div>
-                    
+
 
                     {schedules.map((schedule) => (
-                      
-                      
+
+
                       <div className="flex items-center p-4">
-                      <div className="flex-1 mr-2">
-                        <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
-                        {error && <div style={{ color: 'red' }}>{schedule.error}</div>}
-                        <input
-                          type="time"
-                          value={schedule.start_time}
-                          className="border rounded p-2 w-full"
-                        />
-                      </div>
-                      <div className="flex-1 mr-2">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">End Time:</label>
-                        <input
-                        type="time"
-                        value={schedule.end_time}
-                        className="border rounded p-2 w-full"
-                      />
-                      </div>
-                      <div className="flex-1 mr-2">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
-                        <div className="mr-4">{schedule.location_name}</div>
+                        <div className="flex-1 mr-2">
+                          <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
+                          {error && <div style={{ color: 'red' }}>{schedule.error}</div>}
+                          <input
+                            type="time"
+                            value={schedule.start_time}
+                            className="border rounded p-2 w-full"
+                          />
+                        </div>
+                        <div className="flex-1 mr-2">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">End Time:</label>
+                          <input
+                            type="time"
+                            value={schedule.end_time}
+                            className="border rounded p-2 w-full"
+                          />
+                        </div>
+                        <div className="flex-1 mr-2">
+                          <label className="block text-gray-700 text-sm font-bold mb-2">Select Location:</label>
+                          <div className="mr-4">{schedule.location_name}</div>
 
+                        </div>
+
+                        <button onClick={() => handleRemoveSchedule(schedule.schedule_id, index + 1)}
+                          className={`rounded p-2 focus:outline-none focus:ring focus:border-blue-300 mt-6 bg-gray-200 hover:bg-red-70`}
+                        >
+                          <XMarkIcon className="w-4 h-4 stroke-yellow" />
+                        </button>
                       </div>
 
-                      <button onClick={() => handleRemoveSchedule(schedule.schedule_id, index+1)}
-                        className={`rounded p-2 focus:outline-none focus:ring focus:border-blue-300 mt-6 bg-gray-200 hover:bg-red-70`}
-                      >
-                        <XMarkIcon className="w-4 h-4 stroke-yellow" />
-                      </button>
-                      </div>
-                     
-                      ))}
+                    ))}
 
-                   
-                      
-                      <div className="flex items-center p-4">{error && <div style={{ color: 'red' }}>{error}</div>}</div>
+
+
+                    <div className="flex items-center p-4">{error && <div style={{ color: 'red' }}>{error}</div>}</div>
                     <div className="flex items-center p-4">
 
 
                       <div className="flex-1 mr-2">
                         <label className="block text-gray-700 text-sm font-bold mb-2 ">Start Time:</label>
-                        
+
                         <input
                           type="time" value={startTime} onChange={handleStartTimeChange}
                           className="border rounded p-2 w-full"
