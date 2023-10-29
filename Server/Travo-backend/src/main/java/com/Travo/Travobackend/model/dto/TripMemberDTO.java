@@ -21,7 +21,6 @@ public class TripMemberDTO {
     private TripRole tripRole;
     private Integer trip_id;
     private Integer user_id;
-//    private Trip trip;
-//    private User user;
+
 
 }

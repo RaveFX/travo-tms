@@ -789,13 +789,16 @@ function Selections() {
 
                                 <h2 className="text-xl font-semibold mb-2">{attraction.name}</h2>
 
-
                               </div>
                             ))
                           )}
                         </div>
                         <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item for make poll
+                        </Button>
+                        </Link>
+                        <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                          Add to trip
                         </Button>
                         </Link>
                       </div>
