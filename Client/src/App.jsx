@@ -88,6 +88,7 @@ import Community from "./pages/traveler/Community";
 import RoleChange from "./pages/traveler/ChangeRole";
 import CreatePost from "./pages/traveler/CreatePost";
 import CommunityProfile from "./pages/traveler/CommunityProfile";
+import UserProfile from "./pages/main/profile";
 
 // RavinduJay
 import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
@@ -156,11 +157,27 @@ export default function App() {
           element={<Hotel_reservations />}
         />
         <Route exact path="/hotelagent_rooms" element={<Hotel_rooms />} />
-        <Route exact path="/hotelagent_transactions" element={<Hotel_transactions />} />
-        <Route exact path="/hotelagent_advertisments" element={<Hotel_advertisments />} />
+        <Route
+          exact
+          path="/hotelagent_transactions"
+          element={<Hotel_transactions />}
+        />
+        <Route
+          exact
+          path="/hotelagent_advertisments"
+          element={<Hotel_advertisments />}
+        />
         <Route exact path="/hotelagent_add_room" element={<Hotel_addRooms />} />
-        <Route exact path="/hotelagent_edit_room" element={<Hotel_editRooms />} />
-        <Route exact path="/hotelagent_room_details" element={<Hotel_roomDetails />} />
+        <Route
+          exact
+          path="/hotelagent_edit_room"
+          element={<Hotel_editRooms />}
+        />
+        <Route
+          exact
+          path="/hotelagent_room_details"
+          element={<Hotel_roomDetails />}
+        />
         <Route
           exact
           path="/hotelagent_reservation_details"
@@ -316,7 +333,8 @@ export default function App() {
         <Route path="/traveler/change-role" element={<RoleChange />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/community-profile" element={<CommunityProfile />} />
-
+        <Route path="/community-profile/:id" element={<CommunityProfile />} />
+        <Route path="/traveler/profile" element={<UserProfile />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

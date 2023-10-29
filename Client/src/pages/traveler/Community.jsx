@@ -3,50 +3,17 @@ import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
-import { HeartIcon as OutlineHeartIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  HeartIcon as OutlineHeartIcon,
+  PlusIcon,
+} from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
-import { Button, Typography } from "@material-tailwind/react";
+import { Button, Typography, Avatar } from "@material-tailwind/react";
+
 function Community() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [postDetails, setPostDetails] = useState([]);
-
-  // const handleNavigate = () => {
-  //   // Example: Navigate to '/other-page' when the button is clicked
-  //   navigate('/planner');
-  // };
-
-  //   const [activeTab, setActiveTab] = React.useState("all trips");
-  //   const handleCreateTripClick = () => {
-  //     setIsOpen(true);
-  //   };
-
-  //   const handleOpenCalander = () => {
-  //     setIsOpen(true);
-  //   };
-
-  //   const posts = [
-  const [posts, setPosts] = useState([
-    {
-      profileImage: "/traveler/trip.jpg", // Replace with your image URLs
-      username: "User1",
-      media: "/traveler/trip.jpg", // Replace with your image URLs or video URLs
-      caption:
-        "Nestled in Sri Lanka's heart, Sigiriya stands as an enigmatic testament to history and nature's artistry. As the sun graces its ancient walls, a journey through time and beauty begins. Ascending the stone staircases, frescoes whisper tales of a bygone era, leading to a summit that unveils an awe-inspiring panorama. Amidst the ruins, echoes of architectural brilliance resound, bridging past and present. Sigiriya's allure extends to its symmetrical gardens and the Mirror Wall, reflecting both history and visitors' reflections. Nearby, Pidurangala Rock offers a different perspective, framing Sigiriya against a canvas of sky. Wildlife safari adventures at Minneriya National Park unveil elephants' grace and a vibrant avian tapestry, celebrating Sri Lanka's biodiversity. Culinary delights follow, as traditional dishes share stories through flavor. Sigiriya isn't just a rock; it's a journey through cultural echoes and natural wonders, leaving an indelible mark on all who wander its paths.",
-      isLiked: false,
-      likes: 0,
-    },
-    {
-      profileImage: "/traveler/trip.jpg", // Replace with your image URLs
-      username: "User1",
-      media: "/traveler/trip.jpg", // Replace with your image URLs or video URLs
-      caption:
-        "Nestled in Sri Lanka's heart, Sigiriya stands as an enigmatic testament to history and nature's artistry. As the sun graces its ancient walls, a journey through time and beauty begins. Ascending the stone staircases, frescoes whisper tales of a bygone era, leading to a summit that unveils an awe-inspiring panorama. Amidst the ruins, echoes of architectural brilliance resound, bridging past and present. Sigiriya's allure extends to its symmetrical gardens and the Mirror Wall, reflecting both history and visitors' reflections. Nearby, Pidurangala Rock offers a different perspective, framing Sigiriya against a canvas of sky. Wildlife safari adventures at Minneriya National Park unveil elephants' grace and a vibrant avian tapestry, celebrating Sri Lanka's biodiversity. Culinary delights follow, as traditional dishes share stories through flavor. Sigiriya isn't just a rock; it's a journey through cultural echoes and natural wonders, leaving an indelible mark on all who wander its paths.",
-      isLiked: false,
-      likes: 0,
-    },
-    // Add more posts here...
-  ]);
 
   const handleLikeClick = async (postId) => {
     try {
@@ -76,6 +43,10 @@ function Community() {
     navigate("/community-profile"); // Use the URL path to your CreatePost component
   };
 
+  const navigateToUser = (id) => {
+    navigate("/community-profile/" + id); // Use the URL path to your CreatePost component
+  };
+
   useEffect(() => {
     const getPostDetails = async () => {
       try {
@@ -91,9 +62,9 @@ function Community() {
     };
 
     getPostDetails();
-
-    
   }, []);
+
+  const profileImage = sessionStorage.getItem("profileImage");
 
   return (
     <div className="flex h-screen overflow-hidden ">
@@ -106,27 +77,31 @@ function Community() {
         >
           {/* Cover Photo and Profile Picture Section */}
           <div className="relative h-[22%] ">
-          <div className="absolute inset-0 bg-black bg-opacity-90 coverImage"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-90 coverImage"></div>
             <div className="absolute bottom-2 left-8 md:left-6 pb-1 md:pb-1">
-            
-
-              <img
-                src="/traveler/trip.jpg"
-                alt="Profile"
-                className="h-[100px] w-[100px] rounded-full border-1 border-white"
-              />
+            <Avatar
+              variant="circular"
+              alt="candice"
+              src={`data:application/img;base64,${profileImage}`}
+              className="w-[100px] h-[100px] p-0 m-0"
+            />
             </div>
             <Button
-            onClick={navigateToProfile}
-            className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow: bg-blur hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold ">
-            {" "}
-            <Typography >Go to Profile</Typography>
-            
-          </Button>
-            
+              onClick={navigateToProfile}
+              className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow: bg-blur hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold "
+            >
+              {" "}
+              <Typography>Go to Profile</Typography>
+            </Button>
           </div>
           {/* Post Section */}
-          <Button onClick={navigateToCreatePost} className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold animated-button"> <PlusIcon className="w-7 h-7"/></Button>
+          <Button
+            onClick={navigateToCreatePost}
+            className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold animated-button"
+          >
+            {" "}
+            <PlusIcon className="w-7 h-7" />
+          </Button>
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
             {postDetails.map((post, index) => (
               <div
@@ -140,14 +115,16 @@ function Community() {
                     className="mt-4 object-cover md:w-[500px] md:h-[600px] w-[250px] h-[300px] rounded-lg"
                   />
                   <div className="flex flex-col ml-4">
-                    <div className="flex items-center space-x-4">
+                    <div
+                      className="flex items-center space-x-4"
+                      onClick={() => navigateToUser(post.creator_id)}
+                    >
                       <img
-                        src={post.profileImage}
-                        alt={`${post.creator_id}'s Profile`}
+                        src={`data:application/img;base64,${post.profileImage}`}
                         className="h-6 w-6 rounded-full"
                       />
                       <span className="font-semibold text-lg">
-                        {post.username}
+                        {`${post.firstName} ${post.lastName}`}
                       </span>
                     </div>
                     <hr className="my-2" />

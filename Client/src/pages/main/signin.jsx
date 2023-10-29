@@ -45,11 +45,12 @@ function Signin() {
 
       // const from = location?.state?.from || {pathname: "/" + response?.data?.role.toLowerCase()};
       // navigate(from, {replace: true});
-        const user_id = response.data.id;
-        const role = response.data.role;
-        sessionStorage.setItem('user_id', user_id);
-        sessionStorage.setItem('role',role);
-
+      const user_id = response.data.id;
+      const role = response.data.role;
+      sessionStorage.setItem("user_id", user_id);
+      sessionStorage.setItem("role", role);
+      sessionStorage.setItem("profileImage", response.data.profileImage);
+      // Send the profile image to the session storage
 
       if (response.data.role === "TRAVELLER") {
         navigate("/traveler/dashboard");
@@ -148,7 +149,7 @@ function Signin() {
                 className="text-red-600 hover:underline hover:underline-offset-4"
                 to="/signup"
               >
-              Don't have an account? Sign-up
+                Don't have an account? Sign-up
               </Link>
             </div>
           </div>

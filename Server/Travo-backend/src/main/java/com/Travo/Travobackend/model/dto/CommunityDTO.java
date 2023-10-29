@@ -10,12 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class CommunityDTO {
+    private String firstName;
+    private String lastName;
     private int post_id;
     private int creator_id;
     private String description;
     private String post_img;
     private int  Likes;
     private byte[] image;
+    private byte[] profileImage;
 
     public CommunityDTO(String success) {
     }

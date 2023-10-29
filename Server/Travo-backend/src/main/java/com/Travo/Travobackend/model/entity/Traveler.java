@@ -5,10 +5,12 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
+
 
 @Data
 @SuperBuilder
@@ -18,8 +20,8 @@ import java.util.Date;
 @Table(name = "traveler")
 @PrimaryKeyJoinColumn(name="traveler_id")
 public class Traveler extends User {
-    private String fname;
-    private String lname;
+    private String firstname;
+    private String lastname;
     private String gender;
     private Integer emergency_contact;
     private Date DOB;
@@ -29,4 +31,5 @@ public class Traveler extends User {
     private String city;
     private Integer postal_code;
     private String district;
+    private String profileImage = "profileImage.jpg";
 }

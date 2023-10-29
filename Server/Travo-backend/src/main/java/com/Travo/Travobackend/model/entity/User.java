@@ -28,12 +28,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer user_id;
-    private String first_name;
-    private String last_name;
     private String email;
     private String password;
     private LocalDate registration_date;
-    private String profileImage = "profileImage.jpg";
 
     @PrePersist
     protected void onCreate() {
