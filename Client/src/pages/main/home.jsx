@@ -21,6 +21,7 @@ import {
 import { Link } from "react-router-dom";
 
 function HomeCarousel() {
+  sessionStorage.setItem('isAuthenticated','false');
   return (
     <Carousel loop className="">
       <div className="relative h-full w-full">

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
@@ -16,11 +18,17 @@ import { SpeedDialPop } from "../../components/web-component/SpeedPop";
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import {
   MapIcon,
+  MapPinIcon,
   DocumentIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 
 function TripPlanner() {
+  const { id } = useParams();
+  const [details,setDetails]=useState([]);
+  useEffect(() => {
+    loadDetails();
+  },[]); 
   const navigate = useNavigate();
   const [tripDetails, setTripDetails] = useState({});
   const [isOpen, setIsOpen] = useState(true);
@@ -45,6 +53,11 @@ function TripPlanner() {
   const handleBackClick = () => {
     // Navigate to the previous page or route when the "Back" button is clicked
     navigate("/mytrips");
+  };
+
+  const loadDetails = async () => {
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+    setDetails(result.data);
   };
 
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
@@ -135,7 +148,7 @@ function TripPlanner() {
               ripple="light"
               className="flex justify-center items-center text-white bg-[#377A85] rounded-full w-[50px] h-[50px] hover:shadow-none active:shadow-none focus:shadow-none  "
             >
-              <MapIcon className="h-6 w-6 flex justify-center" />
+              <MapPinIcon className="h-6 w-6 flex justify-center" />
             </Typography>
             <Typography
               onClick={handleNoteButtonClick}

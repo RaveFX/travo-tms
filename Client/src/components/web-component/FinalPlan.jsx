@@ -1,3 +1,8 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { MapPinIcon, BuildingOfficeIcon, UserGroupIcon, UsersIcon } from '@heroicons/react/24/outline';
+
 import {
     Timeline,
     TimelineItem,
@@ -7,59 +12,95 @@ import {
     TimelineBody,
     Typography,
   } from "@material-tailwind/react";
+
    
   export function FinalPlan() {
+    const { id } = useParams();
+    const [days, setDays] = useState([]);
+    const [schedulesMap, setSchedulesMap] = useState(new Map());
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        await loadDays();
+      };
+    
+      fetchData(); // Fetch days and schedules when the component mounts or when id changes
+    }, [id]);
+  
+    const loadDays = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/trip/tripDates/${id}`);
+        setDays(response.data);
+        setSchedulesMap(new Map());
+        response.data.forEach((day, dayIndex) => {
+          loadSchedulesForDay(dayIndex+1);
+        });
+      } catch (error) { 
+        console.error('Error loading days:', error);
+      }
+    };
+
+    const loadSchedulesForDay = async (day) => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/v1/trip/scheduleByDay/${id}/${day}`);
+        // Update the schedules state for the specific dayIndex
+        setSchedulesMap(prevMap => new Map(prevMap.set(day, response.data)));
+      } catch (error) {
+        console.error('Error loading schedule:', error);
+      }
+    };
+
+    
+
+
     return (
       <div className="w-[32rem] mt-10">
-        <Timeline>
+        {days.map((day, index) => (
+          <Timeline>
           <TimelineItem className="">
             <TimelineConnector />
             <TimelineHeader className="h-3">
               <TimelineIcon className="bg-[#22577A]" />
               <Typography variant="h6" color="blue-gray" className="leading-none">
-                Destination 01
+                Day {index + 1}
               </Typography>
             </TimelineHeader>
             <TimelineBody className="pb-8">
               <Typography variant="small" color="gary" className="font-normal text-gray-600">
-                Sigiriya - Description or mini note about it
+                {day}
               </Typography>
             </TimelineBody>
           </TimelineItem>
+        
+          {schedulesMap.get(index + 1) && (
+          <div>
+          {schedulesMap.get(index + 1).map((schedule, scheduleIndex) => (
           <TimelineItem>
             <TimelineConnector />
-            <TimelineHeader className="h-3">
+            <TimelineHeader className="h-3 flex items-center">
               <TimelineIcon className="bg-[#22577A]" />
+              {schedule.type === 'attraction' && <MapPinIcon className="h-5 w-5  " />} {/* Add margin-right (mr-2) for spacing */}
+              {schedule.type === 'hotel' && <BuildingOfficeIcon className="h-5 w-5 " />}
+              {schedule.type === 'activity' && <UserGroupIcon className="h-5 w-5 " />}
               <Typography variant="h6" color="blue-gray" className="leading-none">
-                Timeline Title Here.
+                {schedule.location_name}
               </Typography>
             </TimelineHeader>
             <TimelineBody className="pb-8">
-              <Typography variant="small" color="gary" className="font-normal text-gray-600">
-                The key to more success is to have a lot of pillows. Put it this way, it took me
-                twenty five years to get these plants, twenty five years of blood sweat and tears, and
-                I&apos;m never giving up, I&apos;m just getting started. I&apos;m up to something. Fan
-                luv.
+              <Typography variant="small" color="gary" className="font-normal text-gray-600 ml-10">
+              {schedule.start_time} - {schedule.end_time}
               </Typography>
             </TimelineBody>
           </TimelineItem>
-          <TimelineItem>
-            <TimelineHeader className="h-3">
-              <TimelineIcon className="bg-[#22577A]" />
-              <Typography variant="h6" color="blue-gray" className="leading-none">
-                Timeline Title Here.
-              </Typography>
-            </TimelineHeader>
-            <TimelineBody>
-              <Typography variant="small" color="gary" className="font-normal text-gray-600">
-                The key to more success is to have a lot of pillows. Put it this way, it took me
-                twenty five years to get these plants, twenty five years of blood sweat and tears, and
-                I&apos;m never giving up, I&apos;m just getting started. I&apos;m up to something. Fan
-                luv.
-              </Typography>
-            </TimelineBody>
-          </TimelineItem>
-        </Timeline>
+          ))}
+          </div>
+          )}
+          </Timeline>
+          ))}
+
+
+         
       </div>
     );
   }

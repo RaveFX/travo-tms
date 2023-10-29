@@ -1,6 +1,15 @@
 // // src/Sidebar.js
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+
+import { Link,useNavigate } from 'react-router-dom';
+
+
+
+// Rest of your code...
+
+
+// Rest of your code...
+
 
 import {
   Card,
@@ -36,7 +45,20 @@ export default function Sidebar(props) {
   // console.log(subSidebarState);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
+  export default function Sidebar(props) {
+    const navigate = useNavigate();
+  
+  
+    const handleLogout = () => {
+      // Perform logout actions here, such as clearing user data from session/local storage
+      sessionStorage.removeItem('user_id');
+      sessionStorage.removeItem('role');
+      sessionStorage.setItem('isAuthenticated','false');
+      navigate("/");
+      
+      // Redirect the user to the login page
+      //history.push('/'); // Replace '/login' with your actual login route
+    };
 
   const [isIconRotated, setIsIconRotated] = useState(false);
 
@@ -192,7 +214,7 @@ export default function Sidebar(props) {
           isSubSidebarOpen ? "mt-[2rem]" : "mt-[8rem]"
         } ${isSidebarOpen ? "ml-5" : "ml-0"} text-white `}
       >
-        <ListItem
+        <ListItem onClick={handleLogout}
           className={`hover:bg-[#FFFFFF] hover:bg-opacity-30 active:bg-[#2AB57D] focus:bg-[#2AB57D] active:text-white focus:text-white`}
         >
           <ListItemPrefix>

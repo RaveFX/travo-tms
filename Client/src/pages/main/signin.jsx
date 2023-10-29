@@ -10,6 +10,7 @@ function Signin() {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  sessionStorage.setItem('isAuthenticated','false');
 
   const [email, setEmail] = useState("");
 
@@ -50,23 +51,11 @@ function Signin() {
       sessionStorage.setItem("user_id", user_id);
       sessionStorage.setItem("role", role);
       sessionStorage.setItem("profileImage", response.data.profileImage);
+      sessionStorage.setItem('isAuthenticated','true');
       // Send the profile image to the session storage
 
-      if (response.data.role === "TRAVELLER") {
+      
         navigate("/traveler/dashboard");
-      } else if (response.data.role === "HOTEL_AGENT") {
-        navigate("/hotelagent_dashboard");
-      } else if (response.data.role === "STORE_MANAGER") {
-        navigate("/store_dashboard");
-      } else if (response.data.role === "ACTIVITY_AGENT") {
-        navigate("/agent_dashboard");
-      } else if (response.data.role === "VEHICLE_RENTER") {
-        navigate("/vehicle_owner_dashboard");
-      } else if (response.data.role === "GUIDE") {
-        navigate("/travel_guide_dashboard");
-      } else {
-        navigate("/admin_dashboard");
-      }
     } catch (err) {
       if (!err?.response) {
         console.log(err);

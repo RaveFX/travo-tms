@@ -6,6 +6,7 @@ import { Saves } from "../../pages/traveler/Saves";
 import Selections from "../../pages/traveler/Selection";
 import GuiedNVehicle from "./Guied-Vehicle";
 import { FinalPlan } from "./FinalPlan";
+import TripSchedule from "../../pages/traveler/TripSchedule";
 
 import { Stepper, Step, Button, Typography } from "@material-tailwind/react";
 import {
@@ -13,6 +14,8 @@ import {
   CalendarDaysIcon,
   UserIcon,
   BuildingLibraryIcon,
+  CheckCircleIcon,
+  GlobeAsiaAustraliaIcon
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
@@ -88,8 +91,11 @@ export function PlanStepper(props) {
       stepContent = <GuiedNVehicle />;
       break;
     case 3:
-      stepContent = <FinalPlan />;
+      stepContent = <TripSchedule />;
       break;
+    case 4:
+        stepContent = <FinalPlan />;
+        break;
     default:
       stepContent = null;
   }
@@ -134,7 +140,7 @@ export function PlanStepper(props) {
               activeStep === 1 || isLastStep ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <CogIcon className="h-5 w-5" />
+            <GlobeAsiaAustraliaIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
@@ -162,12 +168,28 @@ export function PlanStepper(props) {
               activeStep === 3 || isLastStep === 3 ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <BuildingLibraryIcon className="h-5 w-5" />
+            <CogIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
                 color={activeStep === 3 ? "blue-gray" : "gray"}
               />
+            </div>
+          </Step>
+          <Step
+            onClick={() => setActiveStep(3)}
+            className={`!bg-${
+              activeStep === 4 || isLastStep === 4 ? "[#57CC99]" : "gray-300"
+            }`}
+          >
+            <CheckCircleIcon className="h-5 w-5" />
+            <div className="absolute -bottom-[2rem] w-max text-center">
+              <Typography
+                variant="h6"
+                color={activeStep === 4 ? "blue-gray" : "gray"}
+              >
+                {/* Finnish */}
+              </Typography>
             </div>
           </Step>
         </Stepper>

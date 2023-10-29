@@ -8,6 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -26,9 +30,16 @@ public class ActivityAgent {
     private String acc_name;
     private Integer acc_num;
     private String contact_num;
-    private Integer longitude;
-    private Integer latitude;
+
+    @Column(precision = 10, scale = 8)
+    private BigDecimal latitude;
+
+    @Column(precision = 11, scale = 8)
+    private BigDecimal longitude;
+
     private String category;
+    private String activity_img= "activity_img.jpg";
+    private Double total_reviews;
 
 
     @Enumerated(EnumType.STRING)
@@ -40,4 +51,7 @@ public class ActivityAgent {
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
+
+    @OneToMany(mappedBy = "activityAgent", cascade = CascadeType.ALL)
+    private Set<TripActivity> tripActivities = new HashSet<>();
 }

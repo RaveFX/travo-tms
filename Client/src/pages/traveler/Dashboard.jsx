@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
 import CalanderMain from '../../components/web-component/CalanderMain';
+import { format, addMonths, subMonths, startOfMonth, eachDayOfInterval } from 'date-fns';
 import {
   Button,
   Card,
@@ -113,7 +114,7 @@ const Dashboard = () => {
                     </Button>
                   </div>
                 </div>
-                <div className='h-full w-full rounded-lg'>
+                <div className='h-100 w-full rounded-lg'>
                   <img
                     src="/traveler/trip.jpg"
                     alt="card-image"
@@ -159,8 +160,14 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className='w-[30%] h-auto'>
-              <CalanderMain />
+            <div className='w-[50%] h-auto'>
+            <div className="max-w-md mx-2 my-4">
+            <div className="shadow-lg rounded-lg">
+              {header()}
+              {daysOfWeek()}
+              <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
+            </div>
+          </div>
             </div>
           </div>
           <div className="bg-white p-4 shadow-md rounded-lg">

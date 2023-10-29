@@ -30,7 +30,8 @@ import Hotel_addRooms from "./pages/hotel/hotel_addRooms";
 import Hotel_editRooms from "./pages/hotel/hotel_editRooms";
 import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
-
+import Attractions from "./pages/traveler/Attractions";
+import Activities from "./pages/traveler/Activities";
 // Thirani
 <></>
 import Store_Dashboard from "./pages/store/Dashboard";
@@ -120,8 +121,15 @@ import AddActivity from "./pages/activity_agent/Add_Activity";
 import Dashboard from "./pages/activity_agent/Dashboard";
 import ImageGrid from "./pages/activity_agent/Activity";
 
+import PrivateRoute from "./pages/main/PrivateRoute";
 
 export default function App() {
+  
+const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
+
+
+
+
   return (
     <>
       <Routes>
@@ -275,20 +283,24 @@ export default function App() {
         </>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
+        <Route path="/traveler/dashboard" element={<TravelerDashboard />}/>
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
         <Route path="/traveler/hire-guied" element={<TravelGuide />} />
-        <Route path="/traveler/hotels" element={<HotelDetails />} />
+        <Route path="/traveler/hotels/:id/:day" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
         <Route path="/traveler/change-role" element={<RoleChange />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/community-profile" element={<CommunityProfile />} />
         <Route path="/community-profile/:id" element={<CommunityProfile />} />
         <Route path="/traveler/profile" element={<UserProfile />} />
+
+        {/* Tharindi */}
+        <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
+        <Route path="/traveler/activities/:id/:day" element={<Activities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />
