@@ -168,7 +168,7 @@ public class TravelerOptionJDBCDao {
         HashMap<String, Object> params = new HashMap<>();
         List<VehiclesDTO> vehicles = new ArrayList<>();
 
-        SQL.append("SELECT * FROM vehicles ");
+        SQL.append("SELECT * FROM vehicles inner join vehicle_renter on vehicles.renter_id=vehicle_renter.renter_id ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -185,6 +185,7 @@ public class TravelerOptionJDBCDao {
                 vehiclesDTO.setLocation(rs.getString("Location"));
                 vehiclesDTO.setBluetooth(rs.getBoolean("Bluetooth"));
                 vehiclesDTO.setImg(rs.getString("img"));
+                vehiclesDTO.setCompany_name(rs.getString("company_name"));
 
 
                 vehicles.add(vehiclesDTO);
@@ -192,13 +193,14 @@ public class TravelerOptionJDBCDao {
             return vehicles;
         });
     }
-    public List<VehiclesDTO> getVehicleTypes(String vehicleType) {
+    public List<VehiclesDTO> getVehicleTypes(Integer vehicleId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
-        List<VehiclesDTO> vehicletypes = new ArrayList<>();
-        params.put("vehicleType",vehicleType);
+        List<VehiclesDTO> vehicle = new ArrayList<>();
+        params.put("vehicleId", vehicleId);
 
-        SQL.append("SELECT * FROM vehicles where vehicle_type=:vehicleType ");
+        SQL.append("SELECT * FROM vehicles inner join vehicle_renter on vehicles.renter_id=vehicle_renter.renter_id " +
+                "inner join user on user.user_id=vehicle_renter.user_id where vehicles.vehicle_id=:vehicleId ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -214,13 +216,41 @@ public class TravelerOptionJDBCDao {
                 vehiclesDTO.setDescription(rs.getString("Description"));
                 vehiclesDTO.setLocation(rs.getString("Location"));
                 vehiclesDTO.setBluetooth(rs.getBoolean("Bluetooth"));
-                vehiclesDTO.setImg(rs.getString("img"));
+                vehiclesDTO.setPassengers(rs.getInt("passengers"));
+                vehiclesDTO.setWifi(rs.getBoolean("wifi"));
+                vehiclesDTO.setSunroof(rs.getBoolean("sunroof"));
+                vehiclesDTO.setAir_conditioning(rs.getBoolean("air_conditioning"));
+                vehiclesDTO.setLicence_plate(rs.getString("licence_plate"));
+                vehiclesDTO.setContact_num(rs.getString("contact_num"));
 
 
-                vehicletypes.add(vehiclesDTO);
+
+
+                vehicle.add(vehiclesDTO);
             }
-            return vehicletypes;
+            return vehicle;
         });
+    }
+
+        public List<VehiclesDTO> getVehicleRenter() {
+            StringBuffer SQL = new StringBuffer();
+            HashMap<String, Object> params = new HashMap<>();
+            List<VehiclesDTO> company = new ArrayList<>();
+
+
+            SQL.append("SELECT * FROM vehicle_renter  ");
+
+            return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+                while (rs.next()) {
+                    VehiclesDTO vehiclesDTO = new VehiclesDTO();
+
+                    vehiclesDTO.setCompany_name(rs.getString("company_name"));
+
+
+                    company.add(vehiclesDTO);
+                }
+                return company;
+            });
     }
 
 

@@ -79,9 +79,13 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
     public List<VehiclesDTO> getVehicles(){
         return vehicleService.vehicles();
     }
-    @GetMapping("/vehicleTypes/{vehicleType}")
-    public List<VehiclesDTO> getVehicleTypes(@PathVariable String vehicleType){
-        return vehicleService.vehicletypes(vehicleType);
+    @GetMapping("/renter")
+    public List<VehiclesDTO> getCompany(){
+        return vehicleService.company();
+    }
+    @GetMapping("/vehicle/{vehicleId}")
+    public List<VehiclesDTO> getVehicleTypes(@PathVariable Integer vehicleId){
+        return vehicleService.vehicle(vehicleId);
     }
 
 

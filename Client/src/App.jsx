@@ -110,6 +110,7 @@ import HotelPayment from "./pages/traveler/HotelPayment";
 import PaymentSuccess from "./pages/traveler/PaymentSuccess";
 import HotelBook from "./pages/traveler/HotelBook";
 import VehiclePage from "./pages/traveler/VehiclePage";
+import VehicleMoreInfo from "./pages/traveler/VehicleMoreInfo";
 import Travelbuddy from "./pages/traveler/travelbuddy";
 
 export default function App() {
@@ -332,6 +333,7 @@ export default function App() {
         <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
         <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
+        <Route exact path="/traveler/VehicleMoreInfo/:vehicleId" element={<VehicleMoreInfo/>} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 

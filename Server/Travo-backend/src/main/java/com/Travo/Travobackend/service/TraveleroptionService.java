@@ -101,8 +101,11 @@ public class TraveleroptionService {
         public List<VehiclesDTO> vehicles() {
         return vehiclesJDBCDao.getAllVehicles();
     }
+    public List<VehiclesDTO> company() {
+        return vehiclesJDBCDao.getVehicleRenter();
+    }
 
-    public List<VehiclesDTO> vehicletypes(String vehicleType) {
-        return vehiclesJDBCDao.getVehicleTypes(vehicleType);
+    public List<VehiclesDTO> vehicle(Integer vehicleId) {
+        return vehiclesJDBCDao.getVehicleTypes(vehicleId);
     }
 }
