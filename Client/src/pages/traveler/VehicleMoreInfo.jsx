@@ -175,6 +175,14 @@ const requestMore = () => {
                                         </div>
                                         <div className='flex my-2'>
                                             <div>
+                                                <p className='text-black'>Rent : </p>
+                                            </div>
+                                            <div>
+                                                <p className='text-gray-400 mx-3' >Rs.{vehicle.rate}</p>
+                                            </div>
+                                        </div>
+                                        <div className='flex my-2'>
+                                            <div>
                                                 <p className='text-black'>Location : </p>
                                             </div>
                                             <div>
