@@ -58,6 +58,7 @@ function CommunityProfile() {
           style={{ scrollbarWidth: "none" }}
         >
           {/* Cover Photo and Profile Picture Section */}
+          
           <div className="relative h-[22%] bg-black coverImage pb-4 ">
             <div className="absolute bottom-2 left-8 md:left-6 pb-1 md:pb-1">
               <Avatar
