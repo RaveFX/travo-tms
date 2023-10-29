@@ -769,7 +769,6 @@ function Selections() {
                                         className="w-full h-44 rounded-md object-cover"
                                       />
                                     )}
-
                                   </div>
                                   <div className="flex flex-col items-center justify-center mb-2">
                                     <div className="flex">

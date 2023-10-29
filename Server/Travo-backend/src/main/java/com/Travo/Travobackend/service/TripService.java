@@ -28,7 +28,10 @@ public class TripService {
     private TripRepository tripRepository;
 
     @Autowired
-    private TripMemberRepository tripMemberRepositoryRepositoryRepository;
+    private TripMemberRepository tripMemberRepository;
+
+    @Autowired
+    private TripMemberJDBCDao tripMemberJDBCDao;
 
     @Autowired
     private TripJDBCDao tripJDBCDao;
@@ -98,6 +101,9 @@ public class TripService {
 
         return exists;
     }
+
+
+    public List<TripMemberDTO> memberList(Integer tripId){return tripMemberJDBCDao.getMemberList(tripId);}
 
 
 

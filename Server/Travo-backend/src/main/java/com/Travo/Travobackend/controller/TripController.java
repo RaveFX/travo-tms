@@ -119,6 +119,25 @@ public class TripController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/memberlist/{tripId}")
+    public List<TripMemberDTO> getMemberList(@PathVariable Integer tripId){
+        return tripService.memberList(tripId);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/hotelList")
     public List<HotelDTO> getHotelList(){
         return tripService.hotelList();
