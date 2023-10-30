@@ -94,7 +94,7 @@ function Selections() {
       <div className="flex overflow-hidden w-full">
         {/* <Sidebar active="Selections" isSubSidebarOpen={isSubSidebarOpen} setIsSubSidebarOpen={setIsSubSidebarOpen}/> */}
         <div
-          className="flex flex-col w-full h-fit bg-white bg-opacity-20 overflow-y-scroll w-full"
+          className="flex flex-col  h-fit bg-white bg-opacity-20 overflow-y-scroll w-full"
           style={{ scrollbarWidth: "none" }}
         >
           {/* <TopNavbar /> */}
