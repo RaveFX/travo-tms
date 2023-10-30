@@ -99,7 +99,7 @@ function TripPlanner() {
       />
       <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
         <TopNavbar />
-        <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
+        <div className="overflow-y-auto" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
             <TripNameBar trip_name={details.trip_name} description={details.description}/>
             
