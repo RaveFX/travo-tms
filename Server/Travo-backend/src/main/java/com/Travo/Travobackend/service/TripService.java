@@ -240,4 +240,23 @@ public class TripService {
         return tripMember.filter(member -> member.getTripRole() == TripRole.ADMIN || member.getTripRole() == TripRole.EDITOR)
                 .isPresent();
     }
+
+    public String updateTripNote(Integer tripID, TripDTO tripDTO){
+        Optional<Trip> optionalTrip = tripRepository.findById(tripDTO.getTrip_id());
+        if (optionalTrip.isPresent()) {
+            Trip trip = optionalTrip.get();
+            trip.setNote(tripDTO.getNote());
+
+            tripRepository.save(trip);
+
+            return("Note added successfully!");
+        }else {
+            return ("Trip not found");
+        }
+
+    }
+
+    public List<TripMemberDTO> selectedTripMembers(Integer tripID){
+        return tripJDBCDao.getTripMemberList(tripID);
+    }
 }

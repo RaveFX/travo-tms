@@ -148,5 +148,15 @@ public class TripController {
         return ResponseEntity.ok(hasAdminOrEditorRole);
     }
 
+    @PutMapping("/update-note/{tripID}")
+    public String updateSchedule(@PathVariable Integer tripID,@RequestBody TripDTO tripDTO) {
+        return tripService.updateTripNote(tripID,tripDTO);
+    }
+
+    @GetMapping("/trip-member-list/{tripID}")
+    public List<TripMemberDTO> selectedTripMembers(@PathVariable Integer tripID){
+        return tripService.selectedTripMembers(tripID);
+    }
+
 
 }
