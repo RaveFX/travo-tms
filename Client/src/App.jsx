@@ -108,6 +108,15 @@ import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
+import DestinationPage from "./pages/traveler/DestinationPage";
+import HotelPage from "./pages/traveler/HotelPage";
+import HotelType from "./pages/traveler/HotelType";
+import HotelPageMore from "./pages/traveler/HotelPageMore";
+import HotelPayment from "./pages/traveler/HotelPayment";
+import PaymentSuccess from "./pages/traveler/PaymentSuccess";
+import HotelBook from "./pages/traveler/HotelBook";
+import VehiclePage from "./pages/traveler/VehiclePage";
+import VehicleMoreInfo from "./pages/traveler/VehicleMoreInfo";
 import Travelbuddy from "./pages/traveler/travelbuddy";
 import PrivateRoute from "./pages/main/PrivateRoute";
 
@@ -202,14 +211,8 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         <Route path="store_profile" element={<Store_Profile />} />
 
         {/* Trineesha */}
-        <Route
-          path="/travel_guide_dashboard"
-          element={<Travel_Guide_Dashboard />}
-        />
-        <Route
-          path="/travel_guide_request"
-          element={<Travel_Guide_Request />}
-        ></Route>
+        <Route path="/travel_guide_dashboard" element={<Travel_Guide_Dashboard />} />
+        <Route path="/travel_guide_request" element={<Travel_Guide_Request />} ></Route>
         <Route
           path="/travel_guide_mytours"
           element={<Travel_Guide_Mytours />}
@@ -334,6 +337,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         />
 
         {/* RavinduRave */}
+        <Route exact path="/" element={<HomePage />} />
         <Route exact path="/Travdash" element={<Travdash />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
@@ -343,6 +347,15 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
+        <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
+        <Route exact path="/traveler/HotelPage/:user_id" element={<HotelPage />} />
+        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType/>} />
+        <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />
+        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook/>} />
+        <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
+        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
+        <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
+        <Route exact path="/traveler/VehicleMoreInfo/:vehicleId" element={<VehicleMoreInfo/>} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>
 

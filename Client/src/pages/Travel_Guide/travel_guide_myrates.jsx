@@ -65,7 +65,7 @@ const travel_guide_myrates = () => {
     return (
         <div className='flex'>
             <div><Sidebar /></div>
-            <div className='flex flex-grow flex-col w-full'>
+            <div className='h-screen flex  flex-grow flex-col flex-1'>
                 <div>
                 <div>
                     
@@ -74,13 +74,15 @@ const travel_guide_myrates = () => {
                             ))}
                 </div>
                 </div>
+                <div className='overflow-y-auto' >
                 {/* <div><GridImage /></div> */}
-                <div className='justify-right px-5 flex xs:flex-col sm:flex-row md:flex-wrap lg:flex-wrap relative  '>
+                <div className='flex sm:flex-row flex-wrap w-full overflow-y-auto xs:justify-center   '>
                 <BackgroundBlogCard/> <BackgroundBlogCard/> <BackgroundBlogCard/> <BackgroundBlogCard/> <BackgroundBlogCard/>            
                 {/* {rates.map((rate, index) => (
                                 <RateCard key={index} image={rate.image} name={rate.name} rate={rate.rate} />
                             ))} */}
                                 
+                            </div>
                             </div>
             </div>
         </div>

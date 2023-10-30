@@ -76,6 +76,9 @@ const DashboardCard = ({ title, src, amount }) => {
 
 
 const DashboardTG = () => {
+
+    const role = sessionStorage.getItem('role');
+  const user_id = sessionStorage.getItem('user_id');
     const dashs = [
         { title: "Client", src: customer, amount: "128" },
         { title: "Complete", src: star, amount: "40" },
@@ -104,15 +107,13 @@ const DashboardTG = () => {
 
             <div className='h-screen flex flex-grow flex-col'>
                 <div>
-
+<h1>{user_id}</h1>
                     {topnav.map((nav, index) => (
                         <TopNavbar key={index} path={nav.path} />
                     ))}
                 </div>
                 <div className='overflow-y-auto flex-1'>
                     {/* <RequestMore/> */}
-                    <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/vehicle_owner_dashboard">Vehicle</Link></button>
-                    {/* <button type="button" class="text-centerfocus:outline-none text-white bg-button1 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_success">Vehicle</Link></button> */}
 
                     <div className=" flex sm:flex-row  xl:flex-row  flex-col  items-start justify-start">
                         {/* Top Section (Upper Left Corner) */}

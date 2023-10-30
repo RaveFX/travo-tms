@@ -21,4 +21,21 @@ public class HotelDTO {
     private Integer row_id;
     private BigDecimal latitude;
     private BigDecimal longitude;
+    private String hotel_description;
+    private Integer adult_count;
+    private Integer child_count;
+    private Integer price;
+    private Integer discount;
+    private String view;
+    private Boolean ac;
+    private Boolean wifi;
+    private Boolean breakfast;
+    private Boolean lunch;
+    private Boolean Dinner;
+    private String room_name;
+    private Integer room_id;
+    private String room_description;
+
+
+
 }
