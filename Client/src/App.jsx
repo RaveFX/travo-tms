@@ -82,7 +82,8 @@ import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vo_editprofile";
 
 
 // Sanduni
-import TravelerDashboard from "./pages/traveler/Dashboard";
+//import TravelerDashboard from "./pages/traveler/Dashboard";
+import Dashboard from "./pages/traveler/Dashboard";
 import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
 import Itinerary from "./pages/traveler/Itinerary";
