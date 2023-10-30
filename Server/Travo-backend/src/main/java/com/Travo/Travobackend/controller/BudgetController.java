@@ -54,9 +54,17 @@ public class BudgetController {
         return ResponseEntity.ok(totalCost);
     }
 
-    @GetMapping("/getTotalCostByUserId/{user_id}")
-    public ResponseEntity<Double> getTotalCostByUserId(@PathVariable int user_id) {
-        double totalCostByUserId = budgetService.getTotalCostByUserId(user_id);
+
+
+//    @GetMapping("/getTotalCostByUserId/{user_id}")
+//    public ResponseEntity<Double> getTotalCostByUserId(@PathVariable int user_id) {
+//        double totalCostByUserId = budgetService.getTotalCostByUserId(user_id);
+//        return ResponseEntity.ok(totalCostByUserId);
+//    }
+
+    @GetMapping("/getTotalCostByUserId/{user_id}/{tripId}")
+    public ResponseEntity<Double> getTotalCostByUserId(@PathVariable int user_id, @PathVariable int tripId)  {
+        double totalCostByUserId = budgetService.getTotalCostByUserId(user_id, tripId);
         return ResponseEntity.ok(totalCostByUserId);
     }
 
@@ -96,4 +104,13 @@ public class BudgetController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/getTotalCostByTripId/{tripId}")
+    public ResponseEntity<Double> getTotalCostByTripId(@PathVariable int tripId) {
+        double totalCostByTripId = budgetService.getTotalCostByTripId(tripId);
+        return ResponseEntity.ok(totalCostByTripId);
+    }
 }
+
+
+

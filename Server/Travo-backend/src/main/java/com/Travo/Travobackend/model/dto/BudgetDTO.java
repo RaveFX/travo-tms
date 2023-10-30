@@ -11,11 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class BudgetDTO {
+    private int user_id;
+    private int tripId;
     private String cause;
     private int cost;
     private String date;
     private String type;
     private String receipt;
-    private int user_id;
+
 
 }

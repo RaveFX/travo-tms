@@ -10,6 +10,7 @@ import java.util.List;
 public interface BudgetRepo extends JpaRepository<Budget,Integer> {
     @Query("SELECT b FROM Budget b WHERE b.user_id = :userId")
     List<Budget> findByUserId(@Param("userId") int userId);
+    List<Budget> findByTripId(int tripId);
 
 }
 

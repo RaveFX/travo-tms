@@ -23,6 +23,7 @@ public class Budget {
     private String type;
     private String receipt;
     private int user_id;
+    private int tripId;
 
 
 

@@ -109,6 +109,7 @@ import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
 import Newhome from "./pages/main/home";
+import { Saves } from "./pages/traveler/Saves";
 
 export default function App() {
   return (
@@ -311,6 +312,8 @@ export default function App() {
         {/* Tharindi */}
         <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
         <Route path="/traveler/activities/:id/:day" element={<Activities />} />
+        <Route path="/traveler/trip-planner/:id" component={Saves} />
+
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

@@ -1,6 +1,7 @@
 
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, } from "react";
+
+import { Link, useParams } from "react-router-dom";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
 import axios from 'axios';
@@ -9,6 +10,7 @@ import { Alert, Card, Input, Checkbox, CardHeader,  CardBody,CardFooter,Typograp
 
 
 const user_id = sessionStorage.getItem('user_id');
+
 
 function Icon() {
   return (
@@ -28,6 +30,7 @@ function Icon() {
 }
  
 function SubmitAlert() {
+  
   return (
     <Alert
       icon={<Icon />}
@@ -42,6 +45,14 @@ function SubmitAlert() {
   
 }
  
+function Tripid(){
+  const { id } = useParams();
+  return (
+    <div>
+      <p>{id}</p>
+    </div>
+  );
+}
 
 function TotalCost() {
   const [totalCost, setTotalCost] = useState(null);
@@ -95,7 +106,18 @@ function TotalCostByUser() {
 
   const [totalCostByUser, setTotalCostByUser] = useState(0);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:8080/api/v1/budget/getTotalCostByUserId/${user_id}`)
+  //     .then((response) => {
+  //       setTotalCostByUser(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [user_id]);
+
+  const fetchTotalCostByUser = () => {
     axios
       .get(`http://localhost:8080/api/v1/budget/getTotalCostByUserId/${user_id}`)
       .then((response) => {
@@ -104,7 +126,18 @@ function TotalCostByUser() {
       .catch((error) => {
         console.error(error);
       });
-  }, [user_id]);
+  };
+
+  useEffect(() => {
+    // Fetch data initially
+    fetchTotalCostByUser();
+
+    // Refresh the data every 5 seconds (adjust the interval as needed)
+    const intervalId = setInterval(fetchTotalCostByUser, 1000);
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div>
@@ -114,6 +147,7 @@ function TotalCostByUser() {
 }
 
 const data = [
+  
   {
     amount: <TotalCost />,
     label: "Total Expenses",
@@ -122,7 +156,7 @@ const data = [
     textColor: "#212b36",
   },
   {
-    amount: "12",
+    amount: <Tripid />,
     label: "Trip Participants",
     imgUrl: "https://file.rendit.io/n/rzaX2PDxiD0qsQUJOP8v.svg",
     bgColor: "#eff2f7",

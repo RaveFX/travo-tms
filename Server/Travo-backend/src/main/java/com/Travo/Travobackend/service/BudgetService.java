@@ -5,13 +5,14 @@ import com.Travo.Travobackend.model.dto.BudgetDTO;
 import com.Travo.Travobackend.model.entity.Budget;
 import com.Travo.Travobackend.repository.BudgetRepo;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BudgetService {
     @Autowired
     private BudgetRepo budgetRepo;
 
-    public Budget addBudget(BudgetDTO budgetDTO){
+    public Budget addBudget(BudgetDTO budgetDTO) {
         Budget budget = new Budget();
         budget.setCause(budgetDTO.getCause());
         budget.setCost(budgetDTO.getCost());
@@ -19,35 +20,36 @@ public class BudgetService {
         budget.setType(budgetDTO.getType());
         budget.setReceipt(budgetDTO.getReceipt());
         budget.setUser_id(budgetDTO.getUser_id());
+        budget.setTripId(budgetDTO.getTripId());
         return budgetRepo.save(budget);
     }
-
 
 
     public Budget getBudgetById(Integer budgetID) {
         return budgetRepo.findById(budgetID).orElse(null);
     }
 
-    public Budget updateBudget(Integer budgetID, BudgetDTO budgetDTO){
+    public Budget updateBudget(Integer budgetID, BudgetDTO budgetDTO) {
         Budget existingBudget = budgetRepo.findById(budgetID).orElse(null);
 
-        if(existingBudget != null){
+        if (existingBudget != null) {
             existingBudget.setCause(budgetDTO.getCause());
             existingBudget.setCost(budgetDTO.getCost());
             existingBudget.setDate(budgetDTO.getDate());
             existingBudget.setType(budgetDTO.getType());
             existingBudget.setReceipt(budgetDTO.getReceipt());
             existingBudget.setUser_id(budgetDTO.getUser_id());
+            existingBudget.setTripId(budgetDTO.getTripId());
 
             return budgetRepo.save(existingBudget);
         }
         return null; //budget not found
     }
 
-    public boolean deleteBudget(Integer budgetID){
+    public boolean deleteBudget(Integer budgetID) {
         Budget existingBudget = budgetRepo.findById(budgetID).orElse(null);
 
-        if(existingBudget != null){
+        if (existingBudget != null) {
             budgetRepo.delete(existingBudget);
             return true; //budget deleted
         }
@@ -68,16 +70,37 @@ public class BudgetService {
         return totalCost;
     }
 
-    public double getTotalCostByUserId(int userId) {
+//    public double getTotalCostByUserId(int userId,int tripId) {
+//        List<Budget> budgets = budgetRepo.findByUserId(userId)  ;
+//        double totalCostByUserId = budgets.stream().mapToDouble(Budget::getCost).sum();
+//        return totalCostByUserId;
+//    }
+
+    public double getTotalCostByUserId(int userId, int tripId) {
         List<Budget> budgets = budgetRepo.findByUserId(userId);
-        double totalCostByUserId = budgets.stream().mapToDouble(Budget::getCost).sum();
-        return totalCostByUserId;
+
+        // Filter budgets based on tripId
+        List<Budget> filteredBudgets = budgets.stream()
+                .filter(budget -> budget.getTripId() == tripId)
+                .collect(Collectors.toList());
+
+        double getTotalCostByUserId = filteredBudgets.stream()
+                .mapToDouble(Budget::getCost)
+                .sum();
+
+        return getTotalCostByUserId;
     }
 
     public List<Budget> getAllBudgetsByUserId(int userId) {
         return budgetRepo.findByUserId(userId);
     }
 
+    public double getTotalCostByTripId(int tripId) {
+        List<Budget> budgets = budgetRepo.findByTripId(tripId);
+        double totalCostByTripId = budgets.stream().mapToDouble(Budget::getCost).sum();
+        return totalCostByTripId;
+    }
 }
+
 
 
