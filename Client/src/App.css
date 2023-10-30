@@ -44,3 +44,40 @@
 .swal-overlay {
   z-index: 99999; /* Set a high z-index value */
 }
+
+
+
+/* Hide default checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Style for circular checkbox */
+.checkbox-label {
+  position: relative;
+  display: inline-block;
+  width: 20px; /* Width and height for the circular shape */
+  height: 20px;
+  border: 2px solid #999; /* Border styling */
+  border-radius: 50%; /* Creates a circular shape */
+}
+
+/* Checkmark icon (optional) */
+.checkbox-label::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 2px; /* Adjust position */
+  left: 2px; /* Adjust position */
+  width: 10px; /* Size of the checkmark */
+  height: 10px;
+  border: solid #fff; /* Checkmark color */
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Show checkmark when checkbox is checked */
+input[type="checkbox"]:checked + .checkbox-label::after {
+  display: block;
+}
+

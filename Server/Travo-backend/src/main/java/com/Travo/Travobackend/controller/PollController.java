@@ -1,22 +1,15 @@
 package com.Travo.Travobackend.controller;
 
 
-import com.Travo.Travobackend.enumeration.Status;
-import com.Travo.Travobackend.model.dto.HotelPollDTO;
-import com.Travo.Travobackend.model.dto.PollUserDTO;
-import com.Travo.Travobackend.model.dto.TripDTO;
-import com.Travo.Travobackend.model.dto.TripMemberDTO;
-import com.Travo.Travobackend.model.entity.HotelPoll;
+import com.Travo.Travobackend.model.dto.*;
+import com.Travo.Travobackend.model.dto.AttractionPollDTO;
 import com.Travo.Travobackend.service.PollService;
-import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/trip")
@@ -26,6 +19,68 @@ public class PollController {
 
     private final PollService pollService;
 
+    @PostMapping("/poll/add-attraction")
+    public String addAttractionToPoll(@RequestBody AttractionPollDTO attractionPollDTO) {
+        return pollService.addAttraction(attractionPollDTO);
+    }
+
+    @GetMapping("/pollAttractionList/{tripID}/{day}")
+    public List<AttractionPollDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
+        return pollService.selectedAttractionList(tripID, day);
+    }
+
+    @PutMapping("/updateAttractionTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
+    public ResponseEntity<String> updateAttractionTotalVotes(
+            @PathVariable Integer tripId,
+            @PathVariable Integer attractionId,
+            @PathVariable Boolean isChecked,
+            @PathVariable Integer day
+    )
+    {
+
+        try {
+            pollService.updateAttractionPoll(tripId, attractionId, isChecked, day);
+            return new ResponseEntity<>("Update successful", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Update failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/attractions/updatePolluser/addlist")
+    public ResponseEntity<String> addUserPollAttraction(@RequestBody PollUserDTO pollUserDTO) {
+        String result = pollService.addUserPollAttraction(pollUserDTO);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/checkVotedORNot/{userId}/{AttactionPollId}")
+    public ResponseEntity<String> checkVotedORNot(@PathVariable Integer userId, @PathVariable Integer AttactionPollId){
+        String result = pollService.checkVotedORNot(userId, AttactionPollId);
+        return ResponseEntity.ok(result);
+    }
+
+@DeleteMapping("/attractions/updatePolluser/remove")
+public ResponseEntity<String> removePollUser(
+        @RequestParam("user_id") Integer userId,
+        @RequestParam("attractionPollId") Integer attractionPollId
+) {
+
+    String result = pollService.removePollUser(userId, attractionPollId);
+    return ResponseEntity.ok(result);
+}
+
+
+
+
+//    @PostMapping("/poll/add-activities")
+//    public String addActivityToPoll(@RequestBody ActivityPollDTO activityPollDTO) {
+//        return pollService.addAttraction(activityPollDTO);
+//    }
+
+
+
+
+
+
 
     @PutMapping("/updateTotalVotes/{tripId}/{hotelId}/{isChecked}")
     public ResponseEntity<String> updateTotalVotes(
@@ -33,8 +88,6 @@ public class PollController {
             @PathVariable Integer hotelId,
             @PathVariable Boolean isChecked
     ) {
-
-        System.out.println("ttttt");
         try {
             pollService.updateHotelPoll(tripId, hotelId, isChecked);
             return new ResponseEntity<>("Update successful", HttpStatus.OK);
@@ -44,9 +97,12 @@ public class PollController {
     }
 
 
+
+
+
+
     @GetMapping("/hoteLlist/{tripId}")
     public List<HotelPollDTO> gethotelList(@PathVariable Integer tripId) {
-        System.out.println(tripId);
         return pollService.hotelList(tripId);
     }
 
@@ -57,12 +113,12 @@ public class PollController {
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/updatePolluser/remove/{poll_id}")
-    public ResponseEntity<String> deletePollUser(@PathVariable("poll_id") Integer hotelpoll_id) {
-        System.out.println("byee");
-        String result = pollService.deletePollUserById(hotelpoll_id);
-        return ResponseEntity.ok(result);
-    }
+//    @DeleteMapping("/updatePolluser/remove/{poll_id}")
+//    public ResponseEntity<String> deletePollUser(@PathVariable("poll_id") Integer hotelpoll_id) {
+//        System.out.println("byee");
+//        String result = pollService.deletePollUser(hotelpoll_id);
+//        return ResponseEntity.ok(result);
+//    }
 
 
 

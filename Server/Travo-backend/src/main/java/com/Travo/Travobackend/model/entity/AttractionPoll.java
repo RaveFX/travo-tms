@@ -1,38 +1,40 @@
 package com.Travo.Travobackend.model.entity;
 
-import com.Travo.Travobackend.enumeration.TripRole;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "trip_member")
-public class TripMember {
+@Table(name = "attraction_poll")
+public class AttractionPoll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer member_id;
+    private Integer id;
+    private String place_id;
+    private String name;
+    private Integer total_votes;
+    private String address;
 
-    private String member_fname;
-    private String image;
+    @Column(length = 1000)
+    private String img_url;
 
-    @Enumerated(EnumType.STRING)
-    private TripRole tripRole = TripRole.MEMBER;
-
+    private Integer day;
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )
     private Trip trip;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
-    private User user;
 
-
-
+    @OneToMany(mappedBy = "attractionPoll")
+    private Set<PollUser> pollUsers = new HashSet<>();
 }

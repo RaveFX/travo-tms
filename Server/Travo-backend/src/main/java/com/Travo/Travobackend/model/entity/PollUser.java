@@ -24,5 +24,13 @@ public class PollUser {
     private HotelPoll hotelPoll;
 
 
+    @ManyToOne
+    @JoinColumn(name = "attractionpoll_id", referencedColumnName = "id" )
+    private AttractionPoll attractionPoll;
+
+
 
 }
+
+
+

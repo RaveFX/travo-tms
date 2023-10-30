@@ -67,8 +67,6 @@ public class ActivityJDBCDao {
             }
             return activities;
         });
-
-
     }
 
     public List<ActivityDTO> getSchedule_SelectedActivityList(Integer tripID, Integer day) {
@@ -96,7 +94,6 @@ public class ActivityJDBCDao {
             }
             return activities;
         });
-
-
     }
+
 }
