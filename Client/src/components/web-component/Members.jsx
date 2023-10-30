@@ -32,7 +32,7 @@
 //     setMembers(result.data);
 //   }
 
-//   const members1 = [
+//   const picmember = [
 //     { id: 1, name: 'Sanduni', avatarSrc: '/traveler/Female(1).svg', details: 'Member details here' },
 //     { id: 2, name: 'Kanishka', avatarSrc: '/traveler/Female.svg', details: 'Member details here' },
 //     { id: 3, name: 'Samuel', avatarSrc: '/traveler/Female(1).svg', details: 'Member details here' },
@@ -46,7 +46,7 @@
 //       <PopoverHandler>
 //         <button>
 //           <div className="flex items-center -space-x-4">
-//             {members1.map((member, index) => (
+//             {picmember.map((member, index) => (
 //               <div
 //                 key={member.id}
 //                 className={`ml-${index !== 0 ? -20 : 0
@@ -115,6 +115,14 @@ export default function MemberPopOver() {
   const pathTripId = pathParts[3];
 
   const [members, setMembers] = useState([]);
+  const [picmember, setPicmember] = useState([
+    { id: 1, name: 'Sanduni', avatarSrc: '/traveler/Female(1).svg', details: 'Member details here' },
+    { id: 2, name: 'Kanishka', avatarSrc: '/traveler/Female.svg', details: 'Member details here' },
+    { id: 3, name: 'Samuel', avatarSrc: '/traveler/Female(1).svg', details: 'Member details here' },
+    { id: 4, name: 'Samindu', avatarSrc: '/traveler/Male.svg', details: 'Member details here' },
+    { id: 5, name: 'Madushi', avatarSrc: '/traveler/Male(1).svg', details: 'Member details here' },
+    // Add more members as needed
+  ]);
 
   useEffect(() => {
     loadMembers();
@@ -132,35 +140,38 @@ export default function MemberPopOver() {
   return (
     <Popover placement="bottom">
       <PopoverHandler>
-        <Button>
+        <button>
           <div className="flex items-center -space-x-4">
-            {members.map((member, index) => (
+            {picmember.map((member, index) => (
               <div
-                key={member.member_id}
-                className={`ml-${index !== 0 ? -20 : 0} transition-all duration-200 ease-in-out`}
+                key={member.id}
+                className={`ml-${index !== 0 ? -20 : 0
+                  } transition-all duration-200 ease-in-out`}
               >
                 <Avatar
                   variant="circular"
-                  alt={member.member_id.toString()} // Assuming member_id is a number
+                  alt={member.name}
+                  src={member.avatarSrc}
                 />
               </div>
             ))}
           </div>
-        </Button>
+        </button>
       </PopoverHandler>
       <PopoverContent className="w-72 z-[1000]">
         <List>
           {members.map((member) => (
-            <ListItem key={member.member_id}>
+            <ListItem key={member.id}>
               <ListItemPrefix>
-                <Avatar
-                  variant="circular"
-                  alt={member.member_id.toString()} // Assuming member_id is a number
+                <img
+                  src=
+                  {`/people01.png`}
+                  style={{ width: '60px', height: '60px' }}
                 />
               </ListItemPrefix>
               <div>
                 <Typography variant="h6" color="blue-gray">
-                  {member.member_id}
+                  {member.fname}
                 </Typography>
                 <Typography
                   variant="small"
@@ -177,7 +188,3 @@ export default function MemberPopOver() {
     </Popover>
   );
 }
-
-
-
-

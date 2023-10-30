@@ -12,5 +12,9 @@ public interface PollUserRepository extends JpaRepository<PollUser, Integer> {
     @Transactional
     @Query("DELETE FROM PollUser p WHERE p.user_id = :userId AND p.attractionPoll.id = :attractionPollId")
     void deleteByUserIdAndAttractionPollId(@Param("userId") Integer userId, @Param("attractionPollId") Integer attractionPollId);
+
+    @Query(value = "SELECT EXISTS(SELECT 1 FROM poll_user WHERE user_id = :userId AND attractionpoll_id  = :AttactionPollId)", nativeQuery = true)
+    String existsByUserIdAndAttactionPollId(@Param("userId") Integer userId, @Param("AttactionPollId") Integer AttactionPollId);
+
 }
 

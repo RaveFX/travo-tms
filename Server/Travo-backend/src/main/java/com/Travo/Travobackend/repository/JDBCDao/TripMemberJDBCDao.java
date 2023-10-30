@@ -23,9 +23,11 @@ public class TripMemberJDBCDao {
         HashMap<String, Object> params = new HashMap<>();
         List<TripMemberDTO> members = new ArrayList<>();
 
-        SQL.append("SELECT t.*, u.profile_image\n" +
+        SQL.append("SELECT t.*, u.profile_image, tr.fname\n" +
                 "FROM trip_member t\n" +
-                "INNER JOIN user u ON u.user_id = t.user_id WHERE t.trip_id = :tripId ;\n");
+                "INNER JOIN traveler tr ON tr.traveler_id = t.user_id\n" +
+                "INNER JOIN user u ON u.user_id = t.user_id\n" +
+                "WHERE t.trip_id = :tripId");
 
         params.put("tripId", tripId);
 
@@ -38,15 +40,14 @@ public class TripMemberJDBCDao {
                 tripMemberDTO.setTripRole(TripRole.valueOf(rs.getString("trip_role")));
                 tripMemberDTO.setTrip_id(rs.getInt("trip_id"));
                 tripMemberDTO.setUser_id(rs.getInt("user_id"));
-//                tripMemberDTO.setFname(rs.getString("fname"));
-                tripMemberDTO.setProfileImage(rs.getString("profile_image"));
+                tripMemberDTO.setFname(rs.getString("fname"));
+                tripMemberDTO.setProfileImage(rs.getString("profile_image")); // Use the alias name here
 
-                members .add(tripMemberDTO);
+                members.add(tripMemberDTO);
             }
-            return members ;
+            return members;
         });
-
-
     }
+
 
 }

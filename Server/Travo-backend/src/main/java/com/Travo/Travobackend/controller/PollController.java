@@ -29,16 +29,15 @@ public class PollController {
         return pollService.selectedAttractionList(tripID, day);
     }
 
-
     @PutMapping("/updateAttractionTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
     public ResponseEntity<String> updateAttractionTotalVotes(
             @PathVariable Integer tripId,
-            @PathVariable String attractionId,
+            @PathVariable Integer attractionId,
             @PathVariable Boolean isChecked,
             @PathVariable Integer day
     )
     {
-        System.out.println(day);
+
         try {
             pollService.updateAttractionPoll(tripId, attractionId, isChecked, day);
             return new ResponseEntity<>("Update successful", HttpStatus.OK);
@@ -47,23 +46,35 @@ public class PollController {
         }
     }
 
-
     @PostMapping("/attractions/updatePolluser/addlist")
     public ResponseEntity<String> addUserPollAttraction(@RequestBody PollUserDTO pollUserDTO) {
         String result = pollService.addUserPollAttraction(pollUserDTO);
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/checkVotedORNot/{userId}/{AttactionPollId}")
+    public ResponseEntity<String> checkVotedORNot(@PathVariable Integer userId, @PathVariable Integer AttactionPollId){
+        String result = pollService.checkVotedORNot(userId, AttactionPollId);
+        return ResponseEntity.ok(result);
+    }
 
 @DeleteMapping("/attractions/updatePolluser/remove")
 public ResponseEntity<String> removePollUser(
         @RequestParam("user_id") Integer userId,
         @RequestParam("attractionPollId") Integer attractionPollId
 ) {
-    // Call a service method to remove the poll for the user
+
     String result = pollService.removePollUser(userId, attractionPollId);
     return ResponseEntity.ok(result);
 }
+
+
+
+
+//    @PostMapping("/poll/add-activities")
+//    public String addActivityToPoll(@RequestBody ActivityPollDTO activityPollDTO) {
+//        return pollService.addAttraction(activityPollDTO);
+//    }
 
 
 
@@ -92,7 +103,6 @@ public ResponseEntity<String> removePollUser(
 
     @GetMapping("/hoteLlist/{tripId}")
     public List<HotelPollDTO> gethotelList(@PathVariable Integer tripId) {
-        System.out.println(tripId);
         return pollService.hotelList(tripId);
     }
 

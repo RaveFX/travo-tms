@@ -1,2 +1,4 @@
-package com.Travo.Travobackend.model.dto;public class ActivityPollDTO {
+package com.Travo.Travobackend.model.dto;
+
+public class ActivityPollDTO {
 }

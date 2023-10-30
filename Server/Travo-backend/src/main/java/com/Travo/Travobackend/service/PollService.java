@@ -73,7 +73,7 @@ public class PollService {
         return attractionPollJDBCDao.getSelectedAttractionPollList(tripID, day);
     }
 
-    public void updateAttractionPoll(Integer tripId, String AttractionId, Boolean isChecked, Integer day) {
+    public void updateAttractionPoll(Integer tripId, Integer AttractionId, Boolean isChecked, Integer day) {
         attractionPollJDBCDao.updateAttractionPoll(tripId,AttractionId,isChecked,day);
     }
 
@@ -87,6 +87,46 @@ public class PollService {
         return "Error removing user from the poll: " + e.getMessage();
      }
     }
+
+    public String checkVotedORNot(Integer userId,Integer AttactionPollId) {
+        String exists = pollUserRepository.existsByUserIdAndAttactionPollId(userId, AttactionPollId);
+        return exists;
+    }
+
+
+
+
+
+
+//    public String addActivity(ActivityPollDTO activityPollDTO){
+//        try {
+//            ActivityPollDTO activityPollDTO = new ActivityPollDTO();
+//            activityPollDTO.setPlace_id(attractionPollDTO.getPlace_id());
+//            activityPollDTO.setAddress(attractionPollDTO.getAddress());
+//            activityPollDTO.setTotal_votes(0);
+//            activityPollDTO.setName(attractionPollDTO.getName());
+//            activityPollDTO.setImg_url(attractionPollDTO.getImg_url());
+//            activityPollDTO.setDay(attractionPollDTO.getDay());
+//
+//            Optional<Trip> tripOptional = tripRepository.findById(attractionPollDTO.getTrip_id());
+//            if (tripOptional.isPresent()) {
+//                Trip trip = tripOptional.get();
+//                attractionPoll.setTrip(trip);
+//                attractionPollRepository.save(attractionPoll); // Use the instance of the repository to save
+//                return "Attraction added successfully!";
+//            } else {
+//                return "Trip not found for the given ID!";
+//            }
+//        } catch (Exception e) {
+//            return "Error adding attraction: " + e.getMessage();
+//        }
+//    }
+
+
+
+
+
+
 
 
 
@@ -144,7 +184,6 @@ public class PollService {
             if (attractionPoll != null) {
                 Optional<AttractionPoll> attractionPollOptional = attractionPollRepository.findById(attractionPoll.getId());
                 if (attractionPollOptional.isPresent()) {
-                    System.out.println("hiiii");
                     pollUser.setAttractionPoll(attractionPollOptional.get());
                     pollUserRepository.save(pollUser);
                     return "Trip member added successfully!";

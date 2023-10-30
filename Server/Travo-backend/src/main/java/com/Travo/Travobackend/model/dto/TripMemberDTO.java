@@ -18,6 +18,7 @@ public class TripMemberDTO {
     private Integer user_id;
     private String fname;
     private String profileImage;
+    private Integer traveler_id;
 
 
 }

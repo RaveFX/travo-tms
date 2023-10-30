@@ -36,6 +36,8 @@ import Attractions from "./pages/traveler/Attractions";
 import Activities from "./pages/traveler/Activities";
 
 import PollAttractions from "./pages/traveler/pollAttractions";
+import PollActivities from "./pages/traveler/PollActivities";
+// import PollHotels from "./pages/traveler/PollHotels";
 
 
 // Thirani
@@ -332,6 +334,8 @@ export default function App() {
         <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
         <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
         <Route path="/traveler/attractionspoll/:id/:day" element={<PollAttractions />} />
+        <Route path="/traveler/activitiespoll/:id/:day" element={<PollActivities />} />
+        {/* <Route path="/traveler/hotelpoll/:id/:day" element={<PollHotels />} /> */}
 
 
 

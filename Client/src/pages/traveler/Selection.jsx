@@ -569,6 +569,41 @@ function Selections() {
   const [hotels, setHotels] = useState([]);
   const [activities, setActivities] = useState([]);
   const [attractions, setAttractions] = useState([]);
+  const [votedAttractions, setVotedAttractions] = useState([]);
+
+
+  const user_id = sessionStorage.getItem('user_id');
+
+  let x = 'vote';
+  let y = 'voted';
+
+  useEffect(() => {
+    const fetchVotes = async () => {
+      const votedArray = await Promise.all(
+        attractions.map(async (attraction) => {
+          try {
+            const response = await axios.get(`http://localhost:8080/api/v1/trip/checkVotedORNot/${user_id}/${attraction.id}`);
+            const exists = response.data;
+
+            let x = exists === 1 ? 'vote' : 'voted';
+            let y = exists === 1 ? 'voted' : 'vote';
+
+            return { ...attraction, x, y, exists };
+          } catch (error) {
+            console.error('Error fetching vote status:', error);
+            return { ...attraction, x: 'voted', y: 'voted', exists: null }; // Default to 'voted' in case of an error or other value
+          }
+        })
+      );
+      setVotedAttractions(votedArray);
+    };
+
+    if (attractions.length > 0) {
+      fetchVotes();
+    }
+  }, [attractions, user_id]);
+
+
 
 
   useEffect(() => {
@@ -618,17 +653,13 @@ function Selections() {
 
   }
 
-  const user_id = sessionStorage.getItem('user_id');
   const [attractionpolllist, setAttractionpolllist] = useState([]);
   const currentPath = window.location.pathname;
   const pathParts = currentPath.split('/');
   const pathTripId = pathParts[3];
 
-  console.log(pathTripId);
 
 
-
-  // Attractions
   useEffect(() => {
     loadAttractionpolllist();
   }, []);
@@ -638,33 +669,47 @@ function Selections() {
     setAttractionpolllist(updatevote.data);
   }
 
-  const handleCheckboxChange = async (attractionId, isChecked, day) => {
-    const updatedAttractionpolllist = attractions.map((attraction) => {
-      if (attraction.place_id === attractionId) {
-        const newTotalVotes = isChecked ? attraction.total_votes + 1 : attraction.total_votes - 1;
-
-        // console.log("uuuuuuuuuuuuuu");
-        // console.log(pathTripId);
-        // console.log(attractionId);
-        // console.log(isChecked);
 
 
-        updateTotalVotes(attractionId, newTotalVotes, isChecked, day);
-        handleAsyncAction(attractionId, isChecked);
 
-        return {
-          ...attraction,
-          total_votes: newTotalVotes,
-        };
-      }
-      return attraction;
+  const [checkedAttractions, setCheckedAttractions] = useState({});
+
+  const handleButtonClick = (attractionId, indexValue) => {
+    setCheckedAttractions((prevState) => {
+      const isChecked = !prevState[attractionId]; // Flip the value directly
+      handleCheckboxChange(attractionId, isChecked, indexValue);
+      return { ...prevState, [attractionId]: isChecked };
     });
-
-    setAttractions(updatedAttractionpolllist);
   };
 
 
-  const updateTotalVotes = async (attractionId, newTotalVotes, isChecked, day) => {
+  const updateAttractions = (updatedAttractions) => {
+    setAttractions(updatedAttractions);
+  };
+
+  // Inside your component:
+
+  const handleCheckboxChange = (attractionId, isChecked, day) => {
+    try {
+      const updatedAttractions = attractions.map(attraction => {
+        if (attraction.id === attractionId) {
+          updateTotalVotes(attractionId, isChecked, day);
+          handleAsyncAction(attractionId, isChecked);
+          const newTotalVotes = isChecked ? attraction.total_votes + 1 : attraction.total_votes - 1;
+          const totalVotes = newTotalVotes >= 0 ? newTotalVotes : 0;
+
+          return { ...attraction, total_votes: totalVotes };
+        }
+        return attraction;
+      });
+      updateAttractions(updatedAttractions);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+  const updateTotalVotes = async (attractionId, isChecked, day) => {
     try {
       const response = await axios.put(`http://localhost:8080/api/v1/trip/updateAttractionTotalVotes/${pathTripId}/${attractionId}/${isChecked}/${day}`);
     } catch (error) {
@@ -673,9 +718,12 @@ function Selections() {
   };
 
 
+
+
+
   const handleAsyncAction = async (attractionId, checked) => {
     try {
-      const selectedAttraction = attractions.find(attraction => attraction.place_id === attractionId);
+      const selectedAttraction = attractions.find(attraction => attraction.id === attractionId);
 
       if (!selectedAttraction) {
         console.error('Selected attraction not found');
@@ -700,9 +748,6 @@ function Selections() {
       console.error('Error:', error);
     }
   };
-
-
-
 
 
 
@@ -745,14 +790,16 @@ function Selections() {
                           Attractions
                         </Typography>
                       </div>
-                      <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                      <div className="flex flex-col justify-center gap-4 mt-8 mb-8  ">
+
+                        <div className="flex gap-2">
                           {(
                             attractions.map((attraction) => (
                               <div
                                 key={attraction.place_id}
 
-                                className="bg-white p-4 rounded-lg shadow border relative"
+                                className="bg-white p-4 rounded-lg shadow border relative "
+                                style={{ width: '350px', height: '200px' }}
                               >
                                 <div className="flex">
                                   <div className="flex items-center justify-center mb-2">
@@ -761,6 +808,7 @@ function Selections() {
                                         src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.img_url}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`}
                                         alt={`${attraction.name} - Photo`}
                                         className="w-full h-44 rounded-md object-cover"
+                                        style={{ width: '200px', height: '125px' }}
                                       />
                                     ) : (
                                       <img
@@ -771,22 +819,31 @@ function Selections() {
                                     )}
                                   </div>
                                   <div className="flex flex-col items-center justify-center mb-2">
-                                    <div className="flex">
-                                      <input
-                                        type="checkbox"
-                                        className="cursor-pointer"
-                                        id={`acceptCheckbox-${attraction.place_id}`}
-                                        name="acceptance"
-                                        onChange={(e) => handleCheckboxChange(attraction.place_id, e.target.checked, index + 1)}
-                                      />
+                                    <div>
+
+                                      <button
+                                        key={attraction.id}
+                                        className={`  absolute top-2 right-2 cursor-pointer py-2 px-4 border bg-gray-300 text-[#FF5C5C] rounded-full  ${checkedAttractions[attraction.id] ? 'bg-green-500 text-black' : 'bg-white'}`}
+                                        onClick={() => handleButtonClick(attraction.id, index + 1)}
+                                      >
+                                        {checkedAttractions[attraction.id] ? y : x}
+                                      </button>
+                                    </div>
+                                    <div style={{ position: 'absolute', top: '40%', right: '10%', backgroundColor: '#377A85', color: 'white', borderRadius: '5%', width: '70px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                      <span>{attraction.total_votes}</span>
                                     </div>
 
-                                    <Button className="bg-gray-300 text-[#FF5C5C] rounded-full" onClick={() => handleRemoveAttraction(attraction)}>Vote</Button>
-                                    <h2 className="text-xl font-semibold mb-2">{attraction.total_votes}</h2>
                                   </div>
                                 </div>
-
-                                <h2 className="text-xl font-semibold mb-2">{attraction.name}</h2>
+                                <div className='flex gap-3'>
+                                  <h3 className="text-xl font-semibold mb-2">{attraction.name}</h3>
+                                  <button
+                                    className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2"
+                                    onClick={() => handleAddToTrip(attraction)}
+                                  >
+                                    Add to Trip
+                                  </button>
+                                </div>
 
                               </div>
                             ))
@@ -794,10 +851,6 @@ function Selections() {
                         </div>
                         <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item for make poll
-                        </Button>
-                        </Link>
-                        <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
-                          Add to trip
                         </Button>
                         </Link>
                       </div>
@@ -860,12 +913,82 @@ function Selections() {
                           Add item for make poll
                         </Button></Link>
                       </div>
+                      <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
+                        <Typography className="pl-4 text-white font-bold">
+                          Activities
+                        </Typography>
+                      </div>
+                      <div className="flex flex-col justify-center gap-4 mt-8 mb-8  ">
+
+                        <div className="flex gap-2">
+                          {(
+                            attractions.map((attraction) => (
+                              <div
+                                key={attraction.place_id}
+
+                                className="bg-white p-4 rounded-lg shadow border relative "
+                                style={{ width: '350px', height: '200px' }}
+                              >
+                                <div className="flex">
+                                  <div className="flex items-center justify-center mb-2">
+                                    {attraction.img_url ? (
+                                      <img
+                                        src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.img_url}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`}
+                                        alt={`${attraction.name} - Photo`}
+                                        className="w-full h-44 rounded-md object-cover"
+                                        style={{ width: '200px', height: '125px' }}
+                                      />
+                                    ) : (
+                                      <img
+                                        src="/main/no_image_available.jpeg" // Provide the path to your default image
+                                        alt="Default Image"
+                                        className="w-full h-44 rounded-md object-cover"
+                                      />
+                                    )}
+                                  </div>
+                                  <div className="flex flex-col items-center justify-center mb-2">
+                                    <div>
+
+                                      <button
+                                        key={attraction.id}
+                                        className={`  absolute top-2 right-2 cursor-pointer py-2 px-4 border bg-gray-300 text-[#FF5C5C] rounded-full  ${checkedAttractions[attraction.id] ? 'bg-green-500 text-black' : 'bg-white'}`}
+                                        onClick={() => handleButtonClick(attraction.id, index + 1)}
+                                      >
+                                        {checkedAttractions[attraction.id] ? 'Vote' : 'Voted'}
+                                      </button>
+                                    </div>
+                                    <div style={{ position: 'absolute', top: '40%', right: '10%', backgroundColor: '#377A85', color: 'white', borderRadius: '5%', width: '70px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                      <span>{attraction.total_votes}</span>
+                                    </div>
+
+                                  </div>
+                                </div>
+                                <div className='flex gap-3'>
+                                  <h3 className="text-xl font-semibold mb-2">{attraction.name}</h3>
+                                  <button
+                                    className="bg-blue-500 text-white px-3 py-1 rounded-md absolute bottom-2 right-2"
+                                    onClick={() => handleAddToTrip(attraction)}
+                                  >
+                                    Add to Trip
+                                  </button>
+                                </div>
+
+                              </div>
+                            ))
+                          )}
+                        </div>
+                        <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                          Add item for make poll
+                        </Button>
+                        </Link>
+                      </div>
 
                     </AccordionBody>
                   </Accordion>
                 ))}
 
               </div>
+
             </>
 
 

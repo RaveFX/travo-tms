@@ -45,11 +45,11 @@ public class AttractionPollJDBCDao {
 
     }
 
-    public void updateAttractionPoll(Integer tripId, String attractionId, Boolean isChecked, Integer day) {
+    public void updateAttractionPoll(Integer tripId, Integer attractionId, Boolean isChecked, Integer day) {
         // Determine the value to add to total_votes based on the isChecked flag.
         int x = isChecked ? 1 : -1;
 
-        String sql = "UPDATE attraction_poll SET total_votes = total_votes + :x WHERE place_id = :attractionId AND trip_id = :tripId AND day = :day";
+        String sql = "UPDATE attraction_poll SET total_votes = total_votes + :x WHERE id = :attractionId AND trip_id = :tripId AND day = :day";
         Map<String, Object> paramMap = new HashMap<>();
 
         paramMap.put("x", x);
@@ -57,7 +57,7 @@ public class AttractionPollJDBCDao {
         paramMap.put("attractionId", attractionId);
         paramMap.put("day", day);
 
-        String selectSql = "SELECT total_votes FROM attraction_poll WHERE place_id = :attractionId AND trip_id = :tripId AND day = :day";
+        String selectSql = "SELECT total_votes FROM attraction_poll WHERE id = :attractionId AND trip_id = :tripId AND day = :day";
         Integer currentTotalVotes = namedParameterJdbcTemplate.queryForObject(selectSql, paramMap, Integer.class);
 
         // Ensure the total votes won't become 0
