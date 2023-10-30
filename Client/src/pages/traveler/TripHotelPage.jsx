@@ -97,7 +97,7 @@ const hotel_page = () => {
     // console.log(hotelID)
     return (
         <div className="flex h-screen overflow-hidden">
-            <Sidebar active="Dashboard" />
+            <Sidebar active="My Trips" />
             <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20">
                 <TopNavbar />
 

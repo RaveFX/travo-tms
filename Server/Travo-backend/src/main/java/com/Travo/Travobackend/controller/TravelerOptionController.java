@@ -71,12 +71,12 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return traveleroptionService.triphotelBooking(reservationDTO,userId,tripId,hotelId,roomId);
 
     }
-    @GetMapping("/checkAvailability/{roomId}/{boardType}")
+    @GetMapping("/checkAvailability/{roomId}")
     public List<ReservationDTO> getAvailability(
-            @PathVariable Integer roomId,
-            @PathVariable String boardType
+            @PathVariable Integer roomId
+//            @PathVariable String boardType
             ){
-        return traveleroptionService.availability(roomId,boardType);
+        return traveleroptionService.availability(roomId);
 
     }
 

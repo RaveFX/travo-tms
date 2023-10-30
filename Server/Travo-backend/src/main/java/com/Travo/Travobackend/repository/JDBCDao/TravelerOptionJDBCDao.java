@@ -137,14 +137,14 @@ public class TravelerOptionJDBCDao {
 
     }
 
-    public List<ReservationDTO> getAvailability(Integer roomId,String boardType) {
+    public List<ReservationDTO> getAvailability(Integer roomId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<ReservationDTO> availability = new ArrayList<>();
         params.put("roomId", roomId);
-        params.put("boardType",boardType);
+//        params.put("boardType",boardType);
 
-        SQL.append("SELECT checkin_date FROM reservation where room_id=:roomId and board_type=:boardType  ");
+        SQL.append("SELECT checkin_date FROM reservation where room_id=:roomId group by checkin_date  ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {

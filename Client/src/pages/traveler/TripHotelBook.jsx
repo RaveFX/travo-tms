@@ -16,6 +16,7 @@ import {
     Checkbox,
     Select, Option
 } from "@material-tailwind/react";
+
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -107,21 +108,31 @@ function App() {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            if (boardType && checkin_date && checkout_date) {
-                setErrors({});
-            }
-            if(checkin_date > checkout_date){
-                alert("Check Out date should be after Check In date");
+            if (checkin_date > checkout_date) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Check Out date should be after Check In date',
+                });
                 return;
             }
-            if(checkin_date < new Date().toISOString().split('T')[0]){
-                alert("Check In date should be after today");
-                return;}
-            // console.log("reserve:",reservedDates);
-            // console.log("checkin",checkin_date);
-            if(reservedDates==checkin_date){
-                alert("Check In date is already reserved");
+            if (new Date(checkin_date) < new Date()) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Check In date should be after today',
+                });
                 return;
+            }
+            for (const reservedDate of reservedDates) {
+                if (checkinDateString === reservedDate.checkin_date) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Check In date is already reserved',
+                    });
+                    return;
+                }
             }
            
 

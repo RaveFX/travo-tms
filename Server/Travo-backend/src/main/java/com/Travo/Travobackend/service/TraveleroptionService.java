@@ -55,8 +55,8 @@ public class TraveleroptionService {
 
 
     }
-    public List<ReservationDTO>availability (Integer roomId,String boardType) {
-        return hotelNameJDBCDao.getAvailability(roomId,boardType);
+    public List<ReservationDTO>availability (Integer roomId) {
+        return hotelNameJDBCDao.getAvailability(roomId);
 
 
     }
