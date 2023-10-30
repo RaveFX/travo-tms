@@ -119,7 +119,7 @@ import ReviewsDetails from "./pages/activity_agent/Reviews_Details";
 import Profile from "./pages/activity_agent/Profile";
 import EditProfile from "./pages/activity_agent/Edit_Profile";
 import AddActivity from "./pages/activity_agent/Add_Activity";
-import Dashboard from "./pages/activity_agent/Dashboard";
+import Dashboardd from "./pages/activity_agent/Dashboard";
 import ImageGrid from "./pages/activity_agent/Activity";
 
 import PrivateRoute from "./pages/main/PrivateRoute";
@@ -332,7 +332,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
         {/* RavinduJay */}
         <>
-          <Route exact path="/agent_dashboard" element={<Dashboard />} />
+          <Route exact path="/agent_dashboard" element={<Dashboardd />} />
           <Route exact path="/schedule" element={<Schedule />} />
           <Route exact path="/schedule/details" element={<ScheduleDetails />} />
           <Route exact path="/reviews" element={<ReviewsDetails />} />
