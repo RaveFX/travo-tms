@@ -13,6 +13,7 @@ export default function TabBar(props) {
 
   const [activeTab, setActiveTab] = React.useState("all trips");
   return (
+  
     <Tabs value={activeTab} className="ml-4">
       <TabsHeader
         className="rounded-none border-b border-blue-gray-50 bg-transparent p-0"
@@ -39,5 +40,6 @@ export default function TabBar(props) {
         ))}
       </TabsBody>
     </Tabs>
+   
   );
 }
