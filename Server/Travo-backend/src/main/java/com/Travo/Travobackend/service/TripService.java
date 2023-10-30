@@ -2,6 +2,7 @@ package com.Travo.Travobackend.service;
 
 
 
+import com.Travo.Travobackend.enumeration.TripRole;
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.repository.*;
@@ -43,6 +44,10 @@ public class TripService {
     private TripScheduleRepository tripScheduleRepository;
     @Autowired
     private ScheduleJDBCDao scheduleJDBCDao;
+    @Autowired
+    private TripMemberRepository tripMemberRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
 
@@ -222,5 +227,17 @@ public class TripService {
     }
     public List<AttractionDTO> selectedAttractionListForMap(Integer tripID){
         return attractionJDBCDao.getAttractionListForMap(tripID);
+    }
+
+    public boolean hasAdminOrEditorRole(Integer memberId, Integer tripId) {
+        Optional<User> userOptional = userRepository.findById(memberId);
+        User user = userOptional.get();
+
+        Optional<Trip> tripOptional = tripRepository.findById(tripId);
+        Trip trip = tripOptional.get();
+
+        Optional<TripMember> tripMember = tripMemberRepository.findByUserAndTrip(user, trip);
+        return tripMember.filter(member -> member.getTripRole() == TripRole.ADMIN || member.getTripRole() == TripRole.EDITOR)
+                .isPresent();
     }
 }

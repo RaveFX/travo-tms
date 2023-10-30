@@ -248,7 +248,7 @@ function Attractions() {
           </div>
         <div className="container mx-4  overflow-hidden">
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6">Attractions in Sri Lanka</h1>
+          <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mt-4 mb-6">Attractions in Sri Lanka</h1>
           <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
             <Input
                 type="search"

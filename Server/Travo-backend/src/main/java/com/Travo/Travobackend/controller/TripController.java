@@ -18,6 +18,7 @@ public class TripController {
     @Autowired
     private final TripService tripService;
 
+
     @GetMapping("/tripList/{userID}")
     public List<TripDTO> getTripList(@PathVariable Integer userID){
         return tripService.tripList(userID);
@@ -137,6 +138,14 @@ public class TripController {
     @GetMapping("/selectedAttractionListForMap/{tripID}")
     public List<AttractionDTO> getSelectedAttractionListForMap(@PathVariable Integer tripID){
         return tripService.selectedAttractionListForMap(tripID);
+    }
+
+    @GetMapping("/check-admin-or-editor-role/{userId}/{tripId}")
+    public ResponseEntity<Boolean> checkAdminOrEditorRole(
+            @PathVariable Integer userId,
+            @PathVariable Integer tripId) {
+        boolean hasAdminOrEditorRole = tripService.hasAdminOrEditorRole(userId, tripId);
+        return ResponseEntity.ok(hasAdminOrEditorRole);
     }
 
 

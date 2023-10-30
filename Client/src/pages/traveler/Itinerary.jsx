@@ -41,10 +41,12 @@ function Icon({ id, open }) {
 
 function Itinerary() {
   const { id } = useParams();
+  const user_id = sessionStorage.getItem('user_id');
   const [days, setDays] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [activities,setActivities]=useState([]);
   const [attractions, setAttractions] = useState([]);
+  
   
 
   useEffect(() => {
@@ -195,6 +197,99 @@ function Itinerary() {
 
   }
 
+  const handleAddAttractionClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/attractions/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
+
+  const handleAddHotelClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/hotels/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
+
+  const handleAddActivityClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/activities/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
+
   return (
     <>
       <div className="flex overflow-hidden w-full">
@@ -273,10 +368,10 @@ function Itinerary() {
                         ))
                       )}
                     </div>
-                        <Link to={`/traveler/attractions/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <Button onClick={() => handleAddAttractionClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
                         </Button>
-                        </Link>
+                       
                       </div>
 
                       <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -333,9 +428,9 @@ function Itinerary() {
 
                         </div>
 
-                        <Link to={`/traveler/hotels/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <Button onClick={() => handleAddHotelClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
-                        </Button></Link>
+                        </Button>
                       </div>
                       <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
                         <Typography className="pl-4 text-white font-bold">
@@ -389,9 +484,9 @@ function Itinerary() {
                         </div>
                       ))}
                     </div>
-                        <Link to={`/traveler/activities/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <Button onClick={() => handleAddActivityClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
-                        </Button></Link>
+                        </Button>
                       </div>
                     </AccordionBody>
                   </Accordion>
