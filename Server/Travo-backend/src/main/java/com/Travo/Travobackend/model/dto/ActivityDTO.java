@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +23,13 @@ public class ActivityDTO {
     private Integer row_id;
     private BigDecimal latitude;
     private BigDecimal longitude;
+    private Integer event_id;
+    private String event_name;
+    private String event_description;
+    private Date date;
+    private Time start_time;
+    private Time end_time;
+    private Integer ticket_price;
+    private Integer ticket_quantity;
+
 }

@@ -29,4 +29,6 @@ public class Traveler extends User {
     private String city;
     private Integer postal_code;
     private String district;
+
+
 }

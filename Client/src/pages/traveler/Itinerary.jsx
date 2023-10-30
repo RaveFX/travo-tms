@@ -47,7 +47,7 @@ function Itinerary() {
   const [attractions, setAttractions] = useState([]);
 
   const user_id = sessionStorage.getItem('user_id');
- 
+
 
   useEffect(() => {
     loadDays();
@@ -287,7 +287,6 @@ function Itinerary() {
                         </Typography>
                       </div>
                       <div className="flex flex-col justify-center gap-4 mt-8 mb-8 ">
-                        <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                           {hotels.map((hotel) => (
                             <div
@@ -295,13 +294,15 @@ function Itinerary() {
                               className="bg-white p-4 rounded-lg shadow border relative "
                               onClick={""}
                             >
-                              <div className="flex items-center justify-center mb-2">
-                                <img
-                                  src={`/main/${hotel.hotel_img}`}
-                                  alt={`${hotel.hotel_name}'s Photo`}
-                                  className="w-full h-44 rounded-md object-cover"
-                                />
-                              </div>
+                              <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
+                                <div className="flex items-center justify-center mb-2">
+                                  <img
+                                    src={`/main/${hotel.hotel_img}`}
+                                    alt={`${hotel.hotel_name}'s Photo`}
+                                    className="w-full h-44 rounded-md object-cover"
+                                  />
+                                </div>
+                              </Link>
                               <h2 className="text-xl font-semibold mb-2">{hotel.hotel_name}</h2>
                               <p className="mb-2">{hotel.description}</p>
                               <div className="flex items-center mb-2">
@@ -335,7 +336,6 @@ function Itinerary() {
                           ))}
 
                         </div>
-                        </Link>
 
                         <Link to={`/traveler/hotels/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item

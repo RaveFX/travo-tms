@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.repository.JDBCDao;
 
+import com.Travo.Travobackend.model.dto.ActivityDTO;
 import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
@@ -252,6 +253,42 @@ public class TravelerOptionJDBCDao {
                 return company;
             });
     }
+
+//    =======================Activity Agent===================
+public List<ActivityDTO> getAllEvents(Integer agentId) {
+    StringBuffer SQL = new StringBuffer();
+    HashMap<String, Object> params = new HashMap<>();
+    List<ActivityDTO> company = new ArrayList<>();
+    params.put("agentId", agentId);
+
+
+    SQL.append("SELECT * FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id where activity_agent.agent_id=:agentId; ");
+
+    return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+        while (rs.next()) {
+            ActivityDTO activityDTO = new ActivityDTO();
+
+            activityDTO.setEvent_id(rs.getInt("event_id"));
+            activityDTO.setEvent_name(rs.getString("event_name"));
+            activityDTO.setEvent_description(rs.getString("event_description"));
+            activityDTO.setDate(rs.getDate("date"));
+            activityDTO.setStart_time(rs.getTime("start_time"));
+            activityDTO.setEnd_time(rs.getTime("end_time"));
+            activityDTO.setTicket_price(rs.getInt("ticket_price"));
+            activityDTO.setTicket_quantity(rs.getInt("ticket_quantity"));
+            activityDTO.setAgent_id(rs.getInt("agent_id"));
+            activityDTO.setCompany_name(rs.getString("company_name"));
+            activityDTO.setDescription(rs.getString("description"));
+            activityDTO.setActivity_img(rs.getString("activity_img"));
+
+
+
+
+            company.add(activityDTO);
+        }
+        return company;
+    });
+}
 
 
 }

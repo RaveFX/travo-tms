@@ -59,6 +59,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<TripMember> tripMembers = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<TicketBooking> ticketBookings = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

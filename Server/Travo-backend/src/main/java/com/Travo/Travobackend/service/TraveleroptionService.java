@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.service;
 
+import com.Travo.Travobackend.model.dto.ActivityDTO;
 import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
@@ -139,4 +140,14 @@ public class TraveleroptionService {
     public List<VehiclesDTO> vehicle(Integer vehicleId) {
         return vehiclesJDBCDao.getVehicleTypes(vehicleId);
     }
+
+//    ======================ActivityAgent====================
+
+    public List<ActivityDTO> events(Integer agentId) {
+
+        return hotelNameJDBCDao.getAllEvents(agentId);
+    }
 }
+
+
+

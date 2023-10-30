@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.controller;
 
+import com.Travo.Travobackend.model.dto.ActivityDTO;
 import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
@@ -98,7 +99,13 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return vehicleService.vehicle(vehicleId);
     }
 
+//    ====================Activity Agent===================
 
+    @GetMapping("/eventList/{agentId}")
+    public List<ActivityDTO> getEvent(@PathVariable Integer agentId){
+        return traveleroptionService.events(agentId);
+
+    }
     }
 
 
