@@ -30,7 +30,9 @@ import Hotel_editRooms from "./pages/hotel/hotel_editRooms";
 import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
 import Attractions from "./pages/traveler/Attractions";
+import Destinations from "./pages/traveler/Destinations";
 import Activities from "./pages/traveler/Activities";
+import MainActivities from "./pages/traveler/MainActivities";
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -76,13 +78,15 @@ import Vehicle_Owner_Rating from "./pages/Vehicle_Owner/vehicle_owner_rating";
 import Vehicle_Owner_Profile from "./pages/Vehicle_Owner/vehicle_owner_profile";
 import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vehicle_owner_edit_profile";
 
+import TravelGuideList from "./pages/traveler/TravelGuide";
+
 // Sanduni
 import TravelerDashboard from "./pages/traveler/Dashboard";
 import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
 import Itinerary from "./pages/traveler/Itinerary";
 import Selections from "./pages/traveler/Selection";
-import TravelGuide from "./pages/traveler/TravelGuied";
+import TravelGuide from "./pages/traveler/TravelGuide";
 import HotelDetails from "./pages/traveler/Hotels";
 import Hotel from "./pages/traveler/HotelDetails";
 import Community from "./pages/traveler/Community";
@@ -108,7 +112,10 @@ import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
+
+
 import DestinationPage from "./pages/traveler/DestinationPage";
+import ActivityPage from "./pages/traveler/ActivityPage";
 import HotelPage from "./pages/traveler/HotelPage";
 import HotelType from "./pages/traveler/HotelType";
 import HotelPageMore from "./pages/traveler/HotelPageMore";
@@ -117,12 +124,23 @@ import PaymentSuccess from "./pages/traveler/PaymentSuccess";
 import HotelBook from "./pages/traveler/HotelBook";
 import VehiclePage from "./pages/traveler/VehiclePage";
 import VehicleMoreInfo from "./pages/traveler/VehicleMoreInfo";
+
+import TripHotelPage from "./pages/traveler/TripHotelPage";
+import TripHotelType from "./pages/traveler/TripHotelType";
+import TripHotelPageMore from "./pages/traveler/TripHotelPageMore";
+import TripHotelBook from "./pages/traveler/TripHotelBook";
+
+
+
+
+
+
 import Travelbuddy from "./pages/traveler/travelbuddy";
 import PrivateRoute from "./pages/main/PrivateRoute";
 
 export default function App() {
-  
-const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
+
+  const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
 
 
@@ -308,7 +326,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         ></Route>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />}/>
+        <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
@@ -320,7 +338,9 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
         {/* Tharindi */}
         <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
+        <Route path="/traveler/destinations/:id/:day" element={<Destinations />} />
         <Route path="/traveler/activities/:id/:day" element={<Activities />} />
+        <Route path="/traveler/mainactivities/:id/:day" element={<MainActivities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />
@@ -347,16 +367,31 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
+
+
+        {/* Trineesha */}
         <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
+        <Route exact path="/traveler/ActivityPage" element={<ActivityPage/>} />
         <Route exact path="/traveler/HotelPage/:user_id" element={<HotelPage />} />
-        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType/>} />
+        <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType />} />
         <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />
-        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook/>} />
-        <Route exact path="/traveler/HotelPayment" element={<HotelPayment/>} />
-        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess/>} />
+        <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook />} />
+        <Route exact path="/traveler/HotelPayment" element={<HotelPayment />} />
+        <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess />} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
-        <Route exact path="/traveler/VehicleMoreInfo/:vehicleId" element={<VehicleMoreInfo/>} />
+        <Route exact path="/traveler/VehicleMoreInfo/:vehicleId" element={<VehicleMoreInfo />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
+        <Route exact path="/traveler/travelGuide" element={<TravelGuideList />} />
+
+        <Route exact path="/traveler/TripHotelPage/:user_id/:tripId" element={<TripHotelPage />} />
+        <Route exact path="/traveler/TripHotelType/:user_id/:tripId/:hotelID" element={<TripHotelType />} />
+        <Route exact path="/traveler/TripHotelPageMore/:user_id/:tripId/:hotelID/:roomId" element={<TripHotelPageMore />} />
+        <Route exact path="/traveler/TripHotelBook/:user_id/:tripId/:hotelID/:roomId" element={<TripHotelBook />} />
+
+
+
+
+
       </Routes>
 
       <div className="bg-[#F6F8FA] w-full h-full"></div>

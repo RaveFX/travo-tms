@@ -223,4 +223,8 @@ public class TripService {
     public List<AttractionDTO> selectedAttractionListForMap(Integer tripID){
         return attractionJDBCDao.getAttractionListForMap(tripID);
     }
+
+    public List<GuideDTO> getGuideDetails(){
+        return tripJDBCDao.getGuideDetails();
+    }
 }

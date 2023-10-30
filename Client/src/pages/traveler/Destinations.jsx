@@ -100,7 +100,7 @@ function Attractions() {
   return (
     <div className="flex h-screen  ">
       <Sidebar
-        active="My Trips"
+        active="Dashboard"
         isSubSidebarOpen={isSubSidebarOpen}
         setIsSubSidebarOpen={setIsSubSidebarOpen}
         subSidebarState={subSidebarState}

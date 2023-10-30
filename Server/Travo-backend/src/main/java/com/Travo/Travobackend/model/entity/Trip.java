@@ -51,4 +51,7 @@ public class Trip {
     @OneToMany(mappedBy = "trip")
     private Set<TripSchedule> schedules = new HashSet<>();
 
+    @OneToMany(mappedBy = "trip")
+    private Set<Reservation> reservations = new HashSet<>();
+
 }

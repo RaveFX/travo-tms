@@ -5,7 +5,7 @@ import { StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button,Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -15,6 +15,9 @@ function HotelDetails() {
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [hotels,setHotels]=useState([]);
+
+  const user_id = sessionStorage.getItem('user_id');
+
 
 useEffect(() => {
     loadHotels();
@@ -115,6 +118,8 @@ const handleAddHotel = async (hotel) => {
           </div>
           </div>
       <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4" style={{ scrollbarWidth: 'none' }}>
+      <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {hotels.map((hotel) => (
             <div
@@ -161,6 +166,7 @@ const handleAddHotel = async (hotel) => {
             </div>
           ))}
         </div>
+        </Link>
       </div>
       </div>
       </div>

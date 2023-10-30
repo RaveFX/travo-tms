@@ -2,7 +2,7 @@ import React from 'react'
 // import Sidebar from '../../components/sidebar';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
-import Destinations from '../traveler/Destinations';
+import MainActivity from '../traveler/MainActivities';
 import { Rating, Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const travel_guide_mytours = () => {
     ]
     return (
         <div >
-            <Destinations/>
+            <MainActivity/>
         </div>
     )
 }

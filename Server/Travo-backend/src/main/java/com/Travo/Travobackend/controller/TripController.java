@@ -139,5 +139,9 @@ public class TripController {
         return tripService.selectedAttractionListForMap(tripID);
     }
 
+    @GetMapping("/guideList")
+    public List<GuideDTO> getGuideDetail(){
+        return tripService.getGuideDetails();
+    }
 
 }

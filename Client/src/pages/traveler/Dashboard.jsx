@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
+// import Attractions from '../traveler/Attractions';
+
 import CalanderMain from '../../components/web-component/CalanderMain';
 import { format, addMonths, subMonths, startOfMonth, eachDayOfInterval } from 'date-fns';
 import {
@@ -76,7 +78,7 @@ const Dashboard = () => {
       imageSrc:
         "https://cdn-production.checkfront.com/wp-content/uploads/2022/05/img_6273f0e0deafc.jpg",
       buttonname: "Find Now",
-      links: "/traveler/VehiclePage",
+      links: "/traveler/ActivityPage",
     },
     
   
@@ -200,7 +202,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className='w-[50%] h-auto'>
+            <div className='w-[32%] '>
             <div className="max-w-md mx-2 my-4">
             <div className="shadow-lg rounded-lg">
               {header()}
