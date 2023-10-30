@@ -1,4 +1,5 @@
 import React from "react";
+import { Link,useNavigate } from "react-router-dom";
 import {
   Tabs,
   TabsHeader,
@@ -9,9 +10,16 @@ import {
  
 export default function TabBar(props) {
 
+  const navigate = useNavigate();
   const {data} = props;
 
   const [activeTab, setActiveTab] = React.useState("all trips");
+  const handleTabClick = (value) => {
+    setActiveTab(value);
+    // Navigate to the specified route when a tab is clicked
+    navigate(`/${value}`);
+   
+  };
   return (
   
     <Tabs value={activeTab} className="ml-4">
@@ -22,14 +30,18 @@ export default function TabBar(props) {
         }}
       >
         {data.map(({ label, value }) => (
+
+         
           <Tab
             key={value}
             value={value}
-            onClick={() => setActiveTab(value)}
+            onClick={() => handleTabClick(value)}
             className={activeTab === value ? "text-[#30AA7C] font-bold" : ""}
           >
+          
             {label}
           </Tab>
+         
         ))}
       </TabsHeader>
       <TabsBody>

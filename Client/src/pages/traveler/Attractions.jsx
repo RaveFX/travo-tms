@@ -71,7 +71,7 @@ function Attractions() {
 
   const handleAddAttraction = async (attraction) => {
     try {
-      const photoReference = attraction.photos[0].photo_reference;
+      const photoReference = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.photos[0].photo_reference}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`;
       console.log('Photo Reference:', photoReference);
       // Make a POST request to your backend API endpoint to store the attraction details
       await axios.post("http://localhost:8080/api/v1/trip/add-attraction", {
@@ -80,6 +80,43 @@ function Attractions() {
         address : attraction.formatted_address,
         latitude: attraction.geometry.location.lat, // Include latitude
         longitude: attraction.geometry.location.lng, // Include longitude
+        img_url: photoReference,
+        trip_id: id,
+        day : day
+      });
+      
+      // Handle success, e.g., show a success message to the user
+      console.log("Attraction added successfully!");
+      // Display a success message using SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Attraction added successfully!',
+        showConfirmButton: false,
+        timer: 1500, // Automatically close after 1.5 seconds
+        customClass: {
+          container: 'custom-swal-container' // Define your custom class here
+        },
+        style: {
+          zIndex: 100000 // Set a high z-index value
+        }
+      });
+    } catch (error) {
+      // Handle error, e.g., show an error message to the user
+      console.error("Error adding attraction: ", error);
+    }
+  };
+
+  const handleAddSearchedAttraction = async (attraction) => {
+    try {
+      const photoReference = `${attraction.photos[0].getUrl()}`;
+      console.log('Photo Reference:', photoReference);
+      // Make a POST request to your backend API endpoint to store the attraction details
+      await axios.post("http://localhost:8080/api/v1/trip/add-attraction", {
+        place_id: attraction.place_id,
+        name: attraction.name,
+        address : attraction.formatted_address,
+        latitude: attraction.geometry.location.lat(), // Access latitude using lat() method
+        longitude: attraction.geometry.location.lng(),
         img_url: photoReference,
         trip_id: id,
         day : day
@@ -138,48 +175,48 @@ function Attractions() {
   const data = [
     {
       label: "All",
-      value: "all trips",
+      value: `traveler/attractions/${id}/${day}`,
       desc: ``,
       
     },
     {
       label: "Colombo",
-      value: "private",
+      value: `traveler/attractions_colombo/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Kandy",
-      value: "public",
+      value: `traveler/attractions_kandy/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Anuradhapura",
-      value: "a",
+      value: `traveler/attractions_anuradhapura/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Galle",
-      value: "b",
+      value: `traveler/attractions_galle/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Nuwara Eliya",
-      value: "c",
+      value: `traveler/attractions_nuwaraeliya/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Polonnaruwa",
-      value: "d",
+      value: `traveler/attractions_polonnaruwa/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Jaffna",
-      value: "e",
+      value: `traveler/attractions_jaffna/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Trincomalee",
-      value: "f",
+      value: `traveler/attractions_trincomalee/${id}/${day}`,
       desc: ``,
     },
    
@@ -273,7 +310,7 @@ function Attractions() {
                     ({result.rating}  reviews)
                   </span>
                   <div className="absolute bottom-2 right-2">
-                    <Button className="bg-green"  onClick={() => handleAddAttraction(result)}>Add</Button>
+                    <Button className="bg-green"  onClick={() => handleAddSearchedAttraction(result)}>Add</Button>
                   </div>
                 
                 </div>

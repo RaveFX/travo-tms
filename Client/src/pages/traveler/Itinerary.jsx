@@ -246,7 +246,7 @@ function Itinerary() {
                           <div className="flex items-center justify-center mb-2">
                           {attraction.img_url? (
                             <img
-                              src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.img_url}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`}
+                              src={`${attraction.img_url}`}
                               alt={`${attraction.name} - Photo`}
                               className="w-full h-44 rounded-md object-cover"
                             />

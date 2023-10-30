@@ -31,6 +31,14 @@ import Hotel_advertisments from "./pages/hotel/hotel_advertisments";
 import Hotel_roomDetails from "./pages/hotel/hotel_roomDetails";
 import Attractions from "./pages/traveler/Attractions";
 import Activities from "./pages/traveler/Activities";
+import AttractionsColombo from "./pages/traveler/AttractionsColombo";
+import AttractionsAnuradhapura from "./pages/traveler/AttractionsAnuradhapura";
+import AttractionsKandy from "./pages/traveler/AttractionsKandy";
+import AttractionsGalle from "./pages/traveler/AttractionsGalle";
+import AttractionsJaffna from "./pages/traveler/AttractionsJaffna";
+import AttractionsNuwaraEliya from "./pages/traveler/AttractionsNuwaraEliya";
+import AttractionsTrincomalee from "./pages/traveler/AttractionsTrincomalee";
+import AttractionsPolonnaruwa from "./pages/traveler/AttractionsPolonnaruwa";
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -318,6 +326,14 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         {/* Tharindi */}
         <Route path="/traveler/attractions/:id/:day" element={<Attractions />} />
         <Route path="/traveler/activities/:id/:day" element={<Activities />} />
+        <Route path="/traveler/attractions_colombo/:id/:day" element={<AttractionsColombo />} />
+        <Route path="/traveler/attractions_anuradhapura/:id/:day" element={<AttractionsAnuradhapura />} />
+        <Route path="/traveler/attractions_kandy/:id/:day" element={<AttractionsKandy />} />
+        <Route path="/traveler/attractions_jaffna/:id/:day" element={<AttractionsJaffna />} />
+        <Route path="/traveler/attractions_polonnaruwa/:id/:day" element={<AttractionsPolonnaruwa />} />
+        <Route path="/traveler/attractions_nuwaraeliya/:id/:day" element={<AttractionsNuwaraEliya />} />
+        <Route path="/traveler/attractions_trincomalee/:id/:day" element={<AttractionsTrincomalee />} />
+        <Route path="/traveler/attractions_galle/:id/:day" element={<AttractionsGalle />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />
