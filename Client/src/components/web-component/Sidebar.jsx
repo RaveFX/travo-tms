@@ -43,9 +43,10 @@ import {
 //     subSidebarState,
 //   } = props;
 //   // console.log(subSidebarState);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+ 
 
   export default function Sidebar(props) {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const navigate = useNavigate();
   
   
