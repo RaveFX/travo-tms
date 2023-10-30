@@ -90,6 +90,7 @@ import EditProfile from "./pages/activity_agent/Edit_Profile";
 import AddActivity from "./pages/activity_agent/Add_Activity";
 import Dashboard from "./pages/activity_agent/Dashboard";
 import ImageGrid from "./pages/activity_agent/Activity";
+import Activity_Details from "./pages/activity_agent/Activity_Details";
 
 // RavinduRave
 import HomePage from "./pages/main/home";
@@ -304,6 +305,11 @@ export default function App() {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/profile/edit_profile" element={<EditProfile />} />
         <Route exact path="/activities" element={<ImageGrid />} />
+        <Route
+          exact
+          path="/activities/view_activity"
+          element={<Activity_Details />}
+        />
         <Route
           exact
           path="/activities/add_activity"
