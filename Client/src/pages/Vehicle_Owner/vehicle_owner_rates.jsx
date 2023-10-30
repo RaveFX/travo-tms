@@ -109,7 +109,7 @@ const Rates = () => {
         { title: "Add New", variant: "outlined" }
     ]
     const lists = [
-        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/19.png" },
+        { names: "Suzuki Wagon R", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../../public/Vehicle_owner/19.png" },
         { names: "Perodua Axia", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/18.png" },
         { names: "Suzuki Alto", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/17.png" },
         { names: "Toyota Prius", seat: 4, large_bag: 1, milage: "Unlimited milage", type: "Automatic", small_bag: 1, price: "US$250", src: "../public/Vehicle_owner/16.png" },

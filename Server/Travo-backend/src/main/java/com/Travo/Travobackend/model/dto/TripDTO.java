@@ -18,4 +18,8 @@ public class TripDTO {
     private Date start_date;
     private Date end_date;
     private Integer completed;
+    private String trip_admin;
+    private String uniqueLink;
+
+  
 }

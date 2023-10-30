@@ -17,18 +17,17 @@ import java.util.List;
 @RequestMapping("/api/v1/hotel")
 @RequiredArgsConstructor
 
-
 public class HotelController {
     @Autowired
     private final HotelService hotelService;
 
-//    @GetMapping("/reservations")
-//    public List<HotelReservationDTO> getReservations(){
-//        return hotelService.hotelReservations();
-//    }
+    // @GetMapping("/reservations")
+    // public List<HotelReservationDTO> getReservations(){
+    // return hotelService.hotelReservations();
+    // }
 
     @GetMapping("/reservations/{userID}")
-    public List<HotelReservationDTO> getHotelReservations(@PathVariable Integer userID){
+    public List<HotelReservationDTO> getHotelReservations(@PathVariable Integer userID) {
         return hotelService.hotelOwnerReservations(userID);
     }
 //hotels get reservation details

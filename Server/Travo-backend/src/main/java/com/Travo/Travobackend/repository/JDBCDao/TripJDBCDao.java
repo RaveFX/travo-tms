@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Repository
 public class TripJDBCDao {
     @Autowired
@@ -25,7 +27,7 @@ public class TripJDBCDao {
 
         SQL.append("SELECT * FROM trip\n                                     ");
         SQL.append("INNER JOIN trip_member ON trip.trip_id = trip_member.trip_id        \n");
-        SQL.append("WHERE trip_member.member_id=:userID");
+        SQL.append("WHERE trip_member.user_id=:userID");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -64,6 +66,7 @@ public class TripJDBCDao {
                 tripDTO.setDescription(rs.getString("description"));
                 tripDTO.setStart_date(rs.getDate("start_date"));
                 tripDTO.setEnd_date(rs.getDate("end_date"));
+                tripDTO.setUniqueLink(rs.getString("unique_link"));
             }
             return tripDTO;
         });
@@ -101,4 +104,14 @@ public class TripJDBCDao {
     }
 
 
+    public List<TripDTO> getAllTrips(String SQL, Map<String, Object> params) {
+        return namedParameterJdbcTemplate.query(SQL, params, (rs, rowNum) -> {
+            TripDTO tripDTO = new TripDTO();
+            tripDTO.setTrip_id(rs.getInt("trip_id"));
+            tripDTO.setTrip_admin(rs.getString("trip_admin"));
+            tripDTO.setTrip_name(rs.getString("trip_name"));
+            return tripDTO;
+
+        });
+    }
 }

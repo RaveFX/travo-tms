@@ -18,39 +18,79 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  
+
 } from "@material-tailwind/react";
+import SwiperCard from '../../components/web-component/SwiperCard';
+
+
 
 
 function Mytrips() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [tripinfo, setTripinfo] = useState([]);
 
   const user_id = sessionStorage.getItem('user_id');
-  const [trips,setTrips]=useState([]);
-  const [details,setDetails]=useState([]);
+  const [trips, setTrips] = useState([]);
+  const [details, setDetails] = useState([]);
 
-    useEffect(() => {
-        loadTrips();
-    },[]); 
+  useEffect(() => {
+    loadTrips();
+  }, []);
 
-    const loadTrips=async()=>{
-        const result=await axios.get(`http://localhost:8080/api/v1/trip/tripList/${user_id}`)
-        setTrips(result.data);
-    }
+  const loadTrips = async () => {
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/tripList/${user_id}`)
+    setTrips(result.data);
+  }
 
 
   // const handleNavigate = () => {
   //   // Example: Navigate to '/other-page' when the button is clicked
   //   navigate('/planner');
   // };
+  console.log(user_id);
+
+  const createTrip = async () => {
+    setIsOpen(true);
+    try {
+      const tripResponse = await axios.post('http://localhost:8080/api/v1/trips/create', {
+        trip_admin: user_id,
+      });
+
+      console.log('Trip created:', tripResponse.data);
+      const tripId = tripResponse.data.tripId;
+      const unique_link = tripResponse.data.unique_link;
+
+      const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trips/create-members', {
+        user_id: user_id,
+        trip_id: tripId,
+      });
+
+      console.log('Trip members created:', tripMembersResponse.data);
+      navigate(`/traveler/trip-planner/${tripId}`);
+    } catch (error) {
+      console.error('Error creating trip:', error);
+    }
+  };
+
+  const handleCardClick = (trip) => {
+    console.log('Card clicked for trip:', trip);
+  };
+
+  // useEffect(() => {
+  //   loadTripinfo();
+  // }, []);
+
+  // const loadTripinfo = async () => {
+  //   const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
+  //   setTripinfo(result.data);
+  // }
 
   const data = [
     {
       label: "All Trips",
       value: "all trips",
       desc: ``,
-      
     },
     {
       label: "Private Trips",
@@ -68,79 +108,76 @@ function Mytrips() {
       desc: ``,
     },
   ];
-//   const [activeTab, setActiveTab] = React.useState("all trips");
-const handleCreateTripClick = () => {
-  setIsOpen(true);
-};
 
-const handleOpenCalander = () => {
-  setIsOpen(true);
-};
+  const handleCreateTripClick = () => {
+    setIsOpen(true);
+  };
+
   return (
     <div className="flex h-screen overflow-hidden">
-        <Sidebar active="My Trips"/>
-        <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 ">
-          <TopNavbar />
+      <Sidebar active="My Trips" />
+      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 ">
+        <TopNavbar />
+        <div>
           <div className='flex justify-between'>
-              <div className="w-[70%] pt-8 ">
-                  <TabBar data={data} />
-              </div>
-              <Button 
-                className='h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'
-                onClick={handleCreateTripClick}>
-                  Create Trip
-              </Button>
+            <div className="w-[70%] pt-8 ">
+              <TabBar data={data} />
+            </div>
+
+            <Button onClick={createTrip} className='h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
+              Create Trip
+            </Button>
           </div>
           <div className='swiper container h-fit w-[1720px] hover:none'>
-          <Swiper
-            className='h-[100%] w-[100%]'
-            slidesPerView={4}
-            initialSlide={2}
-            freeMode={true}
-            navigation={{
-              nextEl: ".swiper-next",
-              prevEl: ".swiper-prev",
-              clickable: true,
-            }}
-            modules={[Navigation, FreeMode]}
-          >
-            
+            <Swiper
+              className='h-[100%] w-[100%]'
+              slidesPerView={4}
+              initialSlide={2}
+              freeMode={true}
+              navigation={{
+                nextEl: ".swiper-next",
+                prevEl: ".swiper-prev",
+                clickable: true,
+              }}
+              modules={[Navigation, FreeMode]}
+            >
+
               {/* Swiper slides */}
               <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
-              {
-              trips.map((trips)=>(
-                <SwiperSlide className='w-[100%]'>
-               
-                <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
-                <CardHeader color="blue-gray" className="relative h-56">
-                    <img src="/traveler/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />
-                </CardHeader>
-                <CardBody>
-                  <Typography variant="h5" color="blue-gray" className="mb-2">
-                  {trips.trip_name}
-                  </Typography>
-                  
-                  <Typography>
-                  {trips.description}
-                  </Typography>
-                  <Typography className="flex flex-row ">
-                    Start Date : {trips.start_date}
-                  </Typography>
-                  <Typography className="flex flex-row ">
-                    End Date : {trips.end_date}
-                  </Typography>
-                </CardBody>
-                <CardFooter className="flex justify-between p-0">
-                <Link to={`/traveler/trip-planner/${trips.trip_id}`}><Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] ">Check</Button></Link>
-                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Remove</Button>
-                </CardFooter>
-              </Card>
-              
-                </SwiperSlide>
-              ))
-              }
-                </div>
-                <div className="flex justify-center w-[100%] absolute bottom-7 z-10 ">
+                {
+                  trips.map((trips) => (
+                    <SwiperSlide className='w-[100%]'>
+
+                      <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
+                        <CardHeader color="blue-gray" className="relative h-56">
+                          <img src="/traveler/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />
+                        </CardHeader>
+                        <CardBody>
+                          <Typography variant="h5" color="blue-gray" className="mb-2">
+                            {trips.trip_name}
+                          </Typography>
+
+                          <Typography>
+                            {trips.description}
+                          </Typography>
+                          <Typography className="flex flex-row ">
+                            Start Date : {trips.start_date}
+                          </Typography>
+                          <Typography className="flex flex-row ">
+                            End Date : {trips.end_date}
+                          </Typography>
+                        </CardBody>
+                        <CardFooter className="flex justify-between p-0">
+                          <Link to={`/traveler/trip-planner/${trips.trip_id}`}><Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] ">Check</Button></Link>
+                          <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Remove</Button>
+                        </CardFooter>
+                      </Card>
+
+                    </SwiperSlide>
+                  ))
+                }
+              </div>
+              <div className="flex justify-center w-[100%] absolute bottom-7 z-10 ">
                 <div className="flex items-end justify-between px-[1rem] w-auto h-auto ">
                   {/* <Link to="/traveler/travelGuide">
                     <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A]">Guide</Button>
@@ -156,9 +193,25 @@ const handleOpenCalander = () => {
                   </div>
                 </div>
               </div>
-          </Swiper>
+            </Swiper>
+          </div>
+          <PopupModal isOpen={isOpen} setIsOpen={setIsOpen} />
+          {/*<div className="trip-list">
+            {tripinfo.map((tripinfo) => (
+              <Link to={`/traveler/trip-planner/${tripinfo.tripId}`} >
+                <button
+                  className="h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold"
+                  onClick={() => handleCardClick(tripinfo)}
+                >
+                  {tripinfo.tripId} {tripinfo.trip_admin}
+                </button>
+              </Link>
+            ))}
+            </div>*/}
+
         </div>
-          <PopupModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+
+        <PopupModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
   );

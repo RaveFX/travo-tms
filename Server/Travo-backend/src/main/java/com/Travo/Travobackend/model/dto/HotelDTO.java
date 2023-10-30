@@ -11,8 +11,25 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelDTO {
-    private Integer hotel_id;
+    private String hotel_description;
+    private Integer adult_count;
+    private Integer child_count;
+    private Integer price;
+    private Integer discount;
+    private String view;
+    private Boolean ac;
+    private Boolean wifi;
+    private Boolean breakfast;
+    private Boolean lunch;
+    private Boolean Dinner;
     private String hotel_name;
+    private Integer hotel_id;
+    private String room_name;
+    private Integer room_id;
+    private String room_description;
+
+
+   //for the schedule
     private String description;
     private String hotel_img;
     private Double total_reviews;

@@ -5,13 +5,15 @@ import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import Chat from "../../components/web-component/Chat";
 import Calendar from "../../components/web-component/calander";
-import { PlanStepper} from "../../components/web-component/Stepper";
+import { PlanStepper } from "../../components/web-component/Stepper";
 import BacknNext from "../../components/web-component/BackNext";
 import { TripNameBar } from "../../components/web-component/TripName";
 import { useNavigate } from "react-router-dom";
 import Notepad from "../../components/web-component/Notepad";
 import Map from "../../components/web-component/Map";
 import { SpeedDialPop } from "../../components/web-component/SpeedPop";
+
+
 
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import {
@@ -21,12 +23,14 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 
+//const trip_id = sessionStorage.getItem('trip_id');
+
 function TripPlanner() {
   const { id } = useParams();
-  const [details,setDetails]=useState([]);
+  const [details, setDetails] = useState([]);
   useEffect(() => {
     loadDetails();
-  },[]); 
+  }, []);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const handleBackClick = () => {
@@ -34,8 +38,11 @@ function TripPlanner() {
     navigate("/mytrips");
   };
 
+  const user_id = sessionStorage.getItem('user_id');
+  console.log(user_id)
+
   const loadDetails = async () => {
-    const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
     setDetails(result.data);
   };
 
@@ -101,8 +108,8 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-auto" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar trip_name={details.trip_name} description={details.description}/>
-            
+            <TripNameBar trip_name={details.trip_name} description={details.description} />
+
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />
             )} */}
@@ -147,6 +154,8 @@ function TripPlanner() {
             >
               <div>{selectedComponent}</div>
             </PlanStepper>
+
+
             {/* <BacknNext className="flex justify-center overflow-hidden" onBackClick={handleBackClick} onNextClick={handleNextClick} />  */}
           </div>
         </div>

@@ -1,4 +1,5 @@
 package com.Travo.Travobackend.repository;
+
 import com.Travo.Travobackend.model.entity.StoreManager;
 import com.Travo.Travobackend.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,7 @@ public interface StoreManagerRepository extends JpaRepository<StoreManager, Inte
     Optional<StoreManager> findByBrn(String brn);
 
     Optional<StoreManager> findById(Integer store_id);
+
     @Query("SELECT s FROM StoreManager s WHERE s.user = :user")
     Optional<StoreManager> findByUserId(User user);
 

@@ -13,6 +13,7 @@ public interface ActivityAgentRepository extends JpaRepository<ActivityAgent, In
     Optional<ActivityAgent> findByBrn(String brn);
 
     Optional<ActivityAgent> findById(Integer agent_id);
+
     @Query("SELECT a FROM ActivityAgent a WHERE a.user = :user")
     Optional<ActivityAgent> findByUserId(User user);
 

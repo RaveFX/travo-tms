@@ -26,7 +26,7 @@ public class HotelService {
 //        return reservationJDBCDao.getAllHotelReservations();
 //    }
 
-    public List<HotelReservationDTO> hotelOwnerReservations(Integer userID){
+    public List<HotelReservationDTO> hotelOwnerReservations(Integer userID) {
         return reservationJDBCDao.getHotelReservations(userID);
     }
 

@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface GuideRepository extends JpaRepository<Guide, Integer> {
     Optional<Guide> findById(Integer guide_id);
+
     @Query("SELECT g FROM Guide g WHERE g.user = :user")
     Optional<Guide> findByUserId(User user);
 
