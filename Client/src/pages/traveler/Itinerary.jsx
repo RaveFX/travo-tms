@@ -62,7 +62,11 @@ function Itinerary() {
     }
   };
 
-  const handleRemoveAttraction = (attraction) => {
+  const handleRemoveAttraction = async(attraction) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -94,9 +98,30 @@ function Itinerary() {
         }
       }
     });
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
-  const handleRemoveHotel = (hotel) => {
+  const handleRemoveHotel = async(hotel) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -128,9 +153,30 @@ function Itinerary() {
         }
       }
     });
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
-  const handleRemoveActivity = (activity) => {
+  const handleRemoveActivity = async(activity) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -162,6 +208,24 @@ function Itinerary() {
         }
       }
     });
+
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to add items to this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
 
