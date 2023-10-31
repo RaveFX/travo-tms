@@ -15,16 +15,44 @@ public class AttractionPollJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public List<AttractionPollDTO> getSelectedAttractionPollList(Integer tripID, Integer day) {
+    public List<AttractionPollDTO> getSelectedAttractionPollList(Integer tripID, Integer day, Integer userId) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<AttractionPollDTO> attractions = new ArrayList<>();
         params.put("tripID", tripID);
         params.put("day", day);
+        params.put("userId", userId);
 
-        SQL.append("SELECT * FROM attraction_poll  \n");
-        SQL.append("WHERE trip_id=:tripID AND day=:day       \n");
-        SQL.append("AND place_id NOT IN (SELECT type_id FROM trip_schedule WHERE trip_id=:tripID AND day=:day AND type='attraction ')       \n");
+        SQL.append("SELECT * FROM attraction_poll WHERE trip_id= :tripID AND day= :day AND id NOT IN (SELECT attractionpoll_id FROM poll_user WHERE user_id=:userId );");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                AttractionPollDTO attractionPollDTO = new AttractionPollDTO();
+
+                attractionPollDTO.setPlace_id(rs.getString("place_id"));
+                attractionPollDTO.setName(rs.getString("name"));
+                attractionPollDTO.setAddress(rs.getString("address"));
+                attractionPollDTO.setImg_url(rs.getString("img_url"));
+                attractionPollDTO.setId(rs.getInt("id"));
+                attractionPollDTO.setDay(rs.getInt("day"));
+                attractionPollDTO.setTotal_votes(rs.getInt("total_votes"));
+
+                attractions.add(attractionPollDTO);
+            }
+            return attractions;
+        });
+
+    }
+
+    public List<AttractionPollDTO> getSelectedAttractionVotedPollList(Integer tripID, Integer day, Integer userId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<AttractionPollDTO> attractions = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
+        params.put("userId", userId);
+
+        SQL.append("SELECT * FROM attraction_poll WHERE trip_id= :tripID AND day= :day AND id IN (SELECT attractionpoll_id FROM poll_user WHERE user_id=:userId );");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -46,7 +74,7 @@ public class AttractionPollJDBCDao {
     }
 
     public void updateAttractionPoll(Integer tripId, Integer attractionId, Boolean isChecked, Integer day) {
-        // Determine the value to add to total_votes based on the isChecked flag.
+
         int x = isChecked ? 1 : -1;
 
         String sql = "UPDATE attraction_poll SET total_votes = total_votes + :x WHERE id = :attractionId AND trip_id = :tripId AND day = :day";
@@ -60,7 +88,6 @@ public class AttractionPollJDBCDao {
         String selectSql = "SELECT total_votes FROM attraction_poll WHERE id = :attractionId AND trip_id = :tripId AND day = :day";
         Integer currentTotalVotes = namedParameterJdbcTemplate.queryForObject(selectSql, paramMap, Integer.class);
 
-        // Ensure the total votes won't become 0
         if (currentTotalVotes != null && (isChecked || currentTotalVotes + x > 0)) {
             namedParameterJdbcTemplate.update(sql, paramMap);
         }

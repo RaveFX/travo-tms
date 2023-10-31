@@ -69,8 +69,12 @@ public class PollService {
         }
     }
 
-    public List<AttractionPollDTO> selectedAttractionList(Integer tripID, Integer day){
-        return attractionPollJDBCDao.getSelectedAttractionPollList(tripID, day);
+    public List<AttractionPollDTO> selectedAttractionList(Integer tripID, Integer day, Integer userId){
+        return attractionPollJDBCDao.getSelectedAttractionPollList(tripID, day, userId);
+    }
+
+    public List<AttractionPollDTO> selectedAttractionVotedList(Integer tripID, Integer day, Integer userId){
+        return attractionPollJDBCDao.getSelectedAttractionVotedPollList(tripID, day, userId);
     }
 
     public void updateAttractionPoll(Integer tripId, Integer AttractionId, Boolean isChecked, Integer day) {

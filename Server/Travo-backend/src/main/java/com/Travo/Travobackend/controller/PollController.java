@@ -24,9 +24,14 @@ public class PollController {
         return pollService.addAttraction(attractionPollDTO);
     }
 
-    @GetMapping("/pollAttractionList/{tripID}/{day}")
-    public List<AttractionPollDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
-        return pollService.selectedAttractionList(tripID, day);
+    @GetMapping("/pollAttractionList/{tripID}/{day}/{userId}")
+    public List<AttractionPollDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedAttractionList(tripID, day, userId);
+    }
+
+    @GetMapping("/pollAttractionVotedList/{tripID}/{day}/{userId}")
+    public List<AttractionPollDTO> getSelectedAttractionVotedList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedAttractionVotedList(tripID, day, userId);
     }
 
     @PutMapping("/updateAttractionTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
