@@ -32,6 +32,17 @@ public class TripController {
         return tripService.updateTrip(tripID, tripDTO);
     }
 
+    @PutMapping("/dates/{tripID}")
+    public String updateDate(
+            @PathVariable Integer tripID,
+            @RequestBody TripDTO tripDTO
+    ){
+        return tripService.updateDate(tripID, tripDTO);
+
+    }
+
+
+
 
     @GetMapping("/tripList/{userID}")
     public List<TripDTO> getTripList(@PathVariable Integer userID){

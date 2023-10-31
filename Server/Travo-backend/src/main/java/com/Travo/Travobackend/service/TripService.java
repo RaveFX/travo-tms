@@ -122,6 +122,23 @@ public class TripService {
         return null;
     }
 
+    public String updateDate(Integer tripID, TripDTO tripDTO) {
+        Trip existingTrip = tripRepository.findById(tripID).orElse(null);
+
+        if(existingTrip != null){
+
+            existingTrip.setStart_date(tripDTO.getStart_date());
+            existingTrip.setEnd_date(tripDTO.getEnd_date());
+
+            tripRepository.save(existingTrip);
+
+            return ("Date added successfully!");
+
+        }
+
+        return ("Date unsuccessfully!");
+    }
+
 
 
 

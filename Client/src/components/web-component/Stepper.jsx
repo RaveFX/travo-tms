@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Calendar from "./calander";
 import Itinerary from "../../pages/traveler/Itinerary";
 import { Saves } from "../../pages/traveler/Saves";
@@ -22,9 +24,36 @@ export function PlanStepper(props) {
   // const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
+  const { id } = useParams();
 
-  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  // const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
+
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(null);
+
+  const handleNext = () => {
+    if (isLastStep) return;
+    if (activeStep === 0) {
+      const updateTripDetailsDates = async () => {
+        try {
+          let dates = {
+            start_date: from,
+            end_date: to,
+          };
+          console.log("dates", dates);
+          console.log("Trip_id",id)
+          let response = await axios.put(`http://localhost:8080/api/v1/trip/dates/${id}`, dates);
+          setActiveStep((cur) => cur + 1);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      updateTripDetailsDates();
+    }
+    //
+  };
+
 
   // activeStep = props;
 
@@ -41,7 +70,9 @@ export function PlanStepper(props) {
   let stepContent;
   switch (activeStep) {
     case 0:
-      stepContent = <Calendar />;
+      stepContent = (
+        <Calendar Id={id} to={to} from={from} setFrom={setFrom} setTo={setTo} />
+      );
       setIsSubSidebarOpen(false);
       break;
     case 1:
