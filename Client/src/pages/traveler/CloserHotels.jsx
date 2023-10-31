@@ -9,22 +9,58 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-function HotelDetails() {
-  const { id , day} = useParams();
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+    const R = 6371;
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLon = ((lon2 - lon1) * Math.PI) / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    return distance;
+  };
+  
+function CloserHotels() {
+    const { id , day} = useParams();
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [hotels,setHotels]=useState([]);
-
-useEffect(() => {
-    loadHotels();
-},[]); 
+  const [attractions, setAttractions] = useState([]);
+  const [loading, setLoading] = useState(true)
 
 
-const loadHotels=async()=>{
-    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
-    setHotels(result.data);
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const hotelsResult = await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`);
+        const attractionsResult = await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${day}`);
+
+        const filteredHotels = hotelsResult.data.filter((hotel) => {
+          const nearbyAttractions = attractionsResult.data.filter((attraction) => {
+            const distance = calculateDistance(attraction.latitude, attraction.longitude, hotel.latitude, hotel.longitude);
+            console.log(distance);
+            return distance <= 10;
+          });
+          return nearbyAttractions.length > 0;
+        });
+        console.log(filteredHotels);
+
+        setHotels(filteredHotels);
+        setAttractions(attractionsResult.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading data: ", error);
+        setLoading(false);
+      }
+    };fetchData();
+}, [id, day]);
+
+
+
+
+
+
 const handleAddHotel = async (hotel) => {
   try {
     // Make a POST request to your backend API endpoint to store the attraction details
@@ -33,8 +69,22 @@ const handleAddHotel = async (hotel) => {
       trip_id: id,
       day : day
     });
-    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
-    setHotels(result.data);
+    const hotelsResult = await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`);
+        const attractionsResult = await axios.get(`http://localhost:8080/api/v1/trip/selectedAttractionList/${id}/${day}`);
+
+        const filteredHotels = hotelsResult.data.filter((hotel) => {
+          const nearbyAttractions = attractionsResult.data.filter((attraction) => {
+            const distance = calculateDistance(attraction.latitude, attraction.longitude, hotel.latitude, hotel.longitude);
+            console.log(distance);
+            return distance <= 10;
+          });
+          return nearbyAttractions.length > 0;
+        });
+        console.log(filteredHotels);
+
+        setHotels(filteredHotels);
+        setAttractions(attractionsResult.data);
+        setLoading(false);
     // Handle success, e.g., show a success message to the user
     console.log("Hotel added successfully!");
     // Display a success message using SweetAlert2
@@ -73,7 +123,11 @@ const handleAddHotel = async (hotel) => {
       value: "public",
       desc: ``,
     },
+    
   ];
+
+  
+
   return (
     <div className="flex h-screen overflow-hidden ">
     <Sidebar
@@ -93,8 +147,8 @@ const handleAddHotel = async (hotel) => {
           </div>
       <div className="container mx-4  overflow-hidden">
       <div  style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-      <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6">
-        Hotels and Accommodations
+      <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6 mt-2">
+        Closer Hotels and Accommodations
       </h1>
       
       <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
@@ -117,7 +171,7 @@ const handleAddHotel = async (hotel) => {
             <div
               key={hotel.hotel_id}
               className="bg-white p-4 rounded-lg shadow border relative "
-              onClick={""}
+              
             >
               <div className="flex items-center justify-center mb-2">
                 <img
@@ -167,4 +221,4 @@ const handleAddHotel = async (hotel) => {
   );
 }
 
-export default HotelDetails;
+export default CloserHotels

@@ -32,6 +32,8 @@ public class HotelJDBCDao {
                 hotelDTO.setHotel_img(rs.getString("hotel_img"));
                 hotelDTO.setDescription(rs.getString("description"));
                 hotelDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+                hotelDTO.setLongitude(rs.getBigDecimal("longitude"));
+                hotelDTO.setLatitude(rs.getBigDecimal("latitude"));
 
                 hotels.add(hotelDTO);
             }
