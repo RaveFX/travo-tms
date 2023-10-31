@@ -101,9 +101,48 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
 
 //    ====================Activity Agent===================
 
+    @GetMapping("/agentList/{agentId}")
+    public List<ActivityDTO> getAgent(@PathVariable Integer agentId){
+        return traveleroptionService.agents(agentId);
+
+    }
     @GetMapping("/eventList/{agentId}")
     public List<ActivityDTO> getEvent(@PathVariable Integer agentId){
         return traveleroptionService.events(agentId);
+
+    }
+
+    @GetMapping("/activity/{agentId}/{eventId}")
+    public List<ActivityDTO> eventDetails(@PathVariable Integer agentId,@PathVariable Integer eventId){
+        return traveleroptionService.eventDetails(agentId,eventId);
+
+    }
+
+    @PostMapping("/activityBooking/{userId}/{agentId}/{eventId}")
+    public String tripHotelBooking(
+            @RequestBody ActivityDTO activityDTO,
+            @PathVariable Integer userId,
+            @PathVariable Integer eventId,
+            @PathVariable Integer agentId
+            ){
+        return traveleroptionService.activityBooking(activityDTO,userId,agentId,eventId);
+
+    }
+
+
+    @GetMapping("/checkBookingAvailability/{eventId}")
+    public List<ActivityDTO> getBookingAvailability(
+            @PathVariable Integer eventId
+    ){
+        return traveleroptionService.bookingAvailability(eventId);
+
+    }
+
+    @GetMapping("/ticketCount/{eventId}")
+    public List<ActivityDTO> getCount(
+            @PathVariable Integer eventId
+    ){
+        return traveleroptionService.ticketCount(eventId);
 
     }
     }

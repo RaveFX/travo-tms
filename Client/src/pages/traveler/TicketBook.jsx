@@ -26,38 +26,42 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 function App() {
-    const [boardType, setBoardType] = useState('');
     const [checkin_date, setCheckin_date] = useState('');
-    const [checkout_date, setCheckout_date] = useState('');
     const [checkinDate, setCheckinDate] = useState(null);
     const [reservedDates, setReservedDates] = useState([]);
     const [count, setCount] = useState(0);
+    const [counts, setCounts] = useState([]);
 
-    const [fullPayment, setFullPayment] = useState('')
+    const [fullPayment, setFullPayment] = useState(0)
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
 
-    const [hotels, setHotels] = useState([]);
+    const [ticket, setTicket] = useState([]);
 
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
 
     const roomId = decodeURIComponent(splitURL[6]);
     const hotelId = decodeURIComponent(splitURL[5]);
-
     const room_Id = decodeURIComponent(splitURL[5]);
+    const agentid = decodeURIComponent(splitURL[5]);
+    const eventid = decodeURIComponent(splitURL[6]);
+    const event_id = decodeURIComponent(splitURL[5]);
+    const event_Id = decodeURIComponent(splitURL[5]);
 
 
-    const increment = () => {
-        setCount(count + 1);
+    const calculateFullPayment = (count) => {
+        // Replace this logic with your actual full payment calculation
+        // Assuming ticketPrice is the price of a single ticket
+        const ticketPrice = ticket.length > 0 ? ticket[0].ticket_price : 0;
+        return count * ticketPrice;
     };
 
-    const decrement = () => {
-        if (count > 0) {
-            setCount(count - 1);
-        }
-    };
-
+    // Update full payment when count changes
+    useEffect(() => {
+        const newFullPayment = calculateFullPayment(count);
+        setFullPayment(newFullPayment);
+    }, [count, ticket]);
 
 
 
@@ -65,7 +69,7 @@ function App() {
         const fetchReservedDates = async () => {
             // Make an API call to fetch the reserved dates for this room
             try {
-                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}`);
+                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkBookingAvailability/${event_Id}`);
                 // const reservedDatesResponse = response.data;
                 // Assuming the response is an array of reserved dates, update the state
                 setReservedDates(response.data);
@@ -78,6 +82,7 @@ function App() {
         fetchReservedDates();
     }, []);
 
+
     const isDateReserved = (date) => {
         // Format the date as a string to match your reserved dates format
         const formattedDate = date.format('YYYY-MM-DD'); // Adjust the format as needed
@@ -85,73 +90,63 @@ function App() {
         // Check if the formatted date is in your list of reserved dates
         return reservedDates.includes(formattedDate);
     };
-
+   
     useEffect(() => {
-        const loadHotels = async () => {
+        const loadTicket = async () => {
             try {
-                const result = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}/${roomId}`)
-                setHotels(result.data);
+                const result = await axios.get(`http://localhost:8080/api/v1/traveler/activity/${agentid}/${eventid}`)
+                setTicket(result.data);
 
             } catch (error) {
-                console.error('Error fetching hotel details:', error);
+                console.error('Error fetching ticket details:', error);
             }
         };
-        loadHotels();
-    }, [hotelId, roomId]);
+        loadTicket();
+    }, [agentid, eventid]);
+
+    
+
+    useEffect(() => {
+        const loadCounts = async () => {
+            try {
+                const result = await axios.get(`http://localhost:8080/api/v1/traveler/ticketCount/${event_id}`)
+                setCounts(result.data);
 
 
-    const userID = decodeURIComponent(splitURL[5]);
-    const roomID = decodeURIComponent(splitURL[7]);
-    const hotelID = decodeURIComponent(splitURL[6]);
+            } catch (error) {
+                console.error('Error fetching count:', error);
+            }
+        };
+        loadCounts();
+    }, [event_id]);
 
-    const handleBoardTypeChange = (value) => {
-        setBoardType(value);
+   
 
-        // Calculate the fullPayment based on the selected board type and hotels data
-        if (value === 'FullBoard') {
-            setFullPayment(hotels[0].price); // Replace with the actual data
-        } if (value === 'HalfBoard') {
-            setFullPayment(Math.floor((2 * hotels[0].price) / 3)); // Replace with the actual data
-        }
-    };
+
 
     const checkinDateString = dayjs(checkin_date).format('YYYY-MM-DD');
-
+    const userID = decodeURIComponent(splitURL[5]);
+    const agentId = decodeURIComponent(splitURL[6]);
+    const eventId = decodeURIComponent(splitURL[7]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = {};
 
-
-        if (!boardType) {
-            validationErrors.boardType = "Board Type is required";
-        }
         if (!checkin_date) {
             validationErrors.checkin_date = "Check In is required";
         }
-        if (!checkout_date) {
-            validationErrors.checkout_date = "Check Out is required";
-        }
-
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            if (boardType && checkin_date && checkout_date) {
+            if (checkin_date) {
                 setErrors({});
-            }
-            if (checkin_date > checkout_date) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Check Out date should be after Check In date',
-                });
-                return;
             }
             if (new Date(checkin_date) < new Date()) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Check In date should be after today',
+                    text: 'Selected Date should be after today',
                 });
                 return;
             }
@@ -165,25 +160,40 @@ function App() {
                     return;
                 }
             }
+            // Find the available quantity for the selected date
+        const selectedDate = dayjs(checkin_date).format('YYYY-MM-DD');
+
+        for (const count of counts) {
+            if (selectedDate === count.date) {
+                if(count.sum_TicketCount >=count.ticket_quantity){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No more tickets available for this date',
+                });
+                return;
+            }
+        
+            }}
+        
 
 
-            if (hotels.length > 0) {
+            if (ticket.length > 0) {
                 try {
-                    let fullPayment;
+                    // let fullPayment;
+                    // fullPayment = count * ticket.ticket_price;
+                    // console.log(fullPayment);
 
-                    if (boardType === "FullBoard") {
-                        fullPayment = hotels[0].price;
-                    } if (boardType === "HalfBoard") {
-                        fullPayment = Math.floor((2 * hotels[0].price) / 3);
-                    }
+                    // Calculate the full payment based on the current count
+                    const calculatedFullPayment = calculateFullPayment(count);
 
                     await axios.post(
-                        `http://localhost:8080/api/v1/traveler/hotelBooking/${userID}/${hotelID}/${roomID}`, {
-                        boardType: boardType,
-                        payment: fullPayment,
+                        `http://localhost:8080/api/v1/traveler/activityBooking/${userID}/${agentId}/${eventId}`, {
+                        payment: calculatedFullPayment,
+                        price_per_ticket: ticket[0].ticket_price,
                         status: 0,
-                        checkin_date: checkin_date,
-                        checkout_date: checkout_date,
+                        quantity: count,
+                        date: checkin_date,
 
                     }
 
@@ -192,10 +202,20 @@ function App() {
 
                     navigate("/traveler/HotelPayment");
                 } catch (error) {
-                    console.error("Error storing boardType: ", error);
+                    console.error("Error storing Ticket Booking: ", error);
                 }
             }
 
+        }
+    };
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+
+    const decrement = () => {
+        if (count > 0) {
+            setCount(count - 1);
         }
     };
 
@@ -229,11 +249,7 @@ function App() {
                                                         label="Select Date"
                                                         value={checkin_date}
                                                         onChange={(value) => setCheckin_date(value)}
-                                                    // disabled={(date) => isDateReserved(date)}
-                                                    // disabled={(date) => reservedDates.some(reservedDate => date.isSame(reservedDate, 'day'))
                                                     />
-
-
                                                 </DemoContainer>
                                             </LocalizationProvider>
                                         </div>
@@ -241,13 +257,8 @@ function App() {
 
                                     </div>
 
-
-                                    {/* <div className="w-72">
-                                        {errors.boardType && (
-                                            <p className="text-red-500">{errors.boardType}</p>
-                                        )} */}
                                     <div>
-                                        <h2>Counter: {count}</h2>
+                                        <h2>Counter:{count} </h2>
                                         <Button className='bg-gray-500 text-black mx-2' onClick={decrement}>
                                             <FontAwesomeIcon icon={faMinus} />
                                         </Button>
@@ -258,6 +269,7 @@ function App() {
                                     {fullPayment !== null && (
                                         <p className='mt-5'>Full Payment: Rs. {fullPayment}</p>
                                     )}
+                                   
 
 
                                     {/* </div> */}
@@ -269,7 +281,7 @@ function App() {
                                     //  onClick={()=>handleBookings(booking)} 
                                     type='submit'
                                     fullWidth
-                                    disabled={!checkin_date || count===0 }>
+                                    disabled={!checkin_date || count === 0}>
                                     Book Now
                                 </Button>
 

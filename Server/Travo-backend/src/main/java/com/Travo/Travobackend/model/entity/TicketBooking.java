@@ -19,14 +19,19 @@ public class TicketBooking {
     @Id
     @GeneratedValue
     private Integer booking_id;
-    private LocalDate date;
+    private Date date;
     private Integer price_per_ticket;
     private Integer quantity;
     private String Status;
+    private Integer payment;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "agent_id", referencedColumnName = "agent_id" )
+    private ActivityAgent activityAgent;
 
     @ManyToOne
     @JoinColumn(name = "event_id", referencedColumnName = "event_id" )

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -26,11 +27,19 @@ public class ActivityDTO {
     private Integer event_id;
     private String event_name;
     private String event_description;
-    private String date;
+    private String Event_date; //like every sunday
+    private Date date;
     private Time start_time;
     private Time end_time;
     private Integer ticket_price;
     private Integer ticket_quantity;
     private Integer quantity;
+    private Integer price_per_ticket;
+    private String Status;
+    private Integer booking_id;
+    private Integer user_id;
+    private Integer sum_TicketCount;
+    private Integer payment;
+
 
 }

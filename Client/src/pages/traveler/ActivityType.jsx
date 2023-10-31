@@ -13,13 +13,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function App() {
-    const [hotel, setHotel] = useState([]);
     const [events, setTypes] = useState([]);
+    const [count, setCount] = useState([]);
+    const [agent, setAgent] = useState([]);
 
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
     const user_id = decodeURIComponent(splitURL[5]);
     const activityId = decodeURIComponent(splitURL[6]);
+    const agentId = decodeURIComponent(splitURL[5]);
     
     // console.log("Type: ", hotelId)
 
@@ -37,6 +39,25 @@ function App() {
         };
         loadTypes();
     }, [activityId]);
+
+    useEffect(() => {
+        const loadAgent = async () => {
+            try {
+                const result = await axios.get(`http://localhost:8080/api/v1/traveler/agentList/${agentId}`)
+                setAgent(result.data);
+
+
+            } catch (error) {
+                console.error('Error fetching Type:', error);
+            }
+        };
+        loadAgent();
+    }, [agentId]);
+
+    
+
+    // const ticket_count=count.quantity;
+    // console.log("Count: ", ticket_count);
     return (
 
         <div className="flex h-screen overflow-hidden">
@@ -45,13 +66,13 @@ function App() {
                 <TopNavbar />
                 <div className='overflow-y-auto' >
                     {
-                        events.map((event) => (
-                            <div className="relative w-full h-96 sm:flex sm:flex-wrap ">
+                                agent.map((agent) => (
+                        <div className="relative w-full h-96 sm:flex sm:flex-wrap ">
                                 {/* ? <div style={{   }}> */}
                                 <div style={{ height: '95%', width: '100%', backgroundImage: "url('https://www.srilankacolombohotels.com/data/Pics/OriginalPhoto/7075/707577/707577091/pic-galadari-hotel-colombo-1.JPEG')", display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
                                     <div style={{ width: "40%", textAlign: 'center' }}>
-                                        <h1 style={{ fontSize: '40px' }} className="font-bold font-poppins text-white pb-3">{event.company_name}</h1>
-                                        <h1 className="font-poppins text-white pb-3">{event.description}</h1>
+                                        <h1 style={{ fontSize: '40px' }} className="font-bold font-poppins text-white pb-3">{agent.company_name}</h1>
+                                        <h1 className="font-poppins text-white pb-3">{agent.description}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -84,11 +105,11 @@ function App() {
                                                 ) : (
                                                     <p className="text-gray-600 text-sm my-1">End Time: {event.end_time} p.m</p>
                                                 )}
-                                                <p className="text-gray-800 text-sm my-1">Every {event.date}</p>
+                                                <p className="text-gray-800 text-sm my-1">Every {event.event_date}</p>
 
 
                                                 <p className="text-gray-800 text-sm my-1">Ticket Price: Rs.{event.ticket_price}</p>
-                                                <p className="text-gray-800 text-sm my-1">Available Quantity: {event.ticket_quantity - event.quantity} </p>
+                                                {/* <p className="text-gray-800 text-sm my-1">Available Quantity: {event.ticket_quantity - event.quantity} </p> */}
                                             </div>
                                             <div className="items-center my-2">
                                                 <Link to={`/traveler/TicketBook/${user_id}/${activityId}/${event.event_id}`}>

@@ -255,15 +255,37 @@ public class TravelerOptionJDBCDao {
     }
 
 //    =======================Activity Agent===================
+
+
+    public List<ActivityDTO> getActivityAgents(Integer agentId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> company = new ArrayList<>();
+        params.put("agentId", agentId);
+
+        SQL.append("SELECT * FROM activity_agent where agent_id=:agentId; ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+                activityDTO.setAgent_id(rs.getInt("agent_id"));
+                activityDTO.setCompany_name(rs.getString("company_name"));
+                activityDTO.setDescription(rs.getString("description"));
+                activityDTO.setActivity_img(rs.getString("activity_img"));
+
+
+                company.add(activityDTO);
+            }
+            return company;
+        });
+    }
 public List<ActivityDTO> getAllEvents(Integer agentId) {
     StringBuffer SQL = new StringBuffer();
     HashMap<String, Object> params = new HashMap<>();
     List<ActivityDTO> company = new ArrayList<>();
     params.put("agentId", agentId);
 
-
-    SQL.append("SELECT * FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id inner join " +
-            "ticket_booking on event.event_id=ticket_booking.event_id where activity_agent.agent_id=:agentId; ");
+    SQL.append("SELECT * FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id where activity_agent.agent_id=:agentId; ");
 
     return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
         while (rs.next()) {
@@ -272,16 +294,11 @@ public List<ActivityDTO> getAllEvents(Integer agentId) {
             activityDTO.setEvent_id(rs.getInt("event_id"));
             activityDTO.setEvent_name(rs.getString("event_name"));
             activityDTO.setEvent_description(rs.getString("event_description"));
-            activityDTO.setDate(rs.getString("date"));
+            activityDTO.setEvent_date(rs.getString("date"));
             activityDTO.setStart_time(rs.getTime("start_time"));
             activityDTO.setEnd_time(rs.getTime("end_time"));
             activityDTO.setTicket_price(rs.getInt("ticket_price"));
             activityDTO.setTicket_quantity(rs.getInt("ticket_quantity"));
-            activityDTO.setAgent_id(rs.getInt("agent_id"));
-            activityDTO.setCompany_name(rs.getString("company_name"));
-            activityDTO.setDescription(rs.getString("description"));
-            activityDTO.setActivity_img(rs.getString("activity_img"));
-           activityDTO.setQuantity(rs.getInt("quantity"));
 
 
 
@@ -290,6 +307,73 @@ public List<ActivityDTO> getAllEvents(Integer agentId) {
         return company;
     });
 }
+
+    public List<ActivityDTO> getEventsDetails(Integer agentId,Integer eventId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> company = new ArrayList<>();
+        params.put("agentId", agentId);
+        params.put("eventId", eventId);
+
+        SQL.append("SELECT event.ticket_quantity, event.ticket_price  FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id where event.agent_id=:agentId and event.event_id=:eventId");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+                activityDTO.setTicket_price(rs.getInt("ticket_price"));
+                activityDTO.setTicket_quantity(rs.getInt("ticket_quantity"));
+
+                company.add(activityDTO);
+            }
+            return company;
+        });
+    }
+    public List<ActivityDTO> getBookingAvailability(Integer eventId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> availability = new ArrayList<>();
+        params.put("eventId", eventId);
+
+        SQL.append("SELECT date FROM ticket_booking where event_id=:eventId group by date  ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+                activityDTO.setDate(rs.getDate("date"));
+
+
+                availability.add(activityDTO);
+            }
+            return availability;
+        });
+
+
+    }
+
+    public List<ActivityDTO> getCount(Integer eventId) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> count = new ArrayList<>();
+        params.put("eventId", eventId);
+
+        SQL.append("SELECT SUM(ticket_booking.quantity),ticket_booking.date, event.ticket_quantity FROM ticket_booking inner join event on event.event_id=ticket_booking.event_id  where ticket_booking.event_id=:eventId group by ticket_booking.date ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+                activityDTO.setSum_TicketCount(rs.getInt("sum(ticket_booking.quantity)"));
+                activityDTO.setDate(rs.getDate("date"));
+                activityDTO.setTicket_quantity(rs.getInt("ticket_quantity"));
+
+
+
+                count.add(activityDTO);
+            }
+            return count;
+        });
+
+
+    }
 
 
 }
