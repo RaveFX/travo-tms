@@ -24,7 +24,7 @@ public class Event {
     private Integer event_id;
     private String event_name;
     private String event_description;
-    private Date date;
+    private String date; //like every sunday
     private Time start_time;
     private Time end_time;
     private Integer ticket_price;

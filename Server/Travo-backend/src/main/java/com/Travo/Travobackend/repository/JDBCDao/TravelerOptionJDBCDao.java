@@ -262,7 +262,8 @@ public List<ActivityDTO> getAllEvents(Integer agentId) {
     params.put("agentId", agentId);
 
 
-    SQL.append("SELECT * FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id where activity_agent.agent_id=:agentId; ");
+    SQL.append("SELECT * FROM activity_agent inner join event on event.agent_id=activity_agent.agent_id inner join " +
+            "ticket_booking on event.event_id=ticket_booking.event_id where activity_agent.agent_id=:agentId; ");
 
     return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
         while (rs.next()) {
@@ -271,7 +272,7 @@ public List<ActivityDTO> getAllEvents(Integer agentId) {
             activityDTO.setEvent_id(rs.getInt("event_id"));
             activityDTO.setEvent_name(rs.getString("event_name"));
             activityDTO.setEvent_description(rs.getString("event_description"));
-            activityDTO.setDate(rs.getDate("date"));
+            activityDTO.setDate(rs.getString("date"));
             activityDTO.setStart_time(rs.getTime("start_time"));
             activityDTO.setEnd_time(rs.getTime("end_time"));
             activityDTO.setTicket_price(rs.getInt("ticket_price"));
@@ -280,7 +281,7 @@ public List<ActivityDTO> getAllEvents(Integer agentId) {
             activityDTO.setCompany_name(rs.getString("company_name"));
             activityDTO.setDescription(rs.getString("description"));
             activityDTO.setActivity_img(rs.getString("activity_img"));
-
+           activityDTO.setQuantity(rs.getInt("quantity"));
 
 
 

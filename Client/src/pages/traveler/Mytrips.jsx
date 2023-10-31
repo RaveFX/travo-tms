@@ -147,7 +147,6 @@ function Mytrips() {
                 {
                   trips.map((trips) => (
                     <SwiperSlide className='w-[100%]'>
-
                       <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
                         <CardHeader color="blue-gray" className="relative h-56">
                           <img src="/traveler/sigiriya.jpg" alt="Sigiriya" className="object-cover h-48 w-96" />

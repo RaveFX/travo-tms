@@ -37,11 +37,5 @@ public class HotelDTO {
     private String room_description;
 
 
-   //for the schedule
-    private String description;
-    private String hotel_img;
-    private Double total_reviews;
-    private Integer trip_id;
-    private Integer day;
-    private Integer row_id;
+
 }

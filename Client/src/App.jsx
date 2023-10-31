@@ -136,6 +136,8 @@ import VehiclePage from "./pages/traveler/VehiclePage";
 import VehicleMoreInfo from "./pages/traveler/VehicleMoreInfo";
 
 import ActivityType from "./pages/traveler/ActivityType";
+import TicketBook from "./pages/traveler/TicketBook";
+
 
 import TripHotelPage from "./pages/traveler/TripHotelPage";
 import TripHotelType from "./pages/traveler/TripHotelType";
@@ -414,6 +416,8 @@ export default function App() {
         <Route exact path="/traveler/travelGuide" element={<TravelGuideList />} />
 
         <Route exact path="/traveler/ActivityType/:user_id/:ActivityId" element={<ActivityType />} />
+        <Route exact path="/traveler/TicketBook/:user_id/:ActivityId/:eventId" element={<TicketBook />} />
+
 
         <Route exact path="/traveler/TripHotelPage/:user_id/:tripId" element={<TripHotelPage />} />
         <Route exact path="/traveler/TripHotelType/:user_id/:tripId/:hotelID" element={<TripHotelType />} />

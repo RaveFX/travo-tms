@@ -26,10 +26,11 @@ public class ActivityDTO {
     private Integer event_id;
     private String event_name;
     private String event_description;
-    private Date date;
+    private String date;
     private Time start_time;
     private Time end_time;
     private Integer ticket_price;
     private Integer ticket_quantity;
+    private Integer quantity;
 
 }

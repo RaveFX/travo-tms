@@ -19,7 +19,8 @@ function App() {
     const currentURL = window.location.href;
     const splitURL = currentURL.split("/");
     const user_id = decodeURIComponent(splitURL[5]);
-    const activityId = decodeURIComponent(splitURL[5]);
+    const activityId = decodeURIComponent(splitURL[6]);
+    
     // console.log("Type: ", hotelId)
 
 
@@ -27,11 +28,8 @@ function App() {
         const loadTypes = async () => {
             try {
                 const result = await axios.get(`http://localhost:8080/api/v1/traveler/eventList/${activityId}`)
-                // const hotel = await axios.get(`http://localhost:8080/api/v1/traveler/hotels/${hotelId}`)
                 setTypes(result.data);
-                // setHotel(hotel.data);
-                // console.log(result.data);
-                // console.log(result.data.hotel_name);
+
 
             } catch (error) {
                 console.error('Error fetching hotel Types:', error);
@@ -61,30 +59,48 @@ function App() {
                     {/* </div> */}
 
                     <div style={{ marginTop: '', marginLeft: '30px' }}>
-                        <h1 className=' font-poppins font-extrabold  mb-5 text-[#2C2738]'>Rooms</h1>
+                        <h1 className=' font-poppins font-extrabold  mb-5 text-[#2C2738]'>Activities</h1>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
                             {
                                 events.map((event) => (
                                     // <Link to={`/traveler/HotelPageMore/${user_id}/${hotelId}/${rooms.room_id}`}>
-                                        <div style={{ width: '90%' }} className="bg-white shadow-md rounded-lg overflow-hidden mb-5">
-                                            <img
+                                    <div style={{ width: '90%' }} className="bg-white shadow-md rounded-lg overflow-hidden mb-5">
+                                        {/* <img
                                                 src='https://cdn1.goibibo.com/voy_ing/t_fs/abd3c6ae798711eab6bd0242ac110002.jpg'
                                                 className="w-full h-40 object-cover"
-                                            />
-                                            <div className="p-4">
-
+                                            /> */}
+                                        <div className="p-4 flex flex-col">
+                                            <div>
                                                 <h2 className="text-xl font-semibold">{event.event_name}</h2>
-                                                <p className="text-gray-500 text-sm">Description:{event.event_description}</p>
-                                                {/* <p className="text-gray-500">{event.description}</p> */}
-                                                {/* <span className="text-sm font-bold text-gray-500">
-                                                    Rs.{rooms.price}                                                 </span> */}
+                                                <p className="text-gray-500 text-sm my-2">Description:{event.event_description}</p>
+                                                {event.start_time < "12:00:00" ? (
+                                                    <p className="text-gray-600 text-sm my-1">Start Time: {event.start_time} a.m</p>
+                                                ) : (
+                                                    <p className="text-gray-600 text-sm my-1">Start Time: {event.start_time} p.m</p>
+                                                )}
+                                                {event.end_time < "12:00:00" ? (
+                                                    <p className="text-gray-600 text-sm my-1">End Time: {event.end_time} a.m</p>
+                                                ) : (
+                                                    <p className="text-gray-600 text-sm my-1">End Time: {event.end_time} p.m</p>
+                                                )}
+                                                <p className="text-gray-800 text-sm my-1">Every {event.date}</p>
 
+
+                                                <p className="text-gray-800 text-sm my-1">Ticket Price: Rs.{event.ticket_price}</p>
+                                                <p className="text-gray-800 text-sm my-1">Available Quantity: {event.ticket_quantity - event.quantity} </p>
                                             </div>
+                                            <div className="items-center my-2">
+                                                <Link to={`/traveler/TicketBook/${user_id}/${activityId}/${event.event_id}`}>
+                                                <Button className="bg-green w-30">Ticket Booking</Button></Link>
+                                            </div>
+
                                         </div>
+                                    </div>
 
                                     // </Link>
                                 ))
+
                             }
                         </div>
                     </div>
