@@ -13,5 +13,6 @@ public class TripMemberDTO {
     private String fname;
     private String lname;
     private String tripRole;
+    private Integer trip_id;
 
 }

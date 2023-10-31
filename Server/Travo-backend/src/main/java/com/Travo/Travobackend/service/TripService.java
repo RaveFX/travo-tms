@@ -98,6 +98,29 @@ public class TripService {
 
     }
 
+    public String updateTripRole(TripMemberDTO tripMemberDTO){
+        TripRole tripRole;
+        if(Objects.equals(tripMemberDTO.getTripRole(), "EDITOR")){
+            tripRole = TripRole.EDITOR;
+        }else{
+            tripRole = TripRole.MEMBER;
+        }
+
+        Optional<User> userOptional = userRepository.findById(tripMemberDTO.getMember_id());
+        User user = userOptional.get();
+
+        Optional<Trip> tripOptional = tripRepository.findById(tripMemberDTO.getTrip_id());
+        Trip trip = tripOptional.get();
+
+        Optional<TripMember> tripMember = tripMemberRepository.findByUserAndTrip(user, trip);
+        TripMember tripMember1 = tripMember.get();
+        tripMember1.setTripRole(tripRole);
+        tripMemberRepository.save(tripMember1);
+
+        return ("successfully changed the role");
+
+    }
+
     public String updateTrip(Integer tripID, TripDTO tripDTO) {
         Trip existingTrip = tripRepository.findById(tripID).orElse(null);
 

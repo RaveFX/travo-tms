@@ -32,6 +32,13 @@ public class TripController {
         return tripService.updateTrip(tripID, tripDTO);
     }
 
+    @PutMapping("update-member-role")
+    public String updateTrip(
+            @RequestBody TripMemberDTO tripMemberDTO
+    ){
+        return tripService.updateTripRole(tripMemberDTO);
+    }
+
     @PutMapping("/dates/{tripID}")
     public String updateDate(
             @PathVariable Integer tripID,

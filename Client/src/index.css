@@ -72,5 +72,9 @@
 .pac-container {
   z-index: 2147483647; /* Set a high z-index value */
 }
+.custom-popover {
+  z-index: 2147483647;
+}
+
 
 

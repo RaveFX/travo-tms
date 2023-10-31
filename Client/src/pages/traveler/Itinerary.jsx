@@ -48,6 +48,7 @@ function Itinerary() {
   const [attractions, setAttractions] = useState([]);
   
   
+  
 
   useEffect(() => {
     loadDays();

@@ -17,15 +17,26 @@ export default function MemberPopOver() {
   const { id } = useParams();
   const user_id = sessionStorage.getItem('user_id');
   const [members, setMembers] = useState([]);
+ const [isAdmin, setIsAdmin] = useState(false); 
+ 
   useEffect(() => {
     loadMembers();
   },[]); 
 
 const loadMembers=async()=>{
+  const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+  setIsAdmin(response.data);
+
     const result=await axios.get(`http://localhost:8080/api/v1/trip/trip-member-list/${id}`)
     setMembers(result.data);
  
 }
+
+const handleEditRolesClick = () => {
+  // Navigate to the edit roles page
+  navigate(`/edit-roles/${id}`);
+};
+
 
   // const members = [
   //   { id: 1, name: 'Sanduni', avatarSrc: '/traveler/Female(1).svg', details: 'Member details here' },
@@ -73,6 +84,7 @@ const loadMembers=async()=>{
                 <Typography variant="h6" color="blue-gray">
                   {member.fname} {member.lname}
                 </Typography>
+                
                 <Typography
                   variant="small"
                   color="gray"
@@ -83,7 +95,11 @@ const loadMembers=async()=>{
               </div>
             </ListItem>
           ))}
+          
         </List>
+       
+
+        
       </PopoverContent>
     </Popover>
   );

@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import { Navigation, FreeMode } from "swiper/modules";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import Swal from 'sweetalert2';
 import {
   Card,
   CardHeader,
@@ -80,6 +81,30 @@ const handleEditTripClick = () => {
 const handleOpenCalander = () => {
   setIsOpen(true);
 };
+
+const handleEditRolesClick = async(trip_id) => {
+  const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${trip_id}`);
+  if (response.data) {   
+  // Navigate to the edit roles page
+  navigate(`/traveler/edit-roles/${trip_id}`);
+  }else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'Only Trip Admin have the access to change settings of the trip',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
+};
+
   return (
     <div className="flex h-screen overflow-hidden">
         <Sidebar active="My Trips"/>
@@ -136,7 +161,7 @@ const handleOpenCalander = () => {
                 </CardBody>
                 <CardFooter className="flex justify-between p-0">
                 <Link to={`/traveler/trip-planner/${trips.trip_id}`}><Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] ">Check</Button></Link>
-                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Settings</Button>
+                  <Button onClick={() => handleEditRolesClick(trips.trip_id)} className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Settings</Button>
                 </CardFooter>
               </Card>
               
