@@ -73,6 +73,30 @@ public class AttractionJDBCDao {
 
     }
 
+    public List<AttractionDTO> getAttractionListForMap(Integer tripID) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<AttractionDTO> attractions = new ArrayList<>();
+        params.put("tripID", tripID);
 
 
+        SQL.append("SELECT DISTINCT place_id, name, address, longitude, latitude FROM trip_attraction  \n");
+        SQL.append("WHERE trip_id=:tripID     \n");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                AttractionDTO attractionDTO = new AttractionDTO();
+
+                attractionDTO.setPlace_id(rs.getString("place_id"));
+                attractionDTO.setName(rs.getString("name"));
+                attractionDTO.setAddress(rs.getString("address"));
+                attractionDTO.setLongitude(rs.getBigDecimal("longitude"));
+                attractionDTO.setLatitude(rs.getBigDecimal("latitude"));
+                attractions.add(attractionDTO);
+            }
+            return attractions;
+        });
+
+
+    }
 }

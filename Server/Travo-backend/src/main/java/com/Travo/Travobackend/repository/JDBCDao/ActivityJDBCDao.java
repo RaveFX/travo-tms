@@ -47,7 +47,7 @@ public class ActivityJDBCDao {
         params.put("tripID", tripID);
         params.put("day", day);
 
-        SQL.append("SELECT activity_agent.agent_id, activity_agent.company_name, activity_agent.activity_img,activity_agent.description, activity_agent.total_reviews, trip_activity.id, trip_activity.day FROM trip_activity  \n");
+        SQL.append("SELECT activity_agent.agent_id, activity_agent.company_name, activity_agent.activity_img,activity_agent.description, activity_agent.longitude, activity_agent.latitude,activity_agent.total_reviews, trip_activity.id, trip_activity.day FROM trip_activity  \n");
         SQL.append("INNER JOIN activity_agent ON trip_activity.activity_id = activity_agent.agent_id        \n");
         SQL.append("WHERE trip_activity.trip_id=:tripID AND trip_activity.day=:day       \n");
 
@@ -62,6 +62,8 @@ public class ActivityJDBCDao {
                 activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
                 activityDTO.setRow_id(rs.getInt("id"));
                 activityDTO.setDay(rs.getInt("day"));
+                activityDTO.setLongitude(rs.getBigDecimal("longitude"));
+                activityDTO.setLatitude(rs.getBigDecimal("latitude"));
 
                 activities.add(activityDTO);
             }
@@ -90,10 +92,39 @@ public class ActivityJDBCDao {
                 activityDTO.setRow_id(rs.getInt("id"));
                 activityDTO.setDay(rs.getInt("day"));
 
+
                 activities.add(activityDTO);
             }
             return activities;
         });
+    }
+
+    public List<ActivityDTO> getActivityListForMap(Integer tripID) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> activities = new ArrayList<>();
+        params.put("tripID", tripID);
+
+
+        SQL.append("SELECT DISTINCT activity_agent.agent_id, activity_agent.company_name, activity_agent.longitude, activity_agent.latitude FROM trip_activity  \n");
+        SQL.append("INNER JOIN activity_agent ON trip_activity.activity_id = activity_agent.agent_id        \n");
+        SQL.append("WHERE trip_activity.trip_id=:tripID      \n");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+
+                activityDTO.setAgent_id(rs.getInt("agent_id"));
+                activityDTO.setCompany_name(rs.getString("company_name"));
+                activityDTO.setLongitude(rs.getBigDecimal("longitude"));
+                activityDTO.setLatitude(rs.getBigDecimal("latitude"));
+
+                activities.add(activityDTO);
+            }
+            return activities;
+        });
+
+
     }
 
 }

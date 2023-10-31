@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
-import { StarIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, StarIcon } from "@heroicons/react/24/outline";
 import TabBar from '../../components/web-component/TabBar';
 import { Button, Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -9,39 +9,46 @@ import { useParams, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-function HotelDetails() {
+function Activities() {
   const { id, day } = useParams();
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
-  const [hotels, setHotels] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [isOpen, setIsOpen] = useState(true);
 
   const user_id = sessionStorage.getItem('user_id');
 
 
+  // Define the styles object
+  const styles = {
+    sweetAlertContainer: {
+      zIndex: 1000000, // Set a high z-index value for SweetAlert2 in this component
+    },
+  };
+
   useEffect(() => {
-    loadHotels();
+    loadActivities();
   }, []);
 
-
-  const loadHotels = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
-    setHotels(result.data);
+  const loadActivities = async () => {
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/activityList`)
+    setActivities(result.data);
   }
-  const handleAddHotel = async (hotel) => {
+
+  const handleAddActivity = async (activity) => {
     try {
       // Make a POST request to your backend API endpoint to store the attraction details
-      await axios.post("http://localhost:8080/api/v1/trip/add-hotel", {
-        hotel_id: hotel.hotel_id,
+      await axios.post("http://localhost:8080/api/v1/trip/add-activity", {
+        agent_id: activity.agent_id,
         trip_id: id,
         day: day
       });
       // Handle success, e.g., show a success message to the user
-      console.log("Hotel added successfully!");
+      console.log("Activity added successfully!");
       // Display a success message using SweetAlert2
       Swal.fire({
         icon: 'success',
-        title: 'Hotel added successfully!',
+        title: 'Activity added successfully!',
         showConfirmButton: false,
         timer: 1500, // Automatically close after 1.5 seconds
         customClass: {
@@ -53,7 +60,7 @@ function HotelDetails() {
       });
     } catch (error) {
       // Handle error, e.g., show an error message to the user
-      console.error("Error adding hotel: ", error);
+      console.error("Error adding activity: ", error);
     }
   };
 
@@ -89,20 +96,13 @@ function HotelDetails() {
         subSidebarState={subSidebarState}
         setSubSidebarState={setSubSidebarState}
       />
-      <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
+      <div className=" h-screen flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
         <TopNavbar />
-        <div className='flex justify-between'>
-          <div className="w-[70%] pt-8 ">
-            <TabBar data={data} />
-          </div>
-
-        </div>
-        <div className="container mx-4  overflow-hidden">
+        <div className="overflow-y-auto container mx-auto p-8">
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6">
-              Hotels and Accommodations
+              Things to do
             </h1>
-
             <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
               <Input
                 type="search"
@@ -117,28 +117,28 @@ function HotelDetails() {
               </Button>
             </div>
           </div>
-          <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4" style={{ scrollbarWidth: 'none' }}>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              {hotels.map((hotel) => (
-                <div
-                  key={hotel.hotel_id}
-                  className="bg-white p-4 rounded-lg shadow border relative "
-                  onClick={""}
-                >
-                  <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
-                    <div className="flex items-center justify-center mb-2">
-                      <img
-                        src={`/main/${hotel.hotel_img}`}
-                        alt={`${hotel.hotel_name}'s Photo`}
-                        className="w-full h-44 rounded-md object-cover"
-                      />
-                    </div>
+        </div>
+        <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4 ml-4" style={{ scrollbarWidth: 'none' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+            {activities.map((activity) => (
+              <div
+                key={activity.agent_id}
+                className="bg-white p-4 rounded-lg shadow border relative "
+                onClick={""}
+              >
+                <Link to={`/traveler/ActivityType/${user_id}/${activity.agent_id}`}>
+                  <div className="flex items-center justify-center mb-2">
+                    <img
+                      src={`/main/${activity.activity_img}`}
+                      alt={`${activity.company_name}'s Photo`}
+                      className="w-full h-44 rounded-md object-cover"
+                    />
+                  </div>
                   </Link>
-                  <h2 className="text-xl font-semibold mb-2">{hotel.hotel_name}</h2>
-                  <p className="mb-2">{hotel.description}</p>
+                  <h2 className="text-xl font-semibold mb-2">{activity.company_name}</h2>
+                  <p className="mb-2">{activity.description}</p>
                   <div className="flex items-center mb-2">
-                    <span className="mr-2 flex flex-row gap-1 justify-center">{hotel.total_reviews.toFixed(1)}<StarIcon className="w-4 h-4 strok-yellow" /></span>
+                    <span className="mr-2 flex flex-row gap-1 justify-center">{activity.total_reviews.toFixed(1)}<StarIcon className="w-4 h-4 strok-yellow" /></span>
                     <div className="flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -155,26 +155,22 @@ function HotelDetails() {
                         />
                       </svg>
                       <span className="ml-1 text-sm text-gray-500">
-                        ({hotel.total_reviews}  reviews)
+                        ({activity.total_reviews}  reviews)
                       </span>
                       <div className="absolute bottom-2 right-2">
-                        <Button className="bg-green" onClick={() => handleAddHotel(hotel)}>Add Hotel</Button>
+                        <Button className="bg-green" onClick={() => handleAddActivity(activity)}>Add Activity</Button>
                       </div>
 
                     </div>
                   </div>
 
-                </div>
-              ))}
-            </div>
-
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      <div className="mt-8"></div>
     </div>
-
-  );
+  )
 }
 
-export default HotelDetails;
+export default Activities

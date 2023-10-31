@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.controller;
 
+import com.Travo.Travobackend.model.dto.ActivityDTO;
 import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.ReservationDTO;
 import com.Travo.Travobackend.model.dto.VehiclesDTO;
@@ -61,12 +62,22 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return traveleroptionService.hotelBooking(reservationDTO,userId,hotelId,roomId);
 
     }
-    @GetMapping("/checkAvailability/{roomId}/{boardType}")
-    public List<ReservationDTO> getAvailability(
+    @PostMapping("/tripHotelBooking/{userId}/{tripId}/{hotelId}/{roomId}")
+    public String tripHotelBooking(
+            @RequestBody ReservationDTO reservationDTO,
+            @PathVariable Integer tripId,
+            @PathVariable Integer hotelId,
             @PathVariable Integer roomId,
-            @PathVariable String boardType
+            @PathVariable Integer userId){
+        return traveleroptionService.triphotelBooking(reservationDTO,userId,tripId,hotelId,roomId);
+
+    }
+    @GetMapping("/checkAvailability/{roomId}")
+    public List<ReservationDTO> getAvailability(
+            @PathVariable Integer roomId
+//            @PathVariable String boardType
             ){
-        return traveleroptionService.availability(roomId,boardType);
+        return traveleroptionService.availability(roomId);
 
     }
 
@@ -88,7 +99,13 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return vehicleService.vehicle(vehicleId);
     }
 
+//    ====================Activity Agent===================
 
+    @GetMapping("/eventList/{agentId}")
+    public List<ActivityDTO> getEvent(@PathVariable Integer agentId){
+        return traveleroptionService.events(agentId);
+
+    }
     }
 
 

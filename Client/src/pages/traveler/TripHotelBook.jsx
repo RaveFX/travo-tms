@@ -1,14 +1,12 @@
 import React from 'react';
+import Grid from '../../components/web-component/Grid';
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
+import Datepicker from "react-tailwindcss-datepicker";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import Swal from 'sweetalert2';
-
-import { startOfToday } from 'dayjs';
-import dayjs from 'dayjs';
 import {
     Rating, Button, Card, Chip,
     CardBody,
@@ -16,8 +14,9 @@ import {
     Typography,
     Input,
     Checkbox,
-    Select, Option, Alert
+    Select, Option
 } from "@material-tailwind/react";
+
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -42,33 +41,25 @@ function App() {
     const hotelId = decodeURIComponent(splitURL[5]);
 
     const room_Id = decodeURIComponent(splitURL[5]);
-
+    
 
 
     useEffect(() => {
         const fetchReservedDates = async () => {
             // Make an API call to fetch the reserved dates for this room
             try {
-                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}`);
-                // const reservedDatesResponse = response.data;
+                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}/${boardType}`);
+                console.log(response.data);
                 // Assuming the response is an array of reserved dates, update the state
                 setReservedDates(response.data);
-                // console.log('Reserved Dates Response:', response.data);
-
             } catch (error) {
                 console.error('Error fetching reserved dates:', error);
             }
         };
+    
         fetchReservedDates();
     }, []);
-
-    const isDateReserved = (date) => {
-        // Format the date as a string to match your reserved dates format
-        const formattedDate = date.format('YYYY-MM-DD'); // Adjust the format as needed
-
-        // Check if the formatted date is in your list of reserved dates
-        return reservedDates.includes(formattedDate);
-    };
+    console.log(reservedDates);
 
     useEffect(() => {
         const loadHotels = async () => {
@@ -84,9 +75,10 @@ function App() {
     }, [hotelId, roomId]);
 
 
-    const userID = decodeURIComponent(splitURL[5]);
-    const roomID = decodeURIComponent(splitURL[7]);
-    const hotelID = decodeURIComponent(splitURL[6]);
+    const user_ID = decodeURIComponent(splitURL[5]);
+    const trip_ID = decodeURIComponent(splitURL[6]);
+    const room_ID2 = decodeURIComponent(splitURL[8]);
+    const hotel_ID = decodeURIComponent(splitURL[7]);
 
     const handleBoardTypeChange = (value) => {
         setBoardType(value);
@@ -98,10 +90,6 @@ function App() {
             setFullPayment(Math.floor((2 * hotels[0].price) / 3)); // Replace with the actual data
         }
     };
-
-    const checkinDateString = dayjs(checkin_date).format('YYYY-MM-DD');
-
-
     const onSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = {};
@@ -120,9 +108,6 @@ function App() {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            if (boardType && checkin_date && checkout_date) {
-                setErrors({});
-            }
             if (checkin_date > checkout_date) {
                 Swal.fire({
                     icon: 'error',
@@ -149,7 +134,7 @@ function App() {
                     return;
                 }
             }
-
+           
 
             if (hotels.length > 0) {
                 try {
@@ -160,14 +145,14 @@ function App() {
                     } if (boardType === "HalfBoard") {
                         fullPayment = Math.floor((2 * hotels[0].price) / 3);
                     }
-
+                  
                     await axios.post(
-                        `http://localhost:8080/api/v1/traveler/hotelBooking/${userID}/${hotelID}/${roomID}`, {
-                        boardType: boardType,
-                        payment: fullPayment,
-                        status: 0,
-                        checkin_date: checkin_date,
-                        checkout_date: checkout_date,
+                        `http://localhost:8080/api/v1/traveler/tripHotelBooking/${user_ID}/${trip_ID}/${hotel_ID}/${room_ID2}`, {
+                        boardType : boardType,
+                        payment : fullPayment,
+                        status : 0,
+                        checkin_date : checkin_date,
+                        checkout_date : checkout_date,
 
                     }
 
@@ -213,16 +198,14 @@ function App() {
                                                         label="Check-in Date"
                                                         value={checkin_date}
                                                         onChange={(value) => setCheckin_date(value)}
-                                                    // disabled={(date) => isDateReserved(date)}
-                                                    // disabled={(date) => reservedDates.some(reservedDate => date.isSame(reservedDate, 'day'))
-                                                    />
 
+                                                        // disabled={(date) => reservedDates.includes(date.format('DD/MM/YYYY'))}
+                                                    />
                                                     <DatePicker
                                                         label="Check-out Date"
                                                         value={checkout_date}
                                                         onChange={(value) => setCheckout_date(value)}
-                                                    // disabled={(date) => isDateReserved(date)}
-                                                    // disabled={(date) => reservedDates.some(reservedDate => date.isSame(reservedDate, 'day'))
+                                                        // disabled={(date) => reservedDates.includes(date.format('DD/MM/YYYY'))}
                                                     />
                                                 </DemoContainer>
                                             </LocalizationProvider>

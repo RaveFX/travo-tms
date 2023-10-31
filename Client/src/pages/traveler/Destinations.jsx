@@ -6,7 +6,7 @@ import { Button, Input } from "@material-tailwind/react";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 function Attractions() {
@@ -100,7 +100,7 @@ function Attractions() {
   return (
     <div className="flex h-screen  ">
       <Sidebar
-        active="My Trips"
+        active="Dashboard"
         isSubSidebarOpen={isSubSidebarOpen}
         setIsSubSidebarOpen={setIsSubSidebarOpen}
         subSidebarState={subSidebarState}

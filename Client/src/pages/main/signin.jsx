@@ -10,6 +10,7 @@ function Signin() {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  sessionStorage.setItem('isAuthenticated','false');
 
   const [email, setEmail] = useState("");
 
@@ -37,34 +38,16 @@ function Signin() {
       const responseData = response.data;
       console.log(response.data.role);
 
-      // setAuth(response?.data);
-
-      // setEmail('');
-      // setPassword('');
-
-      // const from = location?.state?.from || {pathname: "/" + response?.data?.role.toLowerCase()};
-      // navigate(from, {replace: true});
+      
         const user_id = response.data.id;
         const role = response.data.role;
         sessionStorage.setItem('user_id', user_id);
         sessionStorage.setItem('role',role);
+        sessionStorage.setItem('isAuthenticated','true');
 
 
-      if (response.data.role === "TRAVELLER") {
+      
         navigate("/traveler/dashboard");
-      } else if (response.data.role === "HOTEL_AGENT") {
-        navigate("/hotelagent_dashboard");
-      } else if (response.data.role === "STORE_MANAGER") {
-        navigate("/store_dashboard");
-      } else if (response.data.role === "ACTIVITY_AGENT") {
-        navigate("/agent_dashboard");
-      } else if (response.data.role === "VEHICLE_RENTER") {
-        navigate("/vehicle_owner_dashboard");
-      } else if (response.data.role === "GUIDE") {
-        navigate("/travel_guide_dashboard");
-      } else {
-        navigate("/admin_dashboard");
-      }
     } catch (err) {
       if (!err?.response) {
         setError("No Server Response");

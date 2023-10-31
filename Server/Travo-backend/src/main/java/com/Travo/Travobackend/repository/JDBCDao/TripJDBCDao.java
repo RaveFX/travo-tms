@@ -2,6 +2,7 @@ package com.Travo.Travobackend.repository.JDBCDao;
 
 
 
+import com.Travo.Travobackend.model.dto.GuideDTO;
 import com.Travo.Travobackend.model.dto.HotelDTO;
 import com.Travo.Travobackend.model.dto.HotelReservationDTO;
 import com.Travo.Travobackend.model.dto.TripDTO;
@@ -68,6 +69,34 @@ public class TripJDBCDao {
                 tripDTO.setUniqueLink(rs.getString("unique_link"));
             }
             return tripDTO;
+        });
+
+
+    }
+    public List<GuideDTO> getGuideDetails() {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<GuideDTO> guide = new ArrayList<>();
+
+        SQL.append("SELECT * FROM guide")   ;
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                GuideDTO guideDTO = new GuideDTO();
+
+                guideDTO.setFname(rs.getString("fname"));
+                guideDTO.setLname(rs.getString("lname"));
+                guideDTO.setNic(rs.getString("nic"));
+                guideDTO.setContact_num(rs.getString("contact_num"));
+                guideDTO.setDescription(rs.getString("description"));
+                guideDTO.setQualifications(rs.getString("qualifications"));
+                guideDTO.setGuide_id(rs.getInt("guide_id"));
+                guideDTO.setDistrict(rs.getString("district"));
+
+                guide.add(guideDTO);
+
+            }
+            return guide;
         });
 
 

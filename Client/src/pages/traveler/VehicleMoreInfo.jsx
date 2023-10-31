@@ -7,8 +7,8 @@ import {
     Button
 } from '@material-tailwind/react'
 import React from 'react'
-import Sidebar from '../../components/web-component/Sidebar';
-import TopNavbar from '../../components/Vehicle_owner/topNavbar';
+import Sidebar from "../../components/web-component/Sidebar";
+import TopNavbar from "../../components/web-component/Navbar";
 import { car, van, bike, scooter, bus } from '../../assets/Vehicle_owner/index/';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";

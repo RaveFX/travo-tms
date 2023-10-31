@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,5 +19,7 @@ public class AttractionDTO {
     private Integer row_id;
     private Integer total_votes;
 
+    private BigDecimal latitude;
+    private BigDecimal longitude;
 
 }

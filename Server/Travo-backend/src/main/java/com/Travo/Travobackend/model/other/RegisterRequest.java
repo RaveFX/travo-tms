@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -51,8 +52,8 @@ public class RegisterRequest {
 
     //hotel agent
     private String hotel_name;
-    private Integer longitude;
-    private Integer latitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private Integer user_id;
 
     //shop

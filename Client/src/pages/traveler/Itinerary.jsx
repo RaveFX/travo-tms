@@ -46,6 +46,8 @@ function Itinerary() {
   const [activities, setActivities] = useState([]);
   const [attractions, setAttractions] = useState([]);
 
+  const user_id = sessionStorage.getItem('user_id');
+
 
   useEffect(() => {
     loadDays();
@@ -292,13 +294,15 @@ function Itinerary() {
                               className="bg-white p-4 rounded-lg shadow border relative "
                               onClick={""}
                             >
-                              <div className="flex items-center justify-center mb-2">
-                                <img
-                                  src={`/main/${hotel.hotel_img}`}
-                                  alt={`${hotel.hotel_name}'s Photo`}
-                                  className="w-full h-44 rounded-md object-cover"
-                                />
-                              </div>
+                              <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
+                                <div className="flex items-center justify-center mb-2">
+                                  <img
+                                    src={`/main/${hotel.hotel_img}`}
+                                    alt={`${hotel.hotel_name}'s Photo`}
+                                    className="w-full h-44 rounded-md object-cover"
+                                  />
+                                </div>
+                              </Link>
                               <h2 className="text-xl font-semibold mb-2">{hotel.hotel_name}</h2>
                               <p className="mb-2">{hotel.description}</p>
                               <div className="flex items-center mb-2">

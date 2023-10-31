@@ -24,6 +24,7 @@ public class Room {
     @ManyToOne
     @JoinColumn(name = "hotel_id", referencedColumnName = "hotel_id" )
     private HotelAgent hotelAgent;
+
     private String room_name;
     private String description;
     private Integer adult_count;

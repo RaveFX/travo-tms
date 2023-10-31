@@ -65,5 +65,10 @@ public class Trip {
         this.uniqueLink = uniqueLink;
     }
     
+    @OneToMany(mappedBy = "trip")
+    private Set<Reservation> reservations = new HashSet<>();
+
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
+    private Set<TicketBooking> ticketBookings = new HashSet<>();
 
 }
