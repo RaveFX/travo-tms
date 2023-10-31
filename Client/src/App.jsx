@@ -130,6 +130,7 @@ import HotelPage from "./pages/traveler/HotelPage";
 import HotelType from "./pages/traveler/HotelType";
 import HotelPageMore from "./pages/traveler/HotelPageMore";
 import HotelPayment from "./pages/traveler/HotelPayment";
+import TripPayment from "./pages/traveler/TripPayment";
 import PaymentSuccess from "./pages/traveler/PaymentSuccess";
 import HotelBook from "./pages/traveler/HotelBook";
 import VehiclePage from "./pages/traveler/VehiclePage";
@@ -137,6 +138,9 @@ import VehicleMoreInfo from "./pages/traveler/VehicleMoreInfo";
 
 import ActivityType from "./pages/traveler/ActivityType";
 import TicketBook from "./pages/traveler/TicketBook";
+
+import TripActivityType from "./pages/traveler/TripActivityType";
+import TripTicketBook from "./pages/traveler/TripTicketBook";
 
 
 import TripHotelPage from "./pages/traveler/TripHotelPage";
@@ -409,6 +413,7 @@ export default function App() {
         <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />
         <Route exact path="/traveler/HotelBook/:user_id/:hotelID/:roomId" element={<HotelBook />} />
         <Route exact path="/traveler/HotelPayment" element={<HotelPayment />} />
+        <Route exact path="/traveler/TripPayment" element={<TripPayment />} />
         <Route exact path="/traveler/PaymentSuccess" element={<PaymentSuccess />} />
         <Route exact path="/traveler/VehiclePage" element={<VehiclePage />} />
         <Route exact path="/traveler/VehicleMoreInfo/:vehicleId" element={<VehicleMoreInfo />} />
@@ -417,6 +422,9 @@ export default function App() {
 
         <Route exact path="/traveler/ActivityType/:user_id/:ActivityId" element={<ActivityType />} />
         <Route exact path="/traveler/TicketBook/:user_id/:ActivityId/:eventId" element={<TicketBook />} />
+
+        <Route exact path="/traveler/TripActivityType/:user_id/:tripId/:ActivityId" element={<TripActivityType />} />
+        <Route exact path="/traveler/TripTicketBook/:user_id/:tripId/:ActivityId/:eventId" element={<TripTicketBook />} />
 
 
         <Route exact path="/traveler/TripHotelPage/:user_id/:tripId" element={<TripHotelPage />} />

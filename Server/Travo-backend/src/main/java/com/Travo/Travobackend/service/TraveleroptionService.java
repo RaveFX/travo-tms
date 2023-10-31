@@ -190,6 +190,41 @@ public class TraveleroptionService {
         }
 
     }
+
+    public String tripActivityBooking(ActivityDTO activityDTO, Integer userId,Integer tripId, Integer agentId, Integer eventId) {
+        try{
+            TicketBooking ticketBooking = new TicketBooking();
+//            reservation.setReservation_id(reservationDTO.getReservation_id());
+            ticketBooking.setDate(activityDTO.getDate());
+            ticketBooking.setPrice_per_ticket(activityDTO.getPrice_per_ticket());
+            ticketBooking.setQuantity(activityDTO.getQuantity());
+            ticketBooking.setStatus(activityDTO.getStatus());
+            ticketBooking.setPayment(activityDTO.getPayment());
+
+            Optional<Trip> tripOptional = tripRepository.findById(tripId);
+            Trip trip = tripOptional.get();
+            ticketBooking.setTrip(trip);
+
+            Optional<Event> eventOptional = eventRepository.findById(eventId);
+            Event event = eventOptional.get();
+            ticketBooking.setEvent(event);
+
+            Optional<User> userOptional = userRepository.findById(userId);
+            User user = userOptional.get();
+            ticketBooking.setUser(user);
+
+            Optional<ActivityAgent> agentOptional = activityAgentRepository.findById(agentId);
+            ActivityAgent activityAgent = agentOptional.get();
+            ticketBooking.setActivityAgent(activityAgent);
+
+            ticketBookingRepository.save(ticketBooking);
+            return("Booking successfully!");
+        }
+        catch (Exception e) {
+            return("Error: " + e.getMessage());
+        }
+
+    }
     public List<ActivityDTO> eventDetails(Integer agentId, Integer eventId) {
         return hotelNameJDBCDao.getEventsDetails(agentId,eventId);
 

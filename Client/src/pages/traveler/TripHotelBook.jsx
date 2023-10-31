@@ -159,7 +159,7 @@ function App() {
                     );
                     // console.log(hotels.price);
 
-                    navigate("/traveler/HotelPayment");
+                    navigate("/traveler/TripPayment");
                 } catch (error) {
                     console.error("Error storing boardType: ", error);
                 }

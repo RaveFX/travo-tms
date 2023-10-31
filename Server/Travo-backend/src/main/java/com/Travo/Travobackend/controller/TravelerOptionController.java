@@ -129,6 +129,18 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
 
     }
 
+    @PostMapping("/tripActivityBooking/{userId}/{tripId}/{agentId}/{eventId}")
+    public String tripHotelBooking(
+
+            @RequestBody ActivityDTO activityDTO,
+            @PathVariable Integer userId,
+            @PathVariable Integer tripId,
+            @PathVariable Integer agentId,
+            @PathVariable Integer eventId){
+        return traveleroptionService.tripActivityBooking(activityDTO,userId,tripId,agentId,eventId);
+
+    }
+
 
     @GetMapping("/checkBookingAvailability/{eventId}")
     public List<ActivityDTO> getBookingAvailability(

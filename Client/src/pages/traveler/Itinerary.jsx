@@ -245,6 +245,8 @@ function Itinerary() {
 
                                 className="bg-white p-4 rounded-lg shadow border relative"
                               >
+
+
                                 <div className="flex items-center justify-center mb-2">
                                   {attraction.img_url ? (
                                     <img
@@ -260,6 +262,7 @@ function Itinerary() {
                                     />
                                   )}
                                 </div>
+
                                 <h2 className="text-xl font-semibold mb-2">{attraction.name}</h2>
                                 <p className="mb-2">Address: {attraction.address}</p>
                                 <div className="flex items-center mb-2">
@@ -294,7 +297,7 @@ function Itinerary() {
                               className="bg-white p-4 rounded-lg shadow border relative "
                               onClick={""}
                             >
-                              <Link to={`/traveler/TripHotelPage/${user_id}/${id}`}>
+                              <Link to={`/traveler/TripHotelType/${user_id}/${id}/${hotel.hotel_id}`}>
                                 <div className="flex items-center justify-center mb-2">
                                   <img
                                     src={`/main/${hotel.hotel_img}`}
@@ -354,13 +357,16 @@ function Itinerary() {
                               className="bg-white p-4 rounded-lg shadow border relative "
                               onClick={""}
                             >
-                              <div className="flex items-center justify-center mb-2">
-                                <img
-                                  src={`/main/${activity.activity_img}`}
-                                  alt={`${activity.company_name}'s Photo`}
-                                  className="w-full h-44 rounded-md object-cover"
-                                />
-                              </div>
+                              <Link to={`/traveler/TripActivityType/${user_id}/${id}/${activity.agent_id}`}>
+
+                                <div className="flex items-center justify-center mb-2">
+                                  <img
+                                    src={`/main/${activity.activity_img}`}
+                                    alt={`${activity.company_name}'s Photo`}
+                                    className="w-full h-44 rounded-md object-cover"
+                                  />
+                                </div>
+                              </Link>
                               <h2 className="text-xl font-semibold mb-2">{activity.company_name}</h2>
                               <p className="mb-2">{activity.description}</p>
                               <div className="flex items-center mb-2">
