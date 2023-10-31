@@ -116,7 +116,7 @@ import Travdash from "./pages/traveler/travdash";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
 import Contact from "./pages/main/contact";
-import Budget from "./pages/traveler/budget";
+// import Budget from "./pages/traveler/budget";
 import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
 import Expenses from "./pages/traveler/expenses";
@@ -396,7 +396,7 @@ export default function App() {
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />
-        <Route exact path="/traveler/budget" element={<Budget />} />
+        {/* <Route exact path="/traveler/budget" element={<Budget />} /> */}
         <Route exact path="/traveler/store" element={<Store />} />
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />

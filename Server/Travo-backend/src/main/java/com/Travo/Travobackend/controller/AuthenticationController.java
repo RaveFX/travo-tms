@@ -5,6 +5,7 @@ import com.Travo.Travobackend.service.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,13 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 @RequiredArgsConstructor
 
 
+
 public class AuthenticationController {
+    @Autowired
     //traveler registration
     private final AuthenticationService service;
 

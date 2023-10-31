@@ -19,9 +19,9 @@ import {
 const Dashboard = () => {
   const navigate = useNavigate();
   const user_id = sessionStorage.getItem('user_id');
-
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const role = sessionStorage.getItem('role');
-  
+
 
   const handleNavigate = () => {
     // Example: Navigate to '/other-page' when the button is clicked
@@ -51,7 +51,7 @@ const Dashboard = () => {
       imageSrc:
         "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
       buttonname: "Explore Now",
-      links:"/traveler/DestinationPage"
+      links: "/traveler/DestinationPage"
     },
     {
       id: 2,
@@ -70,7 +70,7 @@ const Dashboard = () => {
         "https://plus.unsplash.com/premium_photo-1661775983935-579b5c94e2c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyJTIwcmVudGFsfGVufDB8fDB8fHww&w=1000&q=80",
       buttonname: "Rent Now",
       links: "/traveler/VehiclePage",
-  
+
     },
     {
       id: 4,
@@ -81,14 +81,10 @@ const Dashboard = () => {
       buttonname: "Find Now",
       links: "/traveler/ActivityPage",
     },
-    
-  
+
+
     // Define your shop items here...
   ];
-  
-
-
-  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const header = () => {
     return (
@@ -123,7 +119,7 @@ const Dashboard = () => {
       </div>
     ));
   };
-  
+
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -152,7 +148,7 @@ const Dashboard = () => {
                       Why Wait?
                     </Typography>
                     <Button
-                      className='md:!w-auto h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
+                      className='h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
                       Continue Editing
                     </Button>
                   </div>
@@ -192,9 +188,9 @@ const Dashboard = () => {
                       </CardBody>
                       <CardFooter>
                         <Link to={item.links}>
-                          <Button 
+                          <Button
                             className='h-[3rem] items-center justify-center -my-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-[500] text-[14px] '>
-                              {item.buttonname}
+                            {item.buttonname}
                           </Button>
                         </Link>
                       </CardFooter>
@@ -204,13 +200,13 @@ const Dashboard = () => {
               </div>
             </div>
             <div className='w-[32%] '>
-            <div className="max-w-md mx-2 my-4">
-            <div className="shadow-lg rounded-lg">
-              {header()}
-              {daysOfWeek()}
-              <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
-            </div>
-          </div>
+              <div className="max-w-md mx-2 my-4">
+                <div className="shadow-lg rounded-lg">
+                  {header()}
+                  {daysOfWeek()}
+                  <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="bg-white p-4 shadow-md rounded-lg">

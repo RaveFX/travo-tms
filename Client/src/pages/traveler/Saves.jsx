@@ -1,29 +1,14 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import { Link, useParams } from "react-router-dom";
-import axios from 'axios';
-import { Alert, Input, Card, Button, Checkbox, CardHeader, Avatar, } from "@material-tailwind/react";
-// import { id } from "date-fns/locale";
+import axios from "axios";
+import {
+  Input,
+  Card,
+  Button
+} from "@material-tailwind/react";
 
-
-const user_id = sessionStorage.getItem('user_id');
-
-
-function Icon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-6 w-6"
-    >
-      <path
-        fillRule="evenodd"
-        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
+const user_id = sessionStorage.getItem("user_id");
 
 function Tripid() {
   const { id } = useParams();
@@ -70,17 +55,16 @@ function TotalCostByTrip() {
     // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [id]);
- 
 
   return (
     <div>
-      <p>{totalCost !== null ? `LKR ${totalCost.toFixed(2)}` : 'Loading...'}</p>
+      <p>{totalCost !== null ? `LKR ${totalCost.toFixed(2)}` : "Loading..."}</p>
     </div>
   );
 }
 
 function TotalCostByUser() {
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   const [totalCostByUser, setTotalCostByUser] = useState(0);
 
@@ -97,7 +81,9 @@ function TotalCostByUser() {
 
   const fetchTotalCostByUser = () => {
     axios
-      .get(`http://localhost:8080/api/v1/budget/getTotalCostByUserId/${user_id}/${id}`)
+      .get(
+        `http://localhost:8080/api/v1/budget/getTotalCostByUserId/${user_id}/${id}`
+      )
       .then((response) => {
         setTotalCostByUser(response.data);
       })
@@ -129,7 +115,7 @@ function RowCount() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/api/v1/tripMembers/count') // Replace with your actual backend URL
+      .get("http://localhost:8080/api/v1/tripMembers/count") // Replace with your actual backend URL
       .then((response) => {
         setRowCount(response.data);
       })
@@ -146,7 +132,6 @@ function RowCount() {
 }
 
 const data = [
-
   {
     amount: <TotalCostByTrip />,
     label: "Total Expenses",
@@ -224,65 +209,116 @@ function Budgetform() {
   const { id } = useParams();
   const tripno = id;
 
-
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
     // Get the form data
     const formData = new FormData(e.target);
 
-
-
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/budget/addBudget', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/budget/addBudget",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+     
       console.log(response);
+      Swal.fire({
+        icon: "success",
+        title: "Expense Recorded Successfully!",
+        showConfirmButton: false,
+        timer: 1500, // Close the alert after 1.5 seconds
+      });
       // <SubmitAlert />;
       // Handle the response here (e.g., show a success message)
-      console.log('Response: Success', response.data);
+      // Display a SweetAlert2 error alert
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Error',
+      //   text: 'An error occurred while recording the expense.',
+      // });
+      console.log("Response: Success", response.data);
     } catch (error) {
       // Handle errors here (e.g., show an error message)
-      console.error('Error: kedup', error);
+      console.error("Error: kedup", error);
     }
   };
 
-
-
   return (
     <>
-
       <Card color="white" shadow={true}>
-
-        <form onSubmit={handleSubmit} className=" m-5 text-sm mt-8 mb-2 w-100 max-w-screen-lg border-solid sm:w-55">
+        <form
+          onSubmit={handleSubmit}
+          className=" m-5 text-sm mt-8 mb-2 w-100 max-w-screen-lg border-solid sm:w-55"
+        >
           <div className="mb-4 font-poppins flex gap-6">
-            <Input name="cause" id="cause" size="lg" placeholder="Cause/Event" required />
-            <input name="user_id" id="user_id" size="lg" placeholder="User ID" required value={user_id} type="hidden" />
-            <input name="tripId" id="trip_id" size="lg"  required value={id} type="hidden" />
-            <Input name="cost" id="cost" size="lg" placeholder="Cost" required />
-            <input name="receipt" id="receipt" size="lg" placeholder="Cost" value={10} type="hidden" />
+            <Input
+              name="cause"
+              id="cause"
+              size="lg"
+              placeholder="Cause/Event"
+              required
+            />
+            <input
+              name="user_id"
+              id="user_id"
+              size="lg"
+              placeholder="User ID"
+              required
+              value={user_id}
+              type="hidden"
+            />
+            <input
+              name="tripId"
+              id="trip_id"
+              size="lg"
+              required
+              value={id}
+              type="hidden"
+            />
+            <Input
+              name="cost"
+              id="cost"
+              size="lg"
+              placeholder="Cost"
+              required
+            />
+            <input
+              name="receipt"
+              id="receipt"
+              size="lg"
+              placeholder="Cost"
+              value={10}
+              type="hidden"
+            />
           </div>
           <div className="flex mb-4 gap-6">
             <select
-              id="type" name="type"
+              id="type"
+              name="type"
               className="block text-xs w-full px-4 py-3 text-black-100  dark:border-gray-300"
             >
               <option selected>Category</option>
-              <option >Food</option>
-              <option >Travel</option>
-              <option >Tickets</option>
-              <option >Other</option>
+              <option>Food</option>
+              <option>Travel</option>
+              <option>Tickets</option>
+              <option>Other</option>
             </select>
 
-            <Input type="date" name="date" id="date" size="lg" placeholder="Date" />
-
+            <Input
+              type="date"
+              name="date"
+              id="date"
+              size="lg"
+              placeholder="Date"
+            />
           </div>
           <div className="flex flex-row gap-6">
-            <div className="flex mb-4 gap-6">
-              {/* <FileUpload /> */}
-            </div>
+            <div className="flex mb-4 gap-6">{/* <FileUpload /> */}</div>
             <div className="flex mb-4 gap-6">
               <Button type="submit" className="bg-[#22577A] ">
                 Submit Expenses
@@ -300,56 +336,27 @@ const placedata = [
     title: "Sigiriya",
     description:
       "Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka.",
-    imgUrl:
-      "./cardimage.jpg",
+    imgUrl: "./cardimage.jpg",
   },
   {
     title: "Ella",
     description:
       "Small town in the Badulla District of Uva Province, Sri Lanka. The area has a rich bio-diversity, dense with numerous varieties of flora and fauna",
-    imgUrl:
-      "/ella.jpg",
+    imgUrl: "/ella.jpg",
   },
   {
     title: "Dunhinda Falls",
     description:
       "Dunhinda Falls is a waterfall located about 5 kilometres from Badulla in the lower central hills of Sri Lanka. The waterfall gets its name from the smoky dew drops.",
-    imgUrl:
-      "/dunhinda.jpg",
+    imgUrl: "/dunhinda.jpg",
   },
   {
     title: "Sri Pada (Adam's Peak)",
     description:
       "Adam's Peak is a 2,243 m (7,359 ft) tall conical sacred mountain located in central Sri Lanka.It is well known for the Sri Pada (Śrī Pāda; Sinhala: ශ්‍රී පාද, sacred footprint)",
-    imgUrl:
-      "/adams.jpg",
+    imgUrl: "/adams.jpg",
   },
-
 ];
-
-// function BudgetPeople() {
-//   return (
-//     <>
-//       {placedata.map((placedata) => (
-
-//         <Card className="w-72 ">
-//           <CardHeader color="blue-gray" className="mt-4 ">
-//             <img className="" src={placedata.imgUrl} alt="card-image" />
-//           </CardHeader>
-//           <CardBody>
-//             <Typography variant="h5" color="blue-gray" className="mb-2 font-poppins">
-//               {placedata.title}
-//             </Typography>
-//             <Typography className="font-poppins" >{placedata.description}</Typography>
-//           </CardBody>
-//           <CardFooter className="pt-0">
-//             <Button className="font-poppins">Read More</Button>
-//           </CardFooter>
-//         </Card>
-//       ))}
-//     </>
-//   );
-// }
 
 const budgetpeople = [
   {
@@ -387,7 +394,7 @@ const budgetpeople = [
     balance: "LKR 5000",
     imgUrl: "/dunhinda.jpg",
   },
-]
+];
 
 function BudgetPeeps() {
   return (
@@ -395,49 +402,32 @@ function BudgetPeeps() {
       {budgetpeople.map((budgetpeople) => (
         <div className="flex  flex-row gap-6">
           <div className="bg-white p-4 rounded-xl w-36 shadow-lg">
-            <img src={budgetpeople.imgUrl} alt="Avatar" className="w-full h-24 rounded-lg" />
-            <h1 className="py-2 text-center font-semi bold">{budgetpeople.name}</h1>
+            <img
+              src={budgetpeople.imgUrl}
+              alt="Avatar"
+              className="w-full h-24 rounded-lg"
+            />
+            <h1 className="py-2 text-center font-semi bold">
+              {budgetpeople.name}
+            </h1>
             <div>
-              <Button className="">Balance: <TotalCostByUser /></Button>
+              <Button className="">
+                Balance: <TotalCostByUser />
+              </Button>
             </div>
           </div>
         </div>
-
       ))}
-
     </>
   );
 }
 
 export function Saves() {
   return (
-    // <Card className="m-10 top-40 p-3 w-100 h-60 ">
-    //   <CardBody>
-    //     <Typography variant="h5" color="blue-gray" className="mb-2">
-    //       You haven't Save anything yet
-    //     </Typography>
-    //     <Typography>
-    //       To save, Explore for hotels, restaurants and things to do, then tap the save icon
-    //     </Typography>
-    //   </CardBody>
-    //   <CardFooter className="pt-0">
-    //     <Button 
-    //     className="h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'">Read More</Button>
-    //   </CardFooter>
-    // </Card>
     <>
-
-      {/* Budget */}
-      <div className="font-poppins w-full bg-[#F6F8FA] flex overflow-hidden ">
-        {/* <div className="">
-          <Sidebar />
-        </div> */}
-
-        <div className=" flex flex-col w-full">
-          {/* <div>
-          <TopNavbar />
-           
-          </div> */}
+    <div></div>
+      <div className="font-poppins bg-[#F6F8FA] flex overflow-hidden ">
+        <div className=" flex flex-col ">
           <div className="mt-10 ml-10">
             <p className="font-bold text-2xl">Traveller Budget : {user_id}</p>
             <Tripid />
@@ -454,16 +444,13 @@ export function Saves() {
                 <Budgetform />
               </div>
 
-
-              <div className="mt-5 gap-4 ml-10 mb-5 w-[50%] mr-72 flex overflow-scroll overflow-y-hidden">
-                {/* <BudgetPeople /> */}
+              <div className="mt-5 gap-4 ml-10 mb-5 w-[40%] flex overflow-scroll overflow-y-hidden">
                 <BudgetPeeps />
-
               </div>
             </div>
             <div
               className="
-              mt-5 ml-[7%] "
+              my-6 ml-[5.5%] "
             >
               <Link to="/Expenses">
                 <Button className="bg-[#22577A] text-white font-poppins ">
@@ -474,8 +461,6 @@ export function Saves() {
           </div>
         </div>
       </div>
-
-
     </>
   );
 }

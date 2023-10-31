@@ -1,15 +1,6 @@
 // // src/Sidebar.js
 import React, { useState } from 'react';
-
 import { Link,useNavigate } from 'react-router-dom';
-
-
-
-// Rest of your code...
-
-
-// Rest of your code...
-
 
 import {
     Card,
@@ -73,11 +64,11 @@ import {
       {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/traveler/mytrips",subItems: [
         { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "",state:1 },
         { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "",state:2 },
-        { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "",state:3 },
+        { icon: <BanknotesIcon className="h-5 w-5" />, name: "Budget", link: "",state:3 },
       ],},
       {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/traveler/community"},
-      {icon : <BanknotesIcon className="h-5 w-5" />, name : "Budget", link : "/traveler/budget"},
+      // {icon : <BanknotesIcon className="h-5 w-5" />, name : "Budget", link : "/traveler/budget"},
       {icon : <Cog6ToothIcon className="h-5 w-5" />, name : "Settings", link : "/settings"},
     ]
 
