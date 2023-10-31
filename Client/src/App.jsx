@@ -82,7 +82,7 @@ import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vo_editprofile";
 
 
 // Sanduni
-//import TravelerDashboard from "./pages/traveler/Dashboard";
+// import TravelerDashboard from "./pages/traveler/Dashboard";
 import Dashboard from "./pages/traveler/Dashboard";
 import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
@@ -98,7 +98,7 @@ import CommunityProfile from "./pages/traveler/CommunityProfile";
 import UserProfile from "./pages/main/profile";
 
 // RavinduRave
-import Travdash from "./pages/traveler/travdash";
+// import Travdash from "./pages/traveler/travdash";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
 import Contact from "./pages/main/contact";
@@ -199,7 +199,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
           path="/hotelagent_reservation_details"
           element={<Hotel_reseravationDetails />}
         />
-        <Route exact path="/dashboard" element={<Travdash />} />
+        {/* <Route exact path="/dashboard" element={<Travdash />} /> */}
         <Route exact path="/register_success" element={<Register_success />} />
 
 
@@ -225,7 +225,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
           <Route exact path="/hotelagent_edit_room" element={<Hotel_editRooms />} />
           <Route exact path="/hotelagent_room_details" element={<Hotel_roomDetails />} />
           <Route exact path="/hotelagent_reservation_details" element={<Hotel_reseravationDetails />} />
-          <Route exact path="/dashboard" element={<Travdash />} />
+          {/* <Route exact path="/dashboard" element={<Travdash />} /> */}
           <Route exact path="/register_success" element={<Register_success />} />
           <Route element={<PersistLogin />}>
             <Route element={<RequireAuth allowedRoles={["TRAVELLER"]} />}>
@@ -284,7 +284,8 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         </>
 
         {/* Sanduni */}
-        <Route path="/traveler/dashboard" element={<TravelerDashboard />}/>
+        {/* <Route path="/traveler/dashboard" element={<TravelerDashboard />}/> */}
+        <Route path="/traveler/dashboard" element={<Dashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
         <Route path="/traveler/itinerary" element={<Itinerary />} />
