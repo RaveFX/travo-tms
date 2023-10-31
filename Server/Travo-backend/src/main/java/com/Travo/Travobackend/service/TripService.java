@@ -3,7 +3,7 @@ package com.Travo.Travobackend.service;
 import com.Travo.Travobackend.enumeration.TripState;
 import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.model.entity.Trip;
-import com.Travo.Travobackend.repository.TripRepo;
+import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 //import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class TripService {
 
-    private final TripRepo tripRepo;
+    private final TripRepository tripRepository;
     private final UserRepository userRepo;
 
     public Trip createTrip(TripDTO tripDTO){
@@ -29,23 +29,23 @@ public class TripService {
             tripState = TripState.PRIVATE;
         }
 
-        Trip trip = Trip.builder()
-                .Trip_name(tripDTO.getTrip_name())
-                .Trip_creatorID(tripDTO.getTrip_creatorID())
+         var  trip = Trip.builder()
+                .trip_name(tripDTO.getTrip_name())
+                .Trip_creatorID(tripDTO.getTrip_creator_id())
                 .State(tripState)
                 .build();
 
-        return tripRepo.save(trip);
+        return tripRepository.save(trip);
     }
 
 
 
-    public Trip getTripById(Long tripID) {
-        return tripRepo.findById(tripID).orElse(null);
+    public Trip getTripById(Integer tripID) {
+        return tripRepository.findById(tripID).orElse(null);
     }
 
-    public Trip updateTrip(Long tripID, TripDTO tripDTO) {
-        Trip existingTrip = tripRepo.findById(tripID).orElse(null);
+    public Trip updateTrip(Integer tripID, TripDTO tripDTO) {
+        Trip existingTrip = tripRepository.findById(tripID).orElse(null);
 
         if(existingTrip != null){
 
@@ -58,21 +58,21 @@ public class TripService {
                 existingTrip.setDescription(tripDTO.getDescription());
             }
 
-            return tripRepo.save(existingTrip);
+            return tripRepository.save(existingTrip);
 
         }
         return null;
     }
 
-    public Trip updateDate(Long tripID, TripDTO tripDTO) {
-        Trip existingTrip = tripRepo.findById(tripID).orElse(null);
+    public Trip updateDate(Integer tripID, TripDTO tripDTO) {
+        Trip existingTrip = tripRepository.findById(tripID).orElse(null);
 
         if(existingTrip != null){
 
-            existingTrip.setStart_Date(tripDTO.getStart_Date());
-            existingTrip.setEnd_Date(tripDTO.getEnd_Date());
+            existingTrip.setStart_date(tripDTO.getStart_date());
+            existingTrip.setEnd_date(tripDTO.getEnd_date());
 
-            return tripRepo.save(existingTrip);
+            return tripRepository.save(existingTrip);
 
         }
 
@@ -80,10 +80,10 @@ public class TripService {
     }
 
     public List<Trip> getAllTrips() {
-        return tripRepo.findAll();
+        return tripRepository.findAll();
     }
 
-    public String getCreatorName(Long id) {
+    public String getCreatorName(Integer id) {
         return userRepo.getEmailById(id);
     }
 }
