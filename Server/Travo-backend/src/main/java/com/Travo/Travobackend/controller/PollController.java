@@ -57,11 +57,7 @@ public class PollController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/checkVotedORNot/{userId}/{AttactionPollId}")
-    public ResponseEntity<String> checkVotedORNot(@PathVariable Integer userId, @PathVariable Integer AttactionPollId){
-        String result = pollService.checkVotedORNot(userId, AttactionPollId);
-        return ResponseEntity.ok(result);
-    }
+
 
 @DeleteMapping("/attractions/updatePolluser/remove")
 public ResponseEntity<String> removePollUser(
@@ -72,6 +68,21 @@ public ResponseEntity<String> removePollUser(
     String result = pollService.removePollUser(userId, attractionPollId);
     return ResponseEntity.ok(result);
 }
+
+    @PostMapping("/totrip/add-attraction")
+    public String addAttractionToTrip(@RequestBody AttractionPollDTO attractionPollDTO) {
+        return pollService.addAttractionToTrip(attractionPollDTO);
+    }
+
+    @DeleteMapping("attractions/frompoll/delete/{attractionPollId}")
+    public ResponseEntity<String> AttractionsDeleteFromPoll(
+            @PathVariable Integer attractionPollId
+    ) {
+        String result = pollService.attractionDeleteFromPoll(attractionPollId);
+        return ResponseEntity.ok(result);
+    }
+
+
 
 
 

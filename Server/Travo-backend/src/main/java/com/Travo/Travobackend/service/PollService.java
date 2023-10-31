@@ -3,13 +3,10 @@ package com.Travo.Travobackend.service;
 
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
-import com.Travo.Travobackend.repository.AttractionPollRepository;
-import com.Travo.Travobackend.repository.HotelPollRepository;
+import com.Travo.Travobackend.repository.*;
 import com.Travo.Travobackend.repository.JDBCDao.AttractionJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.AttractionPollJDBCDao;
 import com.Travo.Travobackend.repository.JDBCDao.HotelPollJDBCDao;
-import com.Travo.Travobackend.repository.PollUserRepository;
-import com.Travo.Travobackend.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +29,9 @@ public class PollService {
 
     @Autowired
     private HotelPollRepository hotelPollRepository;
+
+    @Autowired
+    private TripAttractionRepository tripAttractionRepository;
     @Autowired
     private PollUserRepository pollUserRepository;
 
@@ -92,9 +92,14 @@ public class PollService {
      }
     }
 
-    public String checkVotedORNot(Integer userId,Integer AttactionPollId) {
-        String exists = pollUserRepository.existsByUserIdAndAttactionPollId(userId, AttactionPollId);
-        return exists;
+    public String attractionDeleteFromPoll(Integer attractionPollId) {
+        try {
+            // Logic to remove a poll user
+            attractionPollRepository.deleteByAttractionPollId(attractionPollId);
+            return "User removed from the poll successfully!";
+        } catch (Exception e) {
+            return "Error removing user from the poll: " + e.getMessage();
+        }
     }
 
 
@@ -203,18 +208,26 @@ public class PollService {
     }
 
 
+    public String addAttractionToTrip(AttractionPollDTO attractionPollDTO){
+        try {
+            TripAttraction tripAttraction = new TripAttraction();
+            tripAttraction.setPlace_id(attractionPollDTO.getPlace_id());
+            tripAttraction.setAddress(attractionPollDTO.getAddress());
+            tripAttraction.setName(attractionPollDTO.getName());
+            tripAttraction.setImg_url(attractionPollDTO.getImg_url());
+            tripAttraction.setDay(attractionPollDTO.getDay());
 
+            Optional<Trip> tripOptional = tripRepository.findById(attractionPollDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            tripAttraction.setTrip(trip);
+            tripAttractionRepository.save(tripAttraction);
 
+            return("Attraction added successfully!");
+        } catch (Exception e) {
+            return("Error adding attraction: " + e.getMessage());
+        }
 
-//    public String deletePollUserById(Integer hotelpollId) {
-//        try {
-//            System.out.println(hotelpollId);
-//            pollUserRepository.deleteByHotelpollId(hotelpollId);
-//            return "PollUser deleted successfully!";
-//        } catch (Exception e) {
-//            return "Error deleting PollUser: " + e.getMessage();
-//        }
-//    }
+    }
 
 
 

@@ -35,6 +35,6 @@ public class AttractionPoll {
     private Trip trip;
 
 
-    @OneToMany(mappedBy = "attractionPoll")
+    @OneToMany(mappedBy = "attractionPoll", cascade = CascadeType.REMOVE)
     private Set<PollUser> pollUsers = new HashSet<>();
 }

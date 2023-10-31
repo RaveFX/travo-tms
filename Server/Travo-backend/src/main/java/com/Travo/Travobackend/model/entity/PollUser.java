@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.OnDelete;
 
 @Data
 @SuperBuilder
@@ -19,6 +21,7 @@ public class PollUser {
 
     private Integer user_id;
 
+
     @ManyToOne
     @JoinColumn(name = "hotelpoll_id", referencedColumnName = "id" )
     private HotelPoll hotelPoll;
@@ -26,6 +29,7 @@ public class PollUser {
 
     @ManyToOne
     @JoinColumn(name = "attractionpoll_id", referencedColumnName = "id" )
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AttractionPoll attractionPoll;
 
 

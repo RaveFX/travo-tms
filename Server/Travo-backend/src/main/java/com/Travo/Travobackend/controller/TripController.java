@@ -95,24 +95,6 @@ public class TripController {
     }
 
 
-//    @GetMapping("/triplist/{userId}")
-//    public List<TripDTO> gettriplist(@PathVariable Integer userId) {
-//        System.out.println(userId);
-//        return tripService.tripList(userId);
-//    }
-//
-//@GetMapping("/trip-information/{tripId}")
-//public ResponseEntity<Trip> getTripInfo(@PathVariable Integer tripId) {
-//    Trip trip = tripRepository.findById(tripId).orElse(null);
-//
-//    if (trip != null) {
-//        return ResponseEntity.ok(trip);
-//    } else {
-//        return ResponseEntity.notFound().build();
-//    }
-//}
-
-
     @GetMapping("/checkTrip/{tripId}/{uniqueKey}")
     public ResponseEntity<String> checkTrip(@PathVariable Integer tripId, @PathVariable String uniqueKey){
         String result = tripService.checkTrip(tripId, uniqueKey);
