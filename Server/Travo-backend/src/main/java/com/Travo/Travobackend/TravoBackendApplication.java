@@ -20,7 +20,7 @@ public class TravoBackendApplication {
 			@Override
 			public void addCorsMappings( @NonNull CorsRegistry registry ) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://127.0.0.1:5173")
+						.allowedOrigins("http://localhost:5173")
 						.allowedHeaders("*")
 						.allowedMethods("*")
 						.allowCredentials(true);

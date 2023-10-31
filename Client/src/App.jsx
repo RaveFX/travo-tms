@@ -112,7 +112,6 @@ import Dashboard from "./pages/activity_agent/Dashboard";
 import ImageGrid from "./pages/activity_agent/Activity";
 
 // RavinduRave
-import HomePage from "./pages/main/home";
 import Travdash from "./pages/traveler/travdash";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
@@ -152,6 +151,8 @@ import TripAddButton from "./pages/traveler/TripAddButtonPage";
 import Hotelselectionpage from "./pages/traveler/Hotelselectionpage";
 
 import PrivateRoute from "./pages/main/PrivateRoute";
+import Newhome from "./pages/main/home";
+import { Saves } from "./pages/traveler/Saves";
 
 export default function App() {
 
@@ -164,7 +165,7 @@ export default function App() {
     <>
       <Routes>
         {/* Tharindi */}
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/" element={<Newhome />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/addtripsignin/:pathTripId" element={<Addtripsignin />} />
@@ -372,6 +373,8 @@ export default function App() {
         <Route path="/traveler/destinations/:id/:day" element={<Destinations />} />
         <Route path="/traveler/activities/:id/:day" element={<Activities />} />
         <Route path="/traveler/mainactivities/:id/:day" element={<MainActivities />} />
+        <Route path="/traveler/trip-planner/:id" component={Saves} />
+
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />
@@ -388,12 +391,13 @@ export default function App() {
         />
 
         {/* RavinduRave */}
-        <Route exact path="/Travdash" element={<Travdash />} />
+        {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
+        <Route exact path="/Newhome" element={<Newhome />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
         <Route exact path="/Contact" element={<Contact />} />
-        <Route exact path="/Budget" element={<Budget />} />
-        <Route exact path="/Store" element={<Store />} />
+        <Route exact path="/traveler/budget" element={<Budget />} />
+        <Route exact path="/traveler/store" element={<Store />} />
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
