@@ -5,6 +5,13 @@ import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
 import { Rating } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
 
 
 function TravelGuide() {
@@ -19,7 +26,7 @@ function TravelGuide() {
     setGuide(result.data);
   }
   console.log(guides);
-  
+
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -34,52 +41,45 @@ function TravelGuide() {
           <div className="overflow-y-auto h-[calc(100vh-150px)] mx-6 "
             style={{ scrollbarWidth: 'none' }}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-              {/* {guides.length > 0 ? ( */}
-                {guides.map((guide) => (
-                  // {guides.map((guide, index) => (
-                  <div
-                   
-                    className="bg-white p-4 rounded-lg shadow border border-[#57CC99]"
-                    onClick={""}
-                  >
-                    <div className="flex items-center justify-center mb-2">
-                      <img
-                        src='../../../traveler/Profile-Picture.svg'
-                        // alt={`${guide.fname}'s Photo`}
-                        className="w-20 h-20 rounded-full object-cover"
-                      />
-                    </div>
-                    <h2 className="text-xl font-semibold mb-2">{guide.fname} {guide.lname}</h2>
-                    <p className="mb-2">{guide.description}</p>
-                    <div className="flex items-center mb-2">
-                      {/* <span className="mr-2">{guide.ratings.toFixed(1)}</span> */}
-                      <div className="flex items-center">
-                        {/* <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="h-4 w-4 text-yellow-500"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg> */}
-                        <span className="ml-1 text-sm text-gray-500">
-                          {guide.district}
-                        </span>
-                      </div>
-                    </div>
-                    {/* ... other details */}
+            {guides.map((guide) => (
+              <Card className="mt-6 w-96">
+                <CardBody>
+                  <div className="flex items-center justify-center mb-2">
+                    <img
+                      src='../../../traveler/Profile-Picture.svg'
+                      // alt={`${guide.fname}'s Photo`}
+                      className="w-20 h-20 rounded-full object-cover"
+                    />
                   </div>
-                // ))) : (
-                // <p>Loading...</p>)}
-                ))}
+                  <Typography variant="h5" color="blue-gray" className="mb-2">
+                    {guide.fname} {guide.lname}
+                  </Typography>
+                  <Typography>
+                    {guide.description}
+                  </Typography>
+                </CardBody>
+                <CardFooter className="flex flex-col  pt-0">
+                 <div className='flex flex-row'>
+
+                    <Button size="sm" variant="text" className="flex items-center gap-2">
+                      {guide.district}
+                    </Button>
+                    <Button size="sm" variant="text" className="flex items-center gap-2">
+                      {guide.nic}
+                    </Button>
+                 </div>
+                 <div>
+
+                    <a href={guide.contact_num} variant="gradient" className="flex flex-row rounded-full bg-green p-2 text-white w-40 my-6" color="green">
+                     <img src='../../../public/traveler/phone.png' className='w-4 mx-2'/>{guide.contact_num}</a>
+                 </div>
+                  
+                </CardFooter>
+              </Card>
+            ))}
             </div>
           </div>
+
 
           <div className="mt-8"></div>
         </div>

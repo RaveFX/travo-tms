@@ -235,7 +235,7 @@ function App() {
                                 Book Now
                             </Typography>
                             <Typography color="gray" className="mt-1 font-normal">
-                                Nice to meet you! Enter your details for Booking.
+                                Nice to meet you! Enter these details for Ticket Booking.
                             </Typography>
                             <form className="mt-8 mb-2 max-w-screen-lg  " onSubmit={(e) => onSubmit(e)}>
                                 <div className="mb-1 flex flex-col gap-6">

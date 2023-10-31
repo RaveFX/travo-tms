@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const VegicleCard = ({ names, description, location,link, milage, small_bag, price, type, src }) => {
+const VegicleCard = ({ names, description, location,link, milage, branch, price, type, src }) => {
 
     return (
         <Card className="sm:w-[48rem] xs:w-[60rem] lg:w-[60rem] xl:w-[72rem] overflow-hidden m-5">
@@ -41,21 +41,23 @@ const VegicleCard = ({ names, description, location,link, milage, small_bag, pri
                         <Typography variant="h5" color="blue-gray">{names}</Typography>
 
                         <Typography className="sm:w-1/2 lg:w-full lg:flex">
-                            <Typography className="w-1/2">
+                            <Typography className="w-1/2 mr-20">
                                 <Typography className="flex mr-4 my-4" variant="small" color="blue-gray"><i class='bx bx-user'></i> {description} </Typography>
                                 
                             </Typography>
                             <Typography>
                                 <Typography variant="" color="blue-gray">{type}</Typography>
-                                <Typography variant="" color="blue-gray">{small_bag}</Typography>
-                                <Typography variant="" color="blue-gray">{location}  location</Typography>
+                                <Typography variant="" color="blue-gray">Brach: {branch}</Typography>
+                                {/* <Typography variant="" color="blue-gray">Tel: {location}</Typography> */}
+                                <a href={location} variant="gradient" className="flex flex-row rounded-full bg-green p-2 text-white w-40 my-6" color="green">
+                                        <img src='../../../public/traveler/phone.png' className='w-6 mx-2'/>{location}</a>
                             </Typography>
-                            <Typography className="px-5">
+                            {/* <Typography className="px-5">
                             <Typography variant="" className="font-thin text-xs" color="Green-500"></Typography>
 
                             <Typography variant="h6" color="Green-500">{price}</Typography>
 
-                        </Typography>
+                        </Typography> */}
                            
                         </Typography>
 
@@ -108,7 +110,7 @@ const hotel_page = () => {
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
                             <Link to={`/traveler/HotelType/${user_id}/${hotel.hotel_id}`}>
-                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description}  />
+                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description} location={hotel.contact_num} branch={hotel.branch}  />
                             </Link>
                         ))}
 

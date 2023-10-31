@@ -103,9 +103,9 @@ function ServiceProviders() {
       }}
     >
       <TopNavbar />
-      <div className="py-24 sm:py-32">
-        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-          <div className="max-w-2xl">
+      <div className="py-16 sm:py-14">
+        <div className="mx-auto flex flex-row max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:flex-cols-3">
+          <div className="w-96 mt-28">
             <img src="/travo-white.png" alt="Sample image" />
             <h2 className="text-3xl font-bold tracking-tight  sm:text-4xl ml-20">
               Join with us
@@ -119,18 +119,18 @@ function ServiceProviders() {
           </div>
           <ul
             role="list"
-            className="grid sm:grid-cols-3 sm:gap-y-16 xl:col-span-2 pt-20"
+            className="grid sm:grid-cols-3 sm:gap-y-12 xl:col-span-2 pt-20"
           >
 
             <li>
 
               <card role="button" onClick={handleClickHotel}>
                 <img
-                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  className="h-40 w-40 mx-10 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
                   src="/main/hotel_agent.png"
                   alt=""
                 />
-                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                <h3 className="text-base text-center mt-4 font-semibold leading-7 tracking-tight">
                   Hotel
                 </h3>
               </card>
@@ -141,11 +141,11 @@ function ServiceProviders() {
 
               <card role="button" onClick={handleClickActivity}>
                 <img
-                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 "
+                  className="h-40 w-40 mx-10 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2 "
                   src="/main/activity_register.png"
                   alt=""
                 />
-                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                <h3 className="text-base text-center mt-4 font-semibold leading-7 tracking-tight">
                   Activities
                 </h3>
               </card>
@@ -157,11 +157,11 @@ function ServiceProviders() {
 
               <card role="button" onClick={handleClickGuide}>
                 <img
-                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  className="h-40 w-40 mx-10 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
                   src="/main/Guide_register.png"
                   alt=""
                 />
-                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                <h3 className="text-base text-center mt-4 font-semibold leading-7 tracking-tight">
                   Travel Guide
                 </h3>
               </card>
@@ -173,11 +173,11 @@ function ServiceProviders() {
 
               <card role="button" onClick={handleClickVehicle}>
                 <img
-                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  className="h-40 w-40 mx-10 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
                   src="/main/vehicle_renter.png"
                   alt=""
                 />
-                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                <h3 className="text-base text-center mt-4 font-semibold leading-7 tracking-tight">
                   Vehicle Renter
                 </h3>
               </card>
@@ -190,11 +190,11 @@ function ServiceProviders() {
               <card role="button" onClick={handleClickstore}>
 
                 <img
-                  className="h-40 w-40 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
+                  className="h-40 w-40 mx-10 rounded-md transition duration-300 ease-in-out hover:scale-110 bg-white p-2"
                   src="/main/store_manager.png"
                   alt=""
                 />
-                <h3 className="text-base font-semibold leading-7 tracking-tight">
+                <h3 className="text-base text-center mt-4 font-semibold leading-7 tracking-tight">
                   Store
                 </h3>
               </card>

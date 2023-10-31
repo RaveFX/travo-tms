@@ -26,7 +26,8 @@ public class TravelerOptionJDBCDao {
         List<HotelDTO> hotels = new ArrayList<>();
 
 
-        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id group by hotel_agent.hotel_name ");
+        SQL.append("SELECT * FROM hotel_agent");
+//        SQL.append("SELECT * FROM rooms inner join hotel_agent on rooms.hotel_id=hotel_agent.hotel_id group by hotel_agent.hotel_name ");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -34,12 +35,10 @@ public class TravelerOptionJDBCDao {
 
 
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
-                hotelDTO.setChild_count(rs.getInt("child_count"));
-                hotelDTO.setPrice(rs.getInt("price"));
-                hotelDTO.setAdult_count(rs.getInt("adult_count"));
-                hotelDTO.setRoom_description(rs.getString("description"));
                 hotelDTO.setHotel_description(rs.getString("description"));
                 hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setContact_num(rs.getInt("contact_num"));
+                hotelDTO.setBranch(rs.getString("branch"));
 
 
                 hotels.add(hotelDTO);
@@ -93,6 +92,7 @@ public class TravelerOptionJDBCDao {
                 hotelDTO.setHotel_description(rs.getString("description"));
                 hotelDTO.setHotel_name(rs.getString("hotel_name"));
                 hotelDTO.setHotel_id(rs.getInt("hotel_id"));
+                hotelDTO.setContact_num(rs.getInt("contact_num"));
 
                 basics.add(hotelDTO);
             }

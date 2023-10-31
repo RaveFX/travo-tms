@@ -34,7 +34,9 @@ public class HotelDTO {
     private Boolean Dinner;
     private String room_name;
     private Integer room_id;
+    private Integer contact_num;
     private String room_description;
+    private String branch;
 
 
 
