@@ -25,7 +25,7 @@ import {
 function Mytrips() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const user_id = sessionStorage.getItem('user_id');
   const [trips,setTrips]=useState([]);
   const [details,setDetails]=useState([]);
@@ -71,6 +71,10 @@ function Mytrips() {
 //   const [activeTab, setActiveTab] = React.useState("all trips");
 const handleCreateTripClick = () => {
   setIsOpen(true);
+};
+
+const handleEditTripClick = () => {
+  setIsEditorOpen(true);
 };
 
 const handleOpenCalander = () => {
@@ -132,7 +136,7 @@ const handleOpenCalander = () => {
                 </CardBody>
                 <CardFooter className="flex justify-between p-0">
                 <Link to={`/traveler/trip-planner/${trips.trip_id}`}><Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] ">Check</Button></Link>
-                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Remove</Button>
+                  <Button className="justify-center py-2 md:w-[125px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#E9E9E9] hover:bg-[#22577A]">Settings</Button>
                 </CardFooter>
               </Card>
               
@@ -155,6 +159,8 @@ const handleOpenCalander = () => {
           </Swiper>
         </div>
           <PopupModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+         
+
       </div>
     </div>
   );
