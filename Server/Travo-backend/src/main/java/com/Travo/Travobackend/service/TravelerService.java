@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.service;
 
+import com.Travo.Travobackend.model.dto.CommunityDTO;
 import com.Travo.Travobackend.model.dto.TravelerDTO;
 import com.Travo.Travobackend.model.entity.Community;
 import com.Travo.Travobackend.model.entity.Traveler;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -39,10 +41,48 @@ public class TravelerService {
                 .build();
     }
 
+    public List<TravelerDTO> search(String Keyword) throws IOException {
 
+        String[] keywords = Keyword.split(" ");
+        String name;
+        String firstname;
+        String lastname;
+        List<Traveler> result;
 
+        String rootDirectory = System.getProperty("user.dir");
+        String profileImageUploadPath = rootDirectory + "/src/main/resources/static/profile/profileImages";
 
-    public List<Traveler> getAllTravelerDetails() {
-        return travelerRepository.findAll();
+        if(keywords.length == 1){
+            name = keywords[0];
+            result = travelerRepository.findByName(name);
+        } else if (keywords.length == 2){
+            firstname = keywords[0];
+            lastname = keywords[1];
+            result = travelerRepository.findByNames(firstname,lastname);
+        } else {
+            return null;
+        }
+
+        List<TravelerDTO> travelerDTOList = new ArrayList<>();
+
+        for(Traveler traveler : result){
+
+            var t = travelerRepository.findById(traveler.getUser_id()).orElse(null);
+            Path profileImagePath = Paths.get(profileImageUploadPath, t.getProfileImage());
+            byte[] profileImage = Files.readAllBytes(profileImagePath);
+
+            var c = TravelerDTO.builder()
+                    .id(traveler.getUser_id())
+                    .firstname(traveler.getFirstname())
+                    .lastname(traveler.getLastname())
+                    .profileImage(profileImage)
+                    .build();
+
+            travelerDTOList.add(c);
+
+        }
+
+        return travelerDTOList;
+
     }
 }

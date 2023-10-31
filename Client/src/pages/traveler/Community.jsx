@@ -13,126 +13,14 @@ import {
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import { Button, Input, Typography, Avatar } from "@material-tailwind/react";
 
-const dummyUsers = [
-  {
-    name: "Sanduni",
-  },
-  {
-    name: "Samindu",
-  },
-  {
-    name: "Kanishka",
-  },
-  {
-    name: "Epazinghe",
-  },
-];
-
 function Community() {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
   const [postDetails, setPostDetails] = useState([]);
   const [search, setSearch] = useState("");
   const [results, setResults] = useState(null);
-  const [searching, setSearching] = useState(false);
-  const [userData, setUserData] = useState("");
-
-
-  const user_id = sessionStorage.getItem("user_id");
-  const profileImage = sessionStorage.getItem("profileImage");
 
   useEffect(() => {
-    const searchUser = () => {
-      setResults(
-        dummyUsers.filter((item) => {
-          return item.name.includes(search);
-        })
-      );
-    };
-    searchUser();
-  }, [search]);
 
-  useEffect(() => {
-    const getDetails = async () => {
-      try {
-        let response = await axios.get(`/traveler/details/${user_id}`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
-        setUserData(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getDetails();
-  }, []);
-
-  // useEffect(() => {
-  //   //console.log(userData);
-  // }, [userData]);
-
-  useEffect(() => {
-    const getAllDetails = async () => {
-      try {
-        let response = await axios.get(`/traveler/details`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
-        setUserData(response.data);
-        userData && console.log(userData);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getAllDetails();
-  }, []);
-
-  // useEffect(() => {
-  //   console.log(userData);
-  // }, [userData]);
-
-
-
-  const handleLikeClick = async (postId) => {
-    try {
-      const updatedPostDetails = postDetails.map((post) => {
-        if (post.id === postId) {
-          const updatedPost = { ...post };
-          updatedPost.isLiked = !updatedPost.isLiked;
-          updatedPost.likes += updatedPost.isLiked ? 1 : -1;
-          return updatedPost;
-        }
-        return post;
-      });
-      setPostDetails(updatedPostDetails);
-
-      // Send a request to update likes on the server
-      await axios.put(`/community/like-post/${postId}`);
-    } catch (error) {
-      console.error("Error updating post like:", error);
-    }
-  };
-
-  const clickSearch = () => {
-    console.log("Search Clicked");
-    setSearching(!searching);
-  };
-
-  const navigateToCreatePost = () => {
-    navigate("/create-post"); // Use the URL path to your CreatePost component
-  };
-
-  const navigateToProfile = () => {
-    navigate("/community-profile"); // Use the URL path to your CreatePost component
-  };
-
-  const navigateToUser = (id) => {
-    navigate("/community-profile/" + id); // Use the URL path to your CreatePost component
-  };
-
-  useEffect(() => {
     const getPostDetails = async () => {
       try {
         let response = await axios.get(`/community/all-post`, {
@@ -149,7 +37,55 @@ function Community() {
     getPostDetails();
   }, []);
 
+  useEffect(() => {
+    if (search === "") {
+      return;
+    }
+    const searchTraveler = async () => {
+      try {
+        let response = await axios.get(`/traveler/search/${search}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        setResults(response.data);
+      } catch (err) {
+        console.error("Not Found");
+      }
+    };
+    searchTraveler();
+  }, [search]);
   
+  // const handleLikeClick = async (postId) => {
+  //   try {
+  //     const updatedPostDetails = postDetails.map((post) => {
+  //       if (post.id === postId) {
+  //         const updatedPost = { ...post };
+  //         updatedPost.isLiked = !updatedPost.isLiked;
+  //         updatedPost.likes += updatedPost.isLiked ? 1 : -1;
+  //         return updatedPost;
+  //       }
+  //       return post;
+  //     });
+  //     setPostDetails(updatedPostDetails);
+
+  //     // Send a request to update likes on the server
+  //     await axios.put(`/community/like-post/${postId}`);
+  //   } catch (error) {
+  //     console.error("Error updating post like:", error);
+  //   }
+  // };
+
+  const navigateToCreatePost = () => {
+    navigate("/create-post"); // Use the URL path to your CreatePost component
+  };
+
+  const navigateToProfile = () => {
+    navigate("/community-profile"); // Use the URL path to your CreatePost component
+  };
+
+  const navigateToUser = (id) => {
+    navigate("/community-profile/" + id); // Use the URL path to your CreatePost component
+  };
 
   return (
     <div className="flex h-screen overflow-hidden ">
@@ -177,7 +113,7 @@ function Community() {
                 <Squares2X2Icon className="w-7 h-7" />
               </Button>
 
-              <div className="!absolute top-[250PX] right-[5px] flex w-full gap-2 md:w-max rounded-full">
+              <div className="!relative top-[1.5rem] right-[5px] flex w-full gap-2 md:w-max rounded-full">
                 <Input
                   type="search"
                   label="Type here..."
@@ -202,31 +138,23 @@ function Community() {
                   {results.map((item, index) => (
                     <div
                       key={index}
-                      className="cursor-pointer p-2 hover:bg-gray-200 rounded-t-lg text-1xl"
-                      onClick={() => handleItemClick(item)}
+                      className="flex items-center space-x-4 cursor-pointer p-2 hover:bg-gray-200 rounded-t-lg text-1xl"
+                      onClick={() => navigateToUser(item.id)}
                     >
-                      {item.name}
+                      <img
+                        src={`data:application/img;base64,${item.profileImage}`}
+                        className="h-6 w-6 rounded-full"
+                      />
+                      <span className="text-md">
+                        {`${item.firstname} ${item.lastname}`}
+                      </span>
                     </div>
                   ))}
                 </div>
               )}
             </div>
           </Banner>
-          {/* <Button
-              onClick={navigateToProfile}
-              className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow: bg-blur hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold "
-            >
-              {" "}
-              <Typography>Go to Profile</Typography>
-            </Button> */}
-          {/* Post Section */}
-          {/* <Button
-            onClick={navigateToCreatePost}
-            className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold animated-button"
-          >
-            {" "}
-            <PlusIcon className="w-7 h-7" />
-          </Button> */}
+
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
             {postDetails.map((post, index) => (
               <div

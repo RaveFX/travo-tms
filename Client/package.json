@@ -32,6 +32,7 @@
     "react-dom": "^18.2.0",
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^6.14.2",
+    "react-tabs": "^6.0.2",
     "recharts": "^2.7.3",
     "run-parallel": "^1.2.0",
     "swiper": "^10.2.0",
