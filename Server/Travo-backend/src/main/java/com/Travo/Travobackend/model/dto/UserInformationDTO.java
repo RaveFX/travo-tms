@@ -28,4 +28,6 @@ public class UserInformationDTO {
     private Role role;
     private Status status;
 
+    private String service_provider;
+
 }

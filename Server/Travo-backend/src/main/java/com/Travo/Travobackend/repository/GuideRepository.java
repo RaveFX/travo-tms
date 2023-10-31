@@ -16,4 +16,6 @@ public interface GuideRepository extends JpaRepository<Guide, Integer> {
 
     @Query("SELECT g FROM Guide g WHERE g.user = :user AND g.status ='ACTIVE'")
     Optional<Guide> findByUserIdAndStatus(User user);
+
+
 }

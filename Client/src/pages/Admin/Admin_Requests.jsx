@@ -49,7 +49,7 @@ export default function Admin_Requests() {
     }, []);
 
     const loadUsersinfo = async () => {
-        const result = await axios.get("http://localhost:8080/api/v1/user/information")
+        const result = await axios.get("http://localhost:8080/api/v1/user/pending/information")
         setUsersinfo(result.data);
     }
 
@@ -62,9 +62,7 @@ export default function Admin_Requests() {
                 <TopNavbar />
                 <div className="overflow-y-auto flex-1"> {/* Apply 'overflow-y-auto' class here */}
                     <div className="bg-white p-8 rounded-md w-full">
-                        <div className=''>
-                            <button type="button" class="text-centerfocus:outline-none text-white bg-green focus:ring-4 focus:ring-green font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><Link to="/travel_guide_confirmed">Confirmed Requests</Link></button>
-                        </div>
+
 
                         <div className="flex items-center justify-between pb-6">
                             <div>
@@ -111,93 +109,48 @@ export default function Admin_Requests() {
                                         <tbody>
 
                                             {
-                                                usersinfo.filter((userInfo) => userInfo.status === 'PENDING').map((usersinfo) => (
+                                                usersinfo.map((userInfo) => (
                                                     <tr className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                        <td className=" text-center  items-center  whitespace-no-wrap">
+                                                        <td className="text-center items-center whitespace-no-wrap">
                                                             <div className="flex">
                                                                 <div className="h-8 w-8 ml-5">
-                                                                    <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt className="h-full w-full rounded-full overflow-hidden shadow" />
+                                                                    <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/advance_tables/at_1.png" alt="" className="h-full w-full rounded-full overflow-hidden shadow" />
                                                                 </div>
-                                                                <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal  text-sm">{usersinfo.user_id}</p>
+                                                                <p className="ml-2 text-gray-600 dark:text-gray-400 tracking-normal text-sm">{userInfo.user_id}</p>
                                                             </div>
                                                         </td>
-                                                        <td className="whitespace-nowrap px-6 py-4 font-medium">{usersinfo.role}</td>
-                                                        <td className="whitespace-nowrap px-6 py-4">{usersinfo.registration_date}</td>
-                                                        <td className="whitespace-nowrap px-6 py-4">{usersinfo.email}</td>
-
-
-                                                        <td className=" ">
-                                                            <button
-                                                                onClick={() => handleConfirm(usersinfo.user_id)}
-                                                                class="text-centerfocus:outline-none text-white bg-button1 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                            >
-                                                                Confirm
-                                                            </button>
-                                                        </td>
-                                                        <td className=" ">
-                                                            <button onClick={() => handleReject(usersinfo.user_id)}
-                                                                type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                                                Reject
-                                                            </button>
+                                                        <td className="whitespace-nowrap px-6 py-4 font-medium">{userInfo.service_provider}</td>
+                                                        <td className="whitespace-nowrap px-6 py-4">{userInfo.registration_date}</td>
+                                                        <td className="whitespace-nowrap px-6 py-4">{userInfo.email}</td>
+                                                        <td className="justify-center">
+                                                            {
+                                                                userInfo.service_provider === 'vehicle_renter' &&
+                                                                <Link to={`/vehicle_renter_info/${userInfo.user_id}`}>
+                                                                    <button type="button" className="text-center focus:outline-none text-white bg-button1 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">View Details</button>
+                                                                </Link>
+                                                            }
+                                                            {
+                                                                userInfo.service_provider === 'hotel_agent' &&
+                                                                <Link to={`/hotel_agent_info/${userInfo.user_id}`}>
+                                                                    <button type="button" className="text-center focus:outline-none text-white bg-button1 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">View Details</button>
+                                                                </Link>
+                                                            }
+                                                            {/* {
+                                                                userInfo.service_provider === 'activity_agent' &&
+                                                                <Link to={`/hotel_agent_info/${userInfo.user_id}`}>
+                                                                    <button type="button" className="text-center focus:outline-none text-white bg-button1 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">View Details</button>
+                                                                </Link>
+                                                            } */}
+                                                            {/* Add more condition blocks for other service providers */}
                                                         </td>
                                                     </tr>
                                                 ))
                                             }
 
 
-                                            <tr>
-                                                <td class="px-5 py-5 bg-white text-sm">
-                                                    <div class="flex items-center">
-                                                        <div class="flex-shrink-0 w-10 h-10">
-                                                            <img class="w-full h-full rounded-full"
-                                                                src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-                                                                alt="" />
-                                                        </div>
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Alonzo Cox
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Hotel Agent</p>
-                                                </td>
-                                                <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
-                                                </td>
-                                                <td class="px-5 py-5 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap">ravindu@gmail.com</p>
-                                                </td>
-
-                                                <td className=" ">
-                                                    <button
-                                                        onClick={() => handleConfirm(userInfo.user_id)} // Pass the user ID
-                                                        className="text-centerfocus:outline-none text-white bg-button1 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-butt font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                                                    >
-                                                        Confirm
-                                                    </button>
-                                                </td>
-                                                <td className=" ">
-                                                    <button type="button" class="text-centerfocus:outline-none text-white bg-button2 hover:bg-black transition hover:scale-75 duration-300 delay-100 rounded-full focus:ring-4 focus:ring-green font-medium text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reject</button>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
-                                    <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
-                                        <span className="text-xs xs:text-sm text-gray-900">
-                                            Showing 1 to 4 of 50 Entries
-                                        </span>
-                                        <div className="inline-flex mt-2 xs:mt-0">
-                                            <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-l">
-                                                Prev
-                                            </button>
-                                            &nbsp; &nbsp;
-                                            <button className="text-sm text-indigo-50 transition duration-150 bg-green font-semibold py-2 px-4 rounded-r">
-                                                Next
-                                            </button>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

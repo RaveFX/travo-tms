@@ -60,6 +60,8 @@ import Admin_Advertisments from "./pages/Admin/Admin_Advertisments";
 import Admin_Add_dvertisments from "./pages/Admin/Admin_Addadverisments";
 import Admin_Transaction from "./pages/Admin/Admin_Transaction";
 import Admin_userlistpage from "./pages/Admin/Admin_userlistpage"
+import AcceptPage from "./pages/Admin/Admin_requestcomformpage";
+import Vehicle from "./pages/Admin/Admin_vehicleconform";
 
 // Trineesha
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
@@ -85,6 +87,7 @@ import Vehicle_Owner_RequestMore from "./pages/Vehicle_Owner/vehicle_owner_reque
 import Vehicle_Owner_Rating from "./pages/Vehicle_Owner/vehicle_owner_rating";
 import Vehicle_Owner_Profile from "./pages/Vehicle_Owner/vehicle_owner_profile";
 import Vehicle_Owner_Edit_Profile from "./pages/Vehicle_Owner/vehicle_owner_edit_profile";
+
 
 // Sanduni
 import TravelerDashboard from "./pages/traveler/Dashboard";
@@ -200,6 +203,8 @@ export default function App() {
         <Route path="admin_advertisments" element={<Admin_Advertisments />} />
         <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
         <Route path="admin_transaction" element={<Admin_Transaction />} />
+        <Route path="/admin_acceptpage/:userId" element={<AcceptPage />} />
+        <Route path="/vehicle_renter_info/:userId" element={<Vehicle />} />
         <Route path="admin_userlistpage" element={<Admin_userlistpage />}></Route>
 
         <Route path="store_dashboard" element={<Store_Dashboard />} />
@@ -212,6 +217,8 @@ export default function App() {
         <Route path="store_rating" element={<Store_Rating />} />
         <Route path="store_stock" element={<Store_Stock />} />
         <Route path="store_profile" element={<Store_Profile />} />
+
+
 
         {/* Trineesha */}
         <Route

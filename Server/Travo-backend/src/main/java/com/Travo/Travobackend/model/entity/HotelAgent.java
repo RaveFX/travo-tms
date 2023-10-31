@@ -50,6 +50,6 @@ public class HotelAgent {
     @OneToMany(mappedBy = "hotelAgent", cascade = CascadeType.ALL)
     private Set<TripHotel> tripHotels = new HashSet<>();
 
-    // private Set<Reservation> reservations = new HashSet<>();
+
 
 }
