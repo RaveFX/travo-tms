@@ -139,7 +139,8 @@ const Dashboard = () => {
               <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-[75%]'>
                 <div className="mb-2 flex flex-col items-start justify-between w-full">
                   <Typography className="text-[#578B6A] font-[700] text-[32px] ">
-                    Hello {user_id}!
+                  {/* Hello Tharindi! */}
+                  Hello {user_id}!
                   </Typography>
                   <Typography className="text-[18px] text-[#5F647E] font-[400]">
                     Welcome back and explore the world.
