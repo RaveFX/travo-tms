@@ -14,25 +14,7 @@ function UserProfile() {
   const profileImage = sessionStorage.getItem("profileImage");
 
   // Fetch user data when the component mounts
-  useEffect(() => {
-    const getDetails = async () => {
-      try {
-        let response = await axios.get(`/traveler/details/${user_id}`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        });
-        setUserData(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getDetails();
-  }, []);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
+  
 
   return (
     <div className="flex h-screen overflow-hidden">

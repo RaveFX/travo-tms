@@ -48,7 +48,7 @@ export default function TopNavbar() {
             size="sm"
             className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none"
           >
-            <MagnifyingGlassIcon className="h-4 w-4" />
+            <MagnifyingGlassIcon className=" bg-[#57CC99] h-4 w-4" />
           </Button>
         </div>
 

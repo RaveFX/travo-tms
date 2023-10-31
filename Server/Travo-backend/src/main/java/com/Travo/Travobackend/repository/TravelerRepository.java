@@ -16,4 +16,6 @@ public interface TravelerRepository extends JpaRepository<Traveler, Integer>{
 
     @Query("SELECT t.profileImage FROM Traveler t WHERE t.user_id = :travelerId")
     String findImageById(Integer travelerId);
+
+
 }

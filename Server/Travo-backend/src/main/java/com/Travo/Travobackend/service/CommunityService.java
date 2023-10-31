@@ -3,6 +3,7 @@ package com.Travo.Travobackend.service;
 import com.Travo.Travobackend.model.dto.CommunityDTO;
 import com.Travo.Travobackend.model.entity.Community;
 import com.Travo.Travobackend.model.entity.Traveler;
+import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.repository.CommunityRepo;
 import com.Travo.Travobackend.repository.TravelerRepository;
 import com.Travo.Travobackend.repository.UserRepository;
@@ -91,6 +92,10 @@ public class CommunityService {
 
         return communityDTOList;
 
+    }
+
+    public List<Traveler> getAllUsers() {
+        return travelerRepo.findAll();
     }
 
 }

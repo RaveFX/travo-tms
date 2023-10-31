@@ -3,17 +3,97 @@ import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/web-component/Sidebar";
 import TopNavbar from "../../components/web-component/Navbar";
+import { Banner } from "../../components/web-component/profileBanner";
 import {
   HeartIcon as OutlineHeartIcon,
+  MagnifyingGlassIcon,
   PlusIcon,
+  Squares2X2Icon,
 } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
-import { Button, Typography, Avatar } from "@material-tailwind/react";
+import { Button, Input, Typography, Avatar } from "@material-tailwind/react";
+
+const dummyUsers = [
+  {
+    name: "Sanduni",
+  },
+  {
+    name: "Samindu",
+  },
+  {
+    name: "Kanishka",
+  },
+  {
+    name: "Epazinghe",
+  },
+];
 
 function Community() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [postDetails, setPostDetails] = useState([]);
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState(null);
+  const [searching, setSearching] = useState(false);
+  const [userData, setUserData] = useState("");
+
+
+  const user_id = sessionStorage.getItem("user_id");
+  const profileImage = sessionStorage.getItem("profileImage");
+
+  useEffect(() => {
+    const searchUser = () => {
+      setResults(
+        dummyUsers.filter((item) => {
+          return item.name.includes(search);
+        })
+      );
+    };
+    searchUser();
+  }, [search]);
+
+  useEffect(() => {
+    const getDetails = async () => {
+      try {
+        let response = await axios.get(`/traveler/details/${user_id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        setUserData(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getDetails();
+  }, []);
+
+  // useEffect(() => {
+  //   //console.log(userData);
+  // }, [userData]);
+
+  useEffect(() => {
+    const getAllDetails = async () => {
+      try {
+        let response = await axios.get(`/traveler/details`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        });
+        setUserData(response.data);
+        userData && console.log(userData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getAllDetails();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(userData);
+  // }, [userData]);
+
+
 
   const handleLikeClick = async (postId) => {
     try {
@@ -33,6 +113,11 @@ function Community() {
     } catch (error) {
       console.error("Error updating post like:", error);
     }
+  };
+
+  const clickSearch = () => {
+    console.log("Search Clicked");
+    setSearching(!searching);
   };
 
   const navigateToCreatePost = () => {
@@ -64,7 +149,7 @@ function Community() {
     getPostDetails();
   }, []);
 
-  const profileImage = sessionStorage.getItem("profileImage");
+  
 
   return (
     <div className="flex h-screen overflow-hidden ">
@@ -76,32 +161,72 @@ function Community() {
           style={{ scrollbarWidth: "none" }}
         >
           {/* Cover Photo and Profile Picture Section */}
-          <div className="relative h-[22%] ">
-            <div className="absolute inset-0 bg-black bg-opacity-90 coverImage"></div>
-            <div className="absolute bottom-2 left-8 md:left-6 pb-1 md:pb-1">
-            <Avatar
-              variant="circular"
-              alt="candice"
-              src={`data:application/img;base64,${profileImage}`}
-              className="w-[100px] h-[100px] p-0 m-0"
-            />
+          <Banner>
+            <div className="flex flex-row justify-between h-[60px]">
+              <Button
+                onClick={navigateToCreatePost}
+                className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold "
+              >
+                {" "}
+                <PlusIcon className="w-7 h-7" />
+              </Button>
+              <Button
+                onClick={navigateToProfile}
+                className="!absolute bottom-[100PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold"
+              >
+                <Squares2X2Icon className="w-7 h-7" />
+              </Button>
+
+              <div className="!absolute top-[250PX] right-[5px] flex w-full gap-2 md:w-max rounded-full">
+                <Input
+                  type="search"
+                  label="Type here..."
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  className="pr-20 rounded-full style-none !focus:ring-8 !focus:outline-none !active:ring-0 !active:outline-none !hover:ring-0 !hover:outline-none"
+                  containerProps={{
+                    className: "min-w-[288px]",
+                  }}
+                />
+                <Button
+                  size="sm"
+                  className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none"
+                >
+                  <MagnifyingGlassIcon className=" bg-[#57CC99] h-4 w-4" />
+                </Button>
+              </div>
+
+              {results && search !== "" && results.length > 0 && (
+                <div className="absolute top-[295px] right-8 w-[250px] bg-gray-100 rounded-b-lg">
+                  {results.map((item, index) => (
+                    <div
+                      key={index}
+                      className="cursor-pointer p-2 hover:bg-gray-200 rounded-t-lg text-1xl"
+                      onClick={() => handleItemClick(item)}
+                    >
+                      {item.name}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <Button
+          </Banner>
+          {/* <Button
               onClick={navigateToProfile}
               className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow: bg-blur hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold "
             >
               {" "}
               <Typography>Go to Profile</Typography>
-            </Button>
-          </div>
+            </Button> */}
           {/* Post Section */}
-          <Button
+          {/* <Button
             onClick={navigateToCreatePost}
             className="!absolute bottom-[20PX] right-[5px] justify-center mr-4 p-4 md:w-fit shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-gradient-to-b from-[#377A85] to-[#72C075] rounded-full font-poppins font-extrabold animated-button"
           >
             {" "}
             <PlusIcon className="w-7 h-7" />
-          </Button>
+          </Button> */}
           <div className="flex flex-col w-full px-4 py-6 md:p-8 space-y-8 ">
             {postDetails.map((post, index) => (
               <div

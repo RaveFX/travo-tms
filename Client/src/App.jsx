@@ -94,6 +94,7 @@ import RoleChange from "./pages/traveler/ChangeRole";
 import CreatePost from "./pages/traveler/CreatePost";
 import CommunityProfile from "./pages/traveler/CommunityProfile";
 import UserProfile from "./pages/main/profile";
+import Transactions from "./pages/traveler/Transactions";
 
 // RavinduRave
 import Travdash from "./pages/traveler/travdash";
@@ -289,6 +290,7 @@ export default function App() {
         <Route path="/community-profile" element={<CommunityProfile />} />
         <Route path="/community-profile/:id" element={<CommunityProfile />} />
         <Route path="/traveler/profile" element={<UserProfile />} />
+        <Route path="/traveler/transactions" element={<Transactions />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

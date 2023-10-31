@@ -2,6 +2,7 @@ package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.CommunityDTO;
 import com.Travo.Travobackend.model.entity.Community;
+import com.Travo.Travobackend.model.entity.Traveler;
 import com.Travo.Travobackend.service.CommunityService;
 import com.Travo.Travobackend.service.ImageService;
 import lombok.RequiredArgsConstructor;
@@ -63,6 +64,17 @@ public class CommunityController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+//    @GetMapping("/users")
+//    public ResponseEntity<List<Traveler>> getAllUsers() throws IOException {
+//
+//        List<Traveler> community = communityService.getAllUsers();
+//        if(community != null){
+//            return ResponseEntity.ok(community);
+//        }else {
+//            return ResponseEntity.ok(null);
+//        }
+//    }
 
 
     //Function to get the images
