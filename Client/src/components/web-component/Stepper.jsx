@@ -26,33 +26,26 @@ export function PlanStepper(props) {
   const [isFirstStep, setIsFirstStep] = React.useState(false);
   const { id } = useParams();
 
-  // const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
+  const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
 
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  const [trip,setTrip]=useState([]);
 
-  const handleNext = () => {
-    if (isLastStep) return;
-    if (activeStep === 0) {
-      const updateTripDetailsDates = async () => {
-        try {
-          let dates = {
-            start_date: from,
-            end_date: to,
-          };
-          console.log("dates", dates);
-          console.log("Trip_id",id)
-          let response = await axios.put(`http://localhost:8080/api/v1/trip/dates/${id}`, dates);
-          setActiveStep((cur) => cur + 1);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      updateTripDetailsDates();
-    }
-    //
-  };
+  // useEffect(() => {
+  //   loadTripDates();
+  // },[]); 
+
+// const loadTripDates=async()=>{
+//     const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+//     setTrip(result.data);
+//     setFrom(trip.start_date);
+//     setTo(trip.end_date);
+// }
+
+
+  
 
 
   // activeStep = props;
@@ -70,33 +63,28 @@ export function PlanStepper(props) {
   let stepContent;
   switch (activeStep) {
     case 0:
-      stepContent = (
-        <Calendar Id={id} to={to} from={from} setFrom={setFrom} setTo={setTo} />
-      );
-      setIsSubSidebarOpen(false);
-      break;
+      subSidebarState == 1
+      ? (stepContent = <Itinerary />)
+      : subSidebarState == 2
+      ? (stepContent = <Selections />)
+      : subSidebarState == 3
+      ? (stepContent = <Saves />)
+      : null;
+
+    setIsSubSidebarOpen(true);
+    break;
+    
     case 1:
       // setSubSidebarState(1);
 
-      subSidebarState == 1
-        ? (stepContent = <Itinerary />)
-        : subSidebarState == 2
-        ? (stepContent = <Selections />)
-        : subSidebarState == 3
-        ? (stepContent = <Saves />)
-        : null;
-
-      setIsSubSidebarOpen(true);
-      break;
-    case 2:
       setIsSubSidebarOpen(false);
       stepContent = <GuiedNVehicle />;
       break;
-    case 3:
+    case 2:
       stepContent = <TripSchedule />;
       break;
-    case 4:
-        stepContent = <FinalPlan />;
+    case 3:
+      stepContent = <FinalPlan />;
         break;
     default:
       stepContent = null;
@@ -128,7 +116,7 @@ export function PlanStepper(props) {
               activeStep === 0 || isLastStep ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <CalendarDaysIcon className="h-5 w-5" />
+          <GlobeAsiaAustraliaIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
@@ -144,7 +132,7 @@ export function PlanStepper(props) {
               activeStep === 1 || isLastStep ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <GlobeAsiaAustraliaIcon className="h-5 w-5" />
+          <BuildingLibraryIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
@@ -160,7 +148,7 @@ export function PlanStepper(props) {
               activeStep === 2 || isLastStep === 2 ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <BuildingLibraryIcon className="h-5 w-5" />
+          <CogIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
@@ -176,7 +164,7 @@ export function PlanStepper(props) {
               activeStep === 3 || isLastStep === 3 ? "[#57CC99]" : "gray-300"
             }`}
           >
-            <CogIcon className="h-5 w-5" />
+          <CheckCircleIcon className="h-5 w-5" />
             <div className="absolute -bottom-[2rem] w-max text-center">
               <Typography
                 variant="h6"
@@ -186,22 +174,7 @@ export function PlanStepper(props) {
               </Typography>
             </div>
           </Step>
-          <Step
-            onClick={() => setActiveStep(3)}
-            className={`!bg-${
-              activeStep === 4 || isLastStep === 4 ? "[#57CC99]" : "gray-300"
-            }`}
-          >
-            <CheckCircleIcon className="h-5 w-5" />
-            <div className="absolute -bottom-[2rem] w-max text-center">
-              <Typography
-                variant="h6"
-                color={activeStep === 4 ? "blue-gray" : "gray"}
-              >
-                {/* Finnish */}
-              </Typography>
-            </div>
-          </Step>
+          
         </Stepper>
         <Button
           onClick={handleNext}

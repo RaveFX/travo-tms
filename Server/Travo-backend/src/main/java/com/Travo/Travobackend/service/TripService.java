@@ -64,17 +64,18 @@ public class TripService {
 
     public Integer createTrip(TripDTO tripDTO){
 
-        TripState tripState;
-
-        if(Objects.equals(tripDTO.getState(), "PUBLIC")){
-            tripState = TripState.PUBLIC;
-        }else{
-            tripState = TripState.PRIVATE;
-        }
+//        TripState tripState;
+//
+//        if(Objects.equals(tripDTO.getState(), "PUBLIC")){
+//            tripState = TripState.PUBLIC;
+//        }else{
+//            tripState = TripState.PRIVATE;
+//        }
 
         var  trip = Trip.builder()
                 .trip_name(tripDTO.getTrip_name())
-                .tripState(tripState)
+                .start_date(tripDTO.getStart_date())
+                .end_date(tripDTO.getEnd_date())
                 .build();
 
         Optional<User> userOptional = userRepository.findById(tripDTO.getAdmin_id());

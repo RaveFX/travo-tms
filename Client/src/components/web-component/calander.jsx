@@ -1,9 +1,44 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 const Calendar = (props) => {
   const { Id, to, from, setFrom, setTo } = props;
   const [currentDate, setCurrentDate] = useState(new Date());
   const [calander, setCalendar] = useState();
+  const { id } = useParams();
+  const [trip,setTrip]=useState([]);
+
+//   useEffect(() => {
+//     loadTripDates();
+//   },[]); 
+
+// const loadTripDates=async()=>{
+//     const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`);
+//     setTrip(result.data);
+//     console.log("start_date",trip.start_date);
+//     setFrom(trip.start_date);
+//     setTo(trip.end_date);
+// }
+
+useEffect(() => {
+  const fetchTripDetails = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`);
+      const tripData = response.data;
+      // Set the start_date and end_date as from and to in the state
+      setFrom(new Date(tripData.start_date));
+      setTo(new Date(tripData.end_date));
+    } catch (error) {
+      console.error("Error fetching trip details:", error);
+    }
+  };
+
+  fetchTripDetails();
+}, [id]);
+
 
   const daysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
@@ -46,6 +81,9 @@ const Calendar = (props) => {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     const calendar = generateCalendar(currentYear, currentMonth);
+    //const result=await axios.get(`http://localhost:8080/api/v1/trip/tripDetails/${id}`)
+//     setTrip(result.data);
+   // loadTripDates();
     setCalendar(calendar);
   }, [currentDate]);
 

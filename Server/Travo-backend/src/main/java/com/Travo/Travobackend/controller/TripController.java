@@ -49,7 +49,7 @@ public class TripController {
         return tripService.tripList(userID);
     }
 
-    @GetMapping("/tripDetails/{tripID}")
+        @GetMapping("/tripDetails/{tripID}")
     public TripDTO getTripDetails(@PathVariable Integer tripID){
         return tripService.tripDetails(tripID);
     }
