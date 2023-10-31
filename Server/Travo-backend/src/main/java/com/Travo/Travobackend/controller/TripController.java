@@ -18,6 +18,7 @@ import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
 import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.model.dto.*;
+import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +45,44 @@ public class TripController {
     @Autowired
     private TripMemberRepository tripMembersRepository;
 
+    @PostMapping("/create-trip")
+    public Integer createTrip(@RequestBody TripDTO tripDTO){
+        return tripService.createTrip(tripDTO);
+    }
+
+    @PutMapping("updateTrip-name-description/{tripID}")
+    public String updateTrip(
+            @PathVariable Integer tripID,
+            @RequestBody TripDTO tripDTO
+    ){
+        return tripService.updateTrip(tripID, tripDTO);
+    }
+
+    @PutMapping("update-member-role")
+    public String updateTrip(
+            @RequestBody TripMemberDTO tripMemberDTO
+    ){
+        return tripService.updateTripRole(tripMemberDTO);
+    }
+
+    @PutMapping("/dates/{tripID}")
+    public String updateDate(
+            @PathVariable Integer tripID,
+            @RequestBody TripDTO tripDTO
+    ){
+        return tripService.updateDate(tripID, tripDTO);
+
+    }
+
+
+
+
     @GetMapping("/tripList/{userID}")
     public List<TripDTO> getTripList(@PathVariable Integer userID){
         return tripService.tripList(userID);
     }
 
-    @GetMapping("/tripDetails/{tripID}")
+        @GetMapping("/tripDetails/{tripID}")
     public TripDTO getTripDetails(@PathVariable Integer tripID){
         return tripService.tripDetails(tripID);
     }
@@ -124,28 +157,15 @@ public class TripController {
         return tripService.memberList(tripId);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @GetMapping("/hotelList")
-    public List<HotelDTO> getHotelList(){
-        return tripService.hotelList();
+    
+    @GetMapping("/hotelList/{tripId}/{day}")
+    public List<HotelDTO> getHotelList(@PathVariable Integer tripId,@PathVariable Integer day){
+        return tripService.hotelList(tripId,day);
     }
 
-    @GetMapping("/activityList")
-    public List<ActivityDTO> getActivityList(){
-        return tripService.activityList();
+    @GetMapping("/activityList/{tripId}/{day}")
+    public List<ActivityDTO> getActivityList(@PathVariable Integer tripId,@PathVariable Integer day){
+        return tripService.activityList(tripId,day);
     }
 
     @PostMapping("/add-attraction")
@@ -248,5 +268,23 @@ public class TripController {
     public List<GuideDTO> getGuideDetail(){
         return tripService.getGuideDetails();
     }
+    @GetMapping("/check-admin-or-editor-role/{userId}/{tripId}")
+    public ResponseEntity<Boolean> checkAdminOrEditorRole(
+            @PathVariable Integer userId,
+            @PathVariable Integer tripId) {
+        boolean hasAdminOrEditorRole = tripService.hasAdminOrEditorRole(userId, tripId);
+        return ResponseEntity.ok(hasAdminOrEditorRole);
+    }
+
+    @PutMapping("/update-note/{tripID}")
+    public String updateSchedule(@PathVariable Integer tripID,@RequestBody TripDTO tripDTO) {
+        return tripService.updateTripNote(tripID,tripDTO);
+    }
+
+    @GetMapping("/trip-member-list/{tripID}")
+    public List<TripMemberDTO> selectedTripMembers(@PathVariable Integer tripID){
+        return tripService.selectedTripMembers(tripID);
+    }
+
 
 }

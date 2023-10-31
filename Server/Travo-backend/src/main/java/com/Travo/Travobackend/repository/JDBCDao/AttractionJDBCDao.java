@@ -35,6 +35,9 @@ public class AttractionJDBCDao {
                 attractionDTO.setImg_url(rs.getString("img_url"));
                 attractionDTO.setRow_id(rs.getInt("id"));
                 attractionDTO.setDay(rs.getInt("day"));
+                attractionDTO.setLongitude(rs.getBigDecimal("longitude"));
+                attractionDTO.setLatitude(rs.getBigDecimal("latitude"));
+
 
                 attractions.add(attractionDTO);
             }

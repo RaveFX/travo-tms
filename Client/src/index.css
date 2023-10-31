@@ -68,3 +68,13 @@
 .custom-swal-container {
   z-index: 2147483647; /* Set a high z-index value */
 }
+/* Add this CSS to your stylesheets */
+.pac-container {
+  z-index: 2147483647; /* Set a high z-index value */
+}
+.custom-popover {
+  z-index: 2147483647;
+}
+
+
+

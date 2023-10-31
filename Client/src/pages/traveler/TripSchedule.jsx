@@ -40,6 +40,7 @@ function Icon({ id, open }) {
 
 function TripSchedule() {
   const { id } = useParams();
+  const user_id = sessionStorage.getItem('user_id');
   const [days, setDays] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [activities, setActivities] = useState([]);
@@ -91,8 +92,16 @@ function TripSchedule() {
       setError('');
     }
   };
+  // Assuming handleRemoveSchedule is used inside another async function, you should await its result like this:
+
 
   const handleRemoveSchedule = (schedule_id, scheduleDay) => {
+    
+  //   const response1 =  axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+  //   console.log(response1);
+    
+  //   // If user has access, navigate to the add item page
+  //  if (response1.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -131,6 +140,25 @@ function TripSchedule() {
         }
       }
     });
+    
+  // }
+  // else{
+  //   Swal.fire({
+  //     title: 'No Access',
+  //     text: 'You do not have permission to remove items from this itinerary.',
+  //     icon: 'error',
+  //     confirmButtonColor: '#3085d6',
+  //     confirmButtonText: 'OK',
+  //     customClass: {
+  //       container: 'custom-swal-container' // Define your custom class here
+  //     },
+  //     style: {
+  //       zIndex: 100000 // Set a high z-index value
+  //     }
+  //   });
+
+  // }
+  
   };
 
 
@@ -180,6 +208,10 @@ function TripSchedule() {
 
 
   const handleAddButtonClick = async () => {
+    const responsez = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (responsez.data) {
     if (locationName && startTime && endTime) {
       const selectedLocation = JSON.parse(locationName);
       const loadDay = locationDay;
@@ -198,7 +230,10 @@ function TripSchedule() {
       if (isOverlap) {
         setError('Schedule overlaps with existing activities. Please choose a different time.');
         return;
-      }
+      }else if (startTime >= endTime) {
+        setError('Start time must be before end time');
+        return;
+      }else{
       const data = {
         location_name: selectedLocation.location_Name,
         type: selectedLocation.location_Type,
@@ -233,10 +268,29 @@ function TripSchedule() {
         // Handle errors if the POST request fails
         console.error('Error sending data to the backend:', error);
       }
+    }
     } else {
       // Handle validation or display an error message if any of the required fields are missing
       console.error('Please fill out all required fields.');
     }
+
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
   const updateScheduleTime = async (scheduleId, newStartTime, newEndTime) => {

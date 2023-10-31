@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.Travo.Travobackend.enumeration.TripState;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,8 @@ public class Trip {
     private LocalDate end_date;
     private Integer completed; //if completed 1
     private String uniqueLink;
+    private String note;
+    private TripState tripState;
 
     @ManyToOne
     @JoinColumn(name = "admin_id", referencedColumnName = "user_id" )

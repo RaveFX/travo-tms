@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -15,11 +16,14 @@ public class TripDTO {
     private Date created_date;
     private String trip_name;
     private String description;
-    private Date start_date;
-    private Date end_date;
+    private LocalDate start_date;
+    private LocalDate end_date;
     private Integer completed;
     private String trip_admin;
     private String uniqueLink;
 
   
+    private String note;
+    private String state;
+    private Integer admin_id;
 }

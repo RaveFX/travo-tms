@@ -42,6 +42,17 @@ import PollActivities from "./pages/traveler/PollActivities";
 
 
 import MainActivities from "./pages/traveler/MainActivities";
+import AttractionsColombo from "./pages/traveler/AttractionsColombo";
+import AttractionsAnuradhapura from "./pages/traveler/AttractionsAnuradhapura";
+import AttractionsKandy from "./pages/traveler/AttractionsKandy";
+import AttractionsGalle from "./pages/traveler/AttractionsGalle";
+import AttractionsJaffna from "./pages/traveler/AttractionsJaffna";
+import AttractionsNuwaraEliya from "./pages/traveler/AttractionsNuwaraEliya";
+import AttractionsTrincomalee from "./pages/traveler/AttractionsTrincomalee";
+import AttractionsPolonnaruwa from "./pages/traveler/AttractionsPolonnaruwa";
+import EditTripRoles from "./pages/traveler/EditTripRoles";
+import CloserHotels from "./pages/traveler/CloserHotels";
+import CloserActivities from "./pages/traveler/CloserActivities";
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -378,6 +389,17 @@ export default function App() {
         <Route path="/traveler/destinations/:id/:day" element={<Destinations />} />
         <Route path="/traveler/activities/:id/:day" element={<Activities />} />
         <Route path="/traveler/mainactivities/:id/:day" element={<MainActivities />} />
+        <Route path="/traveler/attractions_colombo/:id/:day" element={<AttractionsColombo />} />
+        <Route path="/traveler/attractions_anuradhapura/:id/:day" element={<AttractionsAnuradhapura />} />
+        <Route path="/traveler/attractions_kandy/:id/:day" element={<AttractionsKandy />} />
+        <Route path="/traveler/attractions_jaffna/:id/:day" element={<AttractionsJaffna />} />
+        <Route path="/traveler/attractions_polonnaruwa/:id/:day" element={<AttractionsPolonnaruwa />} />
+        <Route path="/traveler/attractions_nuwaraeliya/:id/:day" element={<AttractionsNuwaraEliya />} />
+        <Route path="/traveler/attractions_trincomalee/:id/:day" element={<AttractionsTrincomalee />} />
+        <Route path="/traveler/attractions_galle/:id/:day" element={<AttractionsGalle />} />
+        <Route path="/traveler/edit-roles/:id" element={<EditTripRoles/>} />
+        <Route path="/traveler/closer_hotels/:id/:day" element={<CloserHotels />} />
+        <Route path="/traveler/closer_activities/:id/:day" element={<CloserActivities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

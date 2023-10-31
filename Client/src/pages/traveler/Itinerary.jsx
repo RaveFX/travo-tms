@@ -41,12 +41,12 @@ function Icon({ id, open }) {
 
 function Itinerary() {
   const { id } = useParams();
+  const user_id = sessionStorage.getItem('user_id');
   const [days, setDays] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [activities, setActivities] = useState([]);
   const [attractions, setAttractions] = useState([]);
 
-  const user_id = sessionStorage.getItem('user_id');
 
 
   useEffect(() => {
@@ -62,7 +62,11 @@ function Itinerary() {
     }
   };
 
-  const handleRemoveAttraction = (attraction) => {
+  const handleRemoveAttraction = async(attraction) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -94,9 +98,30 @@ function Itinerary() {
         }
       }
     });
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
-  const handleRemoveHotel = (hotel) => {
+  const handleRemoveHotel = async(hotel) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -128,9 +153,30 @@ function Itinerary() {
         }
       }
     });
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
-  const handleRemoveActivity = (activity) => {
+  const handleRemoveActivity = async(activity) => {
+    const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+    if (response.data) {
     // Show SweetAlert confirmation dialog
     Swal.fire({
       title: 'Are you sure?',
@@ -162,6 +208,24 @@ function Itinerary() {
         }
       }
     });
+
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to add items to this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+
+  }
   };
 
 
@@ -196,6 +260,99 @@ function Itinerary() {
     setAttractions(result3.data);
 
   }
+
+  const handleAddAttractionClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/attractions/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
+
+  const handleAddHotelClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/hotels/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
+
+  const handleAddActivityClick = async (day) => {
+    try {
+      // Make API call to check user access
+      const response = await axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+      
+      // If user has access, navigate to the add item page
+      if (response.data) {
+        navigate(`/traveler/activities/${id}/${day}`);
+      } else {
+        // If user doesn't have access, show a Sweet Alert
+        Swal.fire({
+          title: 'No Access',
+          text: 'You do not have permission to add items to this itinerary.',
+          icon: 'error',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK',
+          customClass: {
+            container: 'custom-swal-container' // Define your custom class here
+          },
+          style: {
+            zIndex: 100000 // Set a high z-index value
+          }
+        });
+      }
+    } catch (error) {
+      // Handle API error
+      console.error('Error checking user access:', error);
+      // You can show another Sweet Alert here if the API call fails
+    }
+  };
 
   return (
     <>
@@ -237,51 +394,48 @@ function Itinerary() {
                         </Typography>
                       </div>
                       <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                          {(
-                            attractions.map((attraction) => (
-                              <div
-                                key={attraction.place_id}
-
-                                className="bg-white p-4 rounded-lg shadow border relative"
-                              >
-
-
-                                <div className="flex items-center justify-center mb-2">
-                                  {attraction.img_url ? (
-                                    <img
-                                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${attraction.img_url}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`}
-                                      alt={`${attraction.name} - Photo`}
-                                      className="w-full h-44 rounded-md object-cover"
-                                    />
-                                  ) : (
-                                    <img
-                                      src="/main/no_image_available.jpeg" // Provide the path to your default image
-                                      alt="Default Image"
-                                      className="w-full h-44 rounded-md object-cover"
-                                    />
-                                  )}
-                                </div>
-
-                                <h2 className="text-xl font-semibold mb-2">{attraction.name}</h2>
-                                <p className="mb-2">Address: {attraction.address}</p>
-                                <div className="flex items-center mb-2">
-
-                                  <div className="flex items-center">
-                                    <div className="absolute bottom-2 right-2">
-                                      <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full" onClick={() => handleRemoveAttraction(attraction)}>Remove</Button>
-                                    </div>
-
-                                  </div>
-                                </div>
-                              </div>
-                            ))
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                      { (
+                        attractions.map((attraction) => (
+                          <div
+                            key={attraction.place_id}
+        
+                            className="bg-white p-4 rounded-lg shadow border relative"
+                          >
+                          <div className="flex items-center justify-center mb-2">
+                          {attraction.img_url? (
+                            <img
+                              src={`${attraction.img_url}`}
+                              alt={`${attraction.name} - Photo`}
+                              className="w-full h-44 rounded-md object-cover"
+                            />
+                          ) : (
+                            <img
+                              src="/main/no_image_available.jpeg" // Provide the path to your default image
+                              alt="Default Image"
+                              className="w-full h-44 rounded-md object-cover"
+                            />
                           )}
                         </div>
-                        <Link to={`/traveler/attractions/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <h2 className="text-xl font-semibold mb-2">{attraction.name}</h2>
+                        <p className="mb-2">Address: {attraction.address}</p>
+                        <div className="flex items-center mb-2">
+                        
+                        <div className="flex items-center">
+                          <div className="absolute bottom-2 right-2">
+                            <Button className="bg-gray-300 text-[#FF5C5C]  rounded-full"  onClick={() => handleRemoveAttraction(attraction)}>Remove</Button>
+                          </div>
+                        
+                        </div>
+                          </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                        <Button onClick={() => handleAddAttractionClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
                         </Button>
-                        </Link>
+                       
                       </div>
 
                       <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
@@ -340,9 +494,9 @@ function Itinerary() {
 
                         </div>
 
-                        <Link to={`/traveler/hotels/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <Button onClick={() => handleAddHotelClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
-                        </Button></Link>
+                        </Button>
                       </div>
                       <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
                         <Typography className="pl-4 text-white font-bold">
@@ -397,11 +551,12 @@ function Itinerary() {
                               </div>
 
                             </div>
-                          ))}
-                        </div>
-                        <Link to={`/traveler/activities/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                         
+                      ))}
+                    </div>
+                        <Button onClick={() => handleAddActivityClick(index + 1)} className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item
-                        </Button></Link>
+                        </Button>
                       </div>
                     </AccordionBody>
                   </Accordion>

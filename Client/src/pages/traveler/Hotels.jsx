@@ -24,9 +24,38 @@ function HotelDetails() {
   }, []);
 
 
-  const loadHotels = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
+const loadHotels=async()=>{
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
     setHotels(result.data);
+}
+const handleAddHotel = async (hotel) => {
+  try {
+    // Make a POST request to your backend API endpoint to store the attraction details
+    await axios.post("http://localhost:8080/api/v1/trip/add-hotel", {
+      hotel_id: hotel.hotel_id,
+      trip_id: id,
+      day : day
+    });
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
+    setHotels(result.data);
+    // Handle success, e.g., show a success message to the user
+    console.log("Hotel added successfully!");
+    // Display a success message using SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: 'Hotel added successfully!',
+      showConfirmButton: false,
+      timer: 1500, // Automatically close after 1.5 seconds
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
+  } catch (error) {
+    // Handle error, e.g., show an error message to the user
+    console.error("Error adding hotel: ", error);
   }
   const handleAddHotel = async (hotel) => {
     try {
@@ -59,24 +88,19 @@ function HotelDetails() {
 
   const data = [
     {
-      label: "Closer",
-      value: "all trips",
+      label: "All",
+      value: `traveler/hotels/${id}/${day}`,
       desc: ``,
 
     },
     {
-      label: "All",
-      value: "private",
+      label: "Closer",
+      value: `traveler/closer_hotels/${id}/${day}`,
       desc: ``,
     },
     {
       label: "Selected",
       value: "public",
-      desc: ``,
-    },
-    {
-      label: "My Saves",
-      value: "saved",
       desc: ``,
     },
   ];

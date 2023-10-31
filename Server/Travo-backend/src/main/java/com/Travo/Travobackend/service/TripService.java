@@ -9,6 +9,8 @@ import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.repository.JDBCDao.TripJDBCDao;
 import com.Travo.Travobackend.repository.TripMemberRepository;
 import com.Travo.Travobackend.repository.TripRepository;
+import com.Travo.Travobackend.enumeration.TripRole;
+import com.Travo.Travobackend.enumeration.TripState;
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.repository.*;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 @Service
 public class TripService {
@@ -57,6 +60,10 @@ public class TripService {
     private TripScheduleRepository tripScheduleRepository;
     @Autowired
     private ScheduleJDBCDao scheduleJDBCDao;
+    @Autowired
+    private TripMemberRepository tripMemberRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
 
@@ -69,6 +76,111 @@ public class TripService {
     public TripDTO tripDetails(Integer tripID){
         return tripJDBCDao.getTripDetails(tripID);
     }
+
+    public Integer createTrip(TripDTO tripDTO){
+
+//        TripState tripState;
+//
+//        if(Objects.equals(tripDTO.getState(), "PUBLIC")){
+//            tripState = TripState.PUBLIC;
+//        }else{
+//            tripState = TripState.PRIVATE;
+//        }
+
+        var  trip = Trip.builder()
+                .trip_name(tripDTO.getTrip_name())
+                .start_date(tripDTO.getStart_date())
+                .end_date(tripDTO.getEnd_date())
+                .build();
+
+        Optional<User> userOptional = userRepository.findById(tripDTO.getAdmin_id());
+        User user = userOptional.get();
+        trip.setUser(user);
+        Trip newTrip = tripRepository.save(trip);
+
+        TripRole adminRole = TripRole.ADMIN;
+
+        var tripMember = TripMember.builder()
+                .tripRole(adminRole)
+                .user(user)
+                .trip(trip)
+                .build();
+        tripMemberRepository.save(tripMember);
+
+
+        return newTrip.getTrip_id();
+
+
+    }
+
+    public String updateTripRole(TripMemberDTO tripMemberDTO){
+        TripRole tripRole;
+        if(Objects.equals(tripMemberDTO.getTripRole(), "EDITOR")){
+            tripRole = TripRole.EDITOR;
+        }else{
+            tripRole = TripRole.MEMBER;
+        }
+
+        Optional<User> userOptional = userRepository.findById(tripMemberDTO.getMember_id());
+        User user = userOptional.get();
+
+        Optional<Trip> tripOptional = tripRepository.findById(tripMemberDTO.getTrip_id());
+        Trip trip = tripOptional.get();
+
+        Optional<TripMember> tripMember = tripMemberRepository.findByUserAndTrip(user, trip);
+        TripMember tripMember1 = tripMember.get();
+        tripMember1.setTripRole(tripRole);
+        tripMemberRepository.save(tripMember1);
+
+        return ("successfully changed the role");
+
+    }
+
+    public String updateTrip(Integer tripID, TripDTO tripDTO) {
+        Trip existingTrip = tripRepository.findById(tripID).orElse(null);
+
+        if(existingTrip != null){
+
+            if(!Objects.equals(tripDTO.getTrip_name(), null)) {
+                System.out.println("Name");
+                existingTrip.setTrip_name(tripDTO.getTrip_name());
+                tripRepository.save(existingTrip);
+                return existingTrip.getTrip_name();
+
+            }
+            if(!Objects.equals(tripDTO.getDescription(), null)) {
+                System.out.println("Desc");
+                existingTrip.setDescription(tripDTO.getDescription());
+                tripRepository.save(existingTrip);
+                return existingTrip.getDescription();
+
+            }
+
+
+        }
+        return null;
+    }
+
+    public String updateDate(Integer tripID, TripDTO tripDTO) {
+        Trip existingTrip = tripRepository.findById(tripID).orElse(null);
+
+        if(existingTrip != null){
+
+            existingTrip.setStart_date(tripDTO.getStart_date());
+            existingTrip.setEnd_date(tripDTO.getEnd_date());
+
+            tripRepository.save(existingTrip);
+
+            return ("Date added successfully!");
+
+        }
+
+        return ("Date unsuccessfully!");
+    }
+
+
+
+
 
     public List<LocalDate> getDatesBetweenForTrip(Integer tripId) {
         Trip trip = tripRepository.findById(tripId).orElse(null);
@@ -107,9 +219,14 @@ public class TripService {
 
 
 
-    public List<HotelDTO> hotelList(){return hotelJDBCDao.getHotelList();}
+    
+    public List<HotelDTO> hotelList(Integer tripId,Integer day){
+        return hotelJDBCDao.getHotelList(tripId, day);
+    }
 
-    public List<ActivityDTO> activityList(){return activityJDBCDao.getActivityList();}
+    public List<ActivityDTO> activityList(Integer tripId,Integer day){
+        return activityJDBCDao.getActivityList(tripId, day);
+    }
 
     public String addAttraction(AttractionDTO attractionDTO){
         try {
@@ -267,5 +384,36 @@ public class TripService {
 
     public List<GuideDTO> getGuideDetails(){
         return tripJDBCDao.getGuideDetails();
+    }
+    
+    public boolean hasAdminOrEditorRole(Integer memberId, Integer tripId) {
+        Optional<User> userOptional = userRepository.findById(memberId);
+        User user = userOptional.get();
+
+        Optional<Trip> tripOptional = tripRepository.findById(tripId);
+        Trip trip = tripOptional.get();
+
+        Optional<TripMember> tripMember = tripMemberRepository.findByUserAndTrip(user, trip);
+        return tripMember.filter(member -> member.getTripRole() == TripRole.ADMIN || member.getTripRole() == TripRole.EDITOR)
+                .isPresent();
+    }
+
+    public String updateTripNote(Integer tripID, TripDTO tripDTO){
+        Optional<Trip> optionalTrip = tripRepository.findById(tripDTO.getTrip_id());
+        if (optionalTrip.isPresent()) {
+            Trip trip = optionalTrip.get();
+            trip.setNote(tripDTO.getNote());
+
+            tripRepository.save(trip);
+
+            return("Note added successfully!");
+        }else {
+            return ("Trip not found");
+        }
+
+    }
+
+    public List<TripMemberDTO> selectedTripMembers(Integer tripID){
+        return tripJDBCDao.getTripMemberList(tripID);
     }
 }

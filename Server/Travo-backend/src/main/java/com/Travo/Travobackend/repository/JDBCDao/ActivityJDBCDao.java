@@ -15,12 +15,14 @@ public class ActivityJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public List<ActivityDTO> getActivityList() {
+    public List<ActivityDTO> getActivityList(Integer tripID,Integer day) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<ActivityDTO> activities = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
 
-        SQL.append("SELECT * FROM activity_agent");
+        SQL.append("SELECT * FROM activity_agent WHERE agent_id NOT IN (SELECT activity_id FROM trip_activity WHERE trip_id=:tripID AND day=:day)");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -31,6 +33,8 @@ public class ActivityJDBCDao {
                 activityDTO.setActivity_img(rs.getString("activity_img"));
                 activityDTO.setDescription(rs.getString("description"));
                 activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+                activityDTO.setLongitude(rs.getBigDecimal("longitude"));
+                activityDTO.setLatitude(rs.getBigDecimal("latitude"));
 
                 activities.add(activityDTO);
             }

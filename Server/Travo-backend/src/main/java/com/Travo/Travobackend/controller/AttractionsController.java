@@ -137,6 +137,37 @@ public class AttractionsController {
 
         return response;
     }
+    @GetMapping("/places-in-colombo")
+    public ResponseEntity<String> getPlacesInColombo() {
+        String query = "places to visit in Colombo";
+        String apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query + "&key=" + googleMapsApiKey;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+
+        return response;
+    }
+    @GetMapping("/places-in-anuradhapura")
+    public ResponseEntity<String> getPlacesInAnuradhapura() {
+        String query = "places to visit in Anuradhapura";
+        String apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query + "&key=" + googleMapsApiKey;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+
+        return response;
+    }
+
+    @GetMapping("/places-in-polonnaruwa")
+    public ResponseEntity<String> getPlacesInPolonnaruwa() {
+        String query = "places to visit in Polonnaruwa";
+        String apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query + "&key=" + googleMapsApiKey;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.getForEntity(apiUrl, String.class);
+
+        return response;
+    }
 
 
 
