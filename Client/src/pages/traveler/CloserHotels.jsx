@@ -26,7 +26,6 @@ function CloserHotels() {
   const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
   const [subSidebarState, setSubSidebarState] = useState(1);
   const [hotels,setHotels]=useState([]);
-  const [attractions, setAttractions] = useState([]);
   const [loading, setLoading] = useState(true)
 
 

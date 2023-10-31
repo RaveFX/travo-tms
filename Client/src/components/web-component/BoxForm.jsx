@@ -37,8 +37,12 @@ export default function BoxForm(props) {
       // Display error message for empty fields
       setError("All fields are required.");
       return;
-    }else{
-  
+    }else if (new Date(startDate) > new Date(endDate)) {
+      setError("Start date cannot be after end date");
+      return;
+    } else {
+      
+      setError("");
     console.log("Form submitted!", tripName);
     const data = {
           trip_name: tripName,
@@ -66,6 +70,7 @@ export default function BoxForm(props) {
         setError("Start date cannot be in the past.");
         return;
         }else{
+         setError("");
          setStartDate(newStartDate);
         }
     }
@@ -79,6 +84,7 @@ export default function BoxForm(props) {
     if (new Date(startDate) > new Date(newEndDate)) {
       setError("Start date cannot be after end date");
     } else {
+      setError("");
       setEndDate(newEndDate);
     }
   };

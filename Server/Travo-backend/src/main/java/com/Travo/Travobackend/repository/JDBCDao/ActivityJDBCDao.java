@@ -33,6 +33,8 @@ public class ActivityJDBCDao {
                 activityDTO.setActivity_img(rs.getString("activity_img"));
                 activityDTO.setDescription(rs.getString("description"));
                 activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+                activityDTO.setLongitude(rs.getBigDecimal("longitude"));
+                activityDTO.setLatitude(rs.getBigDecimal("latitude"));
 
                 activities.add(activityDTO);
             }

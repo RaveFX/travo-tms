@@ -230,7 +230,10 @@ function TripSchedule() {
       if (isOverlap) {
         setError('Schedule overlaps with existing activities. Please choose a different time.');
         return;
-      }
+      }else if (startTime >= endTime) {
+        setError('Start time must be before end time');
+        return;
+      }else{
       const data = {
         location_name: selectedLocation.location_Name,
         type: selectedLocation.location_Type,
@@ -265,6 +268,7 @@ function TripSchedule() {
         // Handle errors if the POST request fails
         console.error('Error sending data to the backend:', error);
       }
+    }
     } else {
       // Handle validation or display an error message if any of the required fields are missing
       console.error('Please fill out all required fields.');

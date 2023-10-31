@@ -41,6 +41,7 @@ import AttractionsTrincomalee from "./pages/traveler/AttractionsTrincomalee";
 import AttractionsPolonnaruwa from "./pages/traveler/AttractionsPolonnaruwa";
 import EditTripRoles from "./pages/traveler/EditTripRoles";
 import CloserHotels from "./pages/traveler/CloserHotels";
+import CloserActivities from "./pages/traveler/CloserActivities";
 // Thirani
 import Store_Dashboard from "./pages/store/Dashboard";
 import Store_Product from "./pages/store/Products";
@@ -338,6 +339,7 @@ const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
         <Route path="/traveler/attractions_galle/:id/:day" element={<AttractionsGalle />} />
         <Route path="/traveler/edit-roles/:id" element={<EditTripRoles/>} />
         <Route path="/traveler/closer_hotels/:id/:day" element={<CloserHotels />} />
+        <Route path="/traveler/closer_activities/:id/:day" element={<CloserActivities />} />
 
         {/* RavinduJay */}
         <Route exact path="/agent_dashboard" element={<Dashboard />} />

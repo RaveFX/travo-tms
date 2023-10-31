@@ -68,14 +68,14 @@ function Activities() {
 
     const data = [
         {
-            label: "Closer",
-            value: "all trips",
+            label: "All",
+            value: `traveler/activities/${id}/${day}`,
             desc: ``,
 
         },
         {
-            label: "All",
-            value: "private",
+            label: "Closer",
+            value: `traveler/closer_activities/${id}/${day}`,
             desc: ``,
         },
         {
@@ -83,11 +83,7 @@ function Activities() {
             value: "public",
             desc: ``,
         },
-        {
-            label: "My Saves",
-            value: "saved",
-            desc: ``,
-        },
+        
     ];
     return (
         <div className="flex h-screen overflow-hidden ">
@@ -108,7 +104,7 @@ function Activities() {
                 </div>
                 <div className="container mx-4  overflow-hidden">
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6">
+                        <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6 mt-4">
                             Things to do
                         </h1>
                         <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
