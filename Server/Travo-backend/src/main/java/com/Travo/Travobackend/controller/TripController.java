@@ -66,14 +66,14 @@ public class TripController {
         return tripService.getDatesBetweenForTrip(tripId);
     }
 
-    @GetMapping("/hotelList")
-    public List<HotelDTO> getHotelList(){
-        return tripService.hotelList();
+    @GetMapping("/hotelList/{tripId}/{day}")
+    public List<HotelDTO> getHotelList(@PathVariable Integer tripId,@PathVariable Integer day){
+        return tripService.hotelList(tripId,day);
     }
 
-    @GetMapping("/activityList")
-    public List<ActivityDTO> getActivityList(){
-        return tripService.activityList();
+    @GetMapping("/activityList/{tripId}/{day}")
+    public List<ActivityDTO> getActivityList(@PathVariable Integer tripId,@PathVariable Integer day){
+        return tripService.activityList(tripId,day);
     }
 
     @PostMapping("/add-attraction")

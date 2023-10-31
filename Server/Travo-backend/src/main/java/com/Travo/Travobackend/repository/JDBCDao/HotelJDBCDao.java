@@ -14,12 +14,14 @@ public class HotelJDBCDao {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public List<HotelDTO> getHotelList() {
+    public List<HotelDTO> getHotelList(Integer tripID, Integer day) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<HotelDTO> hotels = new ArrayList<>();
+        params.put("tripID", tripID);
+        params.put("day", day);
 
-        SQL.append("SELECT * FROM hotel_agent");
+        SQL.append("SELECT * FROM hotel_agent WHERE hotel_id NOT IN (SELECT hotel_id FROM trip_hotel WHERE trip_id=:tripID AND day=:day)");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {

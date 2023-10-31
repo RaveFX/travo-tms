@@ -28,7 +28,7 @@ function Activities() {
     },[]); 
 
     const loadActivities=async()=>{
-        const result=await axios.get(`http://localhost:8080/api/v1/trip/activityList`)
+        const result=await axios.get(`http://localhost:8080/api/v1/trip/activityList/${id}/${day}`)
         setActivities(result.data);
     }
 
@@ -41,7 +41,12 @@ function Activities() {
           day : day
         });
         // Handle success, e.g., show a success message to the user
+        const result=await axios.get(`http://localhost:8080/api/v1/trip/activityList/${id}/${day}`)
+        setActivities(result.data);
+        
         console.log("Activity added successfully!");
+        
+      
         // Display a success message using SweetAlert2
         Swal.fire({
           icon: 'success',

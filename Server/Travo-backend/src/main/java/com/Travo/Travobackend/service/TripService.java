@@ -178,9 +178,13 @@ public class TripService {
         }
         return dates;
     }
-    public List<HotelDTO> hotelList(){return hotelJDBCDao.getHotelList();}
+    public List<HotelDTO> hotelList(Integer tripId,Integer day){
+        return hotelJDBCDao.getHotelList(tripId, day);
+    }
 
-    public List<ActivityDTO> activityList(){return activityJDBCDao.getActivityList();}
+    public List<ActivityDTO> activityList(Integer tripId,Integer day){
+        return activityJDBCDao.getActivityList(tripId, day);
+    }
 
     public String addAttraction(AttractionDTO attractionDTO){
         try {

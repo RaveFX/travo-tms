@@ -22,7 +22,7 @@ useEffect(() => {
 
 
 const loadHotels=async()=>{
-    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
     setHotels(result.data);
 }
 const handleAddHotel = async (hotel) => {
@@ -33,6 +33,8 @@ const handleAddHotel = async (hotel) => {
       trip_id: id,
       day : day
     });
+    const result=await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
+    setHotels(result.data);
     // Handle success, e.g., show a success message to the user
     console.log("Hotel added successfully!");
     // Display a success message using SweetAlert2
