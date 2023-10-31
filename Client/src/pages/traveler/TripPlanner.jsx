@@ -101,7 +101,7 @@ function TripPlanner() {
         <TopNavbar />
         <div className="overflow-y-scroll" style={{ scrollbarWidth: "none" }}>
           <div className="flex flex-row justify-between">
-            <TripNameBar trip_name={details.trip_name} description={details.description}/>
+            <TripNameBar  Name={details.trip_name} Id={details.trip_id} Description={details.description}/>
             
             {/* {isMemberOpen && (
               <Members isOpen={isMemberOpen} setIsOpen={setMemberOpen} />

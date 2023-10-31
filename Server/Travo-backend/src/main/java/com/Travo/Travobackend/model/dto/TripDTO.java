@@ -19,4 +19,6 @@ public class TripDTO {
     private Date end_date;
     private Integer completed;
     private String note;
+    private String state;
+    private Integer admin_id;
 }

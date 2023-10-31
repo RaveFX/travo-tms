@@ -1,6 +1,7 @@
 package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.model.dto.*;
+import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,19 @@ public class TripController {
 
     @Autowired
     private final TripService tripService;
+
+    @PostMapping("/create-trip")
+    public Integer createTrip(@RequestBody TripDTO tripDTO){
+        return tripService.createTrip(tripDTO);
+    }
+
+    @PutMapping("updateTrip-name-description/{tripID}")
+    public String updateTrip(
+            @PathVariable Integer tripID,
+            @RequestBody TripDTO tripDTO
+    ){
+        return tripService.updateTrip(tripID, tripDTO);
+    }
 
 
     @GetMapping("/tripList/{userID}")
