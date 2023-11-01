@@ -1,6 +1,9 @@
 package com.Travo.Travobackend.repository.JDBCDao;
 
+import com.Travo.Travobackend.enumeration.Membership;
+import com.Travo.Travobackend.enumeration.Status;
 import com.Travo.Travobackend.model.dto.HotelDTO;
+import com.Travo.Travobackend.model.dto.VehicleRenterDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;

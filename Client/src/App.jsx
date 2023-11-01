@@ -38,7 +38,7 @@ import Activities from "./pages/traveler/Activities";
 
 import PollAttractions from "./pages/traveler/pollAttractions";
 import PollActivities from "./pages/traveler/PollActivities";
-// import PollHotels from "./pages/traveler/PollHotels";
+import PollHotels from "./pages/traveler/PollHotels";
 
 
 import MainActivities from "./pages/traveler/MainActivities";
@@ -73,6 +73,8 @@ import Admin_Advertisments from "./pages/Admin/Admin_Advertisments";
 import Admin_Add_dvertisments from "./pages/Admin/Admin_Addadverisments";
 import Admin_Transaction from "./pages/Admin/Admin_Transaction";
 import Admin_userlistpage from "./pages/Admin/Admin_userlistpage"
+import AcceptPage from "./pages/Admin/Admin_requestcomformpage";
+import Vehicle from "./pages/Admin/Admin_vehicleconform";
 
 // Trineesha
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
@@ -245,6 +247,8 @@ export default function App() {
         <Route path="admin_advertisments" element={<Admin_Advertisments />} />
         <Route path="admin_add_advertisments" element={<Admin_Add_dvertisments />} />
         <Route path="admin_transaction" element={<Admin_Transaction />} />
+        <Route path="/admin_acceptpage/:userId" element={<AcceptPage />} />
+        <Route path="/vehicle_renter_info/:userId" element={<Vehicle />} />
         <Route path="admin_userlistpage" element={<Admin_userlistpage />}></Route>
 
         <Route path="store_dashboard" element={<Store_Dashboard />} />
@@ -257,6 +261,8 @@ export default function App() {
         <Route path="store_rating" element={<Store_Rating />} />
         <Route path="store_stock" element={<Store_Stock />} />
         <Route path="store_profile" element={<Store_Profile />} />
+
+
 
         {/* Trineesha */}
         <Route
@@ -380,7 +386,7 @@ export default function App() {
         <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
         <Route path="/traveler/attractionspoll/:id/:day" element={<PollAttractions />} />
         <Route path="/traveler/activitiespoll/:id/:day" element={<PollActivities />} />
-        {/* <Route path="/traveler/hotelpoll/:id/:day" element={<PollHotels />} /> */}
+        <Route path="/traveler/hotelpoll/:id/:day" element={<PollHotels />} />
 
 
 
@@ -397,7 +403,7 @@ export default function App() {
         <Route path="/traveler/attractions_nuwaraeliya/:id/:day" element={<AttractionsNuwaraEliya />} />
         <Route path="/traveler/attractions_trincomalee/:id/:day" element={<AttractionsTrincomalee />} />
         <Route path="/traveler/attractions_galle/:id/:day" element={<AttractionsGalle />} />
-        <Route path="/traveler/edit-roles/:id" element={<EditTripRoles/>} />
+        <Route path="/traveler/edit-roles/:id" element={<EditTripRoles />} />
         <Route path="/traveler/closer_hotels/:id/:day" element={<CloserHotels />} />
         <Route path="/traveler/closer_activities/:id/:day" element={<CloserActivities />} />
 
@@ -429,7 +435,7 @@ export default function App() {
 
         {/* Trineesha */}
         <Route exact path="/traveler/DestinationPage" element={<DestinationPage />} />
-        <Route exact path="/traveler/ActivityPage" element={<ActivityPage/>} />
+        <Route exact path="/traveler/ActivityPage" element={<ActivityPage />} />
         <Route exact path="/traveler/HotelPage/:user_id" element={<HotelPage />} />
         <Route exact path="/traveler/HotelType/:user_id/:hotelID" element={<HotelType />} />
         <Route exact path="/traveler/HotelPageMore/:user_id/:hotelID/:roomId" element={<HotelPageMore />} />

@@ -18,4 +18,6 @@ public interface VehicleRenterRepository extends JpaRepository<VehicleRenter, In
 
     @Query("SELECT s FROM VehicleRenter s WHERE s.user = :user AND s.status ='ACTIVE'")
     Optional<VehicleRenter> findByUserIdAndStatus(User user);
+
+
 }

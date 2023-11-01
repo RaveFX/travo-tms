@@ -18,4 +18,5 @@ public interface StoreManagerRepository extends JpaRepository<StoreManager, Inte
     @Query("SELECT s FROM StoreManager s WHERE s.user = :user AND s.status ='ACTIVE'")
     Optional<StoreManager> findByUserIdAndStatus(User user);
 
+
 }

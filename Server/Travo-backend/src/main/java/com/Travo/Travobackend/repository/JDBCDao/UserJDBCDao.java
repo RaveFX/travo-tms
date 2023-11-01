@@ -87,6 +87,120 @@ public class UserJDBCDao {
             return userInformationList;
         });
     }
+
+    public List<UserInformationDTO> getUserDetails(Integer userId) {
+        String sql = "SELECT u.*, t.* FROM user u INNER JOIN traveler t ON u.user_id = t.traveler_id WHERE u.user_id= :userId";
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("userId", userId);
+        return namedParameterJdbcTemplate.query(sql, params, rs -> {
+            List<UserInformationDTO> userInformationList = new ArrayList<>();
+
+
+            while (rs.next()) {
+                UserInformationDTO userInformationDTO = new UserInformationDTO();
+
+                userInformationDTO.setEmail(rs.getString("u.email"));
+                userInformationDTO.setUser_id(rs.getInt("u.user_id"));
+                userInformationDTO.setProfileImage(rs.getString("u.profile_image"));
+                userInformationDTO.setFname(rs.getString("t.fname"));
+                userInformationDTO.setLname(rs.getString("t.lname"));
+                userInformationDTO.setContact_num(rs.getString("t.contact_num"));
+                java.sql.Date sqlDate = rs.getDate("u.registration_date");
+                if (sqlDate != null) {
+                    userInformationDTO.setRegistration_date(sqlDate.toLocalDate());
+                }
+                userInformationList.add(userInformationDTO);
+            }
+
+            return userInformationList;
+        });
+    }
+
+
+
+    public List<UserInformationDTO> getAllPendingUsers() {
+        String sql = "SELECT \n" +
+                "    u.*, \n" +
+                "    CASE \n" +
+                "        WHEN vr.user_id IS NOT NULL THEN 'vehicle_renter' \n" +
+                "        WHEN ha.user_id IS NOT NULL THEN 'hotel_agent' \n" +
+                "        WHEN aa.user_id IS NOT NULL THEN 'activity_agent' \n" +
+                "        WHEN g.user_id IS NOT NULL THEN 'guide' \n" +
+                "        WHEN sm.user_id IS NOT NULL THEN 'store_manager' \n" +
+                "    END AS service_provider \n" +
+                "FROM \n" +
+                "    user u \n" +
+                "LEFT JOIN \n" +
+                "    vehicle_renter vr ON u.user_id = vr.user_id AND vr.status = 'pending' \n" +
+                "LEFT JOIN \n" +
+                "    hotel_agent ha ON u.user_id = ha.user_id AND ha.status = 'pending' \n" +
+                "LEFT JOIN \n" +
+                "    activity_agent aa ON u.user_id = aa.user_id AND aa.status = 'pending' \n" +
+                "LEFT JOIN \n" +
+                "    guide g ON u.user_id = g.user_id AND g.status = 'pending' \n" +
+                "LEFT JOIN \n" +
+                "    store_manager sm ON u.user_id = sm.user_id AND sm.status = 'pending'\n" +
+                "WHERE \n" +
+                "    CASE \n" +
+                "        WHEN vr.user_id IS NOT NULL THEN 'vehicle_renter' \n" +
+                "        WHEN ha.user_id IS NOT NULL THEN 'hotel_agent' \n" +
+                "        WHEN aa.user_id IS NOT NULL THEN 'activity_agent' \n" +
+                "        WHEN g.user_id IS NOT NULL THEN 'guide' \n" +
+                "        WHEN sm.user_id IS NOT NULL THEN 'store_manager' \n" +
+                "    END IS NOT NULL;\n";
+
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+
+        return namedParameterJdbcTemplate.query(sql, params, rs -> {
+            List<UserInformationDTO> userInformationList = new ArrayList<>();
+
+            while (rs.next()) {
+                UserInformationDTO userInformationDTO = new UserInformationDTO();
+
+                userInformationDTO.setEmail(rs.getString("u.email"));
+                userInformationDTO.setUser_id(rs.getInt("u.user_id"));
+                userInformationDTO.setProfileImage(rs.getString("u.profile_image"));
+                String service_provider = rs.getString("service_provider");
+                userInformationDTO.setService_provider(service_provider);
+                java.sql.Date sqlDate = rs.getDate("u.registration_date");
+                if (sqlDate != null) {
+                    userInformationDTO.setRegistration_date(sqlDate.toLocalDate());
+                }
+                userInformationList.add(userInformationDTO);
+            }
+
+            return userInformationList;
+        });
+    }
+
+    public List<UserInformationDTO> getAllPendingUsersInfo() {
+        String sql = "";
+
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+
+        return namedParameterJdbcTemplate.query(sql, params, rs -> {
+            List<UserInformationDTO> userInformationList = new ArrayList<>();
+
+            while (rs.next()) {
+                UserInformationDTO userInformationDTO = new UserInformationDTO();
+
+                userInformationDTO.setEmail(rs.getString("u.email"));
+                userInformationDTO.setUser_id(rs.getInt("u.user_id"));
+                userInformationDTO.setProfileImage(rs.getString("u.profile_image"));
+                String service_provider = rs.getString("service_provider");
+                userInformationDTO.setService_provider(service_provider);
+                java.sql.Date sqlDate = rs.getDate("u.registration_date");
+                if (sqlDate != null) {
+                    userInformationDTO.setRegistration_date(sqlDate.toLocalDate());
+                }
+                userInformationList.add(userInformationDTO);
+            }
+
+            return userInformationList;
+        });
+    }
     public void updateUserStatus(Integer userId, Status newStatus) {
         String sql = "UPDATE user SET status = :newStatus WHERE user_id = :userId";
         Map<String, Object> paramMap = new HashMap<>();

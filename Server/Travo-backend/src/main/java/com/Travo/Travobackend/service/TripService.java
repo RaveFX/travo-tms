@@ -1,7 +1,5 @@
 package com.Travo.Travobackend.service;
 
-
-
 import com.Travo.Travobackend.model.dto.HotelReservationDTO;
 import com.Travo.Travobackend.model.dto.TripDTO;
 import com.Travo.Travobackend.model.entity.Trip;
@@ -61,12 +59,11 @@ public class TripService {
     @Autowired
     private UserRepository userRepository;
 
-
-    public List<TripDTO> tripList(Integer userID){
+    public List<TripDTO> tripList(Integer userID) {
         return tripJDBCDao.getTripList(userID);
     }
 
-    public TripDTO tripDetails(Integer tripID){
+    public TripDTO tripDetails(Integer tripID) {
         return tripJDBCDao.getTripDetails(tripID);
     }
 
@@ -80,9 +77,9 @@ public class TripService {
         return token.toString();
     }
 
-    public Integer createTrip(TripDTO tripDTO){
+    public Integer createTrip(TripDTO tripDTO) {
 
-        var  trip = Trip.builder()
+        var trip = Trip.builder()
                 .trip_name(tripDTO.getTrip_name())
                 .start_date(tripDTO.getStart_date())
                 .end_date(tripDTO.getEnd_date())
@@ -94,7 +91,7 @@ public class TripService {
         Trip newTrip = tripRepository.save(trip);
 
         String uniqueToken = generateRandomToken(20);
-        String uniqueLink =  newTrip.getTrip_id() + "" + uniqueToken;
+        String uniqueLink = newTrip.getTrip_id() + "" + uniqueToken;
         newTrip.setUniqueLink(uniqueLink);
         tripRepository.save(newTrip);
 
@@ -110,17 +107,15 @@ public class TripService {
                 .build();
         tripMemberRepository.save(tripMember);
 
-
         return newTrip.getTrip_id();
-
 
     }
 
-    public String updateTripRole(TripMemberDTO tripMemberDTO){
+    public String updateTripRole(TripMemberDTO tripMemberDTO) {
         TripRole tripRole;
-        if(Objects.equals(tripMemberDTO.getTripRole(), "EDITOR")){
+        if (Objects.equals(tripMemberDTO.getTripRole(), "EDITOR")) {
             tripRole = TripRole.EDITOR;
-        }else{
+        } else {
             tripRole = TripRole.MEMBER;
         }
 
@@ -142,23 +137,22 @@ public class TripService {
     public String updateTrip(Integer tripID, TripDTO tripDTO) {
         Trip existingTrip = tripRepository.findById(tripID).orElse(null);
 
-        if(existingTrip != null){
+        if (existingTrip != null) {
 
-            if(!Objects.equals(tripDTO.getTrip_name(), null)) {
+            if (!Objects.equals(tripDTO.getTrip_name(), null)) {
                 System.out.println("Name");
                 existingTrip.setTrip_name(tripDTO.getTrip_name());
                 tripRepository.save(existingTrip);
                 return existingTrip.getTrip_name();
 
             }
-            if(!Objects.equals(tripDTO.getDescription(), null)) {
+            if (!Objects.equals(tripDTO.getDescription(), null)) {
                 System.out.println("Desc");
                 existingTrip.setDescription(tripDTO.getDescription());
                 tripRepository.save(existingTrip);
                 return existingTrip.getDescription();
 
             }
-
 
         }
         return null;
@@ -167,7 +161,7 @@ public class TripService {
     public String updateDate(Integer tripID, TripDTO tripDTO) {
         Trip existingTrip = tripRepository.findById(tripID).orElse(null);
 
-        if(existingTrip != null){
+        if (existingTrip != null) {
 
             existingTrip.setStart_date(tripDTO.getStart_date());
             existingTrip.setEnd_date(tripDTO.getEnd_date());
@@ -181,10 +175,6 @@ public class TripService {
         return ("Date unsuccessfully!");
     }
 
-
-
-
-
     public List<LocalDate> getDatesBetweenForTrip(Integer tripId) {
         Trip trip = tripRepository.findById(tripId).orElse(null);
         List<LocalDate> dates = new ArrayList<>();
@@ -197,7 +187,6 @@ public class TripService {
         return dates;
     }
 
-
     public String checkTrip(Integer tripId, String uniqueKey) {
         String exists = tripRepository.existsByTripIdAndUniqueKey(tripId, uniqueKey);
         System.out.println(exists);
@@ -205,17 +194,15 @@ public class TripService {
         return exists;
     }
 
-
-    
-    public List<HotelDTO> hotelList(Integer tripId,Integer day){
+    public List<HotelDTO> hotelList(Integer tripId, Integer day) {
         return hotelJDBCDao.getHotelList(tripId, day);
     }
 
-    public List<ActivityDTO> activityList(Integer tripId,Integer day){
+    public List<ActivityDTO> activityList(Integer tripId, Integer day) {
         return activityJDBCDao.getActivityList(tripId, day);
     }
 
-    public String addAttraction(AttractionDTO attractionDTO){
+    public String addAttraction(AttractionDTO attractionDTO) {
         try {
             TripAttraction tripAttraction = new TripAttraction();
             tripAttraction.setPlace_id(attractionDTO.getPlace_id());
@@ -231,14 +218,14 @@ public class TripService {
             tripAttraction.setTrip(trip);
             tripAttractionRepository.save(tripAttraction);
 
-            return("Attraction added successfully!");
+            return ("Attraction added successfully!");
         } catch (Exception e) {
-            return("Error adding attraction: " + e.getMessage());
+            return ("Error adding attraction: " + e.getMessage());
         }
 
     }
 
-    public String addHotel(HotelDTO hotelDTO){
+    public String addHotel(HotelDTO hotelDTO) {
         try {
             TripHotel tripHotel = new TripHotel();
             tripHotel.setDay(hotelDTO.getDay());
@@ -251,14 +238,14 @@ public class TripService {
             tripHotel.setTrip(trip);
             tripHotelRepository.save(tripHotel);
 
-            return("Hotel added successfully!");
+            return ("Hotel added successfully!");
         } catch (Exception e) {
-            return("Error adding hotel: " + e.getMessage());
+            return ("Error adding hotel: " + e.getMessage());
         }
 
     }
 
-    public String addActivity(ActivityDTO activityDTO){
+    public String addActivity(ActivityDTO activityDTO) {
         try {
             TripActivity tripActivity = new TripActivity();
             tripActivity.setDay(activityDTO.getDay());
@@ -271,35 +258,39 @@ public class TripService {
             tripActivity.setTrip(trip);
             tripActivityRepository.save(tripActivity);
 
-            return("Activity added successfully!");
+            return ("Activity added successfully!");
         } catch (Exception e) {
-            return("Error adding activity: " + e.getMessage());
+            return ("Error adding activity: " + e.getMessage());
         }
 
     }
 
-    public List<HotelDTO> selectedHotelList(Integer tripID, Integer day){
+    public List<HotelDTO> selectedHotelList(Integer tripID, Integer day) {
         return hotelJDBCDao.getSelectedHotelList(tripID, day);
     }
 
-    public List<ActivityDTO> selectedActivityList(Integer tripID, Integer day){
+    public List<ActivityDTO> selectedActivityList(Integer tripID, Integer day) {
         return activityJDBCDao.getSelectedActivityList(tripID, day);
     }
-    public List<AttractionDTO> selectedAttractionList(Integer tripID, Integer day){
+
+    public List<AttractionDTO> selectedAttractionList(Integer tripID, Integer day) {
         return attractionJDBCDao.getSelectedAttractionList(tripID, day);
     }
-    //remove hotel from selected list
+
+    // remove hotel from selected list
     public void removeHotelById(Integer id) {
         tripHotelRepository.deleteById(id);
     }
+
     public void removeActivityById(Integer id) {
         tripActivityRepository.deleteById(id);
     }
+
     public void removeAttractionById(Integer id) {
         tripAttractionRepository.deleteById(id);
     }
 
-    public String addToSchedule(ScheduleDTO scheduleDTO){
+    public String addToSchedule(ScheduleDTO scheduleDTO) {
         try {
             TripSchedule tripSchedule = new TripSchedule();
             tripSchedule.setType(scheduleDTO.getType());
@@ -315,14 +306,14 @@ public class TripService {
             tripSchedule.setTrip(trip);
             tripScheduleRepository.save(tripSchedule);
 
-            return("Schedule added successfully!");
+            return ("Schedule added successfully!");
         } catch (Exception e) {
-            return("Error adding schedule: " + e.getMessage());
+            return ("Error adding schedule: " + e.getMessage());
         }
 
     }
 
-    public List<ScheduleDTO> scheduleByDay(Integer tripID, Integer day){
+    public List<ScheduleDTO> scheduleByDay(Integer tripID, Integer day) {
         return scheduleJDBCDao.getScheduleByDay(tripID, day);
     }
 
@@ -330,19 +321,20 @@ public class TripService {
         tripScheduleRepository.deleteById(id);
     }
 
-    //for the schedule dropdown
-    public List<HotelDTO> selectedScheduleHotelList(Integer tripID, Integer day){
+    // for the schedule dropdown
+    public List<HotelDTO> selectedScheduleHotelList(Integer tripID, Integer day) {
         return hotelJDBCDao.getSchedule_SelectedHotelList(tripID, day);
     }
 
-    public List<ActivityDTO> selectedScheduleActivityList(Integer tripID, Integer day){
+    public List<ActivityDTO> selectedScheduleActivityList(Integer tripID, Integer day) {
         return activityJDBCDao.getSchedule_SelectedActivityList(tripID, day);
     }
-    public List<AttractionDTO> selectedScheduleAttractionList(Integer tripID, Integer day){
+
+    public List<AttractionDTO> selectedScheduleAttractionList(Integer tripID, Integer day) {
         return attractionJDBCDao.getSchedule_SelectedAttractionList(tripID, day);
     }
 
-    public String updateSchedule(ScheduleDTO scheduleDTO){
+    public String updateSchedule(ScheduleDTO scheduleDTO) {
         Optional<TripSchedule> optionalSchedule = tripScheduleRepository.findById(scheduleDTO.getSchedule_id());
         if (optionalSchedule.isPresent()) {
             TripSchedule tripSchedule = optionalSchedule.get();
@@ -351,28 +343,29 @@ public class TripService {
 
             tripScheduleRepository.save(tripSchedule);
 
-            return("Schedule added successfully!");
-        }else {
+            return ("Schedule added successfully!");
+        } else {
             return ("Schedule not found");
         }
 
     }
 
-    public List<HotelDTO> selectedHotelListForMap(Integer tripID){
+    public List<HotelDTO> selectedHotelListForMap(Integer tripID) {
         return hotelJDBCDao.getHotelListForMap(tripID);
     }
 
     public List<ActivityDTO> selectedActivityListForMap(Integer tripID) {
         return activityJDBCDao.getActivityListForMap(tripID);
     }
-    public List<AttractionDTO> selectedAttractionListForMap(Integer tripID){
+
+    public List<AttractionDTO> selectedAttractionListForMap(Integer tripID) {
         return attractionJDBCDao.getAttractionListForMap(tripID);
     }
 
-    public List<GuideDTO> getGuideDetails(){
+    public List<GuideDTO> getGuideDetails() {
         return tripJDBCDao.getGuideDetails();
     }
-    
+
     public boolean hasAdminOrEditorRole(Integer memberId, Integer tripId) {
         Optional<User> userOptional = userRepository.findById(memberId);
         User user = userOptional.get();
@@ -381,11 +374,12 @@ public class TripService {
         Trip trip = tripOptional.get();
 
         Optional<TripMember> tripMember = tripMemberRepository.findByUserAndTrip(user, trip);
-        return tripMember.filter(member -> member.getTripRole() == TripRole.ADMIN || member.getTripRole() == TripRole.EDITOR)
+        return tripMember
+                .filter(member -> member.getTripRole() == TripRole.ADMIN || member.getTripRole() == TripRole.EDITOR)
                 .isPresent();
     }
 
-    public String updateTripNote(Integer tripID, TripDTO tripDTO){
+    public String updateTripNote(Integer tripID, TripDTO tripDTO) {
         Optional<Trip> optionalTrip = tripRepository.findById(tripDTO.getTrip_id());
         if (optionalTrip.isPresent()) {
             Trip trip = optionalTrip.get();
@@ -393,14 +387,14 @@ public class TripService {
 
             tripRepository.save(trip);
 
-            return("Note added successfully!");
-        }else {
+            return ("Note added successfully!");
+        } else {
             return ("Trip not found");
         }
 
     }
 
-    public List<TripMemberDTO> selectedTripMembers(Integer tripID){
+    public List<TripMemberDTO> selectedTripMembers(Integer tripID) {
         return tripJDBCDao.getTripMemberList(tripID);
     }
 }

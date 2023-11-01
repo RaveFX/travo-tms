@@ -23,7 +23,7 @@ export default function TopNavbar() {
         <Navbar className=" font-poppins shadow-sm rounded-none">
             <div className="flex items-start flex-wrap justify-between gap-y-4 ">
                 <div className="relative flex w-full gap-2 md:w-max rounded-full">
-                    <Input
+                    {/* <Input
                         type="search"
                         className="p-5 outline-0 text-black  bg-[#f8fbff] shadow-md rounded-full style-none"
                         containerProps={{
@@ -35,7 +35,7 @@ export default function TopNavbar() {
                         className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none"
                     >
                         <MagnifyingGlassIcon className="h-4 w-4" />
-                    </Button>
+                    </Button> */}
                 </div>
                 <div className="flex items-center gap-5">
                     <Link to="/Travdash">

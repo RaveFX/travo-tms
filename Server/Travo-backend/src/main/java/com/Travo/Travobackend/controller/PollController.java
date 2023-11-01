@@ -24,9 +24,36 @@ public class PollController {
         return pollService.addAttraction(attractionPollDTO);
     }
 
-    @GetMapping("/pollAttractionList/{tripID}/{day}")
-    public List<AttractionPollDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day){
-        return pollService.selectedAttractionList(tripID, day);
+    @PostMapping("/poll/add-hotels")
+    public String addHotelToPoll(@RequestBody HotelPollDTO hotelPollDTO) {
+        System.out.println("ii");
+        return pollService.addHoteltoPoll(hotelPollDTO);
+    }
+
+
+
+
+
+
+
+    @GetMapping("/pollAttractionList/{tripID}/{day}/{userId}")
+    public List<AttractionPollDTO> getSelectedAttractionList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedAttractionList(tripID, day, userId);
+    }
+    @GetMapping("/pollHotelList/{tripID}/{day}/{userId}")
+    public List<HotelPollDTO> getSelectedHotelList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedHotelList(tripID, day, userId);
+    }
+
+
+
+    @GetMapping("/pollAttractionVotedList/{tripID}/{day}/{userId}")
+    public List<AttractionPollDTO> getSelectedAttractionVotedList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedAttractionVotedList(tripID, day, userId);
+    }
+    @GetMapping("/pollHotelVotedList/{tripID}/{day}/{userId}")
+    public List<HotelPollDTO> getSelectedHotelVotedList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+        return pollService.selectedHotelVotedList(tripID, day, userId);
     }
 
     @PutMapping("/updateAttractionTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
@@ -46,17 +73,37 @@ public class PollController {
         }
     }
 
+    @PutMapping("/updateHotelTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
+    public ResponseEntity<String> updateHotelTotalVotes(
+            @PathVariable Integer tripId,
+            @PathVariable Integer attractionId,
+            @PathVariable Boolean isChecked,
+            @PathVariable Integer day
+    )
+    {
+
+        try {
+            pollService.updateHotelPoll(tripId, attractionId, isChecked, day);
+            return new ResponseEntity<>("Update successful", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Update failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+
+    @PostMapping("hotels/updatePolluser/addlist")
+    public ResponseEntity<String> addUserPollHotel(@RequestBody HotelPolluserDTO hotelPolluserDTO) {
+        String result = pollService.addUserPollHotel(hotelPolluserDTO);
+        return ResponseEntity.ok(result);
+    }
     @PostMapping("/attractions/updatePolluser/addlist")
     public ResponseEntity<String> addUserPollAttraction(@RequestBody PollUserDTO pollUserDTO) {
         String result = pollService.addUserPollAttraction(pollUserDTO);
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/checkVotedORNot/{userId}/{AttactionPollId}")
-    public ResponseEntity<String> checkVotedORNot(@PathVariable Integer userId, @PathVariable Integer AttactionPollId){
-        String result = pollService.checkVotedORNot(userId, AttactionPollId);
-        return ResponseEntity.ok(result);
-    }
 
 @DeleteMapping("/attractions/updatePolluser/remove")
 public ResponseEntity<String> removePollUser(
@@ -67,6 +114,33 @@ public ResponseEntity<String> removePollUser(
     String result = pollService.removePollUser(userId, attractionPollId);
     return ResponseEntity.ok(result);
 }
+
+    @DeleteMapping("/hotels/updatePolluser/remove")
+    public ResponseEntity<String> removePollUserHotel(
+            @RequestParam("user_id") Integer userId,
+            @RequestParam("hotelPollId") Integer hotelPollId
+    ) {
+
+        String result = pollService.removePollUserHotel(userId, hotelPollId);
+        return ResponseEntity.ok(result);
+    }
+
+
+
+    @PostMapping("/totrip/add-attraction")
+    public String addAttractionToTrip(@RequestBody AttractionPollDTO attractionPollDTO) {
+        return pollService.addAttractionToTrip(attractionPollDTO);
+    }
+
+    @DeleteMapping("attractions/frompoll/delete/{attractionPollId}")
+    public ResponseEntity<String> AttractionsDeleteFromPoll(
+            @PathVariable Integer attractionPollId
+    ) {
+        String result = pollService.attractionDeleteFromPoll(attractionPollId);
+        return ResponseEntity.ok(result);
+    }
+
+
 
 
 

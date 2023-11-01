@@ -20,4 +20,5 @@ public interface HotelAgentRepository extends JpaRepository<HotelAgent, Integer>
     @Query("SELECT s FROM HotelAgent s WHERE s.user = :user AND s.status ='ACTIVE'")
     Optional<HotelAgent> findByUserIdAndStatus(User user);
 
+
 }

@@ -19,4 +19,5 @@ public interface ActivityAgentRepository extends JpaRepository<ActivityAgent, In
 
     @Query("SELECT a FROM ActivityAgent a WHERE a.user = :user AND a.status ='ACTIVE'")
     Optional<ActivityAgent> findByUserIdAndStatus(User user);
+
 }
