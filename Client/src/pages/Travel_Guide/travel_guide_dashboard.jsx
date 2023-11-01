@@ -107,7 +107,6 @@ const DashboardTG = () => {
 
             <div className='h-screen flex flex-grow flex-col'>
                 <div>
-<h1>{user_id}</h1>
                     {topnav.map((nav, index) => (
                         <TopNavbar key={index} path={nav.path} />
                     ))}
