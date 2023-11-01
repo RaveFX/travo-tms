@@ -86,7 +86,7 @@ const Transactions = () => {
           className="overflow-y-scroll min-h-screen mb-4"
           style={{ scrollbarWidth: "none" }}
         >
-          <Tabs>
+          <Tabs className="p-3 m-3 border-0  ">
             <TabList>
               {transactionCategories.map((category) => (
                 <Tab key={category}>{category}</Tab>
