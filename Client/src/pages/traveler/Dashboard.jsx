@@ -49,7 +49,7 @@ const Dashboard = () => {
       name: "Destinations",
       price: "Find plsces to visit",
       imageSrc:
-        "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
+        "https://lp-cms-production.imgix.net/2019-06/GettyImages-497592261_high.jpg",
       buttonname: "Explore Now",
       links:"/traveler/DestinationPage"
     },
@@ -152,10 +152,10 @@ const Dashboard = () => {
                     >
                       Why Wait?
                     </Typography>
-                    <Button
+                    {/* <Button
                       className='md:!w-auto h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
                       Continue Editing
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
                 <div className='h-100 w-full rounded-lg'>
@@ -206,17 +206,17 @@ const Dashboard = () => {
             </div>
             <div className='w-[32%] '>
             <div className="max-w-md mx-2 my-4">
-            <div className="shadow-lg rounded-lg">
+            {/* <div className="shadow-lg rounded-lg">
               {header()}
               {daysOfWeek()}
               <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
-            </div>
+            </div> */}
           </div>
             </div>
           </div>
-          <div className="bg-white p-4 shadow-md rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Ongoing Trips</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* <div className="bg-white p-4 shadow-md rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Ongoing Trips</h2> */}
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {ongoingTrips.map((trip) => (
                 <Link key={trip.id} to={`/edit-trip/${trip.id}`}>
                   <Card className="cursor-pointer">
@@ -247,8 +247,8 @@ const Dashboard = () => {
                   </Card>
                 </Link>
               ))}
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
 
           {/* Other Options */}
