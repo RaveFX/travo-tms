@@ -47,10 +47,10 @@ public class UserController {
     public List<VehicleRenterDTO> getPendingVehicleRenter(@PathVariable int userId) {
         return userService.getPendingVehicleRenters(userId);
     }
-    @GetMapping("/information-hotel/{userId}")
-    public List<HotelDTO> getPendingHotel(@PathVariable int userId) {
-        return userService.getPendingHotel(userId);
-    }
+//    @GetMapping("/information-hotel/{userId}")
+//    public List<HotelDTO> getPendingHotel(@PathVariable int userId) {
+//        return userService.getPendingHotel(userId);
+//    }
 
     @PutMapping("/update-status-verenter/{userId}/{newStatus}")
     public void updateVehicleRenterStatus(
