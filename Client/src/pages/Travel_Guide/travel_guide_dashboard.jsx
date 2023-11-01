@@ -83,7 +83,7 @@ const DashboardTG = () => {
         { title: "Client", src: customer, amount: "128" },
         { title: "Complete", src: star, amount: "40" },
         { title: "Ratings", src: star, amount: "25" },
-        { title: "Request", src: request, amount: "95" },
+        // { title: "Request", src: request, amount: "95" },
         { title: "Income", src: invitation, amount: "LKR.55" },
     ];
     const tours = [
@@ -130,7 +130,6 @@ const DashboardTG = () => {
                     </div>
                     <div className='flex'>
                         <div className='my-3 mx-4 w-1/2'>
-                            {/* Calendar (Upper Right Corner) */}
                             <div className='flex sm:flex-row   justify-center '>
                                 <Calendar />
                             </div>

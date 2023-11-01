@@ -37,6 +37,11 @@ public class Room {
     private Boolean breakfast;
     private Boolean lunch;
     private Boolean Dinner;
+    private String room_image;
+    private String room1;
+    private String room2;
+    private String room3;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "room")

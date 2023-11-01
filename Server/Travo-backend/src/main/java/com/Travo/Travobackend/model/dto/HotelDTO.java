@@ -37,6 +37,12 @@ public class HotelDTO {
     private Integer contact_num;
     private String room_description;
     private String branch;
+    private String image;
+    private String room_image;
+    private String room1;
+    private String room2;
+    private String room3;
+
 
 
 
