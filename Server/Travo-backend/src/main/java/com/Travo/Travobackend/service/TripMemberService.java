@@ -106,11 +106,7 @@ public class TripMemberService {
         return count > 0;
     }
 
-
-
-
-
-    private TripMembersRepository tripMembersRepository;
+    private TripMemberRepository tripMembersRepository;
 
     public long getRowCount() {
         return tripMembersRepository.count();
