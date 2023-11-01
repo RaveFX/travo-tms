@@ -98,7 +98,7 @@ function Addtripsignup() {
                             <label for="fname" className="block text-sm  text-gray-800">
                                 First Name
                             </label>
-                            {errors.fname && <p className="text-red-500">{errors.fname}</p>}
+                            {errors.fname && <p className="text-red">{errors.fname}</p>}
                             <input
                                 type="text"
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -111,7 +111,7 @@ function Addtripsignup() {
                             <label for="lname" className="block text-sm  text-gray-800">
                                 Last Name
                             </label>
-                            {errors.lname && <p className="text-red-500">{errors.lname}</p>}
+                            {errors.lname && <p className="text-red">{errors.lname}</p>}
                             <input
                                 type="text"
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -124,7 +124,7 @@ function Addtripsignup() {
                             <label for="email" className="block text-sm  text-gray-800">
                                 Email
                             </label>
-                            {errors.email && <p className="text-red-500">{errors.email}</p>}
+                            {errors.email && <p className="text-red">{errors.email}</p>}
                             <input
                                 type="text"
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -138,7 +138,7 @@ function Addtripsignup() {
                                 Password
                             </label>
                             {errors.password && (
-                                <p className="text-red-500">{errors.password}</p>
+                                <p className="text-red">{errors.password}</p>
                             )}
                             <input
                                 type="password"

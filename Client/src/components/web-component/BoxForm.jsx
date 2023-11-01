@@ -37,12 +37,23 @@ export default function BoxForm(props) {
       // Display error message for empty fields
       setError("All fields are required.");
       return;
-    }else if (new Date(startDate) > new Date(endDate)) {
+    }
+    const startDateTime = new Date(startDate);
+    const endDateTime = new Date(endDate);
+    const currentDate = new Date();
+    if (startDateTime > endDateTime) {
       setError("Start date cannot be after end date");
       return;
-    } else {
+    } 
+
+    if (startDateTime < currentDate) {
+      setError("Start date cannot be in the past.");
+      return;
+    }
+
+   
       
-      setError("");
+    setError("");
     console.log("Form submitted!", tripName);
     const data = {
           trip_name: tripName,
@@ -55,7 +66,7 @@ export default function BoxForm(props) {
       const response= await axios.post('http://localhost:8080/api/v1/trip/create-trip', data);
       navigate(`/traveler/trip-planner/${response.data}`);
       
-   }
+   
   };
 
   const handleStartDateChange = (e) => {
@@ -156,7 +167,7 @@ export default function BoxForm(props) {
         </div>
         </div>
         {error && (
-          <div className="text-red-500 mt-2 text-sm">{error}</div>
+          <div className="text-red mt-2 text-sm">{error}</div>
         )}
         </div>
 
