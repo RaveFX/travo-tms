@@ -55,8 +55,6 @@ export function Banner(props) {
     console.log(userData);
   }, [userData]);
 
-
-  
   const handleItemClick = (item) => {
     // Handle the click event when an item in the search results is clicked
     console.log("Clicked on:", item.name);
@@ -72,16 +70,21 @@ export function Banner(props) {
           <div className="flex flex-row items-center">
             <img
               src={`data:application/img;base64,${profileImage}`}
-              className="w-40 h-40 border-4 border-white rounded-full m-4"
+              className="w-40 h-40 border-4 border-[#72C075] rounded-full m-4"
               alt="Profile Image"
             />
-            <Typography className="mt-4 text-3xl font-poppins font-black text-black">
-              {userData.firstname} {userData.lastname}
-            </Typography>
+            <div className="flex flex-col">
+              <Typography className="mt-8 text-3xl font-poppins font-black text-black">
+                {userData.firstname} {userData.lastname}
+              </Typography>
+              <Typography className="mt-0 text-md font-poppins">
+                {userData.nickName}
+              </Typography>
+            </div>
           </div>
 
           <div className="flex flex-row items-center">
-          {children != null
+            {children != null
               ? children
               : () => {
                   return null;

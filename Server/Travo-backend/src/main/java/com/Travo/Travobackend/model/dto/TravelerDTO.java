@@ -26,4 +26,5 @@ public class TravelerDTO {
     private Integer postal_code;
     private String district;
     private byte[] profileImage;
+    private String nickName;
 }

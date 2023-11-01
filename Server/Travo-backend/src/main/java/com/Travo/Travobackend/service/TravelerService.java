@@ -39,6 +39,7 @@ public class TravelerService {
                 .DOB(traveler.getDOB())
                 .district(traveler.getDistrict())
                 .emergency_contact(traveler.getEmergency_contact())
+                .nickName(traveler.getNickName())
                 .build();
     }
 
@@ -99,6 +100,7 @@ public class TravelerService {
         traveler.setDOB(travelerDTO.getDOB());
         traveler.setDistrict(travelerDTO.getDistrict());
         traveler.setEmergency_contact(travelerDTO.getEmergency_contact());
+        traveler.setNickName(travelerDTO.getNickName());
 
         travelerRepository.save(traveler);
 
