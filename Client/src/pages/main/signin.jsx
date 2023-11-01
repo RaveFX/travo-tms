@@ -77,7 +77,7 @@ function Signin() {
             <div className="text-center  text-gray-800 md:text-left pb-10">
               <h1 className="mr-1 font-bold text-center pb-10">LOGIN</h1>
             </div>
-            {error && <p className="text-red-500 mb-2">{error}</p>}
+            {error && <p className="text-red mb-2">{error}</p>}
 
             <div className="mb-2">
               <label for="email" className="block text-sm  text-gray-800">
@@ -122,11 +122,12 @@ function Signin() {
               >
                 Login
               </button>
+        
             </div>
 
             <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
               <Link
-                className="text-red-600 hover:underline hover:underline-offset-4"
+                className="text-red hover:underline hover:underline-offset-4"
                 to="/signup"
               >
               Don't have an account? Sign-up

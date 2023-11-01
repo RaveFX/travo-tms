@@ -68,11 +68,7 @@ const handleAddHotel = async (hotel) => {
       value: `traveler/closer_hotels/${id}/${day}`,
       desc: ``,
     },
-    {
-      label: "Selected",
-      value: "public",
-      desc: ``,
-    },
+    
   ];
   return (
     <div className="flex h-screen overflow-hidden ">
@@ -97,19 +93,7 @@ const handleAddHotel = async (hotel) => {
         Hotels and Accommodations
       </h1>
       
-      <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
-              <Input
-                type="search"
-                label="Type here..."
-                className="pr-20 rounded-full style-none"
-                containerProps={{
-                  className: "min-w-[288px]",
-                }}
-              />
-              <Button size="sm" className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none">
-                <MagnifyingGlassIcon className="h-4 w-4" />
-              </Button>
-          </div>
+     
           </div>
       <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4" style={{ scrollbarWidth: 'none' }}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">

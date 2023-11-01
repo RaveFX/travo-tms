@@ -78,11 +78,7 @@ function Activities() {
             value: `traveler/closer_activities/${id}/${day}`,
             desc: ``,
         },
-        {
-            label: "Selected",
-            value: "public",
-            desc: ``,
-        },
+       
         
     ];
     return (
@@ -107,19 +103,7 @@ function Activities() {
                         <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6 mt-4">
                             Things to do
                         </h1>
-                        <div className="relative flex w-full gap-2 md:w-max rounded-full mr-10">
-                            <Input
-                                type="search"
-                                label="Type here..."
-                                className="pr-20 rounded-full style-none"
-                                containerProps={{
-                                    className: "min-w-[288px]",
-                                }}
-                            />
-                            <Button size="sm" className="!absolute right-1 top-1 rounded-full bg-[#57CC99] hover:shadow-none active:shadow-none">
-                                <MagnifyingGlassIcon className="h-4 w-4" />
-                            </Button>
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="overflow-y-auto h-[calc(100vh-150px)] mr-4 ml-4" style={{ scrollbarWidth: 'none' }}>

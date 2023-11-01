@@ -77,14 +77,7 @@ function Mytrips() {
     console.log('Card clicked for trip:', trip);
   };
 
-  // useEffect(() => {
-  //   loadTripinfo();
-  // }, []);
-
-  // const loadTripinfo = async () => {
-  //   const result = await axios.get(`http://localhost:8080/api/v1/trips/triplist/${user_id}`)
-  //   setTripinfo(result.data);
-  // }
+  
 
   const data = [
     {
@@ -92,21 +85,7 @@ function Mytrips() {
       value: "all trips",
       desc: ``,
     },
-    {
-      label: "Private Trips",
-      value: "private",
-      desc: ``,
-    },
-    {
-      label: "Public Trips",
-      value: "public",
-      desc: ``,
-    },
-    {
-      label: "My Saves",
-      value: "saved",
-      desc: ``,
-    },
+   
   ];
 
 const handleEditTripClick = () => {
@@ -172,7 +151,17 @@ const handleEditRolesClick = async(trip_id) => {
               {/* Swiper slides */}
               <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
               {
-              trips.map((trips)=>(
+                trips.length === 0 && (
+                  <div className="flex justify-center items-center h-full">
+                    <Typography variant="h3" color="blue-gray">
+                      No trips available.
+                    </Typography>
+                  </div>
+                )
+              }
+             
+              { trips.map((trips)=>(           
+        
                 <SwiperSlide className='w-[100%]'>
                
                 <Card className="mt-6 md:w-[283px] h-[467px]  p-3 hover:scale-105 hover:delay-300">
@@ -200,9 +189,12 @@ const handleEditRolesClick = async(trip_id) => {
                 </CardFooter>
               </Card>
               
+  
                 </SwiperSlide>
-              ))
-              }
+                ))
+                }
+              
+              
                 </div>
                 <div className="flex justify-center w-[100%] absolute bottom-7 z-10 ">
                 <div className="flex items-end justify-between px-[1rem] w-auto h-auto ">
