@@ -30,5 +30,6 @@ public class HotelPoll {
     private Integer day;
 
     @OneToMany(mappedBy = "hotelPoll")
+
     private Set<PollUser> hotelPolluser = new HashSet<>();
 }
