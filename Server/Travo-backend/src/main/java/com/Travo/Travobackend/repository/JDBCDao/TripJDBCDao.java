@@ -36,8 +36,8 @@ public class TripJDBCDao {
                 tripDTO.setTrip_id(rs.getInt("trip_id"));
                 tripDTO.setTrip_name(rs.getString("trip_name"));
                 tripDTO.setDescription(rs.getString("description"));
-                tripDTO.setStart_date(rs.getDate("start_date"));
-                tripDTO.setEnd_date(rs.getDate("end_date"));
+                tripDTO.setStart_date(rs.getDate("start_date").toLocalDate());
+                tripDTO.setEnd_date(rs.getDate("end_date").toLocalDate());
 
 
 
@@ -64,8 +64,8 @@ public class TripJDBCDao {
                 tripDTO.setTrip_id(rs.getInt("trip_id"));
                 tripDTO.setTrip_name(rs.getString("trip_name"));
                 tripDTO.setDescription(rs.getString("description"));
-                tripDTO.setStart_date(rs.getDate("start_date"));
-                tripDTO.setEnd_date(rs.getDate("end_date"));
+                tripDTO.setStart_date(rs.getDate("start_date").toLocalDate());
+                tripDTO.setEnd_date(rs.getDate("end_date").toLocalDate());
                 tripDTO.setUniqueLink(rs.getString("unique_link"));
             }
             return tripDTO;

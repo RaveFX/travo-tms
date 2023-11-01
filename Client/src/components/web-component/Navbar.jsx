@@ -78,7 +78,7 @@ export default function TopNavbar() {
             variant="text"
             color="blue-gray"
             className="p-0 m-0 hover:shadow-none active:shadow-none focus:shadow-none"
-            to="/service_provider"
+            to="/traveler/profile"
           >
             <Avatar
               variant="circular"

@@ -29,6 +29,7 @@ public class TravelerService {
         Traveler traveler = travelerRepository.findDetailsById(travelerId);
 
         return TravelerDTO.builder()
+                .email(traveler.getEmail())
                 .firstname(traveler.getFirstname())
                 .lastname(traveler.getLastname())
                 .addressLine1(traveler.getAddressLine1())
@@ -84,5 +85,23 @@ public class TravelerService {
 
         return travelerDTOList;
 
+    }
+
+    public TravelerDTO updateTravelerDetails(Integer travelerId, TravelerDTO travelerDTO) {
+        Traveler traveler = travelerRepository.findDetailsById(travelerId);
+
+        traveler.setFirstname(travelerDTO.getFirstname());
+        traveler.setLastname(travelerDTO.getLastname());
+        traveler.setAddressLine1(travelerDTO.getAddressLine1());
+        traveler.setAddressLine2(travelerDTO.getAddressLine2());
+        traveler.setCity(travelerDTO.getCity());
+        traveler.setContact_num(travelerDTO.getContact_num());
+        traveler.setDOB(travelerDTO.getDOB());
+        traveler.setDistrict(travelerDTO.getDistrict());
+        traveler.setEmergency_contact(travelerDTO.getEmergency_contact());
+
+        travelerRepository.save(traveler);
+
+        return travelerDTO;
     }
 }

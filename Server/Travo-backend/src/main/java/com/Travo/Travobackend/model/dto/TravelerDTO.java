@@ -13,6 +13,7 @@ import java.util.Date;
 @Builder
 public class TravelerDTO {
     private Integer id;
+    private String email;
     private String firstname;
     private String lastname;
     private String gender;

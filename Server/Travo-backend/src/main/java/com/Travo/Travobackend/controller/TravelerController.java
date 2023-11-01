@@ -32,5 +32,12 @@ public class TravelerController {
         return ResponseEntity.ok(travelerService.getTravelerDetails(travelerId));
     }
 
+
+    // update user information by traveler
+    @PutMapping("/update/{travelerId}")
+    public ResponseEntity<TravelerDTO> updateTravelerDetails(@PathVariable Integer travelerId, @RequestBody TravelerDTO travelerDTO) throws IOException {
+        return ResponseEntity.ok(travelerService.updateTravelerDetails(travelerId, travelerDTO));
+    }
+
 }
 
