@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import Swal from 'sweetalert2';
+import dayjs from 'dayjs';
 
 import {
     Rating, Button, Card, Chip,
@@ -50,7 +51,7 @@ function App() {
         const fetchReservedDates = async () => {
             // Make an API call to fetch the reserved dates for this room
             try {
-                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}/${boardType}`);
+                const response = await axios.get(`http://localhost:8080/api/v1/traveler/checkAvailability/${room_Id}`);
                 console.log(response.data);
                 // Assuming the response is an array of reserved dates, update the state
                 setReservedDates(response.data);
@@ -92,6 +93,9 @@ function App() {
             setFullPayment(Math.floor((2 * hotels[0].price) / 3)); // Replace with the actual data
         }
     };
+
+    const checkinDateString = dayjs(checkin_date).format('YYYY-MM-DD');
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = {};
