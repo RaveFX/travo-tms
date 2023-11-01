@@ -94,7 +94,7 @@ function App() {
                                         <div className="p-4 flex flex-col">
                                             <div>
                                                 <h2 className="text-xl font-semibold">{event.event_name}</h2>
-                                                <p className="text-gray-500 text-sm my-2">Description:{event.event_description}</p>
+                                                <p className="text-gray-500 text-sm my-2 h-24">{event.event_description}</p>
                                                 {event.start_time < "12:00:00" ? (
                                                     <p className="text-gray-600 text-sm my-1">Start Time: {event.start_time} a.m</p>
                                                 ) : (
