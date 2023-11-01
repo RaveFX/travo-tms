@@ -135,7 +135,7 @@ const Dashboard = () => {
             {/* Dashboard */}
           </h1>
           <div className='flex flex-row gap-[1%]'>
-            <div className='flex flex-col gap-[2rem] w-[75%]'>
+            <div className='flex flex-col gap-[2rem] w-[100%]'>
               <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-[75%]'>
                 <div className="mb-2 flex flex-col items-start justify-between w-full">
                   <Typography className="text-[#578B6A] font-[700] text-[32px] ">
