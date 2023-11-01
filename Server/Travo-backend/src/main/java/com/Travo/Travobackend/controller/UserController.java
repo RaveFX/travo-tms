@@ -24,7 +24,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/information")
+    @GetMapping("/information/")
     public List<UserInformationDTO> getInformation() {
         return userService.userInformation();
     }
@@ -47,6 +47,10 @@ public class UserController {
     public List<VehicleRenterDTO> getPendingVehicleRenter(@PathVariable int userId) {
         return userService.getPendingVehicleRenters(userId);
     }
+    @GetMapping("/information-hotel/{userId}")
+    public List<HotelDTO> getPendingHotel(@PathVariable int userId) {
+        return userService.getPendingHotel(userId);
+    }
 
     @PutMapping("/update-status-verenter/{userId}/{newStatus}")
     public void updateVehicleRenterStatus(
@@ -55,6 +59,11 @@ public class UserController {
     ) {
         System.out.println("not works" +userId);
         userService.updateVehicleRenterStatus(userId, newStatus);
+    }
+
+    @GetMapping("/userpersonalinfo/{userId}")
+    public List<UserInformationDTO> getUserpersonalinfo(@PathVariable int userId) {
+        return userService.getUserpersonalinfo(userId);
     }
 
 

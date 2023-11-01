@@ -88,6 +88,34 @@ public class UserJDBCDao {
         });
     }
 
+    public List<UserInformationDTO> getUserDetails(Integer userId) {
+        String sql = "SELECT u.*, t.* FROM user u INNER JOIN traveler t ON u.user_id = t.traveler_id WHERE u.user_id= :userId";
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("userId", userId);
+        return namedParameterJdbcTemplate.query(sql, params, rs -> {
+            List<UserInformationDTO> userInformationList = new ArrayList<>();
+
+
+            while (rs.next()) {
+                UserInformationDTO userInformationDTO = new UserInformationDTO();
+
+                userInformationDTO.setEmail(rs.getString("u.email"));
+                userInformationDTO.setUser_id(rs.getInt("u.user_id"));
+                userInformationDTO.setProfileImage(rs.getString("u.profile_image"));
+                userInformationDTO.setFname(rs.getString("t.fname"));
+                userInformationDTO.setLname(rs.getString("t.lname"));
+                userInformationDTO.setContact_num(rs.getString("t.contact_num"));
+                java.sql.Date sqlDate = rs.getDate("u.registration_date");
+                if (sqlDate != null) {
+                    userInformationDTO.setRegistration_date(sqlDate.toLocalDate());
+                }
+                userInformationList.add(userInformationDTO);
+            }
+
+            return userInformationList;
+        });
+    }
+
 
 
     public List<UserInformationDTO> getAllPendingUsers() {
