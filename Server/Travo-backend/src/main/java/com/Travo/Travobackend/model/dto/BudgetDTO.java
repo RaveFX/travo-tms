@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class BudgetDTO {
     private int user_id;
+    private String userName; // Add user name
     private int tripId;
     private String cause;
     private int cost;

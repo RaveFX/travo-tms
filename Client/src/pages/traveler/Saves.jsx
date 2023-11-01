@@ -2,6 +2,7 @@ import React, { useState, useEffect, } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import { Alert, Input, Card, Button, Checkbox, CardHeader, Avatar, } from "@material-tailwind/react";
+import { BanknotesIcon, UserGroupIcon, UserIcon, WalletIcon } from "@heroicons/react/24/outline";
 // import { id } from "date-fns/locale";
 
 
@@ -76,7 +77,10 @@ function TotalCostByTrip() {
     <div>
       <p>{totalCost !== null ? `LKR ${totalCost.toFixed(2)}` : 'Loading...'}</p>
     </div>
+  
+  
   );
+
 }
 
 function TotalCostByUser() {
@@ -145,33 +149,73 @@ function RowCount() {
   );
 }
 
+function UserCount() {
+  const [userCount, setUserCount] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:8080/api/v1/tripMembers/count') // Replace with your actual backend URL
+      .then((response) => {
+        setUserCount(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (userCount);
+}
+
+function PerUserCost() {
+  const [perUserCost, setPerUserCost] = useState(null);
+  const totalCost = TotalCostByTrip();
+  const rowCount = RowCount();
+
+  useEffect(() => {
+    // Calculate the per-user cost when both totalCost and rowCount are available
+    if (totalCost !== null && rowCount !== 0) {
+      const perUserCostValue = totalCost / rowCount;
+      setPerUserCost(perUserCostValue);
+    }
+  }, [totalCost, rowCount]);
+
+  return (
+    <div>
+      <p>
+        {perUserCost !== null
+          ? `LKR ${perUserCost.toFixed()}`
+          : 'Calculating...'}
+      </p>
+    </div>
+  );
+}
 const data = [
 
   {
     amount: <TotalCostByTrip />,
     label: "Total Expenses",
-    imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
+    imgUrl: <BanknotesIcon/>,
     bgColor: "#eff2f7",
     textColor: "#212b36",
   },
   {
     amount: <RowCount />,
     label: "Trip Participants",
-    imgUrl: "https://file.rendit.io/n/rzaX2PDxiD0qsQUJOP8v.svg",
+    imgUrl: <UserGroupIcon/>,
     bgColor: "#eff2f7",
     textColor: "#212b36",
   },
   {
     amount: <TotalCostByUser />,
     label: "Your Expenses",
-    imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
+    imgUrl: <WalletIcon/>,
     bgColor: "#eff2f7",
     textColor: "#212b36",
   },
   {
-    amount: "LKR 3,000",
-    label: "Paid Expenses",
-    imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
+    amount: <PerUserCost/>,
+    label: "Per User Cost",
+    imgUrl: <UserIcon/>,
     bgColor: "#eff2f7",
     textColor: "#212b36",
   },
@@ -179,7 +223,7 @@ const data = [
   {
     amount: "LKR 5,000",
     label: "Balance Due",
-    imgUrl: "https://file.rendit.io/n/8g8SeHoYgHxaqhSAvb5B.svg",
+    imgUrl: <WalletIcon/>,
     bgColor: "#eff2f7",
     textColor: "#212b36",
   },
@@ -198,7 +242,7 @@ const Budgetcard = () => {
             <div
               className={`bg-[${item.bgColor}] flex flex-col justify-center w-12 h-12 shrink-0 items-center rounded-[31px]`}
             >
-              <img src={item.imgUrl} className="w-6" />
+              <div className="w-6">{item.imgUrl}   </div>
             </div>
             <div className="flex flex-col gap-px w-3/5">
               <div
@@ -295,6 +339,20 @@ function Budgetform() {
   );
 }
 
+function OtherMemberBudgets() {
+  const { id } = useParams();
+
+  return (
+    <>
+
+      <Card color="white" shadow={true}>
+
+        
+      </Card>
+    </>
+  );
+}
+
 const placedata = [
   {
     title: "Sigiriya",
@@ -351,60 +409,94 @@ const placedata = [
 //   );
 // }
 
-const budgetpeople = [
-  {
-    name: "Nick",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "John",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "Jane",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "Jane",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "Jane",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "Jane",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-  {
-    name: "Jane",
-    balance: "LKR 5000",
-    imgUrl: "/dunhinda.jpg",
-  },
-]
+// const budgetpeople = [
+//   {
+//     name: "Nick",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "John",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "Jane",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "Jane",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "Jane",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "Jane",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+//   {
+//     name: "Jane",
+//     balance: "LKR 5000",
+//     imgUrl: "/dunhinda.jpg",
+//   },
+// ]
+
+// function BudgetPeeps() {
+//   return (
+//     <>
+//       {budgetpeople.map((budgetpeople) => (
+//         <div className="flex  flex-row gap-6">
+//           <div className="bg-white p-4 rounded-xl w-36 shadow-lg">
+//             <img src={budgetpeople.imgUrl} alt="Avatar" className="w-full h-24 rounded-lg" />
+//             <h1 className="py-2 text-center font-semi bold">{budgetpeople.name}</h1>
+//             <div>
+//               <Button className="">Balance: <TotalCostByUser /></Button>
+//             </div>
+//           </div>
+//         </div>
+
+//       ))}
+
+//     </>
+//   );
+// }
 
 function BudgetPeeps() {
+  const user_id = sessionStorage.getItem('user_id');
+  const { id } = useParams(); // Assuming this is the trip_id from the URL
+  const [budgetPeople, setBudgetPeople] = useState([]);
+
+  useEffect(() => {
+    // Make an API call to fetch data
+    axios.get(`http://localhost:8080/api/v1/budget/getBudgetsByUserId/${user_id}/${id}`)
+      .then((response) => {
+        setBudgetPeople(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data: ' + error);
+      });
+  }, [  ]);
+
   return (
     <>
-      {budgetpeople.map((budgetpeople) => (
-        <div className="flex  flex-row gap-6">
+      {budgetPeople.map((budgetPerson) => (
+        <div key={budgetPerson.userName} className="flex  flex-row gap-6">
           <div className="bg-white p-4 rounded-xl w-36 shadow-lg">
-            <img src={budgetpeople.imgUrl} alt="Avatar" className="w-full h-24 rounded-lg" />
-            <h1 className="py-2 text-center font-semi bold">{budgetpeople.name}</h1>
+            {/* Add an image URL here */}
+            <img src={budgetPerson.imgUrl} alt="Avatar" className="w-full h-24 rounded-lg" />
+            <h1 className="py-2 text-center font-bold">{budgetPerson.userName}</h1>
             <div>
-              <Button className="">Balance: <TotalCostByUser /></Button>
+              <Button className="">Balance: {budgetPerson.totalCost}</Button>
             </div>
           </div>
         </div>
-
       ))}
-
     </>
   );
 }
@@ -450,27 +542,51 @@ export function Saves() {
               <p className="font-bold">Add Expenses</p>
             </div>
             <div className="flex flex-row">
-              <div className="mt-5 ml-10 mb-5 flex">
+              <div className="mt-5 ml-10 w-[50%] mb-5 flex">
                 <Budgetform />
               </div>
+              <div className="mt-5 ml-10 w-[50%] mb-5 flex">
+                <OtherMemberBudgets />
+              </div>
 
 
-              <div className="mt-5 gap-4 ml-10 mb-5 w-[50%] mr-72 flex overflow-scroll overflow-y-hidden">
+              <div className="mt-5 gap-4 mb-5 w-[50%]  flex overflow-scroll overflow-y-hidden">
                 {/* <BudgetPeople /> */}
-                <BudgetPeeps />
+                {/* <BudgetPeeps /> */}
 
               </div>
-            </div>
-            <div
-              className="
-              mt-5 ml-[7%] "
+              <div className="flex mr-[50%] gap-8">
+              <div
+              className="flex-col m-5 "
             >
               <Link to="/Expenses">
-                <Button className="bg-[#22577A] text-white font-poppins ">
-                  View All Expenses
+                <Button className="bg-[#22577A] h-[25%] w-[150%] text-white font-poppins ">
+                  View your Expenses
                 </Button>
               </Link>
             </div>
+            <div
+              className=" flex-col m-5 "
+            >
+                 <Link to="/MemberExpenses">
+                <Button className="bg-[#22577A] h-[25%] w-[260%]  text-white font-poppins ">
+                  View  member Expenses
+                </Button>
+              </Link>
+            </div>
+            {/* <div
+              className=" flex-col m-5 "
+            >
+                 <Link to="/ExtBudgetForm">
+                <Button className="bg-[#22577A] h-[25%] w-[260%]  text-white font-poppins ">
+                  Budget Estimate
+                </Button>
+              </Link>
+            </div> */}
+            </div>
+           
+            </div>
+          
           </div>
         </div>
       </div>

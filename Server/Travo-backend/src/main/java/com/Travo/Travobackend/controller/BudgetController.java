@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.Travo.Travobackend.model.entity.Budget;
 import com.Travo.Travobackend.service.BudgetService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,18 @@ public class BudgetController {
             return ResponseEntity.noContent().build();
         }
     }
+
+    @GetMapping("/getAllBudgets/{tripId}")
+    public ResponseEntity<List<Budget>> getAllBudgetsByTripId(@PathVariable int tripId) {
+        List<Budget> budgets = budgetService.getAllBudgetsByTripId(tripId);
+
+        if (!budgets.isEmpty()) {
+            return ResponseEntity.ok(budgets);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 
     @GetMapping("/getBudgetsByUserId/{user_id}")
     public ResponseEntity<List<Budget>> getBudgetsByUserId(@PathVariable int user_id) {
@@ -110,7 +123,49 @@ public class BudgetController {
         double totalCostByTripId = budgetService.getTotalCostByTripId(tripId);
         return ResponseEntity.ok(totalCostByTripId);
     }
+
+
+//    @GetMapping("/getBudgetsByUserId/{user_id}/{tripId}")
+//    public ResponseEntity<BudgetDTO> getBudgetsByUserId(@PathVariable int user_id, @PathVariable int tripId) {
+//        List<Budget> budgets = budgetService.getAllBudgetsByUserId(user_id);
+//
+//        if (!budgets.isEmpty()) {
+//            String userName = budgetService.getUserNameByUserId(user_id);
+//            double totalCostByUserId = budgetService.getTotalCostByUserId(user_id, tripId);
+//
+//            BudgetDTO budgetDTO = new BudgetDTO(userName, totalCostByUserId);
+//            return ResponseEntity.ok(budgetPeepDTO);
+//        } else {
+//            return ResponseEntity.noContent().build();
+//        }
+//    }
+
+    @GetMapping("/getBudgetsByUserId/{user_id}/{tripId}")
+    public ResponseEntity<List<BudgetDTO>> getBudgetsByUserId(@PathVariable int user_id, @PathVariable int tripId) {
+        List<Budget> budgets = budgetService.getAllBudgetsByUserId(user_id);
+
+        if (!budgets.isEmpty()) {
+            String userName = budgetService.getUserNameByUserId(user_id);
+
+            List<BudgetDTO> budgetDTOs = new ArrayList<>();
+            for (Budget budget : budgets) {
+                BudgetDTO budgetDTO = new BudgetDTO();
+                budgetDTO.setUser_id(user_id);
+                budgetDTO.setTripId(tripId);
+                budgetDTO.setUserName(userName);
+                budgetDTO.setCause(budget.getCause());
+                budgetDTO.setCost(budget.getCost());
+                budgetDTO.setDate(budget.getDate());
+                budgetDTO.setType(budget.getType());
+                budgetDTO.setReceipt(budget.getReceipt());
+                budgetDTOs.add(budgetDTO);
+            }
+
+            return ResponseEntity.ok(budgetDTOs);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+
 }
-
-
-

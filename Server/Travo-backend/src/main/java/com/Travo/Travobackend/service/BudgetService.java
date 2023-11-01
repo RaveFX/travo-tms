@@ -1,9 +1,11 @@
 package com.Travo.Travobackend.service;
+import com.Travo.Travobackend.model.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Travo.Travobackend.model.dto.BudgetDTO;
 import com.Travo.Travobackend.model.entity.Budget;
 import com.Travo.Travobackend.repository.BudgetRepo;
+import com.Travo.Travobackend.repository.TravelerRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -100,7 +102,24 @@ public class BudgetService {
         double totalCostByTripId = budgets.stream().mapToDouble(Budget::getCost).sum();
         return totalCostByTripId;
     }
+
+
+
+    @Autowired
+    private TravelerRepository travelerRepo;
+
+    // ... (existing methods)
+
+    public String getUserNameByUserId(int userId) {
+        Traveler traveler = travelerRepo.findById(userId).orElse(null);
+        if (traveler != null) {
+            return traveler.getFname();
+        }
+        return "Unknown"; // Return a default name if user not found
+    }
+    public List<Budget> getAllBudgetsByTripId(int tripId) {
+        return budgetRepo.findByTripId(tripId);
+    }
+
 }
-
-
 

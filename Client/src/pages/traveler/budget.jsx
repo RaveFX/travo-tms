@@ -476,7 +476,7 @@ export default function Budget() {
                 className="
               mt-5 ml-[7%] "
               >
-                <Link to="/Expenses">
+                <Link to="/MemberExpenses">
                   <Button className="bg-[#22577A] text-white font-poppins ">
                     View All Expenses
                   </Button>

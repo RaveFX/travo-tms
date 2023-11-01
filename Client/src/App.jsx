@@ -98,6 +98,7 @@ import Dashboard from "./pages/activity_agent/Dashboard";
 import ImageGrid from "./pages/activity_agent/Activity";
 
 // RavinduRave
+import ExtBudgetForm from "./pages/traveler/ExtBudget";
 import Travdash from "./pages/traveler/travdash";
 import AboutUs from "./pages/main/about";
 import Services from "./pages/main/services";
@@ -105,6 +106,7 @@ import Contact from "./pages/main/contact";
 import Budget from "./pages/traveler/budget";
 import Store from "./pages/traveler/store";
 import StoreProduct from "./pages/traveler/storeviewpd";
+import MemberExpenses from "./pages/traveler/membersexpenses";
 import Expenses from "./pages/traveler/expenses";
 import GuideProfile from "./pages/guide/guideprofile";
 import Travelbuddy from "./pages/traveler/travelbuddy";
@@ -331,6 +333,7 @@ export default function App() {
 
         {/* RavinduRave */}
         {/* <Route exact path="/Travdash" element={<Travdash />} /> */}
+        <Route exact path="/ExtBudgetForm" element={<ExtBudgetForm />} />
         <Route exact path="/Newhome" element={<Newhome />} />
         <Route exact path="/AboutUs" element={<AboutUs />} />
         <Route exact path="/Services" element={<Services />} />
@@ -339,6 +342,7 @@ export default function App() {
         <Route exact path="/traveler/store" element={<Store />} />
         <Route exact path="/StoreProduct" element={<StoreProduct />} />
         <Route exact path="/Expenses" element={<Expenses />} />
+        <Route exact path="/MemberExpenses" element={<MemberExpenses />} />
         <Route exact path="/GuideProfile" element={<GuideProfile />} />
         <Route exact path="/Travelbuddy" element={<Travelbuddy />} />
       </Routes>

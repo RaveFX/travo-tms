@@ -25,6 +25,7 @@ public class Budget {
     private int user_id;
     private int tripId;
 
+    
 
 
 }
