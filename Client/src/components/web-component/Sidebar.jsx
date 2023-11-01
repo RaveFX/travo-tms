@@ -69,16 +69,16 @@ import {
     };
 
     const navList = [
-      {icon : <RectangleGroupIcon className="h-5 w-5" />, name : "Dashboard", link : "/traveler/dashboard"},
-      {icon : <MapIcon className="h-5 w-5" />, name : "My Trips", link : "/traveler/mytrips",subItems: [
+      {icon : <RectangleGroupIcon className="h-5 w-5 " />, name : "Dashboard", link : "/traveler/dashboard"},
+      {icon : <MapIcon className="h-5 w-5 " />, name : "My Trips", link : "/traveler/mytrips",subItems: [
         { icon: <ClipboardDocumentIcon className="h-5 w-5" />, name: "Itinerary", link: "",state:1 },
         { icon: <CheckIcon className="h-5 w-5" />, name: "Selections", link: "",state:2 },
         { icon: <BookmarkIcon className="h-5 w-5" />, name: "Saves", link: "",state:3 },
       ],},
-      {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
+      // {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/traveler/community"},
       {icon : <BanknotesIcon className="h-5 w-5" />, name : "Transactions", link : "/transactions"},
-      {icon : <Cog6ToothIcon className="h-5 w-5" />, name : "Settings", link : "/settings"},
+     
     ]
 
     return (
