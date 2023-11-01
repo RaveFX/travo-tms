@@ -30,6 +30,12 @@ public class PollController {
         return pollService.addHoteltoPoll(hotelPollDTO);
     }
 
+    @PostMapping("/poll/add-activity")
+    public String addActivity(@RequestBody ActivityPollDTO activityPollDTO) {
+        System.out.println("hhh");
+        return pollService.addActivity(activityPollDTO);
+    }
+
 
 
 
@@ -45,6 +51,11 @@ public class PollController {
         return pollService.selectedHotelList(tripID, day, userId);
     }
 
+//    @GetMapping("/pollActivityList/{tripID}/{day}/{userId}")
+//    public List<ActivityPollDTO> getselectedActivityList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
+//        return pollService.selectedActivityList(tripID, day, userId);
+//    }
+
 
 
     @GetMapping("/pollAttractionVotedList/{tripID}/{day}/{userId}")
@@ -55,6 +66,9 @@ public class PollController {
     public List<HotelPollDTO> getSelectedHotelVotedList(@PathVariable Integer tripID, @PathVariable Integer day,@PathVariable Integer userId){
         return pollService.selectedHotelVotedList(tripID, day, userId);
     }
+
+
+
 
     @PutMapping("/updateAttractionTotalVotes/{tripId}/{attractionId}/{isChecked}/{day}")
     public ResponseEntity<String> updateAttractionTotalVotes(

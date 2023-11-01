@@ -48,4 +48,7 @@ public class ActivityAgent {
 
     @OneToMany(mappedBy = "activityAgent", cascade = CascadeType.ALL)
     private Set<TripActivity> tripActivities = new HashSet<>();
+
+    @OneToMany(mappedBy = "activityAgent", cascade = CascadeType.ALL)
+    private Set<ActivityPoll> activityPolls = new HashSet<>();
 }

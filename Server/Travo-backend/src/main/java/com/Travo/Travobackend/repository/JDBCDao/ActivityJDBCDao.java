@@ -57,7 +57,7 @@ public class ActivityJDBCDao {
 
                 activityDTO.setAgent_id(rs.getInt("agent_id"));
                 activityDTO.setCompany_name(rs.getString("company_name"));
-                activityDTO.setActivity_img(rs.getString("activity_img"));
+//                activityDTO.setActivity_img(rs.getString("activity_img"));
                 activityDTO.setDescription(rs.getString("description"));
                 activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
                 activityDTO.setRow_id(rs.getInt("id"));

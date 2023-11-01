@@ -4,10 +4,9 @@ package com.Travo.Travobackend.service;
 import com.Travo.Travobackend.model.dto.*;
 import com.Travo.Travobackend.model.entity.*;
 import com.Travo.Travobackend.repository.*;
-import com.Travo.Travobackend.repository.JDBCDao.AttractionJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.AttractionPollJDBCDao;
-import com.Travo.Travobackend.repository.JDBCDao.HotelPollJDBCDao;
+import com.Travo.Travobackend.repository.JDBCDao.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.AccessType;
 import org.springframework.stereotype.Service;
 
 
@@ -49,6 +48,13 @@ public class PollService {
 
     @Autowired
     private HotelPolluserRepository hotelPolluserRepository;
+
+    @Autowired
+    private ActivityAgentRepository activityAgentRepository;
+    @Autowired
+    private ActivityPollRepository activityPollRepository;
+    @Autowired
+    private ActivityPollJDBao activityPollJDBao;
 
 
     public String addAttraction(AttractionPollDTO attractionPollDTO){
@@ -96,7 +102,33 @@ public class PollService {
 
     }
 
+    public String addActivity(ActivityPollDTO activityPollDTO){
+        try {
+            ActivityPoll activityPoll = new ActivityPoll();
+            activityPoll.setDay(activityPollDTO.getDay());
+            activityPoll.setTotal_votes(0);
+            Optional<ActivityAgent> activityOptional = activityAgentRepository.findById(activityPollDTO.getAgent_id());
+            ActivityAgent activityAgent = activityOptional.get();
+            activityPoll.setActivityAgent(activityAgent);
 
+            Optional<Trip> tripOptional = tripRepository.findById(activityPollDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            activityPoll.setTrip(trip);
+            activityPollRepository.save(activityPoll);
+
+            return("Activity added successfully!");
+        } catch (Exception e) {
+            return("Error adding activity: " + e.getMessage());
+        }
+
+    }
+
+
+
+
+//    public List<ActivityPollDTO> selectedActivityList(Integer tripID, Integer day,Integer userId){
+//        return activityPollJDBao.getSelectedActivityPollList(tripID, day, userId);
+//    }
 
     public List<AttractionPollDTO> selectedAttractionList(Integer tripID, Integer day, Integer userId){
         return attractionPollJDBCDao.getSelectedAttractionPollList(tripID, day, userId);
@@ -262,6 +294,7 @@ public class PollService {
 
     public String addUserPollHotel(HotelPolluserDTO hotelPolluserDTO) {
         try {
+
 
             HotelPolluser hotelPolluser = new HotelPolluser();
             hotelPolluser.setUser_id(hotelPolluserDTO.getUser_id());

@@ -35,7 +35,7 @@ function PollActivities() {
     const handleAddActivity = async (activity) => {
         try {
             // Make a POST request to your backend API endpoint to store the attraction details
-            await axios.post("http://localhost:8080/api/v1/trip/add-activity", {
+            await axios.post("http://localhost:8080/api/v1/trip/poll/add-activity", {
                 agent_id: activity.agent_id,
                 trip_id: id,
                 day: day

@@ -17,4 +17,5 @@ public class AttractionPollDTO {
     private String img_url;
     private Integer day;
     private Integer trip_id;
+    private Integer agent_id;
 }
