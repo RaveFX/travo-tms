@@ -166,8 +166,7 @@ function ActivityAgentRegister() {
               <div>
                 <p className="mt-2 text-sm leading-8 text-gray-600">
                   We need you to help us with some basic information for your
-                  account creation. Here are our terms and conditins. Please
-                  read them carefully.
+                  account creation.
                 </p>
               </div>
             </div>

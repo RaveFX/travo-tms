@@ -68,8 +68,7 @@ function GuideRegister() {
               <div>
                 <p className="mt-2 text-sm leading-8 text-gray-600">
                   We need you to help us with some basic information for your
-                  account creation. Here are our terms and conditins. Please
-                  read them carefully.
+                  account creation.
                 </p>
               </div>
             </div>
@@ -185,42 +184,9 @@ function GuideRegister() {
             </div>
             <div className="border-b border-gray-900/10 pb-12"></div>
 
-            <div className="col-span-full pt-12">
-              <label
-                htmlFor="cover-photo"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Resume
-              </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <PhotoIcon
-                    className="mx-auto h-12 w-12 text-gray-300"
-                    aria-hidden="true"
-                  />
-                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs leading-5 text-gray-600">
-                    PNG, JPG, GIF up to 10MB
-                  </p>
-                </div>
-              </div>
-            </div>
+            
 
-            <div className="border-b border-gray-900/10 pb-12"></div>
+         
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-10">
               <div>
