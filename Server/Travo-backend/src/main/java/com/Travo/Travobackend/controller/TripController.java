@@ -92,6 +92,11 @@ public class TripController {
         return tripService.getDatesBetweenForTrip(tripId);
     }
 
+    @GetMapping("/userDetails/{userID}")
+    public UserInformationDTO getUserInfo(@PathVariable Integer userID){
+        return tripService.userDetails(userID);
+    }
+
 
 
 

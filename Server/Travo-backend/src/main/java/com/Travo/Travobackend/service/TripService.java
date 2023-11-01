@@ -67,6 +67,10 @@ public class TripService {
         return tripJDBCDao.getTripDetails(tripID);
     }
 
+    public UserInformationDTO userDetails(Integer userID) {
+        return tripJDBCDao.getUserDetails(userID);
+    }
+
     private String generateRandomToken(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();

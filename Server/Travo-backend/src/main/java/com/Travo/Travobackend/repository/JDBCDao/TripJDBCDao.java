@@ -2,11 +2,7 @@ package com.Travo.Travobackend.repository.JDBCDao;
 
 
 
-import com.Travo.Travobackend.model.dto.GuideDTO;
-import com.Travo.Travobackend.model.dto.HotelDTO;
-import com.Travo.Travobackend.model.dto.HotelReservationDTO;
-import com.Travo.Travobackend.model.dto.TripDTO;
-import com.Travo.Travobackend.model.dto.TripMemberDTO;
+import com.Travo.Travobackend.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -147,4 +143,26 @@ public class TripJDBCDao {
 
         });
     }
+
+    public UserInformationDTO getUserDetails(Integer userID) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        UserInformationDTO userInformationDTO = new UserInformationDTO();
+        params.put("userID", userID);
+
+        SQL.append("SELECT * FROM traveler\n                                     ");
+        SQL.append("WHERE traveler_id=:userID");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                userInformationDTO.setFname(rs.getString("fname"));
+                userInformationDTO.setLname(rs.getString("lname"));
+
+            }
+            return userInformationDTO;
+        });
+
+
+    }
+
 }

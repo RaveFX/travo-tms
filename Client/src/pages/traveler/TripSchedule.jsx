@@ -15,7 +15,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 function Icon({ id, open }) {
   return (
@@ -97,12 +97,12 @@ function TripSchedule() {
 
   const handleRemoveSchedule = (schedule_id, scheduleDay) => {
     
-  //   const response1 =  axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
-  //   console.log(response1);
+    const response1 =  axios.get(`http://localhost:8080/api/v1/trip/check-admin-or-editor-role/${user_id}/${id}`);
+    console.log(response1);
     
-  //   // If user has access, navigate to the add item page
-  //  if (response1.data) {
-    // Show SweetAlert confirmation dialog
+    // If user has access, navigate to the add item page
+   if (response1.data) {
+  
     Swal.fire({
       title: 'Are you sure?',
       text: 'Scheduled activity will be removed from the Schedule!',
@@ -141,23 +141,23 @@ function TripSchedule() {
       }
     });
     
-  // }
-  // else{
-  //   Swal.fire({
-  //     title: 'No Access',
-  //     text: 'You do not have permission to remove items from this itinerary.',
-  //     icon: 'error',
-  //     confirmButtonColor: '#3085d6',
-  //     confirmButtonText: 'OK',
-  //     customClass: {
-  //       container: 'custom-swal-container' // Define your custom class here
-  //     },
-  //     style: {
-  //       zIndex: 100000 // Set a high z-index value
-  //     }
-  //   });
+  }
+  else{
+    Swal.fire({
+      title: 'No Access',
+      text: 'You do not have permission to remove items from this itinerary.',
+      icon: 'error',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK',
+      customClass: {
+        container: 'custom-swal-container' // Define your custom class here
+      },
+      style: {
+        zIndex: 100000 // Set a high z-index value
+      }
+    });
 
-  // }
+  }
   
   };
 
