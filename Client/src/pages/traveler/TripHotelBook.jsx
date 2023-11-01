@@ -7,6 +7,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import Swal from 'sweetalert2';
+
 import {
     Rating, Button, Card, Chip,
     CardBody,
@@ -159,7 +161,7 @@ function App() {
                     );
                     // console.log(hotels.price);
 
-                    navigate("/traveler/TripPayment");
+                    navigate("/traveler/HotelPayment");
                 } catch (error) {
                     console.error("Error storing boardType: ", error);
                 }
@@ -207,7 +209,7 @@ function App() {
                                 Book Now
                             </Typography>
                             <Typography color="gray" className="mt-1 font-normal">
-                                Nice to meet you! Enter these details for Booking.
+                                Nice to meet you! Enter your details for Booking.
                             </Typography>
                             <form className="mt-8 mb-2 max-w-screen-lg  " onSubmit={(e) => onSubmit(e)}>
                                 <div className="mb-1 flex flex-col gap-6">
