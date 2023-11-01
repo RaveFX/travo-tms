@@ -108,7 +108,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             HttpServletResponse response,
             @RequestBody AuthenticationRequest request
-    ){
+    ) throws IOException {
         return ResponseEntity.ok(service.authenticate(response,request));
     }
 
