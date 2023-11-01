@@ -209,6 +209,22 @@ function App() {
         }
     };
 
+    const available = () => {
+        const selectedDate = dayjs(checkin_date).format('YYYY-MM-DD');
+    
+        for (const count of counts) {
+            if (selectedDate === count.date) {
+                if (count.sum_TicketCount >= count.ticket_quantity) {
+                    return <h1 className='text-red -mt-3 mb-5'>Sorry, No more Tickets</h1>;
+                } else {
+                    return <h1 className='text-black -mt-3 mb-5'>available Ticket Count: {count.ticket_quantity - count.sum_TicketCount} </h1>;
+                }
+            }
+        }
+    
+        return null; // Return null if no information is available for the selected date
+    };
+
     const increment = () => {
         setCount(count + 1);
     };
@@ -218,6 +234,8 @@ function App() {
             setCount(count - 1);
         }
     };
+
+
 
 
 
@@ -258,6 +276,9 @@ function App() {
                                     </div>
 
                                     <div>
+                                        <h1>
+                                            {available()}
+                                        </h1>
                                         <h2>Counter:{count} </h2>
                                         <Button className='bg-gray-500 text-black mx-2' onClick={decrement}>
                                             <FontAwesomeIcon icon={faMinus} />

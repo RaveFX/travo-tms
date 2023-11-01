@@ -168,6 +168,29 @@ function App() {
         }
     };
 
+    const checkin = () => {
+        if (checkout_date) {
+            if (checkin_date > checkout_date) {
+
+                return <h1 className='text-red mt-5 mb-5'>Check Out date should be after Check In date</h1>
+
+
+            }
+        }
+        if (new Date(checkin_date) < new Date()) {
+            return <h1 className='text-red mt-5 mb-5'>Check In date should be after today</h1>
+
+        }
+        for (const reservedDate of reservedDates) {
+            if (checkinDateString === reservedDate.checkin_date) {
+
+                return <h1 className='text-red mt-5 mb-5'>Check In date is already reserved</h1>
+
+
+            }
+        }
+    }
+
 
 
     return (
@@ -234,6 +257,7 @@ function App() {
                                             <Option value="HalfBoard">Half Board</Option>
 
                                         </Select>
+                                        <h1>{checkin()}</h1>
                                         {fullPayment !== null && (
                                             <p className='mt-5'>Full Payment: Rs. {fullPayment}</p>
                                         )}
