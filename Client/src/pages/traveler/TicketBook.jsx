@@ -216,7 +216,11 @@ function App() {
             if (selectedDate === count.date) {
                 if (count.sum_TicketCount >= count.ticket_quantity) {
                     return <h1 className='text-red -mt-3 mb-5'>Sorry, No more Tickets</h1>;
-                } else {
+                } 
+                else if (count.sum_TicketCount === 0) {
+                    return <h1 className='text-red -mt-3 mb-5'>available Ticket Count: {count.ticket_quantity}</h1>;
+                }
+                else {
                     return <h1 className='text-black -mt-3 mb-5'>available Ticket Count: {count.ticket_quantity - count.sum_TicketCount} </h1>;
                 }
             }
