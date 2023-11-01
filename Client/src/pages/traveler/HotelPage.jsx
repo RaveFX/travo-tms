@@ -18,6 +18,7 @@ const VegicleCard = ({ names, description, location,link, milage, branch, price,
             <CardBody className="h-52 p-5 bg-white ">
                 <div className='flex'>
                     <div className="w-1/3 sm:flex lg:flex flex-row  ">
+                        <Link to={link} >
                         <Typography className=" h-screen" >
                             
                             <img
@@ -36,6 +37,7 @@ const VegicleCard = ({ names, description, location,link, milage, branch, price,
                             </div> */}
                             
                         </Typography>
+                        </Link>
                     </div>
                     <div className='w-full mx-10'>
                         <Typography variant="h5" color="blue-gray">{names}</Typography>
@@ -102,9 +104,9 @@ const hotel_page = () => {
                     </div>
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
-                            <Link to={`/traveler/HotelType/${user_id}/${hotel.hotel_id}`}>
-                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description} location={hotel.contact_num} branch={hotel.branch} src={hotel.hotel_img}  />
-                            </Link>
+                            
+                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description} location={hotel.contact_num} branch={hotel.branch} src={hotel.hotel_img} link={`/traveler/HotelType/${user_id}/${hotel.hotel_id}`}  />
+                           
                         ))}
 
                     </div>

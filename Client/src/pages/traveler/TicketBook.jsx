@@ -192,7 +192,7 @@ function App() {
                         payment: calculatedFullPayment,
                         price_per_ticket: ticket[0].ticket_price,
                         status: 0,
-                        quantity: count,
+                        booking_quantity: count,
                         date: checkin_date,
 
                     }

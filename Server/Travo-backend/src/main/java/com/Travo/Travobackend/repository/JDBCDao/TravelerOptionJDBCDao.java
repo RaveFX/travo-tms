@@ -134,6 +134,9 @@ public class TravelerOptionJDBCDao {
                 hotelDTO.setRoom1(rs.getString("room1"));
                 hotelDTO.setRoom2(rs.getString("room2"));
                 hotelDTO.setRoom3(rs.getString("room3"));
+                
+
+
 
 
 
@@ -145,6 +148,7 @@ public class TravelerOptionJDBCDao {
 
 
     }
+
 
     public List<ReservationDTO> getAvailability(Integer roomId) {
         StringBuffer SQL = new StringBuffer();
@@ -286,6 +290,34 @@ public class TravelerOptionJDBCDao {
             }
             return company;
         });
+    }
+
+    public List<ActivityDTO> getActivityLists() {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ActivityDTO> activities = new ArrayList<>();
+
+
+        SQL.append("SELECT * FROM activity_agent ");
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ActivityDTO activityDTO = new ActivityDTO();
+
+                activityDTO.setAgent_id(rs.getInt("agent_id"));
+                activityDTO.setCompany_name(rs.getString("company_name"));
+                activityDTO.setActivity_img(rs.getString("activity_img"));
+                activityDTO.setDescription(rs.getString("description"));
+                activityDTO.setTotal_reviews(rs.getDouble("total_reviews"));
+                activityDTO.setLongitude(rs.getBigDecimal("longitude"));
+                activityDTO.setLatitude(rs.getBigDecimal("latitude"));
+
+                activities.add(activityDTO);
+            }
+            return activities;
+        });
+
+
     }
 public List<ActivityDTO> getAllEvents(Integer agentId) {
     StringBuffer SQL = new StringBuffer();

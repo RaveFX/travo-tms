@@ -6,7 +6,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import Swal from 'sweetalert2';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { startOfToday } from 'dayjs';
 import dayjs from 'dayjs';
 import {
@@ -22,12 +23,14 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 function App() {
     const [boardType, setBoardType] = useState('');
     const [checkin_date, setCheckin_date] = useState('');
     const [checkout_date, setCheckout_date] = useState('');
     const [checkinDate, setCheckinDate] = useState(null);
     const [reservedDates, setReservedDates] = useState([]);
+    const [count, setCount] = useState(0);
 
     const [fullPayment, setFullPayment] = useState('')
     const [errors, setErrors] = useState({});
@@ -168,6 +171,7 @@ function App() {
                         status: 0,
                         checkin_date: checkin_date,
                         checkout_date: checkout_date,
+                       
 
                     }
 
@@ -204,7 +208,17 @@ function App() {
 
             }
         }
-    }
+    };
+    const increment = () => {
+        setCount(count + 1);
+    };
+
+    const decrement = () => {
+        if (count > 0) {
+            setCount(count - 1);
+        }
+    };
+
     
     return (
 
@@ -252,7 +266,7 @@ function App() {
 
 
                                     </div>
-
+                                    
 
                                     <div className="w-72">
                                         {errors.boardType && (

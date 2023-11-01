@@ -42,6 +42,8 @@ public class HotelDTO {
     private String room1;
     private String room2;
     private String room3;
+    private Integer quantity;
+    private Integer booking_quantity;
 
 
 

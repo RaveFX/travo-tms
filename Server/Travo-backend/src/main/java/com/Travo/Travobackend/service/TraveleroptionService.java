@@ -107,6 +107,7 @@ public class TraveleroptionService {
             reservation.setBoardType(reservationDTO.getBoardType());
             reservation.setPayment(reservationDTO.getPayment());
             reservation.setStatus(reservationDTO.getStatus());
+            reservation.setBooking_quantity(reservationDTO.getBooking_quantity());
 
             Optional<Room> roomOptional = roomRepository.findById(roomId);
             Room room = roomOptional.get();
@@ -157,6 +158,10 @@ public class TraveleroptionService {
     public List<ActivityDTO> events(Integer agentId) {
 
         return hotelNameJDBCDao.getAllEvents(agentId);
+    }
+
+    public List<ActivityDTO> activityLists(){
+        return hotelNameJDBCDao.getActivityLists();
     }
     public String activityBooking(ActivityDTO activityDTO, Integer userId,Integer agentId, Integer eventId) {
         try{
