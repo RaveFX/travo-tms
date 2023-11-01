@@ -23,9 +23,9 @@ function Signin() {
       setError("Email and Password are required");
       return;
     }
-
+  
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         "/auth/authenticate",
@@ -48,17 +48,16 @@ function Signin() {
 
       
         navigate("/traveler/dashboard");
-    } catch (err) {
-      if (!err?.response) {
-        setError("No Server Response");
-      } else if (err.response?.status === 403) {
-        setError("Invalid Email or Password");
-      } else {
-        setError("Login Failed");
+      } catch (err) {
+        if (err.response && err.response.status === 403) {
+          // Invalid Email or Password
+          setError("Invalid Email or Password");
+        } else {
+          // Other errors
+          setError("Login Failed");
+        }
       }
-    }
-  };
-
+    };
   return (
     <div
       className="font-poppins relative overflow bg-cover bg-no-repeat w-screen h-screen text-white"
