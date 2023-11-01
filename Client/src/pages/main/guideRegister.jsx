@@ -86,7 +86,7 @@ function GuideRegister() {
                 >
                   First name
                 </label>
-                {errors.fname && <p className="text-red-500">{errors.fname}</p>}
+                {errors.fname && <p className="text-red">{errors.fname}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -104,7 +104,7 @@ function GuideRegister() {
                 >
                   Last name
                 </label>
-                {errors.lname && <p className="text-red-500">{errors.lname}</p>}
+                {errors.lname && <p className="text-red">{errors.lname}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -145,7 +145,7 @@ function GuideRegister() {
                   Mobile number
                 </label>
                 {errors.mobile_num && (
-                  <p className="text-red-500">{errors.mobile_num}</p>
+                  <p className="text-red">{errors.mobile_num}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -167,7 +167,7 @@ function GuideRegister() {
                   Gender
                 </label>
                 {errors.gender && (
-                  <p className="text-red-500">{errors.gender}</p>
+                  <p className="text-red">{errors.gender}</p>
                 )}
                 <div className="mt-2.5">
                   <select
@@ -231,7 +231,7 @@ function GuideRegister() {
                   Address Line 1
                 </label>
                 {errors.addressLine1 && (
-                  <p className="text-red-500">{errors.addressLine1}</p>
+                  <p className="text-red">{errors.addressLine1}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -251,7 +251,7 @@ function GuideRegister() {
                   Address Line 2
                 </label>
                 {errors.addressLine2 && (
-                  <p className="text-red-500">{errors.addressLine2}</p>
+                  <p className="text-red">{errors.addressLine2}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -272,7 +272,7 @@ function GuideRegister() {
                 >
                   City
                 </label>
-                {errors.city && <p className="text-red-500">{errors.city}</p>}
+                {errors.city && <p className="text-red">{errors.city}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -291,7 +291,7 @@ function GuideRegister() {
                   District
                 </label>
                 {errors.district && (
-                  <p className="text-red-500">{errors.district}</p>
+                  <p className="text-red">{errors.district}</p>
                 )}
                 <div className="mt-2.5">
                   <select

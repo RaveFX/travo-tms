@@ -179,7 +179,7 @@ function HotelRegister() {
                   Hotel name
                 </label>
                 {errors.hotel_name && (
-                  <p className="text-red-500">{errors.hotel_name}</p>
+                  <p className="text-red">{errors.hotel_name}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -198,7 +198,7 @@ function HotelRegister() {
                 >
                   BRN
                 </label>
-                {errors.brn && <p className="text-red-500">{errors.brn}</p>}
+                {errors.brn && <p className="text-red">{errors.brn}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -219,7 +219,7 @@ function HotelRegister() {
                   Contact number 
                 </label>
                 {errors.contact_num && (
-                  <p className="text-red-500">{errors.contact_num}</p>
+                  <p className="text-red">{errors.contact_num}</p>
                 )}
                 <div className="mt-2.5">
                   <input

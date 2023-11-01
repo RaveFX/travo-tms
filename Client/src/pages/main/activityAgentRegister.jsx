@@ -185,7 +185,7 @@ function ActivityAgentRegister() {
                   Company name
                 </label>
                 {errors.company_name && (
-                  <p className="text-red-500">{errors.company_name}</p>
+                  <p className="text-red">{errors.company_name}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -204,7 +204,7 @@ function ActivityAgentRegister() {
                 >
                   BRN
                 </label>
-                {errors.brn && <p className="text-red-500">{errors.brn}</p>}
+                {errors.brn && <p className="text-red">{errors.brn}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -225,7 +225,7 @@ function ActivityAgentRegister() {
                   Contact number
                 </label>
                 {errors.contact_num && (
-                  <p className="text-red-500">{errors.contact_num}</p>
+                  <p className="text-red">{errors.contact_num}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -245,7 +245,7 @@ function ActivityAgentRegister() {
                   Category
                 </label>
                 {errors.category && (
-                  <p className="text-red-500">{errors.category}</p>
+                  <p className="text-red">{errors.category}</p>
                 )}
                 <div className="mt-2.5">
                   <select

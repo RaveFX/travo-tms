@@ -126,7 +126,7 @@ function VehicleRenterRegister() {
                   Company name
                 </label>
                 {errors.company_name && (
-                  <p className="text-red-500">{errors.company_name}</p>
+                  <p className="text-red">{errors.company_name}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -145,7 +145,7 @@ function VehicleRenterRegister() {
                 >
                   BRN
                 </label>
-                {errors.brn && <p className="text-red-500">{errors.brn}</p>}
+                {errors.brn && <p className="text-red">{errors.brn}</p>}
                 <div className="mt-2.5">
                   <input
                     type="text"
@@ -166,7 +166,7 @@ function VehicleRenterRegister() {
                   Contact number
                 </label>
                 {errors.contact_num && (
-                  <p className="text-red-500">{errors.contact_num}</p>
+                  <p className="text-red">{errors.contact_num}</p>
                 )}
                 <div className="mt-2.5">
                   <input
@@ -190,7 +190,7 @@ function VehicleRenterRegister() {
                     Address Line 1
                   </label>
                   {errors.addressLine1 && (
-                    <p className="text-red-500">{errors.addressLine1}</p>
+                    <p className="text-red">{errors.addressLine1}</p>
                   )}
                   <div className="mt-2.5">
                     <input
@@ -210,7 +210,7 @@ function VehicleRenterRegister() {
                     Address Line 2
                   </label>
                   {errors.addressLine2 && (
-                    <p className="text-red-500">{errors.addressLine2}</p>
+                    <p className="text-red">{errors.addressLine2}</p>
                   )}
                   <div className="mt-2.5">
                     <input
@@ -231,7 +231,7 @@ function VehicleRenterRegister() {
                   >
                     City
                   </label>
-                  {errors.city && <p className="text-red-500">{errors.city}</p>}
+                  {errors.city && <p className="text-red">{errors.city}</p>}
                   <div className="mt-2.5">
                     <input
                       type="text"
@@ -250,7 +250,7 @@ function VehicleRenterRegister() {
                     District
                   </label>
                   {errors.district && (
-                    <p className="text-red-500">{errors.district}</p>
+                    <p className="text-red">{errors.district}</p>
                   )}
                   <div className="mt-2.5">
                     <select
