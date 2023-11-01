@@ -28,6 +28,6 @@ public class ReservationDTO {
     private Integer room_id;
     private String boardType;
     private Integer hotel_id;
-
+    private Integer booking_quantity;
 
 }

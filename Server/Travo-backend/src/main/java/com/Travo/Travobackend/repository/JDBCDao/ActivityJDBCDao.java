@@ -44,6 +44,8 @@ public class ActivityJDBCDao {
 
     }
 
+
+
     public List<ActivityDTO> getSelectedActivityList(Integer tripID, Integer day) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();

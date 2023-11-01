@@ -27,22 +27,22 @@ const photos = [
         src: 'https://cdn1.goibibo.com/voy_mmt/t_fs/htl-imgs/4190725563792265-300c8facd9db11e98c990242ac110003.jpg',
         alt: 'Photo 3',
     },
-    {
-        src: 'https://cdn1.goibibo.com/voy_ing/t_fs/abd3c6ae798711eab6bd0242ac110002.jpg',
-        alt: 'Photo 3',
-    },
-    {
-        src: 'https://q-xx.bstatic.com/xdata/images/hotel/max500/213971608.jpg?k=c998f989132fc22e068383dfa9c05f9415cf4984003e7dc8d0ec86357743b49a&o=&isSkia=true',
-        alt: 'Photo 3',
-    },
-    {
-        src: 'https://cdn1.goibibo.com/voy_ing/t_fs/e62a7018798811eab6c50242ac110002.jpg',
-        alt: 'Photo 3',
-    },
+    // {
+    //     src: 'https://cdn1.goibibo.com/voy_ing/t_fs/abd3c6ae798711eab6bd0242ac110002.jpg',
+    //     alt: 'Photo 3',
+    // },
+    // {
+    //     src: 'https://q-xx.bstatic.com/xdata/images/hotel/max500/213971608.jpg?k=c998f989132fc22e068383dfa9c05f9415cf4984003e7dc8d0ec86357743b49a&o=&isSkia=true',
+    //     alt: 'Photo 3',
+    // },
+    // {
+    //     src: 'https://cdn1.goibibo.com/voy_ing/t_fs/e62a7018798811eab6c50242ac110002.jpg',
+    //     alt: 'Photo 3',
+    // },
     // Add more photos here...
 ];
 
-const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, ac, room, link, fullBoard,halfBoard }) => {
+const GridImage = ({ photos1,photos2,photos3, description, name, wifi, lunch, dinner, breakfast, ac, room, link, fullBoard,halfBoard }) => {
 
     const [showAll, setShowAll] = useState(false);
     const displayedPhotos = showAll ? photos : photos.slice(0, 3);
@@ -55,7 +55,10 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
             {/* <p className='py-4 text-dimBlack'>DAY TOUR</p> */}
             <h1 className='text-3xl m-5'>{name}</h1>
             <div className="grid grid-cols-3 gap-3">
-                {displayedPhotos.map((photo, index) => (
+            <img src={`/main/${photos1}`} className="rounded-lg"/>
+            <img src={`/main/${photos2}`} className="rounded-lg"/>
+            <img src={`/main/${photos3}`} className="rounded-lg"/>
+                {/* {displayedPhotos.map((photo, index) => (
                     <img
                         key={index}
                         src={photo.src}
@@ -70,7 +73,7 @@ const GridImage = ({ photos, description, name, wifi, lunch, dinner, breakfast, 
                     >
                         View More Photos
                     </Button>
-                )}
+                )} */}
             </div>
 
             <div className='flex flex-col sm:flex-row'>
@@ -195,9 +198,9 @@ function App() {
 
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => {
-                            const halfBoard = Math.floor((2*hotel.price)/3)
-
-                            return <GridImage name={hotel.hotel_name} photos={photos} description={hotel.description}
+                        
+                            const halfBoard = Math.floor((2*hotel.price)/3);
+                            return <GridImage name={hotel.hotel_name} photos1={hotel.room1} photos2={hotel.room2} photos3={hotel.room3} description={hotel.description}
                                 wifi={hotel.wifi} lunch={hotel.lunch} dinner={hotel.dinner} breakfast={hotel.breakfast} ac={hotel.ac} room={hotel.view} halfBoard={halfBoard} fullBoard={hotel.price} link={`/traveler/HotelBook/${user_id}/${hotelId}/${roomId}`} />;
 
                         })}

@@ -43,6 +43,7 @@ public class Reservation {
     private LocalTime checkout_time;
     private Integer payment;
     private Integer status;
+    private Integer booking_quantity;
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id" )

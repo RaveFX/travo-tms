@@ -55,8 +55,8 @@ export default function Sidebar(props) {
 
     const navList = [
         { icon: <RectangleGroupIcon className="h-5 w-5" />, name: "Dashboard", link: "/travel_guide_dashboard" },
-        {
-            icon: <MapIcon className="h-5 w-5" />, name: "Requests", link: "/travel_guide_request",         },
+        // {
+        //     icon: <MapIcon className="h-5 w-5" />, name: "Requests", link: "/travel_guide_request",         },
         { icon: <HeartIcon className="h-5 w-5" />, name: "Tours", link: "/travel_guide_mytours" },
         { icon: <UserGroupIcon className="h-5 w-5" />, name: "Ratings", link: "/travel_guide_rating" },
         { icon: <BanknotesIcon className="h-5 w-5" />, name: "Profile", link: "/travel_guide_profile" },

@@ -106,6 +106,12 @@ return traveleroptionService.hotelDetails(hotelId,roomId);
         return traveleroptionService.agents(agentId);
 
     }
+
+    @GetMapping("/activityList")
+    public List<ActivityDTO> getActivityLists(){
+        return traveleroptionService.activityLists();
+    }
+
     @GetMapping("/eventList/{agentId}")
     public List<ActivityDTO> getEvent(@PathVariable Integer agentId){
         return traveleroptionService.events(agentId);

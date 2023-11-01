@@ -173,9 +173,9 @@ function Attractions() {
                         <span className="ml-1 text-sm text-gray-500">
                           ({attraction.rating}  reviews)
                         </span>
-                        <div className="absolute bottom-2 right-2">
+                        {/* <div className="absolute bottom-2 right-2">
                           <Button className="bg-green" onClick={() => handleAddAttraction(attraction)}>Add</Button>
-                        </div>
+                        </div> */}
 
                       </div>
                     </div>

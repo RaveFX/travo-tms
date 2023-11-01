@@ -31,7 +31,7 @@ function Activities() {
   }, []);
 
   const loadActivities = async () => {
-    const result = await axios.get(`http://localhost:8080/api/v1/trip/activityList`)
+    const result = await axios.get(`http://localhost:8080/api/v1/traveler/activityList`)
     setActivities(result.data);
   }
 
