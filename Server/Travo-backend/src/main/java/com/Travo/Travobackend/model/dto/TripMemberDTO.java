@@ -11,13 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TripMemberDTO {
     private Integer member_id;
-    private String member_fname;
-    private String image;
-    //private TripRole tripRole;
     private Integer trip_id;
     private Integer user_id;
     private String fname;
-    private String profileImage;
     private Integer traveler_id;
     private String profile_image;
     private String lname;

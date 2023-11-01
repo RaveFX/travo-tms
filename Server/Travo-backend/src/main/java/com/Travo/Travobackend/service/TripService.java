@@ -19,12 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
 @Service
 public class TripService {
     @Autowired
@@ -65,10 +62,7 @@ public class TripService {
     private UserRepository userRepository;
 
 
-
-
     public List<TripDTO> tripList(Integer userID){
-        //System.out.println(userID);
         return tripJDBCDao.getTripList(userID);
     }
 
@@ -76,15 +70,17 @@ public class TripService {
         return tripJDBCDao.getTripDetails(tripID);
     }
 
-    public Integer createTrip(TripDTO tripDTO){
+    private String generateRandomToken(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        StringBuilder token = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            token.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return token.toString();
+    }
 
-//        TripState tripState;
-//
-//        if(Objects.equals(tripDTO.getState(), "PUBLIC")){
-//            tripState = TripState.PUBLIC;
-//        }else{
-//            tripState = TripState.PRIVATE;
-//        }
+    public Integer createTrip(TripDTO tripDTO){
 
         var  trip = Trip.builder()
                 .trip_name(tripDTO.getTrip_name())
@@ -97,12 +93,20 @@ public class TripService {
         trip.setUser(user);
         Trip newTrip = tripRepository.save(trip);
 
+        String uniqueToken = generateRandomToken(20);
+        String uniqueLink =  newTrip.getTrip_id() + "" + uniqueToken;
+        newTrip.setUniqueLink(uniqueLink);
+        tripRepository.save(newTrip);
+
+        Optional<Trip> trip1Optional = tripRepository.findById(newTrip.getTrip_id());
+        Trip trip1 = trip1Optional.get();
+
         TripRole adminRole = TripRole.ADMIN;
 
         var tripMember = TripMember.builder()
                 .tripRole(adminRole)
                 .user(user)
-                .trip(trip)
+                .trip(trip1)
                 .build();
         tripMemberRepository.save(tripMember);
 
@@ -194,28 +198,12 @@ public class TripService {
     }
 
 
-//    public List<TripDTO> tripList(int userId) {
-//        System.out.println(userId);
-//        String SQL = "SELECT t.trip_id, t.trip_admin, t.trip_name FROM trip_members tm \n" +
-//                "                INNER JOIN trip t ON tm.trip_id = t.trip_id \n" +
-//                "                WHERE tm.user_id = :userId";
-//
-//        HashMap<String, Object> params = new HashMap<>();
-//        params.put("userId", userId);
-//        return tripJDBCDao.getAllTrips(SQL, params);
-//    }
-
-
     public String checkTrip(Integer tripId, String uniqueKey) {
         String exists = tripRepository.existsByTripIdAndUniqueKey(tripId, uniqueKey);
         System.out.println(exists);
 
         return exists;
     }
-
-
-    public List<TripMemberDTO> memberList(Integer tripId){return tripMemberJDBCDao.getMemberList(tripId);}
-
 
 
     

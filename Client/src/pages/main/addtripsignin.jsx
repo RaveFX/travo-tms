@@ -54,9 +54,8 @@ function Addtripsignin() {
 
             if (response.data.role === "TRAVELLER" || response.data.role === "HOTEL_AGENT" || response.data.role === "STORE_MANAGER" || response.data.role === "ACTIVITY_AGENT" || response.data.role === "VEHICLE_RENTER" || response.data.role === "GUIDE") {
                 const tripMembersResponse = await axios.post('http://localhost:8080/api/v1/trip/create-members', {
-                    user_id: user_id,
-                    trip_id: TripId,
-                    trip_role: trip_role,
+                    member_id: user_id,
+                    trip_id: TripId
                 });
 
 

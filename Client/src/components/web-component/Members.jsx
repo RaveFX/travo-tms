@@ -52,7 +52,7 @@ const handleEditRolesClick = () => {
       <PopoverHandler>
         <button>
           <div className="flex items-center -space-x-4">
-            {picmember.map((member, index) => (
+            {members.map((member, index) => (
               <div
                 key={member.member_id}
                 className={`ml-${

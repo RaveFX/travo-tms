@@ -67,7 +67,7 @@ public class Trip {
     public void setUniqueLink(String uniqueLink) {
         this.uniqueLink = uniqueLink;
     }
-    
+//
     @OneToMany(mappedBy = "trip")
     private Set<Reservation> reservations = new HashSet<>();
 

@@ -68,7 +68,7 @@ export function SubscriptionPopover() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <UserPlusIcon className='w-5 h-5 stroke-[#000000]' strokeWidth="3" />
-          Invite- {id}
+          Invite- 
         </Button>
         {isMenuOpen && (
           <div className="absolute top-12 right-0 mt-2 p-4 bg-white rounded-lg shadow-md">

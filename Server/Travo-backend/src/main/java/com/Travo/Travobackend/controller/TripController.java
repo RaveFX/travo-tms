@@ -93,32 +93,24 @@ public class TripController {
     }
 
 
-    private String generateRandomToken(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        StringBuilder token = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            token.append(characters.charAt(random.nextInt(characters.length())));
-        }
-        return token.toString();
-    }
 
-    @PostMapping("/create")
-    public Trip createTrip(@RequestBody Trip trip) {
-        Trip savedTrip = tripRepository.save(trip);
 
-        if (savedTrip.getTrip_id() != null) {
-            String uniqueToken = generateRandomToken(20);
-            String uniqueLink =  savedTrip.getTrip_id() + "" + uniqueToken;
-            System.out.println(uniqueLink);
-
-            savedTrip.setUniqueLink(uniqueLink);
-
-            return tripRepository.save(savedTrip);
-        } else {
-            return null;
-        }
-    }
+//    @PostMapping("/create")
+//    public Trip createTrip(@RequestBody Trip trip) {
+//        Trip savedTrip = tripRepository.save(trip);
+//
+//        if (savedTrip.getTrip_id() != null) {
+//            String uniqueToken = generateRandomToken(20);
+//            String uniqueLink =  savedTrip.getTrip_id() + "" + uniqueToken;
+//            System.out.println(uniqueLink);
+//
+//            savedTrip.setUniqueLink(uniqueLink);
+//
+//            return tripRepository.save(savedTrip);
+//        } else {
+//            return null;
+//        }
+//    }
 
 
     @PostMapping("/create-members")
@@ -152,10 +144,10 @@ public class TripController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/memberlist/{tripId}")
-    public List<TripMemberDTO> getMemberList(@PathVariable Integer tripId){
-        return tripService.memberList(tripId);
-    }
+//    @GetMapping("/memberlist/{tripId}")
+//    public List<TripMemberDTO> getMemberList(@PathVariable Integer tripId){
+//        return tripService.memberList(tripId);
+//    }
 
     
     @GetMapping("/hotelList/{tripId}/{day}")

@@ -69,22 +69,18 @@ public class TripMemberService {
 
     public String addTripMember(TripMemberDTO tripMemberDTO) {
         try {
-            boolean exists = checkIfTripMemberExists(tripMemberDTO.getUser_id(), tripMemberDTO.getTrip_id());
+            boolean exists = checkIfTripMemberExists(tripMemberDTO.getMember_id(), tripMemberDTO.getTrip_id());
             if (exists) {
                 return "Error: Record with the same User ID and Trip ID already exists!";
             } else {
                 TripMember tripMember = new TripMember();
-                tripMember.setMember_fname(tripMemberDTO.getMember_fname());
-                tripMember.setImage(tripMemberDTO.getImage());
                 tripMember.setTripRole(TripRole.MEMBER);
-//                tripMember.setTrip(tripMemberDTO.getTrip_id());
-//                tripMember.setUser_id(tripMemberDTO.getUser_id());
 
                 Optional<Trip> tripOptional = tripRepository.findById(tripMemberDTO.getTrip_id());
                 Trip trip = tripOptional.get();
                 tripMember.setTrip(trip);
 
-                Optional<User> userOptional = userRepository.findById(tripMemberDTO.getUser_id());
+                Optional<User> userOptional = userRepository.findById(tripMemberDTO.getMember_id());
                 User user = userOptional.get();
                 tripMember.setUser(user);
 
@@ -100,7 +96,7 @@ public class TripMemberService {
     private EntityManager entityManager;
 
     private boolean checkIfTripMemberExists(Integer userId, Integer tripId) {
-        Query query = entityManager.createNativeQuery("SELECT COUNT(*) FROM trip_member WHERE user_id = :userId AND trip_id = :tripId");
+        Query query = entityManager.createNativeQuery("SELECT COUNT(*) FROM trip_member WHERE member_id = :userId AND trip_id = :tripId");
         query.setParameter("userId", userId);
         query.setParameter("tripId", tripId);
         Long count = (Long) query.getSingleResult();

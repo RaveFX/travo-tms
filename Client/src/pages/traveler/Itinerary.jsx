@@ -3,7 +3,7 @@ import { StarIcon } from "@heroicons/react/24/outline";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 //import Swal from 'sweetalert2/dist/sweetalert2.css'; // Import SweetAlert CSS
 //import 'sweetalert2/dist/sweetalert2.min.js'; // Import SweetAlert JavaScrip
 import {

@@ -18,36 +18,36 @@ public class TripMemberJDBCDao {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    public List<TripMemberDTO> getMemberList(Integer tripId) {
-        StringBuffer SQL = new StringBuffer();
-        HashMap<String, Object> params = new HashMap<>();
-        List<TripMemberDTO> members = new ArrayList<>();
-
-        SQL.append("SELECT t.*, u.profile_image, tr.fname\n" +
-                "FROM trip_member t\n" +
-                "INNER JOIN traveler tr ON tr.traveler_id = t.user_id\n" +
-                "INNER JOIN user u ON u.user_id = t.user_id\n" +
-                "WHERE t.trip_id = :tripId");
-
-        params.put("tripId", tripId);
-
-        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
-            while (rs.next()) {
-                TripMemberDTO tripMemberDTO = new TripMemberDTO();
-
-                tripMemberDTO.setMember_id(rs.getInt("member_id"));
-                tripMemberDTO.setMember_fname(rs.getString("member_fname"));
-                tripMemberDTO.setTripRole(TripRole.valueOf(rs.getString("trip_role")));
-                tripMemberDTO.setTrip_id(rs.getInt("trip_id"));
-                tripMemberDTO.setUser_id(rs.getInt("user_id"));
-                tripMemberDTO.setFname(rs.getString("fname"));
-                tripMemberDTO.setProfileImage(rs.getString("profile_image")); // Use the alias name here
-
-                members.add(tripMemberDTO);
-            }
-            return members;
-        });
-    }
+//    public List<TripMemberDTO> getMemberList(Integer tripId) {
+//        StringBuffer SQL = new StringBuffer();
+//        HashMap<String, Object> params = new HashMap<>();
+//        List<TripMemberDTO> members = new ArrayList<>();
+//
+//        SQL.append("SELECT t.*, u.profile_image, tr.fname\n" +
+//                "FROM trip_member t\n" +
+//                "INNER JOIN traveler tr ON tr.traveler_id = t.user_id\n" +
+//                "INNER JOIN user u ON u.user_id = t.user_id\n" +
+//                "WHERE t.trip_id = :tripId");
+//
+//        params.put("tripId", tripId);
+//
+//        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+//            while (rs.next()) {
+//                TripMemberDTO tripMemberDTO = new TripMemberDTO();
+//
+//                tripMemberDTO.setMember_id(rs.getInt("member_id"));
+//                tripMemberDTO.setMember_fname(rs.getString("member_fname"));
+//                tripMemberDTO.setTripRole(TripRole.valueOf(rs.getString("trip_role")));
+//                tripMemberDTO.setTrip_id(rs.getInt("trip_id"));
+//                tripMemberDTO.setUser_id(rs.getInt("user_id"));
+//                tripMemberDTO.setFname(rs.getString("fname"));
+//                tripMemberDTO.setProfileImage(rs.getString("profile_image")); // Use the alias name here
+//
+//                members.add(tripMemberDTO);
+//            }
+//            return members;
+//        });
+ //   }
 
 
 }

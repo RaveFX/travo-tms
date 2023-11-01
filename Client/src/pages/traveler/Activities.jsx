@@ -6,32 +6,31 @@ import TabBar from '../../components/web-component/TabBar';
 import { Button, Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 function Activities() {
-  const { id, day } = useParams();
-  const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
-  const [subSidebarState, setSubSidebarState] = useState(1);
-  const [activities, setActivities] = useState([]);
-  const [isOpen, setIsOpen] = useState(true);
+    const { id,day } = useParams();
+    const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
+    const [subSidebarState, setSubSidebarState] = useState(1);
+    const [activities,setActivities]=useState([]);
+    const [isOpen, setIsOpen] = useState(true);
 
-  // Define the styles object
-  const styles = {
+    // Define the styles object
+   const styles = {
     sweetAlertContainer: {
       zIndex: 1000000, // Set a high z-index value for SweetAlert2 in this component
     },
   };
 
-  useEffect(() => {
-    loadActivities();
-  }, []);
+    useEffect(() => {
+        loadActivities();
+    },[]); 
 
     const loadActivities=async()=>{
         const result=await axios.get(`http://localhost:8080/api/v1/trip/activityList/${id}/${day}`)
         setActivities(result.data);
     }
-  };
 
     const handleAddActivity = async (activity) => {
       try {
@@ -163,15 +162,17 @@ function Activities() {
                   <div className="absolute bottom-2 right-2">
                     <Button className="bg-green" onClick={() => handleAddActivity(activity)}>Add Activity</Button>
                   </div>
+                
                 </div>
-
               </div>
-            ))}
-          </div>
+            
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  )
+        </div>
+            </div>
+        </div>
+    )
 }
 
 export default Activities

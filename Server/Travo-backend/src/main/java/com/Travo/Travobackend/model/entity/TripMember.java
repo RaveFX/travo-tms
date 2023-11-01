@@ -15,8 +15,8 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "trip_member")
 public class TripMember {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer member_id;
+    @GeneratedValue
+    private Integer id;
 
     private String member_fname;
     private String image;
@@ -30,7 +30,7 @@ public class TripMember {
     private Trip trip;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+    @JoinColumn(name = "member_id", referencedColumnName = "user_id" )
     private User user;
 
 
