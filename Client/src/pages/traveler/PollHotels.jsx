@@ -6,7 +6,7 @@ import TabBar from '../../components/web-component/TabBar';
 import { Button, Input } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 
@@ -22,7 +22,7 @@ function PollHotels() {
 
 
     const loadHotels = async () => {
-        const result = await axios.get(`http://localhost:8080/api/v1/trip/hotelList`)
+        const result = await axios.get(`http://localhost:8080/api/v1/trip/hotelList/${id}/${day}`)
         setHotels(result.data);
     }
     const handleAddHotel = async (hotel) => {
@@ -54,29 +54,7 @@ function PollHotels() {
         }
     };
 
-    const data = [
-        {
-            label: "Closer",
-            value: "all trips",
-            desc: ``,
-
-        },
-        {
-            label: "All",
-            value: "private",
-            desc: ``,
-        },
-        {
-            label: "Selected",
-            value: "public",
-            desc: ``,
-        },
-        {
-            label: "My Saves",
-            value: "saved",
-            desc: ``,
-        },
-    ];
+   
     return (
         <div className="flex h-screen overflow-hidden ">
             <Sidebar
@@ -88,12 +66,7 @@ function PollHotels() {
             />
             <div className="flex flex-col w-full bg-[#D9D9D9] bg-opacity-20 z-[10000] ">
                 <TopNavbar />
-                <div className='flex justify-between'>
-                    <div className="w-[70%] pt-8 ">
-                        <TabBar data={data} />
-                    </div>
-
-                </div>
+                
                 <div className="container mx-4  overflow-hidden">
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <h1 className="text-3xl font-poppins font-extrabold text-[#2AB57D] mb-6">
