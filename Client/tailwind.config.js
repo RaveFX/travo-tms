@@ -21,6 +21,7 @@ export default withMT({
         dimGray: "#DADADA",
         green1: "#57CC99",
         green2: "#38A3A5",
+        red: "#FF0000",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
