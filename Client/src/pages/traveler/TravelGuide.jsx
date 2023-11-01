@@ -60,13 +60,13 @@ function TravelGuide() {
                 </CardBody>
                 <CardFooter className="flex flex-col  pt-0">
                  <div className='flex flex-row'>
-
-                    <Button size="sm" variant="text" className="flex items-center gap-2">
-                      {guide.district}
-                    </Button>
-                    <Button size="sm" variant="text" className="flex items-center gap-2">
+                 <Typography>
+                    <h1>Guided Area : {guide.district} </h1>
+                  </Typography>
+                    
+                    {/* <Button size="sm" variant="text" className="flex items-center gap-2">
                       {guide.nic}
-                    </Button>
+                    </Button> */}
                  </div>
                  <div>
 
