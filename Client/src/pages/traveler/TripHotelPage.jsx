@@ -20,10 +20,10 @@ const VegicleCard = ({ names, description, location,link, milage, small_bag, pri
                     <div className="w-1/3 sm:flex lg:flex flex-row  ">
                         <Typography className=" h-screen" >
                             
-                            <img
-                                src="https://www.travelandleisure.com/thmb/pCU_Y9fbQe4CT5Q73J9k2Bqd_bI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/header-grand-velas-los-cabos-MXALLINC0222-46d3772ad56f4493a83e1bcb49e119f9.jpg"
+                        <img
+                                src={`../../../public/main/${src}`}
                                 alt="ui/ux review check"
-                                className="w-60  rounded"
+                                className="w-44  rounded"
                                 
                             />
                             {/* <div className='flex'>
@@ -41,21 +41,18 @@ const VegicleCard = ({ names, description, location,link, milage, small_bag, pri
                         <Typography variant="h5" color="blue-gray">{names}</Typography>
 
                         <Typography className="sm:w-1/2 lg:w-full lg:flex">
-                            <Typography className="w-1/2">
+                            <Typography className="w-1/2 mr-20">
                                 <Typography className="flex mr-4 my-4" variant="small" color="blue-gray"><i class='bx bx-user'></i> {description} </Typography>
                                 
                             </Typography>
                             <Typography>
                                 <Typography variant="" color="blue-gray">{type}</Typography>
-                                <Typography variant="" color="blue-gray">{small_bag}</Typography>
-                                <Typography variant="" color="blue-gray">{location}  location</Typography>
+                                <Typography variant="" color="blue-gray">Brach: {branch}</Typography>
+                                {/* <Typography variant="" color="blue-gray">Tel: {location}</Typography> */}
+                                <a href={location} variant="gradient" className="flex flex-row rounded-full bg-green p-2 text-white w-40 my-6" color="green">
+                                        <img src='../../../public/traveler/phone.png' className='w-6 mx-2'/>{location}</a>
                             </Typography>
-                            <Typography className="px-5">
-                            <Typography variant="" className="font-thin text-xs" color="Green-500"></Typography>
-
-                            <Typography variant="h6" color="Green-500">{price}</Typography>
-
-                        </Typography>
+                            
                            
                         </Typography>
 
@@ -109,7 +106,7 @@ const hotel_page = () => {
                     <div className=" sm:flex flex-wrap justify-center ">
                         {hotels.map((hotel) => (
                             <Link to={`/traveler/TripHotelType/${user_id}/${TripId}/${hotel.hotel_id}`}>
-                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description}  />
+                            <VegicleCard  names={hotel.hotel_name} description={hotel.hotel_description} location={hotel.contact_num} branch={hotel.branch} src={hotel.hotel_img}  />
                             </Link>
                         ))}
 

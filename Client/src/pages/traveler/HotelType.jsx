@@ -50,7 +50,7 @@ function App() {
                         hotel.map((hotel) => (
                             <div className="relative w-full h-80 sm:flex sm:flex-wrap ">
                                 {/* ? <div style={{   }}> */}
-                                <div style={{ height: '95%', width: '100%', backgroundImage:`url(../../../public/main/${hotel.hotel_img})`, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
+                                <div style={{ height: '95%', width: '100%', backgroundImage:`url(/main/${hotel.hotel_img})`, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute' }}>
                                     <div style={{ width: "40%", textAlign: 'center' }}>
                                         <h1 style={{ fontSize: '40px' }} className="font-bold font-poppins text-black pb-3">{hotel.hotel_name}</h1>
                                         <h1 className="font-poppins text-black pb-3">{hotel.hotel_description}</h1>
@@ -69,7 +69,7 @@ function App() {
                                     <Link to={`/traveler/HotelPageMore/${user_id}/${hotelId}/${rooms.room_id}`}>
                                         <div style={{ width: '90%' }} className="bg-white shadow-md rounded-lg overflow-hidden mb-5">
                                             <img
-                                                src={`../../../public/main/${rooms.room_image}`}
+                                                src={`/main/${rooms.room_image}`}
                                                 className="w-full h-40 object-cover"
                                             />
                                             <div className="p-4">

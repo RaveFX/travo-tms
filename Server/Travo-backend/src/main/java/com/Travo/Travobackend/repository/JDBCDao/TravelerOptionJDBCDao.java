@@ -134,7 +134,7 @@ public class TravelerOptionJDBCDao {
                 hotelDTO.setRoom1(rs.getString("room1"));
                 hotelDTO.setRoom2(rs.getString("room2"));
                 hotelDTO.setRoom3(rs.getString("room3"));
-                
+
 
 
 
