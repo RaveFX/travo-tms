@@ -13,8 +13,11 @@ import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Travo.Travobackend.enumeration.TripRole;
-
 import java.util.Optional;
+
+
+
+
 
 @Service
 public class TripMemberService {
@@ -107,4 +110,9 @@ public class TripMemberService {
 
 
 
+    private TripMembersRepository tripMembersRepository;
+
+    public long getRowCount() {
+        return tripMembersRepository.count();
+    }
 }
