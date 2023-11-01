@@ -150,7 +150,7 @@ const Dashboard = () => {
                 <div className="mb-2 flex flex-col items-start justify-between w-full">
                   <Typography className="text-[#578B6A] font-[700] text-[32px] ">
                   {/* Hello Tharindi! */}
-                  Hello {userDetails.fname} {userDetails.lname}!
+                  Hello {userDetails.fname} !
                   </Typography>
                   <Typography className="text-[18px] text-[#5F647E] font-[400]">
                     Welcome back and explore the world.

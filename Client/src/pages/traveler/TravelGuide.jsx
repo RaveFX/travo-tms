@@ -54,7 +54,7 @@ function TravelGuide() {
                   <Typography variant="h5" color="blue-gray" className="mb-2">
                     {guide.fname} {guide.lname}
                   </Typography>
-                  <Typography>
+                  <Typography className='h-8'>
                     {guide.description}
                   </Typography>
                 </CardBody>
@@ -62,6 +62,7 @@ function TravelGuide() {
                  <div className='flex flex-row'>
                  <Typography>
                     <h1>Guided Area : {guide.district} </h1>
+                    <Rating ratedColor="yellow" value={3} readonly />
                   </Typography>
                     
                     {/* <Button size="sm" variant="text" className="flex items-center gap-2">
