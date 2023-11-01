@@ -18,7 +18,26 @@ function Signup() {
 
   const { fname, lname, email, password } = user;
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+      let validationErrors = { ...errors };
+
+      setUser({ ...user, [name]: value });
+
+      switch (name) {
+        case "email":
+          validationErrors.email = /\S+@\S+\.\S+/.test(value)
+            ? ""
+            : "Invalid email format";
+          break;
+        case "password":
+          validationErrors.password =
+            value.length >= 6 ? "" : "Password must be at least 6 characters";
+          break;
+        default:
+          break;
+  }
+
+  setErrors(validationErrors);
   };
 
   const onSubmit = async (e) => {
