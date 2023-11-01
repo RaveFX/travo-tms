@@ -170,7 +170,7 @@ function App() {
     const roomId = decodeURIComponent(splitURL[7]);
     const userId =
 
-        console.log("Type: ", hotelId)
+        
 
 
     useEffect(() => {

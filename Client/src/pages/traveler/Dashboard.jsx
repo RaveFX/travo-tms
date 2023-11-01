@@ -59,7 +59,7 @@ const Dashboard = () => {
       name: "Destinations",
       price: "Find plsces to visit",
       imageSrc:
-        "https://www.resort98acres.com/wp-content/uploads/2013/04/slider-5.jpg",
+        "https://lp-cms-production.imgix.net/2019-06/GettyImages-497592261_high.jpg",
       buttonname: "Explore Now",
       links:"/traveler/DestinationPage"
     },
@@ -145,19 +145,27 @@ const Dashboard = () => {
             {/* Dashboard */}
           </h1>
           <div className='flex flex-row gap-[1%]'>
-            <div className='flex flex-col gap-[2rem] w-[75%]'>
+            <div className='flex flex-col gap-[2rem] w-[100%]'>
               <div className='flex flex-row justify-around items-center bg-white rounded-lg p-4 pl-[49px] h-[225px] w-[75%]'>
                 <div className="mb-2 flex flex-col items-start justify-between w-full">
                   <Typography className="text-[#578B6A] font-[700] text-[32px] ">
                   {/* Hello Tharindi! */}
-                  Hello {userDetails.fname} {userDetails.lname}!
+                  Hello {userDetails.fname} !
                   </Typography>
                   <Typography className="text-[18px] text-[#5F647E] font-[400]">
                     Welcome back and explore the world.
                   </Typography>
                   <div className='flex justify-start items-center w-full'>
-                    
-                    
+                    <Typography
+                      variant="small"
+                      className="text-[#728659] font-[700] text-[24px] "
+                    >
+                      Why Wait?
+                    </Typography>
+                    {/* <Button
+                      className='md:!w-auto h-[3rem] m-4 justify-center py-2 md:w-[150px] shadow-none hover:shadow-none active:shadow-none focus:shadow-none bg-[#22577A] rounded-full font-poppins font-extrabold'>
+                      Continue Editing
+                    </Button> */}
                   </div>
                 </div>
                 <div className='h-100 w-full rounded-lg'>
@@ -208,11 +216,49 @@ const Dashboard = () => {
             </div>
             <div className='w-[32%] '>
             <div className="max-w-md mx-2 my-4">
-            
+            {/* <div className="shadow-lg rounded-lg">
+              {header()}
+              {daysOfWeek()}
+              <div className="grid grid-cols-7 gap-2 p-4">{renderCells()}</div>
+            </div> */}
           </div>
             </div>
           </div>
-          
+          {/* <div className="bg-white p-4 shadow-md rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Ongoing Trips</h2> */}
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {ongoingTrips.map((trip) => (
+                <Link key={trip.id} to={`/edit-trip/${trip.id}`}>
+                  <Card className="cursor-pointer">
+                    <CardHeader className="rounded-lg m-2" shadow={false} floated={false}>
+                      <Typography
+                        color="blue-gray"
+                        className="text-sm font-bold font-poppins"
+                      >
+                        {trip.name}
+                      </Typography>
+                    </CardHeader>
+                    <CardBody>
+                      <Typography
+                        variant="small"
+                        color="red"
+                        className="font-bold text-xs mb-2 font-poppins opacity-75 mx-5"
+                      >
+                        Start Date: {trip.startDate}
+                      </Typography>
+                      <Typography
+                        variant="small"
+                        color="red"
+                        className="mb-2 text-xs w-[75%] bg-slate-300 p-1.5 font-poppins opacity-75 rounded-lg mx-6"
+                      >
+                        End Date: {trip.endDate}
+                      </Typography>
+                    </CardBody>
+                  </Card>
+                </Link>
+              ))}
+            </div> */}
+          {/* </div> */}
 
 
           {/* Other Options */}
