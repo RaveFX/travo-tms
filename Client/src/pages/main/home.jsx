@@ -77,7 +77,7 @@ function HomeCarousel() {
                   Sign Up
                 </Button>
               </Link>
-              <Link to="/traveler/dashboard">
+              {/* <Link to="/traveler/dashboard">
                 <Button
                   className="font-poppins"
                   size="lg"
@@ -86,7 +86,7 @@ function HomeCarousel() {
                 >
                   Dashboard
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -184,6 +184,7 @@ const placedata = [
       "Sigiriya or Sinhagiri is an ancient rock fortress located in the northern Matale District near the town of Dambulla in the Central Province, Sri Lanka.",
     imgUrl:
       "./cardimage.jpg",
+      link:"https://en.wikipedia.org/wiki/Sigiriya",
   },
   {
     title: "Ella",
@@ -191,6 +192,7 @@ const placedata = [
       "Small town in the Badulla District of Uva Province, Sri Lanka. The area has a rich bio-diversity, dense with numerous varieties of flora and fauna",
     imgUrl:
       "/ella.jpg",
+      link:"https://en.wikipedia.org/wiki/Ella,_Sri_Lanka",
   },
   {
     title: "Dunhinda Falls",
@@ -198,6 +200,7 @@ const placedata = [
       "Dunhinda Falls is a waterfall located about 5 kilometres from Badulla in the lower central hills of Sri Lanka. The waterfall gets its name from the smoky dew drops.",
     imgUrl:
       "/dunhinda.jpg",
+      link:"https://en.wikipedia.org/wiki/Dunhinda_Falls",
   },
   {
     title: "Sri Pada (Adam's Peak)",
@@ -205,60 +208,61 @@ const placedata = [
       "Adam's Peak is a 2,243 m (7,359 ft) tall conical sacred mountain located in central Sri Lanka.It is well known for the Sri Pada (Śrī Pāda; Sinhala: ශ්‍රී පාද, sacred footprint)",
     imgUrl:
       "/adams.jpg",
+      link:"https://en.wikipedia.org/wiki/Adam%27s_Peak",
   },
 
 ];
 
-function Placeinput() {
-  const [email, setEmail] = React.useState("");
-  const onChange = ({ target }) => setEmail(target.value);
+// function Placeinput() {
+//   const [email, setEmail] = React.useState("");
+//   const onChange = ({ target }) => setEmail(target.value);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+//   const handleSubmit = async (e) => {
+//     e.preventDefault(); // Prevent the default form submission behavior
 
-    // Get the form data
-    const formData = new FormData(e.target);
+//     // Get the form data
+//     const formData = new FormData(e.target);
 
 
 
-    try {
-      const response = await axios.post('https://maps.googleapis.com/maps/api/place/nearbysearch/json', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type for form data
-        },
-      });
-      console.log(response);
-      // Handle the response here (e.g., show a success message)
-      console.log('Response: Success', response.data);
-    } catch (error) {
-      // Handle errors here (e.g., show an error message)
-      console.error('Error: kedup', error);
-    }
-  };
+//     try {
+//       const response = await axios.post('https://maps.googleapis.com/maps/api/place/nearbysearch/json', formData, {
+//         headers: {
+//           'Content-Type': 'multipart/form-data', // Set the content type for form data
+//         },
+//       });
+//       console.log(response);
+//       // Handle the response here (e.g., show a success message)
+//       console.log('Response: Success', response.data);
+//     } catch (error) {
+//       // Handle errors here (e.g., show an error message)
+//       console.error('Error: kedup', error);
+//     }
+//   };
 
-  return (
-    <div className="relative content-center flex rounded-full w-full max-w-[24rem]">
-      <Input
-        type="email"
-        label="Enter your favourite destination"
-        value={email}
-        onChange={onChange}
-        className=""
-        containerProps={{
-          className: "font-poppins min-w-0 ",
-        }}
-      />
-      <Button
-        size="sm"
-        color={email ? "gray" : "blue-gray"}
-        disabled={!email}
-        className="!absolute right-1 top-1 font-poppins rounded"
-      >
-        Find Nearby
-      </Button>
-    </div>
-  );
-}
+//   return (
+//     <div className="relative content-center flex rounded-full w-full max-w-[24rem]">
+//       <Input
+//         type="email"
+//         label="Enter your favourite destination"
+//         value={email}
+//         onChange={onChange}
+//         className=""
+//         containerProps={{
+//           className: "font-poppins min-w-0 ",
+//         }}
+//       />
+//       <Button
+//         size="sm"
+//         color={email ? "gray" : "blue-gray"}
+//         disabled={!email}
+//         className="!absolute right-1 top-1 font-poppins rounded"
+//       >
+//         Find Nearby
+//       </Button>
+//     </div>
+//   );
+// }
 
 function PlaceCard() {
   return (
@@ -276,7 +280,9 @@ function PlaceCard() {
             <Typography className="font-poppins" >{placedata.description}</Typography>
           </CardBody>
           <CardFooter className="pt-0">
+          <Link to={placedata.link}>
             <Button className="font-poppins">Read More</Button>
+            </Link>
           </CardFooter>
         </Card>
       ))}
@@ -332,7 +338,7 @@ function Footercomp() {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="mb-3 font-medium font-poppins opacity-40"
+                  className="mb-3 font-medium font-poppins opacity-60"
                 >
                   {title}
                 </Typography>
@@ -414,30 +420,30 @@ const testimonials = [
   {
     avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
     name: "Thirani Upetha",
-    work: "Software Engineer @ Google",
+    work: "Software Engineer  Google",
     description:
       "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
 
   },
   {
     avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
-    name: "Thirani Upetha",
-    work: "Software Engineer @ Google",
+    name: "Ravindu Viranga",
+    work: "Software Engineer  Travolta",
     description:
       "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
 
   }, {
     avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
-    name: "Thirani Upetha",
-    work: "Software Engineer @ Google",
+    name: "Trineesha Sanduni",
+    work: "Senior Engineer Synopplk",
     description:
       "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
 
   },
   {
     avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH",
-    name: "Thirani Upetha",
-    work: "Software Engineer @ Google",
+    name: "Tharindi Samarakoon",
+    work: "Software Engineer  AOpenAi",
     description:
       "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to &quot;Naviglio&quot; where you can enjoy the main night life in Barcelona.",
 
@@ -593,7 +599,7 @@ export default function Newhome() {
           </Typography>
         </div>
         <div className="justify-center flex my-12">
-          <Placeinput />
+          {/* <Placeinput /> */}
         </div>
 
         <div className=" justify-center mx-12  gap-5 flex overflow-x-scroll ">
