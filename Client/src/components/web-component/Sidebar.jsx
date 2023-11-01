@@ -77,7 +77,7 @@ import {
       ],},
       {icon : <ShoppingCartIcon className="h-5 w-5" />, name : "Travo Store", link : "/store"},
       {icon : <UserGroupIcon className="h-5 w-5" />, name : "Community", link : "/traveler/community"},
-      {icon : <BanknotesIcon className="h-5 w-5" />, name : "Transactions", link : "/transactions"},
+      {icon : <BanknotesIcon className="h-5 w-5" />, name : "Transactions", link : "/traveler/transactions"},
       {icon : <Cog6ToothIcon className="h-5 w-5" />, name : "Settings", link : "/settings"},
     ]
 

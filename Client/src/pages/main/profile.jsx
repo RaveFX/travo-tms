@@ -9,6 +9,7 @@ function UserProfile() {
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({});
+  const [phoneNumberError, setPhoneNumberError] = useState(null);
   const user_id = sessionStorage.getItem("user_id");
   const profileImage = sessionStorage.getItem("profileImage");
 
@@ -28,8 +29,6 @@ function UserProfile() {
 
     getUserDetails();
   }, [user_id]);
-
-  
 
   const save = () => {
     const updateUserData = async () => {
@@ -53,9 +52,13 @@ function UserProfile() {
   const validatePhoneNumber = (event) => {
     const inputValue = event.target.value;
     const regex = /^[0-9]{10}$/;
-  
+
     if (!regex.test(inputValue)) {
-      // Display an error message to the user.
+      setPhoneNumberError(
+        "Phone number must be 10 digits long and contain only numbers."
+      );
+    } else {
+      pass;
     }
   };
 
@@ -168,7 +171,7 @@ function UserProfile() {
                   className="block uppercase text-blueGray-600 text-xs font-bold mt-4 mb-2"
                   htmlFor="gender"
                 >
-                Gender
+                  Gender
                 </label>
                 <div className="">
                   <label className="inline-flex items-center">
@@ -199,7 +202,6 @@ function UserProfile() {
                   </label>
                 </div>
               </div>
-              
             </div>
           </div>
           <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -311,10 +313,19 @@ function UserProfile() {
                   type="text"
                   className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-[23.8rem] ease-linear transition-all duration-150"
                   value={userData.contact_num}
-                  onChange={(event) =>{
-                    setUserData({ ...userData, contact_num: event.target.value })
+                  onChange={(event) => {
+                    const inputValue = event.target.value;
+                    // Remove non-numeric characters and restrict the length to 10 characters
+                    const cleanedValue = inputValue.replace(/[^0-9]/g, '').slice(0, 10);
+                    setUserData({ ...userData, contact_num: cleanedValue });
+                    validatePhoneNumber(event); // Call the validation function
                   }}
                 />
+                {phoneNumberError && (
+                  <p className="text-red text-xs mt-1">
+                    {phoneNumberError}
+                  </p>
+                )}
               </div>
             </div>
           </div>
