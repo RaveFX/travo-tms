@@ -109,10 +109,15 @@ import Mytrips from "./pages/traveler/Mytrips";
 import TripPlanner from "./pages/traveler/TripPlanner";
 import Itinerary from "./pages/traveler/Itinerary";
 import Selections from "./pages/traveler/Selection";
-import TravelGuide from "./pages/traveler/TravelGuide";
+// import TravelGuide from "./pages/traveler/TravelGuied";
 import HotelDetails from "./pages/traveler/Hotels";
 import Hotel from "./pages/traveler/HotelDetails";
 import Community from "./pages/traveler/Community";
+// import RoleChange from "./pages/traveler/ChangeRole";
+import CreatePost from "./pages/traveler/CreatePost";
+import CommunityProfile from "./pages/traveler/CommunityProfile";
+import UserProfile from "./pages/main/profile";
+import Transactions from "./pages/traveler/Transactions";
 
 // RavinduJay
 import Schedule from "./pages/activity_agent/Activity_Agent_Schedule";
@@ -367,26 +372,22 @@ export default function App() {
           element={<Vehicle_Owner_Edit_Profile />}
         ></Route>
 
-        {/* Sanduni
-      <Route path="/traveler/trip-planner/:tripId" element={<TripPlanner />} /> */}
+        {/* Sanduni*/}
         <Route path="/traveler/dashboard" element={<TravelerDashboard />} />
         <Route path="/traveler/mytrips" element={<Mytrips />} />
         <Route path="/traveler/trip-planner/:id" element={<TripPlanner />} />
-
         <Route path="/traveler/itinerary" element={<Itinerary />} />
         <Route path="/traveler/community" element={<Community />} />
         <Route path="/traveler/selections" element={<Selections />} />
-        <Route path="/traveler/hire-guied" element={<TravelGuide />} />
-
-
-
-        <Route path="/traveler/hotels/:id/:day" element={<HotelDetails />} />
+        {/* <Route path="/traveler/hire-guied" element={<TravelGuide />} /> */}
+        <Route path="/traveler/hotels" element={<HotelDetails />} />
         <Route path="/traveler/hotel-details" element={<Hotel />} />
-        <Route path="travo/text/:tripnumber/:tripuniqueLink" element={<TripAddButton />} />
-        <Route path="/traveler/Hotelselectionpage" element={<Hotelselectionpage />} />
-        <Route path="/traveler/attractionspoll/:id/:day" element={<PollAttractions />} />
-        <Route path="/traveler/activitiespoll/:id/:day" element={<PollActivities />} />
-        <Route path="/traveler/hotelpoll/:id/:day" element={<PollHotels />} />
+        {/* <Route path="/traveler/change-role" element={<RoleChange />} /> */}
+        <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/community-profile" element={<CommunityProfile />} />
+        <Route path="/community-profile/:id" element={<CommunityProfile />} />
+        <Route path="/traveler/profile" element={<UserProfile />} />
+        <Route path="/traveler/transactions" element={<Transactions />} />
 
 
 

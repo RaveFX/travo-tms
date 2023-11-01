@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class GlobalService {
-    static AuthenticationResponse authenticationResponse(String accessToken, Integer user_id, Role role) {
+    static AuthenticationResponse authenticationResponse(String accessToken, Integer user_id, Role role, byte[] profileImage) {
         return AuthenticationResponse.builder()
                 .accessToken(accessToken)
                 .id(user_id)
                 .role(role)
+                .profileImage(profileImage)
                 .build();
     }
 

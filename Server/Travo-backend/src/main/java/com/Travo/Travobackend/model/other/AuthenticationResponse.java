@@ -15,5 +15,5 @@ public class AuthenticationResponse {
     private String accessToken;
     private Integer id;
     private Role role;
-
+    private byte[] profileImage;
 }
