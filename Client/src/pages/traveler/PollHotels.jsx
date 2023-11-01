@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-function HotelDetails() {
+function PollHotels() {
     const { id, day } = useParams();
     const [isSubSidebarOpen, setIsSubSidebarOpen] = useState(false);
     const [subSidebarState, setSubSidebarState] = useState(1);
@@ -28,7 +28,7 @@ function HotelDetails() {
     const handleAddHotel = async (hotel) => {
         try {
             // Make a POST request to your backend API endpoint to store the attraction details
-            await axios.post("http://localhost:8080/api/v1/trip/add-hotel", {
+            await axios.post("http://localhost:8080/api/v1/trip/poll/add-hotels", {
                 hotel_id: hotel.hotel_id,
                 trip_id: id,
                 day: day
@@ -170,4 +170,4 @@ function HotelDetails() {
     );
 }
 
-export default HotelDetails;
+export default PollHotels;

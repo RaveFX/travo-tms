@@ -9,6 +9,9 @@ import Sidebar from '../../components/admin/sidebar';
 export default function Admin_requestcomformpage() {
     const [usersinfo, setUsersinfo] = useState([]);
     const [userList, setUserList] = useState(usersinfo);
+    const [reservations, setReservations] = useState([]);
+    const [details, setDetails] = useState([]);
+    const [selectedRow, setSelectedRow] = useState(null);
 
     const currentPath = window.location.pathname;
     const pathParts = currentPath.split('/');
@@ -60,6 +63,19 @@ export default function Admin_requestcomformpage() {
         };
         loadUserInfo();
     }, [userID]);
+
+
+
+    useEffect(() => {
+        loadReservations();
+    }, []);
+    const loadReservations = async () => {
+        const result = await axios.get(`http://localhost:8080/api/v1/user/information/${userID}`)
+        setReservations(result.data);
+    }
+
+
+
 
     return (
         <div>
@@ -159,7 +175,87 @@ export default function Admin_requestcomformpage() {
                 </div>
             </div>
         </div>
+        // <div className="flex h-screen ">
+        //     <Sidebar active="Reservations" />
+        //     <div className="flex flex-col w-full bg-[#FFFFFF] bg-opacity-20 ">
+        //         <TopNavbar />
+        //         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', height: '100%' }}>
 
+        //             <div style={{ width: '100%', backgroundColor: '#FAFAFA', borderRadius: '10px' }}>
+        //                 <h1 className='ml-10 font-poppins font-extrabold mt-4 mx-5 text-[#2C2738]'>Vehicle Renter  </h1>
+        //                 <div style={{ backgroundColor: 'white', height: '40%', borderRadius: '10px', marginTop: '20px', width: '90%', marginLeft: '20px' }}>
+        //                     <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-extrabold  ml-5 text-[#2C2738] text-sm'>Business Details : </h1>
+        //                     <div className="border-b border-gray-900/10 pb-4"></div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+
+
+        //                         <div style={{ width: '50%' }}>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Registration ID : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{reservations.user_id}</h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Room ID : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Check-In : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Payment : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                         </div>
+        //                         <div style={{ width: '50%' }}>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Booked Date : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Room Type : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Check-Out : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+        //                             <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Reservation Status : </h1>
+        //                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                             </div>
+
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //                 <div style={{ backgroundColor: 'white', height: '40%', borderRadius: '10px', marginTop: '20px', width: '50%', marginLeft: '20px' }}>
+        //                     <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-extrabold mt-4 mx-5 text-[#2C2738] text-sm'>Customer Details : </h1>
+        //                     <div className="border-b border-gray-900/10 pb-4"></div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Full Name : </h1>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                     </div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Mobile : </h1>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                     </div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Email : </h1>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                     </div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Trip ID : </h1>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                     </div>
+        //                     <div style={{ display: 'flex', flexDirection: 'row' }}>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Notes : </h1>
+        //                         <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
 
     )
 }

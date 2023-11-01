@@ -45,6 +45,7 @@ function Selections() {
   const [days, setDays] = useState([]);
   const [open, setOpen] = useState('0');
   const [hotels, setHotels] = useState([]);
+  const [votedhotels, setVotedhotels] = useState([]);
   const [activities, setActivities] = useState([]);
   const [attractions, setAttractions] = useState([]);
   const [votedattractions, setVotedattractions] = useState([]);
@@ -91,8 +92,11 @@ function Selections() {
 
   const handleOpen = async (value) => {
     setOpen(open === value ? '0' : value);
-    const result = await axios.get(`http://localhost:8080/api/v1/trip/selectedHotelList/${id}/${value}`)
+    const result = await axios.get(`http://localhost:8080/api/v1/trip/pollHotelList/${id}/${value}/${user_id}`)
     setHotels(result.data);
+
+    const result1 = await axios.get(`http://localhost:8080/api/v1/trip/pollHotelVotedList/${id}/${value}/${user_id}`)
+    setVotedhotels(result1.data);
 
     const result2 = await axios.get(`http://localhost:8080/api/v1/trip/selectedActivityList/${id}/${value}`)
     setActivities(result2.data);
@@ -111,6 +115,158 @@ function Selections() {
   const currentPath = window.location.pathname;
   const pathParts = currentPath.split('/');
   const pathTripId = pathParts[3];
+
+
+
+
+  const [checkedHotels, setCheckedHotels] = useState({});
+  const [checkedVotehotels, setCheckedVotehotels] = useState({});
+
+  const handleButtonClickHotel = (HotelID, indexValue) => {
+    setCheckedHotels((prevState) => {
+      const isChecked = !prevState[HotelID]; // Flip the value directly
+      handleCheckboxChangeHotel(HotelID, isChecked, indexValue);
+      return { ...prevState, [HotelID]: isChecked };
+    });
+  };
+
+  const updateHotels = (updatedHotels) => {
+    setHotels(updatedHotels);
+  };
+
+  const votehandleButtonClickHotel = (hotelId, indexValue) => {
+    setCheckedVotehotels((prevState) => {
+      const isChecked = !!prevState[hotelId]; // Flip the value directly
+      handlevoteCheckboxChangeHotel(hotelId, isChecked, indexValue);
+      return { ...prevState, [hotelId]: !isChecked };
+    });
+  };
+
+
+  const handleCheckboxChangeHotel = (hotelID, isChecked, day) => {
+    try {
+      const updatedHotels = hotels.map(hotel => {
+        if (hotel.id === hotelID) {
+          updateTotalVotesHotel(hotelID, isChecked, day);
+          handleAsyncActionHotel(hotelID, isChecked);
+          const newTotalVotes = isChecked ? hotel.total_votes + 1 : hotel.total_votes - 1;
+          const totalVotes = newTotalVotes >= 0 ? newTotalVotes : 0;
+
+          return { ...hotel, total_votes: totalVotes };
+        }
+        return hotel;
+      });
+      updateHotels(updatedHotels);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+
+  const updateVotedhotels = (updatedVotedhotels) => {
+    setVotedhotels(updatedVotedhotels);
+  };
+
+  const handlevoteCheckboxChangeHotel = (hotelId, isChecked, day) => {
+    try {
+      const updatedVotedhotels = votedhotels.map(hotel => {
+        if (hotel.id === hotelId) {
+          updateTotalVotesHotel(hotelId, isChecked, day);
+          handlevoteAsyncActionHotel(hotelId, isChecked);
+          const newTotalVotes = isChecked ? hotel.total_votes + 1 : hotel.total_votes - 1;
+          const totalVotes = newTotalVotes >= 0 ? newTotalVotes : 0;
+
+          return { ...hotel, total_votes: totalVotes };
+        }
+        return hotel;
+      });
+      updateVotedhotels(updatedVotedhotels);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+  const updateTotalVotesHotel = async (hotelID, isChecked, day) => {
+    try {
+      const response = await axios.put(`http://localhost:8080/api/v1/trip/updateHotelTotalVotes/${pathTripId}/${hotelID}/${isChecked}/${day}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleAsyncActionHotel = async (hotelId, checked) => {
+    try {
+      const selectedHotel = hotels.find(hotel => hotel.id === hotelId);
+
+
+      if (!selectedHotel) {
+        console.error('Selected hotel not found');
+        return;
+      }
+      const data = {
+        user_id,
+        hotelPoll: { id: selectedHotel.id }
+      };
+
+      if (checked) {
+        const response = await axios.post('http://localhost:8080/api/v1/trip/hotels/updateHotelPollUser/addlist', data);
+        console.log('Poll added successfully:', response.data);
+      } else {
+        const deleteEndpoint = `http://localhost:8080/api/v1/trip/hotels/updatePolluser/remove?user_id=${user_id}&hotelPollId=${selectedHotel.id}`;
+        const response = await axios.delete(deleteEndpoint);
+        console.log('Poll removed successfully:', response.data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+  const handlevoteAsyncActionHotel = async (hotelId, checked) => {
+    try {
+      const selectedHotel = votedhotels.find(hotel => hotel.id === hotelId);
+      console.log(selectedHotel.id)
+      if (!selectedHotel) {
+        console.error('Selected hotel not found');
+        return;
+      }
+      const data = {
+        user_id,
+        hotelPoll: { id: selectedHotel.id }
+      };
+
+      if (checked) {
+        const response = await axios.post('http://localhost:8080/api/v1/trip/hotels/updatePolluser/addlist', data);
+        console.log('Poll added successfully:', response.data);
+      } else {
+        try {
+          const deleteEndpoint = `http://localhost:8080/api/v1/trip/hotels/updatePolluser/remove?user_id=${pathTripId}&hotelPollId=${selectedHotel.id}`;
+          const response = await axios.delete(deleteEndpoint);
+          console.log('Attraction removed successfully:', response.data);
+        } catch (error) {
+          console.error('Error removing attraction:', error);
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -221,7 +377,7 @@ function Selections() {
         const response = await axios.post('http://localhost:8080/api/v1/trip/attractions/updatePolluser/addlist', data);
         console.log('Poll added successfully:', response.data);
       } else {
-        const deleteEndpoint = `http://localhost:8080/api/v1/trip/attractions/updatePolluser/remove?user_id=${user_id}&attractionPollId=${selectedAttraction.id}`;
+        const deleteEndpoint = `http://localhost:8080/api/v1/trip/attractions/updatePolluser/remove?user_id=${pathTripId}&attractionPollId=${selectedAttraction.id}`;
         const response = await axios.delete(deleteEndpoint);
         console.log('Poll removed successfully:', response.data);
       }
@@ -407,7 +563,7 @@ function Selections() {
                               </button>
                               <button
                                 className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(voteattraction, index + 1)}
+                                onClick={() => handleAddToTrip(attraction, index + 1)}
                               >
                                 Add to Trip
                               </button>
@@ -431,6 +587,94 @@ function Selections() {
                           Hotels
                         </Typography>
                       </div>
+                      <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+                          {votedhotels.map((votedhotel) => (
+                            <div key={votedhotel.id} className="bg-white p-2 rounded-lg shadow border relative " style={{ height: '325px' }}>
+                              <div className="flex items-center justify-center mb-2">
+                                <img
+                                  src={`/main/${votedhotel.hotel_img}`}
+                                  alt={`${votedhotel.hotel_name}'s Photo`}
+                                  className="w-full h-32 rounded-md object-cover"
+                                />
+                              </div>
+
+                              <h4 className="text-xl font-semibold mb-2">{votedhotel.name}</h4>
+
+                              <h2 className="text-xl font-semibold mb-2 ">
+                                <span style={{ display: 'block', backgroundColor: '#377A85', color: 'white', borderRadius: '5px', padding: '6px 12px', justifyContent: 'center', textAlign: 'center' }}>
+                                  {votedhotel.total_votes}
+                                </span>
+                              </h2>
+
+
+                              <button
+                                key={votedhotel.id}
+                                className={`absolute cursor-pointer py-2 px-4 border bg-gray-300 text-[#FF5C5C] w-full rounded-md object-cover ${checkedVotehotels[votedhotel.id] ? 'bg-white' : 'bg-green-500 text-black'}`}
+                                style={{ width: '94%' }}
+                                onClick={() => votehandleButtonClickHotel(votedhotel.id, index + 1)}
+                              >
+                                {checkedVotehotels[votedhotel.id] ? x : y}
+                              </button>
+                              <button
+                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
+                                onClick={() => handleAddToTrip(votedhotel, index + 1)}
+                              >
+                                Add to Trip
+                              </button>
+                            </div>
+                          ))}
+
+
+                          {hotels.map((hotel) => (
+                            <div key={hotel.id} className="bg-white p-2 rounded-lg shadow border relative " style={{ height: '325px' }}>
+                              <div className="flex items-center justify-center mb-2">
+                                <img
+                                  src={`/main/${hotel.hotel_img}`}
+                                  alt={`${hotel.hotel_name}'s Photo`}
+                                  className="w-full h-32 rounded-md object-cover"
+                                />
+                              </div>
+
+                              <h4 className="text-xl font-semibold mb-2">{hotel.hotel_name}</h4>
+
+                              <h2 className="text-xl font-semibold mb-2 ">
+                                <span style={{ display: 'block', backgroundColor: '#377A85', color: 'white', borderRadius: '5px', padding: '6px 12px', justifyContent: 'center', textAlign: 'center' }}>
+                                  {hotel.total_votes}
+                                </span>
+                              </h2>
+                              <button
+                                key={hotel.id}
+                                className={`absolute cursor-pointer py-2 px-4 border bg-gray-300 text-[#FF5C5C] w-full rounded-md object-cover ${checkedHotels[hotel.id] ? 'bg-green-500 text-black' : 'bg-white'}`}
+                                style={{ width: '94%' }}
+                                onClick={() => handleButtonClickHotel(hotel.id, index + 1)}
+                              >
+                                {checkedHotels[hotel.id] ? y : x}
+                              </button>
+                              <button
+                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
+                                onClick={() => handleAddToTrip(hotel, index + 1)}
+                              >
+                                Add to Trip
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+
+                        <Link to={`/traveler/hotelpoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                          Add item for make poll
+                        </Button></Link>
+                      </div>
+
+
+
+                      <div className="bg-gradient-to-r from-[#377A85] p-1 m-1 rounded-l-full">
+                        <Typography className="pl-4 text-white font-bold">
+                          Activities
+                        </Typography>
+                      </div>
+
                       <div className="flex flex-col justify-center gap-4 mt-8 mb-8">
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
@@ -516,7 +760,7 @@ function Selections() {
                               </button>
                               <button
                                 className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(voteattraction, index + 1)}
+                                onClick={() => handleAddToTrip(attraction, index + 1)}
                               >
                                 Add to Trip
                               </button>
@@ -524,10 +768,12 @@ function Selections() {
                           ))}
                         </div>
 
-                        <Link to={`/traveler/hotels/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
+                        <Link to={`/traveler/attractionspoll/${id}/${index + 1}`}><Button className="w-fit ml-[40%] text-[#57CC99] rounded-full bg-gray-300 normal-case shadow-none focus:shadow-none hover:shadow-none hover:bg-[#57CC99] hover:text-white active:shadow-none">
                           Add item for make poll
                         </Button></Link>
+
                       </div>
+
 
 
                     </AccordionBody>

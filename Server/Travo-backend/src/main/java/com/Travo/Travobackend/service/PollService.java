@@ -44,6 +44,12 @@ public class PollService {
     @Autowired
     private AttractionPollJDBCDao attractionPollJDBCDao;
 
+    @Autowired
+    private HotelAgentRepository hotelAgentRepository;
+
+    @Autowired
+    private HotelPolluserRepository hotelPolluserRepository;
+
 
     public String addAttraction(AttractionPollDTO attractionPollDTO){
         try {
@@ -69,16 +75,52 @@ public class PollService {
         }
     }
 
+    public String addHoteltoPoll(HotelPollDTO hotelPollDTO){
+        try {
+            HotelPoll hotelPoll = new HotelPoll();
+            hotelPoll.setDay(hotelPollDTO.getDay());
+            hotelPoll.setTotal_votes(0);
+            Optional<HotelAgent> hotelOptional = hotelAgentRepository.findById(hotelPollDTO.getHotel_id());
+            HotelAgent hotelAgent = hotelOptional.get();
+            hotelPoll.setHotelAgent(hotelAgent);
+
+            Optional<Trip> tripOptional = tripRepository.findById(hotelPollDTO.getTrip_id());
+            Trip trip = tripOptional.get();
+            hotelPoll.setTrip(trip);
+            hotelPollRepository.save(hotelPoll);
+
+            return("Hotel added successfully!");
+        } catch (Exception e) {
+            return("Error adding hotel: " + e.getMessage());
+        }
+
+    }
+
+
+
     public List<AttractionPollDTO> selectedAttractionList(Integer tripID, Integer day, Integer userId){
         return attractionPollJDBCDao.getSelectedAttractionPollList(tripID, day, userId);
     }
+    public List<HotelPollDTO> selectedHotelList(Integer tripID, Integer day, Integer userId){
+        return hotelPollJDBCDao.getSelectedHotelPollList(tripID, day, userId);
+    }
+
+
+
 
     public List<AttractionPollDTO> selectedAttractionVotedList(Integer tripID, Integer day, Integer userId){
         return attractionPollJDBCDao.getSelectedAttractionVotedPollList(tripID, day, userId);
     }
+    public List<HotelPollDTO> selectedHotelVotedList(Integer tripID, Integer day, Integer userId){
+        return hotelPollJDBCDao.getSelectedHotelVotedPollList(tripID, day, userId);
+    }
+
 
     public void updateAttractionPoll(Integer tripId, Integer AttractionId, Boolean isChecked, Integer day) {
         attractionPollJDBCDao.updateAttractionPoll(tripId,AttractionId,isChecked,day);
+    }
+    public void updateHotelPoll(Integer tripId, Integer AttractionId, Boolean isChecked, Integer day) {
+        hotelPollJDBCDao.updateHotelPoll(tripId,AttractionId,isChecked,day);
     }
 
 
@@ -90,6 +132,17 @@ public class PollService {
      } catch (Exception e) {
         return "Error removing user from the poll: " + e.getMessage();
      }
+    }
+
+    public String removePollUserHotel(Integer userId, Integer hotelPollId) {
+        try {
+            System.out.println("uu");
+            // Logic to remove a poll user
+            hotelPolluserRepository.deleteByUserIdAndAttractionPollId(userId, hotelPollId);
+            return "User removed from the poll successfully!";
+        } catch (Exception e) {
+            return "Error removing user from the poll: " + e.getMessage();
+        }
     }
 
     public String attractionDeleteFromPoll(Integer attractionPollId) {
@@ -195,6 +248,29 @@ public class PollService {
                 if (attractionPollOptional.isPresent()) {
                     pollUser.setAttractionPoll(attractionPollOptional.get());
                     pollUserRepository.save(pollUser);
+                    return "Trip member added successfully!";
+                } else {
+                    return "HotelPoll not found!";
+                }
+            } else {
+                return "HotelPoll is null in the DTO!";
+            }
+        } catch (Exception e) {
+            return "Error adding user: " + e.getMessage();
+        }
+    }
+
+    public String addUserPollHotel(HotelPolluserDTO hotelPolluserDTO) {
+        try {
+
+            HotelPolluser hotelPolluser = new HotelPolluser();
+            hotelPolluser.setUser_id(hotelPolluserDTO.getUser_id());
+            HotelPoll hotelPoll = hotelPolluserDTO.getHotelPoll(); // Retrieve HotelPoll from DTO
+            if (hotelPoll != null) {
+                Optional<HotelPoll> hotelPollOptional = hotelPollRepository.findById(hotelPoll.getId());
+                if (hotelPollOptional.isPresent()) {
+                    hotelPolluser.setHotelPoll(hotelPollOptional.get());
+                    hotelPolluserRepository.save(hotelPolluser);
                     return "Trip member added successfully!";
                 } else {
                     return "HotelPoll not found!";
