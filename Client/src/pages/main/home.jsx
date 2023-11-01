@@ -25,19 +25,19 @@ function HomeCarousel() {
     <Carousel loop className="">
       <div className="relative h-full w-full">
 
-        <video
+        {/* <video
           autoPlay
           loop
           muted
           className="h-full w-full object-cover"
-          src="./video.mp4"
-        />
-        {/* <img
-          src="https://i.imgur.com/pBcrUnx.jpg"
+          src="https://i.imgur.com/p4GB54E.png"
+        /> */}
+        <img
+          src="https://i.imgur.com/p4GB54E.png"
           alt="image 1"
           className="h-full w-full object-cover"
-        /> */}
-        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+        />
+        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/[35%]">
 
 
           <div className="w-3/4 text-center md:w-2/4">
@@ -97,7 +97,7 @@ function HomeCarousel() {
           alt="image 2"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/[35%]">
           <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
             <Typography
               variant="h1"
@@ -138,7 +138,7 @@ function HomeCarousel() {
           alt="image 3"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/[35%]">
           <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
             <Typography
               variant="h1"
@@ -582,7 +582,12 @@ function Steppermain() {
 
 export default function Newhome() {
   return (
-    <div className="w-screen h-screen overflow-scroll bg-blue-gray-50">
+    <div className="w-screen h-screen overflow-scroll bg-cover bg-no-repeat"
+    style={{
+        backgroundImage: "url(https://i.imgur.com/RgVTTB1.png)",
+      }}>
+      
+      
       <div>
         <NewhomeNavbar />
       </div>
