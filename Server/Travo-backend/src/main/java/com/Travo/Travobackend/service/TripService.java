@@ -60,8 +60,7 @@ public class TripService {
     private TripScheduleRepository tripScheduleRepository;
     @Autowired
     private ScheduleJDBCDao scheduleJDBCDao;
-    @Autowired
-    private TripMemberRepository tripMemberRepository;
+
     @Autowired
     private UserRepository userRepository;
 

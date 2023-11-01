@@ -82,7 +82,7 @@ public class TripJDBCDao {
         HashMap<String, Object> params = new HashMap<>();
         List<GuideDTO> guide = new ArrayList<>();
 
-        SQL.append("SELECT * FROM guide")   ;
+        SQL.append("SELECT * FROM guide");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
@@ -102,6 +102,7 @@ public class TripJDBCDao {
             }
             return guide;
         });
+    }
     public List<TripMemberDTO> getTripMemberList(Integer tripID) {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
@@ -133,7 +134,7 @@ public class TripJDBCDao {
     }
 
 
-    }
+
 
 
     public List<TripDTO> getAllTrips(String SQL, Map<String, Object> params) {
