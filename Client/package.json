@@ -25,6 +25,7 @@
     "date-fns": "^2.30.0",
     "goober": "^2.1.13",
     "google-map-react": "^2.2.1",
+    "multi-step": "^1.0.0",
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.2",
     "react-confirm-alert": "^3.0.6",
@@ -35,7 +36,7 @@
     "react-select": "^5.7.7",
     "recharts": "^2.7.3",
     "run-parallel": "^1.2.0",
-    "sweetalert2": "^11.8.0",
+    "sweetalert2": "^11.9.0",
     "swiper": "^10.2.0"
   },
   "devDependencies": {
