@@ -56,10 +56,10 @@ public class UserService {
 
 
 
-//    public List<HotelDTO> getPendingHotel(Integer userId){
-//        // Your logic to retrieve a list of pending vehicle renters
-//        return hotelJDBCDao.getPendingHotel(userId);
-//    }
+    public List<HotelDTO> getPendingHotel(Integer userId){
+        // Your logic to retrieve a list of pending vehicle renters
+        return hotelJDBCDao.getPendingHotel(userId);
+    }
     public List<VehicleRenterDTO> getPendingVehicleRenters(Integer userId){
         // Your logic to retrieve a list of pending vehicle renters
         return vehicleRenterJDBCDao.getRentersDetails(userId);

@@ -53,7 +53,7 @@ export default function Admin_requestcomformpage() {
     useEffect(() => {
         const loadUserInfo = async () => {
             try {
-                const result = await axios.get(`http://localhost:8080/api/v1/user/information/${userID}`);
+                const result = await axios.get(`http://localhost:8080/api/v1/user/information-hotel/${userID}`);
                 setUsersinfo(result.data);
 
             } catch (error) {
@@ -84,7 +84,7 @@ export default function Admin_requestcomformpage() {
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', height: '100%' }}>
 
                     <div style={{ width: '100%', backgroundColor: '#FAFAFA', borderRadius: '10px' }}>
-                        <h1 className='ml-10 font-poppins font-extrabold mt-4 mx-5 text-[#2C2738]'>Vehicle Renter  </h1>
+                        <h1 className='ml-10 font-poppins font-extrabold mt-4 mx-5 text-[#2C2738]'>Hotels </h1>
                         <div style={{ backgroundColor: 'white', height: '40%', borderRadius: '10px', marginTop: '20px', width: '90%', marginLeft: '20px' }}>
                             <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-extrabold  ml-5 text-[#2C2738] text-sm'>Business Details : </h1>
 
@@ -101,7 +101,7 @@ export default function Admin_requestcomformpage() {
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Company Name : </h1>
-                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{usersinfo.user_name}</h1>
+                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{usersinfo.acc_name}</h1>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'> Brn: </h1>
@@ -114,16 +114,16 @@ export default function Admin_requestcomformpage() {
                                         </div>
                                         <div style={{ width: '50%' }}>
                                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>District : </h1>
+                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Room count : </h1>
                                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                                 <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Address : </h1>
-                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{usersinfo.address_line1}, {usersinfo.address_line2}, {usersinfo.city}</h1>
+                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'>Check-Out : </h1>
-                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'></h1>
+                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#718096] text-sm'> Note: </h1>
+                                                <h1 style={{ paddingTop: '20px' }} className=' font-poppins font-bold  ml-5 text-[#A0AEC0] text-sm'>{usersinfo.hotel_description}</h1>
                                             </div>
 
                                         </div>
@@ -186,3 +186,6 @@ export default function Admin_requestcomformpage() {
 
     )
 }
+
+
+

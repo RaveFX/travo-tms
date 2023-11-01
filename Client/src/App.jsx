@@ -62,6 +62,7 @@ import Admin_Transaction from "./pages/Admin/Admin_Transaction";
 import Admin_userlistpage from "./pages/Admin/Admin_userlistpage"
 import AcceptPage from "./pages/Admin/Admin_requestcomformpage";
 import Vehicle from "./pages/Admin/Admin_vehicleconform";
+import Hotel_c from "./pages/Admin/Admin_hotelconform";
 
 // Trineesha
 import Travel_Guide_Dashboard from "./pages/Travel_Guide/travel_guide_dashboard";
@@ -205,6 +206,7 @@ export default function App() {
         <Route path="admin_transaction" element={<Admin_Transaction />} />
         <Route path="/admin_acceptpage/:userId" element={<AcceptPage />} />
         <Route path="/vehicle_renter_info/:userId" element={<Vehicle />} />
+        <Route path="/hotel_agent_info/:userId" element={<Hotel_c />} />
         <Route path="admin_userlistpage" element={<Admin_userlistpage />}></Route>
 
         <Route path="store_dashboard" element={<Store_Dashboard />} />

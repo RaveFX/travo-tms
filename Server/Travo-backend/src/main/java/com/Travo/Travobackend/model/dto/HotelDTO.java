@@ -1,5 +1,6 @@
 package com.Travo.Travobackend.model.dto;
 
+import com.Travo.Travobackend.enumeration.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelDTO {
+    private Integer user_id;
     private String hotel_description;
     private Integer adult_count;
     private Integer child_count;
@@ -24,6 +26,9 @@ public class HotelDTO {
     private String room_name;
     private Integer room_id;
     private String room_description;
+    private String brn;
+    private Status status;
+    private String Acc_name;
 
 
    //for the schedule
