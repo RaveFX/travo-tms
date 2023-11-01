@@ -30,7 +30,7 @@ public class TripJDBCDao {
 
         SQL.append("SELECT * FROM trip\n                                     ");
         SQL.append("INNER JOIN trip_member ON trip.trip_id = trip_member.trip_id        \n");
-        SQL.append("WHERE trip_member.member_id=:userID");
+        SQL.append("WHERE trip_member.member_id=:userID ORDER BY trip.trip_id DESC");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {

@@ -92,21 +92,7 @@ function Mytrips() {
       value: "all trips",
       desc: ``,
     },
-    {
-      label: "Private Trips",
-      value: "private",
-      desc: ``,
-    },
-    {
-      label: "Public Trips",
-      value: "public",
-      desc: ``,
-    },
-    {
-      label: "My Saves",
-      value: "saved",
-      desc: ``,
-    },
+   
   ];
 
 const handleEditTripClick = () => {

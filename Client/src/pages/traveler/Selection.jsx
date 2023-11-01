@@ -486,11 +486,10 @@ function Selections() {
                               <div className="flex items-center justify-center mb-2">
                                 {voteattraction.img_url ? (
                                   <img
-                                    src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${voteattraction.img_url}&key=AIzaSyACalhnjQdYpaOrtk1JxGkJWqV8iNW-CLA`}
-                                    alt={`${voteattraction.name} - Photo`}
-                                    className="w-full h-32 rounded-md object-cover"
-
-                                  />
+                                  src={`${voteattraction.img_url}`}
+                                  alt={`${voteattraction.name} - Photo`}
+                                  className="w-full h-44 rounded-md object-cover"
+                                />
                                 ) : (
                                   <img
                                     src="/main/no_image_available.jpeg" // Provide the path to your default image
