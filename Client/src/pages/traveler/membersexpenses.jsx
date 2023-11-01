@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from '../../components/web-component/Sidebar';
 import TopNavbar from '../../components/web-component/Navbar';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 import { PencilIcon } from "@heroicons/react/24/solid";
@@ -31,13 +31,14 @@ const TABLE_HEAD = ["Transaction", "Category", "Cost", "Paid by", "Date", ""];
 
 
 // const userint = parseInt(user_id);
+const user_id = sessionStorage.getItem('user_id');
 
 
 
 function ExpenseTable() {
 
   const [budgetData, setBudgetData] = useState([]);
-  const user_id = sessionStorage.getItem('user_id');
+  const { id } = useParams(); // Assuming this is the trip_id from the URL
 
   
   useEffect(() => {
@@ -45,7 +46,7 @@ function ExpenseTable() {
 },[]); 
 
 const loadExpenses=async()=>{
-    const result=await axios.get(`http://localhost:8080/api/v1/budget/getBudgetsByUserId/${user_id}`)
+    const result=await axios.get(`http://localhost:8080/api/v1/budget/getAllBudgets/1`)
     .then((response) => {
       setBudgetData(response.data);
     })
@@ -54,16 +55,20 @@ const loadExpenses=async()=>{
     });
 }
 
-  // useEffect(() => {
-  //   // Make a GET request to retrieve budget data
-  //   const result=await axios.get('http://localhost:8080/api/v1/budget/getBudgetsByUserId/${user_id}') 
-  //     .then((response) => {
-  //       setBudgetData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching budget data: ", error);
-  //     });
-  // }, []);
+
+// const [budgets, setBudgets] = useState([]);
+
+// useEffect(() => {
+//   // Make an API call to fetch all budgets for the specified trip
+//   axios.get(`http://localhost:8080/api/v1/budget/getAllBudgets/${id}`)
+//     .then((response) => {
+//       setBudgets(response.data);
+//     })
+//     .catch((error) => {
+//       console.error('Error fetching data: ' + error);
+//     });
+// }, [id]);
+
 
 
 
@@ -308,7 +313,7 @@ const loadExpenses=async()=>{
   );
 }
 
-export default function Expenses() {
+export default function MemberExpenses() {
   return (
     <>
       <div className="font-poppins h-screen w-full bg-[#F6F8FA] flex overflow-hidden  ">

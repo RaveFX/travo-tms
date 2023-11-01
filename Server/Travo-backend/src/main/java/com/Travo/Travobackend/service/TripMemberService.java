@@ -1,5 +1,4 @@
 package com.Travo.Travobackend.service;
-
 import com.Travo.Travobackend.model.dto.TripMemberDTO;
 import com.Travo.Travobackend.model.entity.Trip;
 import com.Travo.Travobackend.model.entity.TripMember;
@@ -13,8 +12,9 @@ import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Travo.Travobackend.enumeration.TripRole;
-
 import java.util.Optional;
+import com.Travo.Travobackend.repository.TripMembersRepository;
+
 
 @Service
 public class TripMemberService {
@@ -107,4 +107,9 @@ public class TripMemberService {
 
 
 
+    private TripMembersRepository tripMembersRepository;
+
+    public long getRowCount() {
+        return tripMembersRepository.count();
+    }
 }
