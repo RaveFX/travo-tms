@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Travo.Travobackend.enumeration.TripRole;
 import java.util.Optional;
-import com.Travo.Travobackend.repository.TripMembersRepository;
+//import com.Travo.Travobackend.repository.TripMembersRepository;
 
 
 @Service
@@ -107,9 +107,9 @@ public class TripMemberService {
 
 
 
-    private TripMembersRepository tripMembersRepository;
+    private TripMemberRepository tripMembersRepository;
 
     public long getRowCount() {
-        return tripMembersRepository.count();
+        return tripMemberRepository.count();
     }
 }

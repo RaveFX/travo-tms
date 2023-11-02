@@ -81,15 +81,15 @@ const loadExpenses=async()=>{
             </Typography>
           </div>
           <div className="flex w-full  gap-2 md:w-max">
-            <div className="w-full text-xs md:w-72">
+            {/* <div className="w-full text-xs md:w-72">
               <Input label="Search" />
-            </div>
-            <Button
+            </div> */}
+            {/* <Button
               className="flex mr-3 items-center bg-[#22577A] gap-3"
               size="sm"
             >
               <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
-            </Button>
+            </Button> */}
           </div>
         </div>
       </CardHeader>
@@ -170,13 +170,13 @@ const loadExpenses=async()=>{
                       {budget.date}
                     </div>
                   </td>
-                  <td className={classes}>
+                  {/* <td className={classes}>
                     <Tooltip content="Edit User">
                       <IconButton variant="text">
                         <PencilIcon className="h-4 w-4" />
                       </IconButton>
                     </Tooltip>
-                  </td>
+                  </td> */}
                 </tr>
               );
             })}

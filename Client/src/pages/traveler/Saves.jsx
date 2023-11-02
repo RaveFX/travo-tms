@@ -213,6 +213,7 @@ const data = [
     textColor: "#212b36",
   },
   {
+    // amount: <PerUserCost/>,
     amount: <PerUserCost/>,
     label: "Per User Cost",
     imgUrl: <UserIcon/>,
@@ -220,13 +221,13 @@ const data = [
     textColor: "#212b36",
   },
 
-  {
-    amount: "LKR 5,000",
-    label: "Balance Due",
-    imgUrl: <WalletIcon/>,
-    bgColor: "#eff2f7",
-    textColor: "#212b36",
-  },
+  // {
+  //   amount: "LKR 5,000",
+  //   label: "Balance Due",
+  //   imgUrl: <WalletIcon/>,
+  //   bgColor: "#eff2f7",
+  //   textColor: "#212b36",
+  // },
 
   // Add more data objects as needed
 ];
