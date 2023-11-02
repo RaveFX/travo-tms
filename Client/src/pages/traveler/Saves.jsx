@@ -385,88 +385,6 @@ const placedata = [
 
 ];
 
-// function BudgetPeople() {
-//   return (
-//     <>
-//       {placedata.map((placedata) => (
-
-//         <Card className="w-72 ">
-//           <CardHeader color="blue-gray" className="mt-4 ">
-//             <img className="" src={placedata.imgUrl} alt="card-image" />
-//           </CardHeader>
-//           <CardBody>
-//             <Typography variant="h5" color="blue-gray" className="mb-2 font-poppins">
-//               {placedata.title}
-//             </Typography>
-//             <Typography className="font-poppins" >{placedata.description}</Typography>
-//           </CardBody>
-//           <CardFooter className="pt-0">
-//             <Button className="font-poppins">Read More</Button>
-//           </CardFooter>
-//         </Card>
-//       ))}
-//     </>
-//   );
-// }
-
-// const budgetpeople = [
-//   {
-//     name: "Nick",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "John",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "Jane",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "Jane",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "Jane",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "Jane",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-//   {
-//     name: "Jane",
-//     balance: "LKR 5000",
-//     imgUrl: "/dunhinda.jpg",
-//   },
-// ]
-
-// function BudgetPeeps() {
-//   return (
-//     <>
-//       {budgetpeople.map((budgetpeople) => (
-//         <div className="flex  flex-row gap-6">
-//           <div className="bg-white p-4 rounded-xl w-36 shadow-lg">
-//             <img src={budgetpeople.imgUrl} alt="Avatar" className="w-full h-24 rounded-lg" />
-//             <h1 className="py-2 text-center font-semi bold">{budgetpeople.name}</h1>
-//             <div>
-//               <Button className="">Balance: <TotalCostByUser /></Button>
-//             </div>
-//           </div>
-//         </div>
-
-//       ))}
-
-//     </>
-//   );
-// }
-
 function BudgetPeeps() {
   const user_id = sessionStorage.getItem('user_id');
   const { id } = useParams(); // Assuming this is the trip_id from the URL
@@ -531,7 +449,7 @@ export function Saves() {
            
           </div> */}
           <div className="mt-10 ml-10">
-            <p className="font-bold text-2xl">Traveller Budget : {user_id}</p>
+            <p className="font-bold text-2xl">Traveller Budget </p>
             <Tripid />
           </div>
           <div>
