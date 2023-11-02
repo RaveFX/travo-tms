@@ -150,15 +150,7 @@ const handleEditRolesClick = async(trip_id) => {
 
               {/* Swiper slides */}
               <div className='swiper-wrapper p-0 m-0 flex justify-center w-[1500px] absolute top-9 z-10 '>
-              {
-                trips.length === 0 && (
-                  <div className="flex justify-center items-center h-full">
-                    <Typography variant="h3" color="blue-gray">
-                      No trips available.
-                    </Typography>
-                  </div>
-                )
-              }
+              
              
               { trips.map((trips)=>(           
         

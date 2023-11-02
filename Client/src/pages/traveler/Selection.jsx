@@ -516,12 +516,7 @@ function Selections() {
                               >
                                 {checkedVoteattractions[voteattraction.id] ? x : y}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(voteattraction, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                              
                             </div>
                           ))}
 
@@ -560,12 +555,7 @@ function Selections() {
                               >
                                 {checkedAttractions[attraction.id] ? y : x}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(attraction, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                              
                             </div>
                           ))}
                         </div>
@@ -616,12 +606,7 @@ function Selections() {
                               >
                                 {checkedVotehotels[votedhotel.id] ? x : y}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(votedhotel, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                            
                             </div>
                           ))}
 
@@ -651,12 +636,7 @@ function Selections() {
                               >
                                 {checkedHotels[hotel.id] ? y : x}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(hotel, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                             
                             </div>
                           ))}
                         </div>
@@ -713,12 +693,7 @@ function Selections() {
                               >
                                 {checkedVoteattractions[voteattraction.id] ? x : y}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(voteattraction, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                              
                             </div>
                           ))}
 
@@ -757,12 +732,7 @@ function Selections() {
                               >
                                 {checkedAttractions[attraction.id] ? y : x}
                               </button>
-                              <button
-                                className="bg-[#57CC99] text-white px-3 py-1 rounded-md absolute bottom-2 right-2 gap-2"
-                                onClick={() => handleAddToTrip(attraction, index + 1)}
-                              >
-                                Add to Trip
-                              </button>
+                              
                             </div>
                           ))}
                         </div>
