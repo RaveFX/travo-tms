@@ -186,12 +186,12 @@ function Community() {
                       </p>
                       <button
                         onClick={() => handleLikeClick(index)}
-                        className="flex items-center text-red gap-2"
+                        className="flex items-center text-red-500 gap-2"
                       >
                         {post.isLiked ? (
                           <SolidHeartIcon className="h-6 w-6 " />
                         ) : (
-                          <OutlineHeartIcon className="h-6 w-6 colo" />
+                          <OutlineHeartIcon className="h-6 w-6" />
                         )}
                         {post.likes}
                       </button>

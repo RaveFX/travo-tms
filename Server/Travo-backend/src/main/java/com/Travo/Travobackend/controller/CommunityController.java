@@ -5,7 +5,6 @@ import com.Travo.Travobackend.model.entity.Community;
 import com.Travo.Travobackend.model.entity.Traveler;
 import com.Travo.Travobackend.service.CommunityService;
 import com.Travo.Travobackend.service.ImageService;
-//import com.Travo.Travobackend.service.LikesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,6 @@ public class CommunityController {
 
     private final CommunityService communityService;
     private final ImageService imageService;
-//    private final LikesService likesService;
 
     @PostMapping("/create-post")
     public ResponseEntity<Community> createPost(@RequestBody CommunityDTO communityDTO){
@@ -67,18 +65,6 @@ public class CommunityController {
         }
     }
 
-//    @PutMapping("/like/{post_id}")
-//    public ResponseEntity<Void> likePost(@PathVariable Integer post_id, @RequestBody LikesDTO likesDTO) {
-//        likesDTO.setPost_id(post_id);
-//
-//        // Assuming you have a way to obtain the user ID (e.g., from the authenticated user)
-//        Integer user_id = 123; // Replace with the actual user ID
-//
-//        likesDTO.setUser_id(user_id);
-//
-//        likesService.likePost(likesDTO);
-//        return ResponseEntity.ok().build();
-//    }
 //    @GetMapping("/users")
 //    public ResponseEntity<List<Traveler>> getAllUsers() throws IOException {
 //
