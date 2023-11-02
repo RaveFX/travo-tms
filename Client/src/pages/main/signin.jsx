@@ -44,7 +44,7 @@ function Signin() {
         sessionStorage.setItem('user_id', user_id);
         sessionStorage.setItem('role',role);
         sessionStorage.setItem('isAuthenticated','true');
-
+        sessionStorage.setItem("profileImage", response.data.profileImage);
 
       
         navigate("/traveler/dashboard");

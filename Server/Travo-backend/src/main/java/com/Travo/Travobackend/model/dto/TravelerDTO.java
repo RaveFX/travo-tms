@@ -1,25 +1,21 @@
-package com.Travo.Travobackend.model.entity;
+package com.Travo.Travobackend.model.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
-@Data
-@SuperBuilder
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "traveler")
-@PrimaryKeyJoinColumn(name="traveler_id")
-public class Traveler extends User {
-    private String fname;
-    private String lname;
+@NoArgsConstructor
+@Data
+@Builder
+public class TravelerDTO {
+    private Integer id;
+    private String email;
+    private String firstname;
+    private String lastname;
     private String gender;
     private Integer emergency_contact;
     private Date DOB;
@@ -29,5 +25,6 @@ public class Traveler extends User {
     private String city;
     private Integer postal_code;
     private String district;
+    private byte[] profileImage;
     private String nickName;
 }

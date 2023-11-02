@@ -21,6 +21,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 @Service
@@ -181,30 +184,62 @@ public class AuthenticationService {
 //        }
 //    }
 
-    public AuthenticationResponse authenticate(HttpServletResponse response, AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
-        var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
-        var status = repository.findByEmailAndStatus(request.getEmail())
-                .orElseThrow();
+//    public AuthenticationResponse authenticate(HttpServletResponse response, AuthenticationRequest request) {
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getEmail(),
+//                        request.getPassword()
+//                )
+//        );
+//        var user = repository.findByEmail(request.getEmail())
+//                .orElseThrow();
+//        var status = repository.findByEmailAndStatus(request.getEmail())
+//                .orElseThrow();
+//
+//            var accessToken = jwtService.generateToken(user);
+//            var refreshToken = jwtService.generateRefreshToken(user);
+//            updateUserToken(user, accessToken);
+//            createCookie(response, refreshToken, 604800);
+//            revokeAllUserTokens(user);
+//            return GlobalService.authenticationResponse(
+//                    accessToken,
+//                    user.getUser_id(),
+//                    user.getRole()
+//            );
+//    }
+public AuthenticationResponse authenticate(HttpServletResponse response, AuthenticationRequest request) throws IOException {
+    authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                    request.getEmail(),
+                    request.getPassword()
+            )
+    );
+    var user = repository.findByEmail(request.getEmail())
+            .orElseThrow();
+    var status = repository.findByEmailAndStatus(request.getEmail())
+            .orElseThrow();
 
-            var accessToken = jwtService.generateToken(user);
-            var refreshToken = jwtService.generateRefreshToken(user);
-            updateUserToken(user, accessToken);
-            createCookie(response, refreshToken, 604800);
-            revokeAllUserTokens(user);
-            return GlobalService.authenticationResponse(
-                    accessToken,
-                    user.getUser_id(),
-                    user.getRole()
-            );
 
-    }
+    String rootDirectory = System.getProperty("user.dir");
+    String profileImageUploadPath = rootDirectory + "/src/main/resources/static/profile/profileImages";
+
+    String profileImageName = travelerRepository.findImageById(user.getUser_id());
+    Path profileImagePath = Paths.get(profileImageUploadPath, profileImageName);
+    byte[] profileImage = Files.readAllBytes(profileImagePath);
+
+    var accessToken = jwtService.generateToken(user);
+    var refreshToken = jwtService.generateRefreshToken(user);
+    updateUserToken(user, accessToken);
+    createCookie(response, refreshToken, 604800);
+    revokeAllUserTokens(user);
+    return GlobalService.authenticationResponse(
+            accessToken,
+            user.getUser_id(),
+            user.getRole(),
+            profileImage
+    );
+
+}
 
     public ServiceRegisterResponse register_hotel(Integer userID, RegisterRequest request) {
         var hotel = HotelAgent.builder()
