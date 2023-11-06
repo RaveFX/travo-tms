@@ -1,8 +1,12 @@
 package com.Travo.Travobackend.controller;
 
 import com.Travo.Travobackend.enumeration.Status;
+import com.Travo.Travobackend.model.dto.GuideInfoDTO;
 import com.Travo.Travobackend.model.dto.RequestDTO;
+import com.Travo.Travobackend.model.dto.ReviewDTO;
+import com.Travo.Travobackend.model.other.RegisterRequest;
 import com.Travo.Travobackend.model.other.Response;
+import com.Travo.Travobackend.model.other.ServiceRegisterResponse;
 import com.Travo.Travobackend.service.GuideService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +28,32 @@ public class GuideController {
         return guideService.requests(userId);
     }
 
-//    @GetMapping("/checkHotel/{userID}")
-//    public ResponseEntity<Response> checkRequest(@PathVariable Integer hireId){
-//        return ResponseEntity.ok(guideService.checkRequest(hireId));
-//    }
+
 
     @GetMapping("/confirmed/{userId}")
     public List<RequestDTO> getConfirmRequests(@PathVariable Integer userId){
 
         return guideService.confirmrequests(userId);
     }
+
+    @GetMapping("/reviews/{userId}")
+    public List<ReviewDTO> getReviews(@PathVariable Integer userId){
+
+        return guideService.reviews(userId);
+    }
+    @GetMapping("/info/{userId}")
+    public List<GuideInfoDTO> getInfo(@PathVariable Integer userId){
+
+        return guideService.info(userId);
+    }
+
+//    @PostMapping("/saveTours/{tourID}")
+//    public ResponseEntity<ServiceRegisterResponse> save_tours(
+//            @PathVariable Integer tourID,
+//            @RequestBody RegisterRequest request
+//    ){
+//        return ResponseEntity.ok(guideService.save_tours(tourID, request));
+//    }
 
     @PutMapping("/update-status/{hireId}/{newStatus}")
     public void updateStatus(

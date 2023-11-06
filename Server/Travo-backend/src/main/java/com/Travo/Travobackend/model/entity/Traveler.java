@@ -1,6 +1,8 @@
 package com.Travo.Travobackend.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @SuperBuilder
@@ -29,4 +33,7 @@ public class Traveler extends User {
     private String city;
     private Integer postal_code;
     private String district;
+    @JsonIgnore
+    @OneToMany(mappedBy = "traveler")
+    private Set<Hire> hires = new HashSet<>();
 }

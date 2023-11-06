@@ -68,7 +68,7 @@ const request = () => {
                         <div className='py-5 '>
                             <div className="w-full overflow-y-auto mx-auto container bg-black dark:bg-white shadow rounded">
                                 <div className="w-full xs:overflow-x-scroll xl:overflow-x-hidden">
-                                {/* {requests.filter((request) => request.status === 'PENDING').map((usersinfo) => ( */}
+                                {/* {requests.filter((request) => request.status === 'PENDING').map((request)=> ( */}
                                     <table className="min-w-full bg-white dark:bg-whiye ">
                                         <thead>
                                             <tr className="w-full h-12 border-gray-300 dark:border-gray-200 border-b py-8 ">

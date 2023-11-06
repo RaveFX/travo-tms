@@ -19,7 +19,6 @@ public class Reviews {
     @Id
     @GeneratedValue
     private Integer review_id;
-
     private Integer service_id;
 
     @ManyToOne

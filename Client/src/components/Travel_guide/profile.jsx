@@ -10,7 +10,10 @@ import {
 import { Link } from 'react-router-dom';
 
 
-const profile = ({path}) => {
+const profile = ({path,name,email,city}) => {
+      // const edits=[
+    //     {path:"/travel_guide_edit_profile"}
+    // ]
     return (
 
 
@@ -26,9 +29,9 @@ const profile = ({path}) => {
                 </div>
                 <div className=" ">
                     <div className="text-center px-14">
-                        <h2 className="text-gray-800 text-3xl font-bold">Natashi Bunny</h2>
-                        <a className="text-gray-400 mt-2 hover:text-blue-500" href="#" target="BLANK()">@immohitdhiman@gmail.com</a>
-                        <p className="mt-2 text-gray-500 text-sm">Nugegoda </p>
+                        <h2 className="text-gray-800 text-3xl font-bold">{name}</h2>
+                        <a className="text-gray-400 mt-2 hover:text-blue-500" href="#" target="BLANK()">{email}</a>
+                        <p className="mt-2 text-gray-500 text-sm">{city} </p>
                     </div>
                     <hr className="mt-6" />
                     <div className="flex  bg-gray-50 ">

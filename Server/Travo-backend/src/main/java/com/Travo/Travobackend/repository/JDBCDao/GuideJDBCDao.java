@@ -1,7 +1,9 @@
 package com.Travo.Travobackend.repository.JDBCDao;
 
 import com.Travo.Travobackend.enumeration.Status;
+import com.Travo.Travobackend.model.dto.GuideInfoDTO;
 import com.Travo.Travobackend.model.dto.RequestDTO;
+import com.Travo.Travobackend.model.dto.ReviewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -55,6 +57,61 @@ public class GuideJDBCDao {
                 requests.add(requestDTO);
             }
             return requests;
+        });
+
+
+
+    }
+    public List<ReviewDTO> getAllReviews(Integer userId ) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<ReviewDTO> reviews = new ArrayList<>();
+
+
+        SQL.append("SELECT * from reviews join user on reviews.user_id = user.user_id join traveler on traveler.traveler_id=user.user_id  WHERE user.user_id= :userId");
+        params.put("userId", userId);
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                ReviewDTO reviewDTO = new ReviewDTO();
+
+                reviewDTO.setReview(rs.getString("review"));
+                reviewDTO.setFname(rs.getString("fname"));
+                reviewDTO.setLname(rs.getString("lname"));
+                reviewDTO.setStars(rs.getInt("stars"));
+
+                reviews.add(reviewDTO);
+            }
+            return reviews;
+        });
+
+
+
+    }
+
+    public List<GuideInfoDTO> getAllInfo(Integer userId ) {
+        StringBuffer SQL = new StringBuffer();
+        HashMap<String, Object> params = new HashMap<>();
+        List<GuideInfoDTO> info = new ArrayList<>();
+
+
+        SQL.append("SELECT * from traveler join user on traveler.traveler_id = user.user_id WHERE user.user_id= :userId");
+        params.put("userId", userId);
+
+        return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
+            while (rs.next()) {
+                GuideInfoDTO infoDTO = new GuideInfoDTO();
+
+                infoDTO.setDOB(rs.getDate("dob"));
+                infoDTO.setUser_id(rs.getInt("user_id"));
+                infoDTO.setFname(rs.getString("fname"));
+                infoDTO.setLname(rs.getString("lname"));
+                infoDTO.setEmail(rs.getString("email"));
+                infoDTO.setCity(rs.getString("city"));
+
+                info.add(infoDTO);
+            }
+            return info;
         });
 
 
